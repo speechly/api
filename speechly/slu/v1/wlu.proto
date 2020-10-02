@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+package speechly.slu.v1;
+
+option go_package = "speechly/slu/v1;sluv1";
+
+// Service that implements Speechly WLU (Written Language Understanding) API (https://speechly.com/docs/api/wlu).
+//
+// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
+// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+//
+// ctx := context.Background()
+// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken) 
+// res, err := speechlyWLUClient.Text(ctx, req)
+service WLU {
+  // Performs recognition of a text with specified language.
+  rpc Text(WLURequest) returns (WLUResponse);
+}
+
+// Top-level message sent by the client for the `Text` method.
+message WLURequest {
+  // The language of the text sent in the request as a BCP-47 language tag (e.g. "en-US").
+  // Required.
+  string language_code = 1;
+
+  // The text to recognise.
+  // Required.
+  string text = 2;
+}
+
+// Top-level message sent by the server for the `Text` method.
+message WLUResponse {
+  // A list of WLU segments.
+  repeated WLUSegment segments = 1;
+}
+
+// Describes a WLU segment.
+// A segment is a logical portion of text denoted by its intent,
+// e.g. in a phrase "book me a flight and rent a car"
+// there would be a segment for "book me a flight" and another for "rent a car".
+message WLUSegment {
+  // The portion of text that contains this segment.
+  string text = 1;
+
+  // The list of word tokens which are contained in this segment.
+  repeated WLUToken tokens = 2;
+
+  // The list of entities which are contained in this segment.
+  repeated WLUEntity entities = 3;
+
+  // The intent that defines this segment.
+  WLUIntent intent = 4;
+}
+
+// Describes a single word token in a segment.
+message WLUToken {
+  // The value of the word.
+  string word = 1;
+
+  // Position of the token in the text.
+  int32 index = 2;
+}
+
+// Describes a single entity in a segment.
+//
+// An entity is a specific object in the phrase that falls into some kind of category,
+// e.g. in a SAL example "*book book a [burger restaurant](restaurant_type) for [tomorrow](date)"
+// "burger restaurant" would be an entity of type `restaurant_type`,
+// and "tomorrow" would be an entity of type `date`.
+//
+// An entity has a start and end indices which map to the indices of words in WLUToken messages,
+// e.g. in the example "book a [burger restaurant](restaurant_type) for [tomorrow](date)" it would be:
+//
+// * Entity "burger restaurant" - `start_position = 2, end_position = 3`
+// * Entity "tomorrow" - `start_position = 5, end_position = 5`
+//
+// The start index is inclusive, but the end index is exclusive, i.e. the interval is `[start_position, end_position)`.
+message WLUEntity {
+  // The type of the entity, e.g. `restaurant_type` or `date`.
+  string entity = 1;
+
+  // The value of the entity, e.g. `burger restaurant` or `tomorrow`.
+  string value = 2;
+
+  // The starting index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.
+  // Inclusive.
+  int32 start_position = 3;
+
+  // The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.
+  // Exclusive.
+  int32 end_position = 4;
+}
+
+// Describes the intent of a segment.
+// There can only be one intent per segment.
+message WLUIntent {
+  // The value of the intent, as defined in SAL.
+  string intent = 1;
+}

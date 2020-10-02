@@ -1,0 +1,297 @@
+syntax = "proto3";
+
+package speechly.config.v1;
+
+option go_package = "speechly/config/v1;configv1";
+
+// Service that implements Speechly Configuration API (https://speechly.com/docs/api/configuration).
+//
+// The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
+//
+// The token acts as a proxy for the user who has generated it,
+// i.e. all operations are performed with that user as a subject.
+service ConfigAPI {
+  // Project API methods.
+
+  // Lists all current user projects.
+  rpc GetProject(GetProjectRequest) returns (GetProjectResponse);
+
+  // Creates a new project for current user.
+  rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
+
+  // Updates an existing project.
+  rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse);
+
+  // Lists all users with access to a project.
+  rpc GetProjectParticipants(GetProjectParticipantsRequest) returns (GetProjectParticipantsResponse);
+
+  // Generates an invitation link for another user to join a project,
+  // which can be used to call JoinProject.
+  rpc Invite(InviteRequest) returns (InviteResponse);
+
+  // Joins a project as a current user.
+  // Requires a link generated with `Invite`.
+  rpc JoinProject(JoinProjectRequest) returns (JoinProjectResponse);
+
+  // Application API methods.
+
+  // Lists all applications in a project.
+  rpc ListApps(ListAppsRequest) returns (ListAppsResponse);
+
+  // Gets detailed information about an application.
+  rpc GetApp(GetAppRequest) returns (GetAppResponse);
+
+  // Creates a new application for current user.
+  rpc CreateApp(CreateAppRequest) returns (CreateAppResponse);
+
+  // Updates an existing application.
+  rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse);
+
+  // Deletes an existing application.
+  rpc DeleteApp(DeleteAppRequest) returns (DeleteAppResponse);
+
+  // Training API methods.
+
+  // Uploads new training data for an application.
+  // This will create and queue a new training job for that application.
+  rpc UploadTrainingData(stream UploadTrainingDataRequest) returns (UploadTrainingDataResponse);
+
+  // Downloads current training data for an application.
+  rpc DownloadCurrentTrainingData(DownloadCurrentTrainingDataRequest) returns (stream DownloadCurrentTrainingDataResponse);
+}
+
+// Top-level message sent by the client for the `GetProject` method.
+message GetProjectRequest {}
+
+// Top-level message sent by the server for the `GetProject` method.
+message GetProjectResponse {
+  // A list of project IDs.
+  repeated string project = 1;
+
+  // A list of project names in the same order as project IDs.
+  repeated string project_names = 2;
+}
+
+// Top-level message sent by the client for the `CreateProject` method.
+message CreateProjectRequest {
+  // An optional human-friendly name for the project.
+  string name = 1;
+}
+
+// Top-level message sent by the server for the `CreateProject` method.
+message CreateProjectResponse {
+  // The ID of created project.
+  string project = 1;
+
+  // The name of created project.
+  string name = 2;
+}
+
+// Top-level message sent by the client for the `UpdateProject` method.
+// Currently it's only possible to update the name of the project.
+message UpdateProjectRequest {
+  // The ID of the project.
+  string project = 1;
+
+  // New name of the project.
+  string name = 2;
+}
+
+// Top-level message sent by the server for the `UpdateProject` method.
+message UpdateProjectResponse {}
+
+// Top-level message sent by the client for the `GetProjectParticipants` method.
+message GetProjectParticipantsRequest {
+  // The ID of the project.
+  string project = 1;
+}
+
+// Top-level message sent by the server for the `GetProjectParticipants` method.
+message GetProjectParticipantsResponse {
+  // Describes a project participant.
+  message Participant {
+    // Participant's name, may be empty.
+    string name = 1;
+
+    // Participant's email, may be empty.
+    string email = 2;
+
+    // Participants identifier.
+    string id = 3;
+  }
+
+  // A list of project's participants.
+  repeated Participant participants = 1;
+}
+
+// Top-level message sent by the client for the `Invite` method.
+message InviteRequest {
+  // The ID of the project to invite to.
+  string project = 1;
+}
+
+// Top-level message sent by the server for the `Invite` method.
+message InviteResponse {
+  // The token that can be used for joining the project.
+  // The token is only valid once so if you need to invite multiple people,
+  // you have to generated a token for each person.
+  string invitation_token = 1;
+}
+
+// Top-level message sent by the client for the `JoinProject` method.
+message JoinProjectRequest {
+  // The invitation token to use for joining a project.
+  string invitation_token = 1;
+}
+
+// Top-level message sent by the server for the `JoinProject` method.
+message JoinProjectResponse {}
+
+// Top-level message sent by the client for the `ListApps` method.
+message ListAppsRequest {
+  // The ID of the project to list the apps in.
+  string project = 1;
+}
+
+// Top-level message sent by the server for the `ListApps` method.
+message ListAppsResponse {
+  // A list of apps belonging to the project.
+  repeated App apps = 1;
+}
+
+// Top-level message sent by the client for the `GetApp` method.
+message GetAppRequest {
+  // The ID of the app to fetch.
+  string app_id = 1;
+}
+
+// Top-level message sent by the server for the `GetApp` method.
+message GetAppResponse {
+  // The app fetched with the ID.
+  App app = 1;
+}
+
+// Top-level message sent by the client for the `CreateApp` method.
+message CreateAppRequest {
+  // The ID of the project in which the app will be created.
+  string project = 1;
+
+  // The app information to use for creation.
+  App app = 2;
+}
+
+// Top-level message sent by the server for the `CreateApp` method.
+message CreateAppResponse {
+  // The app information that was stored in the API.
+  // The difference between the app in the request and response is generated fields.
+  App app = 1;
+}
+
+// Top-level message sent by the client for the `UpdateApp` method.
+message UpdateAppRequest {
+  // The app information to use for the update.
+  App app = 1;
+}
+
+// Top-level message sent by the server for the `UpdateApp` method.
+message UpdateAppResponse {}
+
+// Top-level message sent by the client for the `DeleteApp` method.
+message DeleteAppRequest {
+  // The ID of the app to delete.
+  string app_id = 1;
+}
+
+// Top-level message sent by the server for the `DeleteApp` method.
+message DeleteAppResponse {}
+
+// Top-level message sent by the server for the `UploadTrainingData` method.
+message UploadTrainingDataRequest {
+  // Identifies the content type of training data payload.
+  enum ContentType {
+    CONTENT_TYPE_UNSPECIFIED = 0;
+
+    // A YAML file that contains intents, entities, SAL script and metadata.
+    // Refer to Speechly documentation (https://www.speechly.com/docs/) for the details on the format.
+    CONTENT_TYPE_YAML = 1;
+
+    // A TAR archive file that contains the YAML file with training payload and supporting vocabulary files.
+    // Refer to Speechly documentation (https://www.speechly.com/docs/) for the details on the format.
+    CONTENT_TYPE_TAR = 2;
+  }
+
+  // The ID of the app to train.
+  string app_id = 1;
+
+  // Training data payload.
+  bytes data_chunk = 2;
+
+  // Content type of the training data payload.
+  ContentType content_type = 3;
+}
+
+// Top-level message sent by the server for the `UploadTrainingData` method.
+message UploadTrainingDataResponse {}
+
+// Top-level message sent by the server for the `DownloadCurrentTrainingData` method.
+message DownloadCurrentTrainingDataRequest {
+  // The ID of the app to fetch.
+  string app_id = 1;
+}
+
+// Top-level message sent by the server for the `DownloadCurrentTrainingData` method.
+message DownloadCurrentTrainingDataResponse {
+  // Training data payload.
+  bytes data_chunk = 1;
+
+  // TODO: add content type.
+}
+
+// Describes a Speechly application and is used as an argument for application API.
+message App {
+  // The status of then application, defaults to STATUS_UNSPECIFIED.
+  enum Status {
+    // Indicates that the application only been created, but never trained.
+    STATUS_UNSPECIFIED = 0;
+
+    // Indicates that the application is currently in the training queue.
+    STATUS_NEW = 1;
+
+    // Indicates that the application is currently being trained.
+    STATUS_TRAINING = 2;
+
+    // Indicates that the application has been successfully trained.
+    STATUS_TRAINED = 3;
+
+    // Indicates that the application has failed the training.
+    STATUS_FAILED = 4;
+  }
+
+  // The ID of the application.
+  // This field is ignored when creating an application.
+  string id = 1;
+
+  // The language of the application as a BCP-47 language tag (e.g. "en-US").
+  // Required.
+  string language = 2;
+
+  // The status of the application.
+  // This field is ignored in requests.
+  Status status = 3;
+
+  // The human-friendly name of the application.
+  string name = 4;
+
+  // The size of the training queue size if the application is queued for training.
+  // This field is ignored in requests.
+  int32 queue_size = 5;
+
+  // The detailed error description if the application failed training.
+  // This field is ignored in requests.
+  string error_msg = 6;
+
+  // Estimated training time remaining if the application is being trained.
+  // Will equal to 0 when no estimate is available.
+  // This field is ignored in requests.
+  int32 estimated_remaining_sec = 7;
+}

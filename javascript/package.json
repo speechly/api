@@ -1,0 +1,32 @@
+{
+  "name": "@speechly/api",
+  "version": "0.0.1",
+  "description": "Generated code for Speechly gRPC API",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/speechly/api.git"
+  },
+  "keywords": [
+    "Speechly",
+    "SLU",
+    "NLP",
+    "speech-to-text",
+    "API",
+    "gRPC",
+    "natural",
+    "language"
+  ],
+  "author": "Speechly",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/speechly/api/issues"
+  },
+  "homepage": "https://github.com/speechly/api#readme",
+  "dependencies": {
+    "@types/google-protobuf": "^3.7.3",
+    "google-protobuf": "^3.13.0"
+  },
+  "devDependencies": {
+    "ts-protoc-gen": "^0.13.0"
+  }
+}
