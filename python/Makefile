@@ -19,5 +19,5 @@ dist: clean build
 	@touch $@
 
 clean:
-	@rm -rf src .venv dist
+	@rm -rf src .venv dist || true
 .PHONY: clean

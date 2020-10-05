@@ -9,7 +9,7 @@ build: $(TARGET)
 .PHONY: build
 
 clean:
-	rm -r $(TARGET)
+	rm -r $(TARGET) || true
 .PHONY: clean
 
 $(TARGET): $(PROTOS) $(GOMOD)
