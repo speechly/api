@@ -22,7 +22,6 @@ client.listApps(req, md, (err, res) => {
     return;
   }
 
-  // If error was null, it means result is always present, hence `res!`.
   const apps = res.getAppsList();
 
   console.log("Fetched", apps.length, "apps");

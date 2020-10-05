@@ -15,21 +15,18 @@ yarn add --save @speechly/api
 The generated code can be used with Javascript or TypeScript code, but it only works on platforms that support ES or CommonJS modules. Messages and services are located within their specific packages and in separate files.
 
 ```ts
-import { Metadata } from "grpc";
+import { credentials, Metadata } from "grpc";
 
-// Messages are located in specific package directories.
-import { ListAppsRequest } from "@speechly/api/speechly/config/v1/config_api_pb";
-
-// Services are defined separately from messages.
-import { ConfigAPIClient } from "@speechly/api/speechly/config/v1/config_api_pb_service";
+import { ConfigAPIClient } from "./speechly/config/v1/config_api_grpc_pb";
+import { ListAppsRequest } from "./speechly/config/v1/config_api_pb";
 
 // Create a client for Speechly Configuration API.
-const client = new ConfigAPIClient("api.speechly.com");
+const client = new ConfigAPIClient("api.speechly.com", credentials.createSsl());
 
 // Set up metadata with authorization token.
 const token = "my-api-token";
 const md = new Metadata();
-md.add("Authorization", `Bearer: ${token}`);
+md.add("Authorization", `Bearer ${token}`);
 
 // Prepare the request for ListApps RPC.
 const req = new ListAppsRequest();
@@ -42,8 +39,7 @@ client.listApps(req, md, (err, res) => {
     return;
   }
 
-  // If error was null, it means result is always present, hence `res!`.
-  const apps = res!.getAppsList();
+  const apps = res.getAppsList();
 
   console.log("Fetched", apps.length, "apps");
   apps.forEach((app) =>
