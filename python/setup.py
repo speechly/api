@@ -2,8 +2,8 @@ from setuptools import setup, find_namespace_packages
 import pathlib
 
 setup(
-    name='speechly_public_protos',
-    version='0.0.1',
+    name='speechly_apis',
+    version='0.0.2',
     description='Speechly Public Protobuf Stubs',
     include_package_data=True,
     include=['../README.md'],

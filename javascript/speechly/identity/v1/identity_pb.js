@@ -89,7 +89,9 @@ proto.speechly.identity.v1.LoginRequest.prototype.toObject = function(opt_includ
 proto.speechly.identity.v1.LoginRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     deviceId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    appId: jspb.Message.getFieldWithDefault(msg, 2, "")
+    appId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    languageCode: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    configId: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -134,6 +136,14 @@ proto.speechly.identity.v1.LoginRequest.deserializeBinaryFromReader = function(m
       var value = /** @type {string} */ (reader.readString());
       msg.setAppId(value);
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLanguageCode(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConfigId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -177,6 +187,20 @@ proto.speechly.identity.v1.LoginRequest.serializeBinaryToWriter = function(messa
       f
     );
   }
+  f = message.getLanguageCode();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
+      f
+    );
+  }
+  f = message.getConfigId();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
 };
 
 
@@ -213,6 +237,42 @@ proto.speechly.identity.v1.LoginRequest.prototype.getAppId = function() {
  */
 proto.speechly.identity.v1.LoginRequest.prototype.setAppId = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional string language_code = 3;
+ * @return {string}
+ */
+proto.speechly.identity.v1.LoginRequest.prototype.getLanguageCode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.speechly.identity.v1.LoginRequest} returns this
+ */
+proto.speechly.identity.v1.LoginRequest.prototype.setLanguageCode = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string config_id = 4;
+ * @return {string}
+ */
+proto.speechly.identity.v1.LoginRequest.prototype.getConfigId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.speechly.identity.v1.LoginRequest} returns this
+ */
+proto.speechly.identity.v1.LoginRequest.prototype.setConfigId = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

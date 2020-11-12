@@ -34,6 +34,15 @@ public struct Speechly_Identity_V1_LoginRequest {
   /// Required.
   public var appID: String = String()
 
+  /// The language to use.
+  /// Must be a supported BCP-47 language code, eg. 'en-US'.
+  /// Defaults to the application's language.
+  public var languageCode: String = String()
+
+  /// Define a specific model configuration to use.
+  /// Defaults to the application's latest configuration.
+  public var configID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -65,6 +74,8 @@ extension Speechly_Identity_V1_LoginRequest: SwiftProtobuf.Message, SwiftProtobu
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "device_id"),
     2: .standard(proto: "app_id"),
+    3: .standard(proto: "language_code"),
+    4: .standard(proto: "config_id"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -75,6 +86,8 @@ extension Speechly_Identity_V1_LoginRequest: SwiftProtobuf.Message, SwiftProtobu
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.appID) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.languageCode) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.configID) }()
       default: break
       }
     }
@@ -87,12 +100,20 @@ extension Speechly_Identity_V1_LoginRequest: SwiftProtobuf.Message, SwiftProtobu
     if !self.appID.isEmpty {
       try visitor.visitSingularStringField(value: self.appID, fieldNumber: 2)
     }
+    if !self.languageCode.isEmpty {
+      try visitor.visitSingularStringField(value: self.languageCode, fieldNumber: 3)
+    }
+    if !self.configID.isEmpty {
+      try visitor.visitSingularStringField(value: self.configID, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Identity_V1_LoginRequest, rhs: Speechly_Identity_V1_LoginRequest) -> Bool {
     if lhs.deviceID != rhs.deviceID {return false}
     if lhs.appID != rhs.appID {return false}
+    if lhs.languageCode != rhs.languageCode {return false}
+    if lhs.configID != rhs.configID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
