@@ -22,6 +22,15 @@ message LoginRequest {
   // Speechly application ID.
   // Required.
   string app_id = 2;
+
+  // The language to use.
+  // Must be a supported BCP-47 language code, eg. 'en-US'.
+  // Defaults to the application's language.
+  string language_code = 3;
+
+  // Define a specific model configuration to use.
+  // Defaults to the application's latest configuration.
+  string config_id = 4;
 }
 
 // Top-level message sent by the server for the `Login` method.

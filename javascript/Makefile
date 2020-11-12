@@ -13,8 +13,8 @@ build: $(TARGET)
 .PHONY: build
 
 clean:
-	rm -r $(TARGET) || true
-	rm -r $(MODULES) || true
+	rm -rf $(TARGET)
+	rm -rf $(MODULES)
 .PHONY: clean
 
 

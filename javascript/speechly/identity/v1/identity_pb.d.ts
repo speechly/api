@@ -10,6 +10,12 @@ export class LoginRequest extends jspb.Message {
   getAppId(): string;
   setAppId(value: string): void;
 
+  getLanguageCode(): string;
+  setLanguageCode(value: string): void;
+
+  getConfigId(): string;
+  setConfigId(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LoginRequest.AsObject;
   static toObject(includeInstance: boolean, msg: LoginRequest): LoginRequest.AsObject;
@@ -24,6 +30,8 @@ export namespace LoginRequest {
   export type AsObject = {
     deviceId: string,
     appId: string,
+    languageCode: string,
+    configId: string,
   }
 }
 
