@@ -83,6 +83,55 @@ func (UploadTrainingDataRequest_ContentType) EnumDescriptor() ([]byte, []int) {
 	return file_speechly_config_v1_config_api_proto_rawDescGZIP(), []int{22, 0}
 }
 
+type DownloadCurrentTrainingDataResponse_ContentType int32
+
+const (
+	DownloadCurrentTrainingDataResponse_CONTENT_TYPE_UNSPECIFIED DownloadCurrentTrainingDataResponse_ContentType = 0
+	DownloadCurrentTrainingDataResponse_CONTENT_TYPE_YAML        DownloadCurrentTrainingDataResponse_ContentType = 1
+	DownloadCurrentTrainingDataResponse_CONTENT_TYPE_TAR         DownloadCurrentTrainingDataResponse_ContentType = 2
+)
+
+// Enum value maps for DownloadCurrentTrainingDataResponse_ContentType.
+var (
+	DownloadCurrentTrainingDataResponse_ContentType_name = map[int32]string{
+		0: "CONTENT_TYPE_UNSPECIFIED",
+		1: "CONTENT_TYPE_YAML",
+		2: "CONTENT_TYPE_TAR",
+	}
+	DownloadCurrentTrainingDataResponse_ContentType_value = map[string]int32{
+		"CONTENT_TYPE_UNSPECIFIED": 0,
+		"CONTENT_TYPE_YAML":        1,
+		"CONTENT_TYPE_TAR":         2,
+	}
+)
+
+func (x DownloadCurrentTrainingDataResponse_ContentType) Enum() *DownloadCurrentTrainingDataResponse_ContentType {
+	p := new(DownloadCurrentTrainingDataResponse_ContentType)
+	*p = x
+	return p
+}
+
+func (x DownloadCurrentTrainingDataResponse_ContentType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (DownloadCurrentTrainingDataResponse_ContentType) Descriptor() protoreflect.EnumDescriptor {
+	return file_speechly_config_v1_config_api_proto_enumTypes[1].Descriptor()
+}
+
+func (DownloadCurrentTrainingDataResponse_ContentType) Type() protoreflect.EnumType {
+	return &file_speechly_config_v1_config_api_proto_enumTypes[1]
+}
+
+func (x DownloadCurrentTrainingDataResponse_ContentType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use DownloadCurrentTrainingDataResponse_ContentType.Descriptor instead.
+func (DownloadCurrentTrainingDataResponse_ContentType) EnumDescriptor() ([]byte, []int) {
+	return file_speechly_config_v1_config_api_proto_rawDescGZIP(), []int{25, 0}
+}
+
 // The status of then application, defaults to STATUS_UNSPECIFIED.
 type App_Status int32
 
@@ -128,11 +177,11 @@ func (x App_Status) String() string {
 }
 
 func (App_Status) Descriptor() protoreflect.EnumDescriptor {
-	return file_speechly_config_v1_config_api_proto_enumTypes[1].Descriptor()
+	return file_speechly_config_v1_config_api_proto_enumTypes[2].Descriptor()
 }
 
 func (App_Status) Type() protoreflect.EnumType {
-	return &file_speechly_config_v1_config_api_proto_enumTypes[1]
+	return &file_speechly_config_v1_config_api_proto_enumTypes[2]
 }
 
 func (x App_Status) Number() protoreflect.EnumNumber {
@@ -1326,6 +1375,8 @@ type DownloadCurrentTrainingDataRequest struct {
 
 	// The ID of the app to fetch.
 	AppId string `protobuf:"bytes,1,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
+	// The config ID to fetch, defaults to the latest configuration.
+	ConfigId string `protobuf:"bytes,2,opt,name=config_id,json=configId,proto3" json:"config_id,omitempty"`
 }
 
 func (x *DownloadCurrentTrainingDataRequest) Reset() {
@@ -1367,6 +1418,13 @@ func (x *DownloadCurrentTrainingDataRequest) GetAppId() string {
 	return ""
 }
 
+func (x *DownloadCurrentTrainingDataRequest) GetConfigId() string {
+	if x != nil {
+		return x.ConfigId
+	}
+	return ""
+}
+
 // Top-level message sent by the server for the `DownloadCurrentTrainingData` method.
 type DownloadCurrentTrainingDataResponse struct {
 	state         protoimpl.MessageState
@@ -1375,6 +1433,8 @@ type DownloadCurrentTrainingDataResponse struct {
 
 	// Training data payload.
 	DataChunk []byte `protobuf:"bytes,1,opt,name=data_chunk,json=dataChunk,proto3" json:"data_chunk,omitempty"`
+	// Training data content type, see enum ContentType.
+	ContentType DownloadCurrentTrainingDataResponse_ContentType `protobuf:"varint,2,opt,name=content_type,json=contentType,proto3,enum=speechly.config.v1.DownloadCurrentTrainingDataResponse_ContentType" json:"content_type,omitempty"`
 }
 
 func (x *DownloadCurrentTrainingDataResponse) Reset() {
@@ -1414,6 +1474,13 @@ func (x *DownloadCurrentTrainingDataResponse) GetDataChunk() []byte {
 		return x.DataChunk
 	}
 	return nil
+}
+
+func (x *DownloadCurrentTrainingDataResponse) GetContentType() DownloadCurrentTrainingDataResponse_ContentType {
+	if x != nil {
+		return x.ContentType
+	}
+	return DownloadCurrentTrainingDataResponse_CONTENT_TYPE_UNSPECIFIED
 }
 
 // Describes a Speechly application and is used as an argument for application API.
@@ -1698,15 +1765,29 @@ var file_speechly_config_v1_config_api_proto_rawDesc = []byte{
 	0x59, 0x41, 0x4d, 0x4c, 0x10, 0x01, 0x12, 0x14, 0x0a, 0x10, 0x43, 0x4f, 0x4e, 0x54, 0x45, 0x4e,
 	0x54, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x54, 0x41, 0x52, 0x10, 0x02, 0x22, 0x1c, 0x0a, 0x1a,
 	0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x54, 0x72, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x44, 0x61,
-	0x74, 0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x3b, 0x0a, 0x22, 0x44, 0x6f,
+	0x74, 0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x58, 0x0a, 0x22, 0x44, 0x6f,
 	0x77, 0x6e, 0x6c, 0x6f, 0x61, 0x64, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x54, 0x72, 0x61,
 	0x69, 0x6e, 0x69, 0x6e, 0x67, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
 	0x12, 0x15, 0x0a, 0x06, 0x61, 0x70, 0x70, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x05, 0x61, 0x70, 0x70, 0x49, 0x64, 0x22, 0x44, 0x0a, 0x23, 0x44, 0x6f, 0x77, 0x6e, 0x6c,
-	0x6f, 0x61, 0x64, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x69, 0x6e, 0x69,
-	0x6e, 0x67, 0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1d,
-	0x0a, 0x0a, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x63, 0x68, 0x75, 0x6e, 0x6b, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x0c, 0x52, 0x09, 0x64, 0x61, 0x74, 0x61, 0x43, 0x68, 0x75, 0x6e, 0x6b, 0x22, 0xdf, 0x02,
+	0x52, 0x05, 0x61, 0x70, 0x70, 0x49, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x63, 0x6f, 0x6e, 0x66, 0x69,
+	0x67, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x63, 0x6f, 0x6e, 0x66,
+	0x69, 0x67, 0x49, 0x64, 0x22, 0x86, 0x02, 0x0a, 0x23, 0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x6f, 0x61,
+	0x64, 0x43, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67,
+	0x44, 0x61, 0x74, 0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x1d, 0x0a, 0x0a,
+	0x64, 0x61, 0x74, 0x61, 0x5f, 0x63, 0x68, 0x75, 0x6e, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0c,
+	0x52, 0x09, 0x64, 0x61, 0x74, 0x61, 0x43, 0x68, 0x75, 0x6e, 0x6b, 0x12, 0x66, 0x0a, 0x0c, 0x63,
+	0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0e, 0x32, 0x43, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x63, 0x6f, 0x6e,
+	0x66, 0x69, 0x67, 0x2e, 0x76, 0x31, 0x2e, 0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x6f, 0x61, 0x64, 0x43,
+	0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x69, 0x6e, 0x69, 0x6e, 0x67, 0x44, 0x61,
+	0x74, 0x61, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x43, 0x6f, 0x6e, 0x74, 0x65,
+	0x6e, 0x74, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0b, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x54,
+	0x79, 0x70, 0x65, 0x22, 0x58, 0x0a, 0x0b, 0x43, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x54, 0x79,
+	0x70, 0x65, 0x12, 0x1c, 0x0a, 0x18, 0x43, 0x4f, 0x4e, 0x54, 0x45, 0x4e, 0x54, 0x5f, 0x54, 0x59,
+	0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00,
+	0x12, 0x15, 0x0a, 0x11, 0x43, 0x4f, 0x4e, 0x54, 0x45, 0x4e, 0x54, 0x5f, 0x54, 0x59, 0x50, 0x45,
+	0x5f, 0x59, 0x41, 0x4d, 0x4c, 0x10, 0x01, 0x12, 0x14, 0x0a, 0x10, 0x43, 0x4f, 0x4e, 0x54, 0x45,
+	0x4e, 0x54, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x54, 0x41, 0x52, 0x10, 0x02, 0x22, 0xdf, 0x02,
 	0x0a, 0x03, 0x41, 0x70, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
 	0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67,
 	0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67,
@@ -1828,80 +1909,82 @@ func file_speechly_config_v1_config_api_proto_rawDescGZIP() []byte {
 	return file_speechly_config_v1_config_api_proto_rawDescData
 }
 
-var file_speechly_config_v1_config_api_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_speechly_config_v1_config_api_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_speechly_config_v1_config_api_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_speechly_config_v1_config_api_proto_goTypes = []interface{}{
-	(UploadTrainingDataRequest_ContentType)(0), // 0: speechly.config.v1.UploadTrainingDataRequest.ContentType
-	(App_Status)(0),                                    // 1: speechly.config.v1.App.Status
-	(*GetProjectRequest)(nil),                          // 2: speechly.config.v1.GetProjectRequest
-	(*GetProjectResponse)(nil),                         // 3: speechly.config.v1.GetProjectResponse
-	(*CreateProjectRequest)(nil),                       // 4: speechly.config.v1.CreateProjectRequest
-	(*CreateProjectResponse)(nil),                      // 5: speechly.config.v1.CreateProjectResponse
-	(*UpdateProjectRequest)(nil),                       // 6: speechly.config.v1.UpdateProjectRequest
-	(*UpdateProjectResponse)(nil),                      // 7: speechly.config.v1.UpdateProjectResponse
-	(*GetProjectParticipantsRequest)(nil),              // 8: speechly.config.v1.GetProjectParticipantsRequest
-	(*GetProjectParticipantsResponse)(nil),             // 9: speechly.config.v1.GetProjectParticipantsResponse
-	(*InviteRequest)(nil),                              // 10: speechly.config.v1.InviteRequest
-	(*InviteResponse)(nil),                             // 11: speechly.config.v1.InviteResponse
-	(*JoinProjectRequest)(nil),                         // 12: speechly.config.v1.JoinProjectRequest
-	(*JoinProjectResponse)(nil),                        // 13: speechly.config.v1.JoinProjectResponse
-	(*ListAppsRequest)(nil),                            // 14: speechly.config.v1.ListAppsRequest
-	(*ListAppsResponse)(nil),                           // 15: speechly.config.v1.ListAppsResponse
-	(*GetAppRequest)(nil),                              // 16: speechly.config.v1.GetAppRequest
-	(*GetAppResponse)(nil),                             // 17: speechly.config.v1.GetAppResponse
-	(*CreateAppRequest)(nil),                           // 18: speechly.config.v1.CreateAppRequest
-	(*CreateAppResponse)(nil),                          // 19: speechly.config.v1.CreateAppResponse
-	(*UpdateAppRequest)(nil),                           // 20: speechly.config.v1.UpdateAppRequest
-	(*UpdateAppResponse)(nil),                          // 21: speechly.config.v1.UpdateAppResponse
-	(*DeleteAppRequest)(nil),                           // 22: speechly.config.v1.DeleteAppRequest
-	(*DeleteAppResponse)(nil),                          // 23: speechly.config.v1.DeleteAppResponse
-	(*UploadTrainingDataRequest)(nil),                  // 24: speechly.config.v1.UploadTrainingDataRequest
-	(*UploadTrainingDataResponse)(nil),                 // 25: speechly.config.v1.UploadTrainingDataResponse
-	(*DownloadCurrentTrainingDataRequest)(nil),         // 26: speechly.config.v1.DownloadCurrentTrainingDataRequest
-	(*DownloadCurrentTrainingDataResponse)(nil),        // 27: speechly.config.v1.DownloadCurrentTrainingDataResponse
-	(*App)(nil),                                        // 28: speechly.config.v1.App
-	(*GetProjectParticipantsResponse_Participant)(nil), // 29: speechly.config.v1.GetProjectParticipantsResponse.Participant
+	(UploadTrainingDataRequest_ContentType)(0),           // 0: speechly.config.v1.UploadTrainingDataRequest.ContentType
+	(DownloadCurrentTrainingDataResponse_ContentType)(0), // 1: speechly.config.v1.DownloadCurrentTrainingDataResponse.ContentType
+	(App_Status)(0),                                    // 2: speechly.config.v1.App.Status
+	(*GetProjectRequest)(nil),                          // 3: speechly.config.v1.GetProjectRequest
+	(*GetProjectResponse)(nil),                         // 4: speechly.config.v1.GetProjectResponse
+	(*CreateProjectRequest)(nil),                       // 5: speechly.config.v1.CreateProjectRequest
+	(*CreateProjectResponse)(nil),                      // 6: speechly.config.v1.CreateProjectResponse
+	(*UpdateProjectRequest)(nil),                       // 7: speechly.config.v1.UpdateProjectRequest
+	(*UpdateProjectResponse)(nil),                      // 8: speechly.config.v1.UpdateProjectResponse
+	(*GetProjectParticipantsRequest)(nil),              // 9: speechly.config.v1.GetProjectParticipantsRequest
+	(*GetProjectParticipantsResponse)(nil),             // 10: speechly.config.v1.GetProjectParticipantsResponse
+	(*InviteRequest)(nil),                              // 11: speechly.config.v1.InviteRequest
+	(*InviteResponse)(nil),                             // 12: speechly.config.v1.InviteResponse
+	(*JoinProjectRequest)(nil),                         // 13: speechly.config.v1.JoinProjectRequest
+	(*JoinProjectResponse)(nil),                        // 14: speechly.config.v1.JoinProjectResponse
+	(*ListAppsRequest)(nil),                            // 15: speechly.config.v1.ListAppsRequest
+	(*ListAppsResponse)(nil),                           // 16: speechly.config.v1.ListAppsResponse
+	(*GetAppRequest)(nil),                              // 17: speechly.config.v1.GetAppRequest
+	(*GetAppResponse)(nil),                             // 18: speechly.config.v1.GetAppResponse
+	(*CreateAppRequest)(nil),                           // 19: speechly.config.v1.CreateAppRequest
+	(*CreateAppResponse)(nil),                          // 20: speechly.config.v1.CreateAppResponse
+	(*UpdateAppRequest)(nil),                           // 21: speechly.config.v1.UpdateAppRequest
+	(*UpdateAppResponse)(nil),                          // 22: speechly.config.v1.UpdateAppResponse
+	(*DeleteAppRequest)(nil),                           // 23: speechly.config.v1.DeleteAppRequest
+	(*DeleteAppResponse)(nil),                          // 24: speechly.config.v1.DeleteAppResponse
+	(*UploadTrainingDataRequest)(nil),                  // 25: speechly.config.v1.UploadTrainingDataRequest
+	(*UploadTrainingDataResponse)(nil),                 // 26: speechly.config.v1.UploadTrainingDataResponse
+	(*DownloadCurrentTrainingDataRequest)(nil),         // 27: speechly.config.v1.DownloadCurrentTrainingDataRequest
+	(*DownloadCurrentTrainingDataResponse)(nil),        // 28: speechly.config.v1.DownloadCurrentTrainingDataResponse
+	(*App)(nil),                                        // 29: speechly.config.v1.App
+	(*GetProjectParticipantsResponse_Participant)(nil), // 30: speechly.config.v1.GetProjectParticipantsResponse.Participant
 }
 var file_speechly_config_v1_config_api_proto_depIdxs = []int32{
-	29, // 0: speechly.config.v1.GetProjectParticipantsResponse.participants:type_name -> speechly.config.v1.GetProjectParticipantsResponse.Participant
-	28, // 1: speechly.config.v1.ListAppsResponse.apps:type_name -> speechly.config.v1.App
-	28, // 2: speechly.config.v1.GetAppResponse.app:type_name -> speechly.config.v1.App
-	28, // 3: speechly.config.v1.CreateAppRequest.app:type_name -> speechly.config.v1.App
-	28, // 4: speechly.config.v1.CreateAppResponse.app:type_name -> speechly.config.v1.App
-	28, // 5: speechly.config.v1.UpdateAppRequest.app:type_name -> speechly.config.v1.App
+	30, // 0: speechly.config.v1.GetProjectParticipantsResponse.participants:type_name -> speechly.config.v1.GetProjectParticipantsResponse.Participant
+	29, // 1: speechly.config.v1.ListAppsResponse.apps:type_name -> speechly.config.v1.App
+	29, // 2: speechly.config.v1.GetAppResponse.app:type_name -> speechly.config.v1.App
+	29, // 3: speechly.config.v1.CreateAppRequest.app:type_name -> speechly.config.v1.App
+	29, // 4: speechly.config.v1.CreateAppResponse.app:type_name -> speechly.config.v1.App
+	29, // 5: speechly.config.v1.UpdateAppRequest.app:type_name -> speechly.config.v1.App
 	0,  // 6: speechly.config.v1.UploadTrainingDataRequest.content_type:type_name -> speechly.config.v1.UploadTrainingDataRequest.ContentType
-	1,  // 7: speechly.config.v1.App.status:type_name -> speechly.config.v1.App.Status
-	2,  // 8: speechly.config.v1.ConfigAPI.GetProject:input_type -> speechly.config.v1.GetProjectRequest
-	4,  // 9: speechly.config.v1.ConfigAPI.CreateProject:input_type -> speechly.config.v1.CreateProjectRequest
-	6,  // 10: speechly.config.v1.ConfigAPI.UpdateProject:input_type -> speechly.config.v1.UpdateProjectRequest
-	8,  // 11: speechly.config.v1.ConfigAPI.GetProjectParticipants:input_type -> speechly.config.v1.GetProjectParticipantsRequest
-	10, // 12: speechly.config.v1.ConfigAPI.Invite:input_type -> speechly.config.v1.InviteRequest
-	12, // 13: speechly.config.v1.ConfigAPI.JoinProject:input_type -> speechly.config.v1.JoinProjectRequest
-	14, // 14: speechly.config.v1.ConfigAPI.ListApps:input_type -> speechly.config.v1.ListAppsRequest
-	16, // 15: speechly.config.v1.ConfigAPI.GetApp:input_type -> speechly.config.v1.GetAppRequest
-	18, // 16: speechly.config.v1.ConfigAPI.CreateApp:input_type -> speechly.config.v1.CreateAppRequest
-	20, // 17: speechly.config.v1.ConfigAPI.UpdateApp:input_type -> speechly.config.v1.UpdateAppRequest
-	22, // 18: speechly.config.v1.ConfigAPI.DeleteApp:input_type -> speechly.config.v1.DeleteAppRequest
-	24, // 19: speechly.config.v1.ConfigAPI.UploadTrainingData:input_type -> speechly.config.v1.UploadTrainingDataRequest
-	26, // 20: speechly.config.v1.ConfigAPI.DownloadCurrentTrainingData:input_type -> speechly.config.v1.DownloadCurrentTrainingDataRequest
-	3,  // 21: speechly.config.v1.ConfigAPI.GetProject:output_type -> speechly.config.v1.GetProjectResponse
-	5,  // 22: speechly.config.v1.ConfigAPI.CreateProject:output_type -> speechly.config.v1.CreateProjectResponse
-	7,  // 23: speechly.config.v1.ConfigAPI.UpdateProject:output_type -> speechly.config.v1.UpdateProjectResponse
-	9,  // 24: speechly.config.v1.ConfigAPI.GetProjectParticipants:output_type -> speechly.config.v1.GetProjectParticipantsResponse
-	11, // 25: speechly.config.v1.ConfigAPI.Invite:output_type -> speechly.config.v1.InviteResponse
-	13, // 26: speechly.config.v1.ConfigAPI.JoinProject:output_type -> speechly.config.v1.JoinProjectResponse
-	15, // 27: speechly.config.v1.ConfigAPI.ListApps:output_type -> speechly.config.v1.ListAppsResponse
-	17, // 28: speechly.config.v1.ConfigAPI.GetApp:output_type -> speechly.config.v1.GetAppResponse
-	19, // 29: speechly.config.v1.ConfigAPI.CreateApp:output_type -> speechly.config.v1.CreateAppResponse
-	21, // 30: speechly.config.v1.ConfigAPI.UpdateApp:output_type -> speechly.config.v1.UpdateAppResponse
-	23, // 31: speechly.config.v1.ConfigAPI.DeleteApp:output_type -> speechly.config.v1.DeleteAppResponse
-	25, // 32: speechly.config.v1.ConfigAPI.UploadTrainingData:output_type -> speechly.config.v1.UploadTrainingDataResponse
-	27, // 33: speechly.config.v1.ConfigAPI.DownloadCurrentTrainingData:output_type -> speechly.config.v1.DownloadCurrentTrainingDataResponse
-	21, // [21:34] is the sub-list for method output_type
-	8,  // [8:21] is the sub-list for method input_type
-	8,  // [8:8] is the sub-list for extension type_name
-	8,  // [8:8] is the sub-list for extension extendee
-	0,  // [0:8] is the sub-list for field type_name
+	1,  // 7: speechly.config.v1.DownloadCurrentTrainingDataResponse.content_type:type_name -> speechly.config.v1.DownloadCurrentTrainingDataResponse.ContentType
+	2,  // 8: speechly.config.v1.App.status:type_name -> speechly.config.v1.App.Status
+	3,  // 9: speechly.config.v1.ConfigAPI.GetProject:input_type -> speechly.config.v1.GetProjectRequest
+	5,  // 10: speechly.config.v1.ConfigAPI.CreateProject:input_type -> speechly.config.v1.CreateProjectRequest
+	7,  // 11: speechly.config.v1.ConfigAPI.UpdateProject:input_type -> speechly.config.v1.UpdateProjectRequest
+	9,  // 12: speechly.config.v1.ConfigAPI.GetProjectParticipants:input_type -> speechly.config.v1.GetProjectParticipantsRequest
+	11, // 13: speechly.config.v1.ConfigAPI.Invite:input_type -> speechly.config.v1.InviteRequest
+	13, // 14: speechly.config.v1.ConfigAPI.JoinProject:input_type -> speechly.config.v1.JoinProjectRequest
+	15, // 15: speechly.config.v1.ConfigAPI.ListApps:input_type -> speechly.config.v1.ListAppsRequest
+	17, // 16: speechly.config.v1.ConfigAPI.GetApp:input_type -> speechly.config.v1.GetAppRequest
+	19, // 17: speechly.config.v1.ConfigAPI.CreateApp:input_type -> speechly.config.v1.CreateAppRequest
+	21, // 18: speechly.config.v1.ConfigAPI.UpdateApp:input_type -> speechly.config.v1.UpdateAppRequest
+	23, // 19: speechly.config.v1.ConfigAPI.DeleteApp:input_type -> speechly.config.v1.DeleteAppRequest
+	25, // 20: speechly.config.v1.ConfigAPI.UploadTrainingData:input_type -> speechly.config.v1.UploadTrainingDataRequest
+	27, // 21: speechly.config.v1.ConfigAPI.DownloadCurrentTrainingData:input_type -> speechly.config.v1.DownloadCurrentTrainingDataRequest
+	4,  // 22: speechly.config.v1.ConfigAPI.GetProject:output_type -> speechly.config.v1.GetProjectResponse
+	6,  // 23: speechly.config.v1.ConfigAPI.CreateProject:output_type -> speechly.config.v1.CreateProjectResponse
+	8,  // 24: speechly.config.v1.ConfigAPI.UpdateProject:output_type -> speechly.config.v1.UpdateProjectResponse
+	10, // 25: speechly.config.v1.ConfigAPI.GetProjectParticipants:output_type -> speechly.config.v1.GetProjectParticipantsResponse
+	12, // 26: speechly.config.v1.ConfigAPI.Invite:output_type -> speechly.config.v1.InviteResponse
+	14, // 27: speechly.config.v1.ConfigAPI.JoinProject:output_type -> speechly.config.v1.JoinProjectResponse
+	16, // 28: speechly.config.v1.ConfigAPI.ListApps:output_type -> speechly.config.v1.ListAppsResponse
+	18, // 29: speechly.config.v1.ConfigAPI.GetApp:output_type -> speechly.config.v1.GetAppResponse
+	20, // 30: speechly.config.v1.ConfigAPI.CreateApp:output_type -> speechly.config.v1.CreateAppResponse
+	22, // 31: speechly.config.v1.ConfigAPI.UpdateApp:output_type -> speechly.config.v1.UpdateAppResponse
+	24, // 32: speechly.config.v1.ConfigAPI.DeleteApp:output_type -> speechly.config.v1.DeleteAppResponse
+	26, // 33: speechly.config.v1.ConfigAPI.UploadTrainingData:output_type -> speechly.config.v1.UploadTrainingDataResponse
+	28, // 34: speechly.config.v1.ConfigAPI.DownloadCurrentTrainingData:output_type -> speechly.config.v1.DownloadCurrentTrainingDataResponse
+	22, // [22:35] is the sub-list for method output_type
+	9,  // [9:22] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_speechly_config_v1_config_api_proto_init() }
@@ -2252,7 +2335,7 @@ func file_speechly_config_v1_config_api_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_speechly_config_v1_config_api_proto_rawDesc,
-			NumEnums:      2,
+			NumEnums:      3,
 			NumMessages:   28,
 			NumExtensions: 0,
 			NumServices:   1,
