@@ -237,14 +237,21 @@ message UploadTrainingDataResponse {}
 message DownloadCurrentTrainingDataRequest {
   // The ID of the app to fetch.
   string app_id = 1;
+  // The config ID to fetch, defaults to the latest configuration.
+  string config_id = 2;
 }
 
 // Top-level message sent by the server for the `DownloadCurrentTrainingData` method.
 message DownloadCurrentTrainingDataResponse {
+  enum ContentType {
+     CONTENT_TYPE_UNSPECIFIED = 0;
+     CONTENT_TYPE_YAML = 1;
+     CONTENT_TYPE_TAR = 2;
+   }
   // Training data payload.
   bytes data_chunk = 1;
-
-  // TODO: add content type.
+  // Training data content type, see enum ContentType.
+  ContentType content_type = 2;
 }
 
 // Describes a Speechly application and is used as an argument for application API.
