@@ -17,8 +17,8 @@ The generated code can be used with Javascript or TypeScript code, but it only w
 ```ts
 import { credentials, Metadata } from "grpc";
 
-import { ConfigAPIClient } from "./speechly/config/v1/config_api_grpc_pb";
-import { ListAppsRequest } from "./speechly/config/v1/config_api_pb";
+import { ConfigAPIClient } from "@speechly/api/speechly/config/v1/config_api_grpc_pb";
+import { ListAppsRequest } from "@speechly/api/speechly/config/v1/config_api_pb";
 
 // Create a client for Speechly Configuration API.
 const client = new ConfigAPIClient("api.speechly.com", credentials.createSsl());
