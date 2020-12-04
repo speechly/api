@@ -7,7 +7,7 @@
 npm i --save @speechly/api
 
 # Using Yarn
-yarn add --save @speechly/api
+yarn add @speechly/api
 ```
 
 ## Usage
