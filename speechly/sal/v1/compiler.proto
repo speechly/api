@@ -19,7 +19,7 @@ service Compiler {
   // Validates the SAL source and returns compilation notices / warnings and errors, if any.
   rpc Validate(stream AppSource) returns (ValidateResult);
 
-  // Extracts SAL templates out from AppSource strem
+  // Extracts SAL templates from SAL source.
   rpc ExtractSAL(stream AppSource) returns (ExtractSALResult);
 }
 
@@ -35,12 +35,13 @@ message AppSource {
   // Chunk of SAL source code.
   bytes data_chunk = 3;
 
-  // Optional. Content type of the SAL source.
+  // Content type options.
   enum ContentType {
       CONTENT_TYPE_UNSPECIFIED = 0;
       CONTENT_TYPE_YAML = 1;
       CONTENT_TYPE_TAR = 2;
   }
+  // Optional content type of the SAL source.
   ContentType content_type = 4;
 }
 
@@ -104,6 +105,7 @@ message LineReference {
   string message = 5;
 }
 
+// Top-level message sent by the server for the `ExtractSAL` method.
 message ExtractSALResult {
   // SAL templates
   string templates = 1;
