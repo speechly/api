@@ -541,6 +541,9 @@ export class DownloadCurrentTrainingDataRequest extends jspb.Message {
   getAppId(): string;
   setAppId(value: string): void;
 
+  getConfigId(): string;
+  setConfigId(value: string): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DownloadCurrentTrainingDataRequest.AsObject;
   static toObject(includeInstance: boolean, msg: DownloadCurrentTrainingDataRequest): DownloadCurrentTrainingDataRequest.AsObject;
@@ -554,6 +557,7 @@ export class DownloadCurrentTrainingDataRequest extends jspb.Message {
 export namespace DownloadCurrentTrainingDataRequest {
   export type AsObject = {
     appId: string,
+    configId: string,
   }
 }
 
@@ -562,6 +566,9 @@ export class DownloadCurrentTrainingDataResponse extends jspb.Message {
   getDataChunk_asU8(): Uint8Array;
   getDataChunk_asB64(): string;
   setDataChunk(value: Uint8Array | string): void;
+
+  getContentType(): DownloadCurrentTrainingDataResponse.ContentTypeMap[keyof DownloadCurrentTrainingDataResponse.ContentTypeMap];
+  setContentType(value: DownloadCurrentTrainingDataResponse.ContentTypeMap[keyof DownloadCurrentTrainingDataResponse.ContentTypeMap]): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): DownloadCurrentTrainingDataResponse.AsObject;
@@ -576,7 +583,16 @@ export class DownloadCurrentTrainingDataResponse extends jspb.Message {
 export namespace DownloadCurrentTrainingDataResponse {
   export type AsObject = {
     dataChunk: Uint8Array | string,
+    contentType: DownloadCurrentTrainingDataResponse.ContentTypeMap[keyof DownloadCurrentTrainingDataResponse.ContentTypeMap],
   }
+
+  export interface ContentTypeMap {
+    CONTENT_TYPE_UNSPECIFIED: 0;
+    CONTENT_TYPE_YAML: 1;
+    CONTENT_TYPE_TAR: 2;
+  }
+
+  export const ContentType: ContentTypeMap;
 }
 
 export class App extends jspb.Message {

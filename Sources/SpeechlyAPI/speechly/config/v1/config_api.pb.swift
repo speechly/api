@@ -476,6 +476,9 @@ public struct Speechly_Config_V1_DownloadCurrentTrainingDataRequest {
   /// The ID of the app to fetch.
   public var appID: String = String()
 
+  /// The config ID to fetch, defaults to the latest configuration.
+  public var configID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -490,10 +493,57 @@ public struct Speechly_Config_V1_DownloadCurrentTrainingDataResponse {
   /// Training data payload.
   public var dataChunk: Data = Data()
 
+  /// Training data content type, see enum ContentType.
+  public var contentType: Speechly_Config_V1_DownloadCurrentTrainingDataResponse.ContentType = .unspecified
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public enum ContentType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case yaml // = 1
+    case tar // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .yaml
+      case 2: self = .tar
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .yaml: return 1
+      case .tar: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
 
   public init() {}
 }
+
+#if swift(>=4.2)
+
+extension Speechly_Config_V1_DownloadCurrentTrainingDataResponse.ContentType: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static var allCases: [Speechly_Config_V1_DownloadCurrentTrainingDataResponse.ContentType] = [
+    .unspecified,
+    .yaml,
+    .tar,
+  ]
+}
+
+#endif  // swift(>=4.2)
 
 /// Describes a Speechly application and is used as an argument for application API.
 public struct Speechly_Config_V1_App {
@@ -1383,6 +1433,7 @@ extension Speechly_Config_V1_DownloadCurrentTrainingDataRequest: SwiftProtobuf.M
   public static let protoMessageName: String = _protobuf_package + ".DownloadCurrentTrainingDataRequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "app_id"),
+    2: .standard(proto: "config_id"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1392,6 +1443,7 @@ extension Speechly_Config_V1_DownloadCurrentTrainingDataRequest: SwiftProtobuf.M
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.appID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.configID) }()
       default: break
       }
     }
@@ -1401,11 +1453,15 @@ extension Speechly_Config_V1_DownloadCurrentTrainingDataRequest: SwiftProtobuf.M
     if !self.appID.isEmpty {
       try visitor.visitSingularStringField(value: self.appID, fieldNumber: 1)
     }
+    if !self.configID.isEmpty {
+      try visitor.visitSingularStringField(value: self.configID, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Config_V1_DownloadCurrentTrainingDataRequest, rhs: Speechly_Config_V1_DownloadCurrentTrainingDataRequest) -> Bool {
     if lhs.appID != rhs.appID {return false}
+    if lhs.configID != rhs.configID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1415,6 +1471,7 @@ extension Speechly_Config_V1_DownloadCurrentTrainingDataResponse: SwiftProtobuf.
   public static let protoMessageName: String = _protobuf_package + ".DownloadCurrentTrainingDataResponse"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "data_chunk"),
+    2: .standard(proto: "content_type"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1424,6 +1481,7 @@ extension Speechly_Config_V1_DownloadCurrentTrainingDataResponse: SwiftProtobuf.
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularBytesField(value: &self.dataChunk) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.contentType) }()
       default: break
       }
     }
@@ -1433,14 +1491,26 @@ extension Speechly_Config_V1_DownloadCurrentTrainingDataResponse: SwiftProtobuf.
     if !self.dataChunk.isEmpty {
       try visitor.visitSingularBytesField(value: self.dataChunk, fieldNumber: 1)
     }
+    if self.contentType != .unspecified {
+      try visitor.visitSingularEnumField(value: self.contentType, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Config_V1_DownloadCurrentTrainingDataResponse, rhs: Speechly_Config_V1_DownloadCurrentTrainingDataResponse) -> Bool {
     if lhs.dataChunk != rhs.dataChunk {return false}
+    if lhs.contentType != rhs.contentType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+extension Speechly_Config_V1_DownloadCurrentTrainingDataResponse.ContentType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "CONTENT_TYPE_UNSPECIFIED"),
+    1: .same(proto: "CONTENT_TYPE_YAML"),
+    2: .same(proto: "CONTENT_TYPE_TAR"),
+  ]
 }
 
 extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {

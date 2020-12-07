@@ -22,6 +22,7 @@ goog.exportSymbol('proto.speechly.config.v1.DeleteAppRequest', null, global);
 goog.exportSymbol('proto.speechly.config.v1.DeleteAppResponse', null, global);
 goog.exportSymbol('proto.speechly.config.v1.DownloadCurrentTrainingDataRequest', null, global);
 goog.exportSymbol('proto.speechly.config.v1.DownloadCurrentTrainingDataResponse', null, global);
+goog.exportSymbol('proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.ContentType', null, global);
 goog.exportSymbol('proto.speechly.config.v1.GetAppRequest', null, global);
 goog.exportSymbol('proto.speechly.config.v1.GetAppResponse', null, global);
 goog.exportSymbol('proto.speechly.config.v1.GetProjectParticipantsRequest', null, global);
@@ -4200,7 +4201,8 @@ proto.speechly.config.v1.DownloadCurrentTrainingDataRequest.prototype.toObject =
  */
 proto.speechly.config.v1.DownloadCurrentTrainingDataRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    appId: jspb.Message.getFieldWithDefault(msg, 1, "")
+    appId: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    configId: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -4241,6 +4243,10 @@ proto.speechly.config.v1.DownloadCurrentTrainingDataRequest.deserializeBinaryFro
       var value = /** @type {string} */ (reader.readString());
       msg.setAppId(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setConfigId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4277,6 +4283,13 @@ proto.speechly.config.v1.DownloadCurrentTrainingDataRequest.serializeBinaryToWri
       f
     );
   }
+  f = message.getConfigId();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -4295,6 +4308,24 @@ proto.speechly.config.v1.DownloadCurrentTrainingDataRequest.prototype.getAppId =
  */
 proto.speechly.config.v1.DownloadCurrentTrainingDataRequest.prototype.setAppId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
+};
+
+
+/**
+ * optional string config_id = 2;
+ * @return {string}
+ */
+proto.speechly.config.v1.DownloadCurrentTrainingDataRequest.prototype.getConfigId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.speechly.config.v1.DownloadCurrentTrainingDataRequest} returns this
+ */
+proto.speechly.config.v1.DownloadCurrentTrainingDataRequest.prototype.setConfigId = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -4330,7 +4361,8 @@ proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.prototype.toObject 
  */
 proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    dataChunk: msg.getDataChunk_asB64()
+    dataChunk: msg.getDataChunk_asB64(),
+    contentType: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -4371,6 +4403,10 @@ proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.deserializeBinaryFr
       var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setDataChunk(value);
       break;
+    case 2:
+      var value = /** @type {!proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.ContentType} */ (reader.readEnum());
+      msg.setContentType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -4407,8 +4443,24 @@ proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.serializeBinaryToWr
       f
     );
   }
+  f = message.getContentType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      2,
+      f
+    );
+  }
 };
 
+
+/**
+ * @enum {number}
+ */
+proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.ContentType = {
+  CONTENT_TYPE_UNSPECIFIED: 0,
+  CONTENT_TYPE_YAML: 1,
+  CONTENT_TYPE_TAR: 2
+};
 
 /**
  * optional bytes data_chunk = 1;
@@ -4449,6 +4501,24 @@ proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.prototype.getDataCh
  */
 proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.prototype.setDataChunk = function(value) {
   return jspb.Message.setProto3BytesField(this, 1, value);
+};
+
+
+/**
+ * optional ContentType content_type = 2;
+ * @return {!proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.ContentType}
+ */
+proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.prototype.getContentType = function() {
+  return /** @type {!proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.ContentType} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {!proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.ContentType} value
+ * @return {!proto.speechly.config.v1.DownloadCurrentTrainingDataResponse} returns this
+ */
+proto.speechly.config.v1.DownloadCurrentTrainingDataResponse.prototype.setContentType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 2, value);
 };
 
 

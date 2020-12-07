@@ -3,7 +3,7 @@ import pathlib
 
 setup(
     name='speechly_apis',
-    version='0.0.2',
+    version='0.0.3',
     description='Speechly Public Protobuf Stubs',
     include_package_data=True,
     include=['../README.md'],
