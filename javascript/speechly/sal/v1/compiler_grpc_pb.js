@@ -26,6 +26,17 @@ function deserialize_speechly_sal_v1_CompileResult(buffer_arg) {
   return speechly_sal_v1_compiler_pb.CompileResult.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_speechly_sal_v1_ExtractSALResult(arg) {
+  if (!(arg instanceof speechly_sal_v1_compiler_pb.ExtractSALResult)) {
+    throw new Error('Expected argument of type speechly.sal.v1.ExtractSALResult');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_speechly_sal_v1_ExtractSALResult(buffer_arg) {
+  return speechly_sal_v1_compiler_pb.ExtractSALResult.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_speechly_sal_v1_ValidateResult(arg) {
   if (!(arg instanceof speechly_sal_v1_compiler_pb.ValidateResult)) {
     throw new Error('Expected argument of type speechly.sal.v1.ValidateResult');
@@ -70,6 +81,18 @@ validate: {
     requestDeserialize: deserialize_speechly_sal_v1_AppSource,
     responseSerialize: serialize_speechly_sal_v1_ValidateResult,
     responseDeserialize: deserialize_speechly_sal_v1_ValidateResult,
+  },
+  // Extracts SAL templates out from AppSource strem
+extractSAL: {
+    path: '/speechly.sal.v1.Compiler/ExtractSAL',
+    requestStream: true,
+    responseStream: false,
+    requestType: speechly_sal_v1_compiler_pb.AppSource,
+    responseType: speechly_sal_v1_compiler_pb.ExtractSALResult,
+    requestSerialize: serialize_speechly_sal_v1_AppSource,
+    requestDeserialize: deserialize_speechly_sal_v1_AppSource,
+    responseSerialize: serialize_speechly_sal_v1_ExtractSALResult,
+    responseDeserialize: deserialize_speechly_sal_v1_ExtractSALResult,
   },
 };
 
