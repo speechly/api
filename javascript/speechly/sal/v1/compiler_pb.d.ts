@@ -151,21 +151,21 @@ export namespace LineReference {
   export const Level: LevelMap;
 }
 
-export class ExtractSALResult extends jspb.Message {
+export class ExtractSALSourcesResult extends jspb.Message {
   getTemplates(): string;
   setTemplates(value: string): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): ExtractSALResult.AsObject;
-  static toObject(includeInstance: boolean, msg: ExtractSALResult): ExtractSALResult.AsObject;
+  toObject(includeInstance?: boolean): ExtractSALSourcesResult.AsObject;
+  static toObject(includeInstance: boolean, msg: ExtractSALSourcesResult): ExtractSALSourcesResult.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: ExtractSALResult, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): ExtractSALResult;
-  static deserializeBinaryFromReader(message: ExtractSALResult, reader: jspb.BinaryReader): ExtractSALResult;
+  static serializeBinaryToWriter(message: ExtractSALSourcesResult, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExtractSALSourcesResult;
+  static deserializeBinaryFromReader(message: ExtractSALSourcesResult, reader: jspb.BinaryReader): ExtractSALSourcesResult;
 }
 
-export namespace ExtractSALResult {
+export namespace ExtractSALSourcesResult {
   export type AsObject = {
     templates: string,
   }

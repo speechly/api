@@ -26,15 +26,15 @@ function deserialize_speechly_sal_v1_CompileResult(buffer_arg) {
   return speechly_sal_v1_compiler_pb.CompileResult.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_speechly_sal_v1_ExtractSALResult(arg) {
-  if (!(arg instanceof speechly_sal_v1_compiler_pb.ExtractSALResult)) {
-    throw new Error('Expected argument of type speechly.sal.v1.ExtractSALResult');
+function serialize_speechly_sal_v1_ExtractSALSourcesResult(arg) {
+  if (!(arg instanceof speechly_sal_v1_compiler_pb.ExtractSALSourcesResult)) {
+    throw new Error('Expected argument of type speechly.sal.v1.ExtractSALSourcesResult');
   }
   return Buffer.from(arg.serializeBinary());
 }
 
-function deserialize_speechly_sal_v1_ExtractSALResult(buffer_arg) {
-  return speechly_sal_v1_compiler_pb.ExtractSALResult.deserializeBinary(new Uint8Array(buffer_arg));
+function deserialize_speechly_sal_v1_ExtractSALSourcesResult(buffer_arg) {
+  return speechly_sal_v1_compiler_pb.ExtractSALSourcesResult.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_speechly_sal_v1_ValidateResult(arg) {
@@ -82,17 +82,17 @@ validate: {
     responseSerialize: serialize_speechly_sal_v1_ValidateResult,
     responseDeserialize: deserialize_speechly_sal_v1_ValidateResult,
   },
-  // Extracts SAL templates out from AppSource strem
-extractSAL: {
-    path: '/speechly.sal.v1.Compiler/ExtractSAL',
+  // Extracts raw, not compiled SAL templates from the SAL source.
+extractSALSources: {
+    path: '/speechly.sal.v1.Compiler/ExtractSALSources',
     requestStream: true,
-    responseStream: false,
+    responseStream: true,
     requestType: speechly_sal_v1_compiler_pb.AppSource,
-    responseType: speechly_sal_v1_compiler_pb.ExtractSALResult,
+    responseType: speechly_sal_v1_compiler_pb.ExtractSALSourcesResult,
     requestSerialize: serialize_speechly_sal_v1_AppSource,
     requestDeserialize: deserialize_speechly_sal_v1_AppSource,
-    responseSerialize: serialize_speechly_sal_v1_ExtractSALResult,
-    responseDeserialize: deserialize_speechly_sal_v1_ExtractSALResult,
+    responseSerialize: serialize_speechly_sal_v1_ExtractSALSourcesResult,
+    responseDeserialize: deserialize_speechly_sal_v1_ExtractSALSourcesResult,
   },
 };
 

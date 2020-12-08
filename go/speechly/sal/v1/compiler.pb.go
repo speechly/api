@@ -29,7 +29,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Optional. Content type of the SAL source.
+// Content type options.
 type AppSource_ContentType int32
 
 const (
@@ -197,7 +197,8 @@ type AppSource struct {
 	// The language of SAL as a BCP-47 language tag (e.g. "en-US").
 	Language string `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
 	// Chunk of SAL source code.
-	DataChunk   []byte                `protobuf:"bytes,3,opt,name=data_chunk,json=dataChunk,proto3" json:"data_chunk,omitempty"`
+	DataChunk []byte `protobuf:"bytes,3,opt,name=data_chunk,json=dataChunk,proto3" json:"data_chunk,omitempty"`
+	// Optional content type of the SAL source.
 	ContentType AppSource_ContentType `protobuf:"varint,4,opt,name=content_type,json=contentType,proto3,enum=speechly.sal.v1.AppSource_ContentType" json:"content_type,omitempty"`
 }
 
@@ -462,17 +463,18 @@ func (x *LineReference) GetMessage() string {
 	return ""
 }
 
-type ExtractSALResult struct {
+// Top-level message sent by the server for the `ExtractSALSources` method.
+type ExtractSALSourcesResult struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// SAL templates
+	// not compiled SAL templates
 	Templates string `protobuf:"bytes,1,opt,name=templates,proto3" json:"templates,omitempty"`
 }
 
-func (x *ExtractSALResult) Reset() {
-	*x = ExtractSALResult{}
+func (x *ExtractSALSourcesResult) Reset() {
+	*x = ExtractSALSourcesResult{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_speechly_sal_v1_compiler_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -480,13 +482,13 @@ func (x *ExtractSALResult) Reset() {
 	}
 }
 
-func (x *ExtractSALResult) String() string {
+func (x *ExtractSALSourcesResult) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ExtractSALResult) ProtoMessage() {}
+func (*ExtractSALSourcesResult) ProtoMessage() {}
 
-func (x *ExtractSALResult) ProtoReflect() protoreflect.Message {
+func (x *ExtractSALSourcesResult) ProtoReflect() protoreflect.Message {
 	mi := &file_speechly_sal_v1_compiler_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -498,12 +500,12 @@ func (x *ExtractSALResult) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ExtractSALResult.ProtoReflect.Descriptor instead.
-func (*ExtractSALResult) Descriptor() ([]byte, []int) {
+// Deprecated: Use ExtractSALSourcesResult.ProtoReflect.Descriptor instead.
+func (*ExtractSALSourcesResult) Descriptor() ([]byte, []int) {
 	return file_speechly_sal_v1_compiler_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ExtractSALResult) GetTemplates() string {
+func (x *ExtractSALSourcesResult) GetTemplates() string {
 	if x != nil {
 		return x.Templates
 	}
@@ -566,27 +568,29 @@ var file_speechly_sal_v1_compiler_proto_rawDesc = []byte{
 	0x22, 0x3b, 0x0a, 0x05, 0x4c, 0x65, 0x76, 0x65, 0x6c, 0x12, 0x0e, 0x0a, 0x0a, 0x4c, 0x45, 0x56,
 	0x45, 0x4c, 0x5f, 0x4e, 0x4f, 0x54, 0x45, 0x10, 0x00, 0x12, 0x11, 0x0a, 0x0d, 0x4c, 0x45, 0x56,
 	0x45, 0x4c, 0x5f, 0x57, 0x41, 0x52, 0x4e, 0x49, 0x4e, 0x47, 0x10, 0x01, 0x12, 0x0f, 0x0a, 0x0b,
-	0x4c, 0x45, 0x56, 0x45, 0x4c, 0x5f, 0x45, 0x52, 0x52, 0x4f, 0x52, 0x10, 0x02, 0x22, 0x30, 0x0a,
-	0x10, 0x45, 0x78, 0x74, 0x72, 0x61, 0x63, 0x74, 0x53, 0x41, 0x4c, 0x52, 0x65, 0x73, 0x75, 0x6c,
-	0x74, 0x12, 0x1c, 0x0a, 0x09, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x73, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x74, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x73, 0x32,
-	0xed, 0x01, 0x0a, 0x08, 0x43, 0x6f, 0x6d, 0x70, 0x69, 0x6c, 0x65, 0x72, 0x12, 0x47, 0x0a, 0x07,
-	0x43, 0x6f, 0x6d, 0x70, 0x69, 0x6c, 0x65, 0x12, 0x1a, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68,
-	0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x70, 0x70, 0x53, 0x6f, 0x75,
-	0x72, 0x63, 0x65, 0x1a, 0x1e, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73,
-	0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x6f, 0x6d, 0x70, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x73,
-	0x75, 0x6c, 0x74, 0x28, 0x01, 0x12, 0x49, 0x0a, 0x08, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74,
-	0x65, 0x12, 0x1a, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c,
-	0x2e, 0x76, 0x31, 0x2e, 0x41, 0x70, 0x70, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x1a, 0x1f, 0x2e,
-	0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e,
-	0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x28, 0x01,
-	0x12, 0x4d, 0x0a, 0x0a, 0x45, 0x78, 0x74, 0x72, 0x61, 0x63, 0x74, 0x53, 0x41, 0x4c, 0x12, 0x1a,
+	0x4c, 0x45, 0x56, 0x45, 0x4c, 0x5f, 0x45, 0x52, 0x52, 0x4f, 0x52, 0x10, 0x02, 0x22, 0x37, 0x0a,
+	0x17, 0x45, 0x78, 0x74, 0x72, 0x61, 0x63, 0x74, 0x53, 0x41, 0x4c, 0x53, 0x6f, 0x75, 0x72, 0x63,
+	0x65, 0x73, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x1c, 0x0a, 0x09, 0x74, 0x65, 0x6d, 0x70,
+	0x6c, 0x61, 0x74, 0x65, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x74, 0x65, 0x6d,
+	0x70, 0x6c, 0x61, 0x74, 0x65, 0x73, 0x32, 0xfd, 0x01, 0x0a, 0x08, 0x43, 0x6f, 0x6d, 0x70, 0x69,
+	0x6c, 0x65, 0x72, 0x12, 0x47, 0x0a, 0x07, 0x43, 0x6f, 0x6d, 0x70, 0x69, 0x6c, 0x65, 0x12, 0x1a,
 	0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31,
-	0x2e, 0x41, 0x70, 0x70, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x1a, 0x21, 0x2e, 0x73, 0x70, 0x65,
-	0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x78, 0x74,
-	0x72, 0x61, 0x63, 0x74, 0x53, 0x41, 0x4c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x28, 0x01, 0x42,
-	0x17, 0x5a, 0x15, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2f, 0x73, 0x61, 0x6c, 0x2f,
-	0x76, 0x31, 0x3b, 0x73, 0x61, 0x6c, 0x76, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x2e, 0x41, 0x70, 0x70, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x1a, 0x1e, 0x2e, 0x73, 0x70, 0x65,
+	0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x43, 0x6f, 0x6d,
+	0x70, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x28, 0x01, 0x12, 0x49, 0x0a, 0x08,
+	0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x12, 0x1a, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63,
+	0x68, 0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x41, 0x70, 0x70, 0x53, 0x6f,
+	0x75, 0x72, 0x63, 0x65, 0x1a, 0x1f, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e,
+	0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x56, 0x61, 0x6c, 0x69, 0x64, 0x61, 0x74, 0x65, 0x52,
+	0x65, 0x73, 0x75, 0x6c, 0x74, 0x28, 0x01, 0x12, 0x5d, 0x0a, 0x11, 0x45, 0x78, 0x74, 0x72, 0x61,
+	0x63, 0x74, 0x53, 0x41, 0x4c, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x12, 0x1a, 0x2e, 0x73,
+	0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x41,
+	0x70, 0x70, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x1a, 0x28, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63,
+	0x68, 0x6c, 0x79, 0x2e, 0x73, 0x61, 0x6c, 0x2e, 0x76, 0x31, 0x2e, 0x45, 0x78, 0x74, 0x72, 0x61,
+	0x63, 0x74, 0x53, 0x41, 0x4c, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x73, 0x52, 0x65, 0x73, 0x75,
+	0x6c, 0x74, 0x28, 0x01, 0x30, 0x01, 0x42, 0x17, 0x5a, 0x15, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68,
+	0x6c, 0x79, 0x2f, 0x73, 0x61, 0x6c, 0x2f, 0x76, 0x31, 0x3b, 0x73, 0x61, 0x6c, 0x76, 0x31, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -604,14 +608,14 @@ func file_speechly_sal_v1_compiler_proto_rawDescGZIP() []byte {
 var file_speechly_sal_v1_compiler_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_speechly_sal_v1_compiler_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_speechly_sal_v1_compiler_proto_goTypes = []interface{}{
-	(AppSource_ContentType)(0), // 0: speechly.sal.v1.AppSource.ContentType
-	(CompileResult_Result)(0),  // 1: speechly.sal.v1.CompileResult.Result
-	(LineReference_Level)(0),   // 2: speechly.sal.v1.LineReference.Level
-	(*AppSource)(nil),          // 3: speechly.sal.v1.AppSource
-	(*CompileResult)(nil),      // 4: speechly.sal.v1.CompileResult
-	(*ValidateResult)(nil),     // 5: speechly.sal.v1.ValidateResult
-	(*LineReference)(nil),      // 6: speechly.sal.v1.LineReference
-	(*ExtractSALResult)(nil),   // 7: speechly.sal.v1.ExtractSALResult
+	(AppSource_ContentType)(0),      // 0: speechly.sal.v1.AppSource.ContentType
+	(CompileResult_Result)(0),       // 1: speechly.sal.v1.CompileResult.Result
+	(LineReference_Level)(0),        // 2: speechly.sal.v1.LineReference.Level
+	(*AppSource)(nil),               // 3: speechly.sal.v1.AppSource
+	(*CompileResult)(nil),           // 4: speechly.sal.v1.CompileResult
+	(*ValidateResult)(nil),          // 5: speechly.sal.v1.ValidateResult
+	(*LineReference)(nil),           // 6: speechly.sal.v1.LineReference
+	(*ExtractSALSourcesResult)(nil), // 7: speechly.sal.v1.ExtractSALSourcesResult
 }
 var file_speechly_sal_v1_compiler_proto_depIdxs = []int32{
 	0, // 0: speechly.sal.v1.AppSource.content_type:type_name -> speechly.sal.v1.AppSource.ContentType
@@ -621,10 +625,10 @@ var file_speechly_sal_v1_compiler_proto_depIdxs = []int32{
 	2, // 4: speechly.sal.v1.LineReference.level:type_name -> speechly.sal.v1.LineReference.Level
 	3, // 5: speechly.sal.v1.Compiler.Compile:input_type -> speechly.sal.v1.AppSource
 	3, // 6: speechly.sal.v1.Compiler.Validate:input_type -> speechly.sal.v1.AppSource
-	3, // 7: speechly.sal.v1.Compiler.ExtractSAL:input_type -> speechly.sal.v1.AppSource
+	3, // 7: speechly.sal.v1.Compiler.ExtractSALSources:input_type -> speechly.sal.v1.AppSource
 	4, // 8: speechly.sal.v1.Compiler.Compile:output_type -> speechly.sal.v1.CompileResult
 	5, // 9: speechly.sal.v1.Compiler.Validate:output_type -> speechly.sal.v1.ValidateResult
-	7, // 10: speechly.sal.v1.Compiler.ExtractSAL:output_type -> speechly.sal.v1.ExtractSALResult
+	7, // 10: speechly.sal.v1.Compiler.ExtractSALSources:output_type -> speechly.sal.v1.ExtractSALSourcesResult
 	8, // [8:11] is the sub-list for method output_type
 	5, // [5:8] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name
@@ -687,7 +691,7 @@ func file_speechly_sal_v1_compiler_proto_init() {
 			}
 		}
 		file_speechly_sal_v1_compiler_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ExtractSALResult); i {
+			switch v := v.(*ExtractSALSourcesResult); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -736,8 +740,8 @@ type CompilerClient interface {
 	Compile(ctx context.Context, opts ...grpc.CallOption) (Compiler_CompileClient, error)
 	// Validates the SAL source and returns compilation notices / warnings and errors, if any.
 	Validate(ctx context.Context, opts ...grpc.CallOption) (Compiler_ValidateClient, error)
-	// Extracts SAL templates out from AppSource strem
-	ExtractSAL(ctx context.Context, opts ...grpc.CallOption) (Compiler_ExtractSALClient, error)
+	// Extracts raw, not compiled SAL templates from the SAL source.
+	ExtractSALSources(ctx context.Context, opts ...grpc.CallOption) (Compiler_ExtractSALSourcesClient, error)
 }
 
 type compilerClient struct {
@@ -816,34 +820,31 @@ func (x *compilerValidateClient) CloseAndRecv() (*ValidateResult, error) {
 	return m, nil
 }
 
-func (c *compilerClient) ExtractSAL(ctx context.Context, opts ...grpc.CallOption) (Compiler_ExtractSALClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Compiler_serviceDesc.Streams[2], "/speechly.sal.v1.Compiler/ExtractSAL", opts...)
+func (c *compilerClient) ExtractSALSources(ctx context.Context, opts ...grpc.CallOption) (Compiler_ExtractSALSourcesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Compiler_serviceDesc.Streams[2], "/speechly.sal.v1.Compiler/ExtractSALSources", opts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &compilerExtractSALClient{stream}
+	x := &compilerExtractSALSourcesClient{stream}
 	return x, nil
 }
 
-type Compiler_ExtractSALClient interface {
+type Compiler_ExtractSALSourcesClient interface {
 	Send(*AppSource) error
-	CloseAndRecv() (*ExtractSALResult, error)
+	Recv() (*ExtractSALSourcesResult, error)
 	grpc.ClientStream
 }
 
-type compilerExtractSALClient struct {
+type compilerExtractSALSourcesClient struct {
 	grpc.ClientStream
 }
 
-func (x *compilerExtractSALClient) Send(m *AppSource) error {
+func (x *compilerExtractSALSourcesClient) Send(m *AppSource) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *compilerExtractSALClient) CloseAndRecv() (*ExtractSALResult, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(ExtractSALResult)
+func (x *compilerExtractSALSourcesClient) Recv() (*ExtractSALSourcesResult, error) {
+	m := new(ExtractSALSourcesResult)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -856,8 +857,8 @@ type CompilerServer interface {
 	Compile(Compiler_CompileServer) error
 	// Validates the SAL source and returns compilation notices / warnings and errors, if any.
 	Validate(Compiler_ValidateServer) error
-	// Extracts SAL templates out from AppSource strem
-	ExtractSAL(Compiler_ExtractSALServer) error
+	// Extracts raw, not compiled SAL templates from the SAL source.
+	ExtractSALSources(Compiler_ExtractSALSourcesServer) error
 }
 
 // UnimplementedCompilerServer can be embedded to have forward compatible implementations.
@@ -870,8 +871,8 @@ func (*UnimplementedCompilerServer) Compile(Compiler_CompileServer) error {
 func (*UnimplementedCompilerServer) Validate(Compiler_ValidateServer) error {
 	return status.Errorf(codes.Unimplemented, "method Validate not implemented")
 }
-func (*UnimplementedCompilerServer) ExtractSAL(Compiler_ExtractSALServer) error {
-	return status.Errorf(codes.Unimplemented, "method ExtractSAL not implemented")
+func (*UnimplementedCompilerServer) ExtractSALSources(Compiler_ExtractSALSourcesServer) error {
+	return status.Errorf(codes.Unimplemented, "method ExtractSALSources not implemented")
 }
 
 func RegisterCompilerServer(s *grpc.Server, srv CompilerServer) {
@@ -930,25 +931,25 @@ func (x *compilerValidateServer) Recv() (*AppSource, error) {
 	return m, nil
 }
 
-func _Compiler_ExtractSAL_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(CompilerServer).ExtractSAL(&compilerExtractSALServer{stream})
+func _Compiler_ExtractSALSources_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(CompilerServer).ExtractSALSources(&compilerExtractSALSourcesServer{stream})
 }
 
-type Compiler_ExtractSALServer interface {
-	SendAndClose(*ExtractSALResult) error
+type Compiler_ExtractSALSourcesServer interface {
+	Send(*ExtractSALSourcesResult) error
 	Recv() (*AppSource, error)
 	grpc.ServerStream
 }
 
-type compilerExtractSALServer struct {
+type compilerExtractSALSourcesServer struct {
 	grpc.ServerStream
 }
 
-func (x *compilerExtractSALServer) SendAndClose(m *ExtractSALResult) error {
+func (x *compilerExtractSALSourcesServer) Send(m *ExtractSALSourcesResult) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *compilerExtractSALServer) Recv() (*AppSource, error) {
+func (x *compilerExtractSALSourcesServer) Recv() (*AppSource, error) {
 	m := new(AppSource)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -972,8 +973,9 @@ var _Compiler_serviceDesc = grpc.ServiceDesc{
 			ClientStreams: true,
 		},
 		{
-			StreamName:    "ExtractSAL",
-			Handler:       _Compiler_ExtractSAL_Handler,
+			StreamName:    "ExtractSALSources",
+			Handler:       _Compiler_ExtractSALSources_Handler,
+			ServerStreams: true,
 			ClientStreams: true,
 		},
 	},

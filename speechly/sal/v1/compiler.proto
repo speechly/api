@@ -19,8 +19,8 @@ service Compiler {
   // Validates the SAL source and returns compilation notices / warnings and errors, if any.
   rpc Validate(stream AppSource) returns (ValidateResult);
 
-  // Extracts SAL templates from SAL source.
-  rpc ExtractSAL(stream AppSource) returns (ExtractSALResult);
+  // Extracts raw, not compiled SAL templates from the SAL source.
+  rpc ExtractSALSources(stream AppSource) returns (stream ExtractSALSourcesResult);
 }
 
 // Contains a chunk of SAL source.
@@ -105,8 +105,8 @@ message LineReference {
   string message = 5;
 }
 
-// Top-level message sent by the server for the `ExtractSAL` method.
-message ExtractSALResult {
+// Top-level message sent by the server for the `ExtractSALSources` method.
+message ExtractSALSourcesResult {
   // not compiled SAL templates
   string templates = 1;
 }

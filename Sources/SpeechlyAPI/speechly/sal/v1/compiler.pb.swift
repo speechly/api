@@ -36,11 +36,12 @@ public struct Speechly_Sal_V1_AppSource {
   /// Chunk of SAL source code.
   public var dataChunk: Data = Data()
 
+  /// Optional content type of the SAL source.
   public var contentType: Speechly_Sal_V1_AppSource.ContentType = .unspecified
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  /// Optional. Content type of the SAL source.
+  /// Content type options.
   public enum ContentType: SwiftProtobuf.Enum {
     public typealias RawValue = Int
     case unspecified // = 0
@@ -250,12 +251,13 @@ extension Speechly_Sal_V1_LineReference.Level: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct Speechly_Sal_V1_ExtractSALResult {
+/// Top-level message sent by the server for the `ExtractSALSources` method.
+public struct Speechly_Sal_V1_ExtractSALSourcesResult {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// SAL templates
+  /// not compiled SAL templates
   public var templates: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -473,8 +475,8 @@ extension Speechly_Sal_V1_LineReference.Level: SwiftProtobuf._ProtoNameProviding
   ]
 }
 
-extension Speechly_Sal_V1_ExtractSALResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".ExtractSALResult"
+extension Speechly_Sal_V1_ExtractSALSourcesResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ExtractSALSourcesResult"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "templates"),
   ]
@@ -498,7 +500,7 @@ extension Speechly_Sal_V1_ExtractSALResult: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Speechly_Sal_V1_ExtractSALResult, rhs: Speechly_Sal_V1_ExtractSALResult) -> Bool {
+  public static func ==(lhs: Speechly_Sal_V1_ExtractSALSourcesResult, rhs: Speechly_Sal_V1_ExtractSALSourcesResult) -> Bool {
     if lhs.templates != rhs.templates {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

@@ -35,9 +35,10 @@ public protocol Speechly_Sal_V1_CompilerClientProtocol: GRPCClient {
     callOptions: CallOptions?
   ) -> ClientStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ValidateResult>
 
-  func extractSAL(
-    callOptions: CallOptions?
-  ) -> ClientStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALResult>
+  func extractSALSources(
+    callOptions: CallOptions?,
+    handler: @escaping (Speechly_Sal_V1_ExtractSALSourcesResult) -> Void
+  ) -> BidirectionalStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALSourcesResult>
 
 }
 
@@ -77,20 +78,23 @@ extension Speechly_Sal_V1_CompilerClientProtocol {
     )
   }
 
-  /// Extracts SAL templates out from AppSource strem
+  /// Extracts raw, not compiled SAL templates from the SAL source.
   ///
   /// Callers should use the `send` method on the returned object to send messages
   /// to the server. The caller should send an `.end` after the final message has been sent.
   ///
   /// - Parameters:
   ///   - callOptions: Call options.
-  /// - Returns: A `ClientStreamingCall` with futures for the metadata, status and response.
-  public func extractSAL(
-    callOptions: CallOptions? = nil
-  ) -> ClientStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALResult> {
-    return self.makeClientStreamingCall(
-      path: "/speechly.sal.v1.Compiler/ExtractSAL",
-      callOptions: callOptions ?? self.defaultCallOptions
+  ///   - handler: A closure called when each response is received from the server.
+  /// - Returns: A `ClientStreamingCall` with futures for the metadata and status.
+  public func extractSALSources(
+    callOptions: CallOptions? = nil,
+    handler: @escaping (Speechly_Sal_V1_ExtractSALSourcesResult) -> Void
+  ) -> BidirectionalStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALSourcesResult> {
+    return self.makeBidirectionalStreamingCall(
+      path: "/speechly.sal.v1.Compiler/ExtractSALSources",
+      callOptions: callOptions ?? self.defaultCallOptions,
+      handler: handler
     )
   }
 }
@@ -116,8 +120,8 @@ public protocol Speechly_Sal_V1_CompilerProvider: CallHandlerProvider {
   func compile(context: UnaryResponseCallContext<Speechly_Sal_V1_CompileResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
   /// Validates the SAL source and returns compilation notices / warnings and errors, if any.
   func validate(context: UnaryResponseCallContext<Speechly_Sal_V1_ValidateResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
-  /// Extracts SAL templates out from AppSource strem
-  func extractSAL(context: UnaryResponseCallContext<Speechly_Sal_V1_ExtractSALResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
+  /// Extracts raw, not compiled SAL templates from the SAL source.
+  func extractSALSources(context: StreamingResponseCallContext<Speechly_Sal_V1_ExtractSALSourcesResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
 }
 
 extension Speechly_Sal_V1_CompilerProvider {
@@ -137,9 +141,9 @@ extension Speechly_Sal_V1_CompilerProvider {
         return self.validate(context: context)
       }
 
-    case "ExtractSAL":
-      return CallHandlerFactory.makeClientStreaming(callHandlerContext: callHandlerContext) { context in
-        return self.extractSAL(context: context)
+    case "ExtractSALSources":
+      return CallHandlerFactory.makeBidirectionalStreaming(callHandlerContext: callHandlerContext) { context in
+        return self.extractSALSources(context: context)
       }
 
     default: return nil

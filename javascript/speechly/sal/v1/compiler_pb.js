@@ -16,7 +16,7 @@ goog.exportSymbol('proto.speechly.sal.v1.AppSource', null, global);
 goog.exportSymbol('proto.speechly.sal.v1.AppSource.ContentType', null, global);
 goog.exportSymbol('proto.speechly.sal.v1.CompileResult', null, global);
 goog.exportSymbol('proto.speechly.sal.v1.CompileResult.Result', null, global);
-goog.exportSymbol('proto.speechly.sal.v1.ExtractSALResult', null, global);
+goog.exportSymbol('proto.speechly.sal.v1.ExtractSALSourcesResult', null, global);
 goog.exportSymbol('proto.speechly.sal.v1.LineReference', null, global);
 goog.exportSymbol('proto.speechly.sal.v1.LineReference.Level', null, global);
 goog.exportSymbol('proto.speechly.sal.v1.ValidateResult', null, global);
@@ -114,16 +114,16 @@ if (goog.DEBUG && !COMPILED) {
  * @extends {jspb.Message}
  * @constructor
  */
-proto.speechly.sal.v1.ExtractSALResult = function(opt_data) {
+proto.speechly.sal.v1.ExtractSALSourcesResult = function(opt_data) {
   jspb.Message.initialize(this, opt_data, 0, -1, null, null);
 };
-goog.inherits(proto.speechly.sal.v1.ExtractSALResult, jspb.Message);
+goog.inherits(proto.speechly.sal.v1.ExtractSALSourcesResult, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
   /**
    * @public
    * @override
    */
-  proto.speechly.sal.v1.ExtractSALResult.displayName = 'proto.speechly.sal.v1.ExtractSALResult';
+  proto.speechly.sal.v1.ExtractSALSourcesResult.displayName = 'proto.speechly.sal.v1.ExtractSALSourcesResult';
 }
 
 
@@ -1061,8 +1061,8 @@ if (jspb.Message.GENERATE_TO_OBJECT) {
  *     http://goto/soy-param-migration
  * @return {!Object}
  */
-proto.speechly.sal.v1.ExtractSALResult.prototype.toObject = function(opt_includeInstance) {
-  return proto.speechly.sal.v1.ExtractSALResult.toObject(opt_includeInstance, this);
+proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.toObject = function(opt_includeInstance) {
+  return proto.speechly.sal.v1.ExtractSALSourcesResult.toObject(opt_includeInstance, this);
 };
 
 
@@ -1071,11 +1071,11 @@ proto.speechly.sal.v1.ExtractSALResult.prototype.toObject = function(opt_include
  * @param {boolean|undefined} includeInstance Deprecated. Whether to include
  *     the JSPB instance for transitional soy proto support:
  *     http://goto/soy-param-migration
- * @param {!proto.speechly.sal.v1.ExtractSALResult} msg The msg instance to transform.
+ * @param {!proto.speechly.sal.v1.ExtractSALSourcesResult} msg The msg instance to transform.
  * @return {!Object}
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.speechly.sal.v1.ExtractSALResult.toObject = function(includeInstance, msg) {
+proto.speechly.sal.v1.ExtractSALSourcesResult.toObject = function(includeInstance, msg) {
   var f, obj = {
     templates: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
@@ -1091,23 +1091,23 @@ proto.speechly.sal.v1.ExtractSALResult.toObject = function(includeInstance, msg)
 /**
  * Deserializes binary data (in protobuf wire format).
  * @param {jspb.ByteSource} bytes The bytes to deserialize.
- * @return {!proto.speechly.sal.v1.ExtractSALResult}
+ * @return {!proto.speechly.sal.v1.ExtractSALSourcesResult}
  */
-proto.speechly.sal.v1.ExtractSALResult.deserializeBinary = function(bytes) {
+proto.speechly.sal.v1.ExtractSALSourcesResult.deserializeBinary = function(bytes) {
   var reader = new jspb.BinaryReader(bytes);
-  var msg = new proto.speechly.sal.v1.ExtractSALResult;
-  return proto.speechly.sal.v1.ExtractSALResult.deserializeBinaryFromReader(msg, reader);
+  var msg = new proto.speechly.sal.v1.ExtractSALSourcesResult;
+  return proto.speechly.sal.v1.ExtractSALSourcesResult.deserializeBinaryFromReader(msg, reader);
 };
 
 
 /**
  * Deserializes binary data (in protobuf wire format) from the
  * given reader into the given message object.
- * @param {!proto.speechly.sal.v1.ExtractSALResult} msg The message object to deserialize into.
+ * @param {!proto.speechly.sal.v1.ExtractSALSourcesResult} msg The message object to deserialize into.
  * @param {!jspb.BinaryReader} reader The BinaryReader to use.
- * @return {!proto.speechly.sal.v1.ExtractSALResult}
+ * @return {!proto.speechly.sal.v1.ExtractSALSourcesResult}
  */
-proto.speechly.sal.v1.ExtractSALResult.deserializeBinaryFromReader = function(msg, reader) {
+proto.speechly.sal.v1.ExtractSALSourcesResult.deserializeBinaryFromReader = function(msg, reader) {
   while (reader.nextField()) {
     if (reader.isEndGroup()) {
       break;
@@ -1131,9 +1131,9 @@ proto.speechly.sal.v1.ExtractSALResult.deserializeBinaryFromReader = function(ms
  * Serializes the message to binary data (in protobuf wire format).
  * @return {!Uint8Array}
  */
-proto.speechly.sal.v1.ExtractSALResult.prototype.serializeBinary = function() {
+proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.serializeBinary = function() {
   var writer = new jspb.BinaryWriter();
-  proto.speechly.sal.v1.ExtractSALResult.serializeBinaryToWriter(this, writer);
+  proto.speechly.sal.v1.ExtractSALSourcesResult.serializeBinaryToWriter(this, writer);
   return writer.getResultBuffer();
 };
 
@@ -1141,11 +1141,11 @@ proto.speechly.sal.v1.ExtractSALResult.prototype.serializeBinary = function() {
 /**
  * Serializes the given message to binary data (in protobuf wire
  * format), writing to the given BinaryWriter.
- * @param {!proto.speechly.sal.v1.ExtractSALResult} message
+ * @param {!proto.speechly.sal.v1.ExtractSALSourcesResult} message
  * @param {!jspb.BinaryWriter} writer
  * @suppress {unusedLocalVariables} f is only used for nested messages
  */
-proto.speechly.sal.v1.ExtractSALResult.serializeBinaryToWriter = function(message, writer) {
+proto.speechly.sal.v1.ExtractSALSourcesResult.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTemplates();
   if (f.length > 0) {
@@ -1161,16 +1161,16 @@ proto.speechly.sal.v1.ExtractSALResult.serializeBinaryToWriter = function(messag
  * optional string templates = 1;
  * @return {string}
  */
-proto.speechly.sal.v1.ExtractSALResult.prototype.getTemplates = function() {
+proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.getTemplates = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @return {!proto.speechly.sal.v1.ExtractSALResult} returns this
+ * @return {!proto.speechly.sal.v1.ExtractSALSourcesResult} returns this
  */
-proto.speechly.sal.v1.ExtractSALResult.prototype.setTemplates = function(value) {
+proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.setTemplates = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
