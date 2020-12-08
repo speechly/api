@@ -36,10 +36,58 @@ public struct Speechly_Sal_V1_AppSource {
   /// Chunk of SAL source code.
   public var dataChunk: Data = Data()
 
+  /// Optional content type of the SAL source.
+  public var contentType: Speechly_Sal_V1_AppSource.ContentType = .unspecified
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  /// Content type options.
+  public enum ContentType: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
+    case unspecified // = 0
+    case yaml // = 1
+    case tar // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .yaml
+      case 2: self = .tar
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .yaml: return 1
+      case .tar: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
 
   public init() {}
 }
+
+#if swift(>=4.2)
+
+extension Speechly_Sal_V1_AppSource.ContentType: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static var allCases: [Speechly_Sal_V1_AppSource.ContentType] = [
+    .unspecified,
+    .yaml,
+    .tar,
+  ]
+}
+
+#endif  // swift(>=4.2)
 
 /// Top-level message sent by the server for the `Compile` method.
 public struct Speechly_Sal_V1_CompileResult {
@@ -203,6 +251,20 @@ extension Speechly_Sal_V1_LineReference.Level: CaseIterable {
 
 #endif  // swift(>=4.2)
 
+/// Top-level message sent by the server for the `ExtractSALSources` method.
+public struct Speechly_Sal_V1_ExtractSALSourcesResult {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// Chunk of extracted SAL source code.
+  public var dataChunk: Data = Data()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.sal.v1"
@@ -213,6 +275,7 @@ extension Speechly_Sal_V1_AppSource: SwiftProtobuf.Message, SwiftProtobuf._Messa
     1: .standard(proto: "app_id"),
     2: .same(proto: "language"),
     3: .standard(proto: "data_chunk"),
+    4: .standard(proto: "content_type"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -224,6 +287,7 @@ extension Speechly_Sal_V1_AppSource: SwiftProtobuf.Message, SwiftProtobuf._Messa
       case 1: try { try decoder.decodeSingularStringField(value: &self.appID) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.language) }()
       case 3: try { try decoder.decodeSingularBytesField(value: &self.dataChunk) }()
+      case 4: try { try decoder.decodeSingularEnumField(value: &self.contentType) }()
       default: break
       }
     }
@@ -239,6 +303,9 @@ extension Speechly_Sal_V1_AppSource: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if !self.dataChunk.isEmpty {
       try visitor.visitSingularBytesField(value: self.dataChunk, fieldNumber: 3)
     }
+    if self.contentType != .unspecified {
+      try visitor.visitSingularEnumField(value: self.contentType, fieldNumber: 4)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -246,9 +313,18 @@ extension Speechly_Sal_V1_AppSource: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if lhs.appID != rhs.appID {return false}
     if lhs.language != rhs.language {return false}
     if lhs.dataChunk != rhs.dataChunk {return false}
+    if lhs.contentType != rhs.contentType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+extension Speechly_Sal_V1_AppSource.ContentType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "CONTENT_TYPE_UNSPECIFIED"),
+    1: .same(proto: "CONTENT_TYPE_YAML"),
+    2: .same(proto: "CONTENT_TYPE_TAR"),
+  ]
 }
 
 extension Speechly_Sal_V1_CompileResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
@@ -397,4 +473,36 @@ extension Speechly_Sal_V1_LineReference.Level: SwiftProtobuf._ProtoNameProviding
     1: .same(proto: "LEVEL_WARNING"),
     2: .same(proto: "LEVEL_ERROR"),
   ]
+}
+
+extension Speechly_Sal_V1_ExtractSALSourcesResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ExtractSALSourcesResult"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "data_chunk"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBytesField(value: &self.dataChunk) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.dataChunk.isEmpty {
+      try visitor.visitSingularBytesField(value: self.dataChunk, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Sal_V1_ExtractSALSourcesResult, rhs: Speechly_Sal_V1_ExtractSALSourcesResult) -> Bool {
+    if lhs.dataChunk != rhs.dataChunk {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }

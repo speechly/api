@@ -15,6 +15,9 @@ export class AppSource extends jspb.Message {
   getDataChunk_asB64(): string;
   setDataChunk(value: Uint8Array | string): void;
 
+  getContentType(): AppSource.ContentTypeMap[keyof AppSource.ContentTypeMap];
+  setContentType(value: AppSource.ContentTypeMap[keyof AppSource.ContentTypeMap]): void;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): AppSource.AsObject;
   static toObject(includeInstance: boolean, msg: AppSource): AppSource.AsObject;
@@ -30,7 +33,16 @@ export namespace AppSource {
     appId: string,
     language: string,
     dataChunk: Uint8Array | string,
+    contentType: AppSource.ContentTypeMap[keyof AppSource.ContentTypeMap],
   }
+
+  export interface ContentTypeMap {
+    CONTENT_TYPE_UNSPECIFIED: 0;
+    CONTENT_TYPE_YAML: 1;
+    CONTENT_TYPE_TAR: 2;
+  }
+
+  export const ContentType: ContentTypeMap;
 }
 
 export class CompileResult extends jspb.Message {
@@ -137,5 +149,27 @@ export namespace LineReference {
   }
 
   export const Level: LevelMap;
+}
+
+export class ExtractSALSourcesResult extends jspb.Message {
+  getDataChunk(): Uint8Array | string;
+  getDataChunk_asU8(): Uint8Array;
+  getDataChunk_asB64(): string;
+  setDataChunk(value: Uint8Array | string): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): ExtractSALSourcesResult.AsObject;
+  static toObject(includeInstance: boolean, msg: ExtractSALSourcesResult): ExtractSALSourcesResult.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: ExtractSALSourcesResult, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): ExtractSALSourcesResult;
+  static deserializeBinaryFromReader(message: ExtractSALSourcesResult, reader: jspb.BinaryReader): ExtractSALSourcesResult;
+}
+
+export namespace ExtractSALSourcesResult {
+  export type AsObject = {
+    dataChunk: Uint8Array | string,
+  }
 }
 
