@@ -107,6 +107,6 @@ message LineReference {
 
 // Top-level message sent by the server for the `ExtractSALSources` method.
 message ExtractSALSourcesResult {
-  // not compiled SAL templates
-  string templates = 1;
+  // Chunk of extracted SAL source code.
+  bytes data_chunk = 1;
 }

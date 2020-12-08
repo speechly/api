@@ -152,8 +152,10 @@ export namespace LineReference {
 }
 
 export class ExtractSALSourcesResult extends jspb.Message {
-  getTemplates(): string;
-  setTemplates(value: string): void;
+  getDataChunk(): Uint8Array | string;
+  getDataChunk_asU8(): Uint8Array;
+  getDataChunk_asB64(): string;
+  setDataChunk(value: Uint8Array | string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ExtractSALSourcesResult.AsObject;
@@ -167,7 +169,7 @@ export class ExtractSALSourcesResult extends jspb.Message {
 
 export namespace ExtractSALSourcesResult {
   export type AsObject = {
-    templates: string,
+    dataChunk: Uint8Array | string,
   }
 }
 

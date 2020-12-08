@@ -1077,7 +1077,7 @@ proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.toObject = function(opt_
  */
 proto.speechly.sal.v1.ExtractSALSourcesResult.toObject = function(includeInstance, msg) {
   var f, obj = {
-    templates: jspb.Message.getFieldWithDefault(msg, 1, "")
+    dataChunk: msg.getDataChunk_asB64()
   };
 
   if (includeInstance) {
@@ -1115,8 +1115,8 @@ proto.speechly.sal.v1.ExtractSALSourcesResult.deserializeBinaryFromReader = func
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setTemplates(value);
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setDataChunk(value);
       break;
     default:
       reader.skipField();
@@ -1147,9 +1147,9 @@ proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.serializeBinary = functi
  */
 proto.speechly.sal.v1.ExtractSALSourcesResult.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getTemplates();
+  f = message.getDataChunk_asU8();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeBytes(
       1,
       f
     );
@@ -1158,20 +1158,44 @@ proto.speechly.sal.v1.ExtractSALSourcesResult.serializeBinaryToWriter = function
 
 
 /**
- * optional string templates = 1;
- * @return {string}
+ * optional bytes data_chunk = 1;
+ * @return {!(string|Uint8Array)}
  */
-proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.getTemplates = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.getDataChunk = function() {
+  return /** @type {!(string|Uint8Array)} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {string} value
+ * optional bytes data_chunk = 1;
+ * This is a type-conversion wrapper around `getDataChunk()`
+ * @return {string}
+ */
+proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.getDataChunk_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getDataChunk()));
+};
+
+
+/**
+ * optional bytes data_chunk = 1;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getDataChunk()`
+ * @return {!Uint8Array}
+ */
+proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.getDataChunk_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getDataChunk()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
  * @return {!proto.speechly.sal.v1.ExtractSALSourcesResult} returns this
  */
-proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.setTemplates = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.speechly.sal.v1.ExtractSALSourcesResult.prototype.setDataChunk = function(value) {
+  return jspb.Message.setProto3BytesField(this, 1, value);
 };
 
 
