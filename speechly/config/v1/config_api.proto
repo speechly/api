@@ -3,6 +3,7 @@ syntax = "proto3";
 package speechly.config.v1;
 
 option go_package = "speechly/config/v1;configv1";
+option java_package = "com.speechly.api.config.v1";
 
 // Service that implements Speechly Configuration API (https://speechly.com/docs/api/configuration).
 //
