@@ -11,6 +11,7 @@ build: build-swift
 	@make -C go
 	@make -C python
 	@make -C javascript
+	@make -C kotlin
 .PHONY: build
 
 build-swift: $(SWIFT_BUILD_DIR)

@@ -3,6 +3,7 @@ syntax = "proto3";
 package speechly.sal.v1;
 
 option go_package = "speechly/sal/v1;salv1";
+option java_package = "com.speechly.api.sal.v1";
 
 // Service that implements Speechly SAL API (https://speechly.com/docs/api/sal).
 //
