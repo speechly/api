@@ -45,6 +45,36 @@ export namespace AppSource {
   export const ContentType: ContentTypeMap;
 }
 
+export class CompileRequest extends jspb.Message {
+  hasAppSource(): boolean;
+  clearAppSource(): void;
+  getAppSource(): AppSource | undefined;
+  setAppSource(value?: AppSource): void;
+
+  getBatchSize(): number;
+  setBatchSize(value: number): void;
+
+  getRandomSeed(): number;
+  setRandomSeed(value: number): void;
+
+  serializeBinary(): Uint8Array;
+  toObject(includeInstance?: boolean): CompileRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: CompileRequest): CompileRequest.AsObject;
+  static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+  static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+  static serializeBinaryToWriter(message: CompileRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): CompileRequest;
+  static deserializeBinaryFromReader(message: CompileRequest, reader: jspb.BinaryReader): CompileRequest;
+}
+
+export namespace CompileRequest {
+  export type AsObject = {
+    appSource?: AppSource.AsObject,
+    batchSize: number,
+    randomSeed: number,
+  }
+}
+
 export class CompileResult extends jspb.Message {
   getResult(): CompileResult.ResultMap[keyof CompileResult.ResultMap];
   setResult(value: CompileResult.ResultMap[keyof CompileResult.ResultMap]): void;

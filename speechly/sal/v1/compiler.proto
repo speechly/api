@@ -85,7 +85,7 @@ message CompileResult {
 // Top-level message sent by the server for the `Validate` method.
 message ValidateResult {
   // A list of error / warning messages, may be empty if validation didn't find any issues.
-  repeated LineReference messages = 1; 
+  repeated LineReference messages = 1;
 }
 
 // Describes a message related to a line in SAL source code.

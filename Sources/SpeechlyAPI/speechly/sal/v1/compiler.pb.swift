@@ -21,7 +21,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Contains a chunk of SAL source.
-/// This message is consumed by `Compile` and `Validate` RPCs.
+/// This message is consumed by `Validate` and `ExtractSALSources` RPCs and as a part of `CompileRequest`.
 public struct Speechly_Sal_V1_AppSource {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -88,6 +88,35 @@ extension Speechly_Sal_V1_AppSource.ContentType: CaseIterable {
 }
 
 #endif  // swift(>=4.2)
+
+/// This message is consumed by `Compile` RPC
+public struct Speechly_Sal_V1_CompileRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// A chunk of SAL source.
+  public var appSource: Speechly_Sal_V1_AppSource {
+    get {return _appSource ?? Speechly_Sal_V1_AppSource()}
+    set {_appSource = newValue}
+  }
+  /// Returns true if `appSource` has been explicitly set.
+  public var hasAppSource: Bool {return self._appSource != nil}
+  /// Clears the value of `appSource`. Subsequent reads from it will return its default value.
+  public mutating func clearAppSource() {self._appSource = nil}
+
+  /// Number of examples to return:
+  public var batchSize: Int32 = 0
+
+  /// Random seed for example sampling. Changing seed can give different output.
+  public var randomSeed: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _appSource: Speechly_Sal_V1_AppSource? = nil
+}
 
 /// Top-level message sent by the server for the `Compile` method.
 public struct Speechly_Sal_V1_CompileResult {
@@ -325,6 +354,50 @@ extension Speechly_Sal_V1_AppSource.ContentType: SwiftProtobuf._ProtoNameProvidi
     1: .same(proto: "CONTENT_TYPE_YAML"),
     2: .same(proto: "CONTENT_TYPE_TAR"),
   ]
+}
+
+extension Speechly_Sal_V1_CompileRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".CompileRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "app_source"),
+    2: .standard(proto: "batch_size"),
+    3: .standard(proto: "random_seed"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._appSource) }()
+      case 2: try { try decoder.decodeSingularInt32Field(value: &self.batchSize) }()
+      case 3: try { try decoder.decodeSingularInt32Field(value: &self.randomSeed) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if let v = self._appSource {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+    }
+    if self.batchSize != 0 {
+      try visitor.visitSingularInt32Field(value: self.batchSize, fieldNumber: 2)
+    }
+    if self.randomSeed != 0 {
+      try visitor.visitSingularInt32Field(value: self.randomSeed, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Sal_V1_CompileRequest, rhs: Speechly_Sal_V1_CompileRequest) -> Bool {
+    if lhs._appSource != rhs._appSource {return false}
+    if lhs.batchSize != rhs.batchSize {return false}
+    if lhs.randomSeed != rhs.randomSeed {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }
 
 extension Speechly_Sal_V1_CompileResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {

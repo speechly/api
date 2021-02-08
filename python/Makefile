@@ -15,6 +15,8 @@ dist: clean build
 .PHONY: dist
 
 .venv: Pipfile Pipfile.lock
+	PIPENV_VENV_IN_PROJECT=1 pipenv run pip install --upgrade pip
+	PIPENV_VENV_IN_PROJECT=1 pipenv run pip install --upgrade setuptools
 	PIPENV_VENV_IN_PROJECT=1 pipenv sync --dev
 	@touch $@
 
