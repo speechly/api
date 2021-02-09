@@ -99,7 +99,7 @@ publishing {
 
             credentials {
                 username = githubProperties.get("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
-                password = githubProperties.get("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+                password = githubProperties.get("gpr.token") as String? ?: System.getenv("GITHUB_TOKEN")
             }
         }
     }
