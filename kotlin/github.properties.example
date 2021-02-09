@@ -1,2 +1,2 @@
 gpr.user="github-username"
-gpr.key="github-token"
+gpr.token="github-token"
