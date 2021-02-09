@@ -29,7 +29,7 @@ import SwiftProtobuf
 public protocol Speechly_Sal_V1_CompilerClientProtocol: GRPCClient {
   func compile(
     callOptions: CallOptions?
-  ) -> ClientStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_CompileResult>
+  ) -> ClientStreamingCall<Speechly_Sal_V1_CompileRequest, Speechly_Sal_V1_CompileResult>
 
   func validate(
     callOptions: CallOptions?
@@ -54,7 +54,7 @@ extension Speechly_Sal_V1_CompilerClientProtocol {
   /// - Returns: A `ClientStreamingCall` with futures for the metadata, status and response.
   public func compile(
     callOptions: CallOptions? = nil
-  ) -> ClientStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_CompileResult> {
+  ) -> ClientStreamingCall<Speechly_Sal_V1_CompileRequest, Speechly_Sal_V1_CompileResult> {
     return self.makeClientStreamingCall(
       path: "/speechly.sal.v1.Compiler/Compile",
       callOptions: callOptions ?? self.defaultCallOptions
@@ -117,7 +117,7 @@ public final class Speechly_Sal_V1_CompilerClient: Speechly_Sal_V1_CompilerClien
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Sal_V1_CompilerProvider: CallHandlerProvider {
   /// Compiles the SAL source and returns compiled templates and / or any compilation errors and warnings.
-  func compile(context: UnaryResponseCallContext<Speechly_Sal_V1_CompileResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
+  func compile(context: UnaryResponseCallContext<Speechly_Sal_V1_CompileResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_CompileRequest>) -> Void>
   /// Validates the SAL source and returns compilation notices / warnings and errors, if any.
   func validate(context: UnaryResponseCallContext<Speechly_Sal_V1_ValidateResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
   /// Extracts raw, not compiled SAL templates from the SAL source.

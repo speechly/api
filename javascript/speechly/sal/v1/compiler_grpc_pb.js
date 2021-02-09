@@ -15,6 +15,17 @@ function deserialize_speechly_sal_v1_AppSource(buffer_arg) {
   return speechly_sal_v1_compiler_pb.AppSource.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_speechly_sal_v1_CompileRequest(arg) {
+  if (!(arg instanceof speechly_sal_v1_compiler_pb.CompileRequest)) {
+    throw new Error('Expected argument of type speechly.sal.v1.CompileRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_speechly_sal_v1_CompileRequest(buffer_arg) {
+  return speechly_sal_v1_compiler_pb.CompileRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_speechly_sal_v1_CompileResult(arg) {
   if (!(arg instanceof speechly_sal_v1_compiler_pb.CompileResult)) {
     throw new Error('Expected argument of type speechly.sal.v1.CompileResult');
@@ -63,10 +74,10 @@ compile: {
     path: '/speechly.sal.v1.Compiler/Compile',
     requestStream: true,
     responseStream: false,
-    requestType: speechly_sal_v1_compiler_pb.AppSource,
+    requestType: speechly_sal_v1_compiler_pb.CompileRequest,
     responseType: speechly_sal_v1_compiler_pb.CompileResult,
-    requestSerialize: serialize_speechly_sal_v1_AppSource,
-    requestDeserialize: deserialize_speechly_sal_v1_AppSource,
+    requestSerialize: serialize_speechly_sal_v1_CompileRequest,
+    requestDeserialize: deserialize_speechly_sal_v1_CompileRequest,
     responseSerialize: serialize_speechly_sal_v1_CompileResult,
     responseDeserialize: deserialize_speechly_sal_v1_CompileResult,
   },

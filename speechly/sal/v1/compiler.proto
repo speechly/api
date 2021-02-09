@@ -15,7 +15,7 @@ option java_package = "com.speechly.api.sal.v1";
 // i.e. all operations are performed with that user as a subject.
 service Compiler {
   // Compiles the SAL source and returns compiled templates and / or any compilation errors and warnings.
-  rpc Compile(stream AppSource) returns (CompileResult);
+  rpc Compile(stream CompileRequest) returns (CompileResult);
 
   // Validates the SAL source and returns compilation notices / warnings and errors, if any.
   rpc Validate(stream AppSource) returns (ValidateResult);
@@ -25,7 +25,7 @@ service Compiler {
 }
 
 // Contains a chunk of SAL source.
-// This message is consumed by `Compile` and `Validate` RPCs.
+// This message is consumed by `Validate` and `ExtractSALSources` RPCs and as a part of `CompileRequest`.
 message AppSource {
   // The ID of Speechly app to compile for.
   string app_id = 1;
@@ -44,6 +44,18 @@ message AppSource {
   }
   // Optional content type of the SAL source.
   ContentType content_type = 4;
+}
+
+// This message is consumed by `Compile` RPC
+message CompileRequest {
+  // A chunk of SAL source.
+  AppSource app_source = 1;
+
+  // Number of examples to return:
+  int32 batch_size = 2;
+
+  // Random seed for example sampling. Changing seed can give different output.
+  int32 random_seed = 3;
 }
 
 // Top-level message sent by the server for the `Compile` method.
@@ -73,7 +85,7 @@ message CompileResult {
 // Top-level message sent by the server for the `Validate` method.
 message ValidateResult {
   // A list of error / warning messages, may be empty if validation didn't find any issues.
-  repeated LineReference messages = 1; 
+  repeated LineReference messages = 1;
 }
 
 // Describes a message related to a line in SAL source code.
