@@ -1,84 +1,5 @@
 protoc:
   version: 3.14.0
-lint:
-  group: uber2
-  ignores:
-    - id: ENUM_FIELD_PREFIXES_EXCEPT_MESSAGE
-      files:
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-    - id: ENUM_ZERO_VALUES_INVALID_EXCEPT_MESSAGE
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-    - id: FILE_OPTIONS_EQUAL_GO_PACKAGE_V2_SUFFIX
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/identity/v1/identity.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-    - id: FILE_OPTIONS_EQUAL_JAVA_PACKAGE_PREFIX
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/identity/v1/identity.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-    - id: FILE_OPTIONS_GO_PACKAGE_NOT_LONG_FORM
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/identity/v1/identity.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-    - id: FILE_OPTIONS_REQUIRE_CSHARP_NAMESPACE
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/identity/v1/identity.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-    - id: FILE_OPTIONS_REQUIRE_OBJC_CLASS_PREFIX
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/identity/v1/identity.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-    - id: FILE_OPTIONS_REQUIRE_PHP_NAMESPACE
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/identity/v1/identity.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-    - id: NAMES_NO_DATA
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/sal/v1/compiler.proto
-    - id: REQUEST_RESPONSE_NAMES_MATCH_RPC
-      files:
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-    - id: REQUEST_RESPONSE_TYPES_ONLY_IN_FILE
-      files:
-        - speechly/config/v1/config_api.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-    - id: REQUEST_RESPONSE_TYPES_UNIQUE
-      files:
-        - speechly/sal/v1/compiler.proto
-    - id: SERVICE_NAMES_API_SUFFIX
-      files:
-        - speechly/identity/v1/identity.proto
-        - speechly/sal/v1/compiler.proto
-        - speechly/slu/v1/slu.proto
-        - speechly/slu/v1/wlu.proto
-
 generate:
   go_options:
     import_path: github.com/speechly/api/proto
@@ -109,3 +30,53 @@ generate:
     - name: doc
       flags: markdown,API.md
       output: ..
+lint:
+  group: uber2
+  rules:
+    remove:
+      # lint rules want short go_package, but protogen wants it long form:
+      # https://developers.google.com/protocol-buffers/docs/reference/go-generated#package
+      - FILE_OPTIONS_EQUAL_GO_PACKAGE_V2_SUFFIX
+      - FILE_OPTIONS_GO_PACKAGE_NOT_LONG_FORM
+
+  ignores:
+    - id: ENUM_FIELD_PREFIXES_EXCEPT_MESSAGE
+      files:
+        - speechly/sal/v1/compiler.proto
+        - speechly/slu/v1/slu.proto
+    - id: ENUM_ZERO_VALUES_INVALID_EXCEPT_MESSAGE
+      files:
+        - speechly/config/v1/config_api.proto
+        - speechly/sal/v1/compiler.proto
+        - speechly/slu/v1/slu.proto
+    - id: FILE_OPTIONS_EQUAL_JAVA_PACKAGE_PREFIX
+      files:
+        - speechly/config/v1/config_api.proto
+        - speechly/identity/v1/identity.proto
+        - speechly/sal/v1/compiler.proto
+        - speechly/slu/v1/slu.proto
+        - speechly/slu/v1/wlu.proto
+    - id: NAMES_NO_DATA
+      files:
+        - speechly/config/v1/config_api.proto
+        - speechly/sal/v1/compiler.proto
+    - id: REQUEST_RESPONSE_NAMES_MATCH_RPC
+      files:
+        - speechly/sal/v1/compiler.proto
+        - speechly/slu/v1/slu.proto
+        - speechly/slu/v1/wlu.proto
+    - id: REQUEST_RESPONSE_TYPES_ONLY_IN_FILE
+      files:
+        - speechly/config/v1/config_api.proto
+        - speechly/sal/v1/compiler.proto
+        - speechly/slu/v1/slu.proto
+        - speechly/slu/v1/wlu.proto
+    - id: REQUEST_RESPONSE_TYPES_UNIQUE
+      files:
+        - speechly/sal/v1/compiler.proto
+    - id: SERVICE_NAMES_API_SUFFIX
+      files:
+        - speechly/identity/v1/identity.proto
+        - speechly/sal/v1/compiler.proto
+        - speechly/slu/v1/slu.proto
+        - speechly/slu/v1/wlu.proto

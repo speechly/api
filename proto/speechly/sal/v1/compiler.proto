@@ -2,10 +2,13 @@ syntax = "proto3";
 
 package speechly.sal.v1;
 
+option csharp_namespace = "Speechly.Sal.V1";
 option go_package = "speechly/sal/v1;salv1";
-option java_package = "com.speechly.api.sal.v1";
 option java_multiple_files = true;
 option java_outer_classname = "CompilerProto";
+option java_package = "com.speechly.api.sal.v1";
+option objc_class_prefix = "SSX";
+option php_namespace = "Speechly\\Sal\\V1";
 
 // Service that implements Speechly SAL API (https://speechly.com/docs/api/sal).
 //
@@ -18,10 +21,8 @@ option java_outer_classname = "CompilerProto";
 service Compiler {
   // Compiles the SAL source and returns compiled templates and / or any compilation errors and warnings.
   rpc Compile(stream CompileRequest) returns (CompileResult);
-
   // Validates the SAL source and returns compilation notices / warnings and errors, if any.
   rpc Validate(stream AppSource) returns (ValidateResult);
-
   // Extracts raw, not compiled SAL templates from the SAL source.
   rpc ExtractSALSources(stream AppSource) returns (stream ExtractSALSourcesResult);
 }
@@ -31,18 +32,15 @@ service Compiler {
 message AppSource {
   // The ID of Speechly app to compile for.
   string app_id = 1;
-
   // The language of SAL as a BCP-47 language tag (e.g. "en-US").
   string language = 2;
-
   // Chunk of SAL source code.
   bytes data_chunk = 3;
-
   // Content type options.
   enum ContentType {
-      CONTENT_TYPE_UNSPECIFIED = 0;
-      CONTENT_TYPE_YAML = 1;
-      CONTENT_TYPE_TAR = 2;
+    CONTENT_TYPE_UNSPECIFIED = 0;
+    CONTENT_TYPE_YAML = 1;
+    CONTENT_TYPE_TAR = 2;
   }
   // Optional content type of the SAL source.
   ContentType content_type = 4;
@@ -52,10 +50,8 @@ message AppSource {
 message CompileRequest {
   // A chunk of SAL source.
   AppSource app_source = 1;
-
   // Number of examples to return:
   int32 batch_size = 2;
-
   // Random seed for example sampling. Changing seed can give different output.
   int32 random_seed = 3;
 }
@@ -66,20 +62,15 @@ message CompileResult {
   enum Result {
     // Result has been successfully compiled.
     COMPILE_SUCCESS = 0;
-
     // Result has failed to compile.
     COMPILE_FAILURE = 1;
-
     // Result has been compiled, but with warnings.
     COMPILE_WARNING = 2;
   }
-
   // The status of compilation.
   Result result = 1;
-
   // (If the result was compiled) A list of compiled templates.
   repeated string templates = 2;
-
   // (If the result failed or had warnings) A list of error / warning messages.
   repeated LineReference messages = 3;
 }
@@ -96,26 +87,19 @@ message LineReference {
   enum Level {
     // A notice - for information only.
     LEVEL_NOTE = 0;
-
     // A warning, does not fail compilation or validation, but should be addressed.
     LEVEL_WARNING = 1;
-
     // An error, fails compilation and validation.
     LEVEL_ERROR = 2;
   }
-
   // The line in SAL source that this message refers to.
   uint64 line = 1;
-
   // The column in SAL source that this message refers to.
   uint32 column = 2;
-
   // The file in SAL sources that this message refers to.
   string file = 3;
-
   // The level of the message.
   Level level = 4;
-
   // The contents of the message.
   string message = 5;
 }

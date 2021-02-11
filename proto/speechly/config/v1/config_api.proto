@@ -2,11 +2,13 @@ syntax = "proto3";
 
 package speechly.config.v1;
 
+option csharp_namespace = "Speechly.Config.V1";
 option go_package = "speechly/config/v1;configv1";
-option java_package = "com.speechly.api.config.v1";
 option java_multiple_files = true;
 option java_outer_classname = "ConfigApiProto";
-
+option java_package = "com.speechly.api.config.v1";
+option objc_class_prefix = "SCX";
+option php_namespace = "Speechly\\Config\\V1";
 
 // Service that implements Speechly Configuration API (https://speechly.com/docs/api/configuration).
 //
@@ -19,47 +21,35 @@ service ConfigAPI {
 
   // Lists all current user projects.
   rpc GetProject(GetProjectRequest) returns (GetProjectResponse);
-
   // Creates a new project for current user.
   rpc CreateProject(CreateProjectRequest) returns (CreateProjectResponse);
-
   // Updates an existing project.
   rpc UpdateProject(UpdateProjectRequest) returns (UpdateProjectResponse);
-
   // Lists all users with access to a project.
   rpc GetProjectParticipants(GetProjectParticipantsRequest) returns (GetProjectParticipantsResponse);
-
   // Generates an invitation link for another user to join a project,
   // which can be used to call JoinProject.
   rpc Invite(InviteRequest) returns (InviteResponse);
-
   // Joins a project as a current user.
   // Requires a link generated with `Invite`.
   rpc JoinProject(JoinProjectRequest) returns (JoinProjectResponse);
-
   // Application API methods.
 
   // Lists all applications in a project.
   rpc ListApps(ListAppsRequest) returns (ListAppsResponse);
-
   // Gets detailed information about an application.
   rpc GetApp(GetAppRequest) returns (GetAppResponse);
-
   // Creates a new application for current user.
   rpc CreateApp(CreateAppRequest) returns (CreateAppResponse);
-
   // Updates an existing application.
   rpc UpdateApp(UpdateAppRequest) returns (UpdateAppResponse);
-
   // Deletes an existing application.
   rpc DeleteApp(DeleteAppRequest) returns (DeleteAppResponse);
-
   // Training API methods.
 
   // Uploads new training data for an application.
   // This will create and queue a new training job for that application.
   rpc UploadTrainingData(stream UploadTrainingDataRequest) returns (UploadTrainingDataResponse);
-
   // Downloads current training data for an application.
   rpc DownloadCurrentTrainingData(DownloadCurrentTrainingDataRequest) returns (stream DownloadCurrentTrainingDataResponse);
 }
@@ -71,7 +61,6 @@ message GetProjectRequest {}
 message GetProjectResponse {
   // A list of project IDs.
   repeated string project = 1;
-
   // A list of project names in the same order as project IDs.
   repeated string project_names = 2;
 }
@@ -86,7 +75,6 @@ message CreateProjectRequest {
 message CreateProjectResponse {
   // The ID of created project.
   string project = 1;
-
   // The name of created project.
   string name = 2;
 }
@@ -96,7 +84,6 @@ message CreateProjectResponse {
 message UpdateProjectRequest {
   // The ID of the project.
   string project = 1;
-
   // New name of the project.
   string name = 2;
 }
@@ -116,14 +103,11 @@ message GetProjectParticipantsResponse {
   message Participant {
     // Participant's name, may be empty.
     string name = 1;
-
     // Participant's email, may be empty.
     string email = 2;
-
     // Participants identifier.
     string id = 3;
   }
-
   // A list of project's participants.
   repeated Participant participants = 1;
 }
@@ -179,7 +163,6 @@ message GetAppResponse {
 message CreateAppRequest {
   // The ID of the project in which the app will be created.
   string project = 1;
-
   // The app information to use for creation.
   App app = 2;
 }
@@ -214,22 +197,17 @@ message UploadTrainingDataRequest {
   // Identifies the content type of training data payload.
   enum ContentType {
     CONTENT_TYPE_UNSPECIFIED = 0;
-
     // A YAML file that contains intents, entities, SAL script and metadata.
     // Refer to Speechly documentation (https://www.speechly.com/docs/) for the details on the format.
     CONTENT_TYPE_YAML = 1;
-
     // A TAR archive file that contains the YAML file with training payload and supporting vocabulary files.
     // Refer to Speechly documentation (https://www.speechly.com/docs/) for the details on the format.
     CONTENT_TYPE_TAR = 2;
   }
-
   // The ID of the app to train.
   string app_id = 1;
-
   // Training data payload.
   bytes data_chunk = 2;
-
   // Content type of the training data payload.
   ContentType content_type = 3;
 }
@@ -249,10 +227,10 @@ message DownloadCurrentTrainingDataRequest {
 message DownloadCurrentTrainingDataResponse {
   // The content type of the training data.
   enum ContentType {
-     CONTENT_TYPE_UNSPECIFIED = 0;
-     CONTENT_TYPE_YAML = 1;
-     CONTENT_TYPE_TAR = 2;
-   }
+    CONTENT_TYPE_UNSPECIFIED = 0;
+    CONTENT_TYPE_YAML = 1;
+    CONTENT_TYPE_TAR = 2;
+  }
   // Training data payload.
   bytes data_chunk = 1;
   // Training data content type, see enum ContentType.
@@ -265,43 +243,32 @@ message App {
   enum Status {
     // Indicates that the application only been created, but never trained.
     STATUS_UNSPECIFIED = 0;
-
     // Indicates that the application is currently in the training queue.
     STATUS_NEW = 1;
-
     // Indicates that the application is currently being trained.
     STATUS_TRAINING = 2;
-
     // Indicates that the application has been successfully trained.
     STATUS_TRAINED = 3;
-
     // Indicates that the application has failed the training.
     STATUS_FAILED = 4;
   }
-
   // The ID of the application.
   // This field is ignored when creating an application.
   string id = 1;
-
   // The language of the application as a BCP-47 language tag (e.g. "en-US").
   // Required.
   string language = 2;
-
   // The status of the application.
   // This field is ignored in requests.
   Status status = 3;
-
   // The human-friendly name of the application.
   string name = 4;
-
   // The size of the training queue size if the application is queued for training.
   // This field is ignored in requests.
   int32 queue_size = 5;
-
   // The detailed error description if the application failed training.
   // This field is ignored in requests.
   string error_msg = 6;
-
   // Estimated training time remaining if the application is being trained.
   // Will equal to 0 when no estimate is available.
   // This field is ignored in requests.

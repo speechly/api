@@ -1,4 +1,4 @@
-VERSION ?= "latest"
+VERSION ?= latest
 PROTOS  := $(shell find proto/speechly -name *proto)
 PROTOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR)/proto langma/prototool
 

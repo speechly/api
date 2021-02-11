@@ -3,10 +3,10 @@ syntax = "proto3";
 package speechly.identity.v2;
 
 option csharp_namespace = "Speechly.Identity.V2";
-option go_package = "identityv2";
-option java_package = "com.speechly.identity.v2";
+option go_package = "speechly/identity/v2;identityv2";
 option java_multiple_files = true;
 option java_outer_classname = "IdentityApiProto";
+option java_package = "com.speechly.identity.v2";
 option objc_class_prefix = "SIX";
 option php_namespace = "Speechly\\Identity\\V2";
 
@@ -26,16 +26,13 @@ message LoginRequest {
   // A unique end-user device identifier.
   // Required.
   string device_id = 1;
-
   oneof scope {
     // Login scope application: use the given application context for all utterances.
     ApplicationScope application = 2;
-
     // Login scope project: define the target application per utterance.
     // The target applications must be located in the same project.
     ProjectScope project = 3;
   }
-
 }
 
 // Top-level message returned by the server for the `Login` method.
@@ -45,13 +42,10 @@ message LoginResponse {
   // The token has expiration, so you should check whether it has expired before using it.
   // It is safe to cache the token for future use until its expiration date.
   string token = 1;
-
   // Amount of seconds the returned token is valid.
   uint32 valid_for_s = 2;
-
   // Token expiration time in seconds after 1970-01-01 ("unix time").
   uint64 expires_at_epoch = 3;
-
   // ISO-formatted UTC timestamp of the expiration time of the returned token.
   string expires_at = 4;
 }

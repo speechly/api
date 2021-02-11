@@ -2,10 +2,13 @@ syntax = "proto3";
 
 package speechly.identity.v1;
 
+option csharp_namespace = "Speechly.Identity.V1";
 option go_package = "speechly/identity/v1;identityv1";
-option java_package = "com.speechly.api.identity.v1";
 option java_multiple_files = true;
 option java_outer_classname = "IdentityProto";
+option java_package = "com.speechly.api.identity.v1";
+option objc_class_prefix = "SIX";
+option php_namespace = "Speechly\\Identity\\V1";
 
 // Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
 //
@@ -21,16 +24,13 @@ message LoginRequest {
   // A unique end-user device identifier.
   // Required.
   string device_id = 1;
-
   // Speechly application ID.
   // Required.
   string app_id = 2;
-
   // The language to use.
   // Must be a supported BCP-47 language code, eg. 'en-US'.
   // Defaults to the application's language.
   string language_code = 3;
-
   // Define a specific model configuration to use.
   // Defaults to the application's latest configuration.
   string config_id = 4;

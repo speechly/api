@@ -2,10 +2,13 @@ syntax = "proto3";
 
 package speechly.slu.v1;
 
+option csharp_namespace = "Speechly.Slu.V1";
 option go_package = "speechly/slu/v1;sluv1";
-option java_package = "com.speechly.api.slu.v1";
 option java_multiple_files = true;
 option java_outer_classname = "WluProto";
+option java_package = "com.speechly.api.slu.v1";
+option objc_class_prefix = "SSX";
+option php_namespace = "Speechly\\Slu\\V1";
 
 // Service that implements Speechly WLU (Written Language Understanding) API (https://speechly.com/docs/api/wlu).
 //
@@ -13,7 +16,7 @@ option java_outer_classname = "WluProto";
 // The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
 //
 // ctx := context.Background()
-// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken) 
+// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
 // res, err := speechlyWLUClient.Text(ctx, req)
 service WLU {
   // Performs recognition of a text with specified language.
@@ -25,7 +28,6 @@ message WLURequest {
   // The language of the text sent in the request as a BCP-47 language tag (e.g. "en-US").
   // Required.
   string language_code = 1;
-
   // The text to recognise.
   // Required.
   string text = 2;
@@ -44,13 +46,10 @@ message WLUResponse {
 message WLUSegment {
   // The portion of text that contains this segment.
   string text = 1;
-
   // The list of word tokens which are contained in this segment.
   repeated WLUToken tokens = 2;
-
   // The list of entities which are contained in this segment.
   repeated WLUEntity entities = 3;
-
   // The intent that defines this segment.
   WLUIntent intent = 4;
 }
@@ -59,7 +58,6 @@ message WLUSegment {
 message WLUToken {
   // The value of the word.
   string word = 1;
-
   // Position of the token in the text.
   int32 index = 2;
 }
@@ -81,14 +79,11 @@ message WLUToken {
 message WLUEntity {
   // The type of the entity, e.g. `restaurant_type` or `date`.
   string entity = 1;
-
   // The value of the entity, e.g. `burger restaurant` or `tomorrow`.
   string value = 2;
-
   // The starting index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.
   // Inclusive.
   int32 start_position = 3;
-
   // The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.
   // Exclusive.
   int32 end_position = 4;
