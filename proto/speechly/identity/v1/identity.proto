@@ -4,6 +4,8 @@ package speechly.identity.v1;
 
 option go_package = "speechly/identity/v1;identityv1";
 option java_package = "com.speechly.api.identity.v1";
+option java_multiple_files = true;
+option java_outer_classname = "IdentityProto";
 
 // Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
 //

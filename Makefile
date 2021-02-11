@@ -1,44 +1,23 @@
-PROTOS    := $(shell find ./speechly -name *.proto)
-SWIFT_PROTOS_DIR :=  ./Sources/SpeechlyAPI
-SWIFT_BUILD_DIR := ./.build
-SWIFT_LIB_VERSION := 1.0.0-alpha.20
-SWIFT_PLUGINS_DIR := ./protoc_plugins
-SWIFT_PROTOC_GEN_SWIFT := $(SWIFT_PLUGINS_DIR)/bin/protoc-gen-swift
-SWIFT_PROTOC_GEN_GRPC_SWIFT := $(SWIFT_PLUGINS_DIR)/bin/protoc-gen-grpc-swift
+VERSION ?= "latest"
+PROTOS  := $(shell find proto/speechly -name *proto)
+PROTOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR)/proto langma/prototool
 
-build: build-swift
-	@echo "Generating code stubs"
-	@make -C go
-	@make -C python
-	@make -C javascript
-	@make -C kotlin
-.PHONY: build
+export VERSION
 
-build-swift: $(SWIFT_BUILD_DIR)
-.PHONY: build-swift
+SUBDIRS = java
 
-clean-swift:
-	@rm -rf $(SWIFT_BUILD_DIR) $(SWIFT_PROTOS_DIR) $(SWIFT_PLUGINS_DIR) || true
-.PHONY: clean-swift
+test: $(PROTOS)
+	$(PROTOC) lint
 
-$(SWIFT_BUILD_DIR): $(SWIFT_PROTOS_DIR)
-	@swift build
-	@touch $@
+build: $(PROTOS)
+	$(PROTOC) generate
 
-$(SWIFT_PROTOS_DIR): $(PROTOS) $(SWIFT_PLUGINS_DIR)
-	@mkdir -p $(SWIFT_PROTOS_DIR)
-	@protoc \
-		-I . \
-		--plugin=$(SWIFT_PROTOC_GEN_SWIFT) \
-		--plugin=$(SWIFT_PROTOC_GEN_GRPC_SWIFT) \
-		--swift_out="$(SWIFT_PROTOS_DIR)" \
-		--swift_opt=Visibility=Public \
-		--grpc-swift_out="$(SWIFT_PROTOS_DIR)" \
-		--grpc-swift_opt=Visibility=Public \
-		$(PROTOS)
+dist: build $(SUBDIRS)
 
-$(SWIFT_PLUGINS_DIR):
-	@mkdir $(SWIFT_PLUGINS_DIR)
-	@curl -L https://github.com/grpc/grpc-swift/releases/download/$(SWIFT_LIB_VERSION)/protoc-grpc-swift-plugins-$(SWIFT_LIB_VERSION).zip -o $(SWIFT_PLUGINS_DIR)/plugins.zip
-	@unzip $(SWIFT_PLUGINS_DIR)/plugins.zip -d $(SWIFT_PLUGINS_DIR)
-	@rm $(SWIFT_PLUGINS_DIR)/plugins.zip
+.PHONY: subdirs $(SUBDIRS)
+$(SUBDIRS):
+	+$(MAKE) -C $@ $(MAKECMDGOALS)
+
+clean: $(SUBDIRS)
+
+.PHONY: test build dist clean

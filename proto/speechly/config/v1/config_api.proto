@@ -4,6 +4,9 @@ package speechly.config.v1;
 
 option go_package = "speechly/config/v1;configv1";
 option java_package = "com.speechly.api.config.v1";
+option java_multiple_files = true;
+option java_outer_classname = "ConfigApiProto";
+
 
 // Service that implements Speechly Configuration API (https://speechly.com/docs/api/configuration).
 //
@@ -244,6 +247,7 @@ message DownloadCurrentTrainingDataRequest {
 
 // Top-level message sent by the server for the `DownloadCurrentTrainingData` method.
 message DownloadCurrentTrainingDataResponse {
+  // The content type of the training data.
   enum ContentType {
      CONTENT_TYPE_UNSPECIFIED = 0;
      CONTENT_TYPE_YAML = 1;

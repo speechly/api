@@ -4,6 +4,8 @@ package speechly.sal.v1;
 
 option go_package = "speechly/sal/v1;salv1";
 option java_package = "com.speechly.api.sal.v1";
+option java_multiple_files = true;
+option java_outer_classname = "CompilerProto";
 
 // Service that implements Speechly SAL API (https://speechly.com/docs/api/sal).
 //

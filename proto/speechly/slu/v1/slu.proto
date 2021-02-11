@@ -4,6 +4,8 @@ package speechly.slu.v1;
 
 option go_package = "speechly/slu/v1;sluv1";
 option java_package = "com.speechly.api.slu.v1";
+option java_multiple_files = true;
+option java_outer_classname = "SluProto";
 
 // Service that implements Speechly SLU (Spoken Language Understanding) API (https://speechly.com/docs/api/slu).
 //
