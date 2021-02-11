@@ -25,16 +25,30 @@ import NIO
 import SwiftProtobuf
 
 
-/// Usage: instantiate Speechly_Slu_V1_SLUClient, then call methods of this protocol to make API calls.
+/// Service that implements Speechly SLU (Spoken Language Understanding) API (https://speechly.com/docs/api/slu).
+///
+/// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
+/// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+///
+/// ctx := context.Background()
+/// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
+/// stream, err := speechlySLUClient.Stream(ctx)
+///
+/// Usage: instantiate `Speechly_Slu_V1_SLUClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Slu_V1_SLUClientProtocol: GRPCClient {
+  var serviceName: String { get }
+  var interceptors: Speechly_Slu_V1_SLUClientInterceptorFactoryProtocol? { get }
+
   func stream(
     callOptions: CallOptions?,
     handler: @escaping (Speechly_Slu_V1_SLUResponse) -> Void
   ) -> BidirectionalStreamingCall<Speechly_Slu_V1_SLURequest, Speechly_Slu_V1_SLUResponse>
-
 }
 
 extension Speechly_Slu_V1_SLUClientProtocol {
+  public var serviceName: String {
+    return "speechly.slu.v1.SLU"
+  }
 
   /// Performs bidirectional streaming speech recognition: receive results while sending audio.
   ///
@@ -73,28 +87,53 @@ extension Speechly_Slu_V1_SLUClientProtocol {
     return self.makeBidirectionalStreamingCall(
       path: "/speechly.slu.v1.SLU/Stream",
       callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeStreamInterceptors() ?? [],
       handler: handler
     )
   }
 }
 
+public protocol Speechly_Slu_V1_SLUClientInterceptorFactoryProtocol {
+
+  /// - Returns: Interceptors to use when invoking 'stream'.
+  func makeStreamInterceptors() -> [ClientInterceptor<Speechly_Slu_V1_SLURequest, Speechly_Slu_V1_SLUResponse>]
+}
+
 public final class Speechly_Slu_V1_SLUClient: Speechly_Slu_V1_SLUClientProtocol {
   public let channel: GRPCChannel
   public var defaultCallOptions: CallOptions
+  public var interceptors: Speechly_Slu_V1_SLUClientInterceptorFactoryProtocol?
 
   /// Creates a client for the speechly.slu.v1.SLU service.
   ///
   /// - Parameters:
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
-  public init(channel: GRPCChannel, defaultCallOptions: CallOptions = CallOptions()) {
+  ///   - interceptors: A factory providing interceptors for each RPC.
+  public init(
+    channel: GRPCChannel,
+    defaultCallOptions: CallOptions = CallOptions(),
+    interceptors: Speechly_Slu_V1_SLUClientInterceptorFactoryProtocol? = nil
+  ) {
     self.channel = channel
     self.defaultCallOptions = defaultCallOptions
+    self.interceptors = interceptors
   }
 }
 
+/// Service that implements Speechly SLU (Spoken Language Understanding) API (https://speechly.com/docs/api/slu).
+///
+/// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
+/// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+///
+/// ctx := context.Background()
+/// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
+/// stream, err := speechlySLUClient.Stream(ctx)
+///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Slu_V1_SLUProvider: CallHandlerProvider {
+  var interceptors: Speechly_Slu_V1_SLUServerInterceptorFactoryProtocol? { get }
+
   /// Performs bidirectional streaming speech recognition: receive results while sending audio.
   ///
   /// First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.
@@ -125,15 +164,29 @@ extension Speechly_Slu_V1_SLUProvider {
 
   /// Determines, calls and returns the appropriate request handler, depending on the request's method.
   /// Returns nil for methods not handled by this service.
-  public func handleMethod(_ methodName: Substring, callHandlerContext: CallHandlerContext) -> GRPCCallHandler? {
-    switch methodName {
+  public func handle(
+    method name: Substring,
+    context: CallHandlerContext
+  ) -> GRPCServerHandlerProtocol? {
+    switch name {
     case "Stream":
-      return CallHandlerFactory.makeBidirectionalStreaming(callHandlerContext: callHandlerContext) { context in
-        return self.stream(context: context)
-      }
+      return BidirectionalStreamingServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Slu_V1_SLURequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Slu_V1_SLUResponse>(),
+        interceptors: self.interceptors?.makeStreamInterceptors() ?? [],
+        observerFactory: self.stream(context:)
+      )
 
-    default: return nil
+    default:
+      return nil
     }
   }
 }
 
+public protocol Speechly_Slu_V1_SLUServerInterceptorFactoryProtocol {
+
+  /// - Returns: Interceptors to use when handling 'stream'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeStreamInterceptors() -> [ServerInterceptor<Speechly_Slu_V1_SLURequest, Speechly_Slu_V1_SLUResponse>]
+}

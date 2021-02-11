@@ -498,6 +498,7 @@ public struct Speechly_Config_V1_DownloadCurrentTrainingDataResponse {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
+  /// The content type of the training data.
   public enum ContentType: SwiftProtobuf.Enum {
     public typealias RawValue = Int
     case unspecified // = 0

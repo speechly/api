@@ -25,16 +25,30 @@ import NIO
 import SwiftProtobuf
 
 
-/// Usage: instantiate Speechly_Slu_V1_WLUClient, then call methods of this protocol to make API calls.
+/// Service that implements Speechly WLU (Written Language Understanding) API (https://speechly.com/docs/api/wlu).
+///
+/// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
+/// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+///
+/// ctx := context.Background()
+/// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
+/// res, err := speechlyWLUClient.Text(ctx, req)
+///
+/// Usage: instantiate `Speechly_Slu_V1_WLUClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Slu_V1_WLUClientProtocol: GRPCClient {
+  var serviceName: String { get }
+  var interceptors: Speechly_Slu_V1_WLUClientInterceptorFactoryProtocol? { get }
+
   func text(
     _ request: Speechly_Slu_V1_WLURequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Speechly_Slu_V1_WLURequest, Speechly_Slu_V1_WLUResponse>
-
 }
 
 extension Speechly_Slu_V1_WLUClientProtocol {
+  public var serviceName: String {
+    return "speechly.slu.v1.WLU"
+  }
 
   /// Performs recognition of a text with specified language.
   ///
@@ -49,28 +63,53 @@ extension Speechly_Slu_V1_WLUClientProtocol {
     return self.makeUnaryCall(
       path: "/speechly.slu.v1.WLU/Text",
       request: request,
-      callOptions: callOptions ?? self.defaultCallOptions
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeTextInterceptors() ?? []
     )
   }
+}
+
+public protocol Speechly_Slu_V1_WLUClientInterceptorFactoryProtocol {
+
+  /// - Returns: Interceptors to use when invoking 'text'.
+  func makeTextInterceptors() -> [ClientInterceptor<Speechly_Slu_V1_WLURequest, Speechly_Slu_V1_WLUResponse>]
 }
 
 public final class Speechly_Slu_V1_WLUClient: Speechly_Slu_V1_WLUClientProtocol {
   public let channel: GRPCChannel
   public var defaultCallOptions: CallOptions
+  public var interceptors: Speechly_Slu_V1_WLUClientInterceptorFactoryProtocol?
 
   /// Creates a client for the speechly.slu.v1.WLU service.
   ///
   /// - Parameters:
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
-  public init(channel: GRPCChannel, defaultCallOptions: CallOptions = CallOptions()) {
+  ///   - interceptors: A factory providing interceptors for each RPC.
+  public init(
+    channel: GRPCChannel,
+    defaultCallOptions: CallOptions = CallOptions(),
+    interceptors: Speechly_Slu_V1_WLUClientInterceptorFactoryProtocol? = nil
+  ) {
     self.channel = channel
     self.defaultCallOptions = defaultCallOptions
+    self.interceptors = interceptors
   }
 }
 
+/// Service that implements Speechly WLU (Written Language Understanding) API (https://speechly.com/docs/api/wlu).
+///
+/// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
+/// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+///
+/// ctx := context.Background()
+/// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
+/// res, err := speechlyWLUClient.Text(ctx, req)
+///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Slu_V1_WLUProvider: CallHandlerProvider {
+  var interceptors: Speechly_Slu_V1_WLUServerInterceptorFactoryProtocol? { get }
+
   /// Performs recognition of a text with specified language.
   func text(request: Speechly_Slu_V1_WLURequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Slu_V1_WLUResponse>
 }
@@ -80,17 +119,29 @@ extension Speechly_Slu_V1_WLUProvider {
 
   /// Determines, calls and returns the appropriate request handler, depending on the request's method.
   /// Returns nil for methods not handled by this service.
-  public func handleMethod(_ methodName: Substring, callHandlerContext: CallHandlerContext) -> GRPCCallHandler? {
-    switch methodName {
+  public func handle(
+    method name: Substring,
+    context: CallHandlerContext
+  ) -> GRPCServerHandlerProtocol? {
+    switch name {
     case "Text":
-      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
-        return { request in
-          self.text(request: request, context: context)
-        }
-      }
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Slu_V1_WLURequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Slu_V1_WLUResponse>(),
+        interceptors: self.interceptors?.makeTextInterceptors() ?? [],
+        userFunction: self.text(request:context:)
+      )
 
-    default: return nil
+    default:
+      return nil
     }
   }
 }
 
+public protocol Speechly_Slu_V1_WLUServerInterceptorFactoryProtocol {
+
+  /// - Returns: Interceptors to use when handling 'text'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeTextInterceptors() -> [ServerInterceptor<Speechly_Slu_V1_WLURequest, Speechly_Slu_V1_WLUResponse>]
+}
