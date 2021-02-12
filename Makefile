@@ -6,7 +6,7 @@ PROTODOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoin
 
 export VERSION
 
-SUBDIRS   = java python
+SUBDIRS   = java python javascript
 
 test: $(PROTOS)
 	@$(PROTOTOOL) lint
