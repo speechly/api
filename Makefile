@@ -16,7 +16,7 @@ build: $(PROTOS)
 	@$(PROTODOC) --proto_path=proto --doc_out=. --doc_opt=markdown,API.md $(PROTOS)
 
 check_stubs: build
-	@if [ "$(shell git status --porcelain)" != "" ]; then echo "Stubs not committed after generate: '$(CHANGES)'"; exit 1; fi
+	@if [ "$(shell git status --porcelain)" != "" ]; then echo "Repo not clean after generate: '$(shell git status --porcelain)'"; exit 1; fi
 
 deploy: check_stubs $(SUBDIRS)
 
