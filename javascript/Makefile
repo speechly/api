@@ -1,35 +1,17 @@
-PROTOS    := $(shell find ../speechly -name *.proto)
-PACKAGE   := package.json
-MODULES   := ./node_modules
-TARGET    := ./speechly
-PROTOC    := "$(MODULES)/.bin/grpc_tools_node_protoc"
-PROTOTS   := "$(MODULES)/.bin/protoc-gen-ts"
-PROTOGRPC := "$(MODULES)/.bin/grpc_tools_node_protoc_plugin"
+VERSION ?= latest
 
-all: clean build
-.PHONY: all
+export VERSION
 
-build: $(TARGET)
-.PHONY: build
+build: node_modules speechly
+
+node_modules: package.json
+	@npm install
+
+deploy: build
+	@npm version $(VERSION)
+	@npm publish
 
 clean:
-	rm -rf $(TARGET)
-	rm -rf $(MODULES)
-.PHONY: clean
+	rm -rf node_modules
 
-
-$(TARGET): $(PROTOS) $(MODULES)
-	$(PROTOC) \
-		-I .. \
-		--plugin=protoc-gen-grpc="$(PROTOGRPC)" \
-		--plugin=protoc-gen-ts="$(PROTOTS)" \
-		--js_out=import_style=commonjs,binary:. \
-		--grpc_out="." \
-		--ts_out="service=grpc-node:." \
-		$(PROTOS)
-
-	@touch $@
-
-$(MODULES): $(PACKAGE)
-	@yarn install --frozen-lockfile
-	@touch $@
+.PHONY: build deploy clean

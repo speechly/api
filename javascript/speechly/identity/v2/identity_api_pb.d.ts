@@ -1,24 +1,30 @@
-// package: speechly.identity.v1
-// file: speechly/identity/v1/identity.proto
+// package: speechly.identity.v2
+// file: speechly/identity/v2/identity_api.proto
 
 /* tslint:disable */
 /* eslint-disable */
 
 import * as jspb from "google-protobuf";
+import * as speechly_identity_v2_identity_pb from "../../../speechly/identity/v2/identity_pb";
 
 export class LoginRequest extends jspb.Message { 
     getDeviceId(): string;
     setDeviceId(value: string): LoginRequest;
 
-    getAppId(): string;
-    setAppId(value: string): LoginRequest;
 
-    getLanguageCode(): string;
-    setLanguageCode(value: string): LoginRequest;
+    hasApplication(): boolean;
+    clearApplication(): void;
+    getApplication(): speechly_identity_v2_identity_pb.ApplicationScope | undefined;
+    setApplication(value?: speechly_identity_v2_identity_pb.ApplicationScope): LoginRequest;
 
-    getConfigId(): string;
-    setConfigId(value: string): LoginRequest;
 
+    hasProject(): boolean;
+    clearProject(): void;
+    getProject(): speechly_identity_v2_identity_pb.ProjectScope | undefined;
+    setProject(value?: speechly_identity_v2_identity_pb.ProjectScope): LoginRequest;
+
+
+    getScopeCase(): LoginRequest.ScopeCase;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): LoginRequest.AsObject;
@@ -33,15 +39,33 @@ export class LoginRequest extends jspb.Message {
 export namespace LoginRequest {
     export type AsObject = {
         deviceId: string,
-        appId: string,
-        languageCode: string,
-        configId: string,
+        application?: speechly_identity_v2_identity_pb.ApplicationScope.AsObject,
+        project?: speechly_identity_v2_identity_pb.ProjectScope.AsObject,
     }
+
+    export enum ScopeCase {
+        SCOPE_NOT_SET = 0,
+    
+    APPLICATION = 2,
+
+    PROJECT = 3,
+
+    }
+
 }
 
 export class LoginResponse extends jspb.Message { 
     getToken(): string;
     setToken(value: string): LoginResponse;
+
+    getValidForS(): number;
+    setValidForS(value: number): LoginResponse;
+
+    getExpiresAtEpoch(): number;
+    setExpiresAtEpoch(value: number): LoginResponse;
+
+    getExpiresAt(): string;
+    setExpiresAt(value: string): LoginResponse;
 
 
     serializeBinary(): Uint8Array;
@@ -57,5 +81,8 @@ export class LoginResponse extends jspb.Message {
 export namespace LoginResponse {
     export type AsObject = {
         token: string,
+        validForS: number,
+        expiresAtEpoch: number,
+        expiresAt: string,
     }
 }

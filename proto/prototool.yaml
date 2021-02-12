@@ -17,8 +17,6 @@ generate:
       output: ../java/src/main/java
     - name: grpc-java
       output: ../java/src/main/grpc
-    # - name: kotlin
-    #   output: ../java/src/main
     - name: grpc-kotlin
       output: ../java/src/main/kotlin
     - name: swift
@@ -27,6 +25,12 @@ generate:
     - name: grpc-swift
       flags: Visibility=Public
       output: ../Sources/SpeechlyAPI
+    - name: js
+      flags: import_style=commonjs,binary
+      output: ../javascript
+    - name: ts
+      output: ../javascript
+      path: protoc-gen-ts
     - name: doc
       flags: markdown,API.md
       output: ..
