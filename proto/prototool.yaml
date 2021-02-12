@@ -31,9 +31,6 @@ generate:
     - name: ts
       output: ../javascript
       path: protoc-gen-ts
-    - name: doc
-      flags: markdown,API.md
-      output: ..
 lint:
   group: uber2
   rules:

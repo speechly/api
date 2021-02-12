@@ -1,18 +1,24 @@
-VERSION ?= latest
-PROTOS  := $(shell find proto/speechly -name *proto)
-PROTOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR)/proto langma/prototool
+VERSION   ?= latest
+
+PROTOS    := $(shell find proto -type f -name *.proto)
+PROTOTOOL := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR)/proto langma/prototool
+PROTODOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoint protoc pseudomuto/protoc-gen-doc
 
 export VERSION
 
-SUBDIRS = java
+SUBDIRS   = java python
 
 test: $(PROTOS)
-	$(PROTOC) lint
+	@$(PROTOTOOL) lint
 
 build: $(PROTOS)
-	$(PROTOC) generate
+	@$(PROTOTOOL) generate
+	@$(PROTODOC) --proto_path=proto --doc_out=. --doc_opt=markdown,API.md $(PROTOS)
 
-dist: build $(SUBDIRS)
+check_stubs: build
+	@if [ "$(shell git status --porcelain)" != "" ]; then echo "Stubs not committed after generate: '$(CHANGES)'"; exit 1; fi
+
+deploy: check_stubs $(SUBDIRS)
 
 .PHONY: subdirs $(SUBDIRS)
 $(SUBDIRS):
@@ -20,4 +26,4 @@ $(SUBDIRS):
 
 clean: $(SUBDIRS)
 
-.PHONY: test build dist clean
+.PHONY: test build deploy check_stubs clean
