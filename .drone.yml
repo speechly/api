@@ -1,0 +1,12 @@
+---
+kind: pipeline
+name: lint
+
+trigger:
+  branch: master
+
+steps:
+  - name: prototool lint
+    image: langma/prototool
+    commands:
+      - prototool lint proto
