@@ -1,22 +1,17 @@
-import os
 import pathlib
 
 from setuptools import setup, find_namespace_packages
 
 
-VERSION=os.getenv('VERSION')
-if not VERSION:
-    raise Exception('No version in ENV!')
-
 here = pathlib.Path(__file__).parent.resolve()
-long_description = (here.parent / 'README.md').read_text(encoding='utf-8')
+long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
     name='speechly_api',
-    version=VERSION,
+    version='REVISION',
     description='Speechly Public Protobuf Stubs',
     include_package_data=True,
-    install_requires=['grpc>1.30'],
+    install_requires=['grpcio>1.30'],
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/speechly/api/python',
