@@ -1,5 +1,5 @@
 VERSION ?= latest
-MAVEN   := docker run -it --rm \
+MAVEN   ?= docker run -it --rm \
 	-v $(CURDIR)/settings.xml:/root/.m2/settings.xml \
 	-v $(CURDIR):$(CURDIR) \
 	-w $(CURDIR) \
