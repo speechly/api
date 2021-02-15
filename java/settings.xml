@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <servers>
+    <server>
+      <id>github</id>
+      <username>${github.username}</username>
+      <password>${github.token}</password>
+    </server>
+  </servers>
+</settings>

@@ -1,25 +1,25 @@
-PROTODIR:=..
-TARGET:=src
-PROTOS:=$(shell find ../speechly -name *proto)
+VERSION ?= latest
 
-all: clean build
-.PHONY: all
+export VERSION
 
-build: .venv $(PROTOS)
-	@mkdir -p src
-	@pipenv run python -m grpc_tools.protoc -I${PROTODIR} --python_out=${TARGET} --grpc_python_out=${TARGET} --grpclib_python_out=${TARGET} ${PROTOS}
-.PHONY: all
+build: dist/speechly_api-$(VERSION).tar.gz
 
-dist: clean build
-	@pipenv run python setup.py sdist
-.PHONY: dist
+.venv: src Makefile setup.py
+	@python3 -m venv .venv \
+		&& . .venv/bin/activate \
+		&& python -m pip install -U pip \
+		&& python -m pip install -U build
 
-.venv: Pipfile Pipfile.lock
-	PIPENV_VENV_IN_PROJECT=1 pipenv run pip install --upgrade pip
-	PIPENV_VENV_IN_PROJECT=1 pipenv run pip install --upgrade setuptools
-	PIPENV_VENV_IN_PROJECT=1 pipenv sync --dev
-	@touch $@
+dist/speechly_api-$(VERSION).tar.gz: .venv
+	@rm -rf dist
+	@. .venv/bin/activate && python3 -m build
+
+deploy: build
+	@. .venv/bin/activate \
+		&& python -m pip install -U twine \
+		&& python -m twine upload dist/*
 
 clean:
-	@rm -rf src .venv dist || true
-.PHONY: clean
+	rm -rf .venv src dist
+
+.PHONY: build deploy clean

@@ -25,16 +25,25 @@ import NIO
 import SwiftProtobuf
 
 
-/// Usage: instantiate Speechly_Identity_V1_IdentityClient, then call methods of this protocol to make API calls.
+/// Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
+///
+/// This service is used for generating access token for Speechly SLU API.
+///
+/// Usage: instantiate `Speechly_Identity_V1_IdentityClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Identity_V1_IdentityClientProtocol: GRPCClient {
+  var serviceName: String { get }
+  var interceptors: Speechly_Identity_V1_IdentityClientInterceptorFactoryProtocol? { get }
+
   func login(
     _ request: Speechly_Identity_V1_LoginRequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Speechly_Identity_V1_LoginRequest, Speechly_Identity_V1_LoginResponse>
-
 }
 
 extension Speechly_Identity_V1_IdentityClientProtocol {
+  public var serviceName: String {
+    return "speechly.identity.v1.Identity"
+  }
 
   /// Performs a login of specific Speechly application.
   /// Returns an access token, that can be used to access Speechly SLU API.
@@ -50,28 +59,48 @@ extension Speechly_Identity_V1_IdentityClientProtocol {
     return self.makeUnaryCall(
       path: "/speechly.identity.v1.Identity/Login",
       request: request,
-      callOptions: callOptions ?? self.defaultCallOptions
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeLoginInterceptors() ?? []
     )
   }
+}
+
+public protocol Speechly_Identity_V1_IdentityClientInterceptorFactoryProtocol {
+
+  /// - Returns: Interceptors to use when invoking 'login'.
+  func makeLoginInterceptors() -> [ClientInterceptor<Speechly_Identity_V1_LoginRequest, Speechly_Identity_V1_LoginResponse>]
 }
 
 public final class Speechly_Identity_V1_IdentityClient: Speechly_Identity_V1_IdentityClientProtocol {
   public let channel: GRPCChannel
   public var defaultCallOptions: CallOptions
+  public var interceptors: Speechly_Identity_V1_IdentityClientInterceptorFactoryProtocol?
 
   /// Creates a client for the speechly.identity.v1.Identity service.
   ///
   /// - Parameters:
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
-  public init(channel: GRPCChannel, defaultCallOptions: CallOptions = CallOptions()) {
+  ///   - interceptors: A factory providing interceptors for each RPC.
+  public init(
+    channel: GRPCChannel,
+    defaultCallOptions: CallOptions = CallOptions(),
+    interceptors: Speechly_Identity_V1_IdentityClientInterceptorFactoryProtocol? = nil
+  ) {
     self.channel = channel
     self.defaultCallOptions = defaultCallOptions
+    self.interceptors = interceptors
   }
 }
 
+/// Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
+///
+/// This service is used for generating access token for Speechly SLU API.
+///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Identity_V1_IdentityProvider: CallHandlerProvider {
+  var interceptors: Speechly_Identity_V1_IdentityServerInterceptorFactoryProtocol? { get }
+
   /// Performs a login of specific Speechly application.
   /// Returns an access token, that can be used to access Speechly SLU API.
   func login(request: Speechly_Identity_V1_LoginRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Identity_V1_LoginResponse>
@@ -82,17 +111,29 @@ extension Speechly_Identity_V1_IdentityProvider {
 
   /// Determines, calls and returns the appropriate request handler, depending on the request's method.
   /// Returns nil for methods not handled by this service.
-  public func handleMethod(_ methodName: Substring, callHandlerContext: CallHandlerContext) -> GRPCCallHandler? {
-    switch methodName {
+  public func handle(
+    method name: Substring,
+    context: CallHandlerContext
+  ) -> GRPCServerHandlerProtocol? {
+    switch name {
     case "Login":
-      return CallHandlerFactory.makeUnary(callHandlerContext: callHandlerContext) { context in
-        return { request in
-          self.login(request: request, context: context)
-        }
-      }
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Identity_V1_LoginRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Identity_V1_LoginResponse>(),
+        interceptors: self.interceptors?.makeLoginInterceptors() ?? [],
+        userFunction: self.login(request:context:)
+      )
 
-    default: return nil
+    default:
+      return nil
     }
   }
 }
 
+public protocol Speechly_Identity_V1_IdentityServerInterceptorFactoryProtocol {
+
+  /// - Returns: Interceptors to use when handling 'login'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeLoginInterceptors() -> [ServerInterceptor<Speechly_Identity_V1_LoginRequest, Speechly_Identity_V1_LoginResponse>]
+}

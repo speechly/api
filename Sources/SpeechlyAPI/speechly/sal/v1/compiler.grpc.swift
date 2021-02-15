@@ -25,8 +25,20 @@ import NIO
 import SwiftProtobuf
 
 
-/// Usage: instantiate Speechly_Sal_V1_CompilerClient, then call methods of this protocol to make API calls.
+/// Service that implements Speechly SAL API (https://speechly.com/docs/api/sal).
+///
+/// This service is used for validating and compiling Speechly Annotation Language source files.
+///
+/// The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
+///
+/// The token acts as a proxy for the user who has generated it,
+/// i.e. all operations are performed with that user as a subject.
+///
+/// Usage: instantiate `Speechly_Sal_V1_CompilerClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Sal_V1_CompilerClientProtocol: GRPCClient {
+  var serviceName: String { get }
+  var interceptors: Speechly_Sal_V1_CompilerClientInterceptorFactoryProtocol? { get }
+
   func compile(
     callOptions: CallOptions?
   ) -> ClientStreamingCall<Speechly_Sal_V1_CompileRequest, Speechly_Sal_V1_CompileResult>
@@ -39,10 +51,12 @@ public protocol Speechly_Sal_V1_CompilerClientProtocol: GRPCClient {
     callOptions: CallOptions?,
     handler: @escaping (Speechly_Sal_V1_ExtractSALSourcesResult) -> Void
   ) -> BidirectionalStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALSourcesResult>
-
 }
 
 extension Speechly_Sal_V1_CompilerClientProtocol {
+  public var serviceName: String {
+    return "speechly.sal.v1.Compiler"
+  }
 
   /// Compiles the SAL source and returns compiled templates and / or any compilation errors and warnings.
   ///
@@ -57,7 +71,8 @@ extension Speechly_Sal_V1_CompilerClientProtocol {
   ) -> ClientStreamingCall<Speechly_Sal_V1_CompileRequest, Speechly_Sal_V1_CompileResult> {
     return self.makeClientStreamingCall(
       path: "/speechly.sal.v1.Compiler/Compile",
-      callOptions: callOptions ?? self.defaultCallOptions
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeCompileInterceptors() ?? []
     )
   }
 
@@ -74,7 +89,8 @@ extension Speechly_Sal_V1_CompilerClientProtocol {
   ) -> ClientStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ValidateResult> {
     return self.makeClientStreamingCall(
       path: "/speechly.sal.v1.Compiler/Validate",
-      callOptions: callOptions ?? self.defaultCallOptions
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeValidateInterceptors() ?? []
     )
   }
 
@@ -94,32 +110,65 @@ extension Speechly_Sal_V1_CompilerClientProtocol {
     return self.makeBidirectionalStreamingCall(
       path: "/speechly.sal.v1.Compiler/ExtractSALSources",
       callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeExtractSALSourcesInterceptors() ?? [],
       handler: handler
     )
   }
 }
 
+public protocol Speechly_Sal_V1_CompilerClientInterceptorFactoryProtocol {
+
+  /// - Returns: Interceptors to use when invoking 'compile'.
+  func makeCompileInterceptors() -> [ClientInterceptor<Speechly_Sal_V1_CompileRequest, Speechly_Sal_V1_CompileResult>]
+
+  /// - Returns: Interceptors to use when invoking 'validate'.
+  func makeValidateInterceptors() -> [ClientInterceptor<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ValidateResult>]
+
+  /// - Returns: Interceptors to use when invoking 'extractSALSources'.
+  func makeExtractSALSourcesInterceptors() -> [ClientInterceptor<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALSourcesResult>]
+}
+
 public final class Speechly_Sal_V1_CompilerClient: Speechly_Sal_V1_CompilerClientProtocol {
   public let channel: GRPCChannel
   public var defaultCallOptions: CallOptions
+  public var interceptors: Speechly_Sal_V1_CompilerClientInterceptorFactoryProtocol?
 
   /// Creates a client for the speechly.sal.v1.Compiler service.
   ///
   /// - Parameters:
   ///   - channel: `GRPCChannel` to the service host.
   ///   - defaultCallOptions: Options to use for each service call if the user doesn't provide them.
-  public init(channel: GRPCChannel, defaultCallOptions: CallOptions = CallOptions()) {
+  ///   - interceptors: A factory providing interceptors for each RPC.
+  public init(
+    channel: GRPCChannel,
+    defaultCallOptions: CallOptions = CallOptions(),
+    interceptors: Speechly_Sal_V1_CompilerClientInterceptorFactoryProtocol? = nil
+  ) {
     self.channel = channel
     self.defaultCallOptions = defaultCallOptions
+    self.interceptors = interceptors
   }
 }
 
+/// Service that implements Speechly SAL API (https://speechly.com/docs/api/sal).
+///
+/// This service is used for validating and compiling Speechly Annotation Language source files.
+///
+/// The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
+///
+/// The token acts as a proxy for the user who has generated it,
+/// i.e. all operations are performed with that user as a subject.
+///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Sal_V1_CompilerProvider: CallHandlerProvider {
+  var interceptors: Speechly_Sal_V1_CompilerServerInterceptorFactoryProtocol? { get }
+
   /// Compiles the SAL source and returns compiled templates and / or any compilation errors and warnings.
   func compile(context: UnaryResponseCallContext<Speechly_Sal_V1_CompileResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_CompileRequest>) -> Void>
+
   /// Validates the SAL source and returns compilation notices / warnings and errors, if any.
   func validate(context: UnaryResponseCallContext<Speechly_Sal_V1_ValidateResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
+
   /// Extracts raw, not compiled SAL templates from the SAL source.
   func extractSALSources(context: StreamingResponseCallContext<Speechly_Sal_V1_ExtractSALSourcesResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
 }
@@ -129,25 +178,55 @@ extension Speechly_Sal_V1_CompilerProvider {
 
   /// Determines, calls and returns the appropriate request handler, depending on the request's method.
   /// Returns nil for methods not handled by this service.
-  public func handleMethod(_ methodName: Substring, callHandlerContext: CallHandlerContext) -> GRPCCallHandler? {
-    switch methodName {
+  public func handle(
+    method name: Substring,
+    context: CallHandlerContext
+  ) -> GRPCServerHandlerProtocol? {
+    switch name {
     case "Compile":
-      return CallHandlerFactory.makeClientStreaming(callHandlerContext: callHandlerContext) { context in
-        return self.compile(context: context)
-      }
+      return ClientStreamingServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Sal_V1_CompileRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Sal_V1_CompileResult>(),
+        interceptors: self.interceptors?.makeCompileInterceptors() ?? [],
+        observerFactory: self.compile(context:)
+      )
 
     case "Validate":
-      return CallHandlerFactory.makeClientStreaming(callHandlerContext: callHandlerContext) { context in
-        return self.validate(context: context)
-      }
+      return ClientStreamingServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Sal_V1_AppSource>(),
+        responseSerializer: ProtobufSerializer<Speechly_Sal_V1_ValidateResult>(),
+        interceptors: self.interceptors?.makeValidateInterceptors() ?? [],
+        observerFactory: self.validate(context:)
+      )
 
     case "ExtractSALSources":
-      return CallHandlerFactory.makeBidirectionalStreaming(callHandlerContext: callHandlerContext) { context in
-        return self.extractSALSources(context: context)
-      }
+      return BidirectionalStreamingServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Sal_V1_AppSource>(),
+        responseSerializer: ProtobufSerializer<Speechly_Sal_V1_ExtractSALSourcesResult>(),
+        interceptors: self.interceptors?.makeExtractSALSourcesInterceptors() ?? [],
+        observerFactory: self.extractSALSources(context:)
+      )
 
-    default: return nil
+    default:
+      return nil
     }
   }
 }
 
+public protocol Speechly_Sal_V1_CompilerServerInterceptorFactoryProtocol {
+
+  /// - Returns: Interceptors to use when handling 'compile'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeCompileInterceptors() -> [ServerInterceptor<Speechly_Sal_V1_CompileRequest, Speechly_Sal_V1_CompileResult>]
+
+  /// - Returns: Interceptors to use when handling 'validate'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeValidateInterceptors() -> [ServerInterceptor<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ValidateResult>]
+
+  /// - Returns: Interceptors to use when handling 'extractSALSources'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeExtractSALSourcesInterceptors() -> [ServerInterceptor<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALSourcesResult>]
+}

@@ -1,0 +1,231 @@
+syntax = "proto3";
+
+package speechly.slu.v1;
+
+option csharp_namespace = "Speechly.Slu.V1";
+option go_package = "speechly/slu/v1;sluv1";
+option java_multiple_files = true;
+option java_outer_classname = "SluProto";
+option java_package = "com.speechly.api.slu.v1";
+option objc_class_prefix = "SSX";
+option php_namespace = "Speechly\\Slu\\V1";
+
+// Service that implements Speechly SLU (Spoken Language Understanding) API (https://speechly.com/docs/api/slu).
+//
+// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
+// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+//
+// ctx := context.Background()
+// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
+// stream, err := speechlySLUClient.Stream(ctx)
+service SLU {
+  // Performs bidirectional streaming speech recognition: receive results while sending audio.
+  //
+  // First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.
+  //
+  // This RPC can handle multiple logical audio segments with the use of SLUEvent_START and SLUEvent_STOP messages,
+  // which are used to indicate the beginning and the end of a segment.
+  //
+  // A typical call timeline will look like this:
+  //
+  // 1. Client starts the RPC.
+  // 2. Client sends SLUConfig message with audio configuration.
+  // 3. Client sends SLUEvent_START.
+  // 4. Client sends audio and receives responses from the server.
+  // 5. Client sends SLUEvent_STOP.
+  // 6. Client sends SLUEvent_START.
+  // 7. Client sends audio and receives responses from the server.
+  // 8. Client sends SLUEvent_STOP.
+  // 9. Client closes the stream and receives responses from the server until EOF is received.
+  //
+  // NB: the client does not have to wait until the server acknowledges the start / stop events,
+  // this is done asynchronously. The client can deduplicate responses based on the audio context ID,
+  // which will be present in every response message.
+  rpc Stream(stream SLURequest) returns (stream SLUResponse);
+}
+
+// Top-level message sent by the client for the `Stream` method.
+message SLURequest {
+  oneof streaming_request {
+    // Describes the configuration of the audio sent by the client.
+    // MUST be the first message sent to the stream.
+    SLUConfig config = 1;
+    // Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
+    // A context MUST be preceded by a start event and concluded with a stop event,
+    // otherwise the server WILL terminate the stream with an error.
+    SLUEvent event = 2;
+    // Contains a chunk of the audio being streamed.
+    bytes audio = 3;
+  }
+}
+
+// Describes the configuration of the audio sent by the client.
+// Currently the API only supports single-channel Linear PCM with sample rate of 16 kHz.
+message SLUConfig {
+  // The encoding of the audio data sent in the stream.
+  enum Encoding {
+    // Uncompressed 16-bit signed little-endian samples (Linear PCM).
+    LINEAR16 = 0;
+  }
+  // The encoding of the audio data sent in the stream.
+  // Required.
+  Encoding encoding = 1;
+  // The number of channels in the input audio data.
+  // Required.
+  int32 channels = 2;
+  // Sample rate in Hertz of the audio data sent in the stream.
+  // Required.
+  int32 sample_rate_hertz = 3;
+  // The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").
+  // Required.
+  string language_code = 4;
+}
+
+// Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
+message SLUEvent {
+  // The event type value.
+  enum Event {
+    // START indicates the beginning of the audio context. Must be sent before sending audio data.
+    START = 0;
+    // STOP indicates the end of the audio context. Must be sent after sending last chunk of audio in that segment.
+    STOP = 1;
+  }
+  // The event type being sent. Required.
+  Event event = 1;
+}
+
+// Top-level message sent by the server for the `Stream` method.
+message SLUResponse {
+  // The ID of the audio context that this response belongs to.
+  string audio_context = 1;
+  // The ID of the SLU segment that this response belongs to.
+  // This will be 0 for SLUStarted and SLUFinished responses.
+  int32 segment_id = 2;
+  // Response payload.
+  oneof streaming_response {
+    // Final SLU transcript.
+    SLUTranscript transcript = 3;
+    // Final SLU entity.
+    SLUEntity entity = 4;
+    // Final SLU intent.
+    SLUIntent intent = 5;
+    // A special marker message that indicates that the segment with specified `segment_id`
+    // has been finalised and no new responses belonging to that segment will be sent.
+    // The client is expected to discard any tentative responses in this segment.
+    SLUSegmentEnd segment_end = 6;
+    // Tentative SLU transcript.
+    SLUTentativeTranscript tentative_transcript = 7;
+    // Tentative SLU entities.
+    SLUTentativeEntities tentative_entities = 8;
+    // Tentative SLU intent.
+    SLUIntent tentative_intent = 9;
+    // A special marker message that indicates that the audio context with specified `audio_context` id
+    // has been started by the API and all audio data sent by the client will be processed in that context.
+    // This message is an asynchronous acknowledgement for client-side SLUEvent_START message.
+    SLUStarted started = 10;
+    // A special marker message that indicates that the audio context with specified `audio_context` id
+    // has been stopped by the API and no new responses for that context will be sent.
+    // The client is expected to discard any non-finalised segments.
+    // This message is an asynchronous acknowledgement for client-side SLUEvent_STOP message.
+    SLUFinished finished = 11;
+  }
+}
+
+// Describes an SLU transcript.
+// A transcript is a speech-to-text element of the phrase, i.e. a word recognised from the audio.
+message SLUTranscript {
+  // The word recongised from the audio.
+  string word = 1;
+  // The position of the word in the whole phrase, zero-based.
+  int32 index = 2;
+  // The end time of the word in the audio, in milliseconds from the beginning of the audio.
+  int32 start_time = 3;
+  // The end time of the word in the audio, in milliseconds from the beginning of the audio.
+  int32 end_time = 4;
+}
+
+// Describes an SLU entity.
+//
+// An entity is a specific object in the phrase that falls into some kind of category,
+// e.g. in a SAL example "*book book a [burger restaurant](restaurant_type) for [tomorrow](date)"
+// "burger restaurant" would be an entity of type `restaurant_type`,
+// and "tomorrow" would be an entity of type `date`.
+//
+// An entity has a start and end indices which map to the indices of words in SLUTranscript messages,
+// e.g. in the example "book a [burger restaurant](restaurant_type) for [tomorrow](date)" it would be:
+//
+// * Entity "burger restaurant" - `start_position = 2, end_position = 3`
+// * Entity "tomorrow" - `start_position = 5, end_position = 5`
+//
+// The start index is inclusive, but the end index is exclusive, i.e. the interval is `[start_position, end_position)`.
+message SLUEntity {
+  // The type of the entity, e.g. `restaurant_type` or `date`.
+  string entity = 1;
+  // The value of the entity, e.g. `burger restaurant` or `tomorrow`.
+  string value = 2;
+  // The starting index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.
+  // Inclusive.
+  int32 start_position = 3;
+  // The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.
+  // Exclusive.
+  int32 end_position = 4;
+}
+
+// Describes an SLU intent.
+// There can be only one intent per SLU segment.
+message SLUIntent {
+  // The value of the intent, as defined in SAL.
+  string intent = 1;
+}
+
+// Indicates the end of the segment.
+// Upon receiving this, the segment should be finalised and all future messages for that segment (if any) discarded.
+message SLUSegmentEnd {}
+
+// Describes a tentative transcript.
+//
+// Tentative transcript is an interim recognition result, which may change over time,
+// e.g. a phrase "find me a red t-shirt" can be tentatively recognised as "find me a tea",
+// until the API processes the audio completely.
+message SLUTentativeTranscript {
+  // Aggregated tentative transcript from the beginning of the audio until current moment in time.
+  // Consecutive transcripts will have this value appended to,
+  // e.g. if in the first message it's "find me", in the next it may be "find me a t-shirt".
+  string tentative_transcript = 1;
+  // A list of individual words which compose `tentative_transcript`.
+  // All words must be considered tentative.
+  repeated SLUTranscript tentative_words = 2;
+}
+
+// Describes tentative entities.
+message SLUTentativeEntities {
+  // A list of entities, which must be treated as tentative.
+  //
+  // This is not an aggregate of all entities in the audio,
+  // but rather it ONLY contains entities that have not been finalised yet.
+  //
+  // e.g. if at the start there are two tentatively recognised entities - ["burger restaurant", "tomorrow"]
+  // but then the API marks "burger restaurant" as final and recognises a new tentative entity "for two",
+  // this will contain ["tomorrow", "for two"].
+  repeated SLUEntity tentative_entities = 1;
+}
+
+// Indicates that the API has started processing the portion of audio as new audio context.
+// This does not guarantee that the server will not send any more messages for the previous audio context.
+message SLUStarted {}
+
+// Indicates that the API has stopped processing current audio context.
+// It guarantees that no new messages for that context will be sent by the server.
+message SLUFinished {
+  // DEPRECATED
+  // An error which has happened when processing the context, if any.
+  SLUError error = 2;
+}
+
+// Describes the error that happened when processing an audio context.
+message SLUError {
+  // Error code (refer to documentation for specific codes).
+  string code = 1;
+  // Error message.
+  string message = 2;
+}

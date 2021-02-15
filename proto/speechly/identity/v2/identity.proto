@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package speechly.identity.v2;
+
+option csharp_namespace = "Speechly.Identity.V2";
+option go_package = "speechly/identity/v2;identityv2";
+option java_multiple_files = true;
+option java_outer_classname = "IdentityProto";
+option java_package = "com.speechly.identity.v2";
+option objc_class_prefix = "SIX";
+option php_namespace = "Speechly\\Identity\\V2";
+
+// Keys for login with an app_id.
+message ApplicationScope {
+  // Speechly application ID. The defined application can be accessed with the returned token.
+  // Required.
+  string app_id = 1;
+  // Define a specific model configuration to use.
+  // Defaults to the application's latest configuration.
+  string config_id = 3;
+}
+
+// Keys for login with a project_id.
+message ProjectScope {
+  // Speechly project ID. Every application in the same project is accessible with the same token.
+  // Required.
+  string project_id = 1;
+}

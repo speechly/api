@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+*.class
+build
+
+src
+target
+pom.xml
