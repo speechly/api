@@ -18,7 +18,7 @@ endif
 	@$(CHANGELOG) --token $(GITHUB_TOKEN) --user speechly --project api --future-release $(VERSION)
 
 check_stubs:
-	@if [ "$(shell git status --porcelain)" != "" ]; then echo "Repo not clean: '$(shell git status --porcelain)'"; exit 1; fi
+	@if [ "$(shell git status --porcelain --untracked-files=no)" != "" ]; then echo "Repo not clean: '$(shell git status --porcelain)'"; exit 1; fi
 
 deploy: check_stubs $(SUBDIRS)
 
