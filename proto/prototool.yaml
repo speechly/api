@@ -31,6 +31,9 @@ generate:
     - name: ts
       output: ../javascript
       path: protoc-gen-ts
+    - name: csharp
+      output: ../csharp/Speechly
+      flags: base_namespace=Speechly
 lint:
   group: uber2
   rules:
