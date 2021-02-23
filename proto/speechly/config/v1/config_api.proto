@@ -273,10 +273,14 @@ message App {
   // Will equal to 0 when no estimate is available.
   // This field is ignored in requests.
   int32 estimated_remaining_sec = 7;
-  // Estimated total training time in seconds if the application is being trained.
+  // Training time in seconds of the previous deploy if the application is being trained.
+  // Will equal to 0 if this is the first deploy for this app and there is no previous deploy.
   // This field is ignored in requests.
-  int32 estimated_training_time_sec = 8;
+  int32 previous_training_time_sec = 8;
+  // Average training time currently if the application is being trained.
+  // This field is ignored in requests.
+  int32 average_training_time_sec = 9;
   // Time since training started if the application is being trained.
   // This field is ignored in requests.
-  int32 training_time_sec = 9;
+  int32 training_time_sec = 10;
 }
