@@ -4560,7 +4560,9 @@ proto.speechly.config.v1.App.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 4, ""),
     queueSize: jspb.Message.getFieldWithDefault(msg, 5, 0),
     errorMsg: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    estimatedRemainingSec: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    estimatedRemainingSec: jspb.Message.getFieldWithDefault(msg, 7, 0),
+    estimatedTrainingTimeSec: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    trainingTimeSec: jspb.Message.getFieldWithDefault(msg, 9, 0)
   };
 
   if (includeInstance) {
@@ -4624,6 +4626,14 @@ proto.speechly.config.v1.App.deserializeBinaryFromReader = function(msg, reader)
     case 7:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setEstimatedRemainingSec(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setEstimatedTrainingTimeSec(value);
+      break;
+    case 9:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setTrainingTimeSec(value);
       break;
     default:
       reader.skipField();
@@ -4700,6 +4710,20 @@ proto.speechly.config.v1.App.serializeBinaryToWriter = function(message, writer)
   if (f !== 0) {
     writer.writeInt32(
       7,
+      f
+    );
+  }
+  f = message.getEstimatedTrainingTimeSec();
+  if (f !== 0) {
+    writer.writeInt32(
+      8,
+      f
+    );
+  }
+  f = message.getTrainingTimeSec();
+  if (f !== 0) {
+    writer.writeInt32(
+      9,
       f
     );
   }
@@ -4840,6 +4864,42 @@ proto.speechly.config.v1.App.prototype.getEstimatedRemainingSec = function() {
  */
 proto.speechly.config.v1.App.prototype.setEstimatedRemainingSec = function(value) {
   return jspb.Message.setProto3IntField(this, 7, value);
+};
+
+
+/**
+ * optional int32 estimated_training_time_sec = 8;
+ * @return {number}
+ */
+proto.speechly.config.v1.App.prototype.getEstimatedTrainingTimeSec = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.speechly.config.v1.App} returns this
+ */
+proto.speechly.config.v1.App.prototype.setEstimatedTrainingTimeSec = function(value) {
+  return jspb.Message.setProto3IntField(this, 8, value);
+};
+
+
+/**
+ * optional int32 training_time_sec = 9;
+ * @return {number}
+ */
+proto.speechly.config.v1.App.prototype.getTrainingTimeSec = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.speechly.config.v1.App} returns this
+ */
+proto.speechly.config.v1.App.prototype.setTrainingTimeSec = function(value) {
+  return jspb.Message.setProto3IntField(this, 9, value);
 };
 
 

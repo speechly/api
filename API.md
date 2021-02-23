@@ -472,6 +472,8 @@ Describes a Speechly application and is used as an argument for application API.
 | queue_size | [int32](#int32) |  | The size of the training queue size if the application is queued for training. This field is ignored in requests. |
 | error_msg | [string](#string) |  | The detailed error description if the application failed training. This field is ignored in requests. |
 | estimated_remaining_sec | [int32](#int32) |  | Estimated training time remaining if the application is being trained. Will equal to 0 when no estimate is available. This field is ignored in requests. |
+| estimated_training_time_sec | [int32](#int32) |  | Estimated total training time in seconds if the application is being trained. This field is ignored in requests. |
+| training_time_sec | [int32](#int32) |  | Time since training started if the application is being trained. This field is ignored in requests. |
 
 
 

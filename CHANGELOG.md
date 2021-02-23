@@ -1,11 +1,13 @@
 # Changelog
 
-## [0.1.0-beta6](https://github.com/speechly/api/tree/0.1.0-beta6) (2021-02-15)
+## [0.1.0](https://github.com/speechly/api/tree/0.1.0) (2021-02-23)
 
-[Full Changelog](https://github.com/speechly/api/compare/0.0.5...0.1.0-beta6)
+[Full Changelog](https://github.com/speechly/api/compare/0.0.5...0.1.0)
 
 **Merged pull requests:**
 
+- add estimated\_training\_time\_sec and training\_time\_sec to App message [\#12](https://github.com/speechly/api/pull/12) ([samutamm](https://github.com/samutamm))
+- Identity API v2 protos [\#10](https://github.com/speechly/api/pull/10) ([langma](https://github.com/langma))
 - batch size and seed to sal compiler compile [\#9](https://github.com/speechly/api/pull/9) ([samutamm](https://github.com/samutamm))
 - Use Java version 1.8 as target for Kotlin package [\#8](https://github.com/speechly/api/pull/8) ([radiohead](https://github.com/radiohead))
 - Bump ini from 1.3.5 to 1.3.7 in /javascript [\#7](https://github.com/speechly/api/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -20,13 +22,20 @@
 
 ## [0.0.4](https://github.com/speechly/api/tree/0.0.4) (2020-12-08)
 
-[Full Changelog](https://github.com/speechly/api/compare/c18cf59b03e8cc472869a175ab74263ac207a9e4...0.0.4)
+[Full Changelog](https://github.com/speechly/api/compare/v0.0.2...0.0.4)
 
 **Merged pull requests:**
 
 - Add an RPC for extracting SAL examples to SAL compiler service [\#5](https://github.com/speechly/api/pull/5) ([samutamm](https://github.com/samutamm))
 - Add config\_id to download training data request [\#4](https://github.com/speechly/api/pull/4) ([langma](https://github.com/langma))
 - Add languageCode and configId to Login message [\#3](https://github.com/speechly/api/pull/3) ([langma](https://github.com/langma))
+
+## [v0.0.2](https://github.com/speechly/api/tree/v0.0.2) (2020-11-12)
+
+[Full Changelog](https://github.com/speechly/api/compare/c18cf59b03e8cc472869a175ab74263ac207a9e4...v0.0.2)
+
+**Merged pull requests:**
+
 - Add Swift stubs [\#2](https://github.com/speechly/api/pull/2) ([radiohead](https://github.com/radiohead))
 
 

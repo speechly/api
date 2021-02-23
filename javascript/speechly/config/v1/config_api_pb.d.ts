@@ -651,6 +651,12 @@ export class App extends jspb.Message {
     getEstimatedRemainingSec(): number;
     setEstimatedRemainingSec(value: number): App;
 
+    getEstimatedTrainingTimeSec(): number;
+    setEstimatedTrainingTimeSec(value: number): App;
+
+    getTrainingTimeSec(): number;
+    setTrainingTimeSec(value: number): App;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): App.AsObject;
@@ -671,6 +677,8 @@ export namespace App {
         queueSize: number,
         errorMsg: string,
         estimatedRemainingSec: number,
+        estimatedTrainingTimeSec: number,
+        trainingTimeSec: number,
     }
 
     export enum Status {

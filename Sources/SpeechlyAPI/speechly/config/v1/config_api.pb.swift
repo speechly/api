@@ -580,6 +580,14 @@ public struct Speechly_Config_V1_App {
   /// This field is ignored in requests.
   public var estimatedRemainingSec: Int32 = 0
 
+  /// Estimated total training time in seconds if the application is being trained.
+  /// This field is ignored in requests.
+  public var estimatedTrainingTimeSec: Int32 = 0
+
+  /// Time since training started if the application is being trained.
+  /// This field is ignored in requests.
+  public var trainingTimeSec: Int32 = 0
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// The status of then application, defaults to STATUS_UNSPECIFIED.
@@ -1524,6 +1532,8 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     5: .standard(proto: "queue_size"),
     6: .standard(proto: "error_msg"),
     7: .standard(proto: "estimated_remaining_sec"),
+    8: .standard(proto: "estimated_training_time_sec"),
+    9: .standard(proto: "training_time_sec"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1539,6 +1549,8 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       case 5: try { try decoder.decodeSingularInt32Field(value: &self.queueSize) }()
       case 6: try { try decoder.decodeSingularStringField(value: &self.errorMsg) }()
       case 7: try { try decoder.decodeSingularInt32Field(value: &self.estimatedRemainingSec) }()
+      case 8: try { try decoder.decodeSingularInt32Field(value: &self.estimatedTrainingTimeSec) }()
+      case 9: try { try decoder.decodeSingularInt32Field(value: &self.trainingTimeSec) }()
       default: break
       }
     }
@@ -1566,6 +1578,12 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     if self.estimatedRemainingSec != 0 {
       try visitor.visitSingularInt32Field(value: self.estimatedRemainingSec, fieldNumber: 7)
     }
+    if self.estimatedTrainingTimeSec != 0 {
+      try visitor.visitSingularInt32Field(value: self.estimatedTrainingTimeSec, fieldNumber: 8)
+    }
+    if self.trainingTimeSec != 0 {
+      try visitor.visitSingularInt32Field(value: self.trainingTimeSec, fieldNumber: 9)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1577,6 +1595,8 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     if lhs.queueSize != rhs.queueSize {return false}
     if lhs.errorMsg != rhs.errorMsg {return false}
     if lhs.estimatedRemainingSec != rhs.estimatedRemainingSec {return false}
+    if lhs.estimatedTrainingTimeSec != rhs.estimatedTrainingTimeSec {return false}
+    if lhs.trainingTimeSec != rhs.trainingTimeSec {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
