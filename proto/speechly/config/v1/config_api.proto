@@ -273,4 +273,10 @@ message App {
   // Will equal to 0 when no estimate is available.
   // This field is ignored in requests.
   int32 estimated_remaining_sec = 7;
+  // Estimated total training time in seconds if the application is being trained.
+  // This field is ignored in requests.
+  int32 estimated_training_time_sec = 8;
+  // Time since training started if the application is being trained.
+  // This field is ignored in requests.
+  int32 training_time_sec = 9;
 }
