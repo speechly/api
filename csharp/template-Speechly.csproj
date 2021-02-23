@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;net5.0</TargetFrameworks>
     <PackageId>SpeechlyApi</PackageId>
-    <Version>0.1.0</Version>
+    <Version>REVISION</Version>
     <Authors>Speechly</Authors>
     <Company>Speechly</Company>
   </PropertyGroup>
