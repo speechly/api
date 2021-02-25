@@ -862,7 +862,8 @@ proto.speechly.slu.v1.SLUEvent.prototype.toObject = function(opt_includeInstance
  */
 proto.speechly.slu.v1.SLUEvent.toObject = function(includeInstance, msg) {
   var f, obj = {
-    event: jspb.Message.getFieldWithDefault(msg, 1, 0)
+    event: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    appId: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -903,6 +904,10 @@ proto.speechly.slu.v1.SLUEvent.deserializeBinaryFromReader = function(msg, reade
       var value = /** @type {!proto.speechly.slu.v1.SLUEvent.Event} */ (reader.readEnum());
       msg.setEvent(value);
       break;
+    case 2:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setAppId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -939,6 +944,13 @@ proto.speechly.slu.v1.SLUEvent.serializeBinaryToWriter = function(message, write
       f
     );
   }
+  f = message.getAppId();
+  if (f.length > 0) {
+    writer.writeString(
+      2,
+      f
+    );
+  }
 };
 
 
@@ -965,6 +977,24 @@ proto.speechly.slu.v1.SLUEvent.prototype.getEvent = function() {
  */
 proto.speechly.slu.v1.SLUEvent.prototype.setEvent = function(value) {
   return jspb.Message.setProto3EnumField(this, 1, value);
+};
+
+
+/**
+ * optional string app_id = 2;
+ * @return {string}
+ */
+proto.speechly.slu.v1.SLUEvent.prototype.getAppId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.speechly.slu.v1.SLUEvent} returns this
+ */
+proto.speechly.slu.v1.SLUEvent.prototype.setAppId = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 

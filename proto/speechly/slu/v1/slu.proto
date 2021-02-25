@@ -92,6 +92,11 @@ message SLUEvent {
   }
   // The event type being sent. Required.
   Event event = 1;
+  // The `appId` for the utterance.
+  // - Required in the `START` event if the authorization token is *project based*. The
+  //   given application must be part of the project set in the token.
+  // - Not required if the authorization token is *application based*.
+  string app_id = 2;
 }
 
 // Top-level message sent by the server for the `Stream` method.

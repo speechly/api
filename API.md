@@ -1179,6 +1179,7 @@ Indicates the beginning and the end of a logical audio segment (audio context in
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | event | [SLUEvent.Event](#speechly.slu.v1.SLUEvent.Event) |  | The event type being sent. Required. |
+| app_id | [string](#string) |  | The `appId` for the utterance. - Required in the `START` event if the authorization token is *project based*. The given application must be part of the project set in the token. - Not required if the authorization token is *application based*. |
 
 
 
