@@ -102,6 +102,9 @@ export class SLUEvent extends jspb.Message {
     getEvent(): SLUEvent.Event;
     setEvent(value: SLUEvent.Event): SLUEvent;
 
+    getAppId(): string;
+    setAppId(value: string): SLUEvent;
+
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): SLUEvent.AsObject;
@@ -116,6 +119,7 @@ export class SLUEvent extends jspb.Message {
 export namespace SLUEvent {
     export type AsObject = {
         event: SLUEvent.Event,
+        appId: string,
     }
 
     export enum Event {

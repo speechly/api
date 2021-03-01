@@ -174,6 +174,12 @@ public struct Speechly_Slu_V1_SLUEvent {
   /// The event type being sent. Required.
   public var event: Speechly_Slu_V1_SLUEvent.Event = .start
 
+  /// The `appId` for the utterance.
+  /// - Required in the `START` event if the authorization token is *project based*. The
+  ///   given application must be part of the project set in the token.
+  /// - Not required if the authorization token is *application based*.
+  public var appID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// The event type value.
@@ -733,6 +739,7 @@ extension Speechly_Slu_V1_SLUEvent: SwiftProtobuf.Message, SwiftProtobuf._Messag
   public static let protoMessageName: String = _protobuf_package + ".SLUEvent"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "event"),
+    2: .standard(proto: "app_id"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -742,6 +749,7 @@ extension Speechly_Slu_V1_SLUEvent: SwiftProtobuf.Message, SwiftProtobuf._Messag
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularEnumField(value: &self.event) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.appID) }()
       default: break
       }
     }
@@ -751,11 +759,15 @@ extension Speechly_Slu_V1_SLUEvent: SwiftProtobuf.Message, SwiftProtobuf._Messag
     if self.event != .start {
       try visitor.visitSingularEnumField(value: self.event, fieldNumber: 1)
     }
+    if !self.appID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 2)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Slu_V1_SLUEvent, rhs: Speechly_Slu_V1_SLUEvent) -> Bool {
     if lhs.event != rhs.event {return false}
+    if lhs.appID != rhs.appID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

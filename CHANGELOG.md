@@ -22,13 +22,19 @@
 
 ## [0.0.4](https://github.com/speechly/api/tree/0.0.4) (2020-12-08)
 
-[Full Changelog](https://github.com/speechly/api/compare/v0.0.2...0.0.4)
+[Full Changelog](https://github.com/speechly/api/compare/v0.0.3...0.0.4)
 
 **Merged pull requests:**
 
 - Add an RPC for extracting SAL examples to SAL compiler service [\#5](https://github.com/speechly/api/pull/5) ([samutamm](https://github.com/samutamm))
+
+## [v0.0.3](https://github.com/speechly/api/tree/v0.0.3) (2020-12-07)
+
+[Full Changelog](https://github.com/speechly/api/compare/v0.0.2...v0.0.3)
+
+**Merged pull requests:**
+
 - Add config\_id to download training data request [\#4](https://github.com/speechly/api/pull/4) ([langma](https://github.com/langma))
-- Add languageCode and configId to Login message [\#3](https://github.com/speechly/api/pull/3) ([langma](https://github.com/langma))
 
 ## [v0.0.2](https://github.com/speechly/api/tree/v0.0.2) (2020-11-12)
 
@@ -36,6 +42,7 @@
 
 **Merged pull requests:**
 
+- Add languageCode and configId to Login message [\#3](https://github.com/speechly/api/pull/3) ([langma](https://github.com/langma))
 - Add Swift stubs [\#2](https://github.com/speechly/api/pull/2) ([radiohead](https://github.com/radiohead))
 
 
