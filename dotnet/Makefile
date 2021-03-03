@@ -20,11 +20,10 @@ deploy: build
 		--api-key $(NUGET_APIKEY) \
 		--source https://api.nuget.org/v3/index.json
 
-prepare:
-	@rm -rf bin obj
+prepare: clean
 	@rm -f Speechly/Speechly.csproj
 
 clean:
-	@rm -rf target src pom.xml
+	@rm -rf bin obj
 
-.PHONY: build deploy clean
+.PHONY: build deploy prepare clean
