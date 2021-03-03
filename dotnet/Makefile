@@ -14,8 +14,11 @@ Speechly/Speechly.csproj:
 	@cp template-Speechly.csproj $@
 	@sed -i.bak 's/REVISION/$(VERSION)/' $@ && rm $@.bak
 
-deploy: prepare pom.xml
-	@$(MAVEN) -Dgithub.username=$(MVN_USERNAME) -Dgithub.token=$(MVN_TOKEN) deploy
+deploy: build
+	@$(DOTNET) pack Speechly/Speechly.csproj
+	@$(DOTNET) nuget push Speechly/bin/Debug/SpeechlyApi.$(VERSION).nupkg \
+		--api-key $(NUGET_APIKEY) \
+		--source https://api.nuget.org/v3/index.json
 
 prepare:
 	@rm -rf bin obj
