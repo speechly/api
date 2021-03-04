@@ -11,7 +11,7 @@ setup(
     version='REVISION',
     description='Speechly Public Protobuf Stubs',
     include_package_data=True,
-    install_requires=['grpcio>1.30'],
+    install_requires=['grpcio>1.30', 'protobuf>3.14'],
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/speechly/api/python',
