@@ -3,7 +3,7 @@ PROTOTOOL := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR)/proto langm
 PROTODOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoint protoc pseudomuto/protoc-gen-doc
 CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) ferrarimarco/github-changelog-generator
 
-SUBDIRS   = java python javascript
+SUBDIRS   = java python javascript dotnet
 
 test: $(PROTOS)
 	@$(PROTOTOOL) lint
