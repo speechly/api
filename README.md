@@ -9,6 +9,8 @@
 
 This repository stores the definitions and generated code for Speechly public APIs.
 
+There are also higher-level client libraries available for selected platforms, which contain microphone and audio management functions, as well as the connection state management that otherwise would be needed separately on top of these definitions. See [Speechly Client Libraries](https://docs.speechly.com/client-libraries/) for more information about these.
+
 ## Language Support
 
 Protocol buffers definitions are located in [proto/](proto/README.md). The actual code generation is done with [prototool](https://github.com/uber/prototool). The supported languages are:
