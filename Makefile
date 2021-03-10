@@ -5,27 +5,28 @@ CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) ferrarimarc
 
 SUBDIRS   = java python javascript dotnet
 
-test: $(PROTOS)
+test:
 	@$(PROTOTOOL) lint
 
-build: $(PROTOS)
+build: docs
 ifndef VERSION
 	$(error VERSION is undefined)
 endif
 	@export VERSION
 	@$(PROTOTOOL) generate
-	@$(PROTODOC) --proto_path=proto --doc_out=. --doc_opt=markdown,API.md $(PROTOS)
 	@$(CHANGELOG) --token $(GITHUB_TOKEN) --user speechly --project api --future-release $(VERSION)
 
-check_stubs:
-	@if [ "$(shell git status --porcelain --untracked-files=no)" != "" ]; then echo "Repo not clean: '$(shell git status --porcelain)'"; exit 1; fi
+docs:
+	@$(PROTODOC) --proto_path=proto --doc_out=docs --doc_opt=markdown,identity.md $(shell find proto/speechly/identity/v2 -type f -name *.proto)
+	@$(PROTODOC) --proto_path=proto --doc_out=docs --doc_opt=markdown,slu.md proto/speechly/slu/v1/slu.proto
+	@$(PROTODOC) --proto_path=proto --doc_out=docs --doc_opt=markdown,sal.md $(shell find proto/speechly/sal -type f -name *.proto)
 
-deploy: check_stubs $(SUBDIRS)
+deploy: $(SUBDIRS)
+
+clean: $(SUBDIRS)
 
 .PHONY: subdirs $(SUBDIRS)
 $(SUBDIRS):
 	+$(MAKE) -C $@ $(MAKECMDGOALS)
 
-clean: $(SUBDIRS)
-
-.PHONY: test build deploy check_stubs clean
+.PHONY: test build docs deploy clean
