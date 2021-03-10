@@ -77,7 +77,7 @@ message SLUConfig {
   // Required.
   int32 sample_rate_hertz = 3;
   // The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").
-  // Required.
+  // Defaults to the target application language.
   string language_code = 4;
 }
 
@@ -93,9 +93,9 @@ message SLUEvent {
   // The event type being sent. Required.
   Event event = 1;
   // The `appId` for the utterance.
-  // - Required in the `START` event if the authorization token is *project based*. The
-  //   given application must be part of the project set in the token.
-  // - Not required if the authorization token is *application based*.
+  // Required in the `START` event if the authorization token is *project based*. The
+  // given application must be part of the project set in the token.
+  // Not required if the authorization token is *application based*.
   string app_id = 2;
 }
 
