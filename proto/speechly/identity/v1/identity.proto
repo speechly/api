@@ -22,6 +22,7 @@ service Identity {
 // Top-level message sent by the client for the `Login` method.
 message LoginRequest {
   // A unique end-user device identifier.
+  // Must be UUID.
   // Required.
   string device_id = 1;
   // Speechly application ID.

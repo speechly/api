@@ -28,9 +28,12 @@ generate:
     - name: js
       flags: import_style=commonjs,binary
       output: ../javascript
-    - name: ts
+    - name: js-grpc
+      path: grpc_tools_node_protoc_plugin
       output: ../javascript
+    - name: ts
       path: protoc-gen-ts
+      output: ../javascript
     - name: csharp
       output: ../csharp/Speechly
       flags: base_namespace=Speechly
