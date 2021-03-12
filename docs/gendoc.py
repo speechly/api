@@ -11,7 +11,8 @@ package_template = '''
 '''
 
 service_template = '''
-# {name}
+<a name="{fullName}"></a>
+# {fullName}
 
 {description}
 
@@ -66,7 +67,7 @@ def service(s):
         description=format_for_table(m['description'])
     ) for m in s['methods']])
     return service_template.format(
-        name=s['name'],
+        fullName=s['fullName'],
         description=s['description'],
         method_table=method_table,
     )
@@ -107,9 +108,10 @@ if __name__ == '__main__':
     for name, p in packages.items():
         if name in ['speechly.identity.v1']:
             continue
-        doc += '\n'.join([service(s) for s in p['services']])
+        doc += '\n'.join([service(s) for s in sorted(p['services'], key=lambda x: x['name'])])
         if p['messages']:
-            toc = '\n'.join(f'- [{m["name"]}](#{m["fullName"]})' for m in p['messages'])
-            msgs = '\n'.join([message(m) for m in p['messages']])
+            messages = sorted(p['messages'], key=lambda x: x['name'])
+            toc = '\n'.join(f'- [{m["name"]}](#{m["fullName"]})' for m in messages)
+            msgs = '\n'.join(message(m) for m in messages)
             doc += messages_template.format(messages_toc=toc, messages=msgs)
     print(doc)

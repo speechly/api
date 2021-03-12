@@ -10,14 +10,16 @@ option java_package = "com.speechly.api.slu.v1";
 option objc_class_prefix = "SSX";
 option php_namespace = "Speechly\\Slu\\V1";
 
-// Service that implements Speechly WLU (Written Language Understanding) API (https://speechly.com/docs/api/wlu).
+// Service that implements Speechly WLU (Written Language Understanding).
 //
-// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
-// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+// To use this service you MUST use an access token from Speechly Identity API.
+// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
 //
+// ```
 // ctx := context.Background()
 // ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
 // res, err := speechlyWLUClient.Text(ctx, req)
+// ```
 service WLU {
   // Performs recognition of a text with specified language.
   rpc Text(WLURequest) returns (WLUResponse);
@@ -72,8 +74,8 @@ message WLUToken {
 // An entity has a start and end indices which map to the indices of words in WLUToken messages,
 // e.g. in the example "book a [burger restaurant](restaurant_type) for [tomorrow](date)" it would be:
 //
-// * Entity "burger restaurant" - `start_position = 2, end_position = 3`
-// * Entity "tomorrow" - `start_position = 5, end_position = 5`
+// - Entity "burger restaurant" - `start_position = 2, end_position = 3`
+// - Entity "tomorrow" - `start_position = 5, end_position = 5`
 //
 // The start index is inclusive, but the end index is exclusive, i.e. the interval is `[start_position, end_position)`.
 message WLUEntity {

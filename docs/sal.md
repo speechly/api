@@ -1,5 +1,6 @@
 
-# Compiler
+<a name="speechly.sal.v1.Compiler"></a>
+# speechly.sal.v1.Compiler
 
 Service that implements Speechly SAL API (https://speechly.com/docs/api/sal).
 

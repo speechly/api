@@ -161,8 +161,8 @@ message SLUTranscript {
 // An entity has a start and end indices which map to the indices of words in SLUTranscript messages,
 // e.g. in the example "book a [burger restaurant](restaurant_type) for [tomorrow](date)" it would be:
 //
-// * Entity "burger restaurant" - `start_position = 2, end_position = 3`
-// * Entity "tomorrow" - `start_position = 5, end_position = 5`
+// - Entity "burger restaurant" - `start_position = 2, end_position = 3`
+// - Entity "tomorrow" - `start_position = 5, end_position = 5`
 //
 // The start index is inclusive, but the end index is exclusive, i.e. the interval is `[start_position, end_position)`.
 message SLUEntity {
@@ -230,6 +230,7 @@ message SLUFinished {
 }
 
 // Describes the error that happened when processing an audio context.
+// DEPRECATED: Will not be returned. Any errors are returned as gRCP status codes with detail messages.
 message SLUError {
   // Error code (refer to documentation for specific codes).
   string code = 1;

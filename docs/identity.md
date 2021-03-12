@@ -1,5 +1,6 @@
 
-# IdentityAPI
+<a name="speechly.identity.v2.IdentityAPI"></a>
+# speechly.identity.v2.IdentityAPI
 
 Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
 
@@ -14,9 +15,9 @@ This service is used for generating access token for the Speechly API.
 ## Messages
 
 - [ApplicationScope](#speechly.identity.v2.ApplicationScope)
-- [ProjectScope](#speechly.identity.v2.ProjectScope)
 - [LoginRequest](#speechly.identity.v2.LoginRequest)
 - [LoginResponse](#speechly.identity.v2.LoginResponse)
+- [ProjectScope](#speechly.identity.v2.ProjectScope)
 
 
 <a name="speechly.identity.v2.ApplicationScope"></a>
@@ -30,18 +31,6 @@ Used as the scope in `LoginRequest` when the access is for a single Speechly app
 | ---- | ---- | ----------- |
 | app_id | [string](#string) | Speechly application ID. The defined application can be accessed with the returned token.<br/>Required. |
 | config_id | [string](#string) | Define a specific model configuration to use.<br/>Defaults to the application's latest configuration. |
-
-
-<a name="speechly.identity.v2.ProjectScope"></a>
-### ProjectScope
-
-Used as the scope in `LoginRequest` when access is required for every application in a Speechly project.
-
-#### Fields
-
-| name | type | description |
-| ---- | ---- | ----------- |
-| project_id | [string](#string) | Speechly project ID. Every application in the same project is accessible with the same token.<br/>Required. |
 
 
 <a name="speechly.identity.v2.LoginRequest"></a>
@@ -71,5 +60,17 @@ Top-level message returned by the server for the `Login` method.
 | valid_for_s | [uint32](#uint32) | Amount of seconds the returned token is valid. |
 | expires_at_epoch | [uint64](#uint64) | Token expiration time in seconds after 1970-01-01 ("unix time"). |
 | expires_at | [string](#string) | ISO-formatted UTC timestamp of the expiration time of the returned token. |
+
+
+<a name="speechly.identity.v2.ProjectScope"></a>
+### ProjectScope
+
+Used as the scope in `LoginRequest` when access is required for every application in a Speechly project.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| project_id | [string](#string) | Speechly project ID. Every application in the same project is accessible with the same token.<br/>Required. |
 
 
