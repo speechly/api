@@ -17,14 +17,14 @@ import "speechly/identity/v2/identity.proto";
 // This service is used for generating access token for the Speechly API.
 service IdentityAPI {
   // Performs a login of specific Speechly application.
-  // Returns an access token, that can be used to access thee Speechly API.
+  // Returns an access token which can be used to access thee Speechly API.
   rpc Login(LoginRequest) returns (LoginResponse);
 }
 
 // Top-level message sent by the client for the `Login` method.
 message LoginRequest {
   // A unique end-user device identifier.
-  // Must be UUID.
+  // Must be a `UUID`.
   // Required.
   string device_id = 1;
   oneof scope {

@@ -1,3 +1,4 @@
+// @exclude
 syntax = "proto3";
 
 package speechly.identity.v1;

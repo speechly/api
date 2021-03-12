@@ -2,8 +2,10 @@ PROTOS    := $(shell find proto -type f -name *.proto)
 PROTOTOOL := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR)/proto langma/prototool
 PROTODOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoint protoc pseudomuto/protoc-gen-doc
 CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) ferrarimarco/github-changelog-generator
+PYTHON    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) python:3-slim python
 
 SUBDIRS   = java python javascript dotnet
+APIREFS   = docs/slu.md docs/identity.md docs/sal.md
 
 test:
 	@$(PROTOTOOL) lint
@@ -16,10 +18,13 @@ endif
 	@$(PROTOTOOL) generate
 	@$(CHANGELOG) --token $(GITHUB_TOKEN) --user speechly --project api --future-release $(VERSION)
 
-docs:
-	@$(PROTODOC) --proto_path=proto --doc_out=docs --doc_opt=markdown,identity.md $(shell find proto/speechly/identity/v2 -type f -name *.proto)
-	@$(PROTODOC) --proto_path=proto --doc_out=docs --doc_opt=markdown,slu.md proto/speechly/slu/v1/slu.proto
-	@$(PROTODOC) --proto_path=proto --doc_out=docs --doc_opt=markdown,sal.md $(shell find proto/speechly/sal -type f -name *.proto)
+docs/%.json: $(PROTOS)
+	@$(PROTODOC) --proto_path=proto --doc_out=docs --doc_opt=json,$*.json $(shell find proto/speechly/$* -type f -name *.proto)
+
+docs/%.md: docs/%.json
+	@$(PYTHON) docs/gendoc.py docs/$*.json > $@
+
+docs: $(APIREFS)
 
 deploy: $(SUBDIRS)
 

@@ -10,32 +10,34 @@ option java_package = "com.speechly.api.slu.v1";
 option objc_class_prefix = "SSX";
 option php_namespace = "Speechly\\Slu\\V1";
 
-// Service that implements Speechly SLU (Spoken Language Understanding) API (https://speechly.com/docs/api/slu).
+// Service that implements Speechly SLU (Spoken Language Understanding) API.
 //
-// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
-// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+// To use this service you MUST use an access token from Speechly Identity API.
+// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
 //
+// ```
 // ctx := context.Background()
 // ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
 // stream, err := speechlySLUClient.Stream(ctx)
+// ```
 service SLU {
   // Performs bidirectional streaming speech recognition: receive results while sending audio.
   //
   // First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.
   //
-  // This RPC can handle multiple logical audio segments with the use of SLUEvent_START and SLUEvent_STOP messages,
+  // This RPC can handle multiple logical audio segments with the use of `SLUEvent_START` and `SLUEvent_STOP` messages,
   // which are used to indicate the beginning and the end of a segment.
   //
   // A typical call timeline will look like this:
   //
   // 1. Client starts the RPC.
-  // 2. Client sends SLUConfig message with audio configuration.
-  // 3. Client sends SLUEvent_START.
+  // 2. Client sends `SLUConfig` message with audio configuration.
+  // 3. Client sends `SLUEvent.START`.
   // 4. Client sends audio and receives responses from the server.
-  // 5. Client sends SLUEvent_STOP.
-  // 6. Client sends SLUEvent_START.
+  // 5. Client sends `SLUEvent.STOP`.
+  // 6. Client sends `SLUEvent.START`.
   // 7. Client sends audio and receives responses from the server.
-  // 8. Client sends SLUEvent_STOP.
+  // 8. Client sends `SLUEvent.STOP`.
   // 9. Client closes the stream and receives responses from the server until EOF is received.
   //
   // NB: the client does not have to wait until the server acknowledges the start / stop events,
