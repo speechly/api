@@ -8,6 +8,8 @@ Install the latest package using `pip`:
 
     pip install speechly-api
 
+Note that the minimum python version support is 3.6.
+
 ## Using Python Stubs
 
 The stubs are generated for the default `grpcio` python package, and the examples are using `asyncio`.
