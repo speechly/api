@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.3](https://github.com/speechly/api/tree/0.1.3) (2021-03-19)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.1.2...0.1.3)
+
+**Merged pull requests:**
+
+- Flatten generated swift files [\#17](https://github.com/speechly/api/pull/17) ([langma](https://github.com/langma))
+
 ## [0.1.2](https://github.com/speechly/api/tree/0.1.2) (2021-03-19)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.1.1...0.1.2)
