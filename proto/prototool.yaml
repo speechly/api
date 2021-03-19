@@ -23,7 +23,7 @@ generate:
       flags: Visibility=Public
       output: ../Sources/SpeechlyAPI
     - name: grpc-swift
-      flags: Visibility=Public
+      flags: Visibility=Public,FileNaming=PathToUnderscores
       output: ../Sources/SpeechlyAPI
     - name: js
       flags: import_style=commonjs,binary
