@@ -8,7 +8,7 @@ Install the latest package using `pip`:
 
     pip install speechly-api
 
-Note that the minimum python version support is 3.6.
+Note that the minimum python version supported is 3.6.
 
 ## Using Python Stubs
 
