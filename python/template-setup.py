@@ -14,7 +14,7 @@ setup(
     install_requires=['grpcio>1.30', 'protobuf>3.14'],
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/speechly/api/python',
+    url='https://github.com/speechly/api/tree/master/python',
     author='Speechly',
     keywords=['speech', 'asr', 'language', 'nlp'],
     classifiers=[
@@ -27,7 +27,7 @@ setup(
     package_dir={
         '': 'src'
     },
-    python_requires='>=3.8',
+    python_requires='>=3.6',
     project_urls={
         'Speechly': 'https://www.speechly.com/',
         'Source': 'https://github.com/speechly/api'
