@@ -20,7 +20,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-/// Keys for login with an app_id.
+/// Used as the scope in `LoginRequest` when the access is for a single Speechly application.
 public struct Speechly_Identity_V2_ApplicationScope {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -39,7 +39,7 @@ public struct Speechly_Identity_V2_ApplicationScope {
   public init() {}
 }
 
-/// Keys for login with a project_id.
+/// Used as the scope in `LoginRequest` when access is required for every application in a Speechly project.
 public struct Speechly_Identity_V2_ProjectScope {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

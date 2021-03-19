@@ -25,14 +25,16 @@ import NIO
 import SwiftProtobuf
 
 
-/// Service that implements Speechly SLU (Spoken Language Understanding) API (https://speechly.com/docs/api/slu).
+/// Service that implements Speechly SLU (Spoken Language Understanding) API.
 ///
-/// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
-/// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+/// To use this service you MUST use an access token from Speechly Identity API.
+/// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
 ///
+/// ```
 /// ctx := context.Background()
 /// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
 /// stream, err := speechlySLUClient.Stream(ctx)
+/// ```
 ///
 /// Usage: instantiate `Speechly_Slu_V1_SLUClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Slu_V1_SLUClientProtocol: GRPCClient {
@@ -54,19 +56,19 @@ extension Speechly_Slu_V1_SLUClientProtocol {
   ///
   /// First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.
   ///
-  /// This RPC can handle multiple logical audio segments with the use of SLUEvent_START and SLUEvent_STOP messages,
+  /// This RPC can handle multiple logical audio segments with the use of `SLUEvent_START` and `SLUEvent_STOP` messages,
   /// which are used to indicate the beginning and the end of a segment.
   ///
   /// A typical call timeline will look like this:
   ///
   /// 1. Client starts the RPC.
-  /// 2. Client sends SLUConfig message with audio configuration.
-  /// 3. Client sends SLUEvent_START.
+  /// 2. Client sends `SLUConfig` message with audio configuration.
+  /// 3. Client sends `SLUEvent.START`.
   /// 4. Client sends audio and receives responses from the server.
-  /// 5. Client sends SLUEvent_STOP.
-  /// 6. Client sends SLUEvent_START.
+  /// 5. Client sends `SLUEvent.STOP`.
+  /// 6. Client sends `SLUEvent.START`.
   /// 7. Client sends audio and receives responses from the server.
-  /// 8. Client sends SLUEvent_STOP.
+  /// 8. Client sends `SLUEvent.STOP`.
   /// 9. Client closes the stream and receives responses from the server until EOF is received.
   ///
   /// NB: the client does not have to wait until the server acknowledges the start / stop events,
@@ -121,14 +123,16 @@ public final class Speechly_Slu_V1_SLUClient: Speechly_Slu_V1_SLUClientProtocol 
   }
 }
 
-/// Service that implements Speechly SLU (Spoken Language Understanding) API (https://speechly.com/docs/api/slu).
+/// Service that implements Speechly SLU (Spoken Language Understanding) API.
 ///
-/// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
-/// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+/// To use this service you MUST use an access token from Speechly Identity API.
+/// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
 ///
+/// ```
 /// ctx := context.Background()
 /// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
 /// stream, err := speechlySLUClient.Stream(ctx)
+/// ```
 ///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Slu_V1_SLUProvider: CallHandlerProvider {
@@ -138,19 +142,19 @@ public protocol Speechly_Slu_V1_SLUProvider: CallHandlerProvider {
   ///
   /// First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.
   ///
-  /// This RPC can handle multiple logical audio segments with the use of SLUEvent_START and SLUEvent_STOP messages,
+  /// This RPC can handle multiple logical audio segments with the use of `SLUEvent_START` and `SLUEvent_STOP` messages,
   /// which are used to indicate the beginning and the end of a segment.
   ///
   /// A typical call timeline will look like this:
   ///
   /// 1. Client starts the RPC.
-  /// 2. Client sends SLUConfig message with audio configuration.
-  /// 3. Client sends SLUEvent_START.
+  /// 2. Client sends `SLUConfig` message with audio configuration.
+  /// 3. Client sends `SLUEvent.START`.
   /// 4. Client sends audio and receives responses from the server.
-  /// 5. Client sends SLUEvent_STOP.
-  /// 6. Client sends SLUEvent_START.
+  /// 5. Client sends `SLUEvent.STOP`.
+  /// 6. Client sends `SLUEvent.START`.
   /// 7. Client sends audio and receives responses from the server.
-  /// 8. Client sends SLUEvent_STOP.
+  /// 8. Client sends `SLUEvent.STOP`.
   /// 9. Client closes the stream and receives responses from the server until EOF is received.
   ///
   /// NB: the client does not have to wait until the server acknowledges the start / stop events,

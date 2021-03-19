@@ -115,8 +115,8 @@ public struct Speechly_Slu_V1_WLUToken {
 /// An entity has a start and end indices which map to the indices of words in WLUToken messages,
 /// e.g. in the example "book a [burger restaurant](restaurant_type) for [tomorrow](date)" it would be:
 ///
-/// * Entity "burger restaurant" - `start_position = 2, end_position = 3`
-/// * Entity "tomorrow" - `start_position = 5, end_position = 5`
+/// - Entity "burger restaurant" - `start_position = 2, end_position = 3`
+/// - Entity "tomorrow" - `start_position = 5, end_position = 5`
 ///
 /// The start index is inclusive, but the end index is exclusive, i.e. the interval is `[start_position, end_position)`.
 public struct Speechly_Slu_V1_WLUEntity {

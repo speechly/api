@@ -27,7 +27,7 @@ import SwiftProtobuf
 
 /// Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
 ///
-/// This service is used for generating access token for Speechly SLU API.
+/// This service is used for generating access token for the Speechly API.
 ///
 /// Usage: instantiate `Speechly_Identity_V2_IdentityAPIClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Identity_V2_IdentityAPIClientProtocol: GRPCClient {
@@ -46,7 +46,7 @@ extension Speechly_Identity_V2_IdentityAPIClientProtocol {
   }
 
   /// Performs a login of specific Speechly application.
-  /// Returns an access token, that can be used to access Speechly SLU API.
+  /// Returns an access token which can be used to access thee Speechly API.
   ///
   /// - Parameters:
   ///   - request: Request to send to Login.
@@ -95,14 +95,14 @@ public final class Speechly_Identity_V2_IdentityAPIClient: Speechly_Identity_V2_
 
 /// Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
 ///
-/// This service is used for generating access token for Speechly SLU API.
+/// This service is used for generating access token for the Speechly API.
 ///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Identity_V2_IdentityAPIProvider: CallHandlerProvider {
   var interceptors: Speechly_Identity_V2_IdentityAPIServerInterceptorFactoryProtocol? { get }
 
   /// Performs a login of specific Speechly application.
-  /// Returns an access token, that can be used to access Speechly SLU API.
+  /// Returns an access token which can be used to access thee Speechly API.
   func login(request: Speechly_Identity_V2_LoginRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Identity_V2_LoginResponse>
 }
 

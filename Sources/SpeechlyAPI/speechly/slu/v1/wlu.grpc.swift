@@ -25,14 +25,16 @@ import NIO
 import SwiftProtobuf
 
 
-/// Service that implements Speechly WLU (Written Language Understanding) API (https://speechly.com/docs/api/wlu).
+/// Service that implements Speechly WLU (Written Language Understanding).
 ///
-/// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
-/// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+/// To use this service you MUST use an access token from Speechly Identity API.
+/// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
 ///
+/// ```
 /// ctx := context.Background()
 /// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
 /// res, err := speechlyWLUClient.Text(ctx, req)
+/// ```
 ///
 /// Usage: instantiate `Speechly_Slu_V1_WLUClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Slu_V1_WLUClientProtocol: GRPCClient {
@@ -97,14 +99,16 @@ public final class Speechly_Slu_V1_WLUClient: Speechly_Slu_V1_WLUClientProtocol 
   }
 }
 
-/// Service that implements Speechly WLU (Written Language Understanding) API (https://speechly.com/docs/api/wlu).
+/// Service that implements Speechly WLU (Written Language Understanding).
 ///
-/// To use this service you MUST use an access token from Speechly Identity API (https://speechly.com/docs/api/identity).
-/// The token MUST be passed in gRPC metadata with "Authorization" key and Bearer $ACCESS_TOKEN" as value, e.g. in Go:
+/// To use this service you MUST use an access token from Speechly Identity API.
+/// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
 ///
+/// ```
 /// ctx := context.Background()
 /// ctx = metadata.AppendToOutgoingContext(ctx, "Authorization", "Bearer "+accessToken)
 /// res, err := speechlyWLUClient.Text(ctx, req)
+/// ```
 ///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Slu_V1_WLUProvider: CallHandlerProvider {

@@ -27,6 +27,7 @@ public struct Speechly_Identity_V2_LoginRequest {
   // methods supported on all messages.
 
   /// A unique end-user device identifier.
+  /// Must be a `UUID`.
   /// Required.
   public var deviceID: String = String()
 
@@ -89,7 +90,7 @@ public struct Speechly_Identity_V2_LoginResponse {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// Access token which can used for Speechly SLU API.
+  /// Access token which can used for the Speechly API.
   /// The token is a JSON Web Token and includes all standard claims, as well as custom ones.
   /// The token has expiration, so you should check whether it has expired before using it.
   /// It is safe to cache the token for future use until its expiration date.

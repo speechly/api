@@ -7,6 +7,8 @@
 // For information on using the generated types, please see the documentation:
 //   https://github.com/apple/swift-protobuf/
 
+/// @exclude
+
 import Foundation
 import SwiftProtobuf
 
@@ -27,6 +29,7 @@ public struct Speechly_Identity_V1_LoginRequest {
   // methods supported on all messages.
 
   /// A unique end-user device identifier.
+  /// Must be UUID.
   /// Required.
   public var deviceID: String = String()
 

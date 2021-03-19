@@ -11,6 +11,7 @@ build: prepare Speechly/Speechly.csproj
 
 Speechly/Speechly.csproj:
 	@echo "Patching $@ with version $(VERSION)"
+	@mkdir -p Speechly
 	@cp template-Speechly.csproj $@
 	@sed -i.bak 's/REVISION/$(VERSION)/' $@ && rm $@.bak
 

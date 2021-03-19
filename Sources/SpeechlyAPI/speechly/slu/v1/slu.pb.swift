@@ -118,7 +118,7 @@ public struct Speechly_Slu_V1_SLUConfig {
   public var sampleRateHertz: Int32 = 0
 
   /// The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").
-  /// Required.
+  /// Defaults to the target application language.
   public var languageCode: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -175,9 +175,9 @@ public struct Speechly_Slu_V1_SLUEvent {
   public var event: Speechly_Slu_V1_SLUEvent.Event = .start
 
   /// The `appId` for the utterance.
-  /// - Required in the `START` event if the authorization token is *project based*. The
-  ///   given application must be part of the project set in the token.
-  /// - Not required if the authorization token is *application based*.
+  /// Required in the `START` event if the authorization token is *project based*. The
+  /// given application must be part of the project set in the token.
+  /// Not required if the authorization token is *application based*.
   public var appID: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -449,8 +449,8 @@ public struct Speechly_Slu_V1_SLUTranscript {
 /// An entity has a start and end indices which map to the indices of words in SLUTranscript messages,
 /// e.g. in the example "book a [burger restaurant](restaurant_type) for [tomorrow](date)" it would be:
 ///
-/// * Entity "burger restaurant" - `start_position = 2, end_position = 3`
-/// * Entity "tomorrow" - `start_position = 5, end_position = 5`
+/// - Entity "burger restaurant" - `start_position = 2, end_position = 3`
+/// - Entity "tomorrow" - `start_position = 5, end_position = 5`
 ///
 /// The start index is inclusive, but the end index is exclusive, i.e. the interval is `[start_position, end_position)`.
 public struct Speechly_Slu_V1_SLUEntity {
@@ -587,6 +587,7 @@ public struct Speechly_Slu_V1_SLUFinished {
 }
 
 /// Describes the error that happened when processing an audio context.
+/// DEPRECATED: Will not be returned. Any errors are returned as gRCP status codes with detail messages.
 public struct Speechly_Slu_V1_SLUError {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for

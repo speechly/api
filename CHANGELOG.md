@@ -1,12 +1,22 @@
 # Changelog
 
-## [0.1.1](https://github.com/speechly/api/tree/0.1.1) (2021-03-01)
+## [0.1.2](https://github.com/speechly/api/tree/0.1.2) (2021-03-19)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.1.1...0.1.2)
+
+**Merged pull requests:**
+
+- Generate API reference [\#16](https://github.com/speechly/api/pull/16) ([langma](https://github.com/langma))
+- Add documentation [\#15](https://github.com/speechly/api/pull/15) ([langma](https://github.com/langma))
+
+## [0.1.1](https://github.com/speechly/api/tree/0.1.1) (2021-03-04)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.1.0...0.1.1)
 
 **Merged pull requests:**
 
 - Add app\_id to slu START event [\#14](https://github.com/speechly/api/pull/14) ([langma](https://github.com/langma))
+- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 
 ## [0.1.0](https://github.com/speechly/api/tree/0.1.0) (2021-02-23)
 
@@ -17,6 +27,7 @@
 - add estimated\_training\_time\_sec and training\_time\_sec to App message [\#12](https://github.com/speechly/api/pull/12) ([samutamm](https://github.com/samutamm))
 - Identity API v2 protos [\#10](https://github.com/speechly/api/pull/10) ([langma](https://github.com/langma))
 - batch size and seed to sal compiler compile [\#9](https://github.com/speechly/api/pull/9) ([samutamm](https://github.com/samutamm))
+- Use Java version 1.8 as target for Kotlin package [\#8](https://github.com/speechly/api/pull/8) ([radiohead](https://github.com/radiohead))
 - Bump ini from 1.3.5 to 1.3.7 in /javascript [\#7](https://github.com/speechly/api/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [0.0.5](https://github.com/speechly/api/tree/0.0.5) (2020-12-11)
@@ -49,7 +60,6 @@
 
 **Merged pull requests:**
 
-- Use Java version 1.8 as target for Kotlin package [\#8](https://github.com/speechly/api/pull/8) ([radiohead](https://github.com/radiohead))
 - Add languageCode and configId to Login message [\#3](https://github.com/speechly/api/pull/3) ([langma](https://github.com/langma))
 - Add Swift stubs [\#2](https://github.com/speechly/api/pull/2) ([radiohead](https://github.com/radiohead))
 

@@ -31,6 +31,7 @@ type LoginRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	// A unique end-user device identifier.
+	// Must be a `UUID`.
 	// Required.
 	DeviceId string `protobuf:"bytes,1,opt,name=device_id,json=deviceId,proto3" json:"device_id,omitempty"`
 	// Types that are assignable to Scope:
@@ -124,7 +125,7 @@ type LoginResponse struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// Access token which can used for Speechly SLU API.
+	// Access token which can used for the Speechly API.
 	// The token is a JSON Web Token and includes all standard claims, as well as custom ones.
 	// The token has expiration, so you should check whether it has expired before using it.
 	// It is safe to cache the token for future use until its expiration date.
@@ -345,7 +346,7 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type IdentityAPIClient interface {
 	// Performs a login of specific Speechly application.
-	// Returns an access token, that can be used to access Speechly SLU API.
+	// Returns an access token which can be used to access thee Speechly API.
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 }
 
@@ -369,7 +370,7 @@ func (c *identityAPIClient) Login(ctx context.Context, in *LoginRequest, opts ..
 // IdentityAPIServer is the server API for IdentityAPI service.
 type IdentityAPIServer interface {
 	// Performs a login of specific Speechly application.
-	// Returns an access token, that can be used to access Speechly SLU API.
+	// Returns an access token which can be used to access thee Speechly API.
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 }
 

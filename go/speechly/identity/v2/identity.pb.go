@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// Keys for login with an app_id.
+// Used as the scope in `LoginRequest` when the access is for a single Speechly application.
 type ApplicationScope struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -80,7 +80,7 @@ func (x *ApplicationScope) GetConfigId() string {
 	return ""
 }
 
-// Keys for login with a project_id.
+// Used as the scope in `LoginRequest` when access is required for every application in a Speechly project.
 type ProjectScope struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

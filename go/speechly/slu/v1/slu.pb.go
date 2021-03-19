@@ -236,7 +236,7 @@ type SLUConfig struct {
 	// Required.
 	SampleRateHertz int32 `protobuf:"varint,3,opt,name=sample_rate_hertz,json=sampleRateHertz,proto3" json:"sample_rate_hertz,omitempty"`
 	// The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").
-	// Required.
+	// Defaults to the target application language.
 	LanguageCode string `protobuf:"bytes,4,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 }
 
@@ -309,9 +309,9 @@ type SLUEvent struct {
 	// The event type being sent. Required.
 	Event SLUEvent_Event `protobuf:"varint,1,opt,name=event,proto3,enum=speechly.slu.v1.SLUEvent_Event" json:"event,omitempty"`
 	// The `appId` for the utterance.
-	// - Required in the `START` event if the authorization token is *project based*. The
-	//   given application must be part of the project set in the token.
-	// - Not required if the authorization token is *application based*.
+	// Required in the `START` event if the authorization token is *project based*. The
+	// given application must be part of the project set in the token.
+	// Not required if the authorization token is *application based*.
 	AppId string `protobuf:"bytes,2,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 }
 
@@ -664,8 +664,8 @@ func (x *SLUTranscript) GetEndTime() int32 {
 // An entity has a start and end indices which map to the indices of words in SLUTranscript messages,
 // e.g. in the example "book a [burger restaurant](restaurant_type) for [tomorrow](date)" it would be:
 //
-// * Entity "burger restaurant" - `start_position = 2, end_position = 3`
-// * Entity "tomorrow" - `start_position = 5, end_position = 5`
+// - Entity "burger restaurant" - `start_position = 2, end_position = 3`
+// - Entity "tomorrow" - `start_position = 5, end_position = 5`
 //
 // The start index is inclusive, but the end index is exclusive, i.e. the interval is `[start_position, end_position)`.
 type SLUEntity struct {
@@ -1048,6 +1048,7 @@ func (x *SLUFinished) GetError() *SLUError {
 }
 
 // Describes the error that happened when processing an audio context.
+// DEPRECATED: Will not be returned. Any errors are returned as gRCP status codes with detail messages.
 type SLUError struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -1518,19 +1519,19 @@ type SLUClient interface {
 	//
 	// First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.
 	//
-	// This RPC can handle multiple logical audio segments with the use of SLUEvent_START and SLUEvent_STOP messages,
+	// This RPC can handle multiple logical audio segments with the use of `SLUEvent_START` and `SLUEvent_STOP` messages,
 	// which are used to indicate the beginning and the end of a segment.
 	//
 	// A typical call timeline will look like this:
 	//
 	// 1. Client starts the RPC.
-	// 2. Client sends SLUConfig message with audio configuration.
-	// 3. Client sends SLUEvent_START.
+	// 2. Client sends `SLUConfig` message with audio configuration.
+	// 3. Client sends `SLUEvent.START`.
 	// 4. Client sends audio and receives responses from the server.
-	// 5. Client sends SLUEvent_STOP.
-	// 6. Client sends SLUEvent_START.
+	// 5. Client sends `SLUEvent.STOP`.
+	// 6. Client sends `SLUEvent.START`.
 	// 7. Client sends audio and receives responses from the server.
-	// 8. Client sends SLUEvent_STOP.
+	// 8. Client sends `SLUEvent.STOP`.
 	// 9. Client closes the stream and receives responses from the server until EOF is received.
 	//
 	// NB: the client does not have to wait until the server acknowledges the start / stop events,
@@ -1584,19 +1585,19 @@ type SLUServer interface {
 	//
 	// First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.
 	//
-	// This RPC can handle multiple logical audio segments with the use of SLUEvent_START and SLUEvent_STOP messages,
+	// This RPC can handle multiple logical audio segments with the use of `SLUEvent_START` and `SLUEvent_STOP` messages,
 	// which are used to indicate the beginning and the end of a segment.
 	//
 	// A typical call timeline will look like this:
 	//
 	// 1. Client starts the RPC.
-	// 2. Client sends SLUConfig message with audio configuration.
-	// 3. Client sends SLUEvent_START.
+	// 2. Client sends `SLUConfig` message with audio configuration.
+	// 3. Client sends `SLUEvent.START`.
 	// 4. Client sends audio and receives responses from the server.
-	// 5. Client sends SLUEvent_STOP.
-	// 6. Client sends SLUEvent_START.
+	// 5. Client sends `SLUEvent.STOP`.
+	// 6. Client sends `SLUEvent.START`.
 	// 7. Client sends audio and receives responses from the server.
-	// 8. Client sends SLUEvent_STOP.
+	// 8. Client sends `SLUEvent.STOP`.
 	// 9. Client closes the stream and receives responses from the server until EOF is received.
 	//
 	// NB: the client does not have to wait until the server acknowledges the start / stop events,
