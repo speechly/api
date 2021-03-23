@@ -20,7 +20,7 @@ generate:
     - name: grpc-kotlin
       output: ../java/src/main/kotlin
     - name: swift
-      flags: Visibility=Public
+      flags: Visibility=Public,FileNaming=PathToUnderscores
       output: ../Sources/SpeechlyAPI
     - name: grpc-swift
       flags: Visibility=Public,FileNaming=PathToUnderscores
