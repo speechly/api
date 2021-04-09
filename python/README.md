@@ -50,7 +50,7 @@ async def login(channel, device_id, app_id=None, project_id=None):
 
 ### SLU
 
-Open a bidirectional stream to `speechly.slu.v1.SLU/Stream` and send audio from a source generator to the API. The following example assumes that the `audio_stream` is an iterator that yields audio with 1 channel and sample rate 16000KHz, in bytes chunks:
+Open a bidirectional stream to `speechly.slu.v1.SLU/Stream` and send audio from a source generator to the API. The following example assumes that the `audio_stream` is an iterator that yields audio with 1 channel and sample rate 16KHz, in bytes chunks:
 
 ```python
 async def stream_speech(channel, token, audio_stream, app_id=None):
