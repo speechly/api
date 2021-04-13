@@ -12,9 +12,7 @@ option php_namespace = "Speechly\\Identity\\V2";
 
 import "speechly/identity/v2/identity.proto";
 
-// Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
-//
-// This service is used for generating access token for the Speechly API.
+// Speechly Identity API is used for creating access tokens for the Speechly APIs.
 service IdentityAPI {
   // Performs a login of specific Speechly application.
   // Returns an access token which can be used to access thee Speechly API.

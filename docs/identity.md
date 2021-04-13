@@ -2,9 +2,7 @@
 <a name="speechly.identity.v2.IdentityAPI"></a>
 # speechly.identity.v2.IdentityAPI
 
-Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
-
-This service is used for generating access token for the Speechly API.
+Speechly Identity API is used for creating access tokens for the Speechly APIs.
 
 ## Methods
 

@@ -11,9 +11,7 @@ option java_package = "com.speechly.api.identity.v1";
 option objc_class_prefix = "SIX";
 option php_namespace = "Speechly\\Identity\\V1";
 
-// Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
-//
-// This service is used for generating access token for Speechly SLU API.
+// Speechly Identity API is used for creating access tokens for the Speechly APIs.
 service Identity {
   // Performs a login of specific Speechly application.
   // Returns an access token, that can be used to access Speechly SLU API.

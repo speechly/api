@@ -2,11 +2,9 @@
 <a name="speechly.sal.v1.Compiler"></a>
 # speechly.sal.v1.Compiler
 
-Service that implements Speechly SAL API (https://speechly.com/docs/api/sal).
+The Speechly Compiler API C is used for validating and compiling Speechly Annotation Language source files.
 
-This service is used for validating and compiling Speechly Annotation Language source files.
-
-The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
+The service requires a Speechly API token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
 
 The token acts as a proxy for the user who has generated it,
 i.e. all operations are performed with that user as a subject.

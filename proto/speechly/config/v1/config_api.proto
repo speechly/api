@@ -10,7 +10,8 @@ option java_package = "com.speechly.api.config.v1";
 option objc_class_prefix = "SCX";
 option php_namespace = "Speechly\\Config\\V1";
 
-// Service that implements Speechly Configuration API (https://speechly.com/docs/api/configuration).
+// Speechly Config API provides access to existing app configurations and enables the
+// creation of new apps.
 //
 // The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
 //
