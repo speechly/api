@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package speechly.analytics.v1;
+
+option csharp_namespace = "Speechly.Analytics.V1";
+option go_package = "speechly/analytics/v1;analyticsv1";
+option java_multiple_files = true;
+option java_outer_classname = "AnalyticsApiProto";
+option java_package = "com.speechly.analytics.v1";
+option objc_class_prefix = "SAX";
+option php_namespace = "Speechly\\Analytics\\V1";
+
+import "speechly/analytics/v1/analytics.proto";
+
+// Speechly Analytics API contains methods to get accumulated access data
+// for given apps and/or projects.
+service AnalyticsAPI {
+    // Get a summary of utterances for a given time period.
+    rpc UtteranceStatistics(UtteranceStatisticsRequest) returns (UtteranceStatisticsResponse);
+}
+
+// Includes keys for the UtteranceStatistics method.
+// If no keys are given, the token's project is used.
+// Token needs to have access to the given app / project.
+message UtteranceStatisticsRequest {
+    // The scope of the returned items.
+    enum Scope {
+        SCOPE_INVALID = 0;
+        // Include only utterance data.
+        SCOPE_UTTERANCES = 1;
+        // Include annotated data.
+        SCOPE_ANNOTATIONS = 2;
+        // Include both utterance and annotated data.
+        SCOPE_ALL = 3;
+    }
+    // Limit statistics to a single app_id.
+    // Default is none, returning statistics for all apps in the project.
+    string app_id = 1;
+    // Amount of days to include in the result.
+    // Default is 14 days.
+    int32 days = 2;
+    // Scope of returned data.
+    // Default is UTTERANCES.
+    Scope scope = 3;
+    // Aggregation of the data.
+    // Default is DAILY
+    Aggregation aggregation = 4;
+    // Start of requested statistics period.
+    // Default is 15 days ago.
+    // Must be YYYY-mm-DD formatted string if given.
+    string start_date = 5;
+    // End of requested statistics period.
+    // Default is 1 day ago, resulting in two full weeks.
+    // Must be YYYY-mm-DD formatted string if given.
+    string end_date = 6;
+}
+
+// Contains a list of statistics entries for utterances, based on the requested scope.
+message UtteranceStatisticsResponse {
+    // Start of this statistics period.
+    // YYYY-mm-DD formatted string.
+    string start_date = 1;
+    // End of this statistics period.
+    // YYYY-mm-DD formatted string.
+    string end_date = 2;
+    // Time period length.
+    Aggregation aggregation = 3;
+    // Aggregated results.
+    repeated UtteranceStatisticsPeriod items = 4;
+    // Total duration of utterances in seconds.
+    int32 sum_utterances_seconds = 5;
+    // Total duration of annotated utterances in seconds.
+    int32 sum_annotated_seconds = 6;
+}
