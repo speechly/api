@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package speechly.analytics.v1;
+
+option csharp_namespace = "Speechly.Analytics.V1";
+option go_package = "speechly/analytics/v1;analyticsv1";
+option java_multiple_files = true;
+option java_outer_classname = "AnalyticsProto";
+option java_package = "com.speechly.analytics.v1";
+option objc_class_prefix = "SAX";
+option php_namespace = "Speechly\\Analytics\\V1";
+
+// Aggregation granularity.
+enum Aggregation {
+    AGGREGATION_INVALID = 0;
+    AGGREGATION_MONTHLY = 1;
+    AGGREGATION_DAILY = 2;
+    AGGREGATION_HOURLY = 3;
+}
+
+// Single row of statistics response.
+message UtteranceStatisticsPeriod {
+    // app_id or empty, if aggregating over project.
+    string app_id = 2;
+    // ISO-formatted UTC timestamp of the start time of the period.
+    string start_time = 3;
+    // Count (sum) of utterances in the current period.
+    int32 count = 4;
+    // Total duration of the utterances in the current period.
+    int32 utterances_seconds = 5;
+    // Total duration of annotated utterances in the current period.
+    int32 annotated_seconds = 6;
+}
