@@ -1,6 +1,2 @@
 .DS_Store
-/.build
-/Packages
-/*.xcodeproj
-xcuserdata/
-protoc_plugins/
+.swiftpm

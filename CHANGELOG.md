@@ -1,6 +1,14 @@
 # Changelog
 
-## [0.1.3](https://github.com/speechly/api/tree/0.1.3) (2021-03-19)
+## [0.2.0](https://github.com/speechly/api/tree/0.2.0) (2021-04-21)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.1.3...0.2.0)
+
+**Merged pull requests:**
+
+- Add AnalyticsAPI [\#19](https://github.com/speechly/api/pull/19) ([langma](https://github.com/langma))
+
+## [0.1.3](https://github.com/speechly/api/tree/0.1.3) (2021-03-23)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.1.2...0.1.3)
 

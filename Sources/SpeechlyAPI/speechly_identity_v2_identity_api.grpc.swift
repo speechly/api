@@ -25,9 +25,7 @@ import NIO
 import SwiftProtobuf
 
 
-/// Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
-///
-/// This service is used for generating access token for the Speechly API.
+/// Speechly Identity API is used for creating access tokens for the Speechly APIs.
 ///
 /// Usage: instantiate `Speechly_Identity_V2_IdentityAPIClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Identity_V2_IdentityAPIClientProtocol: GRPCClient {
@@ -93,9 +91,7 @@ public final class Speechly_Identity_V2_IdentityAPIClient: Speechly_Identity_V2_
   }
 }
 
-/// Service that implements Speechly Identity API (https://speechly.com/docs/api/identity).
-///
-/// This service is used for generating access token for the Speechly API.
+/// Speechly Identity API is used for creating access tokens for the Speechly APIs.
 ///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Identity_V2_IdentityAPIProvider: CallHandlerProvider {

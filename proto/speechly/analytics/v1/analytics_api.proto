@@ -67,8 +67,10 @@ message UtteranceStatisticsResponse {
     Aggregation aggregation = 3;
     // Aggregated results.
     repeated UtteranceStatisticsPeriod items = 4;
+    // Amount of utterances in this response
+    int32 total_utterances = 5;
     // Total duration of utterances in seconds.
-    int32 sum_utterances_seconds = 5;
+    int32 total_duration_seconds = 6;
     // Total duration of annotated utterances in seconds.
-    int32 sum_annotated_seconds = 6;
+    int32 total_annotated_seconds = 7;
 }

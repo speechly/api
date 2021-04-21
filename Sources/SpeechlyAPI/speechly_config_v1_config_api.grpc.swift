@@ -25,7 +25,8 @@ import NIO
 import SwiftProtobuf
 
 
-/// Service that implements Speechly Configuration API (https://speechly.com/docs/api/configuration).
+/// Speechly Config API provides access to existing app configurations and enables the
+/// creation of new apps.
 ///
 /// The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
 ///
@@ -413,7 +414,8 @@ public final class Speechly_Config_V1_ConfigAPIClient: Speechly_Config_V1_Config
   }
 }
 
-/// Service that implements Speechly Configuration API (https://speechly.com/docs/api/configuration).
+/// Speechly Config API provides access to existing app configurations and enables the
+/// creation of new apps.
 ///
 /// The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
 ///

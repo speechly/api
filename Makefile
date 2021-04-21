@@ -5,7 +5,7 @@ CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) ferrarimarc
 PYTHON    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) python:3-slim python
 
 SUBDIRS   = java python javascript dotnet
-APIREFS   = docs/slu.md docs/identity.md docs/sal.md
+APIREFS   = docs/slu.md docs/identity.md docs/sal.md docs/analytics.md
 
 test:
 	@$(PROTOTOOL) lint
