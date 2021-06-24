@@ -37,6 +37,9 @@ generate:
     - name: csharp
       output: ../dotnet/Speechly
       flags: base_namespace=Speechly
+    - name: cpp
+      path: grpc_cpp_plugin
+      output: ../cpp/Speechly
 lint:
   group: uber2
   rules:

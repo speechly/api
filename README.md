@@ -21,6 +21,7 @@ Protocol buffers definitions are located in [proto/](proto/README.md). The actua
 - [Swift](swift/README.md)
 - [Java / Kotlin](java/README.md)
 - [.NET](dotnet/README.md)
+- [C++](cpp/README.md)
 
 Protobuf stub generation is pretty easy, so if you need support for a language not in the list, you can always generate the stubs separately.
 
