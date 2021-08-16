@@ -28,10 +28,12 @@ generate:
     - name: js
       flags: import_style=commonjs,binary
       output: ../javascript
-    - name: js-grpc
+    - name: grpc
+      flags: grpc_js
       path: grpc_tools_node_protoc_plugin
       output: ../javascript
     - name: ts
+      flags: service=true
       path: protoc-gen-ts
       output: ../javascript
     - name: csharp

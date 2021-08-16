@@ -4,10 +4,10 @@ See the generic [Speechly gRPC stubs documentation](https://github.com/speechly/
 
 ## Installation
 
-The gRPC libraries (`grpc` and `google-protobuf`) are declared as peer dependencies, meaning that they need to be installed separately in the main package. This is to prevent multiple versions of `grpc` existing in the module tree, as this is not supported by the module.
+The gRPC libraries (`@grpc/grpc-js` and `google-protobuf`) are declared as peer dependencies, meaning that they need to be installed separately in the main package. This is to prevent multiple versions of `@grpc/grpc-js` existing in the module tree. There is another gRPC implementation for node, `grpc`, which is deprecated and not supported by this package.
 
 ```sh
-npm install --save grpc google-protobuf
+npm install --save @grpc/grpc-js google-protobuf
 npm install --save @speechly/api
 ```
 
@@ -17,20 +17,21 @@ The generated code can be used with Javascript or TypeScript code, but it only w
 
 ### Creating a Client
 
-Every gRPC service definition is bundled with a generic client that can be used to access the service. To call `IdentityAPI`, create a client like this:
+Every gRPC service definition is bundled with a generic client that can be used to access the service. Create API clients like this:
 
 ```javascript
-const { credentials } = require("grpc");
+const { credentials, Metadata } = require("@grpc/grpc-js");
 const { IdentityAPIClient } = require("@speechly/api/speechly/identity/v2/identity_api_grpc_pb");
 const identityClient = new IdentityAPIClient("api.speechly.com", credentials.createSsl());
 const { SLUClient } = require("@speechly/api/speechly/slu/v1/slu_grpc_pb");
+const sluClient = new SLUClient("api.speechly.com", credentials.createSsl());
 ```
 
-The clients will use protobuf messages, which are packaged in separate modules:
+The clients will use protobuf messages, which are included in this package:
 
 ```javascript
 const { LoginRequest, ApplicationScope, ProjectScope } = require("@speechly/api/speechly/identity/v2/identity_api_pb");
-const { SLURequest, SLUConfig, SLUEvent } = require("@speechly/api/sspeechly/slu/v1/slu_pb");
+const { SLURequest, SLUConfig, SLUEvent } = require("@speechly/api/speechly/slu/v1/slu_pb");
 ```
 
 ### IdentityAPI
@@ -164,4 +165,20 @@ async function stream_speech(data, appId, token) {
     console.error(err);
   }
 })();
+```
+
+While it is recommended to stream the audio directly sto the Speechly SLU API, as a test case a pre-recorded WAV file can be used. Note that the audio config message needs to match with the actual audio contained in the WAV file, otherwise the results will not be of good quality. You can resample recordings with eg. [sox](http://sox.sourceforge.net).
+
+Reading a WAV file in a format usable in the above code, using the `wav` npm package:
+
+```javascript
+const wav = require("wav");
+const fs = require("fs");
+
+function readWAV(file) {
+  const fstream = fs.createReadStream(file);
+  const reader = new wav.Reader();
+  fstream.pipe(reader);
+  return reader;
+}
 ```
