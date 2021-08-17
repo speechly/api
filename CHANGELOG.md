@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.0](https://github.com/speechly/api/tree/0.3.0) (2021-08-17)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.2.0...0.3.0)
+
+**Merged pull requests:**
+
+- Switch from `grpc` to `@grpc/grpc-js` [\#22](https://github.com/speechly/api/pull/22) ([langma](https://github.com/langma))
+- add dotnet readme code [\#21](https://github.com/speechly/api/pull/21) ([igorpolt](https://github.com/igorpolt))
+- Generate C++ stubs [\#20](https://github.com/speechly/api/pull/20) ([langma](https://github.com/langma))
+
 ## [0.2.0](https://github.com/speechly/api/tree/0.2.0) (2021-04-21)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.1.3...0.2.0)
@@ -15,6 +25,7 @@
 **Merged pull requests:**
 
 - Flatten generated swift files [\#17](https://github.com/speechly/api/pull/17) ([langma](https://github.com/langma))
+- Generate API reference [\#16](https://github.com/speechly/api/pull/16) ([langma](https://github.com/langma))
 
 ## [0.1.2](https://github.com/speechly/api/tree/0.1.2) (2021-03-19)
 
@@ -22,7 +33,6 @@
 
 **Merged pull requests:**
 
-- Generate API reference [\#16](https://github.com/speechly/api/pull/16) ([langma](https://github.com/langma))
 - Add documentation [\#15](https://github.com/speechly/api/pull/15) ([langma](https://github.com/langma))
 
 ## [0.1.1](https://github.com/speechly/api/tree/0.1.1) (2021-03-04)
