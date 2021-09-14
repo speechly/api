@@ -10,7 +10,7 @@ Logging in with IdentityAPI is a single RPC call with `appId` and `deviceId`.
 
 ```c++
 grpc::SslCredentialsOptions ssl_opts;
-ssl_opts.pem_root_certs = RootCerts::getCerts();
+ssl_opts.pem_root_certs = "add certificates here";
 auto channel_creds = grpc::SslCredentials(ssl_opts);
 std::shared_ptr<Channel> identityChannel = grpc::CreateChannel("api.speechly.com", channel_creds);
 std::unique_ptr<Identity::Stub> identityStub_ = Identity::NewStub(identityChannel);
