@@ -55,13 +55,12 @@ std::shared_ptr<ClientReaderWriter<SLURequest, SLUResponse> > stream(sluStub_->S
 
 ### Start context
 
-Before starting context need to send `SLUConfig` with `Encoding`, `LanguageCode` and `SampleRateHertz`.
+Before starting context need to send `SLUConfig` with `Encoding` and `SampleRateHertz`.
 
 ```c++
 SLUConfig config;
 config.set_encoding(SLUConfig_Encoding::SLUConfig_Encoding_LINEAR16);
 config.set_sample_rate_hertz(16000);
-config.set_language_code("en-US");
 
 SLURequest configRequest;
 configRequest.mutable_config()->CopyFrom(config);
@@ -78,7 +77,7 @@ stream->Write(startRequest);
 
 ### Send audio
 
-Audio should be sent as in 16-bit format. In the example `audio` is an array of audio chunks and `number` is a number of chunks in the array.
+Audio should be sent as in 16-bit format. In the example `audio` is an array of bytes and `number` is a number of chunks in the array.
 
 ```c++
 SLURequest sluRequest;
