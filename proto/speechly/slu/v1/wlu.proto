@@ -23,6 +23,7 @@ option php_namespace = "Speechly\\Slu\\V1";
 service WLU {
   // Performs recognition of a text with specified language.
   rpc Text(WLURequest) returns (WLUResponse);
+  rpc BatchText(WLUBatchRequest) returns (WLUBatchResponse);
 }
 
 // Top-level message sent by the client for the `Text` method.
@@ -35,10 +36,26 @@ message WLURequest {
   string text = 2;
 }
 
+// Top-level message sent by the client for the `BatchText` method.
+message WLUBatchRequest {
+  // The language of the text sent in the request as a BCP-47 language tag (e.g. "en-US").
+  // Required.
+  string language_code = 1;
+  // Texts to recognise.
+  // Required.
+  repeated string texts = 2;
+}
+
 // Top-level message sent by the server for the `Text` method.
 message WLUResponse {
   // A list of WLU segments.
   repeated WLUSegment segments = 1;
+}
+
+// Top-level message sent by the server for the `BatchText` method.
+message WLUBatchResponse {
+  // A list of WLUResponse objects.
+  repeated WLUResponse responses = 1;
 }
 
 // Describes a WLU segment.
