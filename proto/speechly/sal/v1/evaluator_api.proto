@@ -27,12 +27,14 @@ service EvaluatorAPI {
 
 // Top-level message sent by the client for the `Texts` method.
 message TextsRequest {
+  // The ID of the app that is used for recongising.
+  string app_id = 1;
   // The language of the text sent in the request as a BCP-47 language tag (e.g. "en-US").
   // Required.
-  string language_code = 1;
+  string language_code = 2;
   // A list of texts to recognise.
   // Required.
-  repeated string texts = 2;
+  repeated string texts = 3;
 }
 
 // Top-level message sent by the client for the `Texts` method.
@@ -44,9 +46,11 @@ message TextsResponse {
 
 // Top-level message sent by the client for the `EvalTexts` method.
 message EvalTextsRequest {
+  // The ID of the app that is used for evaluating.
+  string app_id = 1;
   // The language of the text sent in the request as a BCP-47 language tag (e.g. "en-US").
   // Required.
-  string language_code = 1;
+  string language_code = 2;
   // Describes a single text and ground truth pair.
   message EvaluationPair {
     // The text to recognise.
@@ -57,7 +61,7 @@ message EvalTextsRequest {
     string ground_truth_text = 2;
   }
   // Required.
-  repeated EvaluationPair pairs = 2;
+  repeated EvaluationPair pairs = 3;
 }
 
 // Top-level message sent by the server for the `EvalTexts` method.
