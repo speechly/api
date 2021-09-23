@@ -624,27 +624,37 @@ extension Speechly_Slu_V1_SLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
       switch fieldNumber {
       case 1: try {
         var v: Speechly_Slu_V1_SLUConfig?
+        var hadOneofValue = false
         if let current = self.streamingRequest {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .config(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingRequest = .config(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingRequest = .config(v)
+        }
       }()
       case 2: try {
         var v: Speechly_Slu_V1_SLUEvent?
+        var hadOneofValue = false
         if let current = self.streamingRequest {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .event(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingRequest = .event(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingRequest = .event(v)
+        }
       }()
       case 3: try {
-        if self.streamingRequest != nil {try decoder.handleConflictingOneOf()}
         var v: Data?
         try decoder.decodeSingularBytesField(value: &v)
-        if let v = v {self.streamingRequest = .audio(v)}
+        if let v = v {
+          if self.streamingRequest != nil {try decoder.handleConflictingOneOf()}
+          self.streamingRequest = .audio(v)
+        }
       }()
       default: break
       }
@@ -807,84 +817,120 @@ extension Speechly_Slu_V1_SLUResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
       case 2: try { try decoder.decodeSingularInt32Field(value: &self.segmentID) }()
       case 3: try {
         var v: Speechly_Slu_V1_SLUTranscript?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .transcript(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .transcript(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .transcript(v)
+        }
       }()
       case 4: try {
         var v: Speechly_Slu_V1_SLUEntity?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .entity(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .entity(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .entity(v)
+        }
       }()
       case 5: try {
         var v: Speechly_Slu_V1_SLUIntent?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .intent(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .intent(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .intent(v)
+        }
       }()
       case 6: try {
         var v: Speechly_Slu_V1_SLUSegmentEnd?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .segmentEnd(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .segmentEnd(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .segmentEnd(v)
+        }
       }()
       case 7: try {
         var v: Speechly_Slu_V1_SLUTentativeTranscript?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .tentativeTranscript(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .tentativeTranscript(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .tentativeTranscript(v)
+        }
       }()
       case 8: try {
         var v: Speechly_Slu_V1_SLUTentativeEntities?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .tentativeEntities(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .tentativeEntities(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .tentativeEntities(v)
+        }
       }()
       case 9: try {
         var v: Speechly_Slu_V1_SLUIntent?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .tentativeIntent(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .tentativeIntent(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .tentativeIntent(v)
+        }
       }()
       case 10: try {
         var v: Speechly_Slu_V1_SLUStarted?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .started(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .started(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .started(v)
+        }
       }()
       case 11: try {
         var v: Speechly_Slu_V1_SLUFinished?
+        var hadOneofValue = false
         if let current = self.streamingResponse {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .finished(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.streamingResponse = .finished(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .finished(v)
+        }
       }()
       default: break
       }

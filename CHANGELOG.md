@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3.1](https://github.com/speechly/api/tree/0.3.1) (2021-09-23)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.3.0...0.3.1)
+
+**Merged pull requests:**
+
+- EvaluatorAPI for text-only evaluation [\#24](https://github.com/speechly/api/pull/24) ([samutamm](https://github.com/samutamm))
+- update cpp README [\#23](https://github.com/speechly/api/pull/23) ([igorpolt](https://github.com/igorpolt))
+
 ## [0.3.0](https://github.com/speechly/api/tree/0.3.0) (2021-08-17)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.2.0...0.3.0)
@@ -25,7 +34,6 @@
 **Merged pull requests:**
 
 - Flatten generated swift files [\#17](https://github.com/speechly/api/pull/17) ([langma](https://github.com/langma))
-- Generate API reference [\#16](https://github.com/speechly/api/pull/16) ([langma](https://github.com/langma))
 
 ## [0.1.2](https://github.com/speechly/api/tree/0.1.2) (2021-03-19)
 
@@ -33,6 +41,7 @@
 
 **Merged pull requests:**
 
+- Generate API reference [\#16](https://github.com/speechly/api/pull/16) ([langma](https://github.com/langma))
 - Add documentation [\#15](https://github.com/speechly/api/pull/15) ([langma](https://github.com/langma))
 
 ## [0.1.1](https://github.com/speechly/api/tree/0.1.1) (2021-03-04)

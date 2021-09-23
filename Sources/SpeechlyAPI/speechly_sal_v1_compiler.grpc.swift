@@ -25,7 +25,7 @@ import NIO
 import SwiftProtobuf
 
 
-/// The Speechly Compiler API C is used for validating and compiling Speechly Annotation Language source files.
+/// The Speechly Compiler API is used for validating and compiling Speechly Annotation Language source files.
 ///
 /// The service requires a Speechly API token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
 ///
@@ -148,7 +148,7 @@ public final class Speechly_Sal_V1_CompilerClient: Speechly_Sal_V1_CompilerClien
   }
 }
 
-/// The Speechly Compiler API C is used for validating and compiling Speechly Annotation Language source files.
+/// The Speechly Compiler API is used for validating and compiling Speechly Annotation Language source files.
 ///
 /// The service requires a Speechly API token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
 ///

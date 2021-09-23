@@ -131,21 +131,29 @@ extension Speechly_Identity_V2_LoginRequest: SwiftProtobuf.Message, SwiftProtobu
       case 1: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
       case 2: try {
         var v: Speechly_Identity_V2_ApplicationScope?
+        var hadOneofValue = false
         if let current = self.scope {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .application(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.scope = .application(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.scope = .application(v)
+        }
       }()
       case 3: try {
         var v: Speechly_Identity_V2_ProjectScope?
+        var hadOneofValue = false
         if let current = self.scope {
-          try decoder.handleConflictingOneOf()
+          hadOneofValue = true
           if case .project(let m) = current {v = m}
         }
         try decoder.decodeSingularMessageField(value: &v)
-        if let v = v {self.scope = .project(v)}
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.scope = .project(v)
+        }
       }()
       default: break
       }
