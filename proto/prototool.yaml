@@ -1,13 +1,13 @@
 protoc:
-  version: 3.14.0
+  version: 3.17.3
 generate:
   go_options:
     import_path: github.com/speechly/api/proto
   plugins:
     - name: go
-      type: go
       output: ../go
-      flags: plugins=grpc
+    - name: go-grpc
+      output: ../go
     - name: python-grpc
       path: grpc_python_plugin
       output: ../python/src
