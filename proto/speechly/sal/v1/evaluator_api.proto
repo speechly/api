@@ -1,0 +1,67 @@
+
+syntax = "proto3";
+
+package speechly.sal.v1;
+
+option csharp_namespace = "Speechly.Sal.V1";
+option go_package = "speechly/sal/v1;salv1";
+option java_multiple_files = true;
+option java_outer_classname = "EvaluatorApiProto";
+option java_package = "com.speechly.sal.v1";
+option objc_class_prefix = "SSX";
+option php_namespace = "Speechly\\Sal\\V1";
+
+// Service that implements Speechly SAL Evaluation service.
+//
+// The service requires a Speechly API token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
+//
+// The token acts as a proxy for the user who has generated it,
+// i.e. all operations are performed with that user as a subject.
+service EvaluatorAPI {
+  // Performs recognition of a batch of texts with specified language.
+  rpc Texts(TextsRequest) returns (TextsResponse);
+  // Performs recognition of a batch of texts with specified language
+  // and evaluates it against given ground truth texts.
+  rpc EvalTexts(EvalTextsRequest) returns (EvalTextsResponse);
+}
+
+// Top-level message sent by the client for the `Texts` method.
+message TextsRequest {
+  // The language of the text sent in the request as a BCP-47 language tag (e.g. "en-US").
+  // Required.
+  string language_code = 1;
+  // A list of texts to recognise.
+  // Required.
+  repeated string texts = 2;
+}
+
+// Top-level message sent by the client for the `Texts` method.
+message TextsResponse {
+  // A list of annotated texts.
+  // Required.
+  repeated string annotated_texts = 2;
+}
+
+// Top-level message sent by the client for the `EvalTexts` method.
+message EvalTextsRequest {
+  // The language of the text sent in the request as a BCP-47 language tag (e.g. "en-US").
+  // Required.
+  string language_code = 1;
+  // Describes a single text and ground truth pair.
+  message EvaluationPair {
+    // The text to recognise.
+    // Required.
+    string text = 1;
+    // The ground truth text to compare against.
+    // Required.
+    string ground_truth_text = 2;
+  }
+  // Required.
+  repeated EvaluationPair pairs = 2;
+}
+
+// Top-level message sent by the server for the `EvalTexts` method.
+message EvalTextsResponse {
+  // An evaluation report.
+  string report = 1;
+}
