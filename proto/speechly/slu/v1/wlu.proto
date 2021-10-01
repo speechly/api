@@ -23,6 +23,22 @@ option php_namespace = "Speechly\\Slu\\V1";
 service WLU {
   // Performs recognition of a text with specified language.
   rpc Text(WLURequest) returns (WLUResponse);
+  // Performs recognition of a batch of texts with specified language.
+  rpc Texts(TextsRequest) returns (TextsResponse);
+}
+
+// Top-level message sent by the client for the `Texts` method.
+message TextsRequest {
+  // Batch of WLURequest.
+  // Required.
+  repeated WLURequest requests = 1;
+}
+
+// Top-level message sent by the server for the `Texts` method.
+message TextsResponse {
+  // Batch of WLUResponses.
+  // Required.
+  repeated WLUResponse responses = 1;
 }
 
 // Top-level message sent by the client for the `Text` method.
