@@ -58,6 +58,10 @@ message SLURequest {
     SLUEvent event = 2;
     // Contains a chunk of the audio being streamed.
     bytes audio = 3;
+    // Response to an RTT measurement request from server. Should be sent immediately
+    // after receiving the RoundTripMeasurementRequest in the stream.
+    // If ignored, no round trip measurements are made.
+    RoundTripMeasurementResponse rtt_response = 4;
   }
 }
 
@@ -135,6 +139,10 @@ message SLUResponse {
     // The client is expected to discard any non-finalised segments.
     // This message is an asynchronous acknowledgement for client-side SLUEvent_STOP message.
     SLUFinished finished = 11;
+    // Initiates a round trip network latency measurement. The response handler should respond to this
+    // message by sending a RoundTripMeasurementResponse in the request stream.
+    // The measurement is stored server side and used to minimise the latency in the future.
+    RoundTripMeasurementRequest rtt_request = 12;
   }
 }
 
@@ -236,4 +244,18 @@ message SLUError {
   string code = 1;
   // Error message.
   string message = 2;
+}
+
+// Network latency measurement request. Sent from the server to measure the time it takes for the client
+// to receive a message and the server to receive the client's response. Also known as RTT.
+message RoundTripMeasurementRequest {
+  // Measurement id. Multiple measurements can be sent during one connection, so the response should contain
+  // the same `id` as in the request.
+  int32 id = 1;
+}
+
+// Response sent from the client immediately after seeing the RoundTripMeasurementRequest.
+message RoundTripMeasurementResponse {
+  // `id` should match the request's id.
+  int32 id = 1;
 }
