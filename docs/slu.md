@@ -42,6 +42,8 @@ res, err := speechlyWLUClient.Text(ctx, req)
 
 ## Messages
 
+- [RoundTripMeasurementRequest](#speechly.slu.v1.RoundTripMeasurementRequest)
+- [RoundTripMeasurementResponse](#speechly.slu.v1.RoundTripMeasurementResponse)
 - [SLUConfig](#speechly.slu.v1.SLUConfig)
 - [SLUEntity](#speechly.slu.v1.SLUEntity)
 - [SLUError](#speechly.slu.v1.SLUError)
@@ -61,6 +63,31 @@ res, err := speechlyWLUClient.Text(ctx, req)
 - [WLUResponse](#speechly.slu.v1.WLUResponse)
 - [WLUSegment](#speechly.slu.v1.WLUSegment)
 - [WLUToken](#speechly.slu.v1.WLUToken)
+
+
+<a name="speechly.slu.v1.RoundTripMeasurementRequest"></a>
+### RoundTripMeasurementRequest
+
+Network latency measurement request. Sent from the server to measure the time it takes for the client
+to receive a message and the server to receive the client's response. Also known as RTT.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| id | [int32](#int32) | Measurement id. Multiple measurements can be sent during one connection, so the response should contain<br/>the same `id` as in the request. |
+
+
+<a name="speechly.slu.v1.RoundTripMeasurementResponse"></a>
+### RoundTripMeasurementResponse
+
+Response sent from the client immediately after seeing the RoundTripMeasurementRequest.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| id | [int32](#int32) | `id` should match the request's id. |
 
 
 <a name="speechly.slu.v1.SLUConfig"></a>
@@ -172,6 +199,7 @@ Top-level message sent by the client for the `Stream` method.
 | config | [SLUConfig](#speechly.slu.v1.SLUConfig) | Describes the configuration of the audio sent by the client.<br/>MUST be the first message sent to the stream. |
 | event | [SLUEvent](#speechly.slu.v1.SLUEvent) | Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a start event and concluded with a stop event,<br/>otherwise the server WILL terminate the stream with an error. |
 | audio | [bytes](#bytes) | Contains a chunk of the audio being streamed. |
+| rtt_response | [RoundTripMeasurementResponse](#speechly.slu.v1.RoundTripMeasurementResponse) | Response to an RTT measurement request from server. Should be sent immediately<br/>after receiving the RoundTripMeasurementRequest in the stream.<br/>If ignored, no round trip measurements are made. |
 
 
 <a name="speechly.slu.v1.SLUResponse"></a>
@@ -194,6 +222,7 @@ Top-level message sent by the server for the `Stream` method.
 | tentative_intent | [SLUIntent](#speechly.slu.v1.SLUIntent) | Tentative SLU intent. |
 | started | [SLUStarted](#speechly.slu.v1.SLUStarted) | A special marker message that indicates that the audio context with specified `audio_context` id<br/>has been started by the API and all audio data sent by the client will be processed in that context.<br/>This message is an asynchronous acknowledgement for client-side SLUEvent_START message. |
 | finished | [SLUFinished](#speechly.slu.v1.SLUFinished) | A special marker message that indicates that the audio context with specified `audio_context` id<br/>has been stopped by the API and no new responses for that context will be sent.<br/>The client is expected to discard any non-finalised segments.<br/>This message is an asynchronous acknowledgement for client-side SLUEvent_STOP message. |
+| rtt_request | [RoundTripMeasurementRequest](#speechly.slu.v1.RoundTripMeasurementRequest) | Initiates a round trip network latency measurement. The response handler should respond to this<br/>message by sending a RoundTripMeasurementResponse in the request stream.<br/>The measurement is stored server side and used to minimise the latency in the future. |
 
 
 <a name="speechly.slu.v1.SLUSegmentEnd"></a>

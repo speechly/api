@@ -58,6 +58,17 @@ public struct Speechly_Slu_V1_SLURequest {
     set {streamingRequest = .audio(newValue)}
   }
 
+  /// Response to an RTT measurement request from server. Should be sent immediately
+  /// after receiving the RoundTripMeasurementRequest in the stream.
+  /// If ignored, no round trip measurements are made.
+  public var rttResponse: Speechly_Slu_V1_RoundTripMeasurementResponse {
+    get {
+      if case .rttResponse(let v)? = streamingRequest {return v}
+      return Speechly_Slu_V1_RoundTripMeasurementResponse()
+    }
+    set {streamingRequest = .rttResponse(newValue)}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_StreamingRequest: Equatable {
@@ -70,6 +81,10 @@ public struct Speechly_Slu_V1_SLURequest {
     case event(Speechly_Slu_V1_SLUEvent)
     /// Contains a chunk of the audio being streamed.
     case audio(Data)
+    /// Response to an RTT measurement request from server. Should be sent immediately
+    /// after receiving the RoundTripMeasurementRequest in the stream.
+    /// If ignored, no round trip measurements are made.
+    case rttResponse(Speechly_Slu_V1_RoundTripMeasurementResponse)
 
   #if !swift(>=4.1)
     public static func ==(lhs: Speechly_Slu_V1_SLURequest.OneOf_StreamingRequest, rhs: Speechly_Slu_V1_SLURequest.OneOf_StreamingRequest) -> Bool {
@@ -87,6 +102,10 @@ public struct Speechly_Slu_V1_SLURequest {
       }()
       case (.audio, .audio): return {
         guard case .audio(let l) = lhs, case .audio(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.rttResponse, .rttResponse): return {
+        guard case .rttResponse(let l) = lhs, case .rttResponse(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
       default: return false
@@ -334,6 +353,17 @@ public struct Speechly_Slu_V1_SLUResponse {
     set {streamingResponse = .finished(newValue)}
   }
 
+  /// Initiates a round trip network latency measurement. The response handler should respond to this
+  /// message by sending a RoundTripMeasurementResponse in the request stream.
+  /// The measurement is stored server side and used to minimise the latency in the future.
+  public var rttRequest: Speechly_Slu_V1_RoundTripMeasurementRequest {
+    get {
+      if case .rttRequest(let v)? = streamingResponse {return v}
+      return Speechly_Slu_V1_RoundTripMeasurementRequest()
+    }
+    set {streamingResponse = .rttRequest(newValue)}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// Response payload.
@@ -363,6 +393,10 @@ public struct Speechly_Slu_V1_SLUResponse {
     /// The client is expected to discard any non-finalised segments.
     /// This message is an asynchronous acknowledgement for client-side SLUEvent_STOP message.
     case finished(Speechly_Slu_V1_SLUFinished)
+    /// Initiates a round trip network latency measurement. The response handler should respond to this
+    /// message by sending a RoundTripMeasurementResponse in the request stream.
+    /// The measurement is stored server side and used to minimise the latency in the future.
+    case rttRequest(Speechly_Slu_V1_RoundTripMeasurementRequest)
 
   #if !swift(>=4.1)
     public static func ==(lhs: Speechly_Slu_V1_SLUResponse.OneOf_StreamingResponse, rhs: Speechly_Slu_V1_SLUResponse.OneOf_StreamingResponse) -> Bool {
@@ -404,6 +438,10 @@ public struct Speechly_Slu_V1_SLUResponse {
       }()
       case (.finished, .finished): return {
         guard case .finished(let l) = lhs, case .finished(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.rttRequest, .rttRequest): return {
+        guard case .rttRequest(let l) = lhs, case .rttRequest(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
       default: return false
@@ -604,6 +642,36 @@ public struct Speechly_Slu_V1_SLUError {
   public init() {}
 }
 
+/// Network latency measurement request. Sent from the server to measure the time it takes for the client
+/// to receive a message and the server to receive the client's response. Also known as RTT.
+public struct Speechly_Slu_V1_RoundTripMeasurementRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// Measurement id. Multiple measurements can be sent during one connection, so the response should contain
+  /// the same `id` as in the request.
+  public var id: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// Response sent from the client immediately after seeing the RoundTripMeasurementRequest.
+public struct Speechly_Slu_V1_RoundTripMeasurementResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// `id` should match the request's id.
+  public var id: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.slu.v1"
@@ -614,6 +682,7 @@ extension Speechly_Slu_V1_SLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     1: .same(proto: "config"),
     2: .same(proto: "event"),
     3: .same(proto: "audio"),
+    4: .standard(proto: "rtt_response"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -656,6 +725,19 @@ extension Speechly_Slu_V1_SLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
           self.streamingRequest = .audio(v)
         }
       }()
+      case 4: try {
+        var v: Speechly_Slu_V1_RoundTripMeasurementResponse?
+        var hadOneofValue = false
+        if let current = self.streamingRequest {
+          hadOneofValue = true
+          if case .rttResponse(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingRequest = .rttResponse(v)
+        }
+      }()
       default: break
       }
     }
@@ -677,6 +759,10 @@ extension Speechly_Slu_V1_SLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     case .audio?: try {
       guard case .audio(let v)? = self.streamingRequest else { preconditionFailure() }
       try visitor.visitSingularBytesField(value: v, fieldNumber: 3)
+    }()
+    case .rttResponse?: try {
+      guard case .rttResponse(let v)? = self.streamingRequest else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
     }()
     case nil: break
     }
@@ -805,6 +891,7 @@ extension Speechly_Slu_V1_SLUResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     9: .standard(proto: "tentative_intent"),
     10: .same(proto: "started"),
     11: .same(proto: "finished"),
+    12: .standard(proto: "rtt_request"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -932,6 +1019,19 @@ extension Speechly_Slu_V1_SLUResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
           self.streamingResponse = .finished(v)
         }
       }()
+      case 12: try {
+        var v: Speechly_Slu_V1_RoundTripMeasurementRequest?
+        var hadOneofValue = false
+        if let current = self.streamingResponse {
+          hadOneofValue = true
+          if case .rttRequest(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingResponse = .rttRequest(v)
+        }
+      }()
       default: break
       }
     }
@@ -983,6 +1083,10 @@ extension Speechly_Slu_V1_SLUResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     case .finished?: try {
       guard case .finished(let v)? = self.streamingResponse else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
+    }()
+    case .rttRequest?: try {
+      guard case .rttRequest(let v)? = self.streamingResponse else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 12)
     }()
     case nil: break
     }
@@ -1303,6 +1407,70 @@ extension Speechly_Slu_V1_SLUError: SwiftProtobuf.Message, SwiftProtobuf._Messag
   public static func ==(lhs: Speechly_Slu_V1_SLUError, rhs: Speechly_Slu_V1_SLUError) -> Bool {
     if lhs.code != rhs.code {return false}
     if lhs.message != rhs.message {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Slu_V1_RoundTripMeasurementRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RoundTripMeasurementRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "id"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularInt32Field(value: &self.id) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.id != 0 {
+      try visitor.visitSingularInt32Field(value: self.id, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_RoundTripMeasurementRequest, rhs: Speechly_Slu_V1_RoundTripMeasurementRequest) -> Bool {
+    if lhs.id != rhs.id {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Slu_V1_RoundTripMeasurementResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RoundTripMeasurementResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "id"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularInt32Field(value: &self.id) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.id != 0 {
+      try visitor.visitSingularInt32Field(value: self.id, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_RoundTripMeasurementResponse, rhs: Speechly_Slu_V1_RoundTripMeasurementResponse) -> Bool {
+    if lhs.id != rhs.id {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

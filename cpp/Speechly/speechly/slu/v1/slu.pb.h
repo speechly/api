@@ -47,7 +47,7 @@ struct TableStruct_speechly_2fslu_2fv1_2fslu_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[13]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[15]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -57,6 +57,12 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace speechly {
 namespace slu {
 namespace v1 {
+class RoundTripMeasurementRequest;
+struct RoundTripMeasurementRequestDefaultTypeInternal;
+extern RoundTripMeasurementRequestDefaultTypeInternal _RoundTripMeasurementRequest_default_instance_;
+class RoundTripMeasurementResponse;
+struct RoundTripMeasurementResponseDefaultTypeInternal;
+extern RoundTripMeasurementResponseDefaultTypeInternal _RoundTripMeasurementResponse_default_instance_;
 class SLUConfig;
 struct SLUConfigDefaultTypeInternal;
 extern SLUConfigDefaultTypeInternal _SLUConfig_default_instance_;
@@ -100,6 +106,8 @@ extern SLUTranscriptDefaultTypeInternal _SLUTranscript_default_instance_;
 }  // namespace slu
 }  // namespace speechly
 PROTOBUF_NAMESPACE_OPEN
+template<> ::speechly::slu::v1::RoundTripMeasurementRequest* Arena::CreateMaybeMessage<::speechly::slu::v1::RoundTripMeasurementRequest>(Arena*);
+template<> ::speechly::slu::v1::RoundTripMeasurementResponse* Arena::CreateMaybeMessage<::speechly::slu::v1::RoundTripMeasurementResponse>(Arena*);
 template<> ::speechly::slu::v1::SLUConfig* Arena::CreateMaybeMessage<::speechly::slu::v1::SLUConfig>(Arena*);
 template<> ::speechly::slu::v1::SLUEntity* Arena::CreateMaybeMessage<::speechly::slu::v1::SLUEntity>(Arena*);
 template<> ::speechly::slu::v1::SLUError* Arena::CreateMaybeMessage<::speechly::slu::v1::SLUError>(Arena*);
@@ -212,6 +220,7 @@ class SLURequest final :
     kConfig = 1,
     kEvent = 2,
     kAudio = 3,
+    kRttResponse = 4,
     STREAMING_REQUEST_NOT_SET = 0,
   };
 
@@ -294,6 +303,7 @@ class SLURequest final :
     kConfigFieldNumber = 1,
     kEventFieldNumber = 2,
     kAudioFieldNumber = 3,
+    kRttResponseFieldNumber = 4,
   };
   // .speechly.slu.v1.SLUConfig config = 1;
   bool has_config() const;
@@ -349,6 +359,24 @@ class SLURequest final :
   std::string* _internal_mutable_audio();
   public:
 
+  // .speechly.slu.v1.RoundTripMeasurementResponse rtt_response = 4;
+  bool has_rtt_response() const;
+  private:
+  bool _internal_has_rtt_response() const;
+  public:
+  void clear_rtt_response();
+  const ::speechly::slu::v1::RoundTripMeasurementResponse& rtt_response() const;
+  PROTOBUF_MUST_USE_RESULT ::speechly::slu::v1::RoundTripMeasurementResponse* release_rtt_response();
+  ::speechly::slu::v1::RoundTripMeasurementResponse* mutable_rtt_response();
+  void set_allocated_rtt_response(::speechly::slu::v1::RoundTripMeasurementResponse* rtt_response);
+  private:
+  const ::speechly::slu::v1::RoundTripMeasurementResponse& _internal_rtt_response() const;
+  ::speechly::slu::v1::RoundTripMeasurementResponse* _internal_mutable_rtt_response();
+  public:
+  void unsafe_arena_set_allocated_rtt_response(
+      ::speechly::slu::v1::RoundTripMeasurementResponse* rtt_response);
+  ::speechly::slu::v1::RoundTripMeasurementResponse* unsafe_arena_release_rtt_response();
+
   void clear_streaming_request();
   StreamingRequestCase streaming_request_case() const;
   // @@protoc_insertion_point(class_scope:speechly.slu.v1.SLURequest)
@@ -357,6 +385,7 @@ class SLURequest final :
   void set_has_config();
   void set_has_event();
   void set_has_audio();
+  void set_has_rtt_response();
 
   inline bool has_streaming_request() const;
   inline void clear_has_streaming_request();
@@ -370,6 +399,7 @@ class SLURequest final :
     ::speechly::slu::v1::SLUConfig* config_;
     ::speechly::slu::v1::SLUEvent* event_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_;
+    ::speechly::slu::v1::RoundTripMeasurementResponse* rtt_response_;
   } streaming_request_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
@@ -817,6 +847,7 @@ class SLUResponse final :
     kTentativeIntent = 9,
     kStarted = 10,
     kFinished = 11,
+    kRttRequest = 12,
     STREAMING_RESPONSE_NOT_SET = 0,
   };
 
@@ -907,6 +938,7 @@ class SLUResponse final :
     kTentativeIntentFieldNumber = 9,
     kStartedFieldNumber = 10,
     kFinishedFieldNumber = 11,
+    kRttRequestFieldNumber = 12,
   };
   // string audio_context = 1;
   void clear_audio_context();
@@ -1093,6 +1125,24 @@ class SLUResponse final :
       ::speechly::slu::v1::SLUFinished* finished);
   ::speechly::slu::v1::SLUFinished* unsafe_arena_release_finished();
 
+  // .speechly.slu.v1.RoundTripMeasurementRequest rtt_request = 12;
+  bool has_rtt_request() const;
+  private:
+  bool _internal_has_rtt_request() const;
+  public:
+  void clear_rtt_request();
+  const ::speechly::slu::v1::RoundTripMeasurementRequest& rtt_request() const;
+  PROTOBUF_MUST_USE_RESULT ::speechly::slu::v1::RoundTripMeasurementRequest* release_rtt_request();
+  ::speechly::slu::v1::RoundTripMeasurementRequest* mutable_rtt_request();
+  void set_allocated_rtt_request(::speechly::slu::v1::RoundTripMeasurementRequest* rtt_request);
+  private:
+  const ::speechly::slu::v1::RoundTripMeasurementRequest& _internal_rtt_request() const;
+  ::speechly::slu::v1::RoundTripMeasurementRequest* _internal_mutable_rtt_request();
+  public:
+  void unsafe_arena_set_allocated_rtt_request(
+      ::speechly::slu::v1::RoundTripMeasurementRequest* rtt_request);
+  ::speechly::slu::v1::RoundTripMeasurementRequest* unsafe_arena_release_rtt_request();
+
   void clear_streaming_response();
   StreamingResponseCase streaming_response_case() const;
   // @@protoc_insertion_point(class_scope:speechly.slu.v1.SLUResponse)
@@ -1107,6 +1157,7 @@ class SLUResponse final :
   void set_has_tentative_intent();
   void set_has_started();
   void set_has_finished();
+  void set_has_rtt_request();
 
   inline bool has_streaming_response() const;
   inline void clear_has_streaming_response();
@@ -1128,6 +1179,7 @@ class SLUResponse final :
     ::speechly::slu::v1::SLUIntent* tentative_intent_;
     ::speechly::slu::v1::SLUStarted* started_;
     ::speechly::slu::v1::SLUFinished* finished_;
+    ::speechly::slu::v1::RoundTripMeasurementRequest* rtt_request_;
   } streaming_response_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[1];
@@ -2509,6 +2561,284 @@ class SLUError final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv1_2fslu_2eproto;
 };
+// -------------------------------------------------------------------
+
+class RoundTripMeasurementRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.slu.v1.RoundTripMeasurementRequest) */ {
+ public:
+  inline RoundTripMeasurementRequest() : RoundTripMeasurementRequest(nullptr) {}
+  ~RoundTripMeasurementRequest() override;
+  explicit constexpr RoundTripMeasurementRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RoundTripMeasurementRequest(const RoundTripMeasurementRequest& from);
+  RoundTripMeasurementRequest(RoundTripMeasurementRequest&& from) noexcept
+    : RoundTripMeasurementRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RoundTripMeasurementRequest& operator=(const RoundTripMeasurementRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RoundTripMeasurementRequest& operator=(RoundTripMeasurementRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RoundTripMeasurementRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RoundTripMeasurementRequest* internal_default_instance() {
+    return reinterpret_cast<const RoundTripMeasurementRequest*>(
+               &_RoundTripMeasurementRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  friend void swap(RoundTripMeasurementRequest& a, RoundTripMeasurementRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RoundTripMeasurementRequest* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RoundTripMeasurementRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RoundTripMeasurementRequest* New() const final {
+    return new RoundTripMeasurementRequest();
+  }
+
+  RoundTripMeasurementRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RoundTripMeasurementRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RoundTripMeasurementRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const RoundTripMeasurementRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RoundTripMeasurementRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.slu.v1.RoundTripMeasurementRequest";
+  }
+  protected:
+  explicit RoundTripMeasurementRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIdFieldNumber = 1,
+  };
+  // int32 id = 1;
+  void clear_id();
+  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
+  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
+  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:speechly.slu.v1.RoundTripMeasurementRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::int32 id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fslu_2fv1_2fslu_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RoundTripMeasurementResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.slu.v1.RoundTripMeasurementResponse) */ {
+ public:
+  inline RoundTripMeasurementResponse() : RoundTripMeasurementResponse(nullptr) {}
+  ~RoundTripMeasurementResponse() override;
+  explicit constexpr RoundTripMeasurementResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RoundTripMeasurementResponse(const RoundTripMeasurementResponse& from);
+  RoundTripMeasurementResponse(RoundTripMeasurementResponse&& from) noexcept
+    : RoundTripMeasurementResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline RoundTripMeasurementResponse& operator=(const RoundTripMeasurementResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RoundTripMeasurementResponse& operator=(RoundTripMeasurementResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RoundTripMeasurementResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RoundTripMeasurementResponse* internal_default_instance() {
+    return reinterpret_cast<const RoundTripMeasurementResponse*>(
+               &_RoundTripMeasurementResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  friend void swap(RoundTripMeasurementResponse& a, RoundTripMeasurementResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RoundTripMeasurementResponse* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RoundTripMeasurementResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RoundTripMeasurementResponse* New() const final {
+    return new RoundTripMeasurementResponse();
+  }
+
+  RoundTripMeasurementResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RoundTripMeasurementResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RoundTripMeasurementResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const RoundTripMeasurementResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RoundTripMeasurementResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.slu.v1.RoundTripMeasurementResponse";
+  }
+  protected:
+  explicit RoundTripMeasurementResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIdFieldNumber = 1,
+  };
+  // int32 id = 1;
+  void clear_id();
+  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
+  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
+  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:speechly.slu.v1.RoundTripMeasurementResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::int32 id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fslu_2fv1_2fslu_2eproto;
+};
 // ===================================================================
 
 
@@ -2748,6 +3078,80 @@ inline void SLURequest::set_allocated_audio(std::string* audio) {
     }
   }
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.SLURequest.audio)
+}
+
+// .speechly.slu.v1.RoundTripMeasurementResponse rtt_response = 4;
+inline bool SLURequest::_internal_has_rtt_response() const {
+  return streaming_request_case() == kRttResponse;
+}
+inline bool SLURequest::has_rtt_response() const {
+  return _internal_has_rtt_response();
+}
+inline void SLURequest::set_has_rtt_response() {
+  _oneof_case_[0] = kRttResponse;
+}
+inline void SLURequest::clear_rtt_response() {
+  if (_internal_has_rtt_response()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete streaming_request_.rtt_response_;
+    }
+    clear_has_streaming_request();
+  }
+}
+inline ::speechly::slu::v1::RoundTripMeasurementResponse* SLURequest::release_rtt_response() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.SLURequest.rtt_response)
+  if (_internal_has_rtt_response()) {
+    clear_has_streaming_request();
+      ::speechly::slu::v1::RoundTripMeasurementResponse* temp = streaming_request_.rtt_response_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    streaming_request_.rtt_response_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::speechly::slu::v1::RoundTripMeasurementResponse& SLURequest::_internal_rtt_response() const {
+  return _internal_has_rtt_response()
+      ? *streaming_request_.rtt_response_
+      : reinterpret_cast< ::speechly::slu::v1::RoundTripMeasurementResponse&>(::speechly::slu::v1::_RoundTripMeasurementResponse_default_instance_);
+}
+inline const ::speechly::slu::v1::RoundTripMeasurementResponse& SLURequest::rtt_response() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.SLURequest.rtt_response)
+  return _internal_rtt_response();
+}
+inline ::speechly::slu::v1::RoundTripMeasurementResponse* SLURequest::unsafe_arena_release_rtt_response() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:speechly.slu.v1.SLURequest.rtt_response)
+  if (_internal_has_rtt_response()) {
+    clear_has_streaming_request();
+    ::speechly::slu::v1::RoundTripMeasurementResponse* temp = streaming_request_.rtt_response_;
+    streaming_request_.rtt_response_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void SLURequest::unsafe_arena_set_allocated_rtt_response(::speechly::slu::v1::RoundTripMeasurementResponse* rtt_response) {
+  clear_streaming_request();
+  if (rtt_response) {
+    set_has_rtt_response();
+    streaming_request_.rtt_response_ = rtt_response;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v1.SLURequest.rtt_response)
+}
+inline ::speechly::slu::v1::RoundTripMeasurementResponse* SLURequest::_internal_mutable_rtt_response() {
+  if (!_internal_has_rtt_response()) {
+    clear_streaming_request();
+    set_has_rtt_response();
+    streaming_request_.rtt_response_ = CreateMaybeMessage< ::speechly::slu::v1::RoundTripMeasurementResponse >(GetArenaForAllocation());
+  }
+  return streaming_request_.rtt_response_;
+}
+inline ::speechly::slu::v1::RoundTripMeasurementResponse* SLURequest::mutable_rtt_response() {
+  ::speechly::slu::v1::RoundTripMeasurementResponse* _msg = _internal_mutable_rtt_response();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.SLURequest.rtt_response)
+  return _msg;
 }
 
 inline bool SLURequest::has_streaming_request() const {
@@ -3675,6 +4079,80 @@ inline ::speechly::slu::v1::SLUFinished* SLUResponse::mutable_finished() {
   return _msg;
 }
 
+// .speechly.slu.v1.RoundTripMeasurementRequest rtt_request = 12;
+inline bool SLUResponse::_internal_has_rtt_request() const {
+  return streaming_response_case() == kRttRequest;
+}
+inline bool SLUResponse::has_rtt_request() const {
+  return _internal_has_rtt_request();
+}
+inline void SLUResponse::set_has_rtt_request() {
+  _oneof_case_[0] = kRttRequest;
+}
+inline void SLUResponse::clear_rtt_request() {
+  if (_internal_has_rtt_request()) {
+    if (GetArenaForAllocation() == nullptr) {
+      delete streaming_response_.rtt_request_;
+    }
+    clear_has_streaming_response();
+  }
+}
+inline ::speechly::slu::v1::RoundTripMeasurementRequest* SLUResponse::release_rtt_request() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.SLUResponse.rtt_request)
+  if (_internal_has_rtt_request()) {
+    clear_has_streaming_response();
+      ::speechly::slu::v1::RoundTripMeasurementRequest* temp = streaming_response_.rtt_request_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    streaming_response_.rtt_request_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::speechly::slu::v1::RoundTripMeasurementRequest& SLUResponse::_internal_rtt_request() const {
+  return _internal_has_rtt_request()
+      ? *streaming_response_.rtt_request_
+      : reinterpret_cast< ::speechly::slu::v1::RoundTripMeasurementRequest&>(::speechly::slu::v1::_RoundTripMeasurementRequest_default_instance_);
+}
+inline const ::speechly::slu::v1::RoundTripMeasurementRequest& SLUResponse::rtt_request() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.SLUResponse.rtt_request)
+  return _internal_rtt_request();
+}
+inline ::speechly::slu::v1::RoundTripMeasurementRequest* SLUResponse::unsafe_arena_release_rtt_request() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:speechly.slu.v1.SLUResponse.rtt_request)
+  if (_internal_has_rtt_request()) {
+    clear_has_streaming_response();
+    ::speechly::slu::v1::RoundTripMeasurementRequest* temp = streaming_response_.rtt_request_;
+    streaming_response_.rtt_request_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void SLUResponse::unsafe_arena_set_allocated_rtt_request(::speechly::slu::v1::RoundTripMeasurementRequest* rtt_request) {
+  clear_streaming_response();
+  if (rtt_request) {
+    set_has_rtt_request();
+    streaming_response_.rtt_request_ = rtt_request;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v1.SLUResponse.rtt_request)
+}
+inline ::speechly::slu::v1::RoundTripMeasurementRequest* SLUResponse::_internal_mutable_rtt_request() {
+  if (!_internal_has_rtt_request()) {
+    clear_streaming_response();
+    set_has_rtt_request();
+    streaming_response_.rtt_request_ = CreateMaybeMessage< ::speechly::slu::v1::RoundTripMeasurementRequest >(GetArenaForAllocation());
+  }
+  return streaming_response_.rtt_request_;
+}
+inline ::speechly::slu::v1::RoundTripMeasurementRequest* SLUResponse::mutable_rtt_request() {
+  ::speechly::slu::v1::RoundTripMeasurementRequest* _msg = _internal_mutable_rtt_request();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.SLUResponse.rtt_request)
+  return _msg;
+}
+
 inline bool SLUResponse::has_streaming_response() const {
   return streaming_response_case() != STREAMING_RESPONSE_NOT_SET;
 }
@@ -4312,9 +4790,61 @@ inline void SLUError::set_allocated_message(std::string* message) {
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.SLUError.message)
 }
 
+// -------------------------------------------------------------------
+
+// RoundTripMeasurementRequest
+
+// int32 id = 1;
+inline void RoundTripMeasurementRequest::clear_id() {
+  id_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RoundTripMeasurementRequest::_internal_id() const {
+  return id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RoundTripMeasurementRequest::id() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.RoundTripMeasurementRequest.id)
+  return _internal_id();
+}
+inline void RoundTripMeasurementRequest::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  id_ = value;
+}
+inline void RoundTripMeasurementRequest::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.RoundTripMeasurementRequest.id)
+}
+
+// -------------------------------------------------------------------
+
+// RoundTripMeasurementResponse
+
+// int32 id = 1;
+inline void RoundTripMeasurementResponse::clear_id() {
+  id_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RoundTripMeasurementResponse::_internal_id() const {
+  return id_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RoundTripMeasurementResponse::id() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.RoundTripMeasurementResponse.id)
+  return _internal_id();
+}
+inline void RoundTripMeasurementResponse::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  id_ = value;
+}
+inline void RoundTripMeasurementResponse::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.RoundTripMeasurementResponse.id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
