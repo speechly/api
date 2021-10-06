@@ -29,16 +29,32 @@ service WLU {
 
 // Top-level message sent by the client for the `Texts` method.
 message TextsRequest {
-  // Batch of WLURequest.
+  // List of WLURequest.
   // Required.
   repeated WLURequest requests = 1;
+  // Whether responses should have textual SAL format instead of structural.
+  // Default value is false.
+  bool return_as_sal = 2;
 }
 
 // Top-level message sent by the server for the `Texts` method.
 message TextsResponse {
-  // Batch of WLUResponses.
+  // List of TextsResponseItems.
   // Required.
-  repeated WLUResponse responses = 1;
+  repeated TextsResponseItem responses = 1;
+}
+
+// TextsResponse's repeated item.
+message TextsResponseItem {
+  // This message consist of one of the following messages.
+  // If Top-level message TextRequest has return_as_sal=true, the string is returned.
+  // Otherwise type WLUResponse will be returned.
+  oneof responses {
+    // Structured response for further processing of WLU output.
+    WLUResponse structured_response = 1;
+    // Textual response in SAL format for humans or SAL parsing.
+    string sal_response = 2;
+  }
 }
 
 // Top-level message sent by the client for the `Text` method.
