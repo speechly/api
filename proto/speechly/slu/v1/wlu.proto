@@ -32,29 +32,13 @@ message TextsRequest {
   // List of WLURequest.
   // Required.
   repeated WLURequest requests = 1;
-  // Whether responses should have textual SAL format instead of structural.
-  // Default value is false.
-  bool return_as_sal = 2;
 }
 
 // Top-level message sent by the server for the `Texts` method.
 message TextsResponse {
-  // List of TextsResponseItems.
+  // List of WLUResponses.
   // Required.
-  repeated TextsResponseItem responses = 1;
-}
-
-// TextsResponse's repeated item.
-message TextsResponseItem {
-  // This message consist of one of the following messages.
-  // If Top-level message TextRequest has return_as_sal=true, the string is returned.
-  // Otherwise type WLUResponse will be returned.
-  oneof responses {
-    // Structured response for further processing of WLU output.
-    WLUResponse structured_response = 1;
-    // Textual response in SAL format for humans or SAL parsing.
-    string sal_response = 2;
-  }
+  repeated WLUResponse responses = 1;
 }
 
 // Top-level message sent by the client for the `Text` method.
@@ -86,6 +70,8 @@ message WLUSegment {
   repeated WLUEntity entities = 3;
   // The intent that defines this segment.
   WLUIntent intent = 4;
+  // The value of text annotated in SAL format.
+  string annotated_text = 5;
 }
 
 // Describes a single word token in a segment.
