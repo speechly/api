@@ -23,6 +23,22 @@ option php_namespace = "Speechly\\Slu\\V1";
 service WLU {
   // Performs recognition of a text with specified language.
   rpc Text(WLURequest) returns (WLUResponse);
+  // Performs recognition of a batch of texts with specified language.
+  rpc Texts(TextsRequest) returns (TextsResponse);
+}
+
+// Top-level message sent by the client for the `Texts` method.
+message TextsRequest {
+  // List of WLURequest.
+  // Required.
+  repeated WLURequest requests = 1;
+}
+
+// Top-level message sent by the server for the `Texts` method.
+message TextsResponse {
+  // List of WLUResponses.
+  // Required.
+  repeated WLUResponse responses = 1;
 }
 
 // Top-level message sent by the client for the `Text` method.
@@ -54,6 +70,8 @@ message WLUSegment {
   repeated WLUEntity entities = 3;
   // The intent that defines this segment.
   WLUIntent intent = 4;
+  // The value of text annotated in SAL format.
+  string annotated_text = 5;
 }
 
 // Describes a single word token in a segment.
