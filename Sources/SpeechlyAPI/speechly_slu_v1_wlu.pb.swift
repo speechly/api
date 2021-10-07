@@ -20,6 +20,36 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
+/// Top-level message sent by the client for the `Texts` method.
+public struct Speechly_Slu_V1_TextsRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// List of WLURequest.
+  /// Required.
+  public var requests: [Speechly_Slu_V1_WLURequest] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// Top-level message sent by the server for the `Texts` method.
+public struct Speechly_Slu_V1_TextsResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// List of WLUResponses.
+  /// Required.
+  public var responses: [Speechly_Slu_V1_WLUResponse] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 /// Top-level message sent by the client for the `Text` method.
 public struct Speechly_Slu_V1_WLURequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -80,6 +110,9 @@ public struct Speechly_Slu_V1_WLUSegment {
   public var hasIntent: Bool {return self._intent != nil}
   /// Clears the value of `intent`. Subsequent reads from it will return its default value.
   public mutating func clearIntent() {self._intent = nil}
+
+  /// The value of text annotated in SAL format.
+  public var annotatedText: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -162,6 +195,70 @@ public struct Speechly_Slu_V1_WLUIntent {
 
 fileprivate let _protobuf_package = "speechly.slu.v1"
 
+extension Speechly_Slu_V1_TextsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".TextsRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "requests"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.requests) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.requests.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.requests, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_TextsRequest, rhs: Speechly_Slu_V1_TextsRequest) -> Bool {
+    if lhs.requests != rhs.requests {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Slu_V1_TextsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".TextsResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "responses"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.responses) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.responses.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.responses, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_TextsResponse, rhs: Speechly_Slu_V1_TextsResponse) -> Bool {
+    if lhs.responses != rhs.responses {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Speechly_Slu_V1_WLURequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".WLURequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -239,6 +336,7 @@ extension Speechly_Slu_V1_WLUSegment: SwiftProtobuf.Message, SwiftProtobuf._Mess
     2: .same(proto: "tokens"),
     3: .same(proto: "entities"),
     4: .same(proto: "intent"),
+    5: .standard(proto: "annotated_text"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -251,6 +349,7 @@ extension Speechly_Slu_V1_WLUSegment: SwiftProtobuf.Message, SwiftProtobuf._Mess
       case 2: try { try decoder.decodeRepeatedMessageField(value: &self.tokens) }()
       case 3: try { try decoder.decodeRepeatedMessageField(value: &self.entities) }()
       case 4: try { try decoder.decodeSingularMessageField(value: &self._intent) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.annotatedText) }()
       default: break
       }
     }
@@ -269,6 +368,9 @@ extension Speechly_Slu_V1_WLUSegment: SwiftProtobuf.Message, SwiftProtobuf._Mess
     if let v = self._intent {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
     }
+    if !self.annotatedText.isEmpty {
+      try visitor.visitSingularStringField(value: self.annotatedText, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -277,6 +379,7 @@ extension Speechly_Slu_V1_WLUSegment: SwiftProtobuf.Message, SwiftProtobuf._Mess
     if lhs.tokens != rhs.tokens {return false}
     if lhs.entities != rhs.entities {return false}
     if lhs._intent != rhs._intent {return false}
+    if lhs.annotatedText != rhs.annotatedText {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

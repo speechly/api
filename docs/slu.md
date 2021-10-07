@@ -39,6 +39,7 @@ res, err := speechlyWLUClient.Text(ctx, req)
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
 | Text | [WLURequest](#speechly.slu.v1.WLURequest) | [WLUResponse](#speechly.slu.v1.WLUResponse) | Performs recognition of a text with specified language. |
+| Texts | [TextsRequest](#speechly.slu.v1.TextsRequest) | [TextsResponse](#speechly.slu.v1.TextsResponse) | Performs recognition of a batch of texts with specified language. |
 
 ## Messages
 
@@ -57,6 +58,8 @@ res, err := speechlyWLUClient.Text(ctx, req)
 - [SLUTentativeEntities](#speechly.slu.v1.SLUTentativeEntities)
 - [SLUTentativeTranscript](#speechly.slu.v1.SLUTentativeTranscript)
 - [SLUTranscript](#speechly.slu.v1.SLUTranscript)
+- [TextsRequest](#speechly.slu.v1.TextsRequest)
+- [TextsResponse](#speechly.slu.v1.TextsResponse)
 - [WLUEntity](#speechly.slu.v1.WLUEntity)
 - [WLUIntent](#speechly.slu.v1.WLUIntent)
 - [WLURequest](#speechly.slu.v1.WLURequest)
@@ -296,6 +299,30 @@ A transcript is a speech-to-text element of the phrase, i.e. a word recognised f
 | end_time | [int32](#int32) | The end time of the word in the audio, in milliseconds from the beginning of the audio. |
 
 
+<a name="speechly.slu.v1.TextsRequest"></a>
+### TextsRequest
+
+Top-level message sent by the client for the `Texts` method.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| requests | [WLURequest](#speechly.slu.v1.WLURequest) | List of WLURequest.<br/>Required. |
+
+
+<a name="speechly.slu.v1.TextsResponse"></a>
+### TextsResponse
+
+Top-level message sent by the server for the `Texts` method.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| responses | [WLUResponse](#speechly.slu.v1.WLUResponse) | List of WLUResponses.<br/>Required. |
+
+
 <a name="speechly.slu.v1.WLUEntity"></a>
 ### WLUEntity
 
@@ -378,6 +405,7 @@ there would be a segment for "book me a flight" and another for "rent a car".
 | tokens | [WLUToken](#speechly.slu.v1.WLUToken) | The list of word tokens which are contained in this segment. |
 | entities | [WLUEntity](#speechly.slu.v1.WLUEntity) | The list of entities which are contained in this segment. |
 | intent | [WLUIntent](#speechly.slu.v1.WLUIntent) | The intent that defines this segment. |
+| annotated_text | [string](#string) | The value of text annotated in SAL format. |
 
 
 <a name="speechly.slu.v1.WLUToken"></a>

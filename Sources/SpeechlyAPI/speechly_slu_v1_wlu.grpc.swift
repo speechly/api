@@ -45,6 +45,11 @@ public protocol Speechly_Slu_V1_WLUClientProtocol: GRPCClient {
     _ request: Speechly_Slu_V1_WLURequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Speechly_Slu_V1_WLURequest, Speechly_Slu_V1_WLUResponse>
+
+  func texts(
+    _ request: Speechly_Slu_V1_TextsRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Speechly_Slu_V1_TextsRequest, Speechly_Slu_V1_TextsResponse>
 }
 
 extension Speechly_Slu_V1_WLUClientProtocol {
@@ -69,12 +74,33 @@ extension Speechly_Slu_V1_WLUClientProtocol {
       interceptors: self.interceptors?.makeTextInterceptors() ?? []
     )
   }
+
+  /// Performs recognition of a batch of texts with specified language.
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to Texts.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func texts(
+    _ request: Speechly_Slu_V1_TextsRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Speechly_Slu_V1_TextsRequest, Speechly_Slu_V1_TextsResponse> {
+    return self.makeUnaryCall(
+      path: "/speechly.slu.v1.WLU/Texts",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeTextsInterceptors() ?? []
+    )
+  }
 }
 
 public protocol Speechly_Slu_V1_WLUClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'text'.
   func makeTextInterceptors() -> [ClientInterceptor<Speechly_Slu_V1_WLURequest, Speechly_Slu_V1_WLUResponse>]
+
+  /// - Returns: Interceptors to use when invoking 'texts'.
+  func makeTextsInterceptors() -> [ClientInterceptor<Speechly_Slu_V1_TextsRequest, Speechly_Slu_V1_TextsResponse>]
 }
 
 public final class Speechly_Slu_V1_WLUClient: Speechly_Slu_V1_WLUClientProtocol {
@@ -116,6 +142,9 @@ public protocol Speechly_Slu_V1_WLUProvider: CallHandlerProvider {
 
   /// Performs recognition of a text with specified language.
   func text(request: Speechly_Slu_V1_WLURequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Slu_V1_WLUResponse>
+
+  /// Performs recognition of a batch of texts with specified language.
+  func texts(request: Speechly_Slu_V1_TextsRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Slu_V1_TextsResponse>
 }
 
 extension Speechly_Slu_V1_WLUProvider {
@@ -137,6 +166,15 @@ extension Speechly_Slu_V1_WLUProvider {
         userFunction: self.text(request:context:)
       )
 
+    case "Texts":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Slu_V1_TextsRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Slu_V1_TextsResponse>(),
+        interceptors: self.interceptors?.makeTextsInterceptors() ?? [],
+        userFunction: self.texts(request:context:)
+      )
+
     default:
       return nil
     }
@@ -148,4 +186,8 @@ public protocol Speechly_Slu_V1_WLUServerInterceptorFactoryProtocol {
   /// - Returns: Interceptors to use when handling 'text'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeTextInterceptors() -> [ServerInterceptor<Speechly_Slu_V1_WLURequest, Speechly_Slu_V1_WLUResponse>]
+
+  /// - Returns: Interceptors to use when handling 'texts'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeTextsInterceptors() -> [ServerInterceptor<Speechly_Slu_V1_TextsRequest, Speechly_Slu_V1_TextsResponse>]
 }

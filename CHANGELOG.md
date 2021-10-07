@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.3](https://github.com/speechly/api/tree/0.3.3) (2021-10-07)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.3.2...0.3.3)
+
+**Merged pull requests:**
+
+- Add batch WLU endpoint [\#25](https://github.com/speechly/api/pull/25) ([samutamm](https://github.com/samutamm))
+
 ## [0.3.2](https://github.com/speechly/api/tree/0.3.2) (2021-10-04)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.3.1...0.3.2)
@@ -39,13 +47,16 @@
 
 [Full Changelog](https://github.com/speechly/api/compare/0.1.2...0.1.3)
 
+**Merged pull requests:**
+
+- Flatten generated swift files [\#17](https://github.com/speechly/api/pull/17) ([langma](https://github.com/langma))
+
 ## [0.1.2](https://github.com/speechly/api/tree/0.1.2) (2021-03-19)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.1.1...0.1.2)
 
 **Merged pull requests:**
 
-- Flatten generated swift files [\#17](https://github.com/speechly/api/pull/17) ([langma](https://github.com/langma))
 - Generate API reference [\#16](https://github.com/speechly/api/pull/16) ([langma](https://github.com/langma))
 - Add documentation [\#15](https://github.com/speechly/api/pull/15) ([langma](https://github.com/langma))
 
@@ -56,6 +67,7 @@
 **Merged pull requests:**
 
 - Add app\_id to slu START event [\#14](https://github.com/speechly/api/pull/14) ([langma](https://github.com/langma))
+- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 
 ## [0.1.0](https://github.com/speechly/api/tree/0.1.0) (2021-02-23)
 
@@ -64,7 +76,6 @@
 **Merged pull requests:**
 
 - add estimated\_training\_time\_sec and training\_time\_sec to App message [\#12](https://github.com/speechly/api/pull/12) ([samutamm](https://github.com/samutamm))
-- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 - Identity API v2 protos [\#10](https://github.com/speechly/api/pull/10) ([langma](https://github.com/langma))
 - batch size and seed to sal compiler compile [\#9](https://github.com/speechly/api/pull/9) ([samutamm](https://github.com/samutamm))
 - Use Java version 1.8 as target for Kotlin package [\#8](https://github.com/speechly/api/pull/8) ([radiohead](https://github.com/radiohead))

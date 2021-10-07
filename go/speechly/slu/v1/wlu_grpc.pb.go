@@ -20,6 +20,8 @@ const _ = grpc.SupportPackageIsVersion7
 type WLUClient interface {
 	// Performs recognition of a text with specified language.
 	Text(ctx context.Context, in *WLURequest, opts ...grpc.CallOption) (*WLUResponse, error)
+	// Performs recognition of a batch of texts with specified language.
+	Texts(ctx context.Context, in *TextsRequest, opts ...grpc.CallOption) (*TextsResponse, error)
 }
 
 type wLUClient struct {
@@ -39,12 +41,23 @@ func (c *wLUClient) Text(ctx context.Context, in *WLURequest, opts ...grpc.CallO
 	return out, nil
 }
 
+func (c *wLUClient) Texts(ctx context.Context, in *TextsRequest, opts ...grpc.CallOption) (*TextsResponse, error) {
+	out := new(TextsResponse)
+	err := c.cc.Invoke(ctx, "/speechly.slu.v1.WLU/Texts", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WLUServer is the server API for WLU service.
 // All implementations must embed UnimplementedWLUServer
 // for forward compatibility
 type WLUServer interface {
 	// Performs recognition of a text with specified language.
 	Text(context.Context, *WLURequest) (*WLUResponse, error)
+	// Performs recognition of a batch of texts with specified language.
+	Texts(context.Context, *TextsRequest) (*TextsResponse, error)
 	mustEmbedUnimplementedWLUServer()
 }
 
@@ -54,6 +67,9 @@ type UnimplementedWLUServer struct {
 
 func (UnimplementedWLUServer) Text(context.Context, *WLURequest) (*WLUResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Text not implemented")
+}
+func (UnimplementedWLUServer) Texts(context.Context, *TextsRequest) (*TextsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Texts not implemented")
 }
 func (UnimplementedWLUServer) mustEmbedUnimplementedWLUServer() {}
 
@@ -86,6 +102,24 @@ func _WLU_Text_Handler(srv interface{}, ctx context.Context, dec func(interface{
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WLU_Texts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TextsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WLUServer).Texts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/speechly.slu.v1.WLU/Texts",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WLUServer).Texts(ctx, req.(*TextsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WLU_ServiceDesc is the grpc.ServiceDesc for WLU service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -96,6 +130,10 @@ var WLU_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Text",
 			Handler:    _WLU_Text_Handler,
+		},
+		{
+			MethodName: "Texts",
+			Handler:    _WLU_Texts_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

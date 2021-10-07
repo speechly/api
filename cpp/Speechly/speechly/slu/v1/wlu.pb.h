@@ -46,7 +46,7 @@ struct TableStruct_speechly_2fslu_2fv1_2fwlu_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -56,6 +56,12 @@ extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table
 namespace speechly {
 namespace slu {
 namespace v1 {
+class TextsRequest;
+struct TextsRequestDefaultTypeInternal;
+extern TextsRequestDefaultTypeInternal _TextsRequest_default_instance_;
+class TextsResponse;
+struct TextsResponseDefaultTypeInternal;
+extern TextsResponseDefaultTypeInternal _TextsResponse_default_instance_;
 class WLUEntity;
 struct WLUEntityDefaultTypeInternal;
 extern WLUEntityDefaultTypeInternal _WLUEntity_default_instance_;
@@ -78,6 +84,8 @@ extern WLUTokenDefaultTypeInternal _WLUToken_default_instance_;
 }  // namespace slu
 }  // namespace speechly
 PROTOBUF_NAMESPACE_OPEN
+template<> ::speechly::slu::v1::TextsRequest* Arena::CreateMaybeMessage<::speechly::slu::v1::TextsRequest>(Arena*);
+template<> ::speechly::slu::v1::TextsResponse* Arena::CreateMaybeMessage<::speechly::slu::v1::TextsResponse>(Arena*);
 template<> ::speechly::slu::v1::WLUEntity* Arena::CreateMaybeMessage<::speechly::slu::v1::WLUEntity>(Arena*);
 template<> ::speechly::slu::v1::WLUIntent* Arena::CreateMaybeMessage<::speechly::slu::v1::WLUIntent>(Arena*);
 template<> ::speechly::slu::v1::WLURequest* Arena::CreateMaybeMessage<::speechly::slu::v1::WLURequest>(Arena*);
@@ -90,6 +98,302 @@ namespace slu {
 namespace v1 {
 
 // ===================================================================
+
+class TextsRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.slu.v1.TextsRequest) */ {
+ public:
+  inline TextsRequest() : TextsRequest(nullptr) {}
+  ~TextsRequest() override;
+  explicit constexpr TextsRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TextsRequest(const TextsRequest& from);
+  TextsRequest(TextsRequest&& from) noexcept
+    : TextsRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline TextsRequest& operator=(const TextsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TextsRequest& operator=(TextsRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TextsRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TextsRequest* internal_default_instance() {
+    return reinterpret_cast<const TextsRequest*>(
+               &_TextsRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(TextsRequest& a, TextsRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TextsRequest* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TextsRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TextsRequest* New() const final {
+    return new TextsRequest();
+  }
+
+  TextsRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TextsRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TextsRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TextsRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TextsRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.slu.v1.TextsRequest";
+  }
+  protected:
+  explicit TextsRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRequestsFieldNumber = 1,
+  };
+  // repeated .speechly.slu.v1.WLURequest requests = 1;
+  int requests_size() const;
+  private:
+  int _internal_requests_size() const;
+  public:
+  void clear_requests();
+  ::speechly::slu::v1::WLURequest* mutable_requests(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLURequest >*
+      mutable_requests();
+  private:
+  const ::speechly::slu::v1::WLURequest& _internal_requests(int index) const;
+  ::speechly::slu::v1::WLURequest* _internal_add_requests();
+  public:
+  const ::speechly::slu::v1::WLURequest& requests(int index) const;
+  ::speechly::slu::v1::WLURequest* add_requests();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLURequest >&
+      requests() const;
+
+  // @@protoc_insertion_point(class_scope:speechly.slu.v1.TextsRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLURequest > requests_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fslu_2fv1_2fwlu_2eproto;
+};
+// -------------------------------------------------------------------
+
+class TextsResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.slu.v1.TextsResponse) */ {
+ public:
+  inline TextsResponse() : TextsResponse(nullptr) {}
+  ~TextsResponse() override;
+  explicit constexpr TextsResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  TextsResponse(const TextsResponse& from);
+  TextsResponse(TextsResponse&& from) noexcept
+    : TextsResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline TextsResponse& operator=(const TextsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline TextsResponse& operator=(TextsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const TextsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const TextsResponse* internal_default_instance() {
+    return reinterpret_cast<const TextsResponse*>(
+               &_TextsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(TextsResponse& a, TextsResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(TextsResponse* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(TextsResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline TextsResponse* New() const final {
+    return new TextsResponse();
+  }
+
+  TextsResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<TextsResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const TextsResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const TextsResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(TextsResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.slu.v1.TextsResponse";
+  }
+  protected:
+  explicit TextsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kResponsesFieldNumber = 1,
+  };
+  // repeated .speechly.slu.v1.WLUResponse responses = 1;
+  int responses_size() const;
+  private:
+  int _internal_responses_size() const;
+  public:
+  void clear_responses();
+  ::speechly::slu::v1::WLUResponse* mutable_responses(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLUResponse >*
+      mutable_responses();
+  private:
+  const ::speechly::slu::v1::WLUResponse& _internal_responses(int index) const;
+  ::speechly::slu::v1::WLUResponse* _internal_add_responses();
+  public:
+  const ::speechly::slu::v1::WLUResponse& responses(int index) const;
+  ::speechly::slu::v1::WLUResponse* add_responses();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLUResponse >&
+      responses() const;
+
+  // @@protoc_insertion_point(class_scope:speechly.slu.v1.TextsResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLUResponse > responses_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fslu_2fv1_2fwlu_2eproto;
+};
+// -------------------------------------------------------------------
 
 class WLURequest final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.slu.v1.WLURequest) */ {
@@ -135,7 +439,7 @@ class WLURequest final :
                &_WLURequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(WLURequest& a, WLURequest& b) {
     a.Swap(&b);
@@ -295,7 +599,7 @@ class WLUResponse final :
                &_WLUResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(WLUResponse& a, WLUResponse& b) {
     a.Swap(&b);
@@ -443,7 +747,7 @@ class WLUSegment final :
                &_WLUSegment_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(WLUSegment& a, WLUSegment& b) {
     a.Swap(&b);
@@ -517,6 +821,7 @@ class WLUSegment final :
     kTokensFieldNumber = 2,
     kEntitiesFieldNumber = 3,
     kTextFieldNumber = 1,
+    kAnnotatedTextFieldNumber = 5,
     kIntentFieldNumber = 4,
   };
   // repeated .speechly.slu.v1.WLUToken tokens = 2;
@@ -569,6 +874,20 @@ class WLUSegment final :
   std::string* _internal_mutable_text();
   public:
 
+  // string annotated_text = 5;
+  void clear_annotated_text();
+  const std::string& annotated_text() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_annotated_text(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_annotated_text();
+  PROTOBUF_MUST_USE_RESULT std::string* release_annotated_text();
+  void set_allocated_annotated_text(std::string* annotated_text);
+  private:
+  const std::string& _internal_annotated_text() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_annotated_text(const std::string& value);
+  std::string* _internal_mutable_annotated_text();
+  public:
+
   // .speechly.slu.v1.WLUIntent intent = 4;
   bool has_intent() const;
   private:
@@ -597,6 +916,7 @@ class WLUSegment final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLUToken > tokens_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLUEntity > entities_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr annotated_text_;
   ::speechly::slu::v1::WLUIntent* intent_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv1_2fwlu_2eproto;
@@ -647,7 +967,7 @@ class WLUToken final :
                &_WLUToken_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(WLUToken& a, WLUToken& b) {
     a.Swap(&b);
@@ -802,7 +1122,7 @@ class WLUEntity final :
                &_WLUEntity_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(WLUEntity& a, WLUEntity& b) {
     a.Swap(&b);
@@ -984,7 +1304,7 @@ class WLUIntent final :
                &_WLUIntent_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(WLUIntent& a, WLUIntent& b) {
     a.Swap(&b);
@@ -1091,6 +1411,94 @@ class WLUIntent final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// TextsRequest
+
+// repeated .speechly.slu.v1.WLURequest requests = 1;
+inline int TextsRequest::_internal_requests_size() const {
+  return requests_.size();
+}
+inline int TextsRequest::requests_size() const {
+  return _internal_requests_size();
+}
+inline void TextsRequest::clear_requests() {
+  requests_.Clear();
+}
+inline ::speechly::slu::v1::WLURequest* TextsRequest::mutable_requests(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.TextsRequest.requests)
+  return requests_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLURequest >*
+TextsRequest::mutable_requests() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.slu.v1.TextsRequest.requests)
+  return &requests_;
+}
+inline const ::speechly::slu::v1::WLURequest& TextsRequest::_internal_requests(int index) const {
+  return requests_.Get(index);
+}
+inline const ::speechly::slu::v1::WLURequest& TextsRequest::requests(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.TextsRequest.requests)
+  return _internal_requests(index);
+}
+inline ::speechly::slu::v1::WLURequest* TextsRequest::_internal_add_requests() {
+  return requests_.Add();
+}
+inline ::speechly::slu::v1::WLURequest* TextsRequest::add_requests() {
+  ::speechly::slu::v1::WLURequest* _add = _internal_add_requests();
+  // @@protoc_insertion_point(field_add:speechly.slu.v1.TextsRequest.requests)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLURequest >&
+TextsRequest::requests() const {
+  // @@protoc_insertion_point(field_list:speechly.slu.v1.TextsRequest.requests)
+  return requests_;
+}
+
+// -------------------------------------------------------------------
+
+// TextsResponse
+
+// repeated .speechly.slu.v1.WLUResponse responses = 1;
+inline int TextsResponse::_internal_responses_size() const {
+  return responses_.size();
+}
+inline int TextsResponse::responses_size() const {
+  return _internal_responses_size();
+}
+inline void TextsResponse::clear_responses() {
+  responses_.Clear();
+}
+inline ::speechly::slu::v1::WLUResponse* TextsResponse::mutable_responses(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.TextsResponse.responses)
+  return responses_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLUResponse >*
+TextsResponse::mutable_responses() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.slu.v1.TextsResponse.responses)
+  return &responses_;
+}
+inline const ::speechly::slu::v1::WLUResponse& TextsResponse::_internal_responses(int index) const {
+  return responses_.Get(index);
+}
+inline const ::speechly::slu::v1::WLUResponse& TextsResponse::responses(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.TextsResponse.responses)
+  return _internal_responses(index);
+}
+inline ::speechly::slu::v1::WLUResponse* TextsResponse::_internal_add_responses() {
+  return responses_.Add();
+}
+inline ::speechly::slu::v1::WLUResponse* TextsResponse::add_responses() {
+  ::speechly::slu::v1::WLUResponse* _add = _internal_add_responses();
+  // @@protoc_insertion_point(field_add:speechly.slu.v1.TextsResponse.responses)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLUResponse >&
+TextsResponse::responses() const {
+  // @@protoc_insertion_point(field_list:speechly.slu.v1.TextsResponse.responses)
+  return responses_;
+}
+
+// -------------------------------------------------------------------
+
 // WLURequest
 
 // string language_code = 1;
@@ -1449,6 +1857,52 @@ inline void WLUSegment::set_allocated_intent(::speechly::slu::v1::WLUIntent* int
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.WLUSegment.intent)
 }
 
+// string annotated_text = 5;
+inline void WLUSegment::clear_annotated_text() {
+  annotated_text_.ClearToEmpty();
+}
+inline const std::string& WLUSegment::annotated_text() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.WLUSegment.annotated_text)
+  return _internal_annotated_text();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void WLUSegment::set_annotated_text(ArgT0&& arg0, ArgT... args) {
+ 
+ annotated_text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.WLUSegment.annotated_text)
+}
+inline std::string* WLUSegment::mutable_annotated_text() {
+  std::string* _s = _internal_mutable_annotated_text();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.WLUSegment.annotated_text)
+  return _s;
+}
+inline const std::string& WLUSegment::_internal_annotated_text() const {
+  return annotated_text_.Get();
+}
+inline void WLUSegment::_internal_set_annotated_text(const std::string& value) {
+  
+  annotated_text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* WLUSegment::_internal_mutable_annotated_text() {
+  
+  return annotated_text_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* WLUSegment::release_annotated_text() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.WLUSegment.annotated_text)
+  return annotated_text_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void WLUSegment::set_allocated_annotated_text(std::string* annotated_text) {
+  if (annotated_text != nullptr) {
+    
+  } else {
+    
+  }
+  annotated_text_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), annotated_text,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.WLUSegment.annotated_text)
+}
+
 // -------------------------------------------------------------------
 
 // WLUToken
@@ -1708,6 +2162,10 @@ inline void WLUIntent::set_allocated_intent(std::string* intent) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
