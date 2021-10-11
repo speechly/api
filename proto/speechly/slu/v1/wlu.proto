@@ -29,9 +29,12 @@ service WLU {
 
 // Top-level message sent by the client for the `Texts` method.
 message TextsRequest {
+  // The target application for the texts request.
+  // Required.
+  string app_id = 1;
   // List of WLURequest.
   // Required.
-  repeated WLURequest requests = 1;
+  repeated WLURequest requests = 2;
 }
 
 // Top-level message sent by the server for the `Texts` method.
