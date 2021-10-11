@@ -214,9 +214,10 @@ class TextsRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kRequestsFieldNumber = 1,
+    kRequestsFieldNumber = 2,
+    kAppIdFieldNumber = 1,
   };
-  // repeated .speechly.slu.v1.WLURequest requests = 1;
+  // repeated .speechly.slu.v1.WLURequest requests = 2;
   int requests_size() const;
   private:
   int _internal_requests_size() const;
@@ -234,6 +235,20 @@ class TextsRequest final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLURequest >&
       requests() const;
 
+  // string app_id = 1;
+  void clear_app_id();
+  const std::string& app_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_app_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_app_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_app_id();
+  void set_allocated_app_id(std::string* app_id);
+  private:
+  const std::string& _internal_app_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_app_id(const std::string& value);
+  std::string* _internal_mutable_app_id();
+  public:
+
   // @@protoc_insertion_point(class_scope:speechly.slu.v1.TextsRequest)
  private:
   class _Internal;
@@ -242,6 +257,7 @@ class TextsRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::WLURequest > requests_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr app_id_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv1_2fwlu_2eproto;
 };
@@ -1413,7 +1429,53 @@ class WLUIntent final :
 #endif  // __GNUC__
 // TextsRequest
 
-// repeated .speechly.slu.v1.WLURequest requests = 1;
+// string app_id = 1;
+inline void TextsRequest::clear_app_id() {
+  app_id_.ClearToEmpty();
+}
+inline const std::string& TextsRequest::app_id() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.TextsRequest.app_id)
+  return _internal_app_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void TextsRequest::set_app_id(ArgT0&& arg0, ArgT... args) {
+ 
+ app_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.TextsRequest.app_id)
+}
+inline std::string* TextsRequest::mutable_app_id() {
+  std::string* _s = _internal_mutable_app_id();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.TextsRequest.app_id)
+  return _s;
+}
+inline const std::string& TextsRequest::_internal_app_id() const {
+  return app_id_.Get();
+}
+inline void TextsRequest::_internal_set_app_id(const std::string& value) {
+  
+  app_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* TextsRequest::_internal_mutable_app_id() {
+  
+  return app_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* TextsRequest::release_app_id() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.TextsRequest.app_id)
+  return app_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void TextsRequest::set_allocated_app_id(std::string* app_id) {
+  if (app_id != nullptr) {
+    
+  } else {
+    
+  }
+  app_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), app_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.TextsRequest.app_id)
+}
+
+// repeated .speechly.slu.v1.WLURequest requests = 2;
 inline int TextsRequest::_internal_requests_size() const {
   return requests_.size();
 }

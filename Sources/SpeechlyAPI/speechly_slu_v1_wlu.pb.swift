@@ -26,6 +26,10 @@ public struct Speechly_Slu_V1_TextsRequest {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
+  /// The target application for the texts request.
+  /// Required.
+  public var appID: String = String()
+
   /// List of WLURequest.
   /// Required.
   public var requests: [Speechly_Slu_V1_WLURequest] = []
@@ -198,7 +202,8 @@ fileprivate let _protobuf_package = "speechly.slu.v1"
 extension Speechly_Slu_V1_TextsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".TextsRequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "requests"),
+    1: .standard(proto: "app_id"),
+    2: .same(proto: "requests"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -207,20 +212,25 @@ extension Speechly_Slu_V1_TextsRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.requests) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self.appID) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.requests) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.appID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 1)
+    }
     if !self.requests.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.requests, fieldNumber: 1)
+      try visitor.visitRepeatedMessageField(value: self.requests, fieldNumber: 2)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Slu_V1_TextsRequest, rhs: Speechly_Slu_V1_TextsRequest) -> Bool {
+    if lhs.appID != rhs.appID {return false}
     if lhs.requests != rhs.requests {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

@@ -308,6 +308,7 @@ Top-level message sent by the client for the `Texts` method.
 
 | name | type | description |
 | ---- | ---- | ----------- |
+| app_id | [string](#string) | The target application for the texts request.<br/>Required. |
 | requests | [WLURequest](#speechly.slu.v1.WLURequest) | List of WLURequest.<br/>Required. |
 
 
