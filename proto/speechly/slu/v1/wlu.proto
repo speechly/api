@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package speechly.slu.v1;
 
+import "google/protobuf/timestamp.proto";
+
 option csharp_namespace = "Speechly.Slu.V1";
 option go_package = "speechly/slu/v1;sluv1";
 option java_multiple_files = true;
@@ -52,6 +54,9 @@ message WLURequest {
   // The text to recognise.
   // Required.
   string text = 2;
+  // The reference time for postprocessing. By default, the current date is used.
+  // Optional.
+  google.protobuf.Timestamp reference_time = 3;
 }
 
 // Top-level message sent by the server for the `Text` method.
