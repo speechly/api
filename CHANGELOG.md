@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/speechly/api/tree/0.4.1) (2021-10-19)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.4.0...0.4.1)
+
+**Merged pull requests:**
+
+- Reference time to WLURequest [\#28](https://github.com/speechly/api/pull/28) ([samutamm](https://github.com/samutamm))
+
 ## [0.4.0](https://github.com/speechly/api/tree/0.4.0) (2021-10-11)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.3.3...0.4.0)
@@ -20,10 +28,6 @@
 
 [Full Changelog](https://github.com/speechly/api/compare/0.3.1...0.3.2)
 
-**Merged pull requests:**
-
-- Add RTT measurement messages to SLU API [\#26](https://github.com/speechly/api/pull/26) ([langma](https://github.com/langma))
-
 ## [0.3.1](https://github.com/speechly/api/tree/0.3.1) (2021-09-23)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.3.0...0.3.1)
@@ -39,6 +43,7 @@
 
 **Merged pull requests:**
 
+- Add RTT measurement messages to SLU API [\#26](https://github.com/speechly/api/pull/26) ([langma](https://github.com/langma))
 - Switch from `grpc` to `@grpc/grpc-js` [\#22](https://github.com/speechly/api/pull/22) ([langma](https://github.com/langma))
 - add dotnet readme code [\#21](https://github.com/speechly/api/pull/21) ([igorpolt](https://github.com/igorpolt))
 - Generate C++ stubs [\#20](https://github.com/speechly/api/pull/20) ([langma](https://github.com/langma))
@@ -74,7 +79,7 @@
 
 **Merged pull requests:**
 
-- Add app\_id to slu START event [\#14](https://github.com/speechly/api/pull/14) ([langma](https://github.com/langma))
+- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 
 ## [0.1.0](https://github.com/speechly/api/tree/0.1.0) (2021-02-23)
 
@@ -82,8 +87,8 @@
 
 **Merged pull requests:**
 
+- Add app\_id to slu START event [\#14](https://github.com/speechly/api/pull/14) ([langma](https://github.com/langma))
 - add estimated\_training\_time\_sec and training\_time\_sec to App message [\#12](https://github.com/speechly/api/pull/12) ([samutamm](https://github.com/samutamm))
-- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 - Identity API v2 protos [\#10](https://github.com/speechly/api/pull/10) ([langma](https://github.com/langma))
 - batch size and seed to sal compiler compile [\#9](https://github.com/speechly/api/pull/9) ([samutamm](https://github.com/samutamm))
 - Use Java version 1.8 as target for Kotlin package [\#8](https://github.com/speechly/api/pull/8) ([radiohead](https://github.com/radiohead))
@@ -96,14 +101,11 @@
 **Merged pull requests:**
 
 - Add Kotlin and Java stubs [\#6](https://github.com/speechly/api/pull/6) ([radiohead](https://github.com/radiohead))
+- Add an RPC for extracting SAL examples to SAL compiler service [\#5](https://github.com/speechly/api/pull/5) ([samutamm](https://github.com/samutamm))
 
 ## [0.0.4](https://github.com/speechly/api/tree/0.0.4) (2020-12-08)
 
 [Full Changelog](https://github.com/speechly/api/compare/v0.0.3...0.0.4)
-
-**Merged pull requests:**
-
-- Add an RPC for extracting SAL examples to SAL compiler service [\#5](https://github.com/speechly/api/pull/5) ([samutamm](https://github.com/samutamm))
 
 ## [v0.0.3](https://github.com/speechly/api/tree/v0.0.3) (2020-12-07)
 

@@ -47,7 +47,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT TextsResponseDefaultTypeInterna
 constexpr WLURequest::WLURequest(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : language_code_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , text_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  , text_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , reference_time_(nullptr){}
 struct WLURequestDefaultTypeInternal {
   constexpr WLURequestDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -153,6 +154,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fslu_2fv1_2fwlu_2epr
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::WLURequest, language_code_),
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::WLURequest, text_),
+  PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::WLURequest, reference_time_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::WLUResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -196,11 +198,11 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, sizeof(::speechly::slu::v1::TextsRequest)},
   { 7, -1, sizeof(::speechly::slu::v1::TextsResponse)},
   { 13, -1, sizeof(::speechly::slu::v1::WLURequest)},
-  { 20, -1, sizeof(::speechly::slu::v1::WLUResponse)},
-  { 26, -1, sizeof(::speechly::slu::v1::WLUSegment)},
-  { 36, -1, sizeof(::speechly::slu::v1::WLUToken)},
-  { 43, -1, sizeof(::speechly::slu::v1::WLUEntity)},
-  { 52, -1, sizeof(::speechly::slu::v1::WLUIntent)},
+  { 21, -1, sizeof(::speechly::slu::v1::WLUResponse)},
+  { 27, -1, sizeof(::speechly::slu::v1::WLUSegment)},
+  { 37, -1, sizeof(::speechly::slu::v1::WLUToken)},
+  { 44, -1, sizeof(::speechly::slu::v1::WLUEntity)},
+  { 53, -1, sizeof(::speechly::slu::v1::WLUIntent)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -216,33 +218,38 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_speechly_2fslu_2fv1_2fwlu_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\031speechly/slu/v1/wlu.proto\022\017speechly.sl"
-  "u.v1\"M\n\014TextsRequest\022\016\n\006app_id\030\001 \001(\t\022-\n\010"
-  "requests\030\002 \003(\0132\033.speechly.slu.v1.WLURequ"
-  "est\"@\n\rTextsResponse\022/\n\tresponses\030\001 \003(\0132"
-  "\034.speechly.slu.v1.WLUResponse\"1\n\nWLURequ"
-  "est\022\025\n\rlanguage_code\030\001 \001(\t\022\014\n\004text\030\002 \001(\t"
-  "\"<\n\013WLUResponse\022-\n\010segments\030\001 \003(\0132\033.spee"
-  "chly.slu.v1.WLUSegment\"\267\001\n\nWLUSegment\022\014\n"
-  "\004text\030\001 \001(\t\022)\n\006tokens\030\002 \003(\0132\031.speechly.s"
-  "lu.v1.WLUToken\022,\n\010entities\030\003 \003(\0132\032.speec"
-  "hly.slu.v1.WLUEntity\022*\n\006intent\030\004 \001(\0132\032.s"
-  "peechly.slu.v1.WLUIntent\022\026\n\016annotated_te"
-  "xt\030\005 \001(\t\"\'\n\010WLUToken\022\014\n\004word\030\001 \001(\t\022\r\n\005in"
-  "dex\030\002 \001(\005\"X\n\tWLUEntity\022\016\n\006entity\030\001 \001(\t\022\r"
-  "\n\005value\030\002 \001(\t\022\026\n\016start_position\030\003 \001(\005\022\024\n"
-  "\014end_position\030\004 \001(\005\"\033\n\tWLUIntent\022\016\n\006inte"
-  "nt\030\001 \001(\t2\220\001\n\003WLU\022A\n\004Text\022\033.speechly.slu."
-  "v1.WLURequest\032\034.speechly.slu.v1.WLURespo"
-  "nse\022F\n\005Texts\022\035.speechly.slu.v1.TextsRequ"
-  "est\032\036.speechly.slu.v1.TextsResponseBf\n\027c"
-  "om.speechly.api.slu.v1B\010WluProtoP\001Z\025spee"
-  "chly/slu/v1;sluv1\242\002\003SSX\252\002\017Speechly.Slu.V"
-  "1\312\002\017Speechly\\Slu\\V1b\006proto3"
+  "u.v1\032\037google/protobuf/timestamp.proto\"M\n"
+  "\014TextsRequest\022\016\n\006app_id\030\001 \001(\t\022-\n\010request"
+  "s\030\002 \003(\0132\033.speechly.slu.v1.WLURequest\"@\n\r"
+  "TextsResponse\022/\n\tresponses\030\001 \003(\0132\034.speec"
+  "hly.slu.v1.WLUResponse\"e\n\nWLURequest\022\025\n\r"
+  "language_code\030\001 \001(\t\022\014\n\004text\030\002 \001(\t\0222\n\016ref"
+  "erence_time\030\003 \001(\0132\032.google.protobuf.Time"
+  "stamp\"<\n\013WLUResponse\022-\n\010segments\030\001 \003(\0132\033"
+  ".speechly.slu.v1.WLUSegment\"\267\001\n\nWLUSegme"
+  "nt\022\014\n\004text\030\001 \001(\t\022)\n\006tokens\030\002 \003(\0132\031.speec"
+  "hly.slu.v1.WLUToken\022,\n\010entities\030\003 \003(\0132\032."
+  "speechly.slu.v1.WLUEntity\022*\n\006intent\030\004 \001("
+  "\0132\032.speechly.slu.v1.WLUIntent\022\026\n\016annotat"
+  "ed_text\030\005 \001(\t\"\'\n\010WLUToken\022\014\n\004word\030\001 \001(\t\022"
+  "\r\n\005index\030\002 \001(\005\"X\n\tWLUEntity\022\016\n\006entity\030\001 "
+  "\001(\t\022\r\n\005value\030\002 \001(\t\022\026\n\016start_position\030\003 \001"
+  "(\005\022\024\n\014end_position\030\004 \001(\005\"\033\n\tWLUIntent\022\016\n"
+  "\006intent\030\001 \001(\t2\220\001\n\003WLU\022A\n\004Text\022\033.speechly"
+  ".slu.v1.WLURequest\032\034.speechly.slu.v1.WLU"
+  "Response\022F\n\005Texts\022\035.speechly.slu.v1.Text"
+  "sRequest\032\036.speechly.slu.v1.TextsResponse"
+  "Bf\n\027com.speechly.api.slu.v1B\010WluProtoP\001Z"
+  "\025speechly/slu/v1;sluv1\242\002\003SSX\252\002\017Speechly."
+  "Slu.V1\312\002\017Speechly\\Slu\\V1b\006proto3"
   ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fslu_2fv1_2fwlu_2eproto_deps[1] = {
+  &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
+};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fslu_2fv1_2fwlu_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fslu_2fv1_2fwlu_2eproto = {
-  false, false, 907, descriptor_table_protodef_speechly_2fslu_2fv1_2fwlu_2eproto, "speechly/slu/v1/wlu.proto", 
-  &descriptor_table_speechly_2fslu_2fv1_2fwlu_2eproto_once, nullptr, 0, 8,
+  false, false, 992, descriptor_table_protodef_speechly_2fslu_2fv1_2fwlu_2eproto, "speechly/slu/v1/wlu.proto", 
+  &descriptor_table_speechly_2fslu_2fv1_2fwlu_2eproto_once, descriptor_table_speechly_2fslu_2fv1_2fwlu_2eproto_deps, 1, 8,
   schemas, file_default_instances, TableStruct_speechly_2fslu_2fv1_2fwlu_2eproto::offsets,
   file_level_metadata_speechly_2fslu_2fv1_2fwlu_2eproto, file_level_enum_descriptors_speechly_2fslu_2fv1_2fwlu_2eproto, file_level_service_descriptors_speechly_2fslu_2fv1_2fwlu_2eproto,
 };
@@ -682,8 +689,19 @@ void TextsResponse::InternalSwap(TextsResponse* other) {
 
 class WLURequest::_Internal {
  public:
+  static const PROTOBUF_NAMESPACE_ID::Timestamp& reference_time(const WLURequest* msg);
 };
 
+const PROTOBUF_NAMESPACE_ID::Timestamp&
+WLURequest::_Internal::reference_time(const WLURequest* msg) {
+  return *msg->reference_time_;
+}
+void WLURequest::clear_reference_time() {
+  if (GetArenaForAllocation() == nullptr && reference_time_ != nullptr) {
+    delete reference_time_;
+  }
+  reference_time_ = nullptr;
+}
 WLURequest::WLURequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
@@ -706,12 +724,18 @@ WLURequest::WLURequest(const WLURequest& from)
     text_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_text(), 
       GetArenaForAllocation());
   }
+  if (from._internal_has_reference_time()) {
+    reference_time_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.reference_time_);
+  } else {
+    reference_time_ = nullptr;
+  }
   // @@protoc_insertion_point(copy_constructor:speechly.slu.v1.WLURequest)
 }
 
 inline void WLURequest::SharedCtor() {
 language_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 text_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+reference_time_ = nullptr;
 }
 
 WLURequest::~WLURequest() {
@@ -725,6 +749,7 @@ inline void WLURequest::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   language_code_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   text_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete reference_time_;
 }
 
 void WLURequest::ArenaDtor(void* object) {
@@ -745,6 +770,10 @@ void WLURequest::Clear() {
 
   language_code_.ClearToEmpty();
   text_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && reference_time_ != nullptr) {
+    delete reference_time_;
+  }
+  reference_time_ = nullptr;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -769,6 +798,13 @@ const char* WLURequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           auto str = _internal_mutable_text();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.slu.v1.WLURequest.text"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .google.protobuf.Timestamp reference_time = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_reference_time(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -821,6 +857,14 @@ failure:
         2, this->_internal_text(), target);
   }
 
+  // .google.protobuf.Timestamp reference_time = 3;
+  if (this->_internal_has_reference_time()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        3, _Internal::reference_time(this), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -849,6 +893,13 @@ size_t WLURequest::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_text());
+  }
+
+  // .google.protobuf.Timestamp reference_time = 3;
+  if (this->_internal_has_reference_time()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *reference_time_);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -885,6 +936,9 @@ void WLURequest::MergeFrom(const WLURequest& from) {
   if (!from._internal_text().empty()) {
     _internal_set_text(from._internal_text());
   }
+  if (from._internal_has_reference_time()) {
+    _internal_mutable_reference_time()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_reference_time());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -912,6 +966,7 @@ void WLURequest::InternalSwap(WLURequest* other) {
       &text_, GetArenaForAllocation(),
       &other->text_, other->GetArenaForAllocation()
   );
+  swap(reference_time_, other->reference_time_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata WLURequest::GetMetadata() const {

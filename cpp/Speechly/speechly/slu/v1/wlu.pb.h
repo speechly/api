@@ -31,6 +31,7 @@
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/timestamp.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_speechly_2fslu_2fv1_2fwlu_2eproto
@@ -528,6 +529,7 @@ class WLURequest final :
   enum : int {
     kLanguageCodeFieldNumber = 1,
     kTextFieldNumber = 2,
+    kReferenceTimeFieldNumber = 3,
   };
   // string language_code = 1;
   void clear_language_code();
@@ -557,6 +559,24 @@ class WLURequest final :
   std::string* _internal_mutable_text();
   public:
 
+  // .google.protobuf.Timestamp reference_time = 3;
+  bool has_reference_time() const;
+  private:
+  bool _internal_has_reference_time() const;
+  public:
+  void clear_reference_time();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& reference_time() const;
+  PROTOBUF_MUST_USE_RESULT PROTOBUF_NAMESPACE_ID::Timestamp* release_reference_time();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_reference_time();
+  void set_allocated_reference_time(PROTOBUF_NAMESPACE_ID::Timestamp* reference_time);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_reference_time() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_reference_time();
+  public:
+  void unsafe_arena_set_allocated_reference_time(
+      PROTOBUF_NAMESPACE_ID::Timestamp* reference_time);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_reference_time();
+
   // @@protoc_insertion_point(class_scope:speechly.slu.v1.WLURequest)
  private:
   class _Internal;
@@ -566,6 +586,7 @@ class WLURequest final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_code_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* reference_time_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv1_2fwlu_2eproto;
 };
@@ -1653,6 +1674,92 @@ inline void WLURequest::set_allocated_text(std::string* text) {
   text_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), text,
       GetArenaForAllocation());
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.WLURequest.text)
+}
+
+// .google.protobuf.Timestamp reference_time = 3;
+inline bool WLURequest::_internal_has_reference_time() const {
+  return this != internal_default_instance() && reference_time_ != nullptr;
+}
+inline bool WLURequest::has_reference_time() const {
+  return _internal_has_reference_time();
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& WLURequest::_internal_reference_time() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = reference_time_;
+  return p != nullptr ? *p : reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& WLURequest::reference_time() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.WLURequest.reference_time)
+  return _internal_reference_time();
+}
+inline void WLURequest::unsafe_arena_set_allocated_reference_time(
+    PROTOBUF_NAMESPACE_ID::Timestamp* reference_time) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(reference_time_);
+  }
+  reference_time_ = reference_time;
+  if (reference_time) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v1.WLURequest.reference_time)
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* WLURequest::release_reference_time() {
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = reference_time_;
+  reference_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* WLURequest::unsafe_arena_release_reference_time() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.WLURequest.reference_time)
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = reference_time_;
+  reference_time_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* WLURequest::_internal_mutable_reference_time() {
+  
+  if (reference_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    reference_time_ = p;
+  }
+  return reference_time_;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* WLURequest::mutable_reference_time() {
+  PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_reference_time();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.WLURequest.reference_time)
+  return _msg;
+}
+inline void WLURequest::set_allocated_reference_time(PROTOBUF_NAMESPACE_ID::Timestamp* reference_time) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(reference_time_);
+  }
+  if (reference_time) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(reference_time));
+    if (message_arena != submessage_arena) {
+      reference_time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, reference_time, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  reference_time_ = reference_time;
+  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.WLURequest.reference_time)
 }
 
 // -------------------------------------------------------------------

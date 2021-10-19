@@ -68,9 +68,22 @@ public struct Speechly_Slu_V1_WLURequest {
   /// Required.
   public var text: String = String()
 
+  /// The reference time for postprocessing. By default, the current date is used.
+  /// Optional.
+  public var referenceTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _referenceTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_referenceTime = newValue}
+  }
+  /// Returns true if `referenceTime` has been explicitly set.
+  public var hasReferenceTime: Bool {return self._referenceTime != nil}
+  /// Clears the value of `referenceTime`. Subsequent reads from it will return its default value.
+  public mutating func clearReferenceTime() {self._referenceTime = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
+
+  fileprivate var _referenceTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
 /// Top-level message sent by the server for the `Text` method.
@@ -274,6 +287,7 @@ extension Speechly_Slu_V1_WLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "language_code"),
     2: .same(proto: "text"),
+    3: .standard(proto: "reference_time"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -284,6 +298,7 @@ extension Speechly_Slu_V1_WLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.languageCode) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.text) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._referenceTime) }()
       default: break
       }
     }
@@ -296,12 +311,16 @@ extension Speechly_Slu_V1_WLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     if !self.text.isEmpty {
       try visitor.visitSingularStringField(value: self.text, fieldNumber: 2)
     }
+    if let v = self._referenceTime {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Slu_V1_WLURequest, rhs: Speechly_Slu_V1_WLURequest) -> Bool {
     if lhs.languageCode != rhs.languageCode {return false}
     if lhs.text != rhs.text {return false}
+    if lhs._referenceTime != rhs._referenceTime {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

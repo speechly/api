@@ -376,6 +376,7 @@ Top-level message sent by the client for the `Text` method.
 | ---- | ---- | ----------- |
 | language_code | [string](#string) | The language of the text sent in the request as a BCP-47 language tag (e.g. "en-US").<br/>Required. |
 | text | [string](#string) | The text to recognise.<br/>Required. |
+| reference_time | [Timestamp](#google.protobuf.Timestamp) | The reference time for postprocessing. By default, the current date is used.<br/>Optional. |
 
 
 <a name="speechly.slu.v1.WLUResponse"></a>
