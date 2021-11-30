@@ -23,10 +23,13 @@ service Compiler {
   rpc Validate(stream AppSource) returns (ValidateResult);
   // Extracts raw, not compiled SAL templates from the SAL source.
   rpc ExtractSALSources(stream AppSource) returns (stream ExtractSALSourcesResult);
+  // Converts an input configuration (e.g. Alexa) to SAL format
+  rpc Convert(stream ConvertRequest) returns (ConvertResult);
 }
 
 // Contains a chunk of SAL source.
-// This message is consumed by `Validate` and `ExtractSALSources` RPCs and as a part of `CompileRequest`.
+// This message is consumed by `Validate` and `ExtractSALSources` RPCs and
+// as a part of `CompileRequest` and `ConvertResult`.
 message AppSource {
   // The ID of Speechly app to compile for.
   string app_id = 1;
@@ -71,6 +74,48 @@ message CompileResult {
   repeated string templates = 2;
   // (If the result failed or had warnings) A list of error / warning messages.
   repeated LineReference messages = 3;
+}
+
+// This message is consumed by `Convert` RPC
+message ConvertRequest {
+  // Describes the input format.
+  enum InputFormat {
+    // Input is an Alexa configuration in JSON format.
+    FORMAT_ALEXA = 0;
+    // Input is a Dialogflow configuration.
+    FORMAT_DIALOGFLOW = 1;
+    // Input is a Rasa configuration.
+    FORMAT_RASA = 2;
+    // Input is an Azure Cognitive Services configuration
+    FORMAT_AZURE = 3;
+    // Input is a Microsoft Luis configuration.
+    FORMAT_LUIS = 4;
+  }
+  // Format in which input configuration is supplied.
+  InputFormat input_format = 1;
+  // Language of the input configuration.
+  string language = 2;
+  // Input configuration.
+  bytes input_data = 3;
+}
+
+// Top-level message sent by the server for the `Convert` method.
+message ConvertResult {
+  // Describes the conversion status.
+  enum Status {
+    // Successful conversion without warnings.
+    CONVERT_SUCCESS = 0;
+    // Successful conversion, but with warnings.
+    CONVERT_WARNINGS = 1;
+    // Failed to convert.
+    CONVERT_FAILED = 2;
+  }
+  // Status of conversion.
+  Status status = 1;
+  // Warning message, empty unless status = CONVERT_WARNINGS.
+  string warnings = 2;
+  // The converted SAL configuration.
+  AppSource result = 3;
 }
 
 // Top-level message sent by the server for the `Validate` method.
