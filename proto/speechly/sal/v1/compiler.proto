@@ -80,23 +80,17 @@ message CompileResult {
 message ConvertRequest {
   // Describes the input format.
   enum InputFormat {
+    // No input format or unknown format.
+    FORMAT_UNKNOWN = 0;
     // Input is an Alexa configuration in JSON format.
-    FORMAT_ALEXA = 0;
-    // Input is a Dialogflow configuration.
-    FORMAT_DIALOGFLOW = 1;
-    // Input is a Rasa configuration.
-    FORMAT_RASA = 2;
-    // Input is an Azure Cognitive Services configuration
-    FORMAT_AZURE = 3;
-    // Input is a Microsoft Luis configuration.
-    FORMAT_LUIS = 4;
+    FORMAT_ALEXA = 1;
   }
   // Format in which input configuration is supplied.
   InputFormat input_format = 1;
   // Language of the input configuration.
   string language = 2;
-  // Input configuration.
-  bytes input_data = 3;
+  // Chunk of input configuration.
+  bytes data_chunk = 3;
 }
 
 // Top-level message sent by the server for the `Convert` method.
