@@ -21,7 +21,8 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
 }
 
 /// Contains a chunk of SAL source.
-/// This message is consumed by `Validate` and `ExtractSALSources` RPCs and as a part of `CompileRequest`.
+/// This message is consumed by `Validate` and `ExtractSALSources` RPCs and
+/// as a part of `CompileRequest` and `ConvertResult`.
 public struct Speechly_Sal_V1_AppSource {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -184,6 +185,151 @@ extension Speechly_Sal_V1_CompileResult.Result: CaseIterable {
     .compileSuccess,
     .compileFailure,
     .compileWarning,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+/// This message is consumed by `Convert` RPC
+public struct Speechly_Sal_V1_ConvertRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// Format in which input configuration is supplied.
+  public var inputFormat: Speechly_Sal_V1_ConvertRequest.InputFormat = .formatUnknown
+
+  /// Language of the input configuration.
+  public var language: String = String()
+
+  /// Chunk of input configuration.
+  public var dataChunk: Data = Data()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  /// Describes the input format.
+  public enum InputFormat: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
+
+    /// No input format or unknown format.
+    case formatUnknown // = 0
+
+    /// Input is an Alexa configuration in JSON format.
+    case formatAlexa // = 1
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .formatUnknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .formatUnknown
+      case 1: self = .formatAlexa
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .formatUnknown: return 0
+      case .formatAlexa: return 1
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
+
+  public init() {}
+}
+
+#if swift(>=4.2)
+
+extension Speechly_Sal_V1_ConvertRequest.InputFormat: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static var allCases: [Speechly_Sal_V1_ConvertRequest.InputFormat] = [
+    .formatUnknown,
+    .formatAlexa,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
+/// Top-level message sent by the server for the `Convert` method.
+public struct Speechly_Sal_V1_ConvertResult {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// Status of conversion.
+  public var status: Speechly_Sal_V1_ConvertResult.Status = .convertSuccess
+
+  /// Warning message, empty unless status = CONVERT_WARNINGS.
+  public var warnings: String = String()
+
+  /// The converted SAL configuration.
+  public var result: Speechly_Sal_V1_AppSource {
+    get {return _result ?? Speechly_Sal_V1_AppSource()}
+    set {_result = newValue}
+  }
+  /// Returns true if `result` has been explicitly set.
+  public var hasResult: Bool {return self._result != nil}
+  /// Clears the value of `result`. Subsequent reads from it will return its default value.
+  public mutating func clearResult() {self._result = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  /// Describes the conversion status.
+  public enum Status: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
+
+    /// Successful conversion without warnings.
+    case convertSuccess // = 0
+
+    /// Successful conversion, but with warnings.
+    case convertWarnings // = 1
+
+    /// Failed to convert.
+    case convertFailed // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .convertSuccess
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .convertSuccess
+      case 1: self = .convertWarnings
+      case 2: self = .convertFailed
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .convertSuccess: return 0
+      case .convertWarnings: return 1
+      case .convertFailed: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
+
+  public init() {}
+
+  fileprivate var _result: Speechly_Sal_V1_AppSource? = nil
+}
+
+#if swift(>=4.2)
+
+extension Speechly_Sal_V1_ConvertResult.Status: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static var allCases: [Speechly_Sal_V1_ConvertResult.Status] = [
+    .convertSuccess,
+    .convertWarnings,
+    .convertFailed,
   ]
 }
 
@@ -449,6 +595,109 @@ extension Speechly_Sal_V1_CompileResult.Result: SwiftProtobuf._ProtoNameProvidin
     0: .same(proto: "COMPILE_SUCCESS"),
     1: .same(proto: "COMPILE_FAILURE"),
     2: .same(proto: "COMPILE_WARNING"),
+  ]
+}
+
+extension Speechly_Sal_V1_ConvertRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ConvertRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "input_format"),
+    2: .same(proto: "language"),
+    3: .standard(proto: "data_chunk"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.inputFormat) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.language) }()
+      case 3: try { try decoder.decodeSingularBytesField(value: &self.dataChunk) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.inputFormat != .formatUnknown {
+      try visitor.visitSingularEnumField(value: self.inputFormat, fieldNumber: 1)
+    }
+    if !self.language.isEmpty {
+      try visitor.visitSingularStringField(value: self.language, fieldNumber: 2)
+    }
+    if !self.dataChunk.isEmpty {
+      try visitor.visitSingularBytesField(value: self.dataChunk, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Sal_V1_ConvertRequest, rhs: Speechly_Sal_V1_ConvertRequest) -> Bool {
+    if lhs.inputFormat != rhs.inputFormat {return false}
+    if lhs.language != rhs.language {return false}
+    if lhs.dataChunk != rhs.dataChunk {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Sal_V1_ConvertRequest.InputFormat: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "FORMAT_UNKNOWN"),
+    1: .same(proto: "FORMAT_ALEXA"),
+  ]
+}
+
+extension Speechly_Sal_V1_ConvertResult: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ConvertResult"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "status"),
+    2: .same(proto: "warnings"),
+    3: .same(proto: "result"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularEnumField(value: &self.status) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.warnings) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._result) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.status != .convertSuccess {
+      try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
+    }
+    if !self.warnings.isEmpty {
+      try visitor.visitSingularStringField(value: self.warnings, fieldNumber: 2)
+    }
+    if let v = self._result {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Sal_V1_ConvertResult, rhs: Speechly_Sal_V1_ConvertResult) -> Bool {
+    if lhs.status != rhs.status {return false}
+    if lhs.warnings != rhs.warnings {return false}
+    if lhs._result != rhs._result {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Sal_V1_ConvertResult.Status: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "CONVERT_SUCCESS"),
+    1: .same(proto: "CONVERT_WARNINGS"),
+    2: .same(proto: "CONVERT_FAILED"),
   ]
 }
 

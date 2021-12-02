@@ -47,7 +47,7 @@ struct TableStruct_speechly_2fsal_2fv1_2fcompiler_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -66,6 +66,12 @@ extern CompileRequestDefaultTypeInternal _CompileRequest_default_instance_;
 class CompileResult;
 struct CompileResultDefaultTypeInternal;
 extern CompileResultDefaultTypeInternal _CompileResult_default_instance_;
+class ConvertRequest;
+struct ConvertRequestDefaultTypeInternal;
+extern ConvertRequestDefaultTypeInternal _ConvertRequest_default_instance_;
+class ConvertResult;
+struct ConvertResultDefaultTypeInternal;
+extern ConvertResultDefaultTypeInternal _ConvertResult_default_instance_;
 class ExtractSALSourcesResult;
 struct ExtractSALSourcesResultDefaultTypeInternal;
 extern ExtractSALSourcesResultDefaultTypeInternal _ExtractSALSourcesResult_default_instance_;
@@ -82,6 +88,8 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::speechly::sal::v1::AppSource* Arena::CreateMaybeMessage<::speechly::sal::v1::AppSource>(Arena*);
 template<> ::speechly::sal::v1::CompileRequest* Arena::CreateMaybeMessage<::speechly::sal::v1::CompileRequest>(Arena*);
 template<> ::speechly::sal::v1::CompileResult* Arena::CreateMaybeMessage<::speechly::sal::v1::CompileResult>(Arena*);
+template<> ::speechly::sal::v1::ConvertRequest* Arena::CreateMaybeMessage<::speechly::sal::v1::ConvertRequest>(Arena*);
+template<> ::speechly::sal::v1::ConvertResult* Arena::CreateMaybeMessage<::speechly::sal::v1::ConvertResult>(Arena*);
 template<> ::speechly::sal::v1::ExtractSALSourcesResult* Arena::CreateMaybeMessage<::speechly::sal::v1::ExtractSALSourcesResult>(Arena*);
 template<> ::speechly::sal::v1::LineReference* Arena::CreateMaybeMessage<::speechly::sal::v1::LineReference>(Arena*);
 template<> ::speechly::sal::v1::ValidateResult* Arena::CreateMaybeMessage<::speechly::sal::v1::ValidateResult>(Arena*);
@@ -141,6 +149,57 @@ inline bool CompileResult_Result_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, CompileResult_Result* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<CompileResult_Result>(
     CompileResult_Result_descriptor(), name, value);
+}
+enum ConvertRequest_InputFormat : int {
+  ConvertRequest_InputFormat_FORMAT_UNKNOWN = 0,
+  ConvertRequest_InputFormat_FORMAT_ALEXA = 1,
+  ConvertRequest_InputFormat_ConvertRequest_InputFormat_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  ConvertRequest_InputFormat_ConvertRequest_InputFormat_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool ConvertRequest_InputFormat_IsValid(int value);
+constexpr ConvertRequest_InputFormat ConvertRequest_InputFormat_InputFormat_MIN = ConvertRequest_InputFormat_FORMAT_UNKNOWN;
+constexpr ConvertRequest_InputFormat ConvertRequest_InputFormat_InputFormat_MAX = ConvertRequest_InputFormat_FORMAT_ALEXA;
+constexpr int ConvertRequest_InputFormat_InputFormat_ARRAYSIZE = ConvertRequest_InputFormat_InputFormat_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ConvertRequest_InputFormat_descriptor();
+template<typename T>
+inline const std::string& ConvertRequest_InputFormat_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ConvertRequest_InputFormat>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ConvertRequest_InputFormat_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ConvertRequest_InputFormat_descriptor(), enum_t_value);
+}
+inline bool ConvertRequest_InputFormat_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ConvertRequest_InputFormat* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ConvertRequest_InputFormat>(
+    ConvertRequest_InputFormat_descriptor(), name, value);
+}
+enum ConvertResult_Status : int {
+  ConvertResult_Status_CONVERT_SUCCESS = 0,
+  ConvertResult_Status_CONVERT_WARNINGS = 1,
+  ConvertResult_Status_CONVERT_FAILED = 2,
+  ConvertResult_Status_ConvertResult_Status_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  ConvertResult_Status_ConvertResult_Status_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool ConvertResult_Status_IsValid(int value);
+constexpr ConvertResult_Status ConvertResult_Status_Status_MIN = ConvertResult_Status_CONVERT_SUCCESS;
+constexpr ConvertResult_Status ConvertResult_Status_Status_MAX = ConvertResult_Status_CONVERT_FAILED;
+constexpr int ConvertResult_Status_Status_ARRAYSIZE = ConvertResult_Status_Status_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ConvertResult_Status_descriptor();
+template<typename T>
+inline const std::string& ConvertResult_Status_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ConvertResult_Status>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ConvertResult_Status_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ConvertResult_Status_descriptor(), enum_t_value);
+}
+inline bool ConvertResult_Status_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ConvertResult_Status* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ConvertResult_Status>(
+    ConvertResult_Status_descriptor(), name, value);
 }
 enum LineReference_Level : int {
   LineReference_Level_LEVEL_NOTE = 0,
@@ -776,6 +835,414 @@ class CompileResult final :
 };
 // -------------------------------------------------------------------
 
+class ConvertRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.sal.v1.ConvertRequest) */ {
+ public:
+  inline ConvertRequest() : ConvertRequest(nullptr) {}
+  ~ConvertRequest() override;
+  explicit constexpr ConvertRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ConvertRequest(const ConvertRequest& from);
+  ConvertRequest(ConvertRequest&& from) noexcept
+    : ConvertRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ConvertRequest& operator=(const ConvertRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConvertRequest& operator=(ConvertRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ConvertRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ConvertRequest* internal_default_instance() {
+    return reinterpret_cast<const ConvertRequest*>(
+               &_ConvertRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ConvertRequest& a, ConvertRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ConvertRequest* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ConvertRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ConvertRequest* New() const final {
+    return new ConvertRequest();
+  }
+
+  ConvertRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ConvertRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ConvertRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ConvertRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConvertRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.sal.v1.ConvertRequest";
+  }
+  protected:
+  explicit ConvertRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef ConvertRequest_InputFormat InputFormat;
+  static constexpr InputFormat FORMAT_UNKNOWN =
+    ConvertRequest_InputFormat_FORMAT_UNKNOWN;
+  static constexpr InputFormat FORMAT_ALEXA =
+    ConvertRequest_InputFormat_FORMAT_ALEXA;
+  static inline bool InputFormat_IsValid(int value) {
+    return ConvertRequest_InputFormat_IsValid(value);
+  }
+  static constexpr InputFormat InputFormat_MIN =
+    ConvertRequest_InputFormat_InputFormat_MIN;
+  static constexpr InputFormat InputFormat_MAX =
+    ConvertRequest_InputFormat_InputFormat_MAX;
+  static constexpr int InputFormat_ARRAYSIZE =
+    ConvertRequest_InputFormat_InputFormat_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  InputFormat_descriptor() {
+    return ConvertRequest_InputFormat_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& InputFormat_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, InputFormat>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function InputFormat_Name.");
+    return ConvertRequest_InputFormat_Name(enum_t_value);
+  }
+  static inline bool InputFormat_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      InputFormat* value) {
+    return ConvertRequest_InputFormat_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLanguageFieldNumber = 2,
+    kDataChunkFieldNumber = 3,
+    kInputFormatFieldNumber = 1,
+  };
+  // string language = 2;
+  void clear_language();
+  const std::string& language() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_language(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_language();
+  PROTOBUF_MUST_USE_RESULT std::string* release_language();
+  void set_allocated_language(std::string* language);
+  private:
+  const std::string& _internal_language() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_language(const std::string& value);
+  std::string* _internal_mutable_language();
+  public:
+
+  // bytes data_chunk = 3;
+  void clear_data_chunk();
+  const std::string& data_chunk() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_data_chunk(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_data_chunk();
+  PROTOBUF_MUST_USE_RESULT std::string* release_data_chunk();
+  void set_allocated_data_chunk(std::string* data_chunk);
+  private:
+  const std::string& _internal_data_chunk() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_data_chunk(const std::string& value);
+  std::string* _internal_mutable_data_chunk();
+  public:
+
+  // .speechly.sal.v1.ConvertRequest.InputFormat input_format = 1;
+  void clear_input_format();
+  ::speechly::sal::v1::ConvertRequest_InputFormat input_format() const;
+  void set_input_format(::speechly::sal::v1::ConvertRequest_InputFormat value);
+  private:
+  ::speechly::sal::v1::ConvertRequest_InputFormat _internal_input_format() const;
+  void _internal_set_input_format(::speechly::sal::v1::ConvertRequest_InputFormat value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:speechly.sal.v1.ConvertRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr data_chunk_;
+  int input_format_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fsal_2fv1_2fcompiler_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ConvertResult final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.sal.v1.ConvertResult) */ {
+ public:
+  inline ConvertResult() : ConvertResult(nullptr) {}
+  ~ConvertResult() override;
+  explicit constexpr ConvertResult(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ConvertResult(const ConvertResult& from);
+  ConvertResult(ConvertResult&& from) noexcept
+    : ConvertResult() {
+    *this = ::std::move(from);
+  }
+
+  inline ConvertResult& operator=(const ConvertResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ConvertResult& operator=(ConvertResult&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ConvertResult& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ConvertResult* internal_default_instance() {
+    return reinterpret_cast<const ConvertResult*>(
+               &_ConvertResult_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(ConvertResult& a, ConvertResult& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ConvertResult* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ConvertResult* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ConvertResult* New() const final {
+    return new ConvertResult();
+  }
+
+  ConvertResult* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ConvertResult>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ConvertResult& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ConvertResult& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ConvertResult* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.sal.v1.ConvertResult";
+  }
+  protected:
+  explicit ConvertResult(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef ConvertResult_Status Status;
+  static constexpr Status CONVERT_SUCCESS =
+    ConvertResult_Status_CONVERT_SUCCESS;
+  static constexpr Status CONVERT_WARNINGS =
+    ConvertResult_Status_CONVERT_WARNINGS;
+  static constexpr Status CONVERT_FAILED =
+    ConvertResult_Status_CONVERT_FAILED;
+  static inline bool Status_IsValid(int value) {
+    return ConvertResult_Status_IsValid(value);
+  }
+  static constexpr Status Status_MIN =
+    ConvertResult_Status_Status_MIN;
+  static constexpr Status Status_MAX =
+    ConvertResult_Status_Status_MAX;
+  static constexpr int Status_ARRAYSIZE =
+    ConvertResult_Status_Status_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  Status_descriptor() {
+    return ConvertResult_Status_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& Status_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, Status>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function Status_Name.");
+    return ConvertResult_Status_Name(enum_t_value);
+  }
+  static inline bool Status_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      Status* value) {
+    return ConvertResult_Status_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kWarningsFieldNumber = 2,
+    kResultFieldNumber = 3,
+    kStatusFieldNumber = 1,
+  };
+  // string warnings = 2;
+  void clear_warnings();
+  const std::string& warnings() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_warnings(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_warnings();
+  PROTOBUF_MUST_USE_RESULT std::string* release_warnings();
+  void set_allocated_warnings(std::string* warnings);
+  private:
+  const std::string& _internal_warnings() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_warnings(const std::string& value);
+  std::string* _internal_mutable_warnings();
+  public:
+
+  // .speechly.sal.v1.AppSource result = 3;
+  bool has_result() const;
+  private:
+  bool _internal_has_result() const;
+  public:
+  void clear_result();
+  const ::speechly::sal::v1::AppSource& result() const;
+  PROTOBUF_MUST_USE_RESULT ::speechly::sal::v1::AppSource* release_result();
+  ::speechly::sal::v1::AppSource* mutable_result();
+  void set_allocated_result(::speechly::sal::v1::AppSource* result);
+  private:
+  const ::speechly::sal::v1::AppSource& _internal_result() const;
+  ::speechly::sal::v1::AppSource* _internal_mutable_result();
+  public:
+  void unsafe_arena_set_allocated_result(
+      ::speechly::sal::v1::AppSource* result);
+  ::speechly::sal::v1::AppSource* unsafe_arena_release_result();
+
+  // .speechly.sal.v1.ConvertResult.Status status = 1;
+  void clear_status();
+  ::speechly::sal::v1::ConvertResult_Status status() const;
+  void set_status(::speechly::sal::v1::ConvertResult_Status value);
+  private:
+  ::speechly::sal::v1::ConvertResult_Status _internal_status() const;
+  void _internal_set_status(::speechly::sal::v1::ConvertResult_Status value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:speechly.sal.v1.ConvertResult)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr warnings_;
+  ::speechly::sal::v1::AppSource* result_;
+  int status_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fsal_2fv1_2fcompiler_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ValidateResult final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.sal.v1.ValidateResult) */ {
  public:
@@ -820,7 +1287,7 @@ class ValidateResult final :
                &_ValidateResult_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(ValidateResult& a, ValidateResult& b) {
     a.Swap(&b);
@@ -968,7 +1435,7 @@ class LineReference final :
                &_LineReference_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    6;
 
   friend void swap(LineReference& a, LineReference& b) {
     a.Swap(&b);
@@ -1193,7 +1660,7 @@ class ExtractSALSourcesResult final :
                &_ExtractSALSourcesResult_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    7;
 
   friend void swap(ExtractSALSourcesResult& a, ExtractSALSourcesResult& b) {
     a.Swap(&b);
@@ -1735,6 +2202,282 @@ CompileResult::messages() const {
 
 // -------------------------------------------------------------------
 
+// ConvertRequest
+
+// .speechly.sal.v1.ConvertRequest.InputFormat input_format = 1;
+inline void ConvertRequest::clear_input_format() {
+  input_format_ = 0;
+}
+inline ::speechly::sal::v1::ConvertRequest_InputFormat ConvertRequest::_internal_input_format() const {
+  return static_cast< ::speechly::sal::v1::ConvertRequest_InputFormat >(input_format_);
+}
+inline ::speechly::sal::v1::ConvertRequest_InputFormat ConvertRequest::input_format() const {
+  // @@protoc_insertion_point(field_get:speechly.sal.v1.ConvertRequest.input_format)
+  return _internal_input_format();
+}
+inline void ConvertRequest::_internal_set_input_format(::speechly::sal::v1::ConvertRequest_InputFormat value) {
+  
+  input_format_ = value;
+}
+inline void ConvertRequest::set_input_format(::speechly::sal::v1::ConvertRequest_InputFormat value) {
+  _internal_set_input_format(value);
+  // @@protoc_insertion_point(field_set:speechly.sal.v1.ConvertRequest.input_format)
+}
+
+// string language = 2;
+inline void ConvertRequest::clear_language() {
+  language_.ClearToEmpty();
+}
+inline const std::string& ConvertRequest::language() const {
+  // @@protoc_insertion_point(field_get:speechly.sal.v1.ConvertRequest.language)
+  return _internal_language();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ConvertRequest::set_language(ArgT0&& arg0, ArgT... args) {
+ 
+ language_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.sal.v1.ConvertRequest.language)
+}
+inline std::string* ConvertRequest::mutable_language() {
+  std::string* _s = _internal_mutable_language();
+  // @@protoc_insertion_point(field_mutable:speechly.sal.v1.ConvertRequest.language)
+  return _s;
+}
+inline const std::string& ConvertRequest::_internal_language() const {
+  return language_.Get();
+}
+inline void ConvertRequest::_internal_set_language(const std::string& value) {
+  
+  language_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ConvertRequest::_internal_mutable_language() {
+  
+  return language_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ConvertRequest::release_language() {
+  // @@protoc_insertion_point(field_release:speechly.sal.v1.ConvertRequest.language)
+  return language_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ConvertRequest::set_allocated_language(std::string* language) {
+  if (language != nullptr) {
+    
+  } else {
+    
+  }
+  language_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), language,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.sal.v1.ConvertRequest.language)
+}
+
+// bytes data_chunk = 3;
+inline void ConvertRequest::clear_data_chunk() {
+  data_chunk_.ClearToEmpty();
+}
+inline const std::string& ConvertRequest::data_chunk() const {
+  // @@protoc_insertion_point(field_get:speechly.sal.v1.ConvertRequest.data_chunk)
+  return _internal_data_chunk();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ConvertRequest::set_data_chunk(ArgT0&& arg0, ArgT... args) {
+ 
+ data_chunk_.SetBytes(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.sal.v1.ConvertRequest.data_chunk)
+}
+inline std::string* ConvertRequest::mutable_data_chunk() {
+  std::string* _s = _internal_mutable_data_chunk();
+  // @@protoc_insertion_point(field_mutable:speechly.sal.v1.ConvertRequest.data_chunk)
+  return _s;
+}
+inline const std::string& ConvertRequest::_internal_data_chunk() const {
+  return data_chunk_.Get();
+}
+inline void ConvertRequest::_internal_set_data_chunk(const std::string& value) {
+  
+  data_chunk_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ConvertRequest::_internal_mutable_data_chunk() {
+  
+  return data_chunk_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ConvertRequest::release_data_chunk() {
+  // @@protoc_insertion_point(field_release:speechly.sal.v1.ConvertRequest.data_chunk)
+  return data_chunk_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ConvertRequest::set_allocated_data_chunk(std::string* data_chunk) {
+  if (data_chunk != nullptr) {
+    
+  } else {
+    
+  }
+  data_chunk_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), data_chunk,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.sal.v1.ConvertRequest.data_chunk)
+}
+
+// -------------------------------------------------------------------
+
+// ConvertResult
+
+// .speechly.sal.v1.ConvertResult.Status status = 1;
+inline void ConvertResult::clear_status() {
+  status_ = 0;
+}
+inline ::speechly::sal::v1::ConvertResult_Status ConvertResult::_internal_status() const {
+  return static_cast< ::speechly::sal::v1::ConvertResult_Status >(status_);
+}
+inline ::speechly::sal::v1::ConvertResult_Status ConvertResult::status() const {
+  // @@protoc_insertion_point(field_get:speechly.sal.v1.ConvertResult.status)
+  return _internal_status();
+}
+inline void ConvertResult::_internal_set_status(::speechly::sal::v1::ConvertResult_Status value) {
+  
+  status_ = value;
+}
+inline void ConvertResult::set_status(::speechly::sal::v1::ConvertResult_Status value) {
+  _internal_set_status(value);
+  // @@protoc_insertion_point(field_set:speechly.sal.v1.ConvertResult.status)
+}
+
+// string warnings = 2;
+inline void ConvertResult::clear_warnings() {
+  warnings_.ClearToEmpty();
+}
+inline const std::string& ConvertResult::warnings() const {
+  // @@protoc_insertion_point(field_get:speechly.sal.v1.ConvertResult.warnings)
+  return _internal_warnings();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ConvertResult::set_warnings(ArgT0&& arg0, ArgT... args) {
+ 
+ warnings_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.sal.v1.ConvertResult.warnings)
+}
+inline std::string* ConvertResult::mutable_warnings() {
+  std::string* _s = _internal_mutable_warnings();
+  // @@protoc_insertion_point(field_mutable:speechly.sal.v1.ConvertResult.warnings)
+  return _s;
+}
+inline const std::string& ConvertResult::_internal_warnings() const {
+  return warnings_.Get();
+}
+inline void ConvertResult::_internal_set_warnings(const std::string& value) {
+  
+  warnings_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ConvertResult::_internal_mutable_warnings() {
+  
+  return warnings_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ConvertResult::release_warnings() {
+  // @@protoc_insertion_point(field_release:speechly.sal.v1.ConvertResult.warnings)
+  return warnings_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ConvertResult::set_allocated_warnings(std::string* warnings) {
+  if (warnings != nullptr) {
+    
+  } else {
+    
+  }
+  warnings_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), warnings,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.sal.v1.ConvertResult.warnings)
+}
+
+// .speechly.sal.v1.AppSource result = 3;
+inline bool ConvertResult::_internal_has_result() const {
+  return this != internal_default_instance() && result_ != nullptr;
+}
+inline bool ConvertResult::has_result() const {
+  return _internal_has_result();
+}
+inline void ConvertResult::clear_result() {
+  if (GetArenaForAllocation() == nullptr && result_ != nullptr) {
+    delete result_;
+  }
+  result_ = nullptr;
+}
+inline const ::speechly::sal::v1::AppSource& ConvertResult::_internal_result() const {
+  const ::speechly::sal::v1::AppSource* p = result_;
+  return p != nullptr ? *p : reinterpret_cast<const ::speechly::sal::v1::AppSource&>(
+      ::speechly::sal::v1::_AppSource_default_instance_);
+}
+inline const ::speechly::sal::v1::AppSource& ConvertResult::result() const {
+  // @@protoc_insertion_point(field_get:speechly.sal.v1.ConvertResult.result)
+  return _internal_result();
+}
+inline void ConvertResult::unsafe_arena_set_allocated_result(
+    ::speechly::sal::v1::AppSource* result) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(result_);
+  }
+  result_ = result;
+  if (result) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.sal.v1.ConvertResult.result)
+}
+inline ::speechly::sal::v1::AppSource* ConvertResult::release_result() {
+  
+  ::speechly::sal::v1::AppSource* temp = result_;
+  result_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::speechly::sal::v1::AppSource* ConvertResult::unsafe_arena_release_result() {
+  // @@protoc_insertion_point(field_release:speechly.sal.v1.ConvertResult.result)
+  
+  ::speechly::sal::v1::AppSource* temp = result_;
+  result_ = nullptr;
+  return temp;
+}
+inline ::speechly::sal::v1::AppSource* ConvertResult::_internal_mutable_result() {
+  
+  if (result_ == nullptr) {
+    auto* p = CreateMaybeMessage<::speechly::sal::v1::AppSource>(GetArenaForAllocation());
+    result_ = p;
+  }
+  return result_;
+}
+inline ::speechly::sal::v1::AppSource* ConvertResult::mutable_result() {
+  ::speechly::sal::v1::AppSource* _msg = _internal_mutable_result();
+  // @@protoc_insertion_point(field_mutable:speechly.sal.v1.ConvertResult.result)
+  return _msg;
+}
+inline void ConvertResult::set_allocated_result(::speechly::sal::v1::AppSource* result) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete result_;
+  }
+  if (result) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<::speechly::sal::v1::AppSource>::GetOwningArena(result);
+    if (message_arena != submessage_arena) {
+      result = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, result, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  result_ = result;
+  // @@protoc_insertion_point(field_set_allocated:speechly.sal.v1.ConvertResult.result)
+}
+
+// -------------------------------------------------------------------
+
 // ValidateResult
 
 // repeated .speechly.sal.v1.LineReference messages = 1;
@@ -1996,6 +2739,10 @@ inline void ExtractSALSourcesResult::set_allocated_data_chunk(std::string* data_
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -2014,6 +2761,16 @@ template <> struct is_proto_enum< ::speechly::sal::v1::CompileResult_Result> : :
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::speechly::sal::v1::CompileResult_Result>() {
   return ::speechly::sal::v1::CompileResult_Result_descriptor();
+}
+template <> struct is_proto_enum< ::speechly::sal::v1::ConvertRequest_InputFormat> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::speechly::sal::v1::ConvertRequest_InputFormat>() {
+  return ::speechly::sal::v1::ConvertRequest_InputFormat_descriptor();
+}
+template <> struct is_proto_enum< ::speechly::sal::v1::ConvertResult_Status> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::speechly::sal::v1::ConvertResult_Status>() {
+  return ::speechly::sal::v1::ConvertResult_Status_descriptor();
 }
 template <> struct is_proto_enum< ::speechly::sal::v1::LineReference_Level> : ::std::true_type {};
 template <>

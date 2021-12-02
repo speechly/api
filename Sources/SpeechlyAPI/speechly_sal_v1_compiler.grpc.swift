@@ -49,6 +49,10 @@ public protocol Speechly_Sal_V1_CompilerClientProtocol: GRPCClient {
     callOptions: CallOptions?,
     handler: @escaping (Speechly_Sal_V1_ExtractSALSourcesResult) -> Void
   ) -> BidirectionalStreamingCall<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALSourcesResult>
+
+  func convert(
+    callOptions: CallOptions?
+  ) -> ClientStreamingCall<Speechly_Sal_V1_ConvertRequest, Speechly_Sal_V1_ConvertResult>
 }
 
 extension Speechly_Sal_V1_CompilerClientProtocol {
@@ -112,6 +116,24 @@ extension Speechly_Sal_V1_CompilerClientProtocol {
       handler: handler
     )
   }
+
+  /// Converts an input configuration (e.g. Alexa) to SAL format
+  ///
+  /// Callers should use the `send` method on the returned object to send messages
+  /// to the server. The caller should send an `.end` after the final message has been sent.
+  ///
+  /// - Parameters:
+  ///   - callOptions: Call options.
+  /// - Returns: A `ClientStreamingCall` with futures for the metadata, status and response.
+  public func convert(
+    callOptions: CallOptions? = nil
+  ) -> ClientStreamingCall<Speechly_Sal_V1_ConvertRequest, Speechly_Sal_V1_ConvertResult> {
+    return self.makeClientStreamingCall(
+      path: "/speechly.sal.v1.Compiler/Convert",
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeConvertInterceptors() ?? []
+    )
+  }
 }
 
 public protocol Speechly_Sal_V1_CompilerClientInterceptorFactoryProtocol {
@@ -124,6 +146,9 @@ public protocol Speechly_Sal_V1_CompilerClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'extractSALSources'.
   func makeExtractSALSourcesInterceptors() -> [ClientInterceptor<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALSourcesResult>]
+
+  /// - Returns: Interceptors to use when invoking 'convert'.
+  func makeConvertInterceptors() -> [ClientInterceptor<Speechly_Sal_V1_ConvertRequest, Speechly_Sal_V1_ConvertResult>]
 }
 
 public final class Speechly_Sal_V1_CompilerClient: Speechly_Sal_V1_CompilerClientProtocol {
@@ -167,6 +192,9 @@ public protocol Speechly_Sal_V1_CompilerProvider: CallHandlerProvider {
 
   /// Extracts raw, not compiled SAL templates from the SAL source.
   func extractSALSources(context: StreamingResponseCallContext<Speechly_Sal_V1_ExtractSALSourcesResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_AppSource>) -> Void>
+
+  /// Converts an input configuration (e.g. Alexa) to SAL format
+  func convert(context: UnaryResponseCallContext<Speechly_Sal_V1_ConvertResult>) -> EventLoopFuture<(StreamEvent<Speechly_Sal_V1_ConvertRequest>) -> Void>
 }
 
 extension Speechly_Sal_V1_CompilerProvider {
@@ -206,6 +234,15 @@ extension Speechly_Sal_V1_CompilerProvider {
         observerFactory: self.extractSALSources(context:)
       )
 
+    case "Convert":
+      return ClientStreamingServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Sal_V1_ConvertRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Sal_V1_ConvertResult>(),
+        interceptors: self.interceptors?.makeConvertInterceptors() ?? [],
+        observerFactory: self.convert(context:)
+      )
+
     default:
       return nil
     }
@@ -225,4 +262,8 @@ public protocol Speechly_Sal_V1_CompilerServerInterceptorFactoryProtocol {
   /// - Returns: Interceptors to use when handling 'extractSALSources'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeExtractSALSourcesInterceptors() -> [ServerInterceptor<Speechly_Sal_V1_AppSource, Speechly_Sal_V1_ExtractSALSourcesResult>]
+
+  /// - Returns: Interceptors to use when handling 'convert'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeConvertInterceptors() -> [ServerInterceptor<Speechly_Sal_V1_ConvertRequest, Speechly_Sal_V1_ConvertResult>]
 }

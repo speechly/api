@@ -16,12 +16,15 @@ i.e. all operations are performed with that user as a subject.
 | Compile | [CompileRequest stream](#speechly.sal.v1.CompileRequest) | [CompileResult](#speechly.sal.v1.CompileResult) | Compiles the SAL source and returns compiled templates and / or any compilation errors and warnings. |
 | Validate | [AppSource stream](#speechly.sal.v1.AppSource) | [ValidateResult](#speechly.sal.v1.ValidateResult) | Validates the SAL source and returns compilation notices / warnings and errors, if any. |
 | ExtractSALSources | [AppSource stream](#speechly.sal.v1.AppSource) | [ExtractSALSourcesResult stream](#speechly.sal.v1.ExtractSALSourcesResult) | Extracts raw, not compiled SAL templates from the SAL source. |
+| Convert | [ConvertRequest stream](#speechly.sal.v1.ConvertRequest) | [ConvertResult](#speechly.sal.v1.ConvertResult) | Converts an input configuration (e.g. Alexa) to SAL format |
 
 ## Messages
 
 - [AppSource](#speechly.sal.v1.AppSource)
 - [CompileRequest](#speechly.sal.v1.CompileRequest)
 - [CompileResult](#speechly.sal.v1.CompileResult)
+- [ConvertRequest](#speechly.sal.v1.ConvertRequest)
+- [ConvertResult](#speechly.sal.v1.ConvertResult)
 - [ExtractSALSourcesResult](#speechly.sal.v1.ExtractSALSourcesResult)
 - [LineReference](#speechly.sal.v1.LineReference)
 - [ValidateResult](#speechly.sal.v1.ValidateResult)
@@ -31,7 +34,8 @@ i.e. all operations are performed with that user as a subject.
 ### AppSource
 
 Contains a chunk of SAL source.
-This message is consumed by `Validate` and `ExtractSALSources` RPCs and as a part of `CompileRequest`.
+This message is consumed by `Validate` and `ExtractSALSources` RPCs and
+as a part of `CompileRequest` and `ConvertResult`.
 
 #### Fields
 
@@ -69,6 +73,34 @@ Top-level message sent by the server for the `Compile` method.
 | result | [Result](#speechly.sal.v1.CompileResult.Result) | The status of compilation. |
 | templates | [string](#string) | (If the result was compiled) A list of compiled templates. |
 | messages | [LineReference](#speechly.sal.v1.LineReference) | (If the result failed or had warnings) A list of error / warning messages. |
+
+
+<a name="speechly.sal.v1.ConvertRequest"></a>
+### ConvertRequest
+
+This message is consumed by `Convert` RPC
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| input_format | [InputFormat](#speechly.sal.v1.ConvertRequest.InputFormat) | Format in which input configuration is supplied. |
+| language | [string](#string) | Language of the input configuration. |
+| data_chunk | [bytes](#bytes) | Chunk of input configuration. |
+
+
+<a name="speechly.sal.v1.ConvertResult"></a>
+### ConvertResult
+
+Top-level message sent by the server for the `Convert` method.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| status | [Status](#speechly.sal.v1.ConvertResult.Status) | Status of conversion. |
+| warnings | [string](#string) | Warning message, empty unless status = CONVERT_WARNINGS. |
+| result | [AppSource](#speechly.sal.v1.AppSource) | The converted SAL configuration. |
 
 
 <a name="speechly.sal.v1.ExtractSALSourcesResult"></a>
