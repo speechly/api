@@ -588,6 +588,10 @@ public struct Speechly_Config_V1_App {
   /// This field is ignored in requests.
   public var trainingTimeSec: Int32 = 0
 
+  /// Tags to mark the application with. Values must be limited to
+  /// a-z, 0-9, _, - and : with max length 24 char. No more than 5 tags may be supplied.
+  public var tags: [String] = []
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// The status of then application, defaults to STATUS_UNSPECIFIED.
@@ -1534,6 +1538,7 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     7: .standard(proto: "estimated_remaining_sec"),
     8: .standard(proto: "estimated_training_time_sec"),
     9: .standard(proto: "training_time_sec"),
+    10: .same(proto: "tags"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1551,6 +1556,7 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       case 7: try { try decoder.decodeSingularInt32Field(value: &self.estimatedRemainingSec) }()
       case 8: try { try decoder.decodeSingularInt32Field(value: &self.estimatedTrainingTimeSec) }()
       case 9: try { try decoder.decodeSingularInt32Field(value: &self.trainingTimeSec) }()
+      case 10: try { try decoder.decodeRepeatedStringField(value: &self.tags) }()
       default: break
       }
     }
@@ -1584,6 +1590,9 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     if self.trainingTimeSec != 0 {
       try visitor.visitSingularInt32Field(value: self.trainingTimeSec, fieldNumber: 9)
     }
+    if !self.tags.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.tags, fieldNumber: 10)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1597,6 +1606,7 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     if lhs.estimatedRemainingSec != rhs.estimatedRemainingSec {return false}
     if lhs.estimatedTrainingTimeSec != rhs.estimatedTrainingTimeSec {return false}
     if lhs.trainingTimeSec != rhs.trainingTimeSec {return false}
+    if lhs.tags != rhs.tags {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

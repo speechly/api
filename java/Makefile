@@ -3,7 +3,7 @@ MAVEN   ?= docker run -it --rm \
 	-v $(CURDIR)/settings.xml:/root/.m2/settings.xml \
 	-v $(CURDIR):$(CURDIR) \
 	-w $(CURDIR) \
-	maven:3 mvn
+	maven:3-openjdk-11 mvn
 
 export VERSION
 

@@ -4,7 +4,7 @@ PROTODOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoin
 CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) ferrarimarco/github-changelog-generator
 PYTHON    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) python:3-slim python
 
-SUBDIRS   = java python javascript dotnet
+SUBDIRS   = python javascript dotnet
 APIREFS   = docs/slu.md docs/identity.md docs/sal.md docs/analytics.md
 
 test:

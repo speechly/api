@@ -4451,6 +4451,7 @@ class App final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kTagsFieldNumber = 10,
     kIdFieldNumber = 1,
     kLanguageFieldNumber = 2,
     kNameFieldNumber = 4,
@@ -4461,6 +4462,30 @@ class App final :
     kEstimatedTrainingTimeSecFieldNumber = 8,
     kTrainingTimeSecFieldNumber = 9,
   };
+  // repeated string tags = 10;
+  int tags_size() const;
+  private:
+  int _internal_tags_size() const;
+  public:
+  void clear_tags();
+  const std::string& tags(int index) const;
+  std::string* mutable_tags(int index);
+  void set_tags(int index, const std::string& value);
+  void set_tags(int index, std::string&& value);
+  void set_tags(int index, const char* value);
+  void set_tags(int index, const char* value, size_t size);
+  std::string* add_tags();
+  void add_tags(const std::string& value);
+  void add_tags(std::string&& value);
+  void add_tags(const char* value);
+  void add_tags(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& tags() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_tags();
+  private:
+  const std::string& _internal_tags(int index) const;
+  std::string* _internal_add_tags();
+  public:
+
   // string id = 1;
   void clear_id();
   const std::string& id() const;
@@ -4569,6 +4594,7 @@ class App final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> tags_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
@@ -6578,6 +6604,81 @@ inline void App::_internal_set_training_time_sec(::PROTOBUF_NAMESPACE_ID::int32 
 inline void App::set_training_time_sec(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_training_time_sec(value);
   // @@protoc_insertion_point(field_set:speechly.config.v1.App.training_time_sec)
+}
+
+// repeated string tags = 10;
+inline int App::_internal_tags_size() const {
+  return tags_.size();
+}
+inline int App::tags_size() const {
+  return _internal_tags_size();
+}
+inline void App::clear_tags() {
+  tags_.Clear();
+}
+inline std::string* App::add_tags() {
+  std::string* _s = _internal_add_tags();
+  // @@protoc_insertion_point(field_add_mutable:speechly.config.v1.App.tags)
+  return _s;
+}
+inline const std::string& App::_internal_tags(int index) const {
+  return tags_.Get(index);
+}
+inline const std::string& App::tags(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.App.tags)
+  return _internal_tags(index);
+}
+inline std::string* App::mutable_tags(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.App.tags)
+  return tags_.Mutable(index);
+}
+inline void App::set_tags(int index, const std::string& value) {
+  tags_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:speechly.config.v1.App.tags)
+}
+inline void App::set_tags(int index, std::string&& value) {
+  tags_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:speechly.config.v1.App.tags)
+}
+inline void App::set_tags(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  tags_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:speechly.config.v1.App.tags)
+}
+inline void App::set_tags(int index, const char* value, size_t size) {
+  tags_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:speechly.config.v1.App.tags)
+}
+inline std::string* App::_internal_add_tags() {
+  return tags_.Add();
+}
+inline void App::add_tags(const std::string& value) {
+  tags_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:speechly.config.v1.App.tags)
+}
+inline void App::add_tags(std::string&& value) {
+  tags_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:speechly.config.v1.App.tags)
+}
+inline void App::add_tags(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  tags_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:speechly.config.v1.App.tags)
+}
+inline void App::add_tags(const char* value, size_t size) {
+  tags_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:speechly.config.v1.App.tags)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+App::tags() const {
+  // @@protoc_insertion_point(field_list:speechly.config.v1.App.tags)
+  return tags_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+App::mutable_tags() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.config.v1.App.tags)
+  return &tags_;
 }
 
 #ifdef __GNUC__

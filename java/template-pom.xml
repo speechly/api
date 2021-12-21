@@ -12,6 +12,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <connection>
     scm:git:https://github.com/speechly/api</connection>
   </scm>
+  <name>Speechly API</name>
   <properties>
     <revision>REVISION</revision>
     <maven.compiler.source>1.8</maven.compiler.source>

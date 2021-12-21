@@ -351,7 +351,8 @@ struct DownloadCurrentTrainingDataResponseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DownloadCurrentTrainingDataResponseDefaultTypeInternal _DownloadCurrentTrainingDataResponse_default_instance_;
 constexpr App::App(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  : tags_()
+  , id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , language_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , error_msg_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
@@ -558,6 +559,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fconfig_2fv1_2fconfi
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::App, estimated_remaining_sec_),
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::App, estimated_training_time_sec_),
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::App, training_time_sec_),
+  PROTOBUF_FIELD_OFFSET(::speechly::config::v1::App, tags_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::speechly::config::v1::GetProjectRequest)},
@@ -665,56 +667,56 @@ const char descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2epro
   "entTrainingDataResponse.ContentType\"X\n\013C"
   "ontentType\022\034\n\030CONTENT_TYPE_UNSPECIFIED\020\000"
   "\022\025\n\021CONTENT_TYPE_YAML\020\001\022\024\n\020CONTENT_TYPE_"
-  "TAR\020\002\"\327\002\n\003App\022\n\n\002id\030\001 \001(\t\022\020\n\010language\030\002 "
+  "TAR\020\002\"\345\002\n\003App\022\n\n\002id\030\001 \001(\t\022\020\n\010language\030\002 "
   "\001(\t\022.\n\006status\030\003 \001(\0162\036.speechly.config.v1"
   ".App.Status\022\014\n\004name\030\004 \001(\t\022\022\n\nqueue_size\030"
   "\005 \001(\005\022\021\n\terror_msg\030\006 \001(\t\022\037\n\027estimated_re"
   "maining_sec\030\007 \001(\005\022#\n\033estimated_training_"
   "time_sec\030\010 \001(\005\022\031\n\021training_time_sec\030\t \001("
-  "\005\"l\n\006Status\022\026\n\022STATUS_UNSPECIFIED\020\000\022\016\n\nS"
-  "TATUS_NEW\020\001\022\023\n\017STATUS_TRAINING\020\002\022\022\n\016STAT"
-  "US_TRAINED\020\003\022\021\n\rSTATUS_FAILED\020\0042\246\n\n\tConf"
-  "igAPI\022[\n\nGetProject\022%.speechly.config.v1"
-  ".GetProjectRequest\032&.speechly.config.v1."
-  "GetProjectResponse\022d\n\rCreateProject\022(.sp"
-  "eechly.config.v1.CreateProjectRequest\032)."
-  "speechly.config.v1.CreateProjectResponse"
-  "\022d\n\rUpdateProject\022(.speechly.config.v1.U"
-  "pdateProjectRequest\032).speechly.config.v1"
-  ".UpdateProjectResponse\022\177\n\026GetProjectPart"
-  "icipants\0221.speechly.config.v1.GetProject"
-  "ParticipantsRequest\0322.speechly.config.v1"
-  ".GetProjectParticipantsResponse\022O\n\006Invit"
-  "e\022!.speechly.config.v1.InviteRequest\032\".s"
-  "peechly.config.v1.InviteResponse\022^\n\013Join"
-  "Project\022&.speechly.config.v1.JoinProject"
-  "Request\032\'.speechly.config.v1.JoinProject"
-  "Response\022U\n\010ListApps\022#.speechly.config.v"
-  "1.ListAppsRequest\032$.speechly.config.v1.L"
-  "istAppsResponse\022O\n\006GetApp\022!.speechly.con"
-  "fig.v1.GetAppRequest\032\".speechly.config.v"
-  "1.GetAppResponse\022X\n\tCreateApp\022$.speechly"
-  ".config.v1.CreateAppRequest\032%.speechly.c"
-  "onfig.v1.CreateAppResponse\022X\n\tUpdateApp\022"
-  "$.speechly.config.v1.UpdateAppRequest\032%."
-  "speechly.config.v1.UpdateAppResponse\022X\n\t"
-  "DeleteApp\022$.speechly.config.v1.DeleteApp"
-  "Request\032%.speechly.config.v1.DeleteAppRe"
-  "sponse\022u\n\022UploadTrainingData\022-.speechly."
-  "config.v1.UploadTrainingDataRequest\032..sp"
-  "eechly.config.v1.UploadTrainingDataRespo"
-  "nse(\001\022\220\001\n\033DownloadCurrentTrainingData\0226."
-  "speechly.config.v1.DownloadCurrentTraini"
-  "ngDataRequest\0327.speechly.config.v1.Downl"
-  "oadCurrentTrainingDataResponse0\001B{\n\032com."
-  "speechly.api.config.v1B\016ConfigApiProtoP\001"
-  "Z\033speechly/config/v1;configv1\242\002\003SCX\252\002\022Sp"
-  "eechly.Config.V1\312\002\022Speechly\\Config\\V1b\006p"
-  "roto3"
+  "\005\022\014\n\004tags\030\n \003(\t\"l\n\006Status\022\026\n\022STATUS_UNSP"
+  "ECIFIED\020\000\022\016\n\nSTATUS_NEW\020\001\022\023\n\017STATUS_TRAI"
+  "NING\020\002\022\022\n\016STATUS_TRAINED\020\003\022\021\n\rSTATUS_FAI"
+  "LED\020\0042\246\n\n\tConfigAPI\022[\n\nGetProject\022%.spee"
+  "chly.config.v1.GetProjectRequest\032&.speec"
+  "hly.config.v1.GetProjectResponse\022d\n\rCrea"
+  "teProject\022(.speechly.config.v1.CreatePro"
+  "jectRequest\032).speechly.config.v1.CreateP"
+  "rojectResponse\022d\n\rUpdateProject\022(.speech"
+  "ly.config.v1.UpdateProjectRequest\032).spee"
+  "chly.config.v1.UpdateProjectResponse\022\177\n\026"
+  "GetProjectParticipants\0221.speechly.config"
+  ".v1.GetProjectParticipantsRequest\0322.spee"
+  "chly.config.v1.GetProjectParticipantsRes"
+  "ponse\022O\n\006Invite\022!.speechly.config.v1.Inv"
+  "iteRequest\032\".speechly.config.v1.InviteRe"
+  "sponse\022^\n\013JoinProject\022&.speechly.config."
+  "v1.JoinProjectRequest\032\'.speechly.config."
+  "v1.JoinProjectResponse\022U\n\010ListApps\022#.spe"
+  "echly.config.v1.ListAppsRequest\032$.speech"
+  "ly.config.v1.ListAppsResponse\022O\n\006GetApp\022"
+  "!.speechly.config.v1.GetAppRequest\032\".spe"
+  "echly.config.v1.GetAppResponse\022X\n\tCreate"
+  "App\022$.speechly.config.v1.CreateAppReques"
+  "t\032%.speechly.config.v1.CreateAppResponse"
+  "\022X\n\tUpdateApp\022$.speechly.config.v1.Updat"
+  "eAppRequest\032%.speechly.config.v1.UpdateA"
+  "ppResponse\022X\n\tDeleteApp\022$.speechly.confi"
+  "g.v1.DeleteAppRequest\032%.speechly.config."
+  "v1.DeleteAppResponse\022u\n\022UploadTrainingDa"
+  "ta\022-.speechly.config.v1.UploadTrainingDa"
+  "taRequest\032..speechly.config.v1.UploadTra"
+  "iningDataResponse(\001\022\220\001\n\033DownloadCurrentT"
+  "rainingData\0226.speechly.config.v1.Downloa"
+  "dCurrentTrainingDataRequest\0327.speechly.c"
+  "onfig.v1.DownloadCurrentTrainingDataResp"
+  "onse0\001B{\n\032com.speechly.api.config.v1B\016Co"
+  "nfigApiProtoP\001Z\033speechly/config/v1;confi"
+  "gv1\242\002\003SCX\252\002\022Speechly.Config.V1\312\002\022Speechl"
+  "y\\Config\\V1b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto = {
-  false, false, 3525, descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, "speechly/config/v1/config_api.proto", 
+  false, false, 3539, descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, "speechly/config/v1/config_api.proto", 
   &descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_once, nullptr, 0, 28,
   schemas, file_default_instances, TableStruct_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto::offsets,
   file_level_metadata_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, file_level_enum_descriptors_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, file_level_service_descriptors_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto,
@@ -6280,7 +6282,8 @@ class App::_Internal {
 
 App::App(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+  tags_(arena) {
   SharedCtor();
   if (!is_message_owned) {
     RegisterArenaDtor(arena);
@@ -6288,7 +6291,8 @@ App::App(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   // @@protoc_insertion_point(arena_constructor:speechly.config.v1.App)
 }
 App::App(const App& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      tags_(from.tags_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_id().empty()) {
@@ -6358,6 +6362,7 @@ void App::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  tags_.Clear();
   id_.ClearToEmpty();
   language_.ClearToEmpty();
   name_.ClearToEmpty();
@@ -6444,6 +6449,20 @@ const char* App::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::intern
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 72)) {
           training_time_sec_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated string tags = 10;
+      case 10:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 82)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            auto str = _internal_add_tags();
+            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.config.v1.App.tags"));
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<82>(ptr));
         } else goto handle_unusual;
         continue;
       default: {
@@ -6546,6 +6565,16 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(9, this->_internal_training_time_sec(), target);
   }
 
+  // repeated string tags = 10;
+  for (int i = 0, n = this->_internal_tags_size(); i < n; i++) {
+    const auto& s = this->_internal_tags(i);
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      s.data(), static_cast<int>(s.length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "speechly.config.v1.App.tags");
+    target = stream->WriteString(10, s, target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -6561,6 +6590,14 @@ size_t App::ByteSizeLong() const {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
+
+  // repeated string tags = 10;
+  total_size += 1 *
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(tags_.size());
+  for (int i = 0, n = tags_.size(); i < n; i++) {
+    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+      tags_.Get(i));
+  }
 
   // string id = 1;
   if (!this->_internal_id().empty()) {
@@ -6652,6 +6689,7 @@ void App::MergeFrom(const App& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  tags_.MergeFrom(from.tags_);
   if (!from._internal_id().empty()) {
     _internal_set_id(from._internal_id());
   }
@@ -6696,6 +6734,7 @@ bool App::IsInitialized() const {
 void App::InternalSwap(App* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  tags_.InternalSwap(&other->tags_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &id_, GetArenaForAllocation(),
