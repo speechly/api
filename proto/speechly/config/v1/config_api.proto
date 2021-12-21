@@ -280,4 +280,7 @@ message App {
   // Time since training started if the application is being trained.
   // This field is ignored in requests.
   int32 training_time_sec = 9;
+  // Tags to mark the application with. Values must be limited to
+  // a-z, 0-9, _, - and : with max length 24 char. No more than 5 tags may be supplied.
+  repeated string tags = 10;
 }
