@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package speechly.config.v1;
 
+import "google/protobuf/timestamp.proto";
+
 option csharp_namespace = "Speechly.Config.V1";
 option go_package = "speechly/config/v1;configv1";
 option java_multiple_files = true;
@@ -283,4 +285,7 @@ message App {
   // Tags to mark the application with. Values must be limited to
   // a-z, 0-9, _, - and : with max length 24 char. No more than 5 tags may be supplied.
   repeated string tags = 10;
+  // Time when the last successful deployment was made.
+  // This field is ignored in requests.
+  google.protobuf.Timestamp deployed_at_time = 11;
 }
