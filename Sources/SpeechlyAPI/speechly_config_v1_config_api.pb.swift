@@ -592,6 +592,17 @@ public struct Speechly_Config_V1_App {
   /// a-z, 0-9, _, - and : with max length 24 char. No more than 5 tags may be supplied.
   public var tags: [String] = []
 
+  /// Time when the last successful deployment was made.
+  /// This field is ignored in requests.
+  public var deployedAtTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _deployedAtTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_deployedAtTime = newValue}
+  }
+  /// Returns true if `deployedAtTime` has been explicitly set.
+  public var hasDeployedAtTime: Bool {return self._deployedAtTime != nil}
+  /// Clears the value of `deployedAtTime`. Subsequent reads from it will return its default value.
+  public mutating func clearDeployedAtTime() {self._deployedAtTime = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// The status of then application, defaults to STATUS_UNSPECIFIED.
@@ -643,6 +654,8 @@ public struct Speechly_Config_V1_App {
   }
 
   public init() {}
+
+  fileprivate var _deployedAtTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
 
 #if swift(>=4.2)
@@ -1539,6 +1552,7 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     8: .standard(proto: "estimated_training_time_sec"),
     9: .standard(proto: "training_time_sec"),
     10: .same(proto: "tags"),
+    11: .standard(proto: "deployed_at_time"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1557,6 +1571,7 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
       case 8: try { try decoder.decodeSingularInt32Field(value: &self.estimatedTrainingTimeSec) }()
       case 9: try { try decoder.decodeSingularInt32Field(value: &self.trainingTimeSec) }()
       case 10: try { try decoder.decodeRepeatedStringField(value: &self.tags) }()
+      case 11: try { try decoder.decodeSingularMessageField(value: &self._deployedAtTime) }()
       default: break
       }
     }
@@ -1593,6 +1608,9 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     if !self.tags.isEmpty {
       try visitor.visitRepeatedStringField(value: self.tags, fieldNumber: 10)
     }
+    if let v = self._deployedAtTime {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1607,6 +1625,7 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     if lhs.estimatedTrainingTimeSec != rhs.estimatedTrainingTimeSec {return false}
     if lhs.trainingTimeSec != rhs.trainingTimeSec {return false}
     if lhs.tags != rhs.tags {return false}
+    if lhs._deployedAtTime != rhs._deployedAtTime {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

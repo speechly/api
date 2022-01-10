@@ -32,6 +32,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/timestamp.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto
@@ -4456,6 +4457,7 @@ class App final :
     kLanguageFieldNumber = 2,
     kNameFieldNumber = 4,
     kErrorMsgFieldNumber = 6,
+    kDeployedAtTimeFieldNumber = 11,
     kStatusFieldNumber = 3,
     kQueueSizeFieldNumber = 5,
     kEstimatedRemainingSecFieldNumber = 7,
@@ -4542,6 +4544,24 @@ class App final :
   std::string* _internal_mutable_error_msg();
   public:
 
+  // .google.protobuf.Timestamp deployed_at_time = 11;
+  bool has_deployed_at_time() const;
+  private:
+  bool _internal_has_deployed_at_time() const;
+  public:
+  void clear_deployed_at_time();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& deployed_at_time() const;
+  PROTOBUF_MUST_USE_RESULT PROTOBUF_NAMESPACE_ID::Timestamp* release_deployed_at_time();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_deployed_at_time();
+  void set_allocated_deployed_at_time(PROTOBUF_NAMESPACE_ID::Timestamp* deployed_at_time);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_deployed_at_time() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_deployed_at_time();
+  public:
+  void unsafe_arena_set_allocated_deployed_at_time(
+      PROTOBUF_NAMESPACE_ID::Timestamp* deployed_at_time);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_deployed_at_time();
+
   // .speechly.config.v1.App.Status status = 3;
   void clear_status();
   ::speechly::config::v1::App_Status status() const;
@@ -4599,6 +4619,7 @@ class App final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_msg_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* deployed_at_time_;
   int status_;
   ::PROTOBUF_NAMESPACE_ID::int32 queue_size_;
   ::PROTOBUF_NAMESPACE_ID::int32 estimated_remaining_sec_;
@@ -6679,6 +6700,92 @@ inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
 App::mutable_tags() {
   // @@protoc_insertion_point(field_mutable_list:speechly.config.v1.App.tags)
   return &tags_;
+}
+
+// .google.protobuf.Timestamp deployed_at_time = 11;
+inline bool App::_internal_has_deployed_at_time() const {
+  return this != internal_default_instance() && deployed_at_time_ != nullptr;
+}
+inline bool App::has_deployed_at_time() const {
+  return _internal_has_deployed_at_time();
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& App::_internal_deployed_at_time() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = deployed_at_time_;
+  return p != nullptr ? *p : reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& App::deployed_at_time() const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.App.deployed_at_time)
+  return _internal_deployed_at_time();
+}
+inline void App::unsafe_arena_set_allocated_deployed_at_time(
+    PROTOBUF_NAMESPACE_ID::Timestamp* deployed_at_time) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(deployed_at_time_);
+  }
+  deployed_at_time_ = deployed_at_time;
+  if (deployed_at_time) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.config.v1.App.deployed_at_time)
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* App::release_deployed_at_time() {
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = deployed_at_time_;
+  deployed_at_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* App::unsafe_arena_release_deployed_at_time() {
+  // @@protoc_insertion_point(field_release:speechly.config.v1.App.deployed_at_time)
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = deployed_at_time_;
+  deployed_at_time_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* App::_internal_mutable_deployed_at_time() {
+  
+  if (deployed_at_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    deployed_at_time_ = p;
+  }
+  return deployed_at_time_;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* App::mutable_deployed_at_time() {
+  PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_deployed_at_time();
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.App.deployed_at_time)
+  return _msg;
+}
+inline void App::set_allocated_deployed_at_time(PROTOBUF_NAMESPACE_ID::Timestamp* deployed_at_time) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(deployed_at_time_);
+  }
+  if (deployed_at_time) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(deployed_at_time));
+    if (message_arena != submessage_arena) {
+      deployed_at_time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, deployed_at_time, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  deployed_at_time_ = deployed_at_time;
+  // @@protoc_insertion_point(field_set_allocated:speechly.config.v1.App.deployed_at_time)
 }
 
 #ifdef __GNUC__

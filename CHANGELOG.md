@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.5](https://github.com/speechly/api/tree/0.4.5) (2022-01-10)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.4.4...0.4.5)
+
+**Merged pull requests:**
+
+- Add deployed\_at to App [\#32](https://github.com/speechly/api/pull/32) ([teelisyys](https://github.com/teelisyys))
+
 ## [0.4.4](https://github.com/speechly/api/tree/0.4.4) (2021-12-21)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.4.3...0.4.4)
@@ -66,6 +74,7 @@
 
 - Switch from `grpc` to `@grpc/grpc-js` [\#22](https://github.com/speechly/api/pull/22) ([langma](https://github.com/langma))
 - add dotnet readme code [\#21](https://github.com/speechly/api/pull/21) ([igorpolt](https://github.com/igorpolt))
+- Generate C++ stubs [\#20](https://github.com/speechly/api/pull/20) ([langma](https://github.com/langma))
 
 ## [0.2.0](https://github.com/speechly/api/tree/0.2.0) (2021-04-21)
 
@@ -73,7 +82,6 @@
 
 **Merged pull requests:**
 
-- Generate C++ stubs [\#20](https://github.com/speechly/api/pull/20) ([langma](https://github.com/langma))
 - Add AnalyticsAPI [\#19](https://github.com/speechly/api/pull/19) ([langma](https://github.com/langma))
 
 ## [0.1.3](https://github.com/speechly/api/tree/0.1.3) (2021-03-23)
