@@ -31,3 +31,13 @@ message UtteranceStatisticsPeriod {
     // Total duration of annotated utterances in the current period.
     int32 annotated_seconds = 6;
 }
+
+// A single utterances recognized by Speechly API.
+message Utterance {
+    // The ASR transcript of the utterance.
+    string transcript = 1;
+    // The SAL-annotated transcript of the utterance.
+    string annotated = 2;
+    // ISO-formatted UTC date of the utterance.
+    string date = 3;
+}
