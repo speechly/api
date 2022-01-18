@@ -2,7 +2,7 @@
 
 The generated stubs for C++ can be copied from here to your project, making the `protoc` step unnecessary.
 
-Check out an example application for [here](https://github.com/speechly/cpp-example-app).
+Check out an example application [here](https://github.com/speechly/cpp-example-app).
 
 ### IdentityAPI
 
@@ -77,7 +77,7 @@ stream->Write(startRequest);
 
 ### Send audio
 
-Audio should be sent as in 16-bit format. In the example `audio` is an array of bytes and `number` is a number of chunks in the array.
+Audio should be sent in 16-bit / 16kHz format. In the example `audio` is an array of bytes and `number` is a number of chunks in the array.
 
 ```c++
 SLURequest sluRequest;
