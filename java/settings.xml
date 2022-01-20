@@ -2,9 +2,21 @@
 <settings>
   <servers>
     <server>
-      <id>github</id>
-      <username>${github.username}</username>
-      <password>${github.token}</password>
+      <id>ossrh</id>
+      <username>${ossrh.username}</username>
+      <password>${ossrh.password}</password>
     </server>
   </servers>
+  <profiles>
+    <profile>
+      <id>ossrh</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <gpg.executable>gpg</gpg.executable>
+        <gpg.passphrase>${gpg.passphrase}</gpg.passphrase>
+      </properties>
+    </profile>
+  </profiles>
 </settings>
