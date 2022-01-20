@@ -7,22 +7,17 @@ MAVEN   ?= docker run -it --rm \
 
 export VERSION
 
-build: prepare pom.xml
-	@$(MAVEN) package
+build: prepare
+	@$(MAVEN) clean package
 
-pom.xml:
-	@echo "Patching pom.xml with version $(VERSION)"
-	@cp template-pom.xml pom.xml
-	@sed -i.bak 's/REVISION/$(VERSION)/' pom.xml && rm pom.xml.bak
-
-deploy: prepare pom.xml
-	@$(MAVEN) -Dgithub.username=$(MVN_USERNAME) -Dgithub.token=$(MVN_TOKEN) deploy
+deploy: prepare
+	@$(MAVEN) clean deploy
 
 prepare:
-	@rm -rf target
-	@rm -f pom.xml
+	@echo "Patching pom.xml with version $(VERSION)"
+	@sed -i.bak 's,<revision>.*</revision>,<revision>$(VERSION)</revision>,' pom.xml && rm pom.xml.bak
 
 clean:
-	@rm -rf target src pom.xml
+	@rm -rf src target
 
-.PHONY: build deploy clean
+.PHONY: build deploy prepare clean

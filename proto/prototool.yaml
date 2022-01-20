@@ -16,7 +16,7 @@ generate:
     - name: java
       output: ../java/src/main/java
     - name: grpc-java
-      output: ../java/src/main/grpc
+      output: ../java/src/main/java
     - name: grpc-kotlin
       output: ../java/src/main/kotlin
     - name: swift
