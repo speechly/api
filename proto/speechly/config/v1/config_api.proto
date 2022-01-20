@@ -8,7 +8,7 @@ option csharp_namespace = "Speechly.Config.V1";
 option go_package = "speechly/config/v1;configv1";
 option java_multiple_files = true;
 option java_outer_classname = "ConfigApiProto";
-option java_package = "com.speechly.api.config.v1";
+option java_package = "com.speechly.config.v1";
 option objc_class_prefix = "SCX";
 option php_namespace = "Speechly\\Config\\V1";
 

@@ -75,6 +75,7 @@
 - Switch from `grpc` to `@grpc/grpc-js` [\#22](https://github.com/speechly/api/pull/22) ([langma](https://github.com/langma))
 - add dotnet readme code [\#21](https://github.com/speechly/api/pull/21) ([igorpolt](https://github.com/igorpolt))
 - Generate C++ stubs [\#20](https://github.com/speechly/api/pull/20) ([langma](https://github.com/langma))
+- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 
 ## [0.2.0](https://github.com/speechly/api/tree/0.2.0) (2021-04-21)
 
@@ -108,7 +109,6 @@
 **Merged pull requests:**
 
 - Add app\_id to slu START event [\#14](https://github.com/speechly/api/pull/14) ([langma](https://github.com/langma))
-- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 
 ## [0.1.0](https://github.com/speechly/api/tree/0.1.0) (2021-02-23)
 

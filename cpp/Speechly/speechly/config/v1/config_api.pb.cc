@@ -713,17 +713,17 @@ const char descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2epro
   "urrentTrainingData\0226.speechly.config.v1."
   "DownloadCurrentTrainingDataRequest\0327.spe"
   "echly.config.v1.DownloadCurrentTrainingD"
-  "ataResponse0\001B{\n\032com.speechly.api.config"
-  ".v1B\016ConfigApiProtoP\001Z\033speechly/config/v"
-  "1;configv1\242\002\003SCX\252\002\022Speechly.Config.V1\312\002\022"
-  "Speechly\\Config\\V1b\006proto3"
+  "ataResponse0\001Bw\n\026com.speechly.config.v1B"
+  "\016ConfigApiProtoP\001Z\033speechly/config/v1;co"
+  "nfigv1\242\002\003SCX\252\002\022Speechly.Config.V1\312\002\022Spee"
+  "chly\\Config\\V1b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto = {
-  false, false, 3626, descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, "speechly/config/v1/config_api.proto", 
+  false, false, 3622, descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, "speechly/config/v1/config_api.proto", 
   &descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_once, descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_deps, 1, 28,
   schemas, file_default_instances, TableStruct_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto::offsets,
   file_level_metadata_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, file_level_enum_descriptors_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, file_level_service_descriptors_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto,

@@ -7,7 +7,7 @@ option csharp_namespace = "Speechly.Identity.V1";
 option go_package = "speechly/identity/v1;identityv1";
 option java_multiple_files = true;
 option java_outer_classname = "IdentityProto";
-option java_package = "com.speechly.api.identity.v1";
+option java_package = "com.speechly.identity.v1";
 option objc_class_prefix = "SIX";
 option php_namespace = "Speechly\\Identity\\V1";
 
