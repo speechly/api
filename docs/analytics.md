@@ -10,12 +10,30 @@ for given apps and/or projects.
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
 | UtteranceStatistics | [UtteranceStatisticsRequest](#speechly.analytics.v1.UtteranceStatisticsRequest) | [UtteranceStatisticsResponse](#speechly.analytics.v1.UtteranceStatisticsResponse) | Get a summary of utterances for a given time period. |
+| Utterances | [UtterancesRequest](#speechly.analytics.v1.UtterancesRequest) | [UtterancesResponse](#speechly.analytics.v1.UtterancesResponse) | Get a sample of recent utterances. |
 
 ## Messages
 
+- [Utterance](#speechly.analytics.v1.Utterance)
 - [UtteranceStatisticsPeriod](#speechly.analytics.v1.UtteranceStatisticsPeriod)
 - [UtteranceStatisticsRequest](#speechly.analytics.v1.UtteranceStatisticsRequest)
 - [UtteranceStatisticsResponse](#speechly.analytics.v1.UtteranceStatisticsResponse)
+- [UtterancesRequest](#speechly.analytics.v1.UtterancesRequest)
+- [UtterancesResponse](#speechly.analytics.v1.UtterancesResponse)
+
+
+<a name="speechly.analytics.v1.Utterance"></a>
+### Utterance
+
+A single utterances recognized by Speechly API.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| transcript | [string](#string) | The ASR transcript of the utterance. |
+| annotated | [string](#string) | The SAL-annotated transcript of the utterance. |
+| date | [string](#string) | ISO-formatted UTC date of the utterance. |
 
 
 <a name="speechly.analytics.v1.UtteranceStatisticsPeriod"></a>
@@ -69,5 +87,29 @@ Contains a list of statistics entries for utterances, based on the requested sco
 | total_utterances | [int32](#int32) | Amount of utterances in this response |
 | total_duration_seconds | [int32](#int32) | Total duration of utterances in seconds. |
 | total_annotated_seconds | [int32](#int32) | Total duration of annotated utterances in seconds. |
+
+
+<a name="speechly.analytics.v1.UtterancesRequest"></a>
+### UtterancesRequest
+
+
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| app_id | [string](#string) | The app_id to show the utterances for. |
+
+
+<a name="speechly.analytics.v1.UtterancesResponse"></a>
+### UtterancesResponse
+
+
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| utterances | [Utterance](#speechly.analytics.v1.Utterance) | Sample of utterances. |
 
 

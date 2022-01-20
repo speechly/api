@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.5.0](https://github.com/speechly/api/tree/0.5.0) (2022-01-20)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.4.5...0.5.0)
+
+**Merged pull requests:**
+
+- Update java / Kotlin packaging [\#34](https://github.com/speechly/api/pull/34) ([langma](https://github.com/langma))
+- Add Utterances RPC [\#33](https://github.com/speechly/api/pull/33) ([teelisyys](https://github.com/teelisyys))
+
 ## [0.4.5](https://github.com/speechly/api/tree/0.4.5) (2022-01-10)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.4.4...0.4.5)
@@ -29,10 +38,6 @@
 
 [Full Changelog](https://github.com/speechly/api/compare/0.4.0...0.4.2)
 
-**Merged pull requests:**
-
-- Reference time to WLURequest [\#28](https://github.com/speechly/api/pull/28) ([samutamm](https://github.com/samutamm))
-
 ## [0.4.0](https://github.com/speechly/api/tree/0.4.0) (2021-10-11)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.3.3...0.4.0)
@@ -55,6 +60,7 @@
 
 **Merged pull requests:**
 
+- Reference time to WLURequest [\#28](https://github.com/speechly/api/pull/28) ([samutamm](https://github.com/samutamm))
 - Add RTT measurement messages to SLU API [\#26](https://github.com/speechly/api/pull/26) ([langma](https://github.com/langma))
 
 ## [0.3.1](https://github.com/speechly/api/tree/0.3.1) (2021-09-23)
@@ -75,7 +81,6 @@
 - Switch from `grpc` to `@grpc/grpc-js` [\#22](https://github.com/speechly/api/pull/22) ([langma](https://github.com/langma))
 - add dotnet readme code [\#21](https://github.com/speechly/api/pull/21) ([igorpolt](https://github.com/igorpolt))
 - Generate C++ stubs [\#20](https://github.com/speechly/api/pull/20) ([langma](https://github.com/langma))
-- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 
 ## [0.2.0](https://github.com/speechly/api/tree/0.2.0) (2021-04-21)
 
@@ -109,6 +114,7 @@
 **Merged pull requests:**
 
 - Add app\_id to slu START event [\#14](https://github.com/speechly/api/pull/14) ([langma](https://github.com/langma))
+- Add C\# stub generation [\#11](https://github.com/speechly/api/pull/11) ([langma](https://github.com/langma))
 
 ## [0.1.0](https://github.com/speechly/api/tree/0.1.0) (2021-02-23)
 

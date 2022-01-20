@@ -95,6 +95,26 @@ public struct Speechly_Analytics_V1_UtteranceStatisticsPeriod {
   public init() {}
 }
 
+/// A single utterances recognized by Speechly API.
+public struct Speechly_Analytics_V1_Utterance {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// The ASR transcript of the utterance.
+  public var transcript: String = String()
+
+  /// The SAL-annotated transcript of the utterance.
+  public var annotated: String = String()
+
+  /// ISO-formatted UTC date of the utterance.
+  public var date: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.analytics.v1"
@@ -159,6 +179,50 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
     if lhs.count != rhs.count {return false}
     if lhs.utterancesSeconds != rhs.utterancesSeconds {return false}
     if lhs.annotatedSeconds != rhs.annotatedSeconds {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_Utterance: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".Utterance"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "transcript"),
+    2: .same(proto: "annotated"),
+    3: .same(proto: "date"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.transcript) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.annotated) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.date) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.transcript.isEmpty {
+      try visitor.visitSingularStringField(value: self.transcript, fieldNumber: 1)
+    }
+    if !self.annotated.isEmpty {
+      try visitor.visitSingularStringField(value: self.annotated, fieldNumber: 2)
+    }
+    if !self.date.isEmpty {
+      try visitor.visitSingularStringField(value: self.date, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_Utterance, rhs: Speechly_Analytics_V1_Utterance) -> Bool {
+    if lhs.transcript != rhs.transcript {return false}
+    if lhs.annotated != rhs.annotated {return false}
+    if lhs.date != rhs.date {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

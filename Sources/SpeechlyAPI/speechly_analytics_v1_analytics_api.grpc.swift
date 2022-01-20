@@ -37,6 +37,11 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIClientProtocol: GRPCClient {
     _ request: Speechly_Analytics_V1_UtteranceStatisticsRequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Speechly_Analytics_V1_UtteranceStatisticsRequest, Speechly_Analytics_V1_UtteranceStatisticsResponse>
+
+  func utterances(
+    _ request: Speechly_Analytics_V1_UtterancesRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Speechly_Analytics_V1_UtterancesRequest, Speechly_Analytics_V1_UtterancesResponse>
 }
 
 extension Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
@@ -61,12 +66,33 @@ extension Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
       interceptors: self.interceptors?.makeUtteranceStatisticsInterceptors() ?? []
     )
   }
+
+  /// Get a sample of recent utterances.
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to Utterances.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func utterances(
+    _ request: Speechly_Analytics_V1_UtterancesRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Speechly_Analytics_V1_UtterancesRequest, Speechly_Analytics_V1_UtterancesResponse> {
+    return self.makeUnaryCall(
+      path: "/speechly.analytics.v1.AnalyticsAPI/Utterances",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeUtterancesInterceptors() ?? []
+    )
+  }
 }
 
 public protocol Speechly_Analytics_V1_AnalyticsAPIClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'utteranceStatistics'.
   func makeUtteranceStatisticsInterceptors() -> [ClientInterceptor<Speechly_Analytics_V1_UtteranceStatisticsRequest, Speechly_Analytics_V1_UtteranceStatisticsResponse>]
+
+  /// - Returns: Interceptors to use when invoking 'utterances'.
+  func makeUtterancesInterceptors() -> [ClientInterceptor<Speechly_Analytics_V1_UtterancesRequest, Speechly_Analytics_V1_UtterancesResponse>]
 }
 
 public final class Speechly_Analytics_V1_AnalyticsAPIClient: Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
@@ -100,6 +126,9 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIProvider: CallHandlerProvider 
 
   /// Get a summary of utterances for a given time period.
   func utteranceStatistics(request: Speechly_Analytics_V1_UtteranceStatisticsRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Analytics_V1_UtteranceStatisticsResponse>
+
+  /// Get a sample of recent utterances.
+  func utterances(request: Speechly_Analytics_V1_UtterancesRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Analytics_V1_UtterancesResponse>
 }
 
 extension Speechly_Analytics_V1_AnalyticsAPIProvider {
@@ -121,6 +150,15 @@ extension Speechly_Analytics_V1_AnalyticsAPIProvider {
         userFunction: self.utteranceStatistics(request:context:)
       )
 
+    case "Utterances":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Analytics_V1_UtterancesRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Analytics_V1_UtterancesResponse>(),
+        interceptors: self.interceptors?.makeUtterancesInterceptors() ?? [],
+        userFunction: self.utterances(request:context:)
+      )
+
     default:
       return nil
     }
@@ -132,4 +170,8 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIServerInterceptorFactoryProtoc
   /// - Returns: Interceptors to use when handling 'utteranceStatistics'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeUtteranceStatisticsInterceptors() -> [ServerInterceptor<Speechly_Analytics_V1_UtteranceStatisticsRequest, Speechly_Analytics_V1_UtteranceStatisticsResponse>]
+
+  /// - Returns: Interceptors to use when handling 'utterances'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeUtterancesInterceptors() -> [ServerInterceptor<Speechly_Analytics_V1_UtterancesRequest, Speechly_Analytics_V1_UtterancesResponse>]
 }
