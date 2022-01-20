@@ -4,4 +4,22 @@ See the generic [Speechly gRPC stubs documentation](https://github.com/speechly/
 
 ## Install
 
-Install the latest package from [Google Packages](https://github.com/speechly/api/packages/533751).
+The API is packaged and distributed in [Maven Central](https://search.maven.org/artifact/com.speechly/api), so all you need to do is add a dependency to `com.speechly:api`.
+
+In Maven:
+
+```xml
+<dependency>
+  <groupId>com.speechly</groupId>
+  <artifactId>api</artifactId>
+  <version>${speechly.version}</version>
+</dependency>
+```
+
+and in gradle:
+
+```sh
+implementation "com.speechly:api:$speechly.version"
+```
+
+See the latest version from the releases in this repository.
