@@ -87,15 +87,15 @@ const char descriptor_table_protodef_speechly_2fidentity_2fv1_2fidentity_2eproto
   "ge_code\030\003 \001(\t\022\021\n\tconfig_id\030\004 \001(\t\"\036\n\rLogi"
   "nResponse\022\r\n\005token\030\001 \001(\t2\\\n\010Identity\022P\n\005"
   "Login\022\".speechly.identity.v1.LoginReques"
-  "t\032#.speechly.identity.v1.LoginResponseB\204"
-  "\001\n\034com.speechly.api.identity.v1B\rIdentit"
-  "yProtoP\001Z\037speechly/identity/v1;identityv"
-  "1\242\002\003SIX\252\002\024Speechly.Identity.V1\312\002\024Speechl"
-  "y\\Identity\\V1b\006proto3"
+  "t\032#.speechly.identity.v1.LoginResponseB\200"
+  "\001\n\030com.speechly.identity.v1B\rIdentityPro"
+  "toP\001Z\037speechly/identity/v1;identityv1\242\002\003"
+  "SIX\252\002\024Speechly.Identity.V1\312\002\024Speechly\\Id"
+  "entity\\V1b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fidentity_2fv1_2fidentity_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fidentity_2fv1_2fidentity_2eproto = {
-  false, false, 421, descriptor_table_protodef_speechly_2fidentity_2fv1_2fidentity_2eproto, "speechly/identity/v1/identity.proto", 
+  false, false, 417, descriptor_table_protodef_speechly_2fidentity_2fv1_2fidentity_2eproto, "speechly/identity/v1/identity.proto", 
   &descriptor_table_speechly_2fidentity_2fv1_2fidentity_2eproto_once, nullptr, 0, 2,
   schemas, file_default_instances, TableStruct_speechly_2fidentity_2fv1_2fidentity_2eproto::offsets,
   file_level_metadata_speechly_2fidentity_2fv1_2fidentity_2eproto, file_level_enum_descriptors_speechly_2fidentity_2fv1_2fidentity_2eproto, file_level_service_descriptors_speechly_2fidentity_2fv1_2fidentity_2eproto,

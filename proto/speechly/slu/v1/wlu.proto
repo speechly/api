@@ -8,7 +8,7 @@ option csharp_namespace = "Speechly.Slu.V1";
 option go_package = "speechly/slu/v1;sluv1";
 option java_multiple_files = true;
 option java_outer_classname = "WluProto";
-option java_package = "com.speechly.api.slu.v1";
+option java_package = "com.speechly.slu.v1";
 option objc_class_prefix = "SSX";
 option php_namespace = "Speechly\\Slu\\V1";
 

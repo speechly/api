@@ -421,14 +421,14 @@ const char descriptor_table_protodef_speechly_2fslu_2fv1_2fslu_2eproto[] PROTOBU
   "ementRequest\022\n\n\002id\030\001 \001(\005\"*\n\034RoundTripMea"
   "surementResponse\022\n\n\002id\030\001 \001(\0052N\n\003SLU\022G\n\006S"
   "tream\022\033.speechly.slu.v1.SLURequest\032\034.spe"
-  "echly.slu.v1.SLUResponse(\0010\001Bf\n\027com.spee"
-  "chly.api.slu.v1B\010SluProtoP\001Z\025speechly/sl"
-  "u/v1;sluv1\242\002\003SSX\252\002\017Speechly.Slu.V1\312\002\017Spe"
-  "echly\\Slu\\V1b\006proto3"
+  "echly.slu.v1.SLUResponse(\0010\001Bb\n\023com.spee"
+  "chly.slu.v1B\010SluProtoP\001Z\025speechly/slu/v1"
+  ";sluv1\242\002\003SSX\252\002\017Speechly.Slu.V1\312\002\017Speechl"
+  "y\\Slu\\V1b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fslu_2fv1_2fslu_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fslu_2fv1_2fslu_2eproto = {
-  false, false, 1980, descriptor_table_protodef_speechly_2fslu_2fv1_2fslu_2eproto, "speechly/slu/v1/slu.proto", 
+  false, false, 1976, descriptor_table_protodef_speechly_2fslu_2fv1_2fslu_2eproto, "speechly/slu/v1/slu.proto", 
   &descriptor_table_speechly_2fslu_2fv1_2fslu_2eproto_once, nullptr, 0, 15,
   schemas, file_default_instances, TableStruct_speechly_2fslu_2fv1_2fslu_2eproto::offsets,
   file_level_metadata_speechly_2fslu_2fv1_2fslu_2eproto, file_level_enum_descriptors_speechly_2fslu_2fv1_2fslu_2eproto, file_level_service_descriptors_speechly_2fslu_2fv1_2fslu_2eproto,
