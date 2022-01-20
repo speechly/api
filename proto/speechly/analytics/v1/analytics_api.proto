@@ -17,6 +17,8 @@ import "speechly/analytics/v1/analytics.proto";
 service AnalyticsAPI {
     // Get a summary of utterances for a given time period.
     rpc UtteranceStatistics(UtteranceStatisticsRequest) returns (UtteranceStatisticsResponse);
+    // Get a sample of recent utterances.
+    rpc Utterances(UtterancesRequest) returns (UtterancesResponse);
 }
 
 // Includes keys for the UtteranceStatistics method.
@@ -73,4 +75,14 @@ message UtteranceStatisticsResponse {
     int32 total_duration_seconds = 6;
     // Total duration of annotated utterances in seconds.
     int32 total_annotated_seconds = 7;
+}
+
+message UtterancesRequest {
+    // The app_id to show the utterances for.
+    string app_id = 1;
+}
+
+message UtterancesResponse {
+    // Sample of utterances.
+    repeated Utterance utterances = 1;
 }
