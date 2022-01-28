@@ -38,6 +38,10 @@
 
 [Full Changelog](https://github.com/speechly/api/compare/0.4.0...0.4.2)
 
+**Merged pull requests:**
+
+- Reference time to WLURequest [\#28](https://github.com/speechly/api/pull/28) ([samutamm](https://github.com/samutamm))
+
 ## [0.4.0](https://github.com/speechly/api/tree/0.4.0) (2021-10-11)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.3.3...0.4.0)
@@ -60,7 +64,6 @@
 
 **Merged pull requests:**
 
-- Reference time to WLURequest [\#28](https://github.com/speechly/api/pull/28) ([samutamm](https://github.com/samutamm))
 - Add RTT measurement messages to SLU API [\#26](https://github.com/speechly/api/pull/26) ([langma](https://github.com/langma))
 
 ## [0.3.1](https://github.com/speechly/api/tree/0.3.1) (2021-09-23)

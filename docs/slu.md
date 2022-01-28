@@ -5,7 +5,7 @@
 Service that implements Speechly SLU (Spoken Language Understanding) API.
 
 To use this service you MUST use an access token from Speechly Identity API.
-The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
+The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer ACCESS_TOKEN` as value, e.g. in Go:
 
 ```
 ctx := context.Background()
@@ -26,7 +26,7 @@ stream, err := speechlySLUClient.Stream(ctx)
 Service that implements Speechly WLU (Written Language Understanding).
 
 To use this service you MUST use an access token from Speechly Identity API.
-The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
+The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer ACCESS_TOKEN` as value, e.g. in Go:
 
 ```
 ctx := context.Background()

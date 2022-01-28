@@ -28,7 +28,7 @@ import SwiftProtobuf
 /// Service that implements Speechly SLU (Spoken Language Understanding) API.
 ///
 /// To use this service you MUST use an access token from Speechly Identity API.
-/// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
+/// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer ACCESS_TOKEN` as value, e.g. in Go:
 ///
 /// ```
 /// ctx := context.Background()
@@ -126,7 +126,7 @@ public final class Speechly_Slu_V1_SLUClient: Speechly_Slu_V1_SLUClientProtocol 
 /// Service that implements Speechly SLU (Spoken Language Understanding) API.
 ///
 /// To use this service you MUST use an access token from Speechly Identity API.
-/// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer $ACCESS_TOKEN` as value, e.g. in Go:
+/// The token MUST be passed in gRPC metadata with `Authorization` key and `Bearer ACCESS_TOKEN` as value, e.g. in Go:
 ///
 /// ```
 /// ctx := context.Background()

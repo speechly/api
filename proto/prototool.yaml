@@ -42,6 +42,9 @@ generate:
     - name: cpp
       path: grpc_cpp_plugin
       output: ../cpp/Speechly
+    - name: grpc
+      path: grpc_cpp_plugin
+      output: ../cpp/Speechly
 lint:
   group: uber2
   rules:
