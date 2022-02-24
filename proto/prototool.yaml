@@ -39,6 +39,9 @@ generate:
     - name: csharp
       output: ../dotnet/Speechly
       flags: base_namespace=Speechly
+    - name: csharp-grpc
+      path: grpc_csharp_plugin
+      output: ../dotnet/Speechly
     - name: cpp
       path: grpc_cpp_plugin
       output: ../cpp/Speechly
