@@ -47,7 +47,7 @@ struct TableStruct_speechly_2fslu_2fv1_2fslu_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[15]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[16]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -66,6 +66,9 @@ extern RoundTripMeasurementResponseDefaultTypeInternal _RoundTripMeasurementResp
 class SLUConfig;
 struct SLUConfigDefaultTypeInternal;
 extern SLUConfigDefaultTypeInternal _SLUConfig_default_instance_;
+class SLUConfig_Option;
+struct SLUConfig_OptionDefaultTypeInternal;
+extern SLUConfig_OptionDefaultTypeInternal _SLUConfig_Option_default_instance_;
 class SLUEntity;
 struct SLUEntityDefaultTypeInternal;
 extern SLUEntityDefaultTypeInternal _SLUEntity_default_instance_;
@@ -109,6 +112,7 @@ PROTOBUF_NAMESPACE_OPEN
 template<> ::speechly::slu::v1::RoundTripMeasurementRequest* Arena::CreateMaybeMessage<::speechly::slu::v1::RoundTripMeasurementRequest>(Arena*);
 template<> ::speechly::slu::v1::RoundTripMeasurementResponse* Arena::CreateMaybeMessage<::speechly::slu::v1::RoundTripMeasurementResponse>(Arena*);
 template<> ::speechly::slu::v1::SLUConfig* Arena::CreateMaybeMessage<::speechly::slu::v1::SLUConfig>(Arena*);
+template<> ::speechly::slu::v1::SLUConfig_Option* Arena::CreateMaybeMessage<::speechly::slu::v1::SLUConfig_Option>(Arena*);
 template<> ::speechly::slu::v1::SLUEntity* Arena::CreateMaybeMessage<::speechly::slu::v1::SLUEntity>(Arena*);
 template<> ::speechly::slu::v1::SLUError* Arena::CreateMaybeMessage<::speechly::slu::v1::SLUError>(Arena*);
 template<> ::speechly::slu::v1::SLUEvent* Arena::CreateMaybeMessage<::speechly::slu::v1::SLUEvent>(Arena*);
@@ -408,6 +412,176 @@ class SLURequest final :
 };
 // -------------------------------------------------------------------
 
+class SLUConfig_Option final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.slu.v1.SLUConfig.Option) */ {
+ public:
+  inline SLUConfig_Option() : SLUConfig_Option(nullptr) {}
+  ~SLUConfig_Option() override;
+  explicit constexpr SLUConfig_Option(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  SLUConfig_Option(const SLUConfig_Option& from);
+  SLUConfig_Option(SLUConfig_Option&& from) noexcept
+    : SLUConfig_Option() {
+    *this = ::std::move(from);
+  }
+
+  inline SLUConfig_Option& operator=(const SLUConfig_Option& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline SLUConfig_Option& operator=(SLUConfig_Option&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const SLUConfig_Option& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const SLUConfig_Option* internal_default_instance() {
+    return reinterpret_cast<const SLUConfig_Option*>(
+               &_SLUConfig_Option_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(SLUConfig_Option& a, SLUConfig_Option& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(SLUConfig_Option* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(SLUConfig_Option* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline SLUConfig_Option* New() const final {
+    return new SLUConfig_Option();
+  }
+
+  SLUConfig_Option* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<SLUConfig_Option>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const SLUConfig_Option& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const SLUConfig_Option& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(SLUConfig_Option* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.slu.v1.SLUConfig.Option";
+  }
+  protected:
+  explicit SLUConfig_Option(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kValueFieldNumber = 2,
+    kKeyFieldNumber = 1,
+  };
+  // repeated string value = 2;
+  int value_size() const;
+  private:
+  int _internal_value_size() const;
+  public:
+  void clear_value();
+  const std::string& value(int index) const;
+  std::string* mutable_value(int index);
+  void set_value(int index, const std::string& value);
+  void set_value(int index, std::string&& value);
+  void set_value(int index, const char* value);
+  void set_value(int index, const char* value, size_t size);
+  std::string* add_value();
+  void add_value(const std::string& value);
+  void add_value(std::string&& value);
+  void add_value(const char* value);
+  void add_value(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& value() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_value();
+  private:
+  const std::string& _internal_value(int index) const;
+  std::string* _internal_add_value();
+  public:
+
+  // string key = 1;
+  void clear_key();
+  const std::string& key() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_key(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_key();
+  PROTOBUF_MUST_USE_RESULT std::string* release_key();
+  void set_allocated_key(std::string* key);
+  private:
+  const std::string& _internal_key() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_key(const std::string& value);
+  std::string* _internal_mutable_key();
+  public:
+
+  // @@protoc_insertion_point(class_scope:speechly.slu.v1.SLUConfig.Option)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> value_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr key_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fslu_2fv1_2fslu_2eproto;
+};
+// -------------------------------------------------------------------
+
 class SLUConfig final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.slu.v1.SLUConfig) */ {
  public:
@@ -452,7 +626,7 @@ class SLUConfig final :
                &_SLUConfig_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(SLUConfig& a, SLUConfig& b) {
     a.Swap(&b);
@@ -520,6 +694,8 @@ class SLUConfig final :
 
   // nested types ----------------------------------------------------
 
+  typedef SLUConfig_Option Option;
+
   typedef SLUConfig_Encoding Encoding;
   static constexpr Encoding LINEAR16 =
     SLUConfig_Encoding_LINEAR16;
@@ -551,11 +727,30 @@ class SLUConfig final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kOptionsFieldNumber = 5,
     kLanguageCodeFieldNumber = 4,
     kEncodingFieldNumber = 1,
     kChannelsFieldNumber = 2,
     kSampleRateHertzFieldNumber = 3,
   };
+  // repeated .speechly.slu.v1.SLUConfig.Option options = 5;
+  int options_size() const;
+  private:
+  int _internal_options_size() const;
+  public:
+  void clear_options();
+  ::speechly::slu::v1::SLUConfig_Option* mutable_options(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::SLUConfig_Option >*
+      mutable_options();
+  private:
+  const ::speechly::slu::v1::SLUConfig_Option& _internal_options(int index) const;
+  ::speechly::slu::v1::SLUConfig_Option* _internal_add_options();
+  public:
+  const ::speechly::slu::v1::SLUConfig_Option& options(int index) const;
+  ::speechly::slu::v1::SLUConfig_Option* add_options();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::SLUConfig_Option >&
+      options() const;
+
   // string language_code = 4;
   void clear_language_code();
   const std::string& language_code() const;
@@ -604,6 +799,7 @@ class SLUConfig final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::SLUConfig_Option > options_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_code_;
   int encoding_;
   ::PROTOBUF_NAMESPACE_ID::int32 channels_;
@@ -657,7 +853,7 @@ class SLUEvent final :
                &_SLUEvent_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    3;
 
   friend void swap(SLUEvent& a, SLUEvent& b) {
     a.Swap(&b);
@@ -856,7 +1052,7 @@ class SLUResponse final :
                &_SLUResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    4;
 
   friend void swap(SLUResponse& a, SLUResponse& b) {
     a.Swap(&b);
@@ -1232,7 +1428,7 @@ class SLUTranscript final :
                &_SLUTranscript_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    4;
+    5;
 
   friend void swap(SLUTranscript& a, SLUTranscript& b) {
     a.Swap(&b);
@@ -1409,7 +1605,7 @@ class SLUEntity final :
                &_SLUEntity_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    5;
+    6;
 
   friend void swap(SLUEntity& a, SLUEntity& b) {
     a.Swap(&b);
@@ -1591,7 +1787,7 @@ class SLUIntent final :
                &_SLUIntent_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    7;
 
   friend void swap(SLUIntent& a, SLUIntent& b) {
     a.Swap(&b);
@@ -1735,7 +1931,7 @@ class SLUSegmentEnd final :
                &_SLUSegmentEnd_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    8;
 
   friend void swap(SLUSegmentEnd& a, SLUSegmentEnd& b) {
     a.Swap(&b);
@@ -1861,7 +2057,7 @@ class SLUTentativeTranscript final :
                &_SLUTentativeTranscript_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    9;
 
   friend void swap(SLUTentativeTranscript& a, SLUTentativeTranscript& b) {
     a.Swap(&b);
@@ -2025,7 +2221,7 @@ class SLUTentativeEntities final :
                &_SLUTentativeEntities_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(SLUTentativeEntities& a, SLUTentativeEntities& b) {
     a.Swap(&b);
@@ -2173,7 +2369,7 @@ class SLUStarted final :
                &_SLUStarted_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    11;
 
   friend void swap(SLUStarted& a, SLUStarted& b) {
     a.Swap(&b);
@@ -2299,7 +2495,7 @@ class SLUFinished final :
                &_SLUFinished_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    11;
+    12;
 
   friend void swap(SLUFinished& a, SLUFinished& b) {
     a.Swap(&b);
@@ -2447,7 +2643,7 @@ class SLUError final :
                &_SLUError_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    12;
+    13;
 
   friend void swap(SLUError& a, SLUError& b) {
     a.Swap(&b);
@@ -2607,7 +2803,7 @@ class RoundTripMeasurementRequest final :
                &_RoundTripMeasurementRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    13;
+    14;
 
   friend void swap(RoundTripMeasurementRequest& a, RoundTripMeasurementRequest& b) {
     a.Swap(&b);
@@ -2746,7 +2942,7 @@ class RoundTripMeasurementResponse final :
                &_RoundTripMeasurementResponse_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    14;
+    15;
 
   friend void swap(RoundTripMeasurementResponse& a, RoundTripMeasurementResponse& b) {
     a.Swap(&b);
@@ -3165,6 +3361,131 @@ inline SLURequest::StreamingRequestCase SLURequest::streaming_request_case() con
 }
 // -------------------------------------------------------------------
 
+// SLUConfig_Option
+
+// string key = 1;
+inline void SLUConfig_Option::clear_key() {
+  key_.ClearToEmpty();
+}
+inline const std::string& SLUConfig_Option::key() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.SLUConfig.Option.key)
+  return _internal_key();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void SLUConfig_Option::set_key(ArgT0&& arg0, ArgT... args) {
+ 
+ key_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.SLUConfig.Option.key)
+}
+inline std::string* SLUConfig_Option::mutable_key() {
+  std::string* _s = _internal_mutable_key();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.SLUConfig.Option.key)
+  return _s;
+}
+inline const std::string& SLUConfig_Option::_internal_key() const {
+  return key_.Get();
+}
+inline void SLUConfig_Option::_internal_set_key(const std::string& value) {
+  
+  key_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* SLUConfig_Option::_internal_mutable_key() {
+  
+  return key_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* SLUConfig_Option::release_key() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.SLUConfig.Option.key)
+  return key_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void SLUConfig_Option::set_allocated_key(std::string* key) {
+  if (key != nullptr) {
+    
+  } else {
+    
+  }
+  key_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), key,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.SLUConfig.Option.key)
+}
+
+// repeated string value = 2;
+inline int SLUConfig_Option::_internal_value_size() const {
+  return value_.size();
+}
+inline int SLUConfig_Option::value_size() const {
+  return _internal_value_size();
+}
+inline void SLUConfig_Option::clear_value() {
+  value_.Clear();
+}
+inline std::string* SLUConfig_Option::add_value() {
+  std::string* _s = _internal_add_value();
+  // @@protoc_insertion_point(field_add_mutable:speechly.slu.v1.SLUConfig.Option.value)
+  return _s;
+}
+inline const std::string& SLUConfig_Option::_internal_value(int index) const {
+  return value_.Get(index);
+}
+inline const std::string& SLUConfig_Option::value(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.SLUConfig.Option.value)
+  return _internal_value(index);
+}
+inline std::string* SLUConfig_Option::mutable_value(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.SLUConfig.Option.value)
+  return value_.Mutable(index);
+}
+inline void SLUConfig_Option::set_value(int index, const std::string& value) {
+  value_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.SLUConfig.Option.value)
+}
+inline void SLUConfig_Option::set_value(int index, std::string&& value) {
+  value_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.SLUConfig.Option.value)
+}
+inline void SLUConfig_Option::set_value(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  value_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:speechly.slu.v1.SLUConfig.Option.value)
+}
+inline void SLUConfig_Option::set_value(int index, const char* value, size_t size) {
+  value_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:speechly.slu.v1.SLUConfig.Option.value)
+}
+inline std::string* SLUConfig_Option::_internal_add_value() {
+  return value_.Add();
+}
+inline void SLUConfig_Option::add_value(const std::string& value) {
+  value_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:speechly.slu.v1.SLUConfig.Option.value)
+}
+inline void SLUConfig_Option::add_value(std::string&& value) {
+  value_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:speechly.slu.v1.SLUConfig.Option.value)
+}
+inline void SLUConfig_Option::add_value(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  value_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:speechly.slu.v1.SLUConfig.Option.value)
+}
+inline void SLUConfig_Option::add_value(const char* value, size_t size) {
+  value_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:speechly.slu.v1.SLUConfig.Option.value)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+SLUConfig_Option::value() const {
+  // @@protoc_insertion_point(field_list:speechly.slu.v1.SLUConfig.Option.value)
+  return value_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+SLUConfig_Option::mutable_value() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.slu.v1.SLUConfig.Option.value)
+  return &value_;
+}
+
+// -------------------------------------------------------------------
+
 // SLUConfig
 
 // .speechly.slu.v1.SLUConfig.Encoding encoding = 1;
@@ -3271,6 +3592,46 @@ inline void SLUConfig::set_allocated_language_code(std::string* language_code) {
   language_code_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), language_code,
       GetArenaForAllocation());
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.SLUConfig.language_code)
+}
+
+// repeated .speechly.slu.v1.SLUConfig.Option options = 5;
+inline int SLUConfig::_internal_options_size() const {
+  return options_.size();
+}
+inline int SLUConfig::options_size() const {
+  return _internal_options_size();
+}
+inline void SLUConfig::clear_options() {
+  options_.Clear();
+}
+inline ::speechly::slu::v1::SLUConfig_Option* SLUConfig::mutable_options(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.SLUConfig.options)
+  return options_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::SLUConfig_Option >*
+SLUConfig::mutable_options() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.slu.v1.SLUConfig.options)
+  return &options_;
+}
+inline const ::speechly::slu::v1::SLUConfig_Option& SLUConfig::_internal_options(int index) const {
+  return options_.Get(index);
+}
+inline const ::speechly::slu::v1::SLUConfig_Option& SLUConfig::options(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.SLUConfig.options)
+  return _internal_options(index);
+}
+inline ::speechly::slu::v1::SLUConfig_Option* SLUConfig::_internal_add_options() {
+  return options_.Add();
+}
+inline ::speechly::slu::v1::SLUConfig_Option* SLUConfig::add_options() {
+  ::speechly::slu::v1::SLUConfig_Option* _add = _internal_add_options();
+  // @@protoc_insertion_point(field_add:speechly.slu.v1.SLUConfig.options)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::SLUConfig_Option >&
+SLUConfig::options() const {
+  // @@protoc_insertion_point(field_list:speechly.slu.v1.SLUConfig.options)
+  return options_;
 }
 
 // -------------------------------------------------------------------
@@ -4841,6 +5202,8 @@ inline void RoundTripMeasurementResponse::set_id(::PROTOBUF_NAMESPACE_ID::int32 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

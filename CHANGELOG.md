@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.0](https://github.com/speechly/api/tree/0.6.0) (2022-04-29)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.5.0...0.6.0)
+
+**Merged pull requests:**
+
+- Support for config time options in SLU [\#36](https://github.com/speechly/api/pull/36) ([teelisyys](https://github.com/teelisyys))
+
 ## [0.5.0](https://github.com/speechly/api/tree/0.5.0) (2022-01-20)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.4.5...0.5.0)

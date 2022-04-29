@@ -43,6 +43,7 @@ res, err := speechlyWLUClient.Text(ctx, req)
 
 ## Messages
 
+- [Option](#speechly.slu.v1.SLUConfig.Option)
 - [RoundTripMeasurementRequest](#speechly.slu.v1.RoundTripMeasurementRequest)
 - [RoundTripMeasurementResponse](#speechly.slu.v1.RoundTripMeasurementResponse)
 - [SLUConfig](#speechly.slu.v1.SLUConfig)
@@ -66,6 +67,19 @@ res, err := speechlyWLUClient.Text(ctx, req)
 - [WLUResponse](#speechly.slu.v1.WLUResponse)
 - [WLUSegment](#speechly.slu.v1.WLUSegment)
 - [WLUToken](#speechly.slu.v1.WLUToken)
+
+
+<a name="speechly.slu.v1.SLUConfig.Option"></a>
+### SLUConfig.Option
+
+Option to change the default behaviour of the SLU.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| key | [string](#string) | The key of the option to be set. |
+| value | [string](#string) | The values to set the option to. |
 
 
 <a name="speechly.slu.v1.RoundTripMeasurementRequest"></a>
@@ -107,6 +121,7 @@ Currently the API only supports single-channel Linear PCM with sample rate of 16
 | channels | [int32](#int32) | The number of channels in the input audio data.<br/>Required. |
 | sample_rate_hertz | [int32](#int32) | Sample rate in Hertz of the audio data sent in the stream.<br/>Required. |
 | language_code | [string](#string) | The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").<br/>Defaults to the target application language. |
+| options | [Option](#speechly.slu.v1.SLUConfig.Option) | Special options to change the default behaviour of the SLU. |
 
 
 <a name="speechly.slu.v1.SLUEntity"></a>
