@@ -85,6 +85,16 @@ message SLUConfig {
   // The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").
   // Defaults to the target application language.
   string language_code = 4;
+
+  // Option to change the default behaviour of the SLU.
+  message Option {
+    // The key of the option to be set.
+    string key = 1;
+    // The values to set the option to.
+    repeated string value = 2;
+  }
+  // Special options to change the default behaviour of the SLU.
+  repeated Option options = 5;
 }
 
 // Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
