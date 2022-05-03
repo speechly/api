@@ -55,13 +55,22 @@ message SLURequest {
     // Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
     // A context MUST be preceded by a start event and concluded with a stop event,
     // otherwise the server WILL terminate the stream with an error.
-    SLUEvent event = 2;
+    // DEPRECATED in favour of SLUStart and SLUStop
+    SLUEvent event = 2 [deprecated = true];
     // Contains a chunk of the audio being streamed.
     bytes audio = 3;
     // Response to an RTT measurement request from server. Should be sent immediately
     // after receiving the RoundTripMeasurementRequest in the stream.
     // If ignored, no round trip measurements are made.
     RoundTripMeasurementResponse rtt_response = 4;
+    // Indicates the beginning of a logical audio segment (audio context in Speechly terms).
+    // A context MUST be preceded by a SLUStart, (or the deprecated SLUEvent start event)
+    // otherwise the server WILL terminate the stream with an error.
+    SLUStart start = 5;
+    // Indicates the end of a logical audio segment (audio context in Speechly terms).
+    // A context MUST be concluded with a SLUStop, (or the deprecated SLUEvent stop event)
+    // otherwise the server WILL terminate the stream with an error.
+    SLUStop stop = 6;
   }
 }
 
@@ -93,7 +102,7 @@ message SLUConfig {
     // The values to set the option to.
     repeated string value = 2;
   }
-  // Special options to change the default behaviour of the SLU.
+  // Special options to change the default behaviour of the SLU for all logical audio segment.
   repeated Option options = 5;
 }
 
@@ -114,6 +123,28 @@ message SLUEvent {
   // Not required if the authorization token is *application based*.
   string app_id = 2;
 }
+
+// Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
+message SLUStart {
+  // The `appId` for the utterance.
+  // Required if the authorization token is *project based*. The
+  // given application must be part of the project set in the token.
+  // Not required if the authorization token is *application based*.
+  string app_id = 1;
+
+  // Option to change the default behaviour of the SLU.
+  message Option {
+    // The key of the option to be set.
+    string key = 1;
+    // The values to set the option to.
+    repeated string value = 2;
+  }
+  // Special options to change the default behaviour of the SLU for this audio segment.
+  repeated Option options = 2;
+}
+
+// Indicates the end of a logical audio segment (audio context in Speechly terms).
+message SLUStop {}
 
 // Top-level message sent by the server for the `Stream` method.
 message SLUResponse {
