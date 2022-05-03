@@ -41,6 +41,7 @@ public struct Speechly_Slu_V1_SLURequest {
   /// Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
   /// A context MUST be preceded by a start event and concluded with a stop event,
   /// otherwise the server WILL terminate the stream with an error.
+  /// DEPRECATED in favour of SLUStart and SLUStop
   public var event: Speechly_Slu_V1_SLUEvent {
     get {
       if case .event(let v)? = streamingRequest {return v}
@@ -69,6 +70,28 @@ public struct Speechly_Slu_V1_SLURequest {
     set {streamingRequest = .rttResponse(newValue)}
   }
 
+  /// Indicates the beginning of a logical audio segment (audio context in Speechly terms).
+  /// A context MUST be preceded by a SLUStart, (or the deprecated SLUEvent start event)
+  /// otherwise the server WILL terminate the stream with an error.
+  public var start: Speechly_Slu_V1_SLUStart {
+    get {
+      if case .start(let v)? = streamingRequest {return v}
+      return Speechly_Slu_V1_SLUStart()
+    }
+    set {streamingRequest = .start(newValue)}
+  }
+
+  /// Indicates the end of a logical audio segment (audio context in Speechly terms).
+  /// A context MUST be concluded with a SLUStop, (or the deprecated SLUEvent stop event)
+  /// otherwise the server WILL terminate the stream with an error.
+  public var stop: Speechly_Slu_V1_SLUStop {
+    get {
+      if case .stop(let v)? = streamingRequest {return v}
+      return Speechly_Slu_V1_SLUStop()
+    }
+    set {streamingRequest = .stop(newValue)}
+  }
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_StreamingRequest: Equatable {
@@ -78,6 +101,7 @@ public struct Speechly_Slu_V1_SLURequest {
     /// Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
     /// A context MUST be preceded by a start event and concluded with a stop event,
     /// otherwise the server WILL terminate the stream with an error.
+    /// DEPRECATED in favour of SLUStart and SLUStop
     case event(Speechly_Slu_V1_SLUEvent)
     /// Contains a chunk of the audio being streamed.
     case audio(Data)
@@ -85,6 +109,14 @@ public struct Speechly_Slu_V1_SLURequest {
     /// after receiving the RoundTripMeasurementRequest in the stream.
     /// If ignored, no round trip measurements are made.
     case rttResponse(Speechly_Slu_V1_RoundTripMeasurementResponse)
+    /// Indicates the beginning of a logical audio segment (audio context in Speechly terms).
+    /// A context MUST be preceded by a SLUStart, (or the deprecated SLUEvent start event)
+    /// otherwise the server WILL terminate the stream with an error.
+    case start(Speechly_Slu_V1_SLUStart)
+    /// Indicates the end of a logical audio segment (audio context in Speechly terms).
+    /// A context MUST be concluded with a SLUStop, (or the deprecated SLUEvent stop event)
+    /// otherwise the server WILL terminate the stream with an error.
+    case stop(Speechly_Slu_V1_SLUStop)
 
   #if !swift(>=4.1)
     public static func ==(lhs: Speechly_Slu_V1_SLURequest.OneOf_StreamingRequest, rhs: Speechly_Slu_V1_SLURequest.OneOf_StreamingRequest) -> Bool {
@@ -106,6 +138,14 @@ public struct Speechly_Slu_V1_SLURequest {
       }()
       case (.rttResponse, .rttResponse): return {
         guard case .rttResponse(let l) = lhs, case .rttResponse(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.start, .start): return {
+        guard case .start(let l) = lhs, case .start(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      case (.stop, .stop): return {
+        guard case .stop(let l) = lhs, case .stop(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
       default: return false
@@ -140,7 +180,7 @@ public struct Speechly_Slu_V1_SLUConfig {
   /// Defaults to the target application language.
   public var languageCode: String = String()
 
-  /// Special options to change the default behaviour of the SLU.
+  /// Special options to change the default behaviour of the SLU for all logical audio segment.
   public var options: [Speechly_Slu_V1_SLUConfig.Option] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -268,6 +308,54 @@ extension Speechly_Slu_V1_SLUEvent.Event: CaseIterable {
 }
 
 #endif  // swift(>=4.2)
+
+/// Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
+public struct Speechly_Slu_V1_SLUStart {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// The `appId` for the utterance.
+  /// Required if the authorization token is *project based*. The
+  /// given application must be part of the project set in the token.
+  /// Not required if the authorization token is *application based*.
+  public var appID: String = String()
+
+  /// Special options to change the default behaviour of the SLU for this audio segment.
+  public var options: [Speechly_Slu_V1_SLUStart.Option] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  /// Option to change the default behaviour of the SLU.
+  public struct Option {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// The key of the option to be set.
+    public var key: String = String()
+
+    /// The values to set the option to.
+    public var value: [String] = []
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+/// Indicates the end of a logical audio segment (audio context in Speechly terms).
+public struct Speechly_Slu_V1_SLUStop {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
 
 /// Top-level message sent by the server for the `Stream` method.
 public struct Speechly_Slu_V1_SLUResponse {
@@ -703,6 +791,8 @@ extension Speechly_Slu_V1_SLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     2: .same(proto: "event"),
     3: .same(proto: "audio"),
     4: .standard(proto: "rtt_response"),
+    5: .same(proto: "start"),
+    6: .same(proto: "stop"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -758,6 +848,32 @@ extension Speechly_Slu_V1_SLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
           self.streamingRequest = .rttResponse(v)
         }
       }()
+      case 5: try {
+        var v: Speechly_Slu_V1_SLUStart?
+        var hadOneofValue = false
+        if let current = self.streamingRequest {
+          hadOneofValue = true
+          if case .start(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingRequest = .start(v)
+        }
+      }()
+      case 6: try {
+        var v: Speechly_Slu_V1_SLUStop?
+        var hadOneofValue = false
+        if let current = self.streamingRequest {
+          hadOneofValue = true
+          if case .stop(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.streamingRequest = .stop(v)
+        }
+      }()
       default: break
       }
     }
@@ -783,6 +899,14 @@ extension Speechly_Slu_V1_SLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     case .rttResponse?: try {
       guard case .rttResponse(let v)? = self.streamingRequest else { preconditionFailure() }
       try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
+    }()
+    case .start?: try {
+      guard case .start(let v)? = self.streamingRequest else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    }()
+    case .stop?: try {
+      guard case .stop(let v)? = self.streamingRequest else { preconditionFailure() }
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
     }()
     case nil: break
     }
@@ -939,6 +1063,101 @@ extension Speechly_Slu_V1_SLUEvent.Event: SwiftProtobuf._ProtoNameProviding {
     0: .same(proto: "START"),
     1: .same(proto: "STOP"),
   ]
+}
+
+extension Speechly_Slu_V1_SLUStart: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SLUStart"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "app_id"),
+    2: .same(proto: "options"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.appID) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.options) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.appID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 1)
+    }
+    if !self.options.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.options, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_SLUStart, rhs: Speechly_Slu_V1_SLUStart) -> Bool {
+    if lhs.appID != rhs.appID {return false}
+    if lhs.options != rhs.options {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Slu_V1_SLUStart.Option: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Speechly_Slu_V1_SLUStart.protoMessageName + ".Option"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "key"),
+    2: .same(proto: "value"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.key) }()
+      case 2: try { try decoder.decodeRepeatedStringField(value: &self.value) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.key.isEmpty {
+      try visitor.visitSingularStringField(value: self.key, fieldNumber: 1)
+    }
+    if !self.value.isEmpty {
+      try visitor.visitRepeatedStringField(value: self.value, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_SLUStart.Option, rhs: Speechly_Slu_V1_SLUStart.Option) -> Bool {
+    if lhs.key != rhs.key {return false}
+    if lhs.value != rhs.value {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Slu_V1_SLUStop: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".SLUStop"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_SLUStop, rhs: Speechly_Slu_V1_SLUStop) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
 }
 
 extension Speechly_Slu_V1_SLUResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {

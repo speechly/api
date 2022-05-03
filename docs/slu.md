@@ -44,6 +44,7 @@ res, err := speechlyWLUClient.Text(ctx, req)
 ## Messages
 
 - [Option](#speechly.slu.v1.SLUConfig.Option)
+- [Option](#speechly.slu.v1.SLUStart.Option)
 - [RoundTripMeasurementRequest](#speechly.slu.v1.RoundTripMeasurementRequest)
 - [RoundTripMeasurementResponse](#speechly.slu.v1.RoundTripMeasurementResponse)
 - [SLUConfig](#speechly.slu.v1.SLUConfig)
@@ -55,7 +56,9 @@ res, err := speechlyWLUClient.Text(ctx, req)
 - [SLURequest](#speechly.slu.v1.SLURequest)
 - [SLUResponse](#speechly.slu.v1.SLUResponse)
 - [SLUSegmentEnd](#speechly.slu.v1.SLUSegmentEnd)
+- [SLUStart](#speechly.slu.v1.SLUStart)
 - [SLUStarted](#speechly.slu.v1.SLUStarted)
+- [SLUStop](#speechly.slu.v1.SLUStop)
 - [SLUTentativeEntities](#speechly.slu.v1.SLUTentativeEntities)
 - [SLUTentativeTranscript](#speechly.slu.v1.SLUTentativeTranscript)
 - [SLUTranscript](#speechly.slu.v1.SLUTranscript)
@@ -71,6 +74,19 @@ res, err := speechlyWLUClient.Text(ctx, req)
 
 <a name="speechly.slu.v1.SLUConfig.Option"></a>
 ### SLUConfig.Option
+
+Option to change the default behaviour of the SLU.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| key | [string](#string) | The key of the option to be set. |
+| value | [string](#string) | The values to set the option to. |
+
+
+<a name="speechly.slu.v1.SLUStart.Option"></a>
+### SLUStart.Option
 
 Option to change the default behaviour of the SLU.
 
@@ -121,7 +137,7 @@ Currently the API only supports single-channel Linear PCM with sample rate of 16
 | channels | [int32](#int32) | The number of channels in the input audio data.<br/>Required. |
 | sample_rate_hertz | [int32](#int32) | Sample rate in Hertz of the audio data sent in the stream.<br/>Required. |
 | language_code | [string](#string) | The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").<br/>Defaults to the target application language. |
-| options | [Option](#speechly.slu.v1.SLUConfig.Option) | Special options to change the default behaviour of the SLU. |
+| options | [Option](#speechly.slu.v1.SLUConfig.Option) | Special options to change the default behaviour of the SLU for all logical audio segment. |
 
 
 <a name="speechly.slu.v1.SLUEntity"></a>
@@ -215,9 +231,11 @@ Top-level message sent by the client for the `Stream` method.
 | name | type | description |
 | ---- | ---- | ----------- |
 | config | [SLUConfig](#speechly.slu.v1.SLUConfig) | Describes the configuration of the audio sent by the client.<br/>MUST be the first message sent to the stream. |
-| event | [SLUEvent](#speechly.slu.v1.SLUEvent) | Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a start event and concluded with a stop event,<br/>otherwise the server WILL terminate the stream with an error. |
+| event | [SLUEvent](#speechly.slu.v1.SLUEvent) | Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a start event and concluded with a stop event,<br/>otherwise the server WILL terminate the stream with an error.<br/>DEPRECATED in favour of SLUStart and SLUStop |
 | audio | [bytes](#bytes) | Contains a chunk of the audio being streamed. |
 | rtt_response | [RoundTripMeasurementResponse](#speechly.slu.v1.RoundTripMeasurementResponse) | Response to an RTT measurement request from server. Should be sent immediately<br/>after receiving the RoundTripMeasurementRequest in the stream.<br/>If ignored, no round trip measurements are made. |
+| start | [SLUStart](#speechly.slu.v1.SLUStart) | Indicates the beginning of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a SLUStart, (or the deprecated SLUEvent start event)<br/>otherwise the server WILL terminate the stream with an error. |
+| stop | [SLUStop](#speechly.slu.v1.SLUStop) | Indicates the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be concluded with a SLUStop, (or the deprecated SLUEvent stop event)<br/>otherwise the server WILL terminate the stream with an error. |
 
 
 <a name="speechly.slu.v1.SLUResponse"></a>
@@ -256,11 +274,36 @@ Upon receiving this, the segment should be finalised and all future messages for
 
 
 
+<a name="speechly.slu.v1.SLUStart"></a>
+### SLUStart
+
+Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| app_id | [string](#string) | The `appId` for the utterance.<br/>Required if the authorization token is *project based*. The<br/>given application must be part of the project set in the token.<br/>Not required if the authorization token is *application based*. |
+| options | [Option](#speechly.slu.v1.SLUStart.Option) | Special options to change the default behaviour of the SLU for this audio segment. |
+
+
 <a name="speechly.slu.v1.SLUStarted"></a>
 ### SLUStarted
 
 Indicates that the API has started processing the portion of audio as new audio context.
 This does not guarantee that the server will not send any more messages for the previous audio context.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+
+
+
+<a name="speechly.slu.v1.SLUStop"></a>
+### SLUStop
+
+Indicates the end of a logical audio segment (audio context in Speechly terms).
 
 #### Fields
 

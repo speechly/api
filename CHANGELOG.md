@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0](https://github.com/speechly/api/tree/0.7.0) (2022-05-03)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.6.0...0.7.0)
+
+**Merged pull requests:**
+
+- Introduce dedicated SLUStart and SLUStop [\#37](https://github.com/speechly/api/pull/37) ([teelisyys](https://github.com/teelisyys))
+
 ## [0.6.0](https://github.com/speechly/api/tree/0.6.0) (2022-04-29)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.5.0...0.6.0)
@@ -138,6 +146,7 @@
 - batch size and seed to sal compiler compile [\#9](https://github.com/speechly/api/pull/9) ([samutamm](https://github.com/samutamm))
 - Use Java version 1.8 as target for Kotlin package [\#8](https://github.com/speechly/api/pull/8) ([radiohead](https://github.com/radiohead))
 - Bump ini from 1.3.5 to 1.3.7 in /javascript [\#7](https://github.com/speechly/api/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Add an RPC for extracting SAL examples to SAL compiler service [\#5](https://github.com/speechly/api/pull/5) ([samutamm](https://github.com/samutamm))
 
 ## [0.0.5](https://github.com/speechly/api/tree/0.0.5) (2020-12-11)
 
@@ -150,10 +159,6 @@
 ## [0.0.4](https://github.com/speechly/api/tree/0.0.4) (2020-12-08)
 
 [Full Changelog](https://github.com/speechly/api/compare/v0.0.3...0.0.4)
-
-**Merged pull requests:**
-
-- Add an RPC for extracting SAL examples to SAL compiler service [\#5](https://github.com/speechly/api/pull/5) ([samutamm](https://github.com/samutamm))
 
 ## [v0.0.3](https://github.com/speechly/api/tree/v0.0.3) (2020-12-07)
 
