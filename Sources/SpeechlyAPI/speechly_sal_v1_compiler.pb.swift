@@ -440,6 +440,22 @@ public struct Speechly_Sal_V1_ExtractSALSourcesResult {
   public init() {}
 }
 
+#if swift(>=5.5) && canImport(_Concurrency)
+extension Speechly_Sal_V1_AppSource: @unchecked Sendable {}
+extension Speechly_Sal_V1_AppSource.ContentType: @unchecked Sendable {}
+extension Speechly_Sal_V1_CompileRequest: @unchecked Sendable {}
+extension Speechly_Sal_V1_CompileResult: @unchecked Sendable {}
+extension Speechly_Sal_V1_CompileResult.Result: @unchecked Sendable {}
+extension Speechly_Sal_V1_ConvertRequest: @unchecked Sendable {}
+extension Speechly_Sal_V1_ConvertRequest.InputFormat: @unchecked Sendable {}
+extension Speechly_Sal_V1_ConvertResult: @unchecked Sendable {}
+extension Speechly_Sal_V1_ConvertResult.Status: @unchecked Sendable {}
+extension Speechly_Sal_V1_ValidateResult: @unchecked Sendable {}
+extension Speechly_Sal_V1_LineReference: @unchecked Sendable {}
+extension Speechly_Sal_V1_LineReference.Level: @unchecked Sendable {}
+extension Speechly_Sal_V1_ExtractSALSourcesResult: @unchecked Sendable {}
+#endif  // swift(>=5.5) && canImport(_Concurrency)
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.sal.v1"
@@ -525,9 +541,13 @@ extension Speechly_Sal_V1_CompileRequest: SwiftProtobuf.Message, SwiftProtobuf._
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if let v = self._appSource {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._appSource {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    }
+    } }()
     if self.batchSize != 0 {
       try visitor.visitSingularInt32Field(value: self.batchSize, fieldNumber: 2)
     }
@@ -672,15 +692,19 @@ extension Speechly_Sal_V1_ConvertResult: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if self.status != .convertSuccess {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
     if !self.warnings.isEmpty {
       try visitor.visitSingularStringField(value: self.warnings, fieldNumber: 2)
     }
-    if let v = self._result {
+    try { if let v = self._result {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-    }
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 

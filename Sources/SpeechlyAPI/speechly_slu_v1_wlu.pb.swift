@@ -208,6 +208,17 @@ public struct Speechly_Slu_V1_WLUIntent {
   public init() {}
 }
 
+#if swift(>=5.5) && canImport(_Concurrency)
+extension Speechly_Slu_V1_TextsRequest: @unchecked Sendable {}
+extension Speechly_Slu_V1_TextsResponse: @unchecked Sendable {}
+extension Speechly_Slu_V1_WLURequest: @unchecked Sendable {}
+extension Speechly_Slu_V1_WLUResponse: @unchecked Sendable {}
+extension Speechly_Slu_V1_WLUSegment: @unchecked Sendable {}
+extension Speechly_Slu_V1_WLUToken: @unchecked Sendable {}
+extension Speechly_Slu_V1_WLUEntity: @unchecked Sendable {}
+extension Speechly_Slu_V1_WLUIntent: @unchecked Sendable {}
+#endif  // swift(>=5.5) && canImport(_Concurrency)
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.slu.v1"
@@ -305,15 +316,19 @@ extension Speechly_Slu_V1_WLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.languageCode.isEmpty {
       try visitor.visitSingularStringField(value: self.languageCode, fieldNumber: 1)
     }
     if !self.text.isEmpty {
       try visitor.visitSingularStringField(value: self.text, fieldNumber: 2)
     }
-    if let v = self._referenceTime {
+    try { if let v = self._referenceTime {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-    }
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -385,6 +400,10 @@ extension Speechly_Slu_V1_WLUSegment: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.text.isEmpty {
       try visitor.visitSingularStringField(value: self.text, fieldNumber: 1)
     }
@@ -394,9 +413,9 @@ extension Speechly_Slu_V1_WLUSegment: SwiftProtobuf.Message, SwiftProtobuf._Mess
     if !self.entities.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.entities, fieldNumber: 3)
     }
-    if let v = self._intent {
+    try { if let v = self._intent {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
-    }
+    } }()
     if !self.annotatedText.isEmpty {
       try visitor.visitSingularStringField(value: self.annotatedText, fieldNumber: 5)
     }

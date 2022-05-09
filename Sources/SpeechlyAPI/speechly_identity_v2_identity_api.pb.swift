@@ -110,6 +110,12 @@ public struct Speechly_Identity_V2_LoginResponse {
   public init() {}
 }
 
+#if swift(>=5.5) && canImport(_Concurrency)
+extension Speechly_Identity_V2_LoginRequest: @unchecked Sendable {}
+extension Speechly_Identity_V2_LoginRequest.OneOf_Scope: @unchecked Sendable {}
+extension Speechly_Identity_V2_LoginResponse: @unchecked Sendable {}
+#endif  // swift(>=5.5) && canImport(_Concurrency)
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.identity.v2"
@@ -161,12 +167,13 @@ extension Speechly_Identity_V2_LoginRequest: SwiftProtobuf.Message, SwiftProtobu
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.deviceID.isEmpty {
       try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 1)
     }
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every case branch when no optimizations are
-    // enabled. https://github.com/apple/swift-protobuf/issues/1034
     switch self.scope {
     case .application?: try {
       guard case .application(let v)? = self.scope else { preconditionFailure() }
