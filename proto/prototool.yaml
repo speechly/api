@@ -38,7 +38,6 @@ generate:
       output: ../javascript
     - name: csharp
       output: ../dotnet/Speechly
-      flags: base_namespace=Speechly
     - name: csharp-grpc
       path: grpc_csharp_plugin
       output: ../dotnet/Speechly
@@ -48,6 +47,11 @@ generate:
     - name: grpc
       path: grpc_cpp_plugin
       output: ../cpp/Speechly
+      #- name: descriptor_set
+      #output: ../descriptor_set
+      #file_suffix: pb 
+      #include_imports: true
+      #include_source_info: true
 lint:
   group: uber2
   rules:
