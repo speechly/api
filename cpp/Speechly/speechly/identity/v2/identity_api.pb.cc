@@ -94,14 +94,15 @@ const char descriptor_table_protodef_speechly_2fidentity_2fv2_2fidentity_5fapi_2
   "\030\003 \001(\0132\".speechly.identity.v2.ProjectSco"
   "peH\000B\007\n\005scope\"a\n\rLoginResponse\022\r\n\005token\030"
   "\001 \001(\t\022\023\n\013valid_for_s\030\002 \001(\r\022\030\n\020expires_at"
-  "_epoch\030\003 \001(\004\022\022\n\nexpires_at\030\004 \001(\t2{\n\013Iden"
-  "tityAPI\022l\n\005Login\022\".speechly.identity.v2."
-  "LoginRequest\032#.speechly.identity.v2.Logi"
-  "nResponse\"\032\202\323\344\223\002\024\022\022/identity/login/v2B\203\001"
-  "\n\030com.speechly.identity.v2B\020IdentityApiP"
-  "rotoP\001Z\037speechly/identity/v2;identityv2\242"
-  "\002\003SIX\252\002\024Speechly.Identity.V2\312\002\024Speechly\\"
-  "Identity\\V2b\006proto3"
+  "_epoch\030\003 \001(\004\022\022\n\nexpires_at\030\004 \001(\t2\221\001\n\013Ide"
+  "ntityAPI\022\201\001\n\005Login\022\".speechly.identity.v"
+  "2.LoginRequest\032#.speechly.identity.v2.Lo"
+  "ginResponse\"/\202\323\344\223\002)\"\'/speechly.identity."
+  "v2.IdentityAPI/LoginB\203\001\n\030com.speechly.id"
+  "entity.v2B\020IdentityApiProtoP\001Z\037speechly/"
+  "identity/v2;identityv2\242\002\003SIX\252\002\024Speechly."
+  "Identity.V2\312\002\024Speechly\\Identity\\V2b\006prot"
+  "o3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto_deps[2] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
@@ -109,7 +110,7 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto = {
-  false, false, 659, descriptor_table_protodef_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto, "speechly/identity/v2/identity_api.proto", 
+  false, false, 682, descriptor_table_protodef_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto, "speechly/identity/v2/identity_api.proto", 
   &descriptor_table_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto_once, descriptor_table_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto_deps, 2, 2,
   schemas, file_default_instances, TableStruct_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto::offsets,
   file_level_metadata_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto, file_level_enum_descriptors_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto, file_level_service_descriptors_speechly_2fidentity_2fv2_2fidentity_5fapi_2eproto,
