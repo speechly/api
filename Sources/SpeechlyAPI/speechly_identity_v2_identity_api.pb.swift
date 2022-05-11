@@ -33,7 +33,8 @@ public struct Speechly_Identity_V2_LoginRequest {
 
   public var scope: Speechly_Identity_V2_LoginRequest.OneOf_Scope? = nil
 
-  /// Login scope application: use the given application context for all utterances.
+  /// Login scope application: use the given application context for all
+  /// utterances.
   public var application: Speechly_Identity_V2_ApplicationScope {
     get {
       if case .application(let v)? = scope {return v}
@@ -55,7 +56,8 @@ public struct Speechly_Identity_V2_LoginRequest {
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_Scope: Equatable {
-    /// Login scope application: use the given application context for all utterances.
+    /// Login scope application: use the given application context for all
+    /// utterances.
     case application(Speechly_Identity_V2_ApplicationScope)
     /// Login scope project: define the target application per utterance.
     /// The target applications must be located in the same project.
@@ -91,9 +93,10 @@ public struct Speechly_Identity_V2_LoginResponse {
   // methods supported on all messages.
 
   /// Access token which can used for the Speechly API.
-  /// The token is a JSON Web Token and includes all standard claims, as well as custom ones.
-  /// The token has expiration, so you should check whether it has expired before using it.
-  /// It is safe to cache the token for future use until its expiration date.
+  /// The token is a JSON Web Token and includes all standard claims, as well as
+  /// custom ones. The token has expiration, so you should check whether it has
+  /// expired before using it. It is safe to cache the token for future use until
+  /// its expiration date.
   public var token: String = String()
 
   /// Amount of seconds the returned token is valid.
@@ -109,6 +112,12 @@ public struct Speechly_Identity_V2_LoginResponse {
 
   public init() {}
 }
+
+#if swift(>=5.5) && canImport(_Concurrency)
+extension Speechly_Identity_V2_LoginRequest: @unchecked Sendable {}
+extension Speechly_Identity_V2_LoginRequest.OneOf_Scope: @unchecked Sendable {}
+extension Speechly_Identity_V2_LoginResponse: @unchecked Sendable {}
+#endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
@@ -161,12 +170,13 @@ extension Speechly_Identity_V2_LoginRequest: SwiftProtobuf.Message, SwiftProtobu
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.deviceID.isEmpty {
       try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 1)
     }
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every case branch when no optimizations are
-    // enabled. https://github.com/apple/swift-protobuf/issues/1034
     switch self.scope {
     case .application?: try {
       guard case .application(let v)? = self.scope else { preconditionFailure() }

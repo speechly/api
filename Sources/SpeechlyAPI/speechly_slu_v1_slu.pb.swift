@@ -780,6 +780,32 @@ public struct Speechly_Slu_V1_RoundTripMeasurementResponse {
   public init() {}
 }
 
+#if swift(>=5.5) && canImport(_Concurrency)
+extension Speechly_Slu_V1_SLURequest: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLURequest.OneOf_StreamingRequest: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUConfig: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUConfig.Encoding: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUConfig.Option: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUEvent: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUEvent.Event: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUStart: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUStart.Option: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUStop: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUResponse: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUResponse.OneOf_StreamingResponse: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUTranscript: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUEntity: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUIntent: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUSegmentEnd: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUTentativeTranscript: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUTentativeEntities: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUStarted: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUFinished: @unchecked Sendable {}
+extension Speechly_Slu_V1_SLUError: @unchecked Sendable {}
+extension Speechly_Slu_V1_RoundTripMeasurementRequest: @unchecked Sendable {}
+extension Speechly_Slu_V1_RoundTripMeasurementResponse: @unchecked Sendable {}
+#endif  // swift(>=5.5) && canImport(_Concurrency)
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.slu.v1"
@@ -881,8 +907,9 @@ extension Speechly_Slu_V1_SLURequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every case branch when no optimizations are
-    // enabled. https://github.com/apple/swift-protobuf/issues/1034
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     switch self.streamingRequest {
     case .config?: try {
       guard case .config(let v)? = self.streamingRequest else { preconditionFailure() }
@@ -1321,15 +1348,16 @@ extension Speechly_Slu_V1_SLUResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.audioContext.isEmpty {
       try visitor.visitSingularStringField(value: self.audioContext, fieldNumber: 1)
     }
     if self.segmentID != 0 {
       try visitor.visitSingularInt32Field(value: self.segmentID, fieldNumber: 2)
     }
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every case branch when no optimizations are
-    // enabled. https://github.com/apple/swift-protobuf/issues/1034
     switch self.streamingResponse {
     case .transcript?: try {
       guard case .transcript(let v)? = self.streamingResponse else { preconditionFailure() }
@@ -1644,9 +1672,13 @@ extension Speechly_Slu_V1_SLUFinished: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if let v = self._error {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._error {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    }
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 

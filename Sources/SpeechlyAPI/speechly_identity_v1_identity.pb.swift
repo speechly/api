@@ -68,6 +68,11 @@ public struct Speechly_Identity_V1_LoginResponse {
   public init() {}
 }
 
+#if swift(>=5.5) && canImport(_Concurrency)
+extension Speechly_Identity_V1_LoginRequest: @unchecked Sendable {}
+extension Speechly_Identity_V1_LoginResponse: @unchecked Sendable {}
+#endif  // swift(>=5.5) && canImport(_Concurrency)
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.identity.v1"

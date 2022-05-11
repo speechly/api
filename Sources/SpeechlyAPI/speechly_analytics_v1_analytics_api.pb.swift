@@ -174,6 +174,14 @@ public struct Speechly_Analytics_V1_UtterancesResponse {
   public init() {}
 }
 
+#if swift(>=5.5) && canImport(_Concurrency)
+extension Speechly_Analytics_V1_UtteranceStatisticsRequest: @unchecked Sendable {}
+extension Speechly_Analytics_V1_UtteranceStatisticsRequest.Scope: @unchecked Sendable {}
+extension Speechly_Analytics_V1_UtteranceStatisticsResponse: @unchecked Sendable {}
+extension Speechly_Analytics_V1_UtterancesRequest: @unchecked Sendable {}
+extension Speechly_Analytics_V1_UtterancesResponse: @unchecked Sendable {}
+#endif  // swift(>=5.5) && canImport(_Concurrency)
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.analytics.v1"

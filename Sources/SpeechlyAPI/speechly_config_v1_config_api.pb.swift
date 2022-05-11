@@ -673,6 +673,40 @@ extension Speechly_Config_V1_App.Status: CaseIterable {
 
 #endif  // swift(>=4.2)
 
+#if swift(>=5.5) && canImport(_Concurrency)
+extension Speechly_Config_V1_GetProjectRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_GetProjectResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_CreateProjectRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_CreateProjectResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_UpdateProjectRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_UpdateProjectResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_GetProjectParticipantsRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_GetProjectParticipantsResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_GetProjectParticipantsResponse.Participant: @unchecked Sendable {}
+extension Speechly_Config_V1_InviteRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_InviteResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_JoinProjectRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_JoinProjectResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_ListAppsRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_ListAppsResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_GetAppRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_GetAppResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_CreateAppRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_CreateAppResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_UpdateAppRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_UpdateAppResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_DeleteAppRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_DeleteAppResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_UploadTrainingDataRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_UploadTrainingDataRequest.ContentType: @unchecked Sendable {}
+extension Speechly_Config_V1_UploadTrainingDataResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_DownloadCurrentTrainingDataRequest: @unchecked Sendable {}
+extension Speechly_Config_V1_DownloadCurrentTrainingDataResponse: @unchecked Sendable {}
+extension Speechly_Config_V1_DownloadCurrentTrainingDataResponse.ContentType: @unchecked Sendable {}
+extension Speechly_Config_V1_App: @unchecked Sendable {}
+extension Speechly_Config_V1_App.Status: @unchecked Sendable {}
+#endif  // swift(>=5.5) && canImport(_Concurrency)
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.config.v1"
@@ -1199,9 +1233,13 @@ extension Speechly_Config_V1_GetAppResponse: SwiftProtobuf.Message, SwiftProtobu
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if let v = self._app {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._app {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    }
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1233,12 +1271,16 @@ extension Speechly_Config_V1_CreateAppRequest: SwiftProtobuf.Message, SwiftProto
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.project.isEmpty {
       try visitor.visitSingularStringField(value: self.project, fieldNumber: 1)
     }
-    if let v = self._app {
+    try { if let v = self._app {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    }
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1269,9 +1311,13 @@ extension Speechly_Config_V1_CreateAppResponse: SwiftProtobuf.Message, SwiftProt
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if let v = self._app {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._app {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    }
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1301,9 +1347,13 @@ extension Speechly_Config_V1_UpdateAppRequest: SwiftProtobuf.Message, SwiftProto
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if let v = self._app {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    try { if let v = self._app {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-    }
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1578,6 +1628,10 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.id.isEmpty {
       try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
     }
@@ -1608,9 +1662,9 @@ extension Speechly_Config_V1_App: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     if !self.tags.isEmpty {
       try visitor.visitRepeatedStringField(value: self.tags, fieldNumber: 10)
     }
-    if let v = self._deployedAtTime {
+    try { if let v = self._deployedAtTime {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
-    }
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 

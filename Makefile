@@ -1,5 +1,6 @@
 PROTOS    := $(shell find proto -type f -name *.proto)
 PROTOTOOL := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR)/proto langma/prototool
+PROTOC    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoint protoc langma/prototool
 PROTODOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoint protoc pseudomuto/protoc-gen-doc
 CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) ferrarimarco/github-changelog-generator
 PYTHON    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) python:3-slim python
@@ -16,6 +17,7 @@ ifndef VERSION
 endif
 	@export VERSION
 	@$(PROTOTOOL) generate
+	@$(PROTOC) --include_imports --include_source_info --proto_path=proto/ --descriptor_set_out=speechly_api.pb $(PROTOS)
 	@$(CHANGELOG) --token $(GITHUB_TOKEN) --user speechly --project api --future-release $(VERSION)
 
 docs/%.json: $(PROTOS)
