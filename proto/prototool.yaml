@@ -62,6 +62,21 @@ lint:
       - FILE_OPTIONS_GO_PACKAGE_NOT_LONG_FORM
 
   ignores:
+    - id: FILE_OPTIONS_REQUIRE_CSHARP_NAMESPACE
+      files:
+        - google
+    - id: FILE_OPTIONS_REQUIRE_PHP_NAMESPACE
+      files:
+        - google
+    - id: PACKAGE_MAJOR_BETA_VERSIONED
+      files:
+        - google
+    - id: FILE_OPTIONS_EQUAL_OBJC_CLASS_PREFIX_ABBR
+      files:
+        - google
+    - id: MESSAGES_HAVE_SENTENCE_COMMENTS_EXCEPT_REQUEST_RESPONSE_TYPES
+      files:
+        - google
     - id: ENUM_FIELD_PREFIXES_EXCEPT_MESSAGE
       files:
         - speechly/sal/v1/compiler.proto
