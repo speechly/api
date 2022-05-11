@@ -96,7 +96,9 @@ The Speechly API supports automatic transcoding for HTTP/1.1 REST access with JS
 
 The transcoding is implemented in [envoy filter](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/grpc_json_transcoder_filter.html) and mostly use the default bindings. To call the `IdentityAPI`, for example:
 
-  curl https://api.speechly.com/speechly.identity.v2.IdentityAPI/Login -d '{"deviceId": "$DEVICEID", "application": {"appId": "$APPID"}}'
+```
+curl https://api.speechly.com/speechly.identity.v2.IdentityAPI/Login -d '{"deviceId": "$DEVICEID", "application": {"appId": "$APPID"}}'
+```
 
 The mapping for transcoding is implemented by generating the _descriptor set_ file, which is located in this repository (speechly_api.pb). This file is also usable in `grpcurl` to do intelligent type mapping for command line gRPC access.
 
