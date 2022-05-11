@@ -1,0 +1,138 @@
+syntax = "proto3";
+
+package speechly.slu.v1;
+
+// Run SLU operations on a stream of audio sources.
+service BatchAPI {
+  // Create a new background SLU operation for a single audio source.
+  // An audio source can be
+  //  - audio chunks sent via repeated ProcessAudioRequests, or
+  //  - URI of a file, reachable from the API
+  //  The response includes an `id` that is used to match the operation to the
+  //  results. A `reference` can also be set,
+  rpc ProcessAudio(stream ProcessAudioRequest) returns (ProcessAudioResponse);
+  // Query the status of a given batch operation.
+  rpc QueryStatus(QueryStatusRequest) returns (QueryStatusResponse);
+}
+
+message ProcessAudioRequest {
+  // The processing context, Speechly application ID.
+  // Required.
+  string app_id = 1;
+  // Audio configuration.
+  // Required.
+  AudioConfiguration config = 2;
+
+  // The data (audio) source for the operation.
+  oneof source {
+    // Raw audio data.
+    bytes audio = 3;
+    // URI of audio data.
+    string uri = 4;
+  }
+
+  // The target for the results of the operation.
+  oneof destination {
+    // The results JSON will be posted to the given URI. If not given, the
+    // results must be fetched using `QueryStatus`.
+    // Optional.
+    string results_uri = 5;
+  }
+
+  // Reference id for the operation. For example an identifier of the source
+  // system.
+  // Optional.
+  string reference = 6;
+
+  // Additional operation specific options.
+  // Optional.
+  repeated Option options = 7;
+}
+
+message ProcessAudioResponse {
+  // The details of the created operation.
+  Operation operation = 1;
+}
+
+// Query the status of an operation. Either `id` or `reference` must be given.
+message QueryStatusRequest {
+  // ID of an audio processing operation.
+  string id = 1;
+  // Reference ID of an operation.
+  string reference = 2;
+}
+
+message QueryStatusResponse {
+  // The details of the audio processing operation.
+  Operation operation = 1;
+}
+
+// Special options to change the default behaviour of the SLU for all logical
+// audio segment
+message AudioConfiguration {
+  // The encoding of the audio data sent in the stream.
+  enum Encoding {
+    ENCODING_UNDEFINED = 0;
+    // Uncompressed 16-bit signed little-endian samples (Linear PCM).
+    ENCODING_LINEAR16 = 1;
+  }
+  // The encoding of the audio data sent in the stream.
+  // Required.
+  Encoding encoding = 1;
+  // The number of channels in the input audio data.
+  // Required.
+  int32 channels = 2;
+  // Sample rate in Hertz of the audio data sent in the stream (e.g. 16000).
+  // Required.
+  int32 sample_rate_hertz = 3;
+  // The language(s) of the audio sent in the stream as a BCP-47 language tag
+  // (e.g. "en-US"). Defaults to the target application language.
+  // Optional.
+  repeated string language_codes = 4;
+}
+
+message Operation {
+  // The status of the operation.
+  enum Status {
+    STATUS_UNDEFINED = 0;
+    STATUS_QUEUED = 1;
+    STATUS_PROCESSING = 2;
+    STATUS_DONE = 3;
+    STATUS_ERROR = 4;
+  }
+  // The id of the operation.
+  string id = 1;
+  // The reference id of the operation, if given.
+  string reference = 2;
+  // The current status of the operation.
+  Status status = 3;
+  // The language code of the detected language.
+  string language_code = 4;
+  // If the operation status is STATUS_DONE and the destination is not set,
+  // the results of the operation.
+  repeated Transcript transcripts = 5;
+}
+
+// Describes an SLU transcript.
+// A transcript is a speech-to-text element of the phrase, i.e. a word
+// recognised from the audio.
+message Transcript {
+  // The word recongised from the audio.
+  string word = 1;
+  // The position of the word in the whole phrase, zero-based.
+  int32 index = 2;
+  // The end time of the word in the audio, in milliseconds from the beginning
+  // of the audio.
+  int32 start_time = 3;
+  // The end time of the word in the audio, in milliseconds from the beginning
+  // of the audio.
+  int32 end_time = 4;
+}
+
+// Option to change the default behaviour of the SLU.
+message Option {
+  // The key of the option to be set.
+  string key = 1;
+  // The values to set the option to.
+  repeated string value = 2;
+}
