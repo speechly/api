@@ -5,7 +5,7 @@ package speechly.slu.v1;
 option csharp_namespace = "Speechly.Slu.V1";
 option go_package = "speechly/slu/v1;sluv1";
 option java_multiple_files = true;
-option java_outer_classname = "SluProto";
+option java_outer_classname = "BatchApiProto";
 option java_package = "com.speechly.slu.v1";
 option objc_class_prefix = "SSX";
 option php_namespace = "Speechly\\Slu\\V1";
@@ -75,12 +75,11 @@ message QueryStatusResponse {
   Operation operation = 1;
 }
 
-// Special options to change the default behaviour of the SLU for all logical
-// audio segment
+// Describes the audio content of the batch operation.
 message AudioConfiguration {
   // The encoding of the audio data sent in the stream.
   enum Encoding {
-    ENCODING_UNDEFINED = 0;
+    ENCODING_INVALID = 0;
     // Uncompressed 16-bit signed little-endian samples (Linear PCM).
     ENCODING_LINEAR16 = 1;
   }
@@ -99,10 +98,11 @@ message AudioConfiguration {
   repeated string language_codes = 4;
 }
 
+// Describes a single batch operation.
 message Operation {
   // The status of the operation.
   enum Status {
-    STATUS_UNDEFINED = 0;
+    STATUS_INVALID = 0;
     STATUS_QUEUED = 1;
     STATUS_PROCESSING = 2;
     STATUS_DONE = 3;
