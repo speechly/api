@@ -33,7 +33,8 @@ public struct Speechly_Identity_V2_LoginRequest {
 
   public var scope: Speechly_Identity_V2_LoginRequest.OneOf_Scope? = nil
 
-  /// Login scope application: use the given application context for all utterances.
+  /// Login scope application: use the given application context for all
+  /// utterances.
   public var application: Speechly_Identity_V2_ApplicationScope {
     get {
       if case .application(let v)? = scope {return v}
@@ -55,7 +56,8 @@ public struct Speechly_Identity_V2_LoginRequest {
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_Scope: Equatable {
-    /// Login scope application: use the given application context for all utterances.
+    /// Login scope application: use the given application context for all
+    /// utterances.
     case application(Speechly_Identity_V2_ApplicationScope)
     /// Login scope project: define the target application per utterance.
     /// The target applications must be located in the same project.
@@ -91,9 +93,10 @@ public struct Speechly_Identity_V2_LoginResponse {
   // methods supported on all messages.
 
   /// Access token which can used for the Speechly API.
-  /// The token is a JSON Web Token and includes all standard claims, as well as custom ones.
-  /// The token has expiration, so you should check whether it has expired before using it.
-  /// It is safe to cache the token for future use until its expiration date.
+  /// The token is a JSON Web Token and includes all standard claims, as well as
+  /// custom ones. The token has expiration, so you should check whether it has
+  /// expired before using it. It is safe to cache the token for future use until
+  /// its expiration date.
   public var token: String = String()
 
   /// Amount of seconds the returned token is valid.

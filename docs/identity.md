@@ -2,7 +2,8 @@
 <a name="speechly.identity.v2.IdentityAPI"></a>
 # speechly.identity.v2.IdentityAPI
 
-Speechly Identity API is used for creating access tokens for the Speechly APIs.
+Speechly Identity API is used for creating access tokens for the Speechly
+APIs.
 
 ## Methods
 
@@ -41,7 +42,7 @@ Top-level message sent by the client for the `Login` method.
 | name | type | description |
 | ---- | ---- | ----------- |
 | device_id | [string](#string) | A unique end-user device identifier.<br/>Must be a `UUID`.<br/>Required. |
-| application | [ApplicationScope](#speechly.identity.v2.ApplicationScope) | Login scope application: use the given application context for all utterances. |
+| application | [ApplicationScope](#speechly.identity.v2.ApplicationScope) | Login scope application: use the given application context for all<br/>utterances. |
 | project | [ProjectScope](#speechly.identity.v2.ProjectScope) | Login scope project: define the target application per utterance.<br/>The target applications must be located in the same project. |
 
 
@@ -54,7 +55,7 @@ Top-level message returned by the server for the `Login` method.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| token | [string](#string) | Access token which can used for the Speechly API.<br/>The token is a JSON Web Token and includes all standard claims, as well as custom ones.<br/>The token has expiration, so you should check whether it has expired before using it.<br/>It is safe to cache the token for future use until its expiration date. |
+| token | [string](#string) | Access token which can used for the Speechly API.<br/>The token is a JSON Web Token and includes all standard claims, as well as<br/>custom ones. The token has expiration, so you should check whether it has<br/>expired before using it. It is safe to cache the token for future use until<br/>its expiration date. |
 | valid_for_s | [uint32](#uint32) | Amount of seconds the returned token is valid. |
 | expires_at_epoch | [uint64](#uint64) | Token expiration time in seconds after 1970-01-01 ("unix time"). |
 | expires_at | [string](#string) | ISO-formatted UTC timestamp of the expiration time of the returned token. |

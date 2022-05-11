@@ -40,7 +40,8 @@ namespace speechly {
 namespace identity {
 namespace v2 {
 
-// Speechly Identity API is used for creating access tokens for the Speechly APIs.
+// Speechly Identity API is used for creating access tokens for the Speechly
+// APIs.
 class IdentityAPI final {
  public:
   static constexpr char const* service_full_name() {
