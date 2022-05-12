@@ -10,19 +10,22 @@ option java_package = "com.speechly.slu.v1";
 option objc_class_prefix = "SSX";
 option php_namespace = "Speechly\\Slu\\V1";
 
-// Run SLU operations on a stream of audio sources.
+// Run SLU operations on audio sources without actively waiting the results.
 service BatchAPI {
   // Create a new background SLU operation for a single audio source.
   // An audio source can be
   //  - audio chunks sent via repeated ProcessAudioRequests, or
   //  - URI of a file, reachable from the API
   //  The response includes an `id` that is used to match the operation to the
-  //  results. A `reference` can also be set,
+  //  results. A `reference` identifier can also be set.
   rpc ProcessAudio(stream ProcessAudioRequest) returns (ProcessAudioResponse);
   // Query the status of a given batch operation.
   rpc QueryStatus(QueryStatusRequest) returns (QueryStatusResponse);
 }
 
+// If sending a stream of `ProcessAudioRequest` messages, the first one must
+// contain the `AudioConfiguration` for the audio data. The `config` is ignored
+// in the following messages.
 message ProcessAudioRequest {
   // The processing context, Speechly application ID.
   // Required.
