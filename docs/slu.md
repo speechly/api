@@ -1,4 +1,17 @@
 
+<a name="speechly.slu.v1.BatchAPI"></a>
+# speechly.slu.v1.BatchAPI
+
+Run SLU operations on a stream of audio sources.
+
+## Methods
+
+| name | request | response | description |
+| ---- | ------- | -------- | ----------- |
+| ProcessAudio | [ProcessAudioRequest stream](#speechly.slu.v1.ProcessAudioRequest) | [ProcessAudioResponse](#speechly.slu.v1.ProcessAudioResponse) | Create a new background SLU operation for a single audio source.<br/>An audio source can be<br/> - audio chunks sent via repeated ProcessAudioRequests, or<br/> - URI of a file, reachable from the API<br/> The response includes an `id` that is used to match the operation to the<br/> results. A `reference` can also be set, |
+| QueryStatus | [QueryStatusRequest](#speechly.slu.v1.QueryStatusRequest) | [QueryStatusResponse](#speechly.slu.v1.QueryStatusResponse) | Query the status of a given batch operation. |
+
+
 <a name="speechly.slu.v1.SLU"></a>
 # speechly.slu.v1.SLU
 
@@ -43,8 +56,15 @@ res, err := speechlyWLUClient.Text(ctx, req)
 
 ## Messages
 
+- [AudioConfiguration](#speechly.slu.v1.AudioConfiguration)
+- [Operation](#speechly.slu.v1.Operation)
 - [Option](#speechly.slu.v1.SLUConfig.Option)
 - [Option](#speechly.slu.v1.SLUStart.Option)
+- [Option](#speechly.slu.v1.Option)
+- [ProcessAudioRequest](#speechly.slu.v1.ProcessAudioRequest)
+- [ProcessAudioResponse](#speechly.slu.v1.ProcessAudioResponse)
+- [QueryStatusRequest](#speechly.slu.v1.QueryStatusRequest)
+- [QueryStatusResponse](#speechly.slu.v1.QueryStatusResponse)
 - [RoundTripMeasurementRequest](#speechly.slu.v1.RoundTripMeasurementRequest)
 - [RoundTripMeasurementResponse](#speechly.slu.v1.RoundTripMeasurementResponse)
 - [SLUConfig](#speechly.slu.v1.SLUConfig)
@@ -64,12 +84,44 @@ res, err := speechlyWLUClient.Text(ctx, req)
 - [SLUTranscript](#speechly.slu.v1.SLUTranscript)
 - [TextsRequest](#speechly.slu.v1.TextsRequest)
 - [TextsResponse](#speechly.slu.v1.TextsResponse)
+- [Transcript](#speechly.slu.v1.Transcript)
 - [WLUEntity](#speechly.slu.v1.WLUEntity)
 - [WLUIntent](#speechly.slu.v1.WLUIntent)
 - [WLURequest](#speechly.slu.v1.WLURequest)
 - [WLUResponse](#speechly.slu.v1.WLUResponse)
 - [WLUSegment](#speechly.slu.v1.WLUSegment)
 - [WLUToken](#speechly.slu.v1.WLUToken)
+
+
+<a name="speechly.slu.v1.AudioConfiguration"></a>
+### AudioConfiguration
+
+Describes the audio content of the batch operation.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| encoding | [Encoding](#speechly.slu.v1.AudioConfiguration.Encoding) | The encoding of the audio data sent in the stream.<br/>Required. |
+| channels | [int32](#int32) | The number of channels in the input audio data.<br/>Required. |
+| sample_rate_hertz | [int32](#int32) | Sample rate in Hertz of the audio data sent in the stream (e.g. 16000).<br/>Required. |
+| language_codes | [string](#string) | The language(s) of the audio sent in the stream as a BCP-47 language tag<br/>(e.g. "en-US"). Defaults to the target application language.<br/>Optional. |
+
+
+<a name="speechly.slu.v1.Operation"></a>
+### Operation
+
+Describes a single batch operation.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| id | [string](#string) | The id of the operation. |
+| reference | [string](#string) | The reference id of the operation, if given. |
+| status | [Status](#speechly.slu.v1.Operation.Status) | The current status of the operation. |
+| language_code | [string](#string) | The language code of the detected language. |
+| transcripts | [Transcript](#speechly.slu.v1.Transcript) | If the operation status is STATUS_DONE and the destination is not set,<br/>the results of the operation. |
 
 
 <a name="speechly.slu.v1.SLUConfig.Option"></a>
@@ -96,6 +148,74 @@ Option to change the default behaviour of the SLU.
 | ---- | ---- | ----------- |
 | key | [string](#string) | The key of the option to be set. |
 | value | [string](#string) | The values to set the option to. |
+
+
+<a name="speechly.slu.v1.Option"></a>
+### Option
+
+Option to change the default behaviour of the SLU.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| key | [string](#string) | The key of the option to be set. |
+| value | [string](#string) | The values to set the option to. |
+
+
+<a name="speechly.slu.v1.ProcessAudioRequest"></a>
+### ProcessAudioRequest
+
+
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| app_id | [string](#string) | The processing context, Speechly application ID.<br/>Required. |
+| config | [AudioConfiguration](#speechly.slu.v1.AudioConfiguration) | Audio configuration.<br/>Required. |
+| audio | [bytes](#bytes) | Raw audio data. |
+| uri | [string](#string) | URI of audio data. |
+| results_uri | [string](#string) | The results JSON will be posted to the given URI. If not given, the<br/>results must be fetched using `QueryStatus`.<br/>Optional. |
+| reference | [string](#string) | Reference id for the operation. For example an identifier of the source<br/>system.<br/>Optional. |
+| options | [Option](#speechly.slu.v1.Option) | Additional operation specific options.<br/>Optional. |
+
+
+<a name="speechly.slu.v1.ProcessAudioResponse"></a>
+### ProcessAudioResponse
+
+
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| operation | [Operation](#speechly.slu.v1.Operation) | The details of the created operation. |
+
+
+<a name="speechly.slu.v1.QueryStatusRequest"></a>
+### QueryStatusRequest
+
+Query the status of an operation. Either `id` or `reference` must be given.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| id | [string](#string) | ID of an audio processing operation. |
+| reference | [string](#string) | Reference ID of an operation. |
+
+
+<a name="speechly.slu.v1.QueryStatusResponse"></a>
+### QueryStatusResponse
+
+
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| operation | [Operation](#speechly.slu.v1.Operation) | The details of the audio processing operation. |
 
 
 <a name="speechly.slu.v1.RoundTripMeasurementRequest"></a>
@@ -380,6 +500,23 @@ Top-level message sent by the server for the `Texts` method.
 | name | type | description |
 | ---- | ---- | ----------- |
 | responses | [WLUResponse](#speechly.slu.v1.WLUResponse) | List of WLUResponses.<br/>Required. |
+
+
+<a name="speechly.slu.v1.Transcript"></a>
+### Transcript
+
+Describes an SLU transcript.
+A transcript is a speech-to-text element of the phrase, i.e. a word
+recognised from the audio.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| word | [string](#string) | The word recongised from the audio. |
+| index | [int32](#int32) | The position of the word in the whole phrase, zero-based. |
+| start_time | [int32](#int32) | The end time of the word in the audio, in milliseconds from the beginning<br/>of the audio. |
+| end_time | [int32](#int32) | The end time of the word in the audio, in milliseconds from the beginning<br/>of the audio. |
 
 
 <a name="speechly.slu.v1.WLUEntity"></a>
