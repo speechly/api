@@ -55,6 +55,8 @@ class BatchAPI final {
     //  - URI of a file, reachable from the API
     //  The response includes an `id` that is used to match the operation to the
     //  results. A `reference` identifier can also be set.
+    //  The destination can be a webhook URL, in which case the results are posted
+    //  there when they are ready. The payload is an instance of `Operation`.
     std::unique_ptr< ::grpc::ClientWriterInterface< ::speechly::slu::v1::ProcessAudioRequest>> ProcessAudio(::grpc::ClientContext* context, ::speechly::slu::v1::ProcessAudioResponse* response) {
       return std::unique_ptr< ::grpc::ClientWriterInterface< ::speechly::slu::v1::ProcessAudioRequest>>(ProcessAudioRaw(context, response));
     }
@@ -65,6 +67,8 @@ class BatchAPI final {
       return std::unique_ptr< ::grpc::ClientAsyncWriterInterface< ::speechly::slu::v1::ProcessAudioRequest>>(PrepareAsyncProcessAudioRaw(context, response, cq));
     }
     // Query the status of a given batch operation.
+    // If the `ProcessAudioRequest` did not define a `results_uri` as a
+    // destination, the results are returned in the `QueryStatusResponse`.
     virtual ::grpc::Status QueryStatus(::grpc::ClientContext* context, const ::speechly::slu::v1::QueryStatusRequest& request, ::speechly::slu::v1::QueryStatusResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::slu::v1::QueryStatusResponse>> AsyncQueryStatus(::grpc::ClientContext* context, const ::speechly::slu::v1::QueryStatusRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::slu::v1::QueryStatusResponse>>(AsyncQueryStatusRaw(context, request, cq));
@@ -81,8 +85,12 @@ class BatchAPI final {
       //  - URI of a file, reachable from the API
       //  The response includes an `id` that is used to match the operation to the
       //  results. A `reference` identifier can also be set.
+      //  The destination can be a webhook URL, in which case the results are posted
+      //  there when they are ready. The payload is an instance of `Operation`.
       virtual void ProcessAudio(::grpc::ClientContext* context, ::speechly::slu::v1::ProcessAudioResponse* response, ::grpc::experimental::ClientWriteReactor< ::speechly::slu::v1::ProcessAudioRequest>* reactor) = 0;
       // Query the status of a given batch operation.
+      // If the `ProcessAudioRequest` did not define a `results_uri` as a
+      // destination, the results are returned in the `QueryStatusResponse`.
       virtual void QueryStatus(::grpc::ClientContext* context, const ::speechly::slu::v1::QueryStatusRequest* request, ::speechly::slu::v1::QueryStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void QueryStatus(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::slu::v1::QueryStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void QueryStatus(::grpc::ClientContext* context, const ::speechly::slu::v1::QueryStatusRequest* request, ::speechly::slu::v1::QueryStatusResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
@@ -154,8 +162,12 @@ class BatchAPI final {
     //  - URI of a file, reachable from the API
     //  The response includes an `id` that is used to match the operation to the
     //  results. A `reference` identifier can also be set.
+    //  The destination can be a webhook URL, in which case the results are posted
+    //  there when they are ready. The payload is an instance of `Operation`.
     virtual ::grpc::Status ProcessAudio(::grpc::ServerContext* context, ::grpc::ServerReader< ::speechly::slu::v1::ProcessAudioRequest>* reader, ::speechly::slu::v1::ProcessAudioResponse* response);
     // Query the status of a given batch operation.
+    // If the `ProcessAudioRequest` did not define a `results_uri` as a
+    // destination, the results are returned in the `QueryStatusResponse`.
     virtual ::grpc::Status QueryStatus(::grpc::ServerContext* context, const ::speechly::slu::v1::QueryStatusRequest* request, ::speechly::slu::v1::QueryStatusResponse* response);
   };
   template <class BaseClass>

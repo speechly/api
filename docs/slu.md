@@ -2,14 +2,14 @@
 <a name="speechly.slu.v1.BatchAPI"></a>
 # speechly.slu.v1.BatchAPI
 
-Run SLU operations on a stream of audio sources.
+Run SLU operations on audio sources without actively waiting the results.
 
 ## Methods
 
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
-| ProcessAudio | [ProcessAudioRequest stream](#speechly.slu.v1.ProcessAudioRequest) | [ProcessAudioResponse](#speechly.slu.v1.ProcessAudioResponse) | Create a new background SLU operation for a single audio source.<br/>An audio source can be<br/> - audio chunks sent via repeated ProcessAudioRequests, or<br/> - URI of a file, reachable from the API<br/> The response includes an `id` that is used to match the operation to the<br/> results. A `reference` can also be set, |
-| QueryStatus | [QueryStatusRequest](#speechly.slu.v1.QueryStatusRequest) | [QueryStatusResponse](#speechly.slu.v1.QueryStatusResponse) | Query the status of a given batch operation. |
+| ProcessAudio | [ProcessAudioRequest stream](#speechly.slu.v1.ProcessAudioRequest) | [ProcessAudioResponse](#speechly.slu.v1.ProcessAudioResponse) | Create a new background SLU operation for a single audio source.<br/>An audio source can be<br/> - audio chunks sent via repeated ProcessAudioRequests, or<br/> - URI of a file, reachable from the API<br/> The response includes an `id` that is used to match the operation to the<br/> results. A `reference` identifier can also be set.<br/> The destination can be a webhook URL, in which case the results are posted<br/> there when they are ready. The payload is an instance of `Operation`. |
+| QueryStatus | [QueryStatusRequest](#speechly.slu.v1.QueryStatusRequest) | [QueryStatusResponse](#speechly.slu.v1.QueryStatusResponse) | Query the status of a given batch operation.<br/>If the `ProcessAudioRequest` did not define a `results_uri` as a<br/>destination, the results are returned in the `QueryStatusResponse`. |
 
 
 <a name="speechly.slu.v1.SLU"></a>
@@ -121,6 +121,8 @@ Describes a single batch operation.
 | reference | [string](#string) | The reference id of the operation, if given. |
 | status | [Status](#speechly.slu.v1.Operation.Status) | The current status of the operation. |
 | language_code | [string](#string) | The language code of the detected language. |
+| app_id | [string](#string) | The application context for the operation. |
+| device_id | [string](#string) | The device or microphone id for the audio, if applicable. |
 | transcripts | [Transcript](#speechly.slu.v1.Transcript) | If the operation status is STATUS_DONE and the destination is not set,<br/>the results of the operation. |
 
 
@@ -166,7 +168,9 @@ Option to change the default behaviour of the SLU.
 <a name="speechly.slu.v1.ProcessAudioRequest"></a>
 ### ProcessAudioRequest
 
-
+If sending a stream of `ProcessAudioRequest` messages, the first one must
+contain the `AudioConfiguration` for the audio data. The `config` is ignored
+in the following messages.
 
 #### Fields
 

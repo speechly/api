@@ -1271,13 +1271,15 @@ class Operation final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kTranscriptsFieldNumber = 5,
+    kTranscriptsFieldNumber = 7,
     kIdFieldNumber = 1,
     kReferenceFieldNumber = 2,
     kLanguageCodeFieldNumber = 4,
+    kAppIdFieldNumber = 5,
+    kDeviceIdFieldNumber = 6,
     kStatusFieldNumber = 3,
   };
-  // repeated .speechly.slu.v1.Transcript transcripts = 5;
+  // repeated .speechly.slu.v1.Transcript transcripts = 7;
   int transcripts_size() const;
   private:
   int _internal_transcripts_size() const;
@@ -1337,6 +1339,34 @@ class Operation final :
   std::string* _internal_mutable_language_code();
   public:
 
+  // string app_id = 5;
+  void clear_app_id();
+  const std::string& app_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_app_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_app_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_app_id();
+  void set_allocated_app_id(std::string* app_id);
+  private:
+  const std::string& _internal_app_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_app_id(const std::string& value);
+  std::string* _internal_mutable_app_id();
+  public:
+
+  // string device_id = 6;
+  void clear_device_id();
+  const std::string& device_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_device_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_device_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_device_id();
+  void set_allocated_device_id(std::string* device_id);
+  private:
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(const std::string& value);
+  std::string* _internal_mutable_device_id();
+  public:
+
   // .speechly.slu.v1.Operation.Status status = 3;
   void clear_status();
   ::speechly::slu::v1::Operation_Status status() const;
@@ -1357,6 +1387,8 @@ class Operation final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reference_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_code_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr app_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_id_;
   int status_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv1_2fbatch_5fapi_2eproto;
@@ -2790,7 +2822,99 @@ inline void Operation::set_allocated_language_code(std::string* language_code) {
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.Operation.language_code)
 }
 
-// repeated .speechly.slu.v1.Transcript transcripts = 5;
+// string app_id = 5;
+inline void Operation::clear_app_id() {
+  app_id_.ClearToEmpty();
+}
+inline const std::string& Operation::app_id() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.Operation.app_id)
+  return _internal_app_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Operation::set_app_id(ArgT0&& arg0, ArgT... args) {
+ 
+ app_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.Operation.app_id)
+}
+inline std::string* Operation::mutable_app_id() {
+  std::string* _s = _internal_mutable_app_id();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.Operation.app_id)
+  return _s;
+}
+inline const std::string& Operation::_internal_app_id() const {
+  return app_id_.Get();
+}
+inline void Operation::_internal_set_app_id(const std::string& value) {
+  
+  app_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* Operation::_internal_mutable_app_id() {
+  
+  return app_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Operation::release_app_id() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.Operation.app_id)
+  return app_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void Operation::set_allocated_app_id(std::string* app_id) {
+  if (app_id != nullptr) {
+    
+  } else {
+    
+  }
+  app_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), app_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.Operation.app_id)
+}
+
+// string device_id = 6;
+inline void Operation::clear_device_id() {
+  device_id_.ClearToEmpty();
+}
+inline const std::string& Operation::device_id() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.Operation.device_id)
+  return _internal_device_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Operation::set_device_id(ArgT0&& arg0, ArgT... args) {
+ 
+ device_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.Operation.device_id)
+}
+inline std::string* Operation::mutable_device_id() {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.Operation.device_id)
+  return _s;
+}
+inline const std::string& Operation::_internal_device_id() const {
+  return device_id_.Get();
+}
+inline void Operation::_internal_set_device_id(const std::string& value) {
+  
+  device_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* Operation::_internal_mutable_device_id() {
+  
+  return device_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* Operation::release_device_id() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.Operation.device_id)
+  return device_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void Operation::set_allocated_device_id(std::string* device_id) {
+  if (device_id != nullptr) {
+    
+  } else {
+    
+  }
+  device_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), device_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.Operation.device_id)
+}
+
+// repeated .speechly.slu.v1.Transcript transcripts = 7;
 inline int Operation::_internal_transcripts_size() const {
   return transcripts_.size();
 }

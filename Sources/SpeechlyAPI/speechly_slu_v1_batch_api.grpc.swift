@@ -53,6 +53,8 @@ extension Speechly_Slu_V1_BatchAPIClientProtocol {
   ///  - URI of a file, reachable from the API
   ///  The response includes an `id` that is used to match the operation to the
   ///  results. A `reference` identifier can also be set.
+  ///  The destination can be a webhook URL, in which case the results are posted
+  ///  there when they are ready. The payload is an instance of `Operation`.
   ///
   /// Callers should use the `send` method on the returned object to send messages
   /// to the server. The caller should send an `.end` after the final message has been sent.
@@ -71,6 +73,8 @@ extension Speechly_Slu_V1_BatchAPIClientProtocol {
   }
 
   /// Query the status of a given batch operation.
+  /// If the `ProcessAudioRequest` did not define a `results_uri` as a
+  /// destination, the results are returned in the `QueryStatusResponse`.
   ///
   /// - Parameters:
   ///   - request: Request to send to QueryStatus.
@@ -132,9 +136,13 @@ public protocol Speechly_Slu_V1_BatchAPIProvider: CallHandlerProvider {
   ///  - URI of a file, reachable from the API
   ///  The response includes an `id` that is used to match the operation to the
   ///  results. A `reference` identifier can also be set.
+  ///  The destination can be a webhook URL, in which case the results are posted
+  ///  there when they are ready. The payload is an instance of `Operation`.
   func processAudio(context: UnaryResponseCallContext<Speechly_Slu_V1_ProcessAudioResponse>) -> EventLoopFuture<(StreamEvent<Speechly_Slu_V1_ProcessAudioRequest>) -> Void>
 
   /// Query the status of a given batch operation.
+  /// If the `ProcessAudioRequest` did not define a `results_uri` as a
+  /// destination, the results are returned in the `QueryStatusResponse`.
   func queryStatus(request: Speechly_Slu_V1_QueryStatusRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Slu_V1_QueryStatusResponse>
 }
 

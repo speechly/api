@@ -293,6 +293,12 @@ public struct Speechly_Slu_V1_Operation {
   /// The language code of the detected language.
   public var languageCode: String = String()
 
+  /// The application context for the operation.
+  public var appID: String = String()
+
+  /// The device or microphone id for the audio, if applicable.
+  public var deviceID: String = String()
+
   /// If the operation status is STATUS_DONE and the destination is not set,
   /// the results of the operation.
   public var transcripts: [Speechly_Slu_V1_Transcript] = []
@@ -689,7 +695,9 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     2: .same(proto: "reference"),
     3: .same(proto: "status"),
     4: .standard(proto: "language_code"),
-    5: .same(proto: "transcripts"),
+    5: .standard(proto: "app_id"),
+    6: .standard(proto: "device_id"),
+    7: .same(proto: "transcripts"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -702,7 +710,9 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
       case 2: try { try decoder.decodeSingularStringField(value: &self.reference) }()
       case 3: try { try decoder.decodeSingularEnumField(value: &self.status) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.languageCode) }()
-      case 5: try { try decoder.decodeRepeatedMessageField(value: &self.transcripts) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.appID) }()
+      case 6: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
+      case 7: try { try decoder.decodeRepeatedMessageField(value: &self.transcripts) }()
       default: break
       }
     }
@@ -721,8 +731,14 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if !self.languageCode.isEmpty {
       try visitor.visitSingularStringField(value: self.languageCode, fieldNumber: 4)
     }
+    if !self.appID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 5)
+    }
+    if !self.deviceID.isEmpty {
+      try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 6)
+    }
     if !self.transcripts.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.transcripts, fieldNumber: 5)
+      try visitor.visitRepeatedMessageField(value: self.transcripts, fieldNumber: 7)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -732,6 +748,8 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if lhs.reference != rhs.reference {return false}
     if lhs.status != rhs.status {return false}
     if lhs.languageCode != rhs.languageCode {return false}
+    if lhs.appID != rhs.appID {return false}
+    if lhs.deviceID != rhs.deviceID {return false}
     if lhs.transcripts != rhs.transcripts {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

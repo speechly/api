@@ -28,8 +28,12 @@ type BatchAPIClient interface {
 	//  - URI of a file, reachable from the API
 	//  The response includes an `id` that is used to match the operation to the
 	//  results. A `reference` identifier can also be set.
+	//  The destination can be a webhook URL, in which case the results are posted
+	//  there when they are ready. The payload is an instance of `Operation`.
 	ProcessAudio(ctx context.Context, opts ...grpc.CallOption) (BatchAPI_ProcessAudioClient, error)
 	// Query the status of a given batch operation.
+	// If the `ProcessAudioRequest` did not define a `results_uri` as a
+	// destination, the results are returned in the `QueryStatusResponse`.
 	QueryStatus(ctx context.Context, in *QueryStatusRequest, opts ...grpc.CallOption) (*QueryStatusResponse, error)
 }
 
@@ -94,8 +98,12 @@ type BatchAPIServer interface {
 	//  - URI of a file, reachable from the API
 	//  The response includes an `id` that is used to match the operation to the
 	//  results. A `reference` identifier can also be set.
+	//  The destination can be a webhook URL, in which case the results are posted
+	//  there when they are ready. The payload is an instance of `Operation`.
 	ProcessAudio(BatchAPI_ProcessAudioServer) error
 	// Query the status of a given batch operation.
+	// If the `ProcessAudioRequest` did not define a `results_uri` as a
+	// destination, the results are returned in the `QueryStatusResponse`.
 	QueryStatus(context.Context, *QueryStatusRequest) (*QueryStatusResponse, error)
 	mustEmbedUnimplementedBatchAPIServer()
 }
