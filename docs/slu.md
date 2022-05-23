@@ -58,9 +58,9 @@ res, err := speechlyWLUClient.Text(ctx, req)
 
 - [AudioConfiguration](#speechly.slu.v1.AudioConfiguration)
 - [Operation](#speechly.slu.v1.Operation)
+- [Option](#speechly.slu.v1.Option)
 - [Option](#speechly.slu.v1.SLUConfig.Option)
 - [Option](#speechly.slu.v1.SLUStart.Option)
-- [Option](#speechly.slu.v1.Option)
 - [ProcessAudioRequest](#speechly.slu.v1.ProcessAudioRequest)
 - [ProcessAudioResponse](#speechly.slu.v1.ProcessAudioResponse)
 - [QueryStatusRequest](#speechly.slu.v1.QueryStatusRequest)
@@ -126,6 +126,19 @@ Describes a single batch operation.
 | transcripts | [Transcript](#speechly.slu.v1.Transcript) | If the operation status is STATUS_DONE and the destination is not set,<br/>the results of the operation. |
 
 
+<a name="speechly.slu.v1.Option"></a>
+### Option
+
+Option to change the default behaviour of the SLU.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| key | [string](#string) | The key of the option to be set. |
+| value | [string](#string) | The values to set the option to. |
+
+
 <a name="speechly.slu.v1.SLUConfig.Option"></a>
 ### SLUConfig.Option
 
@@ -141,19 +154,6 @@ Option to change the default behaviour of the SLU.
 
 <a name="speechly.slu.v1.SLUStart.Option"></a>
 ### SLUStart.Option
-
-Option to change the default behaviour of the SLU.
-
-#### Fields
-
-| name | type | description |
-| ---- | ---- | ----------- |
-| key | [string](#string) | The key of the option to be set. |
-| value | [string](#string) | The values to set the option to. |
-
-
-<a name="speechly.slu.v1.Option"></a>
-### Option
 
 Option to change the default behaviour of the SLU.
 

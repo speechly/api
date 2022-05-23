@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.8.0](https://github.com/speechly/api/tree/0.8.0) (2022-05-23)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.7.0...0.8.0)
+
+**Merged pull requests:**
+
+- Add Batch API [\#40](https://github.com/speechly/api/pull/40) ([langma](https://github.com/langma))
+- Create protobuf descriptor set file for gRPC-JSON transcoding [\#39](https://github.com/speechly/api/pull/39) ([langma](https://github.com/langma))
+- add python example [\#38](https://github.com/speechly/api/pull/38) ([aukkonen](https://github.com/aukkonen))
+
 ## [0.7.0](https://github.com/speechly/api/tree/0.7.0) (2022-05-03)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.6.0...0.7.0)
@@ -146,7 +156,6 @@
 - batch size and seed to sal compiler compile [\#9](https://github.com/speechly/api/pull/9) ([samutamm](https://github.com/samutamm))
 - Use Java version 1.8 as target for Kotlin package [\#8](https://github.com/speechly/api/pull/8) ([radiohead](https://github.com/radiohead))
 - Bump ini from 1.3.5 to 1.3.7 in /javascript [\#7](https://github.com/speechly/api/pull/7) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Add an RPC for extracting SAL examples to SAL compiler service [\#5](https://github.com/speechly/api/pull/5) ([samutamm](https://github.com/samutamm))
 
 ## [0.0.5](https://github.com/speechly/api/tree/0.0.5) (2020-12-11)
 
@@ -159,6 +168,10 @@
 ## [0.0.4](https://github.com/speechly/api/tree/0.0.4) (2020-12-08)
 
 [Full Changelog](https://github.com/speechly/api/compare/v0.0.3...0.0.4)
+
+**Merged pull requests:**
+
+- Add an RPC for extracting SAL examples to SAL compiler service [\#5](https://github.com/speechly/api/pull/5) ([samutamm](https://github.com/samutamm))
 
 ## [v0.0.3](https://github.com/speechly/api/tree/v0.0.3) (2020-12-07)
 
