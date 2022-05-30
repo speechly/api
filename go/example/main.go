@@ -131,10 +131,11 @@ func (c *SpeechlyClient) StreamSLU(ctx context.Context, audio io.Reader) error {
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		panic("appId is needed as a parameter")
+	if len(os.Args) != 3 {
+		panic("mandatory parameters missing: [appId] [wav]")
 	}
 	appID := os.Args[1]
+	wavFile := os.Args[2]
 
 	deviceID := "f443dea4-3d97-439d-bbe8-d91d734ef1f0"
 	ctx := context.Background()
@@ -146,7 +147,7 @@ func main() {
 	}
 
 	// open a wav file for testing
-	infile, err := os.Open("test.wav")
+	infile, err := os.Open(wavFile)
 	if err != nil {
 		panic(fmt.Errorf("could not open wav file: %w", err))
 	}
