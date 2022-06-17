@@ -19,6 +19,8 @@ service AnalyticsAPI {
     rpc UtteranceStatistics(UtteranceStatisticsRequest) returns (UtteranceStatisticsResponse);
     // Get a sample of recent utterances.
     rpc Utterances(UtterancesRequest) returns (UtterancesResponse);
+    // Register a data point of an on-device utterance.
+    rpc RegisterUtterance(RegisterUtteranceRequest) returns (RegisterUtteranceResponse);
 }
 
 // Includes keys for the UtteranceStatistics method.
@@ -85,4 +87,20 @@ message UtterancesRequest {
 message UtterancesResponse {
     // Sample of utterances.
     repeated Utterance utterances = 1;
+}
+
+// A single data point of an utterance recognized by Speechly On Device.
+message RegisterUtteranceRequest {
+    string app_id = 1;
+    // device_id of the utterance.
+    string device_id = 2;
+    // Length of the recognized utterance in seconds.
+    string utterance_length_seconds = 3;
+    // Length of the recognized utterance in characters.
+    string utterance_length_chars = 4;
+    // Information about the on-device decoder.
+    DecoderInfo decoder_info = 5;
+}
+
+message RegisterUtteranceResponse {
 }
