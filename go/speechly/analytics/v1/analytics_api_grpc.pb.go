@@ -26,6 +26,8 @@ type AnalyticsAPIClient interface {
 	UtteranceStatistics(ctx context.Context, in *UtteranceStatisticsRequest, opts ...grpc.CallOption) (*UtteranceStatisticsResponse, error)
 	// Get a sample of recent utterances.
 	Utterances(ctx context.Context, in *UtterancesRequest, opts ...grpc.CallOption) (*UtterancesResponse, error)
+	// Register a data point of an on-device utterance.
+	RegisterUtterance(ctx context.Context, in *RegisterUtteranceRequest, opts ...grpc.CallOption) (*RegisterUtteranceResponse, error)
 }
 
 type analyticsAPIClient struct {
@@ -54,6 +56,15 @@ func (c *analyticsAPIClient) Utterances(ctx context.Context, in *UtterancesReque
 	return out, nil
 }
 
+func (c *analyticsAPIClient) RegisterUtterance(ctx context.Context, in *RegisterUtteranceRequest, opts ...grpc.CallOption) (*RegisterUtteranceResponse, error) {
+	out := new(RegisterUtteranceResponse)
+	err := c.cc.Invoke(ctx, "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterance", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AnalyticsAPIServer is the server API for AnalyticsAPI service.
 // All implementations must embed UnimplementedAnalyticsAPIServer
 // for forward compatibility
@@ -62,6 +73,8 @@ type AnalyticsAPIServer interface {
 	UtteranceStatistics(context.Context, *UtteranceStatisticsRequest) (*UtteranceStatisticsResponse, error)
 	// Get a sample of recent utterances.
 	Utterances(context.Context, *UtterancesRequest) (*UtterancesResponse, error)
+	// Register a data point of an on-device utterance.
+	RegisterUtterance(context.Context, *RegisterUtteranceRequest) (*RegisterUtteranceResponse, error)
 	mustEmbedUnimplementedAnalyticsAPIServer()
 }
 
@@ -74,6 +87,9 @@ func (UnimplementedAnalyticsAPIServer) UtteranceStatistics(context.Context, *Utt
 }
 func (UnimplementedAnalyticsAPIServer) Utterances(context.Context, *UtterancesRequest) (*UtterancesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Utterances not implemented")
+}
+func (UnimplementedAnalyticsAPIServer) RegisterUtterance(context.Context, *RegisterUtteranceRequest) (*RegisterUtteranceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterUtterance not implemented")
 }
 func (UnimplementedAnalyticsAPIServer) mustEmbedUnimplementedAnalyticsAPIServer() {}
 
@@ -124,6 +140,24 @@ func _AnalyticsAPI_Utterances_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AnalyticsAPI_RegisterUtterance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterUtteranceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AnalyticsAPIServer).RegisterUtterance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterance",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnalyticsAPIServer).RegisterUtterance(ctx, req.(*RegisterUtteranceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AnalyticsAPI_ServiceDesc is the grpc.ServiceDesc for AnalyticsAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -138,6 +172,10 @@ var AnalyticsAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Utterances",
 			Handler:    _AnalyticsAPI_Utterances_Handler,
+		},
+		{
+			MethodName: "RegisterUtterance",
+			Handler:    _AnalyticsAPI_RegisterUtterance_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

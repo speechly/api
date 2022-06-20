@@ -2,7 +2,7 @@ PROTOS    := $(shell find proto -type f -name *.proto)
 PROTOTOOL := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR)/proto langma/prototool
 PROTOC    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoint protoc langma/prototool
 PROTODOC  := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) --entrypoint protoc pseudomuto/protoc-gen-doc
-CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) ferrarimarco/github-changelog-generator
+CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) githubchangeloggenerator/github-changelog-generator
 PYTHON    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) python:3-slim python
 
 SUBDIRS   = python javascript dotnet java

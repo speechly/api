@@ -66,6 +66,14 @@ class AnalyticsAPI final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::UtterancesResponse>> PrepareAsyncUtterances(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtterancesRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::UtterancesResponse>>(PrepareAsyncUtterancesRaw(context, request, cq));
     }
+    // Register a data point of an on-device utterance.
+    virtual ::grpc::Status RegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::speechly::analytics::v1::RegisterUtteranceResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::RegisterUtteranceResponse>> AsyncRegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::RegisterUtteranceResponse>>(AsyncRegisterUtteranceRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::RegisterUtteranceResponse>> PrepareAsyncRegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::RegisterUtteranceResponse>>(PrepareAsyncRegisterUtteranceRaw(context, request, cq));
+    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
@@ -79,6 +87,11 @@ class AnalyticsAPI final {
       virtual void Utterances(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::UtterancesResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Utterances(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtterancesRequest* request, ::speechly::analytics::v1::UtterancesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void Utterances(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::UtterancesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      // Register a data point of an on-device utterance.
+      virtual void RegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RegisterUtterance(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void RegisterUtterance(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
     };
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
@@ -86,6 +99,8 @@ class AnalyticsAPI final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::UtteranceStatisticsResponse>* PrepareAsyncUtteranceStatisticsRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtteranceStatisticsRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::UtterancesResponse>* AsyncUtterancesRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtterancesRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::UtterancesResponse>* PrepareAsyncUtterancesRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtterancesRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::RegisterUtteranceResponse>* AsyncRegisterUtteranceRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::speechly::analytics::v1::RegisterUtteranceResponse>* PrepareAsyncRegisterUtteranceRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -104,6 +119,13 @@ class AnalyticsAPI final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::UtterancesResponse>> PrepareAsyncUtterances(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtterancesRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::UtterancesResponse>>(PrepareAsyncUtterancesRaw(context, request, cq));
     }
+    ::grpc::Status RegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::speechly::analytics::v1::RegisterUtteranceResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::RegisterUtteranceResponse>> AsyncRegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::RegisterUtteranceResponse>>(AsyncRegisterUtteranceRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::RegisterUtteranceResponse>> PrepareAsyncRegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::RegisterUtteranceResponse>>(PrepareAsyncRegisterUtteranceRaw(context, request, cq));
+    }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
@@ -115,6 +137,10 @@ class AnalyticsAPI final {
       void Utterances(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::UtterancesResponse* response, std::function<void(::grpc::Status)>) override;
       void Utterances(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtterancesRequest* request, ::speechly::analytics::v1::UtterancesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       void Utterances(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::UtterancesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void RegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response, std::function<void(::grpc::Status)>) override;
+      void RegisterUtterance(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response, std::function<void(::grpc::Status)>) override;
+      void RegisterUtterance(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void RegisterUtterance(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -130,8 +156,11 @@ class AnalyticsAPI final {
     ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::UtteranceStatisticsResponse>* PrepareAsyncUtteranceStatisticsRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtteranceStatisticsRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::UtterancesResponse>* AsyncUtterancesRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtterancesRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::UtterancesResponse>* PrepareAsyncUtterancesRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtterancesRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::RegisterUtteranceResponse>* AsyncRegisterUtteranceRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::RegisterUtteranceResponse>* PrepareAsyncRegisterUtteranceRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_UtteranceStatistics_;
     const ::grpc::internal::RpcMethod rpcmethod_Utterances_;
+    const ::grpc::internal::RpcMethod rpcmethod_RegisterUtterance_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -143,6 +172,8 @@ class AnalyticsAPI final {
     virtual ::grpc::Status UtteranceStatistics(::grpc::ServerContext* context, const ::speechly::analytics::v1::UtteranceStatisticsRequest* request, ::speechly::analytics::v1::UtteranceStatisticsResponse* response);
     // Get a sample of recent utterances.
     virtual ::grpc::Status Utterances(::grpc::ServerContext* context, const ::speechly::analytics::v1::UtterancesRequest* request, ::speechly::analytics::v1::UtterancesResponse* response);
+    // Register a data point of an on-device utterance.
+    virtual ::grpc::Status RegisterUtterance(::grpc::ServerContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_UtteranceStatistics : public BaseClass {
@@ -184,7 +215,27 @@ class AnalyticsAPI final {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_UtteranceStatistics<WithAsyncMethod_Utterances<Service > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_RegisterUtterance : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RegisterUtterance() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_RegisterUtterance() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUtterance(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::RegisterUtteranceRequest* /*request*/, ::speechly::analytics::v1::RegisterUtteranceResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterUtterance(::grpc::ServerContext* context, ::speechly::analytics::v1::RegisterUtteranceRequest* request, ::grpc::ServerAsyncResponseWriter< ::speechly::analytics::v1::RegisterUtteranceResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_UtteranceStatistics<WithAsyncMethod_Utterances<WithAsyncMethod_RegisterUtterance<Service > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_UtteranceStatistics : public BaseClass {
    private:
@@ -247,7 +298,38 @@ class AnalyticsAPI final {
     }
     virtual void Utterances(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::UtterancesRequest* /*request*/, ::speechly::analytics::v1::UtterancesResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
-  typedef ExperimentalWithCallbackMethod_UtteranceStatistics<ExperimentalWithCallbackMethod_Utterances<Service > > ExperimentalCallbackService;
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_RegisterUtterance : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_RegisterUtterance() {
+      ::grpc::Service::experimental().MarkMethodCallback(2,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::speechly::analytics::v1::RegisterUtteranceRequest, ::speechly::analytics::v1::RegisterUtteranceResponse>(
+          [this](::grpc::ServerContext* context,
+                 const ::speechly::analytics::v1::RegisterUtteranceRequest* request,
+                 ::speechly::analytics::v1::RegisterUtteranceResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->RegisterUtterance(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_RegisterUtterance(
+        ::grpc::experimental::MessageAllocator< ::speechly::analytics::v1::RegisterUtteranceRequest, ::speechly::analytics::v1::RegisterUtteranceResponse>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::speechly::analytics::v1::RegisterUtteranceRequest, ::speechly::analytics::v1::RegisterUtteranceResponse>*>(
+          ::grpc::Service::experimental().GetHandler(2))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_RegisterUtterance() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUtterance(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::RegisterUtteranceRequest* /*request*/, ::speechly::analytics::v1::RegisterUtteranceResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void RegisterUtterance(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::RegisterUtteranceRequest* /*request*/, ::speechly::analytics::v1::RegisterUtteranceResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  typedef ExperimentalWithCallbackMethod_UtteranceStatistics<ExperimentalWithCallbackMethod_Utterances<ExperimentalWithCallbackMethod_RegisterUtterance<Service > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_UtteranceStatistics : public BaseClass {
    private:
@@ -278,6 +360,23 @@ class AnalyticsAPI final {
     }
     // disable synchronous version of this method
     ::grpc::Status Utterances(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::UtterancesRequest* /*request*/, ::speechly::analytics::v1::UtterancesResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RegisterUtterance : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RegisterUtterance() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_RegisterUtterance() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUtterance(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::RegisterUtteranceRequest* /*request*/, ::speechly::analytics::v1::RegisterUtteranceResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -320,6 +419,26 @@ class AnalyticsAPI final {
     }
     void RequestUtterances(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_RegisterUtterance : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RegisterUtterance() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_RegisterUtterance() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUtterance(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::RegisterUtteranceRequest* /*request*/, ::speechly::analytics::v1::RegisterUtteranceResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRegisterUtterance(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -373,6 +492,31 @@ class AnalyticsAPI final {
     virtual void Utterances(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_RegisterUtterance : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_RegisterUtterance() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(2,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->RegisterUtterance(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_RegisterUtterance() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RegisterUtterance(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::RegisterUtteranceRequest* /*request*/, ::speechly::analytics::v1::RegisterUtteranceResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void RegisterUtterance(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_UtteranceStatistics : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -412,9 +556,29 @@ class AnalyticsAPI final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedUtterances(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::speechly::analytics::v1::UtterancesRequest,::speechly::analytics::v1::UtterancesResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_UtteranceStatistics<WithStreamedUnaryMethod_Utterances<Service > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_RegisterUtterance : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_RegisterUtterance() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler< ::speechly::analytics::v1::RegisterUtteranceRequest, ::speechly::analytics::v1::RegisterUtteranceResponse>(std::bind(&WithStreamedUnaryMethod_RegisterUtterance<BaseClass>::StreamedRegisterUtterance, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_RegisterUtterance() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RegisterUtterance(::grpc::ServerContext* /*context*/, const ::speechly::analytics::v1::RegisterUtteranceRequest* /*request*/, ::speechly::analytics::v1::RegisterUtteranceResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRegisterUtterance(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::speechly::analytics::v1::RegisterUtteranceRequest,::speechly::analytics::v1::RegisterUtteranceResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_UtteranceStatistics<WithStreamedUnaryMethod_Utterances<WithStreamedUnaryMethod_RegisterUtterance<Service > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_UtteranceStatistics<WithStreamedUnaryMethod_Utterances<Service > > StreamedService;
+  typedef WithStreamedUnaryMethod_UtteranceStatistics<WithStreamedUnaryMethod_Utterances<WithStreamedUnaryMethod_RegisterUtterance<Service > > > StreamedService;
 };
 
 }  // namespace v1

@@ -115,10 +115,31 @@ public struct Speechly_Analytics_V1_Utterance {
   public init() {}
 }
 
+/// Information about the on-device decoder.
+public struct Speechly_Analytics_V1_DecoderInfo {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// Version of the Speechly on-device decoder.
+  public var version: String = String()
+
+  /// Number of utterances the decoder has transcribed.
+  public var utteranceCount: Int32 = 0
+
+  /// Cumulative sum of the utterance length in seconds for the decoder.
+  public var totalSecondsTranscribed: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 #if swift(>=5.5) && canImport(_Concurrency)
 extension Speechly_Analytics_V1_Aggregation: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: @unchecked Sendable {}
 extension Speechly_Analytics_V1_Utterance: @unchecked Sendable {}
+extension Speechly_Analytics_V1_DecoderInfo: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -229,6 +250,50 @@ extension Speechly_Analytics_V1_Utterance: SwiftProtobuf.Message, SwiftProtobuf.
     if lhs.transcript != rhs.transcript {return false}
     if lhs.annotated != rhs.annotated {return false}
     if lhs.date != rhs.date {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_DecoderInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".DecoderInfo"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "version"),
+    2: .standard(proto: "utterance_count"),
+    3: .standard(proto: "total_seconds_transcribed"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.version) }()
+      case 2: try { try decoder.decodeSingularInt32Field(value: &self.utteranceCount) }()
+      case 3: try { try decoder.decodeSingularInt32Field(value: &self.totalSecondsTranscribed) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.version.isEmpty {
+      try visitor.visitSingularStringField(value: self.version, fieldNumber: 1)
+    }
+    if self.utteranceCount != 0 {
+      try visitor.visitSingularInt32Field(value: self.utteranceCount, fieldNumber: 2)
+    }
+    if self.totalSecondsTranscribed != 0 {
+      try visitor.visitSingularInt32Field(value: self.totalSecondsTranscribed, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_DecoderInfo, rhs: Speechly_Analytics_V1_DecoderInfo) -> Bool {
+    if lhs.version != rhs.version {return false}
+    if lhs.utteranceCount != rhs.utteranceCount {return false}
+    if lhs.totalSecondsTranscribed != rhs.totalSecondsTranscribed {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

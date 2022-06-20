@@ -81,10 +81,37 @@ struct UtterancesResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UtterancesResponseDefaultTypeInternal _UtterancesResponse_default_instance_;
+constexpr RegisterUtteranceRequest::RegisterUtteranceRequest(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : app_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , device_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , utterance_length_seconds_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , utterance_length_chars_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , decoder_info_(nullptr){}
+struct RegisterUtteranceRequestDefaultTypeInternal {
+  constexpr RegisterUtteranceRequestDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~RegisterUtteranceRequestDefaultTypeInternal() {}
+  union {
+    RegisterUtteranceRequest _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RegisterUtteranceRequestDefaultTypeInternal _RegisterUtteranceRequest_default_instance_;
+constexpr RegisterUtteranceResponse::RegisterUtteranceResponse(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized){}
+struct RegisterUtteranceResponseDefaultTypeInternal {
+  constexpr RegisterUtteranceResponseDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~RegisterUtteranceResponseDefaultTypeInternal() {}
+  union {
+    RegisterUtteranceResponse _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT RegisterUtteranceResponseDefaultTypeInternal _RegisterUtteranceResponse_default_instance_;
 }  // namespace v1
 }  // namespace analytics
 }  // namespace speechly
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[4];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[6];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[1];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto = nullptr;
 
@@ -124,12 +151,29 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fanalytics_2fv1_2fan
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtterancesResponse, utterances_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::RegisterUtteranceRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::RegisterUtteranceRequest, app_id_),
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::RegisterUtteranceRequest, device_id_),
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::RegisterUtteranceRequest, utterance_length_seconds_),
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::RegisterUtteranceRequest, utterance_length_chars_),
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::RegisterUtteranceRequest, decoder_info_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::RegisterUtteranceResponse, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::speechly::analytics::v1::UtteranceStatisticsRequest)},
   { 11, -1, sizeof(::speechly::analytics::v1::UtteranceStatisticsResponse)},
   { 23, -1, sizeof(::speechly::analytics::v1::UtterancesRequest)},
   { 29, -1, sizeof(::speechly::analytics::v1::UtterancesResponse)},
+  { 35, -1, sizeof(::speechly::analytics::v1::RegisterUtteranceRequest)},
+  { 45, -1, sizeof(::speechly::analytics::v1::RegisterUtteranceResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -137,6 +181,8 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_UtteranceStatisticsResponse_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_UtterancesRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_UtterancesResponse_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_RegisterUtteranceRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_RegisterUtteranceResponse_default_instance_),
 };
 
 const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
@@ -160,25 +206,33 @@ const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi
   "_annotated_seconds\030\007 \001(\005\"#\n\021UtterancesRe"
   "quest\022\016\n\006app_id\030\001 \001(\t\"J\n\022UtterancesRespo"
   "nse\0224\n\nutterances\030\001 \003(\0132 .speechly.analy"
-  "tics.v1.Utterance2\357\001\n\014AnalyticsAPI\022|\n\023Ut"
-  "teranceStatistics\0221.speechly.analytics.v"
-  "1.UtteranceStatisticsRequest\0322.speechly."
-  "analytics.v1.UtteranceStatisticsResponse"
-  "\022a\n\nUtterances\022(.speechly.analytics.v1.U"
-  "tterancesRequest\032).speechly.analytics.v1"
-  ".UtterancesResponseB\211\001\n\031com.speechly.ana"
-  "lytics.v1B\021AnalyticsApiProtoP\001Z!speechly"
-  "/analytics/v1;analyticsv1\242\002\003SAX\252\002\025Speech"
-  "ly.Analytics.V1\312\002\025Speechly\\Analytics\\V1b"
-  "\006proto3"
+  "tics.v1.Utterance\"\271\001\n\030RegisterUtteranceR"
+  "equest\022\016\n\006app_id\030\001 \001(\t\022\021\n\tdevice_id\030\002 \001("
+  "\t\022 \n\030utterance_length_seconds\030\003 \001(\t\022\036\n\026u"
+  "tterance_length_chars\030\004 \001(\t\0228\n\014decoder_i"
+  "nfo\030\005 \001(\0132\".speechly.analytics.v1.Decode"
+  "rInfo\"\033\n\031RegisterUtteranceResponse2\347\002\n\014A"
+  "nalyticsAPI\022|\n\023UtteranceStatistics\0221.spe"
+  "echly.analytics.v1.UtteranceStatisticsRe"
+  "quest\0322.speechly.analytics.v1.UtteranceS"
+  "tatisticsResponse\022a\n\nUtterances\022(.speech"
+  "ly.analytics.v1.UtterancesRequest\032).spee"
+  "chly.analytics.v1.UtterancesResponse\022v\n\021"
+  "RegisterUtterance\022/.speechly.analytics.v"
+  "1.RegisterUtteranceRequest\0320.speechly.an"
+  "alytics.v1.RegisterUtteranceResponseB\211\001\n"
+  "\031com.speechly.analytics.v1B\021AnalyticsApi"
+  "ProtoP\001Z!speechly/analytics/v1;analytics"
+  "v1\242\002\003SAX\252\002\025Speechly.Analytics.V1\312\002\025Speec"
+  "hly\\Analytics\\V1b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_deps[1] = {
   &::descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto = {
-  false, false, 1207, descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto, "speechly/analytics/v1/analytics_api.proto", 
-  &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once, descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_deps, 1, 4,
+  false, false, 1544, descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto, "speechly/analytics/v1/analytics_api.proto", 
+  &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once, descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_deps, 1, 6,
   schemas, file_default_instances, TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto::offsets,
   file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto, file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto, file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto,
 };
@@ -1367,6 +1421,533 @@ void UtterancesResponse::InternalSwap(UtterancesResponse* other) {
       file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[3]);
 }
 
+// ===================================================================
+
+class RegisterUtteranceRequest::_Internal {
+ public:
+  static const ::speechly::analytics::v1::DecoderInfo& decoder_info(const RegisterUtteranceRequest* msg);
+};
+
+const ::speechly::analytics::v1::DecoderInfo&
+RegisterUtteranceRequest::_Internal::decoder_info(const RegisterUtteranceRequest* msg) {
+  return *msg->decoder_info_;
+}
+void RegisterUtteranceRequest::clear_decoder_info() {
+  if (GetArenaForAllocation() == nullptr && decoder_info_ != nullptr) {
+    delete decoder_info_;
+  }
+  decoder_info_ = nullptr;
+}
+RegisterUtteranceRequest::RegisterUtteranceRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.RegisterUtteranceRequest)
+}
+RegisterUtteranceRequest::RegisterUtteranceRequest(const RegisterUtteranceRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_app_id().empty()) {
+    app_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_app_id(), 
+      GetArenaForAllocation());
+  }
+  device_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_device_id().empty()) {
+    device_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_device_id(), 
+      GetArenaForAllocation());
+  }
+  utterance_length_seconds_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_utterance_length_seconds().empty()) {
+    utterance_length_seconds_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_utterance_length_seconds(), 
+      GetArenaForAllocation());
+  }
+  utterance_length_chars_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_utterance_length_chars().empty()) {
+    utterance_length_chars_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_utterance_length_chars(), 
+      GetArenaForAllocation());
+  }
+  if (from._internal_has_decoder_info()) {
+    decoder_info_ = new ::speechly::analytics::v1::DecoderInfo(*from.decoder_info_);
+  } else {
+    decoder_info_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.RegisterUtteranceRequest)
+}
+
+inline void RegisterUtteranceRequest::SharedCtor() {
+app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+device_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+utterance_length_seconds_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+utterance_length_chars_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+decoder_info_ = nullptr;
+}
+
+RegisterUtteranceRequest::~RegisterUtteranceRequest() {
+  // @@protoc_insertion_point(destructor:speechly.analytics.v1.RegisterUtteranceRequest)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void RegisterUtteranceRequest::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  app_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  device_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  utterance_length_seconds_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  utterance_length_chars_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete decoder_info_;
+}
+
+void RegisterUtteranceRequest::ArenaDtor(void* object) {
+  RegisterUtteranceRequest* _this = reinterpret_cast< RegisterUtteranceRequest* >(object);
+  (void)_this;
+}
+void RegisterUtteranceRequest::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void RegisterUtteranceRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void RegisterUtteranceRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:speechly.analytics.v1.RegisterUtteranceRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  app_id_.ClearToEmpty();
+  device_id_.ClearToEmpty();
+  utterance_length_seconds_.ClearToEmpty();
+  utterance_length_chars_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && decoder_info_ != nullptr) {
+    delete decoder_info_;
+  }
+  decoder_info_ = nullptr;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RegisterUtteranceRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string app_id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_app_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.RegisterUtteranceRequest.app_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string device_id = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          auto str = _internal_mutable_device_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.RegisterUtteranceRequest.device_id"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string utterance_length_seconds = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_utterance_length_seconds();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_seconds"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string utterance_length_chars = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          auto str = _internal_mutable_utterance_length_chars();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_chars"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .speechly.analytics.v1.DecoderInfo decoder_info = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_decoder_info(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RegisterUtteranceRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:speechly.analytics.v1.RegisterUtteranceRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string app_id = 1;
+  if (!this->_internal_app_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_app_id().data(), static_cast<int>(this->_internal_app_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "speechly.analytics.v1.RegisterUtteranceRequest.app_id");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_app_id(), target);
+  }
+
+  // string device_id = 2;
+  if (!this->_internal_device_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_device_id().data(), static_cast<int>(this->_internal_device_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "speechly.analytics.v1.RegisterUtteranceRequest.device_id");
+    target = stream->WriteStringMaybeAliased(
+        2, this->_internal_device_id(), target);
+  }
+
+  // string utterance_length_seconds = 3;
+  if (!this->_internal_utterance_length_seconds().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_utterance_length_seconds().data(), static_cast<int>(this->_internal_utterance_length_seconds().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_seconds");
+    target = stream->WriteStringMaybeAliased(
+        3, this->_internal_utterance_length_seconds(), target);
+  }
+
+  // string utterance_length_chars = 4;
+  if (!this->_internal_utterance_length_chars().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_utterance_length_chars().data(), static_cast<int>(this->_internal_utterance_length_chars().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_chars");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_utterance_length_chars(), target);
+  }
+
+  // .speechly.analytics.v1.DecoderInfo decoder_info = 5;
+  if (this->_internal_has_decoder_info()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        5, _Internal::decoder_info(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:speechly.analytics.v1.RegisterUtteranceRequest)
+  return target;
+}
+
+size_t RegisterUtteranceRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:speechly.analytics.v1.RegisterUtteranceRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string app_id = 1;
+  if (!this->_internal_app_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_app_id());
+  }
+
+  // string device_id = 2;
+  if (!this->_internal_device_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_device_id());
+  }
+
+  // string utterance_length_seconds = 3;
+  if (!this->_internal_utterance_length_seconds().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_utterance_length_seconds());
+  }
+
+  // string utterance_length_chars = 4;
+  if (!this->_internal_utterance_length_chars().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_utterance_length_chars());
+  }
+
+  // .speechly.analytics.v1.DecoderInfo decoder_info = 5;
+  if (this->_internal_has_decoder_info()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *decoder_info_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RegisterUtteranceRequest::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    RegisterUtteranceRequest::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RegisterUtteranceRequest::GetClassData() const { return &_class_data_; }
+
+void RegisterUtteranceRequest::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
+  static_cast<RegisterUtteranceRequest *>(to)->MergeFrom(
+      static_cast<const RegisterUtteranceRequest &>(from));
+}
+
+
+void RegisterUtteranceRequest::MergeFrom(const RegisterUtteranceRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.RegisterUtteranceRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_app_id().empty()) {
+    _internal_set_app_id(from._internal_app_id());
+  }
+  if (!from._internal_device_id().empty()) {
+    _internal_set_device_id(from._internal_device_id());
+  }
+  if (!from._internal_utterance_length_seconds().empty()) {
+    _internal_set_utterance_length_seconds(from._internal_utterance_length_seconds());
+  }
+  if (!from._internal_utterance_length_chars().empty()) {
+    _internal_set_utterance_length_chars(from._internal_utterance_length_chars());
+  }
+  if (from._internal_has_decoder_info()) {
+    _internal_mutable_decoder_info()->::speechly::analytics::v1::DecoderInfo::MergeFrom(from._internal_decoder_info());
+  }
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RegisterUtteranceRequest::CopyFrom(const RegisterUtteranceRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:speechly.analytics.v1.RegisterUtteranceRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RegisterUtteranceRequest::IsInitialized() const {
+  return true;
+}
+
+void RegisterUtteranceRequest::InternalSwap(RegisterUtteranceRequest* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &app_id_, GetArenaForAllocation(),
+      &other->app_id_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &device_id_, GetArenaForAllocation(),
+      &other->device_id_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &utterance_length_seconds_, GetArenaForAllocation(),
+      &other->utterance_length_seconds_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &utterance_length_chars_, GetArenaForAllocation(),
+      &other->utterance_length_chars_, other->GetArenaForAllocation()
+  );
+  swap(decoder_info_, other->decoder_info_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RegisterUtteranceRequest::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
+      file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[4]);
+}
+
+// ===================================================================
+
+class RegisterUtteranceResponse::_Internal {
+ public:
+};
+
+RegisterUtteranceResponse::RegisterUtteranceResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor();
+  if (!is_message_owned) {
+    RegisterArenaDtor(arena);
+  }
+  // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.RegisterUtteranceResponse)
+}
+RegisterUtteranceResponse::RegisterUtteranceResponse(const RegisterUtteranceResponse& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.RegisterUtteranceResponse)
+}
+
+inline void RegisterUtteranceResponse::SharedCtor() {
+}
+
+RegisterUtteranceResponse::~RegisterUtteranceResponse() {
+  // @@protoc_insertion_point(destructor:speechly.analytics.v1.RegisterUtteranceResponse)
+  if (GetArenaForAllocation() != nullptr) return;
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+inline void RegisterUtteranceResponse::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void RegisterUtteranceResponse::ArenaDtor(void* object) {
+  RegisterUtteranceResponse* _this = reinterpret_cast< RegisterUtteranceResponse* >(object);
+  (void)_this;
+}
+void RegisterUtteranceResponse::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void RegisterUtteranceResponse::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void RegisterUtteranceResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:speechly.analytics.v1.RegisterUtteranceResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* RegisterUtteranceResponse::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RegisterUtteranceResponse::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:speechly.analytics.v1.RegisterUtteranceResponse)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:speechly.analytics.v1.RegisterUtteranceResponse)
+  return target;
+}
+
+size_t RegisterUtteranceResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:speechly.analytics.v1.RegisterUtteranceResponse)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData RegisterUtteranceResponse::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+    RegisterUtteranceResponse::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*RegisterUtteranceResponse::GetClassData() const { return &_class_data_; }
+
+void RegisterUtteranceResponse::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
+                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
+  static_cast<RegisterUtteranceResponse *>(to)->MergeFrom(
+      static_cast<const RegisterUtteranceResponse &>(from));
+}
+
+
+void RegisterUtteranceResponse::MergeFrom(const RegisterUtteranceResponse& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.RegisterUtteranceResponse)
+  GOOGLE_DCHECK_NE(&from, this);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void RegisterUtteranceResponse::CopyFrom(const RegisterUtteranceResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:speechly.analytics.v1.RegisterUtteranceResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RegisterUtteranceResponse::IsInitialized() const {
+  return true;
+}
+
+void RegisterUtteranceResponse::InternalSwap(RegisterUtteranceResponse* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RegisterUtteranceResponse::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
+      file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[5]);
+}
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace analytics
@@ -1383,6 +1964,12 @@ template<> PROTOBUF_NOINLINE ::speechly::analytics::v1::UtterancesRequest* Arena
 }
 template<> PROTOBUF_NOINLINE ::speechly::analytics::v1::UtterancesResponse* Arena::CreateMaybeMessage< ::speechly::analytics::v1::UtterancesResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::speechly::analytics::v1::UtterancesResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::speechly::analytics::v1::RegisterUtteranceRequest* Arena::CreateMaybeMessage< ::speechly::analytics::v1::RegisterUtteranceRequest >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::speechly::analytics::v1::RegisterUtteranceRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::speechly::analytics::v1::RegisterUtteranceResponse* Arena::CreateMaybeMessage< ::speechly::analytics::v1::RegisterUtteranceResponse >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::speechly::analytics::v1::RegisterUtteranceResponse >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

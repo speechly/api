@@ -11,15 +11,61 @@ for given apps and/or projects.
 | ---- | ------- | -------- | ----------- |
 | UtteranceStatistics | [UtteranceStatisticsRequest](#speechly.analytics.v1.UtteranceStatisticsRequest) | [UtteranceStatisticsResponse](#speechly.analytics.v1.UtteranceStatisticsResponse) | Get a summary of utterances for a given time period. |
 | Utterances | [UtterancesRequest](#speechly.analytics.v1.UtterancesRequest) | [UtterancesResponse](#speechly.analytics.v1.UtterancesResponse) | Get a sample of recent utterances. |
+| RegisterUtterance | [RegisterUtteranceRequest](#speechly.analytics.v1.RegisterUtteranceRequest) | [RegisterUtteranceResponse](#speechly.analytics.v1.RegisterUtteranceResponse) | Register a data point of an on-device utterance. |
 
 ## Messages
 
+- [DecoderInfo](#speechly.analytics.v1.DecoderInfo)
+- [RegisterUtteranceRequest](#speechly.analytics.v1.RegisterUtteranceRequest)
+- [RegisterUtteranceResponse](#speechly.analytics.v1.RegisterUtteranceResponse)
 - [Utterance](#speechly.analytics.v1.Utterance)
 - [UtteranceStatisticsPeriod](#speechly.analytics.v1.UtteranceStatisticsPeriod)
 - [UtteranceStatisticsRequest](#speechly.analytics.v1.UtteranceStatisticsRequest)
 - [UtteranceStatisticsResponse](#speechly.analytics.v1.UtteranceStatisticsResponse)
 - [UtterancesRequest](#speechly.analytics.v1.UtterancesRequest)
 - [UtterancesResponse](#speechly.analytics.v1.UtterancesResponse)
+
+
+<a name="speechly.analytics.v1.DecoderInfo"></a>
+### DecoderInfo
+
+Information about the on-device decoder.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| version | [string](#string) | Version of the Speechly on-device decoder. |
+| utterance_count | [int32](#int32) | Number of utterances the decoder has transcribed. |
+| total_seconds_transcribed | [int32](#int32) | Cumulative sum of the utterance length in seconds for the decoder. |
+
+
+<a name="speechly.analytics.v1.RegisterUtteranceRequest"></a>
+### RegisterUtteranceRequest
+
+A single data point of an utterance recognized by Speechly On Device.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| app_id | [string](#string) |  |
+| device_id | [string](#string) | device_id of the utterance. |
+| utterance_length_seconds | [string](#string) | Length of the recognized utterance in seconds. |
+| utterance_length_chars | [string](#string) | Length of the recognized utterance in characters. |
+| decoder_info | [DecoderInfo](#speechly.analytics.v1.DecoderInfo) | Information about the on-device decoder. |
+
+
+<a name="speechly.analytics.v1.RegisterUtteranceResponse"></a>
+### RegisterUtteranceResponse
+
+
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+
 
 
 <a name="speechly.analytics.v1.Utterance"></a>

@@ -174,12 +174,58 @@ public struct Speechly_Analytics_V1_UtterancesResponse {
   public init() {}
 }
 
+/// A single data point of an utterance recognized by Speechly On Device.
+public struct Speechly_Analytics_V1_RegisterUtteranceRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var appID: String = String()
+
+  /// device_id of the utterance.
+  public var deviceID: String = String()
+
+  /// Length of the recognized utterance in seconds.
+  public var utteranceLengthSeconds: String = String()
+
+  /// Length of the recognized utterance in characters.
+  public var utteranceLengthChars: String = String()
+
+  /// Information about the on-device decoder.
+  public var decoderInfo: Speechly_Analytics_V1_DecoderInfo {
+    get {return _decoderInfo ?? Speechly_Analytics_V1_DecoderInfo()}
+    set {_decoderInfo = newValue}
+  }
+  /// Returns true if `decoderInfo` has been explicitly set.
+  public var hasDecoderInfo: Bool {return self._decoderInfo != nil}
+  /// Clears the value of `decoderInfo`. Subsequent reads from it will return its default value.
+  public mutating func clearDecoderInfo() {self._decoderInfo = nil}
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+
+  fileprivate var _decoderInfo: Speechly_Analytics_V1_DecoderInfo? = nil
+}
+
+public struct Speechly_Analytics_V1_RegisterUtteranceResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 #if swift(>=5.5) && canImport(_Concurrency)
 extension Speechly_Analytics_V1_UtteranceStatisticsRequest: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtteranceStatisticsRequest.Scope: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtteranceStatisticsResponse: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtterancesRequest: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtterancesResponse: @unchecked Sendable {}
+extension Speechly_Analytics_V1_RegisterUtteranceRequest: @unchecked Sendable {}
+extension Speechly_Analytics_V1_RegisterUtteranceResponse: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -384,6 +430,85 @@ extension Speechly_Analytics_V1_UtterancesResponse: SwiftProtobuf.Message, Swift
 
   public static func ==(lhs: Speechly_Analytics_V1_UtterancesResponse, rhs: Speechly_Analytics_V1_UtterancesResponse) -> Bool {
     if lhs.utterances != rhs.utterances {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RegisterUtteranceRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "app_id"),
+    2: .standard(proto: "device_id"),
+    3: .standard(proto: "utterance_length_seconds"),
+    4: .standard(proto: "utterance_length_chars"),
+    5: .standard(proto: "decoder_info"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.appID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.utteranceLengthSeconds) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.utteranceLengthChars) }()
+      case 5: try { try decoder.decodeSingularMessageField(value: &self._decoderInfo) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.appID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 1)
+    }
+    if !self.deviceID.isEmpty {
+      try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 2)
+    }
+    if !self.utteranceLengthSeconds.isEmpty {
+      try visitor.visitSingularStringField(value: self.utteranceLengthSeconds, fieldNumber: 3)
+    }
+    if !self.utteranceLengthChars.isEmpty {
+      try visitor.visitSingularStringField(value: self.utteranceLengthChars, fieldNumber: 4)
+    }
+    try { if let v = self._decoderInfo {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+    } }()
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_RegisterUtteranceRequest, rhs: Speechly_Analytics_V1_RegisterUtteranceRequest) -> Bool {
+    if lhs.appID != rhs.appID {return false}
+    if lhs.deviceID != rhs.deviceID {return false}
+    if lhs.utteranceLengthSeconds != rhs.utteranceLengthSeconds {return false}
+    if lhs.utteranceLengthChars != rhs.utteranceLengthChars {return false}
+    if lhs._decoderInfo != rhs._decoderInfo {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_RegisterUtteranceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RegisterUtteranceResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_RegisterUtteranceResponse, rhs: Speechly_Analytics_V1_RegisterUtteranceResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

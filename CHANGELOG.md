@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.8.1](https://github.com/speechly/api/tree/0.8.1) (2022-06-20)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.0...0.8.1)
+
+**Merged pull requests:**
+
+- Analytics-api RegisterUtterance endpoint [\#42](https://github.com/speechly/api/pull/42) ([samutamm](https://github.com/samutamm))
+- Add `go` API client example [\#41](https://github.com/speechly/api/pull/41) ([langma](https://github.com/langma))
+
 ## [0.8.0](https://github.com/speechly/api/tree/0.8.0) (2022-05-23)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.7.0...0.8.0)
