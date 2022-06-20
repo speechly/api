@@ -41,3 +41,13 @@ message Utterance {
     // ISO-formatted UTC date of the utterance.
     string date = 3;
 }
+
+// Information about the on-device decoder.
+message DecoderInfo {
+    // Version of the Speechly on-device decoder.
+    string version = 1;
+    // Number of utterances the decoder has transcribed.
+    int32 utterance_count = 2;
+    // Cumulative sum of the utterance length in seconds for the decoder.
+    int32 total_seconds_transcribed = 3;
+}
