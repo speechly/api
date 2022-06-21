@@ -996,9 +996,9 @@ class RegisterUtteranceRequest final :
   enum : int {
     kAppIdFieldNumber = 1,
     kDeviceIdFieldNumber = 2,
+    kDecoderInfoFieldNumber = 5,
     kUtteranceLengthSecondsFieldNumber = 3,
     kUtteranceLengthCharsFieldNumber = 4,
-    kDecoderInfoFieldNumber = 5,
   };
   // string app_id = 1;
   void clear_app_id();
@@ -1028,34 +1028,6 @@ class RegisterUtteranceRequest final :
   std::string* _internal_mutable_device_id();
   public:
 
-  // string utterance_length_seconds = 3;
-  void clear_utterance_length_seconds();
-  const std::string& utterance_length_seconds() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_utterance_length_seconds(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_utterance_length_seconds();
-  PROTOBUF_MUST_USE_RESULT std::string* release_utterance_length_seconds();
-  void set_allocated_utterance_length_seconds(std::string* utterance_length_seconds);
-  private:
-  const std::string& _internal_utterance_length_seconds() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_utterance_length_seconds(const std::string& value);
-  std::string* _internal_mutable_utterance_length_seconds();
-  public:
-
-  // string utterance_length_chars = 4;
-  void clear_utterance_length_chars();
-  const std::string& utterance_length_chars() const;
-  template <typename ArgT0 = const std::string&, typename... ArgT>
-  void set_utterance_length_chars(ArgT0&& arg0, ArgT... args);
-  std::string* mutable_utterance_length_chars();
-  PROTOBUF_MUST_USE_RESULT std::string* release_utterance_length_chars();
-  void set_allocated_utterance_length_chars(std::string* utterance_length_chars);
-  private:
-  const std::string& _internal_utterance_length_chars() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_utterance_length_chars(const std::string& value);
-  std::string* _internal_mutable_utterance_length_chars();
-  public:
-
   // .speechly.analytics.v1.DecoderInfo decoder_info = 5;
   bool has_decoder_info() const;
   private:
@@ -1074,6 +1046,24 @@ class RegisterUtteranceRequest final :
       ::speechly::analytics::v1::DecoderInfo* decoder_info);
   ::speechly::analytics::v1::DecoderInfo* unsafe_arena_release_decoder_info();
 
+  // int32 utterance_length_seconds = 3;
+  void clear_utterance_length_seconds();
+  ::PROTOBUF_NAMESPACE_ID::int32 utterance_length_seconds() const;
+  void set_utterance_length_seconds(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_utterance_length_seconds() const;
+  void _internal_set_utterance_length_seconds(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 utterance_length_chars = 4;
+  void clear_utterance_length_chars();
+  ::PROTOBUF_NAMESPACE_ID::int32 utterance_length_chars() const;
+  void set_utterance_length_chars(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_utterance_length_chars() const;
+  void _internal_set_utterance_length_chars(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:speechly.analytics.v1.RegisterUtteranceRequest)
  private:
   class _Internal;
@@ -1083,9 +1073,9 @@ class RegisterUtteranceRequest final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr app_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_id_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr utterance_length_seconds_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr utterance_length_chars_;
   ::speechly::analytics::v1::DecoderInfo* decoder_info_;
+  ::PROTOBUF_NAMESPACE_ID::int32 utterance_length_seconds_;
+  ::PROTOBUF_NAMESPACE_ID::int32 utterance_length_chars_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
 };
@@ -1824,96 +1814,44 @@ inline void RegisterUtteranceRequest::set_allocated_device_id(std::string* devic
   // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.device_id)
 }
 
-// string utterance_length_seconds = 3;
+// int32 utterance_length_seconds = 3;
 inline void RegisterUtteranceRequest::clear_utterance_length_seconds() {
-  utterance_length_seconds_.ClearToEmpty();
+  utterance_length_seconds_ = 0;
 }
-inline const std::string& RegisterUtteranceRequest::utterance_length_seconds() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 RegisterUtteranceRequest::_internal_utterance_length_seconds() const {
+  return utterance_length_seconds_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RegisterUtteranceRequest::utterance_length_seconds() const {
   // @@protoc_insertion_point(field_get:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_seconds)
   return _internal_utterance_length_seconds();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void RegisterUtteranceRequest::set_utterance_length_seconds(ArgT0&& arg0, ArgT... args) {
- 
- utterance_length_seconds_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+inline void RegisterUtteranceRequest::_internal_set_utterance_length_seconds(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  utterance_length_seconds_ = value;
+}
+inline void RegisterUtteranceRequest::set_utterance_length_seconds(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_utterance_length_seconds(value);
   // @@protoc_insertion_point(field_set:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_seconds)
 }
-inline std::string* RegisterUtteranceRequest::mutable_utterance_length_seconds() {
-  std::string* _s = _internal_mutable_utterance_length_seconds();
-  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_seconds)
-  return _s;
-}
-inline const std::string& RegisterUtteranceRequest::_internal_utterance_length_seconds() const {
-  return utterance_length_seconds_.Get();
-}
-inline void RegisterUtteranceRequest::_internal_set_utterance_length_seconds(const std::string& value) {
-  
-  utterance_length_seconds_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* RegisterUtteranceRequest::_internal_mutable_utterance_length_seconds() {
-  
-  return utterance_length_seconds_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* RegisterUtteranceRequest::release_utterance_length_seconds() {
-  // @@protoc_insertion_point(field_release:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_seconds)
-  return utterance_length_seconds_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void RegisterUtteranceRequest::set_allocated_utterance_length_seconds(std::string* utterance_length_seconds) {
-  if (utterance_length_seconds != nullptr) {
-    
-  } else {
-    
-  }
-  utterance_length_seconds_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), utterance_length_seconds,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_seconds)
-}
 
-// string utterance_length_chars = 4;
+// int32 utterance_length_chars = 4;
 inline void RegisterUtteranceRequest::clear_utterance_length_chars() {
-  utterance_length_chars_.ClearToEmpty();
+  utterance_length_chars_ = 0;
 }
-inline const std::string& RegisterUtteranceRequest::utterance_length_chars() const {
+inline ::PROTOBUF_NAMESPACE_ID::int32 RegisterUtteranceRequest::_internal_utterance_length_chars() const {
+  return utterance_length_chars_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RegisterUtteranceRequest::utterance_length_chars() const {
   // @@protoc_insertion_point(field_get:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_chars)
   return _internal_utterance_length_chars();
 }
-template <typename ArgT0, typename... ArgT>
-inline PROTOBUF_ALWAYS_INLINE
-void RegisterUtteranceRequest::set_utterance_length_chars(ArgT0&& arg0, ArgT... args) {
- 
- utterance_length_chars_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+inline void RegisterUtteranceRequest::_internal_set_utterance_length_chars(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  utterance_length_chars_ = value;
+}
+inline void RegisterUtteranceRequest::set_utterance_length_chars(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_utterance_length_chars(value);
   // @@protoc_insertion_point(field_set:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_chars)
-}
-inline std::string* RegisterUtteranceRequest::mutable_utterance_length_chars() {
-  std::string* _s = _internal_mutable_utterance_length_chars();
-  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_chars)
-  return _s;
-}
-inline const std::string& RegisterUtteranceRequest::_internal_utterance_length_chars() const {
-  return utterance_length_chars_.Get();
-}
-inline void RegisterUtteranceRequest::_internal_set_utterance_length_chars(const std::string& value) {
-  
-  utterance_length_chars_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
-}
-inline std::string* RegisterUtteranceRequest::_internal_mutable_utterance_length_chars() {
-  
-  return utterance_length_chars_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
-}
-inline std::string* RegisterUtteranceRequest::release_utterance_length_chars() {
-  // @@protoc_insertion_point(field_release:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_chars)
-  return utterance_length_chars_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
-}
-inline void RegisterUtteranceRequest::set_allocated_utterance_length_chars(std::string* utterance_length_chars) {
-  if (utterance_length_chars != nullptr) {
-    
-  } else {
-    
-  }
-  utterance_length_chars_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), utterance_length_chars,
-      GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.utterance_length_chars)
 }
 
 // .speechly.analytics.v1.DecoderInfo decoder_info = 5;

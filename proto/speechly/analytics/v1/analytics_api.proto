@@ -95,9 +95,9 @@ message RegisterUtteranceRequest {
     // device_id of the utterance.
     string device_id = 2;
     // Length of the recognized utterance in seconds.
-    string utterance_length_seconds = 3;
+    int32 utterance_length_seconds = 3;
     // Length of the recognized utterance in characters.
-    string utterance_length_chars = 4;
+    int32 utterance_length_chars = 4;
     // Information about the on-device decoder.
     DecoderInfo decoder_info = 5;
 }

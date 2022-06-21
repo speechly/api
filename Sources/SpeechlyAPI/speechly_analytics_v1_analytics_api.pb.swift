@@ -186,10 +186,10 @@ public struct Speechly_Analytics_V1_RegisterUtteranceRequest {
   public var deviceID: String = String()
 
   /// Length of the recognized utterance in seconds.
-  public var utteranceLengthSeconds: String = String()
+  public var utteranceLengthSeconds: Int32 = 0
 
   /// Length of the recognized utterance in characters.
-  public var utteranceLengthChars: String = String()
+  public var utteranceLengthChars: Int32 = 0
 
   /// Information about the on-device decoder.
   public var decoderInfo: Speechly_Analytics_V1_DecoderInfo {
@@ -453,8 +453,8 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.appID) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
-      case 3: try { try decoder.decodeSingularStringField(value: &self.utteranceLengthSeconds) }()
-      case 4: try { try decoder.decodeSingularStringField(value: &self.utteranceLengthChars) }()
+      case 3: try { try decoder.decodeSingularInt32Field(value: &self.utteranceLengthSeconds) }()
+      case 4: try { try decoder.decodeSingularInt32Field(value: &self.utteranceLengthChars) }()
       case 5: try { try decoder.decodeSingularMessageField(value: &self._decoderInfo) }()
       default: break
       }
@@ -472,11 +472,11 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
     if !self.deviceID.isEmpty {
       try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 2)
     }
-    if !self.utteranceLengthSeconds.isEmpty {
-      try visitor.visitSingularStringField(value: self.utteranceLengthSeconds, fieldNumber: 3)
+    if self.utteranceLengthSeconds != 0 {
+      try visitor.visitSingularInt32Field(value: self.utteranceLengthSeconds, fieldNumber: 3)
     }
-    if !self.utteranceLengthChars.isEmpty {
-      try visitor.visitSingularStringField(value: self.utteranceLengthChars, fieldNumber: 4)
+    if self.utteranceLengthChars != 0 {
+      try visitor.visitSingularInt32Field(value: self.utteranceLengthChars, fieldNumber: 4)
     }
     try { if let v = self._decoderInfo {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 5)

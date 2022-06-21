@@ -51,8 +51,8 @@ A single data point of an utterance recognized by Speechly On Device.
 | ---- | ---- | ----------- |
 | app_id | [string](#string) |  |
 | device_id | [string](#string) | device_id of the utterance. |
-| utterance_length_seconds | [string](#string) | Length of the recognized utterance in seconds. |
-| utterance_length_chars | [string](#string) | Length of the recognized utterance in characters. |
+| utterance_length_seconds | [int32](#int32) | Length of the recognized utterance in seconds. |
+| utterance_length_chars | [int32](#int32) | Length of the recognized utterance in characters. |
 | decoder_info | [DecoderInfo](#speechly.analytics.v1.DecoderInfo) | Information about the on-device decoder. |
 
 
