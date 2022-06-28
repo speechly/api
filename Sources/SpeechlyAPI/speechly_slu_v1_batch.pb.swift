@@ -91,6 +91,93 @@ extension Speechly_Slu_V1_AudioConfiguration.Encoding: CaseIterable {
 
 #endif  // swift(>=4.2)
 
+/// Describes full properties of an HTTP endpoint.
+public struct Speechly_Slu_V1_HttpResource {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// URL of the endpoint (protocol://server/path)
+  /// Required.
+  public var url: String = String()
+
+  /// method to use in connection.
+  /// Required.
+  public var method: Speechly_Slu_V1_HttpResource.Method = .invalid
+
+  /// Possible additional headers to include in the connection.
+  /// Optional.
+  public var headers: [Speechly_Slu_V1_HttpResource.Header] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  /// The HTTP method to use.
+  public enum Method: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
+    case invalid // = 0
+    case get // = 1
+    case post // = 2
+    case put // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .invalid
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .invalid
+      case 1: self = .get
+      case 2: self = .post
+      case 3: self = .put
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .invalid: return 0
+      case .get: return 1
+      case .post: return 2
+      case .put: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
+
+  /// A single header value.
+  public struct Header {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    public var name: String = String()
+
+    public var value: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
+
+  public init() {}
+}
+
+#if swift(>=4.2)
+
+extension Speechly_Slu_V1_HttpResource.Method: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static var allCases: [Speechly_Slu_V1_HttpResource.Method] = [
+    .invalid,
+    .get,
+    .post,
+    .put,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
 /// Describes a single batch operation.
 public struct Speechly_Slu_V1_Operation {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -118,6 +205,9 @@ public struct Speechly_Slu_V1_Operation {
   /// If the operation status is STATUS_DONE and the destination is not set,
   /// the results of the operation.
   public var transcripts: [Speechly_Slu_V1_Transcript] = []
+
+  /// Contains a description of the error if the operation status is STATUS_ERROR.
+  public var error: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -224,6 +314,9 @@ public struct Speechly_Slu_V1_Option {
 #if swift(>=5.5) && canImport(_Concurrency)
 extension Speechly_Slu_V1_AudioConfiguration: @unchecked Sendable {}
 extension Speechly_Slu_V1_AudioConfiguration.Encoding: @unchecked Sendable {}
+extension Speechly_Slu_V1_HttpResource: @unchecked Sendable {}
+extension Speechly_Slu_V1_HttpResource.Method: @unchecked Sendable {}
+extension Speechly_Slu_V1_HttpResource.Header: @unchecked Sendable {}
 extension Speechly_Slu_V1_Operation: @unchecked Sendable {}
 extension Speechly_Slu_V1_Operation.Status: @unchecked Sendable {}
 extension Speechly_Slu_V1_Transcript: @unchecked Sendable {}
@@ -291,6 +384,97 @@ extension Speechly_Slu_V1_AudioConfiguration.Encoding: SwiftProtobuf._ProtoNameP
   ]
 }
 
+extension Speechly_Slu_V1_HttpResource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".HttpResource"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "url"),
+    2: .same(proto: "method"),
+    3: .same(proto: "headers"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.url) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.method) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.headers) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.url.isEmpty {
+      try visitor.visitSingularStringField(value: self.url, fieldNumber: 1)
+    }
+    if self.method != .invalid {
+      try visitor.visitSingularEnumField(value: self.method, fieldNumber: 2)
+    }
+    if !self.headers.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.headers, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_HttpResource, rhs: Speechly_Slu_V1_HttpResource) -> Bool {
+    if lhs.url != rhs.url {return false}
+    if lhs.method != rhs.method {return false}
+    if lhs.headers != rhs.headers {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Slu_V1_HttpResource.Method: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "METHOD_INVALID"),
+    1: .same(proto: "METHOD_GET"),
+    2: .same(proto: "METHOD_POST"),
+    3: .same(proto: "METHOD_PUT"),
+  ]
+}
+
+extension Speechly_Slu_V1_HttpResource.Header: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Speechly_Slu_V1_HttpResource.protoMessageName + ".Header"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "name"),
+    2: .same(proto: "value"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.value) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
+    }
+    if !self.value.isEmpty {
+      try visitor.visitSingularStringField(value: self.value, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V1_HttpResource.Header, rhs: Speechly_Slu_V1_HttpResource.Header) -> Bool {
+    if lhs.name != rhs.name {return false}
+    if lhs.value != rhs.value {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".Operation"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -301,6 +485,7 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     5: .standard(proto: "app_id"),
     6: .standard(proto: "device_id"),
     7: .same(proto: "transcripts"),
+    8: .same(proto: "error"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -316,6 +501,7 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
       case 5: try { try decoder.decodeSingularStringField(value: &self.appID) }()
       case 6: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
       case 7: try { try decoder.decodeRepeatedMessageField(value: &self.transcripts) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self.error) }()
       default: break
       }
     }
@@ -343,6 +529,9 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if !self.transcripts.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.transcripts, fieldNumber: 7)
     }
+    if !self.error.isEmpty {
+      try visitor.visitSingularStringField(value: self.error, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -354,6 +543,7 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if lhs.appID != rhs.appID {return false}
     if lhs.deviceID != rhs.deviceID {return false}
     if lhs.transcripts != rhs.transcripts {return false}
+    if lhs.error != rhs.error {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

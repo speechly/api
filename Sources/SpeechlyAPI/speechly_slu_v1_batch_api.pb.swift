@@ -32,6 +32,11 @@ public struct Speechly_Slu_V1_ProcessAudioRequest {
   /// Required.
   public var appID: String = String()
 
+  /// The device ID of the audio source, for example a microphone
+  /// identifier as UUID.
+  /// Optional.
+  public var deviceID: String = String()
+
   /// Audio configuration.
   /// Required.
   public var config: Speechly_Slu_V1_AudioConfiguration {
@@ -44,6 +49,7 @@ public struct Speechly_Slu_V1_ProcessAudioRequest {
   public mutating func clearConfig() {self._config = nil}
 
   /// The data (audio) source for the operation.
+  /// Required.
   public var source: Speechly_Slu_V1_ProcessAudioRequest.OneOf_Source? = nil
 
   /// Raw audio data.
@@ -55,7 +61,7 @@ public struct Speechly_Slu_V1_ProcessAudioRequest {
     set {source = .audio(newValue)}
   }
 
-  /// URI of audio data.
+  /// URI of audio data. Can be http or GCS.
   public var uri: String {
     get {
       if case .uri(let v)? = source {return v}
@@ -64,18 +70,38 @@ public struct Speechly_Slu_V1_ProcessAudioRequest {
     set {source = .uri(newValue)}
   }
 
-  /// The target for the results of the operation.
+  /// Detailed HTTP source data.
+  public var httpSource: Speechly_Slu_V1_HttpResource {
+    get {
+      if case .httpSource(let v)? = source {return v}
+      return Speechly_Slu_V1_HttpResource()
+    }
+    set {source = .httpSource(newValue)}
+  }
+
+  /// The target for the results of the operation. If not given, the results
+  /// must be fetched using `QueryStatus`.
+  /// Optional.
   public var destination: Speechly_Slu_V1_ProcessAudioRequest.OneOf_Destination? = nil
 
-  /// The results JSON will be posted to the given URI. If not given, the
-  /// results must be fetched using `QueryStatus`.
-  /// Optional.
+  /// Basic HTTP POST destination.
+  /// The payload will be `Operation` as JSON.
   public var resultsUri: String {
     get {
       if case .resultsUri(let v)? = destination {return v}
       return String()
     }
     set {destination = .resultsUri(newValue)}
+  }
+
+  /// A more fine-grained result target, supporting HTTP method and HTTP headers.
+  /// The payload will be `Operation` as JSON.
+  public var httpResult: Speechly_Slu_V1_HttpResource {
+    get {
+      if case .httpResult(let v)? = destination {return v}
+      return Speechly_Slu_V1_HttpResource()
+    }
+    set {destination = .httpResult(newValue)}
   }
 
   /// Reference id for the operation. For example an identifier of the source
@@ -90,11 +116,14 @@ public struct Speechly_Slu_V1_ProcessAudioRequest {
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// The data (audio) source for the operation.
+  /// Required.
   public enum OneOf_Source: Equatable {
     /// Raw audio data.
     case audio(Data)
-    /// URI of audio data.
+    /// URI of audio data. Can be http or GCS.
     case uri(String)
+    /// Detailed HTTP source data.
+    case httpSource(Speechly_Slu_V1_HttpResource)
 
   #if !swift(>=4.1)
     public static func ==(lhs: Speechly_Slu_V1_ProcessAudioRequest.OneOf_Source, rhs: Speechly_Slu_V1_ProcessAudioRequest.OneOf_Source) -> Bool {
@@ -110,18 +139,26 @@ public struct Speechly_Slu_V1_ProcessAudioRequest {
         guard case .uri(let l) = lhs, case .uri(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
+      case (.httpSource, .httpSource): return {
+        guard case .httpSource(let l) = lhs, case .httpSource(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
       default: return false
       }
     }
   #endif
   }
 
-  /// The target for the results of the operation.
+  /// The target for the results of the operation. If not given, the results
+  /// must be fetched using `QueryStatus`.
+  /// Optional.
   public enum OneOf_Destination: Equatable {
-    /// The results JSON will be posted to the given URI. If not given, the
-    /// results must be fetched using `QueryStatus`.
-    /// Optional.
+    /// Basic HTTP POST destination.
+    /// The payload will be `Operation` as JSON.
     case resultsUri(String)
+    /// A more fine-grained result target, supporting HTTP method and HTTP headers.
+    /// The payload will be `Operation` as JSON.
+    case httpResult(Speechly_Slu_V1_HttpResource)
 
   #if !swift(>=4.1)
     public static func ==(lhs: Speechly_Slu_V1_ProcessAudioRequest.OneOf_Destination, rhs: Speechly_Slu_V1_ProcessAudioRequest.OneOf_Destination) -> Bool {
@@ -133,6 +170,11 @@ public struct Speechly_Slu_V1_ProcessAudioRequest {
         guard case .resultsUri(let l) = lhs, case .resultsUri(let r) = rhs else { preconditionFailure() }
         return l == r
       }()
+      case (.httpResult, .httpResult): return {
+        guard case .httpResult(let l) = lhs, case .httpResult(let r) = rhs else { preconditionFailure() }
+        return l == r
+      }()
+      default: return false
       }
     }
   #endif
@@ -221,10 +263,13 @@ extension Speechly_Slu_V1_ProcessAudioRequest: SwiftProtobuf.Message, SwiftProto
   public static let protoMessageName: String = _protobuf_package + ".ProcessAudioRequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "app_id"),
+    8: .standard(proto: "device_id"),
     2: .same(proto: "config"),
     3: .same(proto: "audio"),
     4: .same(proto: "uri"),
+    9: .standard(proto: "http_source"),
     5: .standard(proto: "results_uri"),
+    10: .standard(proto: "http_result"),
     6: .same(proto: "reference"),
     7: .same(proto: "options"),
   ]
@@ -263,6 +308,33 @@ extension Speechly_Slu_V1_ProcessAudioRequest: SwiftProtobuf.Message, SwiftProto
       }()
       case 6: try { try decoder.decodeSingularStringField(value: &self.reference) }()
       case 7: try { try decoder.decodeRepeatedMessageField(value: &self.options) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
+      case 9: try {
+        var v: Speechly_Slu_V1_HttpResource?
+        var hadOneofValue = false
+        if let current = self.source {
+          hadOneofValue = true
+          if case .httpSource(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.source = .httpSource(v)
+        }
+      }()
+      case 10: try {
+        var v: Speechly_Slu_V1_HttpResource?
+        var hadOneofValue = false
+        if let current = self.destination {
+          hadOneofValue = true
+          if case .httpResult(let m) = current {v = m}
+        }
+        try decoder.decodeSingularMessageField(value: &v)
+        if let v = v {
+          if hadOneofValue {try decoder.handleConflictingOneOf()}
+          self.destination = .httpResult(v)
+        }
+      }()
       default: break
       }
     }
@@ -288,7 +360,7 @@ extension Speechly_Slu_V1_ProcessAudioRequest: SwiftProtobuf.Message, SwiftProto
       guard case .uri(let v)? = self.source else { preconditionFailure() }
       try visitor.visitSingularStringField(value: v, fieldNumber: 4)
     }()
-    case nil: break
+    default: break
     }
     try { if case .resultsUri(let v)? = self.destination {
       try visitor.visitSingularStringField(value: v, fieldNumber: 5)
@@ -299,11 +371,21 @@ extension Speechly_Slu_V1_ProcessAudioRequest: SwiftProtobuf.Message, SwiftProto
     if !self.options.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.options, fieldNumber: 7)
     }
+    if !self.deviceID.isEmpty {
+      try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 8)
+    }
+    try { if case .httpSource(let v)? = self.source {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+    } }()
+    try { if case .httpResult(let v)? = self.destination {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Slu_V1_ProcessAudioRequest, rhs: Speechly_Slu_V1_ProcessAudioRequest) -> Bool {
     if lhs.appID != rhs.appID {return false}
+    if lhs.deviceID != rhs.deviceID {return false}
     if lhs._config != rhs._config {return false}
     if lhs.source != rhs.source {return false}
     if lhs.destination != rhs.destination {return false}

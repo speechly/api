@@ -126,11 +126,13 @@ class ProcessAudioRequest final :
   enum SourceCase {
     kAudio = 3,
     kUri = 4,
+    kHttpSource = 9,
     SOURCE_NOT_SET = 0,
   };
 
   enum DestinationCase {
     kResultsUri = 5,
+    kHttpResult = 10,
     DESTINATION_NOT_SET = 0,
   };
 
@@ -213,10 +215,13 @@ class ProcessAudioRequest final :
     kOptionsFieldNumber = 7,
     kAppIdFieldNumber = 1,
     kReferenceFieldNumber = 6,
+    kDeviceIdFieldNumber = 8,
     kConfigFieldNumber = 2,
     kAudioFieldNumber = 3,
     kUriFieldNumber = 4,
+    kHttpSourceFieldNumber = 9,
     kResultsUriFieldNumber = 5,
+    kHttpResultFieldNumber = 10,
   };
   // repeated .speechly.slu.v1.Option options = 7;
   int options_size() const;
@@ -262,6 +267,20 @@ class ProcessAudioRequest final :
   const std::string& _internal_reference() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_reference(const std::string& value);
   std::string* _internal_mutable_reference();
+  public:
+
+  // string device_id = 8;
+  void clear_device_id();
+  const std::string& device_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_device_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_device_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_device_id();
+  void set_allocated_device_id(std::string* device_id);
+  private:
+  const std::string& _internal_device_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(const std::string& value);
+  std::string* _internal_mutable_device_id();
   public:
 
   // .speechly.slu.v1.AudioConfiguration config = 2;
@@ -318,6 +337,24 @@ class ProcessAudioRequest final :
   std::string* _internal_mutable_uri();
   public:
 
+  // .speechly.slu.v1.HttpResource http_source = 9;
+  bool has_http_source() const;
+  private:
+  bool _internal_has_http_source() const;
+  public:
+  void clear_http_source();
+  const ::speechly::slu::v1::HttpResource& http_source() const;
+  PROTOBUF_MUST_USE_RESULT ::speechly::slu::v1::HttpResource* release_http_source();
+  ::speechly::slu::v1::HttpResource* mutable_http_source();
+  void set_allocated_http_source(::speechly::slu::v1::HttpResource* http_source);
+  private:
+  const ::speechly::slu::v1::HttpResource& _internal_http_source() const;
+  ::speechly::slu::v1::HttpResource* _internal_mutable_http_source();
+  public:
+  void unsafe_arena_set_allocated_http_source(
+      ::speechly::slu::v1::HttpResource* http_source);
+  ::speechly::slu::v1::HttpResource* unsafe_arena_release_http_source();
+
   // string results_uri = 5;
   bool has_results_uri() const;
   private:
@@ -336,6 +373,24 @@ class ProcessAudioRequest final :
   std::string* _internal_mutable_results_uri();
   public:
 
+  // .speechly.slu.v1.HttpResource http_result = 10;
+  bool has_http_result() const;
+  private:
+  bool _internal_has_http_result() const;
+  public:
+  void clear_http_result();
+  const ::speechly::slu::v1::HttpResource& http_result() const;
+  PROTOBUF_MUST_USE_RESULT ::speechly::slu::v1::HttpResource* release_http_result();
+  ::speechly::slu::v1::HttpResource* mutable_http_result();
+  void set_allocated_http_result(::speechly::slu::v1::HttpResource* http_result);
+  private:
+  const ::speechly::slu::v1::HttpResource& _internal_http_result() const;
+  ::speechly::slu::v1::HttpResource* _internal_mutable_http_result();
+  public:
+  void unsafe_arena_set_allocated_http_result(
+      ::speechly::slu::v1::HttpResource* http_result);
+  ::speechly::slu::v1::HttpResource* unsafe_arena_release_http_result();
+
   void clear_source();
   SourceCase source_case() const;
   void clear_destination();
@@ -345,7 +400,9 @@ class ProcessAudioRequest final :
   class _Internal;
   void set_has_audio();
   void set_has_uri();
+  void set_has_http_source();
   void set_has_results_uri();
+  void set_has_http_result();
 
   inline bool has_source() const;
   inline void clear_has_source();
@@ -359,17 +416,20 @@ class ProcessAudioRequest final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v1::Option > options_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr app_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr reference_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_id_;
   ::speechly::slu::v1::AudioConfiguration* config_;
   union SourceUnion {
     constexpr SourceUnion() : _constinit_{} {}
       ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr audio_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr uri_;
+    ::speechly::slu::v1::HttpResource* http_source_;
   } source_;
   union DestinationUnion {
     constexpr DestinationUnion() : _constinit_{} {}
       ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized _constinit_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr results_uri_;
+    ::speechly::slu::v1::HttpResource* http_result_;
   } destination_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::uint32 _oneof_case_[2];
@@ -889,6 +949,52 @@ inline void ProcessAudioRequest::set_allocated_app_id(std::string* app_id) {
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.ProcessAudioRequest.app_id)
 }
 
+// string device_id = 8;
+inline void ProcessAudioRequest::clear_device_id() {
+  device_id_.ClearToEmpty();
+}
+inline const std::string& ProcessAudioRequest::device_id() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.ProcessAudioRequest.device_id)
+  return _internal_device_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProcessAudioRequest::set_device_id(ArgT0&& arg0, ArgT... args) {
+ 
+ device_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.slu.v1.ProcessAudioRequest.device_id)
+}
+inline std::string* ProcessAudioRequest::mutable_device_id() {
+  std::string* _s = _internal_mutable_device_id();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.ProcessAudioRequest.device_id)
+  return _s;
+}
+inline const std::string& ProcessAudioRequest::_internal_device_id() const {
+  return device_id_.Get();
+}
+inline void ProcessAudioRequest::_internal_set_device_id(const std::string& value) {
+  
+  device_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ProcessAudioRequest::_internal_mutable_device_id() {
+  
+  return device_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ProcessAudioRequest::release_device_id() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.ProcessAudioRequest.device_id)
+  return device_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ProcessAudioRequest::set_allocated_device_id(std::string* device_id) {
+  if (device_id != nullptr) {
+    
+  } else {
+    
+  }
+  device_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), device_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.ProcessAudioRequest.device_id)
+}
+
 // .speechly.slu.v1.AudioConfiguration config = 2;
 inline bool ProcessAudioRequest::_internal_has_config() const {
   return this != internal_default_instance() && config_ != nullptr;
@@ -1139,6 +1245,72 @@ inline void ProcessAudioRequest::set_allocated_uri(std::string* uri) {
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.ProcessAudioRequest.uri)
 }
 
+// .speechly.slu.v1.HttpResource http_source = 9;
+inline bool ProcessAudioRequest::_internal_has_http_source() const {
+  return source_case() == kHttpSource;
+}
+inline bool ProcessAudioRequest::has_http_source() const {
+  return _internal_has_http_source();
+}
+inline void ProcessAudioRequest::set_has_http_source() {
+  _oneof_case_[0] = kHttpSource;
+}
+inline ::speechly::slu::v1::HttpResource* ProcessAudioRequest::release_http_source() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.ProcessAudioRequest.http_source)
+  if (_internal_has_http_source()) {
+    clear_has_source();
+      ::speechly::slu::v1::HttpResource* temp = source_.http_source_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    source_.http_source_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::speechly::slu::v1::HttpResource& ProcessAudioRequest::_internal_http_source() const {
+  return _internal_has_http_source()
+      ? *source_.http_source_
+      : reinterpret_cast< ::speechly::slu::v1::HttpResource&>(::speechly::slu::v1::_HttpResource_default_instance_);
+}
+inline const ::speechly::slu::v1::HttpResource& ProcessAudioRequest::http_source() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.ProcessAudioRequest.http_source)
+  return _internal_http_source();
+}
+inline ::speechly::slu::v1::HttpResource* ProcessAudioRequest::unsafe_arena_release_http_source() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:speechly.slu.v1.ProcessAudioRequest.http_source)
+  if (_internal_has_http_source()) {
+    clear_has_source();
+    ::speechly::slu::v1::HttpResource* temp = source_.http_source_;
+    source_.http_source_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void ProcessAudioRequest::unsafe_arena_set_allocated_http_source(::speechly::slu::v1::HttpResource* http_source) {
+  clear_source();
+  if (http_source) {
+    set_has_http_source();
+    source_.http_source_ = http_source;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v1.ProcessAudioRequest.http_source)
+}
+inline ::speechly::slu::v1::HttpResource* ProcessAudioRequest::_internal_mutable_http_source() {
+  if (!_internal_has_http_source()) {
+    clear_source();
+    set_has_http_source();
+    source_.http_source_ = CreateMaybeMessage< ::speechly::slu::v1::HttpResource >(GetArenaForAllocation());
+  }
+  return source_.http_source_;
+}
+inline ::speechly::slu::v1::HttpResource* ProcessAudioRequest::mutable_http_source() {
+  ::speechly::slu::v1::HttpResource* _msg = _internal_mutable_http_source();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.ProcessAudioRequest.http_source)
+  return _msg;
+}
+
 // string results_uri = 5;
 inline bool ProcessAudioRequest::_internal_has_results_uri() const {
   return destination_case() == kResultsUri;
@@ -1219,6 +1391,72 @@ inline void ProcessAudioRequest::set_allocated_results_uri(std::string* results_
     }
   }
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.ProcessAudioRequest.results_uri)
+}
+
+// .speechly.slu.v1.HttpResource http_result = 10;
+inline bool ProcessAudioRequest::_internal_has_http_result() const {
+  return destination_case() == kHttpResult;
+}
+inline bool ProcessAudioRequest::has_http_result() const {
+  return _internal_has_http_result();
+}
+inline void ProcessAudioRequest::set_has_http_result() {
+  _oneof_case_[1] = kHttpResult;
+}
+inline ::speechly::slu::v1::HttpResource* ProcessAudioRequest::release_http_result() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.ProcessAudioRequest.http_result)
+  if (_internal_has_http_result()) {
+    clear_has_destination();
+      ::speechly::slu::v1::HttpResource* temp = destination_.http_result_;
+    if (GetArenaForAllocation() != nullptr) {
+      temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+    }
+    destination_.http_result_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::speechly::slu::v1::HttpResource& ProcessAudioRequest::_internal_http_result() const {
+  return _internal_has_http_result()
+      ? *destination_.http_result_
+      : reinterpret_cast< ::speechly::slu::v1::HttpResource&>(::speechly::slu::v1::_HttpResource_default_instance_);
+}
+inline const ::speechly::slu::v1::HttpResource& ProcessAudioRequest::http_result() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.ProcessAudioRequest.http_result)
+  return _internal_http_result();
+}
+inline ::speechly::slu::v1::HttpResource* ProcessAudioRequest::unsafe_arena_release_http_result() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:speechly.slu.v1.ProcessAudioRequest.http_result)
+  if (_internal_has_http_result()) {
+    clear_has_destination();
+    ::speechly::slu::v1::HttpResource* temp = destination_.http_result_;
+    destination_.http_result_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void ProcessAudioRequest::unsafe_arena_set_allocated_http_result(::speechly::slu::v1::HttpResource* http_result) {
+  clear_destination();
+  if (http_result) {
+    set_has_http_result();
+    destination_.http_result_ = http_result;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v1.ProcessAudioRequest.http_result)
+}
+inline ::speechly::slu::v1::HttpResource* ProcessAudioRequest::_internal_mutable_http_result() {
+  if (!_internal_has_http_result()) {
+    clear_destination();
+    set_has_http_result();
+    destination_.http_result_ = CreateMaybeMessage< ::speechly::slu::v1::HttpResource >(GetArenaForAllocation());
+  }
+  return destination_.http_result_;
+}
+inline ::speechly::slu::v1::HttpResource* ProcessAudioRequest::mutable_http_result() {
+  ::speechly::slu::v1::HttpResource* _msg = _internal_mutable_http_result();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.ProcessAudioRequest.http_result)
+  return _msg;
 }
 
 // string reference = 6;

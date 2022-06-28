@@ -57,6 +57,8 @@ res, err := speechlyWLUClient.Text(ctx, req)
 ## Messages
 
 - [AudioConfiguration](#speechly.slu.v1.AudioConfiguration)
+- [Header](#speechly.slu.v1.HttpResource.Header)
+- [HttpResource](#speechly.slu.v1.HttpResource)
 - [Operation](#speechly.slu.v1.Operation)
 - [Option](#speechly.slu.v1.Option)
 - [Option](#speechly.slu.v1.SLUConfig.Option)
@@ -108,6 +110,33 @@ Describes the audio content of the batch operation.
 | language_codes | [string](#string) | The language(s) of the audio sent in the stream as a BCP-47 language tag<br/>(e.g. "en-US"). Defaults to the target application language.<br/>Optional. |
 
 
+<a name="speechly.slu.v1.HttpResource.Header"></a>
+### HttpResource.Header
+
+A single header value.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| name | [string](#string) |  |
+| value | [string](#string) |  |
+
+
+<a name="speechly.slu.v1.HttpResource"></a>
+### HttpResource
+
+Describes full properties of an HTTP endpoint.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| url | [string](#string) | URL of the endpoint (protocol://server/path)<br/>Required. |
+| method | [Method](#speechly.slu.v1.HttpResource.Method) | method to use in connection.<br/>Required. |
+| headers | [Header](#speechly.slu.v1.HttpResource.Header) | Possible additional headers to include in the connection.<br/>Optional. |
+
+
 <a name="speechly.slu.v1.Operation"></a>
 ### Operation
 
@@ -124,6 +153,7 @@ Describes a single batch operation.
 | app_id | [string](#string) | The application context for the operation. |
 | device_id | [string](#string) | The device or microphone id for the audio, if applicable. |
 | transcripts | [Transcript](#speechly.slu.v1.Transcript) | If the operation status is STATUS_DONE and the destination is not set,<br/>the results of the operation. |
+| error | [string](#string) | Contains a description of the error if the operation status is STATUS_ERROR. |
 
 
 <a name="speechly.slu.v1.Option"></a>
@@ -177,10 +207,13 @@ in the following messages.
 | name | type | description |
 | ---- | ---- | ----------- |
 | app_id | [string](#string) | The processing context, Speechly application ID.<br/>Required. |
+| device_id | [string](#string) | The device ID of the audio source, for example a microphone<br/>identifier as UUID.<br/>Optional. |
 | config | [AudioConfiguration](#speechly.slu.v1.AudioConfiguration) | Audio configuration.<br/>Required. |
 | audio | [bytes](#bytes) | Raw audio data. |
-| uri | [string](#string) | URI of audio data. |
-| results_uri | [string](#string) | The results JSON will be posted to the given URI. If not given, the<br/>results must be fetched using `QueryStatus`.<br/>Optional. |
+| uri | [string](#string) | URI of audio data. Can be http or GCS. |
+| http_source | [HttpResource](#speechly.slu.v1.HttpResource) | Detailed HTTP source data. |
+| results_uri | [string](#string) | Basic HTTP POST destination.<br/>The payload will be `Operation` as JSON. |
+| http_result | [HttpResource](#speechly.slu.v1.HttpResource) | A more fine-grained result target, supporting HTTP method and HTTP headers.<br/>The payload will be `Operation` as JSON. |
 | reference | [string](#string) | Reference id for the operation. For example an identifier of the source<br/>system.<br/>Optional. |
 | options | [Option](#speechly.slu.v1.Option) | Additional operation specific options.<br/>Optional. |
 

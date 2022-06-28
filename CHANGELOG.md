@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.3](https://github.com/speechly/api/tree/0.8.3) (2022-06-28)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.2...0.8.3)
+
+**Merged pull requests:**
+
+- Add HttpResource for BatchAPI I/O [\#43](https://github.com/speechly/api/pull/43) ([langma](https://github.com/langma))
+
+## [0.8.2](https://github.com/speechly/api/tree/0.8.2) (2022-06-21)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.1...0.8.2)
+
 ## [0.8.1](https://github.com/speechly/api/tree/0.8.1) (2022-06-20)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.0...0.8.1)
