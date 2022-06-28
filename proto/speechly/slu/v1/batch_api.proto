@@ -36,24 +36,35 @@ message ProcessAudioRequest {
   // The processing context, Speechly application ID.
   // Required.
   string app_id = 1;
+  // The device ID of the audio source, for example a microphone
+  // identifier as UUID.
+  // Optional.
+  string device_id = 8;
   // Audio configuration.
   // Required.
   AudioConfiguration config = 2;
 
   // The data (audio) source for the operation.
+  // Required.
   oneof source {
     // Raw audio data.
     bytes audio = 3;
-    // URI of audio data.
+    // URI of audio data. Can be http or GCS.
     string uri = 4;
+    // Detailed HTTP source data.
+    HttpResource http_source = 9;
   }
 
-  // The target for the results of the operation.
+  // The target for the results of the operation. If not given, the results
+  // must be fetched using `QueryStatus`.
+  // Optional.
   oneof destination {
-    // The results JSON will be posted to the given URI. If not given, the
-    // results must be fetched using `QueryStatus`.
-    // Optional.
+    // Basic HTTP POST destination.
+    // The payload will be `Operation` as JSON.
     string results_uri = 5;
+    // A more fine-grained result target, supporting HTTP method and HTTP headers.
+    // The payload will be `Operation` as JSON.
+    HttpResource http_result = 10;
   }
 
   // Reference id for the operation. For example an identifier of the source
