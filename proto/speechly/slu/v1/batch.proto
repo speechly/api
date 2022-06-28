@@ -33,6 +33,31 @@ message AudioConfiguration {
   repeated string language_codes = 4;
 }
 
+// Describes full properties of an HTTP endpoint.
+message HttpResource {
+  // The HTTP method to use.
+  enum Method {
+    METHOD_INVALID = 0;
+    METHOD_GET = 1;
+    METHOD_POST = 2;
+    METHOD_PUT = 3;
+  }
+  // A single header value.
+  message Header {
+    string name = 1;
+    string value = 2;
+  }
+  // URL of the endpoint (protocol://server/path)
+  // Required.
+  string url = 1;
+  // method to use in connection.
+  // Required.
+  Method method = 2;
+  // Possible additional headers to include in the connection.
+  // Optional.
+  repeated Header headers = 3;
+}
+
 // Describes a single batch operation.
 message Operation {
   // The status of the operation.
@@ -58,6 +83,8 @@ message Operation {
   // If the operation status is STATUS_DONE and the destination is not set,
   // the results of the operation.
   repeated Transcript transcripts = 7;
+  // Contains a description of the error if the operation status is STATUS_ERROR.
+  string error = 8;
 }
 
 // Describes an SLU transcript.
