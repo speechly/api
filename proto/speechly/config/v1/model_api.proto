@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package speechly.config.v1;
+
+option csharp_namespace = "Speechly.Config.V1";
+option go_package = "speechly/config/v1;configv1";
+option java_multiple_files = true;
+option java_outer_classname = "ModelApiProto";
+option java_package = "com.speechly.config.v1";
+option objc_class_prefix = "SCX";
+option php_namespace = "Speechly\\Config\\V1";
+
+// Speechly Model API provides operations related to the on-device models.
+//
+// The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
+//
+// The token acts as a proxy for the user who has generated it,
+// i.e. all operations are performed with that user as a subject.
+service ModelAPI {
+  // Downloads a model bundle for on-device use.
+  rpc DownloadModel(DownloadModelRequest) returns (stream DownloadModelResponse);
+}
+
+// Top-level message sent by the client for the `DownloadModel` method.
+message DownloadModelRequest {
+  // The machine learning architecture that the model is compatible with.
+  enum ModelArchitecture {
+    MODEL_ARCHITECTURE_INVALID = 0;
+    MODEL_ARCHITECTURE_ORT = 1;
+    MODEL_ARCHITECTURE_COREML = 2;
+    MODEL_ARCHITECTURE_TFLITE = 3;
+  }
+  // The ID of the app to fetch.
+  string app_id = 1;
+  // The config ID to fetch, defaults to the latest configuration.
+  string config_id = 2;
+  // What ML architecture should the model use.
+  ModelArchitecture model_architecture = 3;
+}
+
+// Top-level message sent by the server for the `DownloadModel` method.
+message DownloadModelResponse {
+  // Model data payload.
+  bytes chunk = 1;
+}
+
