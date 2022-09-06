@@ -51,7 +51,7 @@ class IdentityAPI final {
    public:
     virtual ~StubInterface() {}
     // Performs a login of specific Speechly application.
-    // Returns an access token which can be used to access thee Speechly API.
+    // Returns an access token which can be used to access the Speechly API.
     virtual ::grpc::Status Login(::grpc::ClientContext* context, const ::speechly::identity::v2::LoginRequest& request, ::speechly::identity::v2::LoginResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::identity::v2::LoginResponse>> AsyncLogin(::grpc::ClientContext* context, const ::speechly::identity::v2::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::identity::v2::LoginResponse>>(AsyncLoginRaw(context, request, cq));
@@ -63,7 +63,7 @@ class IdentityAPI final {
      public:
       virtual ~experimental_async_interface() {}
       // Performs a login of specific Speechly application.
-      // Returns an access token which can be used to access thee Speechly API.
+      // Returns an access token which can be used to access the Speechly API.
       virtual void Login(::grpc::ClientContext* context, const ::speechly::identity::v2::LoginRequest* request, ::speechly::identity::v2::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::identity::v2::LoginResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Login(::grpc::ClientContext* context, const ::speechly::identity::v2::LoginRequest* request, ::speechly::identity::v2::LoginResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
@@ -113,7 +113,7 @@ class IdentityAPI final {
     Service();
     virtual ~Service();
     // Performs a login of specific Speechly application.
-    // Returns an access token which can be used to access thee Speechly API.
+    // Returns an access token which can be used to access the Speechly API.
     virtual ::grpc::Status Login(::grpc::ServerContext* context, const ::speechly::identity::v2::LoginRequest* request, ::speechly::identity::v2::LoginResponse* response);
   };
   template <class BaseClass>

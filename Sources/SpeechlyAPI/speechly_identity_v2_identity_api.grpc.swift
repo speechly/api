@@ -45,7 +45,7 @@ extension Speechly_Identity_V2_IdentityAPIClientProtocol {
   }
 
   /// Performs a login of specific Speechly application.
-  /// Returns an access token which can be used to access thee Speechly API.
+  /// Returns an access token which can be used to access the Speechly API.
   ///
   /// - Parameters:
   ///   - request: Request to send to Login.
@@ -100,7 +100,7 @@ public protocol Speechly_Identity_V2_IdentityAPIProvider: CallHandlerProvider {
   var interceptors: Speechly_Identity_V2_IdentityAPIServerInterceptorFactoryProtocol? { get }
 
   /// Performs a login of specific Speechly application.
-  /// Returns an access token which can be used to access thee Speechly API.
+  /// Returns an access token which can be used to access the Speechly API.
   func login(request: Speechly_Identity_V2_LoginRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Identity_V2_LoginResponse>
 }
 

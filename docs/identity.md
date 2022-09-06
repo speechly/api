@@ -9,7 +9,7 @@ APIs.
 
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
-| Login | [LoginRequest](#speechly.identity.v2.LoginRequest) | [LoginResponse](#speechly.identity.v2.LoginResponse) | Performs a login of specific Speechly application.<br/>Returns an access token which can be used to access thee Speechly API. |
+| Login | [LoginRequest](#speechly.identity.v2.LoginRequest) | [LoginResponse](#speechly.identity.v2.LoginResponse) | Performs a login of specific Speechly application.<br/>Returns an access token which can be used to access the Speechly API. |
 
 ## Messages
 
