@@ -23,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type IdentityAPIClient interface {
 	// Performs a login of specific Speechly application.
-	// Returns an access token which can be used to access thee Speechly API.
+	// Returns an access token which can be used to access the Speechly API.
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 }
 
@@ -49,7 +49,7 @@ func (c *identityAPIClient) Login(ctx context.Context, in *LoginRequest, opts ..
 // for forward compatibility
 type IdentityAPIServer interface {
 	// Performs a login of specific Speechly application.
-	// Returns an access token which can be used to access thee Speechly API.
+	// Returns an access token which can be used to access the Speechly API.
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
 	mustEmbedUnimplementedIdentityAPIServer()
 }
