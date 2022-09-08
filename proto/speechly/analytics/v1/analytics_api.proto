@@ -57,6 +57,9 @@ message UtteranceStatisticsRequest {
     // Default is 1 day ago, resulting in two full weeks.
     // Must be YYYY-mm-DD formatted string if given.
     string end_date = 6;
+    // Limit statisticts to a single project_id
+    // Default is none, returning statistics for all apps in the given scope.
+    string project_id = 7;
 }
 
 // Contains a list of statistics entries for utterances, based on the requested scope.
