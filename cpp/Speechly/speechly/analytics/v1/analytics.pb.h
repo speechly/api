@@ -224,6 +224,7 @@ class UtteranceStatisticsPeriod final :
   enum : int {
     kAppIdFieldNumber = 2,
     kStartTimeFieldNumber = 3,
+    kProjectIdFieldNumber = 7,
     kCountFieldNumber = 4,
     kUtterancesSecondsFieldNumber = 5,
     kAnnotatedSecondsFieldNumber = 6,
@@ -254,6 +255,20 @@ class UtteranceStatisticsPeriod final :
   const std::string& _internal_start_time() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_start_time(const std::string& value);
   std::string* _internal_mutable_start_time();
+  public:
+
+  // string project_id = 7;
+  void clear_project_id();
+  const std::string& project_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_project_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_project_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_project_id();
+  void set_allocated_project_id(std::string* project_id);
+  private:
+  const std::string& _internal_project_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_project_id(const std::string& value);
+  std::string* _internal_mutable_project_id();
   public:
 
   // int32 count = 4;
@@ -292,6 +307,7 @@ class UtteranceStatisticsPeriod final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr app_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr start_time_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr project_id_;
   ::PROTOBUF_NAMESPACE_ID::int32 count_;
   ::PROTOBUF_NAMESPACE_ID::int32 utterances_seconds_;
   ::PROTOBUF_NAMESPACE_ID::int32 annotated_seconds_;
@@ -801,6 +817,52 @@ inline void UtteranceStatisticsPeriod::_internal_set_annotated_seconds(::PROTOBU
 inline void UtteranceStatisticsPeriod::set_annotated_seconds(::PROTOBUF_NAMESPACE_ID::int32 value) {
   _internal_set_annotated_seconds(value);
   // @@protoc_insertion_point(field_set:speechly.analytics.v1.UtteranceStatisticsPeriod.annotated_seconds)
+}
+
+// string project_id = 7;
+inline void UtteranceStatisticsPeriod::clear_project_id() {
+  project_id_.ClearToEmpty();
+}
+inline const std::string& UtteranceStatisticsPeriod::project_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.UtteranceStatisticsPeriod.project_id)
+  return _internal_project_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void UtteranceStatisticsPeriod::set_project_id(ArgT0&& arg0, ArgT... args) {
+ 
+ project_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.UtteranceStatisticsPeriod.project_id)
+}
+inline std::string* UtteranceStatisticsPeriod::mutable_project_id() {
+  std::string* _s = _internal_mutable_project_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.UtteranceStatisticsPeriod.project_id)
+  return _s;
+}
+inline const std::string& UtteranceStatisticsPeriod::_internal_project_id() const {
+  return project_id_.Get();
+}
+inline void UtteranceStatisticsPeriod::_internal_set_project_id(const std::string& value) {
+  
+  project_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* UtteranceStatisticsPeriod::_internal_mutable_project_id() {
+  
+  return project_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* UtteranceStatisticsPeriod::release_project_id() {
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.UtteranceStatisticsPeriod.project_id)
+  return project_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void UtteranceStatisticsPeriod::set_allocated_project_id(std::string* project_id) {
+  if (project_id != nullptr) {
+    
+  } else {
+    
+  }
+  project_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), project_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.UtteranceStatisticsPeriod.project_id)
 }
 
 // -------------------------------------------------------------------

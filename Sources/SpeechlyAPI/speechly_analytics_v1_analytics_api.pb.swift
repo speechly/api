@@ -54,6 +54,10 @@ public struct Speechly_Analytics_V1_UtteranceStatisticsRequest {
   /// Must be YYYY-mm-DD formatted string if given.
   public var endDate: String = String()
 
+  /// Limit statisticts to a single project_id
+  /// Default is none, returning statistics for the project in the given scope.
+  public var projectID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// The scope of the returned items.
@@ -241,6 +245,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsRequest: SwiftProtobuf.Messag
     4: .same(proto: "aggregation"),
     5: .standard(proto: "start_date"),
     6: .standard(proto: "end_date"),
+    7: .standard(proto: "project_id"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -255,6 +260,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsRequest: SwiftProtobuf.Messag
       case 4: try { try decoder.decodeSingularEnumField(value: &self.aggregation) }()
       case 5: try { try decoder.decodeSingularStringField(value: &self.startDate) }()
       case 6: try { try decoder.decodeSingularStringField(value: &self.endDate) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self.projectID) }()
       default: break
       }
     }
@@ -279,6 +285,9 @@ extension Speechly_Analytics_V1_UtteranceStatisticsRequest: SwiftProtobuf.Messag
     if !self.endDate.isEmpty {
       try visitor.visitSingularStringField(value: self.endDate, fieldNumber: 6)
     }
+    if !self.projectID.isEmpty {
+      try visitor.visitSingularStringField(value: self.projectID, fieldNumber: 7)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -289,6 +298,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsRequest: SwiftProtobuf.Messag
     if lhs.aggregation != rhs.aggregation {return false}
     if lhs.startDate != rhs.startDate {return false}
     if lhs.endDate != rhs.endDate {return false}
+    if lhs.projectID != rhs.projectID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

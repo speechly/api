@@ -90,6 +90,9 @@ public struct Speechly_Analytics_V1_UtteranceStatisticsPeriod {
   /// Total duration of annotated utterances in the current period.
   public var annotatedSeconds: Int32 = 0
 
+  /// project_id or empty, if specifiying a project.
+  public var projectID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -163,6 +166,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
     4: .same(proto: "count"),
     5: .standard(proto: "utterances_seconds"),
     6: .standard(proto: "annotated_seconds"),
+    7: .standard(proto: "project_id"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -176,6 +180,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
       case 4: try { try decoder.decodeSingularInt32Field(value: &self.count) }()
       case 5: try { try decoder.decodeSingularInt32Field(value: &self.utterancesSeconds) }()
       case 6: try { try decoder.decodeSingularInt32Field(value: &self.annotatedSeconds) }()
+      case 7: try { try decoder.decodeSingularStringField(value: &self.projectID) }()
       default: break
       }
     }
@@ -197,6 +202,9 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
     if self.annotatedSeconds != 0 {
       try visitor.visitSingularInt32Field(value: self.annotatedSeconds, fieldNumber: 6)
     }
+    if !self.projectID.isEmpty {
+      try visitor.visitSingularStringField(value: self.projectID, fieldNumber: 7)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -206,6 +214,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
     if lhs.count != rhs.count {return false}
     if lhs.utterancesSeconds != rhs.utterancesSeconds {return false}
     if lhs.annotatedSeconds != rhs.annotatedSeconds {return false}
+    if lhs.projectID != rhs.projectID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

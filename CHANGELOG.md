@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.8.4](https://github.com/speechly/api/tree/0.8.4) (2022-09-08)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.3...0.8.4)
+
+**Merged pull requests:**
+
+- Add project\_id as a parameter for Analytics API [\#46](https://github.com/speechly/api/pull/46) ([thisismatu](https://github.com/thisismatu))
+- fix typo [\#45](https://github.com/speechly/api/pull/45) ([thisismatu](https://github.com/thisismatu))
+- Add rpc for downloading on-device models [\#44](https://github.com/speechly/api/pull/44) ([teelisyys](https://github.com/teelisyys))
+
 ## [0.8.3](https://github.com/speechly/api/tree/0.8.3) (2022-06-28)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.2...0.8.3)

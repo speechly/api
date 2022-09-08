@@ -24,6 +24,7 @@ constexpr UtteranceStatisticsRequest::UtteranceStatisticsRequest(
   : app_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , start_date_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , end_date_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , project_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , days_(0)
   , scope_(0)
 
@@ -127,6 +128,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fanalytics_2fv1_2fan
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsRequest, aggregation_),
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsRequest, start_date_),
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsRequest, end_date_),
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsRequest, project_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsResponse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -169,11 +171,11 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fanalytics_2fv1_2fan
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::speechly::analytics::v1::UtteranceStatisticsRequest)},
-  { 11, -1, sizeof(::speechly::analytics::v1::UtteranceStatisticsResponse)},
-  { 23, -1, sizeof(::speechly::analytics::v1::UtterancesRequest)},
-  { 29, -1, sizeof(::speechly::analytics::v1::UtterancesResponse)},
-  { 35, -1, sizeof(::speechly::analytics::v1::RegisterUtteranceRequest)},
-  { 45, -1, sizeof(::speechly::analytics::v1::RegisterUtteranceResponse)},
+  { 12, -1, sizeof(::speechly::analytics::v1::UtteranceStatisticsResponse)},
+  { 24, -1, sizeof(::speechly::analytics::v1::UtterancesRequest)},
+  { 30, -1, sizeof(::speechly::analytics::v1::UtterancesResponse)},
+  { 36, -1, sizeof(::speechly::analytics::v1::RegisterUtteranceRequest)},
+  { 46, -1, sizeof(::speechly::analytics::v1::RegisterUtteranceResponse)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -188,50 +190,51 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n)speechly/analytics/v1/analytics_api.pr"
   "oto\022\025speechly.analytics.v1\032%speechly/ana"
-  "lytics/v1/analytics.proto\"\271\002\n\032UtteranceS"
+  "lytics/v1/analytics.proto\"\315\002\n\032UtteranceS"
   "tatisticsRequest\022\016\n\006app_id\030\001 \001(\t\022\014\n\004days"
   "\030\002 \001(\005\022F\n\005scope\030\003 \001(\01627.speechly.analyti"
   "cs.v1.UtteranceStatisticsRequest.Scope\0227"
   "\n\013aggregation\030\004 \001(\0162\".speechly.analytics"
   ".v1.Aggregation\022\022\n\nstart_date\030\005 \001(\t\022\020\n\010e"
-  "nd_date\030\006 \001(\t\"V\n\005Scope\022\021\n\rSCOPE_INVALID\020"
-  "\000\022\024\n\020SCOPE_UTTERANCES\020\001\022\025\n\021SCOPE_ANNOTAT"
-  "IONS\020\002\022\r\n\tSCOPE_ALL\020\003\"\230\002\n\033UtteranceStati"
-  "sticsResponse\022\022\n\nstart_date\030\001 \001(\t\022\020\n\010end"
-  "_date\030\002 \001(\t\0227\n\013aggregation\030\003 \001(\0162\".speec"
-  "hly.analytics.v1.Aggregation\022\?\n\005items\030\004 "
-  "\003(\01320.speechly.analytics.v1.UtteranceSta"
-  "tisticsPeriod\022\030\n\020total_utterances\030\005 \001(\005\022"
-  "\036\n\026total_duration_seconds\030\006 \001(\005\022\037\n\027total"
-  "_annotated_seconds\030\007 \001(\005\"#\n\021UtterancesRe"
-  "quest\022\016\n\006app_id\030\001 \001(\t\"J\n\022UtterancesRespo"
-  "nse\0224\n\nutterances\030\001 \003(\0132 .speechly.analy"
-  "tics.v1.Utterance\"\271\001\n\030RegisterUtteranceR"
-  "equest\022\016\n\006app_id\030\001 \001(\t\022\021\n\tdevice_id\030\002 \001("
-  "\t\022 \n\030utterance_length_seconds\030\003 \001(\005\022\036\n\026u"
-  "tterance_length_chars\030\004 \001(\005\0228\n\014decoder_i"
-  "nfo\030\005 \001(\0132\".speechly.analytics.v1.Decode"
-  "rInfo\"\033\n\031RegisterUtteranceResponse2\347\002\n\014A"
-  "nalyticsAPI\022|\n\023UtteranceStatistics\0221.spe"
-  "echly.analytics.v1.UtteranceStatisticsRe"
-  "quest\0322.speechly.analytics.v1.UtteranceS"
-  "tatisticsResponse\022a\n\nUtterances\022(.speech"
-  "ly.analytics.v1.UtterancesRequest\032).spee"
-  "chly.analytics.v1.UtterancesResponse\022v\n\021"
-  "RegisterUtterance\022/.speechly.analytics.v"
-  "1.RegisterUtteranceRequest\0320.speechly.an"
-  "alytics.v1.RegisterUtteranceResponseB\211\001\n"
-  "\031com.speechly.analytics.v1B\021AnalyticsApi"
-  "ProtoP\001Z!speechly/analytics/v1;analytics"
-  "v1\242\002\003SAX\252\002\025Speechly.Analytics.V1\312\002\025Speec"
-  "hly\\Analytics\\V1b\006proto3"
+  "nd_date\030\006 \001(\t\022\022\n\nproject_id\030\007 \001(\t\"V\n\005Sco"
+  "pe\022\021\n\rSCOPE_INVALID\020\000\022\024\n\020SCOPE_UTTERANCE"
+  "S\020\001\022\025\n\021SCOPE_ANNOTATIONS\020\002\022\r\n\tSCOPE_ALL\020"
+  "\003\"\230\002\n\033UtteranceStatisticsResponse\022\022\n\nsta"
+  "rt_date\030\001 \001(\t\022\020\n\010end_date\030\002 \001(\t\0227\n\013aggre"
+  "gation\030\003 \001(\0162\".speechly.analytics.v1.Agg"
+  "regation\022\?\n\005items\030\004 \003(\01320.speechly.analy"
+  "tics.v1.UtteranceStatisticsPeriod\022\030\n\020tot"
+  "al_utterances\030\005 \001(\005\022\036\n\026total_duration_se"
+  "conds\030\006 \001(\005\022\037\n\027total_annotated_seconds\030\007"
+  " \001(\005\"#\n\021UtterancesRequest\022\016\n\006app_id\030\001 \001("
+  "\t\"J\n\022UtterancesResponse\0224\n\nutterances\030\001 "
+  "\003(\0132 .speechly.analytics.v1.Utterance\"\271\001"
+  "\n\030RegisterUtteranceRequest\022\016\n\006app_id\030\001 \001"
+  "(\t\022\021\n\tdevice_id\030\002 \001(\t\022 \n\030utterance_lengt"
+  "h_seconds\030\003 \001(\005\022\036\n\026utterance_length_char"
+  "s\030\004 \001(\005\0228\n\014decoder_info\030\005 \001(\0132\".speechly"
+  ".analytics.v1.DecoderInfo\"\033\n\031RegisterUtt"
+  "eranceResponse2\347\002\n\014AnalyticsAPI\022|\n\023Utter"
+  "anceStatistics\0221.speechly.analytics.v1.U"
+  "tteranceStatisticsRequest\0322.speechly.ana"
+  "lytics.v1.UtteranceStatisticsResponse\022a\n"
+  "\nUtterances\022(.speechly.analytics.v1.Utte"
+  "rancesRequest\032).speechly.analytics.v1.Ut"
+  "terancesResponse\022v\n\021RegisterUtterance\022/."
+  "speechly.analytics.v1.RegisterUtteranceR"
+  "equest\0320.speechly.analytics.v1.RegisterU"
+  "tteranceResponseB\211\001\n\031com.speechly.analyt"
+  "ics.v1B\021AnalyticsApiProtoP\001Z!speechly/an"
+  "alytics/v1;analyticsv1\242\002\003SAX\252\002\025Speechly."
+  "Analytics.V1\312\002\025Speechly\\Analytics\\V1b\006pr"
+  "oto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_deps[1] = {
   &::descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto = {
-  false, false, 1544, descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto, "speechly/analytics/v1/analytics_api.proto", 
+  false, false, 1564, descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto, "speechly/analytics/v1/analytics_api.proto", 
   &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once, descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_deps, 1, 6,
   schemas, file_default_instances, TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto::offsets,
   file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto, file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto, file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto,
@@ -304,6 +307,11 @@ UtteranceStatisticsRequest::UtteranceStatisticsRequest(const UtteranceStatistics
     end_date_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_end_date(), 
       GetArenaForAllocation());
   }
+  project_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_project_id().empty()) {
+    project_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_project_id(), 
+      GetArenaForAllocation());
+  }
   ::memcpy(&days_, &from.days_,
     static_cast<size_t>(reinterpret_cast<char*>(&aggregation_) -
     reinterpret_cast<char*>(&days_)) + sizeof(aggregation_));
@@ -314,6 +322,7 @@ inline void UtteranceStatisticsRequest::SharedCtor() {
 app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 start_date_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 end_date_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+project_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&days_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&aggregation_) -
@@ -332,6 +341,7 @@ inline void UtteranceStatisticsRequest::SharedDtor() {
   app_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   start_date_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   end_date_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  project_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void UtteranceStatisticsRequest::ArenaDtor(void* object) {
@@ -353,6 +363,7 @@ void UtteranceStatisticsRequest::Clear() {
   app_id_.ClearToEmpty();
   start_date_.ClearToEmpty();
   end_date_.ClearToEmpty();
+  project_id_.ClearToEmpty();
   ::memset(&days_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&aggregation_) -
       reinterpret_cast<char*>(&days_)) + sizeof(aggregation_));
@@ -412,6 +423,15 @@ const char* UtteranceStatisticsRequest::_InternalParse(const char* ptr, ::PROTOB
           auto str = _internal_mutable_end_date();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.UtteranceStatisticsRequest.end_date"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string project_id = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          auto str = _internal_mutable_project_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.UtteranceStatisticsRequest.project_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -494,6 +514,16 @@ failure:
         6, this->_internal_end_date(), target);
   }
 
+  // string project_id = 7;
+  if (!this->_internal_project_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_project_id().data(), static_cast<int>(this->_internal_project_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "speechly.analytics.v1.UtteranceStatisticsRequest.project_id");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_project_id(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -529,6 +559,13 @@ size_t UtteranceStatisticsRequest::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_end_date());
+  }
+
+  // string project_id = 7;
+  if (!this->_internal_project_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_project_id());
   }
 
   // int32 days = 2;
@@ -587,6 +624,9 @@ void UtteranceStatisticsRequest::MergeFrom(const UtteranceStatisticsRequest& fro
   if (!from._internal_end_date().empty()) {
     _internal_set_end_date(from._internal_end_date());
   }
+  if (!from._internal_project_id().empty()) {
+    _internal_set_project_id(from._internal_project_id());
+  }
   if (from._internal_days() != 0) {
     _internal_set_days(from._internal_days());
   }
@@ -627,6 +667,11 @@ void UtteranceStatisticsRequest::InternalSwap(UtteranceStatisticsRequest* other)
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &end_date_, GetArenaForAllocation(),
       &other->end_date_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &project_id_, GetArenaForAllocation(),
+      &other->project_id_, other->GetArenaForAllocation()
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(UtteranceStatisticsRequest, aggregation_)

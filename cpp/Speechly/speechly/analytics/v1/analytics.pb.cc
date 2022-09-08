@@ -23,6 +23,7 @@ constexpr UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : app_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , start_time_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , project_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , count_(0)
   , utterances_seconds_(0)
   , annotated_seconds_(0){}
@@ -81,6 +82,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fanalytics_2fv1_2fan
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, count_),
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, utterances_seconds_),
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, annotated_seconds_),
+  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, project_id_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -100,8 +102,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fanalytics_2fv1_2fan
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::speechly::analytics::v1::UtteranceStatisticsPeriod)},
-  { 10, -1, sizeof(::speechly::analytics::v1::Utterance)},
-  { 18, -1, sizeof(::speechly::analytics::v1::DecoderInfo)},
+  { 11, -1, sizeof(::speechly::analytics::v1::Utterance)},
+  { 19, -1, sizeof(::speechly::analytics::v1::DecoderInfo)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -112,25 +114,25 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n%speechly/analytics/v1/analytics.proto\022"
-  "\025speechly.analytics.v1\"\205\001\n\031UtteranceStat"
+  "\025speechly.analytics.v1\"\231\001\n\031UtteranceStat"
   "isticsPeriod\022\016\n\006app_id\030\002 \001(\t\022\022\n\nstart_ti"
   "me\030\003 \001(\t\022\r\n\005count\030\004 \001(\005\022\032\n\022utterances_se"
-  "conds\030\005 \001(\005\022\031\n\021annotated_seconds\030\006 \001(\005\"@"
-  "\n\tUtterance\022\022\n\ntranscript\030\001 \001(\t\022\021\n\tannot"
-  "ated\030\002 \001(\t\022\014\n\004date\030\003 \001(\t\"Z\n\013DecoderInfo\022"
-  "\017\n\007version\030\001 \001(\t\022\027\n\017utterance_count\030\002 \001("
-  "\005\022!\n\031total_seconds_transcribed\030\003 \001(\005*n\n\013"
-  "Aggregation\022\027\n\023AGGREGATION_INVALID\020\000\022\027\n\023"
-  "AGGREGATION_MONTHLY\020\001\022\025\n\021AGGREGATION_DAI"
-  "LY\020\002\022\026\n\022AGGREGATION_HOURLY\020\003B\206\001\n\031com.spe"
-  "echly.analytics.v1B\016AnalyticsProtoP\001Z!sp"
-  "eechly/analytics/v1;analyticsv1\242\002\003SAX\252\002\025"
-  "Speechly.Analytics.V1\312\002\025Speechly\\Analyti"
-  "cs\\V1b\006proto3"
+  "conds\030\005 \001(\005\022\031\n\021annotated_seconds\030\006 \001(\005\022\022"
+  "\n\nproject_id\030\007 \001(\t\"@\n\tUtterance\022\022\n\ntrans"
+  "cript\030\001 \001(\t\022\021\n\tannotated\030\002 \001(\t\022\014\n\004date\030\003"
+  " \001(\t\"Z\n\013DecoderInfo\022\017\n\007version\030\001 \001(\t\022\027\n\017"
+  "utterance_count\030\002 \001(\005\022!\n\031total_seconds_t"
+  "ranscribed\030\003 \001(\005*n\n\013Aggregation\022\027\n\023AGGRE"
+  "GATION_INVALID\020\000\022\027\n\023AGGREGATION_MONTHLY\020"
+  "\001\022\025\n\021AGGREGATION_DAILY\020\002\022\026\n\022AGGREGATION_"
+  "HOURLY\020\003B\206\001\n\031com.speechly.analytics.v1B\016"
+  "AnalyticsProtoP\001Z!speechly/analytics/v1;"
+  "analyticsv1\242\002\003SAX\252\002\025Speechly.Analytics.V"
+  "1\312\002\025Speechly\\Analytics\\V1b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto = {
-  false, false, 613, descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2eproto, "speechly/analytics/v1/analytics.proto", 
+  false, false, 633, descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2eproto, "speechly/analytics/v1/analytics.proto", 
   &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once, nullptr, 0, 3,
   schemas, file_default_instances, TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto::offsets,
   file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto, file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto, file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
@@ -189,6 +191,11 @@ UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(const UtteranceStatisticsPe
     start_time_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_start_time(), 
       GetArenaForAllocation());
   }
+  project_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_project_id().empty()) {
+    project_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_project_id(), 
+      GetArenaForAllocation());
+  }
   ::memcpy(&count_, &from.count_,
     static_cast<size_t>(reinterpret_cast<char*>(&annotated_seconds_) -
     reinterpret_cast<char*>(&count_)) + sizeof(annotated_seconds_));
@@ -198,6 +205,7 @@ UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(const UtteranceStatisticsPe
 inline void UtteranceStatisticsPeriod::SharedCtor() {
 app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 start_time_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+project_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&count_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&annotated_seconds_) -
@@ -215,6 +223,7 @@ inline void UtteranceStatisticsPeriod::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   app_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   start_time_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  project_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void UtteranceStatisticsPeriod::ArenaDtor(void* object) {
@@ -235,6 +244,7 @@ void UtteranceStatisticsPeriod::Clear() {
 
   app_id_.ClearToEmpty();
   start_time_.ClearToEmpty();
+  project_id_.ClearToEmpty();
   ::memset(&count_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&annotated_seconds_) -
       reinterpret_cast<char*>(&count_)) + sizeof(annotated_seconds_));
@@ -283,6 +293,15 @@ const char* UtteranceStatisticsPeriod::_InternalParse(const char* ptr, ::PROTOBU
       case 6:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
           annotated_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string project_id = 7;
+      case 7:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
+          auto str = _internal_mutable_project_id();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.UtteranceStatisticsPeriod.project_id"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -353,6 +372,16 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_annotated_seconds(), target);
   }
 
+  // string project_id = 7;
+  if (!this->_internal_project_id().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_project_id().data(), static_cast<int>(this->_internal_project_id().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "speechly.analytics.v1.UtteranceStatisticsPeriod.project_id");
+    target = stream->WriteStringMaybeAliased(
+        7, this->_internal_project_id(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -381,6 +410,13 @@ size_t UtteranceStatisticsPeriod::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_start_time());
+  }
+
+  // string project_id = 7;
+  if (!this->_internal_project_id().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_project_id());
   }
 
   // int32 count = 4;
@@ -438,6 +474,9 @@ void UtteranceStatisticsPeriod::MergeFrom(const UtteranceStatisticsPeriod& from)
   if (!from._internal_start_time().empty()) {
     _internal_set_start_time(from._internal_start_time());
   }
+  if (!from._internal_project_id().empty()) {
+    _internal_set_project_id(from._internal_project_id());
+  }
   if (from._internal_count() != 0) {
     _internal_set_count(from._internal_count());
   }
@@ -473,6 +512,11 @@ void UtteranceStatisticsPeriod::InternalSwap(UtteranceStatisticsPeriod* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &start_time_, GetArenaForAllocation(),
       &other->start_time_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &project_id_, GetArenaForAllocation(),
+      &other->project_id_, other->GetArenaForAllocation()
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, annotated_seconds_)
