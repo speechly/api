@@ -30,6 +30,8 @@ message UtteranceStatisticsPeriod {
     int32 utterances_seconds = 5;
     // Total duration of annotated utterances in the current period.
     int32 annotated_seconds = 6;
+    // project_id or empty, if specifiying a project.
+    string project_id = 7;
 }
 
 // A single utterances recognized by Speechly API.
