@@ -254,6 +254,10 @@ message App {
     STATUS_TRAINED = 3;
     // Indicates that the application has failed the training.
     STATUS_FAILED = 4;
+    // The application has not been used in a while and has been marked as inactive.
+    STATUS_INACTIVE = 5;
+    // The aplication is deleted.
+    STATUS_DELETED = 6;
   }
   // The ID of the application.
   // This field is ignored when creating an application.
