@@ -96,6 +96,7 @@ Single row of statistics response.
 | count | [int32](#int32) | Count (sum) of utterances in the current period. |
 | utterances_seconds | [int32](#int32) | Total duration of the utterances in the current period. |
 | annotated_seconds | [int32](#int32) | Total duration of annotated utterances in the current period. |
+| project_id | [string](#string) | project_id or empty, if specifiying a project. |
 
 
 <a name="speechly.analytics.v1.UtteranceStatisticsRequest"></a>
@@ -115,6 +116,7 @@ Token needs to have access to the given app / project.
 | aggregation | [Aggregation](#speechly.analytics.v1.Aggregation) | Aggregation of the data.<br/>Default is DAILY |
 | start_date | [string](#string) | Start of requested statistics period.<br/>Default is 15 days ago.<br/>Must be YYYY-mm-DD formatted string if given. |
 | end_date | [string](#string) | End of requested statistics period.<br/>Default is 1 day ago, resulting in two full weeks.<br/>Must be YYYY-mm-DD formatted string if given. |
+| project_id | [string](#string) | Limit statisticts to a single project_id<br/>Default is none, returning statistics for the project in the given scope. |
 
 
 <a name="speechly.analytics.v1.UtteranceStatisticsResponse"></a>

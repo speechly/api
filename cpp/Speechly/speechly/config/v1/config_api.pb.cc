@@ -669,7 +669,7 @@ const char descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2epro
   "C.speechly.config.v1.DownloadCurrentTrai"
   "ningDataResponse.ContentType\"X\n\013ContentT"
   "ype\022\034\n\030CONTENT_TYPE_UNSPECIFIED\020\000\022\025\n\021CON"
-  "TENT_TYPE_YAML\020\001\022\024\n\020CONTENT_TYPE_TAR\020\002\"\233"
+  "TENT_TYPE_YAML\020\001\022\024\n\020CONTENT_TYPE_TAR\020\002\"\305"
   "\003\n\003App\022\n\n\002id\030\001 \001(\t\022\020\n\010language\030\002 \001(\t\022.\n\006"
   "status\030\003 \001(\0162\036.speechly.config.v1.App.St"
   "atus\022\014\n\004name\030\004 \001(\t\022\022\n\nqueue_size\030\005 \001(\005\022\021"
@@ -677,53 +677,54 @@ const char descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2epro
   "_sec\030\007 \001(\005\022#\n\033estimated_training_time_se"
   "c\030\010 \001(\005\022\031\n\021training_time_sec\030\t \001(\005\022\014\n\004ta"
   "gs\030\n \003(\t\0224\n\020deployed_at_time\030\013 \001(\0132\032.goo"
-  "gle.protobuf.Timestamp\"l\n\006Status\022\026\n\022STAT"
-  "US_UNSPECIFIED\020\000\022\016\n\nSTATUS_NEW\020\001\022\023\n\017STAT"
-  "US_TRAINING\020\002\022\022\n\016STATUS_TRAINED\020\003\022\021\n\rSTA"
-  "TUS_FAILED\020\0042\246\n\n\tConfigAPI\022[\n\nGetProject"
-  "\022%.speechly.config.v1.GetProjectRequest\032"
-  "&.speechly.config.v1.GetProjectResponse\022"
-  "d\n\rCreateProject\022(.speechly.config.v1.Cr"
-  "eateProjectRequest\032).speechly.config.v1."
-  "CreateProjectResponse\022d\n\rUpdateProject\022("
-  ".speechly.config.v1.UpdateProjectRequest"
-  "\032).speechly.config.v1.UpdateProjectRespo"
-  "nse\022\177\n\026GetProjectParticipants\0221.speechly"
-  ".config.v1.GetProjectParticipantsRequest"
-  "\0322.speechly.config.v1.GetProjectParticip"
-  "antsResponse\022O\n\006Invite\022!.speechly.config"
-  ".v1.InviteRequest\032\".speechly.config.v1.I"
-  "nviteResponse\022^\n\013JoinProject\022&.speechly."
-  "config.v1.JoinProjectRequest\032\'.speechly."
-  "config.v1.JoinProjectResponse\022U\n\010ListApp"
-  "s\022#.speechly.config.v1.ListAppsRequest\032$"
-  ".speechly.config.v1.ListAppsResponse\022O\n\006"
-  "GetApp\022!.speechly.config.v1.GetAppReques"
-  "t\032\".speechly.config.v1.GetAppResponse\022X\n"
-  "\tCreateApp\022$.speechly.config.v1.CreateAp"
-  "pRequest\032%.speechly.config.v1.CreateAppR"
-  "esponse\022X\n\tUpdateApp\022$.speechly.config.v"
-  "1.UpdateAppRequest\032%.speechly.config.v1."
-  "UpdateAppResponse\022X\n\tDeleteApp\022$.speechl"
-  "y.config.v1.DeleteAppRequest\032%.speechly."
-  "config.v1.DeleteAppResponse\022u\n\022UploadTra"
-  "iningData\022-.speechly.config.v1.UploadTra"
-  "iningDataRequest\032..speechly.config.v1.Up"
-  "loadTrainingDataResponse(\001\022\220\001\n\033DownloadC"
-  "urrentTrainingData\0226.speechly.config.v1."
-  "DownloadCurrentTrainingDataRequest\0327.spe"
-  "echly.config.v1.DownloadCurrentTrainingD"
-  "ataResponse0\001Bw\n\026com.speechly.config.v1B"
-  "\016ConfigApiProtoP\001Z\033speechly/config/v1;co"
-  "nfigv1\242\002\003SCX\252\002\022Speechly.Config.V1\312\002\022Spee"
-  "chly\\Config\\V1b\006proto3"
+  "gle.protobuf.Timestamp\"\225\001\n\006Status\022\026\n\022STA"
+  "TUS_UNSPECIFIED\020\000\022\016\n\nSTATUS_NEW\020\001\022\023\n\017STA"
+  "TUS_TRAINING\020\002\022\022\n\016STATUS_TRAINED\020\003\022\021\n\rST"
+  "ATUS_FAILED\020\004\022\023\n\017STATUS_INACTIVE\020\005\022\022\n\016ST"
+  "ATUS_DELETED\020\0062\246\n\n\tConfigAPI\022[\n\nGetProje"
+  "ct\022%.speechly.config.v1.GetProjectReques"
+  "t\032&.speechly.config.v1.GetProjectRespons"
+  "e\022d\n\rCreateProject\022(.speechly.config.v1."
+  "CreateProjectRequest\032).speechly.config.v"
+  "1.CreateProjectResponse\022d\n\rUpdateProject"
+  "\022(.speechly.config.v1.UpdateProjectReque"
+  "st\032).speechly.config.v1.UpdateProjectRes"
+  "ponse\022\177\n\026GetProjectParticipants\0221.speech"
+  "ly.config.v1.GetProjectParticipantsReque"
+  "st\0322.speechly.config.v1.GetProjectPartic"
+  "ipantsResponse\022O\n\006Invite\022!.speechly.conf"
+  "ig.v1.InviteRequest\032\".speechly.config.v1"
+  ".InviteResponse\022^\n\013JoinProject\022&.speechl"
+  "y.config.v1.JoinProjectRequest\032\'.speechl"
+  "y.config.v1.JoinProjectResponse\022U\n\010ListA"
+  "pps\022#.speechly.config.v1.ListAppsRequest"
+  "\032$.speechly.config.v1.ListAppsResponse\022O"
+  "\n\006GetApp\022!.speechly.config.v1.GetAppRequ"
+  "est\032\".speechly.config.v1.GetAppResponse\022"
+  "X\n\tCreateApp\022$.speechly.config.v1.Create"
+  "AppRequest\032%.speechly.config.v1.CreateAp"
+  "pResponse\022X\n\tUpdateApp\022$.speechly.config"
+  ".v1.UpdateAppRequest\032%.speechly.config.v"
+  "1.UpdateAppResponse\022X\n\tDeleteApp\022$.speec"
+  "hly.config.v1.DeleteAppRequest\032%.speechl"
+  "y.config.v1.DeleteAppResponse\022u\n\022UploadT"
+  "rainingData\022-.speechly.config.v1.UploadT"
+  "rainingDataRequest\032..speechly.config.v1."
+  "UploadTrainingDataResponse(\001\022\220\001\n\033Downloa"
+  "dCurrentTrainingData\0226.speechly.config.v"
+  "1.DownloadCurrentTrainingDataRequest\0327.s"
+  "peechly.config.v1.DownloadCurrentTrainin"
+  "gDataResponse0\001Bw\n\026com.speechly.config.v"
+  "1B\016ConfigApiProtoP\001Z\033speechly/config/v1;"
+  "configv1\242\002\003SCX\252\002\022Speechly.Config.V1\312\002\022Sp"
+  "eechly\\Config\\V1b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto = {
-  false, false, 3622, descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, "speechly/config/v1/config_api.proto", 
+  false, false, 3664, descriptor_table_protodef_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, "speechly/config/v1/config_api.proto", 
   &descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_once, descriptor_table_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto_deps, 1, 28,
   schemas, file_default_instances, TableStruct_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto::offsets,
   file_level_metadata_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, file_level_enum_descriptors_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto, file_level_service_descriptors_speechly_2fconfig_2fv1_2fconfig_5fapi_2eproto,
@@ -794,6 +795,8 @@ bool App_Status_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;
@@ -806,6 +809,8 @@ constexpr App_Status App::STATUS_NEW;
 constexpr App_Status App::STATUS_TRAINING;
 constexpr App_Status App::STATUS_TRAINED;
 constexpr App_Status App::STATUS_FAILED;
+constexpr App_Status App::STATUS_INACTIVE;
+constexpr App_Status App::STATUS_DELETED;
 constexpr App_Status App::Status_MIN;
 constexpr App_Status App::Status_MAX;
 constexpr int App::Status_ARRAYSIZE;

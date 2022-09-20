@@ -237,12 +237,14 @@ enum App_Status : int {
   App_Status_STATUS_TRAINING = 2,
   App_Status_STATUS_TRAINED = 3,
   App_Status_STATUS_FAILED = 4,
+  App_Status_STATUS_INACTIVE = 5,
+  App_Status_STATUS_DELETED = 6,
   App_Status_App_Status_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   App_Status_App_Status_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool App_Status_IsValid(int value);
 constexpr App_Status App_Status_Status_MIN = App_Status_STATUS_UNSPECIFIED;
-constexpr App_Status App_Status_Status_MAX = App_Status_STATUS_FAILED;
+constexpr App_Status App_Status_Status_MAX = App_Status_STATUS_DELETED;
 constexpr int App_Status_Status_ARRAYSIZE = App_Status_Status_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* App_Status_descriptor();
@@ -4424,6 +4426,10 @@ class App final :
     App_Status_STATUS_TRAINED;
   static constexpr Status STATUS_FAILED =
     App_Status_STATUS_FAILED;
+  static constexpr Status STATUS_INACTIVE =
+    App_Status_STATUS_INACTIVE;
+  static constexpr Status STATUS_DELETED =
+    App_Status_STATUS_DELETED;
   static inline bool Status_IsValid(int value) {
     return App_Status_IsValid(value);
   }

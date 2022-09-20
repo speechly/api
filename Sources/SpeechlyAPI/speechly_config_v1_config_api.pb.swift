@@ -623,6 +623,12 @@ public struct Speechly_Config_V1_App {
 
     /// Indicates that the application has failed the training.
     case failed // = 4
+
+    /// The application has not been used in a while and has been marked as inactive.
+    case inactive // = 5
+
+    /// The aplication is deleted.
+    case deleted // = 6
     case UNRECOGNIZED(Int)
 
     public init() {
@@ -636,6 +642,8 @@ public struct Speechly_Config_V1_App {
       case 2: self = .training
       case 3: self = .trained
       case 4: self = .failed
+      case 5: self = .inactive
+      case 6: self = .deleted
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
@@ -647,6 +655,8 @@ public struct Speechly_Config_V1_App {
       case .training: return 2
       case .trained: return 3
       case .failed: return 4
+      case .inactive: return 5
+      case .deleted: return 6
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -668,6 +678,8 @@ extension Speechly_Config_V1_App.Status: CaseIterable {
     .training,
     .trained,
     .failed,
+    .inactive,
+    .deleted,
   ]
 }
 
@@ -1692,5 +1704,7 @@ extension Speechly_Config_V1_App.Status: SwiftProtobuf._ProtoNameProviding {
     2: .same(proto: "STATUS_TRAINING"),
     3: .same(proto: "STATUS_TRAINED"),
     4: .same(proto: "STATUS_FAILED"),
+    5: .same(proto: "STATUS_INACTIVE"),
+    6: .same(proto: "STATUS_DELETED"),
   ]
 }

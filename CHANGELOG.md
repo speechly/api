@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.5](https://github.com/speechly/api/tree/0.8.5) (2022-09-20)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.4...0.8.5)
+
+**Merged pull requests:**
+
+- Add new app statuses for inactive and deleted applications [\#47](https://github.com/speechly/api/pull/47) ([langma](https://github.com/langma))
+
 ## [0.8.4](https://github.com/speechly/api/tree/0.8.4) (2022-09-08)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.3...0.8.4)
