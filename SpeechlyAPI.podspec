@@ -1,8 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'SpeechlyAPI'
-  s.version          = '0.1.0'
+  s.version          = '0.8.5'
   s.summary          = 'Definitions and generated code for Speechly public APIs.'
-
 
   s.homepage         = 'https://github.com/speechly/api'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
