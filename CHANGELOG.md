@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.8.8](https://github.com/speechly/api/tree/0.8.8) (2022-10-03)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.6...0.8.8)
+
+**Merged pull requests:**
+
+- Remove is\_available from ListBaseModelsRequest [\#52](https://github.com/speechly/api/pull/52) ([teelisyys](https://github.com/teelisyys))
+- Add project\_id to ListBaseModelsRequest [\#51](https://github.com/speechly/api/pull/51) ([teelisyys](https://github.com/teelisyys))
+
 ## [0.8.6](https://github.com/speechly/api/tree/0.8.6) (2022-10-03)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.5...0.8.6)

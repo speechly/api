@@ -188,8 +188,7 @@ class BaseModel final :
   enum : int {
     kNameFieldNumber = 1,
     kAliasFieldNumber = 2,
-    kIsAvailableFieldNumber = 3,
-    kIsDownloadableFieldNumber = 4,
+    kIsDownloadableFieldNumber = 3,
   };
   // string name = 1;
   void clear_name();
@@ -219,16 +218,7 @@ class BaseModel final :
   std::string* _internal_mutable_alias();
   public:
 
-  // bool is_available = 3;
-  void clear_is_available();
-  bool is_available() const;
-  void set_is_available(bool value);
-  private:
-  bool _internal_is_available() const;
-  void _internal_set_is_available(bool value);
-  public:
-
-  // bool is_downloadable = 4;
+  // bool is_downloadable = 3;
   void clear_is_downloadable();
   bool is_downloadable() const;
   void set_is_downloadable(bool value);
@@ -246,7 +236,6 @@ class BaseModel final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr alias_;
-  bool is_available_;
   bool is_downloadable_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_2eproto;
@@ -354,27 +343,7 @@ inline void BaseModel::set_allocated_alias(std::string* alias) {
   // @@protoc_insertion_point(field_set_allocated:speechly.config.v1.BaseModel.alias)
 }
 
-// bool is_available = 3;
-inline void BaseModel::clear_is_available() {
-  is_available_ = false;
-}
-inline bool BaseModel::_internal_is_available() const {
-  return is_available_;
-}
-inline bool BaseModel::is_available() const {
-  // @@protoc_insertion_point(field_get:speechly.config.v1.BaseModel.is_available)
-  return _internal_is_available();
-}
-inline void BaseModel::_internal_set_is_available(bool value) {
-  
-  is_available_ = value;
-}
-inline void BaseModel::set_is_available(bool value) {
-  _internal_set_is_available(value);
-  // @@protoc_insertion_point(field_set:speechly.config.v1.BaseModel.is_available)
-}
-
-// bool is_downloadable = 4;
+// bool is_downloadable = 3;
 inline void BaseModel::clear_is_downloadable() {
   is_downloadable_ = false;
 }

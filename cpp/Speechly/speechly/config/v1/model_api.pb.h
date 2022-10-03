@@ -576,9 +576,24 @@ class ListBaseModelsRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kLanguageFieldNumber = 1,
+    kProjectIdFieldNumber = 1,
+    kLanguageFieldNumber = 2,
   };
-  // string language = 1;
+  // string project_id = 1;
+  void clear_project_id();
+  const std::string& project_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_project_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_project_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_project_id();
+  void set_allocated_project_id(std::string* project_id);
+  private:
+  const std::string& _internal_project_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_project_id(const std::string& value);
+  std::string* _internal_mutable_project_id();
+  public:
+
+  // string language = 2;
   void clear_language();
   const std::string& language() const;
   template <typename ArgT0 = const std::string&, typename... ArgT>
@@ -599,6 +614,7 @@ class ListBaseModelsRequest final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr project_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto;
@@ -928,7 +944,53 @@ inline void DownloadModelResponse::set_allocated_chunk(std::string* chunk) {
 
 // ListBaseModelsRequest
 
-// string language = 1;
+// string project_id = 1;
+inline void ListBaseModelsRequest::clear_project_id() {
+  project_id_.ClearToEmpty();
+}
+inline const std::string& ListBaseModelsRequest::project_id() const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.ListBaseModelsRequest.project_id)
+  return _internal_project_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ListBaseModelsRequest::set_project_id(ArgT0&& arg0, ArgT... args) {
+ 
+ project_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.config.v1.ListBaseModelsRequest.project_id)
+}
+inline std::string* ListBaseModelsRequest::mutable_project_id() {
+  std::string* _s = _internal_mutable_project_id();
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.ListBaseModelsRequest.project_id)
+  return _s;
+}
+inline const std::string& ListBaseModelsRequest::_internal_project_id() const {
+  return project_id_.Get();
+}
+inline void ListBaseModelsRequest::_internal_set_project_id(const std::string& value) {
+  
+  project_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ListBaseModelsRequest::_internal_mutable_project_id() {
+  
+  return project_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ListBaseModelsRequest::release_project_id() {
+  // @@protoc_insertion_point(field_release:speechly.config.v1.ListBaseModelsRequest.project_id)
+  return project_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ListBaseModelsRequest::set_allocated_project_id(std::string* project_id) {
+  if (project_id != nullptr) {
+    
+  } else {
+    
+  }
+  project_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), project_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.config.v1.ListBaseModelsRequest.project_id)
+}
+
+// string language = 2;
 inline void ListBaseModelsRequest::clear_language() {
   language_.ClearToEmpty();
 }

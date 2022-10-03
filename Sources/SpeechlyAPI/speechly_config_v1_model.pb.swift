@@ -32,9 +32,6 @@ public struct Speechly_Config_V1_BaseModel {
   /// The alias of the model used in the config file
   public var alias: String = String()
 
-  /// Is the model available for the current tier
-  public var isAvailable: Bool = false
-
   /// Does the model allow downloading on-device model bundles
   public var isDownloadable: Bool = false
 
@@ -56,8 +53,7 @@ extension Speechly_Config_V1_BaseModel: SwiftProtobuf.Message, SwiftProtobuf._Me
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
     2: .same(proto: "alias"),
-    3: .standard(proto: "is_available"),
-    4: .standard(proto: "is_downloadable"),
+    3: .standard(proto: "is_downloadable"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -68,8 +64,7 @@ extension Speechly_Config_V1_BaseModel: SwiftProtobuf.Message, SwiftProtobuf._Me
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.name) }()
       case 2: try { try decoder.decodeSingularStringField(value: &self.alias) }()
-      case 3: try { try decoder.decodeSingularBoolField(value: &self.isAvailable) }()
-      case 4: try { try decoder.decodeSingularBoolField(value: &self.isDownloadable) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.isDownloadable) }()
       default: break
       }
     }
@@ -82,11 +77,8 @@ extension Speechly_Config_V1_BaseModel: SwiftProtobuf.Message, SwiftProtobuf._Me
     if !self.alias.isEmpty {
       try visitor.visitSingularStringField(value: self.alias, fieldNumber: 2)
     }
-    if self.isAvailable != false {
-      try visitor.visitSingularBoolField(value: self.isAvailable, fieldNumber: 3)
-    }
     if self.isDownloadable != false {
-      try visitor.visitSingularBoolField(value: self.isDownloadable, fieldNumber: 4)
+      try visitor.visitSingularBoolField(value: self.isDownloadable, fieldNumber: 3)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -94,7 +86,6 @@ extension Speechly_Config_V1_BaseModel: SwiftProtobuf.Message, SwiftProtobuf._Me
   public static func ==(lhs: Speechly_Config_V1_BaseModel, rhs: Speechly_Config_V1_BaseModel) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.alias != rhs.alias {return false}
-    if lhs.isAvailable != rhs.isAvailable {return false}
     if lhs.isDownloadable != rhs.isDownloadable {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
