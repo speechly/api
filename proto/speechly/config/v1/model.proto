@@ -16,8 +16,6 @@ message BaseModel {
   string name = 1;
   // The alias of the model used in the config file
   string alias = 2;
-  // Is the model available for the current tier
-  bool is_available = 3;
   // Does the model allow downloading on-device model bundles
-  bool is_downloadable = 4;
+  bool is_downloadable = 3;
 }
