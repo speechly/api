@@ -42,6 +42,11 @@ public protocol Speechly_Config_V1_ModelAPIClientProtocol: GRPCClient {
     callOptions: CallOptions?,
     handler: @escaping (Speechly_Config_V1_DownloadModelResponse) -> Void
   ) -> ServerStreamingCall<Speechly_Config_V1_DownloadModelRequest, Speechly_Config_V1_DownloadModelResponse>
+
+  func listBaseModels(
+    _ request: Speechly_Config_V1_ListBaseModelsRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Speechly_Config_V1_ListBaseModelsRequest, Speechly_Config_V1_ListBaseModelsResponse>
 }
 
 extension Speechly_Config_V1_ModelAPIClientProtocol {
@@ -69,12 +74,33 @@ extension Speechly_Config_V1_ModelAPIClientProtocol {
       handler: handler
     )
   }
+
+  /// List the base models available for use as basis in training.
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to ListBaseModels.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func listBaseModels(
+    _ request: Speechly_Config_V1_ListBaseModelsRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Speechly_Config_V1_ListBaseModelsRequest, Speechly_Config_V1_ListBaseModelsResponse> {
+    return self.makeUnaryCall(
+      path: "/speechly.config.v1.ModelAPI/ListBaseModels",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeListBaseModelsInterceptors() ?? []
+    )
+  }
 }
 
 public protocol Speechly_Config_V1_ModelAPIClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'downloadModel'.
   func makeDownloadModelInterceptors() -> [ClientInterceptor<Speechly_Config_V1_DownloadModelRequest, Speechly_Config_V1_DownloadModelResponse>]
+
+  /// - Returns: Interceptors to use when invoking 'listBaseModels'.
+  func makeListBaseModelsInterceptors() -> [ClientInterceptor<Speechly_Config_V1_ListBaseModelsRequest, Speechly_Config_V1_ListBaseModelsResponse>]
 }
 
 public final class Speechly_Config_V1_ModelAPIClient: Speechly_Config_V1_ModelAPIClientProtocol {
@@ -112,6 +138,9 @@ public protocol Speechly_Config_V1_ModelAPIProvider: CallHandlerProvider {
 
   /// Downloads a model bundle for on-device use.
   func downloadModel(request: Speechly_Config_V1_DownloadModelRequest, context: StreamingResponseCallContext<Speechly_Config_V1_DownloadModelResponse>) -> EventLoopFuture<GRPCStatus>
+
+  /// List the base models available for use as basis in training.
+  func listBaseModels(request: Speechly_Config_V1_ListBaseModelsRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Config_V1_ListBaseModelsResponse>
 }
 
 extension Speechly_Config_V1_ModelAPIProvider {
@@ -133,6 +162,15 @@ extension Speechly_Config_V1_ModelAPIProvider {
         userFunction: self.downloadModel(request:context:)
       )
 
+    case "ListBaseModels":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Config_V1_ListBaseModelsRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Config_V1_ListBaseModelsResponse>(),
+        interceptors: self.interceptors?.makeListBaseModelsInterceptors() ?? [],
+        userFunction: self.listBaseModels(request:context:)
+      )
+
     default:
       return nil
     }
@@ -144,4 +182,8 @@ public protocol Speechly_Config_V1_ModelAPIServerInterceptorFactoryProtocol {
   /// - Returns: Interceptors to use when handling 'downloadModel'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeDownloadModelInterceptors() -> [ServerInterceptor<Speechly_Config_V1_DownloadModelRequest, Speechly_Config_V1_DownloadModelResponse>]
+
+  /// - Returns: Interceptors to use when handling 'listBaseModels'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeListBaseModelsInterceptors() -> [ServerInterceptor<Speechly_Config_V1_ListBaseModelsRequest, Speechly_Config_V1_ListBaseModelsResponse>]
 }

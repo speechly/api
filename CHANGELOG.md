@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.8.6](https://github.com/speechly/api/tree/0.8.6) (2022-10-03)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.5...0.8.6)
+
+**Merged pull requests:**
+
+- Add rpc for listing available base models [\#50](https://github.com/speechly/api/pull/50) ([teelisyys](https://github.com/teelisyys))
+- set version according to the latest tag 0.8.5 [\#49](https://github.com/speechly/api/pull/49) ([igorpolt](https://github.com/igorpolt))
+- add podspec [\#48](https://github.com/speechly/api/pull/48) ([igorpolt](https://github.com/igorpolt))
+
 ## [0.8.5](https://github.com/speechly/api/tree/0.8.5) (2022-09-20)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.4...0.8.5)

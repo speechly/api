@@ -32,6 +32,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include "speechly/config/v1/model.pb.h"
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto
@@ -47,7 +48,7 @@ struct TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -63,12 +64,20 @@ extern DownloadModelRequestDefaultTypeInternal _DownloadModelRequest_default_ins
 class DownloadModelResponse;
 struct DownloadModelResponseDefaultTypeInternal;
 extern DownloadModelResponseDefaultTypeInternal _DownloadModelResponse_default_instance_;
+class ListBaseModelsRequest;
+struct ListBaseModelsRequestDefaultTypeInternal;
+extern ListBaseModelsRequestDefaultTypeInternal _ListBaseModelsRequest_default_instance_;
+class ListBaseModelsResponse;
+struct ListBaseModelsResponseDefaultTypeInternal;
+extern ListBaseModelsResponseDefaultTypeInternal _ListBaseModelsResponse_default_instance_;
 }  // namespace v1
 }  // namespace config
 }  // namespace speechly
 PROTOBUF_NAMESPACE_OPEN
 template<> ::speechly::config::v1::DownloadModelRequest* Arena::CreateMaybeMessage<::speechly::config::v1::DownloadModelRequest>(Arena*);
 template<> ::speechly::config::v1::DownloadModelResponse* Arena::CreateMaybeMessage<::speechly::config::v1::DownloadModelResponse>(Arena*);
+template<> ::speechly::config::v1::ListBaseModelsRequest* Arena::CreateMaybeMessage<::speechly::config::v1::ListBaseModelsRequest>(Arena*);
+template<> ::speechly::config::v1::ListBaseModelsResponse* Arena::CreateMaybeMessage<::speechly::config::v1::ListBaseModelsResponse>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace speechly {
 namespace config {
@@ -450,6 +459,298 @@ class DownloadModelResponse final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ListBaseModelsRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.config.v1.ListBaseModelsRequest) */ {
+ public:
+  inline ListBaseModelsRequest() : ListBaseModelsRequest(nullptr) {}
+  ~ListBaseModelsRequest() override;
+  explicit constexpr ListBaseModelsRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ListBaseModelsRequest(const ListBaseModelsRequest& from);
+  ListBaseModelsRequest(ListBaseModelsRequest&& from) noexcept
+    : ListBaseModelsRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ListBaseModelsRequest& operator=(const ListBaseModelsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListBaseModelsRequest& operator=(ListBaseModelsRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListBaseModelsRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListBaseModelsRequest* internal_default_instance() {
+    return reinterpret_cast<const ListBaseModelsRequest*>(
+               &_ListBaseModelsRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(ListBaseModelsRequest& a, ListBaseModelsRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ListBaseModelsRequest* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListBaseModelsRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ListBaseModelsRequest* New() const final {
+    return new ListBaseModelsRequest();
+  }
+
+  ListBaseModelsRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ListBaseModelsRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ListBaseModelsRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ListBaseModelsRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ListBaseModelsRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.config.v1.ListBaseModelsRequest";
+  }
+  protected:
+  explicit ListBaseModelsRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLanguageFieldNumber = 1,
+  };
+  // string language = 1;
+  void clear_language();
+  const std::string& language() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_language(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_language();
+  PROTOBUF_MUST_USE_RESULT std::string* release_language();
+  void set_allocated_language(std::string* language);
+  private:
+  const std::string& _internal_language() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_language(const std::string& value);
+  std::string* _internal_mutable_language();
+  public:
+
+  // @@protoc_insertion_point(class_scope:speechly.config.v1.ListBaseModelsRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ListBaseModelsResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.config.v1.ListBaseModelsResponse) */ {
+ public:
+  inline ListBaseModelsResponse() : ListBaseModelsResponse(nullptr) {}
+  ~ListBaseModelsResponse() override;
+  explicit constexpr ListBaseModelsResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ListBaseModelsResponse(const ListBaseModelsResponse& from);
+  ListBaseModelsResponse(ListBaseModelsResponse&& from) noexcept
+    : ListBaseModelsResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ListBaseModelsResponse& operator=(const ListBaseModelsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListBaseModelsResponse& operator=(ListBaseModelsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListBaseModelsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListBaseModelsResponse* internal_default_instance() {
+    return reinterpret_cast<const ListBaseModelsResponse*>(
+               &_ListBaseModelsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ListBaseModelsResponse& a, ListBaseModelsResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ListBaseModelsResponse* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListBaseModelsResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ListBaseModelsResponse* New() const final {
+    return new ListBaseModelsResponse();
+  }
+
+  ListBaseModelsResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ListBaseModelsResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ListBaseModelsResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ListBaseModelsResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ListBaseModelsResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.config.v1.ListBaseModelsResponse";
+  }
+  protected:
+  explicit ListBaseModelsResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kModelFieldNumber = 1,
+  };
+  // repeated .speechly.config.v1.BaseModel model = 1;
+  int model_size() const;
+  private:
+  int _internal_model_size() const;
+  public:
+  void clear_model();
+  ::speechly::config::v1::BaseModel* mutable_model(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::BaseModel >*
+      mutable_model();
+  private:
+  const ::speechly::config::v1::BaseModel& _internal_model(int index) const;
+  ::speechly::config::v1::BaseModel* _internal_add_model();
+  public:
+  const ::speechly::config::v1::BaseModel& model(int index) const;
+  ::speechly::config::v1::BaseModel* add_model();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::BaseModel >&
+      model() const;
+
+  // @@protoc_insertion_point(class_scope:speechly.config.v1.ListBaseModelsResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::BaseModel > model_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto;
+};
 // ===================================================================
 
 
@@ -623,9 +924,104 @@ inline void DownloadModelResponse::set_allocated_chunk(std::string* chunk) {
   // @@protoc_insertion_point(field_set_allocated:speechly.config.v1.DownloadModelResponse.chunk)
 }
 
+// -------------------------------------------------------------------
+
+// ListBaseModelsRequest
+
+// string language = 1;
+inline void ListBaseModelsRequest::clear_language() {
+  language_.ClearToEmpty();
+}
+inline const std::string& ListBaseModelsRequest::language() const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.ListBaseModelsRequest.language)
+  return _internal_language();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ListBaseModelsRequest::set_language(ArgT0&& arg0, ArgT... args) {
+ 
+ language_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.config.v1.ListBaseModelsRequest.language)
+}
+inline std::string* ListBaseModelsRequest::mutable_language() {
+  std::string* _s = _internal_mutable_language();
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.ListBaseModelsRequest.language)
+  return _s;
+}
+inline const std::string& ListBaseModelsRequest::_internal_language() const {
+  return language_.Get();
+}
+inline void ListBaseModelsRequest::_internal_set_language(const std::string& value) {
+  
+  language_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ListBaseModelsRequest::_internal_mutable_language() {
+  
+  return language_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ListBaseModelsRequest::release_language() {
+  // @@protoc_insertion_point(field_release:speechly.config.v1.ListBaseModelsRequest.language)
+  return language_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ListBaseModelsRequest::set_allocated_language(std::string* language) {
+  if (language != nullptr) {
+    
+  } else {
+    
+  }
+  language_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), language,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.config.v1.ListBaseModelsRequest.language)
+}
+
+// -------------------------------------------------------------------
+
+// ListBaseModelsResponse
+
+// repeated .speechly.config.v1.BaseModel model = 1;
+inline int ListBaseModelsResponse::_internal_model_size() const {
+  return model_.size();
+}
+inline int ListBaseModelsResponse::model_size() const {
+  return _internal_model_size();
+}
+inline ::speechly::config::v1::BaseModel* ListBaseModelsResponse::mutable_model(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.ListBaseModelsResponse.model)
+  return model_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::BaseModel >*
+ListBaseModelsResponse::mutable_model() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.config.v1.ListBaseModelsResponse.model)
+  return &model_;
+}
+inline const ::speechly::config::v1::BaseModel& ListBaseModelsResponse::_internal_model(int index) const {
+  return model_.Get(index);
+}
+inline const ::speechly::config::v1::BaseModel& ListBaseModelsResponse::model(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.ListBaseModelsResponse.model)
+  return _internal_model(index);
+}
+inline ::speechly::config::v1::BaseModel* ListBaseModelsResponse::_internal_add_model() {
+  return model_.Add();
+}
+inline ::speechly::config::v1::BaseModel* ListBaseModelsResponse::add_model() {
+  ::speechly::config::v1::BaseModel* _add = _internal_add_model();
+  // @@protoc_insertion_point(field_add:speechly.config.v1.ListBaseModelsResponse.model)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::BaseModel >&
+ListBaseModelsResponse::model() const {
+  // @@protoc_insertion_point(field_list:speechly.config.v1.ListBaseModelsResponse.model)
+  return model_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

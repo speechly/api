@@ -64,17 +64,32 @@ class ModelAPI final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::speechly::config::v1::DownloadModelResponse>> PrepareAsyncDownloadModel(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::speechly::config::v1::DownloadModelResponse>>(PrepareAsyncDownloadModelRaw(context, request, cq));
     }
+    // List the base models available for use as basis in training.
+    virtual ::grpc::Status ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::speechly::config::v1::ListBaseModelsResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::config::v1::ListBaseModelsResponse>> AsyncListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::config::v1::ListBaseModelsResponse>>(AsyncListBaseModelsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::config::v1::ListBaseModelsResponse>> PrepareAsyncListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::config::v1::ListBaseModelsResponse>>(PrepareAsyncListBaseModelsRaw(context, request, cq));
+    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
       // Downloads a model bundle for on-device use.
       virtual void DownloadModel(::grpc::ClientContext* context, ::speechly::config::v1::DownloadModelRequest* request, ::grpc::experimental::ClientReadReactor< ::speechly::config::v1::DownloadModelResponse>* reactor) = 0;
+      // List the base models available for use as basis in training.
+      virtual void ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest* request, ::speechly::config::v1::ListBaseModelsResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ListBaseModels(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::config::v1::ListBaseModelsResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest* request, ::speechly::config::v1::ListBaseModelsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      virtual void ListBaseModels(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::config::v1::ListBaseModelsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
     };
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientReaderInterface< ::speechly::config::v1::DownloadModelResponse>* DownloadModelRaw(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::speechly::config::v1::DownloadModelResponse>* AsyncDownloadModelRaw(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
     virtual ::grpc::ClientAsyncReaderInterface< ::speechly::config::v1::DownloadModelResponse>* PrepareAsyncDownloadModelRaw(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::speechly::config::v1::ListBaseModelsResponse>* AsyncListBaseModelsRaw(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::speechly::config::v1::ListBaseModelsResponse>* PrepareAsyncListBaseModelsRaw(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -88,10 +103,21 @@ class ModelAPI final {
     std::unique_ptr< ::grpc::ClientAsyncReader< ::speechly::config::v1::DownloadModelResponse>> PrepareAsyncDownloadModel(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReader< ::speechly::config::v1::DownloadModelResponse>>(PrepareAsyncDownloadModelRaw(context, request, cq));
     }
+    ::grpc::Status ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::speechly::config::v1::ListBaseModelsResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::config::v1::ListBaseModelsResponse>> AsyncListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::config::v1::ListBaseModelsResponse>>(AsyncListBaseModelsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::config::v1::ListBaseModelsResponse>> PrepareAsyncListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::speechly::config::v1::ListBaseModelsResponse>>(PrepareAsyncListBaseModelsRaw(context, request, cq));
+    }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
       void DownloadModel(::grpc::ClientContext* context, ::speechly::config::v1::DownloadModelRequest* request, ::grpc::experimental::ClientReadReactor< ::speechly::config::v1::DownloadModelResponse>* reactor) override;
+      void ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest* request, ::speechly::config::v1::ListBaseModelsResponse* response, std::function<void(::grpc::Status)>) override;
+      void ListBaseModels(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::config::v1::ListBaseModelsResponse* response, std::function<void(::grpc::Status)>) override;
+      void ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest* request, ::speechly::config::v1::ListBaseModelsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      void ListBaseModels(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::config::v1::ListBaseModelsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -106,7 +132,10 @@ class ModelAPI final {
     ::grpc::ClientReader< ::speechly::config::v1::DownloadModelResponse>* DownloadModelRaw(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request) override;
     ::grpc::ClientAsyncReader< ::speechly::config::v1::DownloadModelResponse>* AsyncDownloadModelRaw(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request, ::grpc::CompletionQueue* cq, void* tag) override;
     ::grpc::ClientAsyncReader< ::speechly::config::v1::DownloadModelResponse>* PrepareAsyncDownloadModelRaw(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::speechly::config::v1::ListBaseModelsResponse>* AsyncListBaseModelsRaw(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::speechly::config::v1::ListBaseModelsResponse>* PrepareAsyncListBaseModelsRaw(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_DownloadModel_;
+    const ::grpc::internal::RpcMethod rpcmethod_ListBaseModels_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -116,6 +145,8 @@ class ModelAPI final {
     virtual ~Service();
     // Downloads a model bundle for on-device use.
     virtual ::grpc::Status DownloadModel(::grpc::ServerContext* context, const ::speechly::config::v1::DownloadModelRequest* request, ::grpc::ServerWriter< ::speechly::config::v1::DownloadModelResponse>* writer);
+    // List the base models available for use as basis in training.
+    virtual ::grpc::Status ListBaseModels(::grpc::ServerContext* context, const ::speechly::config::v1::ListBaseModelsRequest* request, ::speechly::config::v1::ListBaseModelsResponse* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_DownloadModel : public BaseClass {
@@ -137,7 +168,27 @@ class ModelAPI final {
       ::grpc::Service::RequestAsyncServerStreaming(0, context, request, writer, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_DownloadModel<Service > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_ListBaseModels : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_ListBaseModels() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_ListBaseModels() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListBaseModels(::grpc::ServerContext* /*context*/, const ::speechly::config::v1::ListBaseModelsRequest* /*request*/, ::speechly::config::v1::ListBaseModelsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestListBaseModels(::grpc::ServerContext* context, ::speechly::config::v1::ListBaseModelsRequest* request, ::grpc::ServerAsyncResponseWriter< ::speechly::config::v1::ListBaseModelsResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_DownloadModel<WithAsyncMethod_ListBaseModels<Service > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_DownloadModel : public BaseClass {
    private:
@@ -160,7 +211,38 @@ class ModelAPI final {
       return new ::grpc_impl::internal::UnimplementedWriteReactor<
         ::speechly::config::v1::DownloadModelRequest, ::speechly::config::v1::DownloadModelResponse>;}
   };
-  typedef ExperimentalWithCallbackMethod_DownloadModel<Service > ExperimentalCallbackService;
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_ListBaseModels : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_ListBaseModels() {
+      ::grpc::Service::experimental().MarkMethodCallback(1,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::speechly::config::v1::ListBaseModelsRequest, ::speechly::config::v1::ListBaseModelsResponse>(
+          [this](::grpc::ServerContext* context,
+                 const ::speechly::config::v1::ListBaseModelsRequest* request,
+                 ::speechly::config::v1::ListBaseModelsResponse* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->ListBaseModels(context, request, response, controller);
+                 }));
+    }
+    void SetMessageAllocatorFor_ListBaseModels(
+        ::grpc::experimental::MessageAllocator< ::speechly::config::v1::ListBaseModelsRequest, ::speechly::config::v1::ListBaseModelsResponse>* allocator) {
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::speechly::config::v1::ListBaseModelsRequest, ::speechly::config::v1::ListBaseModelsResponse>*>(
+          ::grpc::Service::experimental().GetHandler(1))
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_ListBaseModels() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListBaseModels(::grpc::ServerContext* /*context*/, const ::speechly::config::v1::ListBaseModelsRequest* /*request*/, ::speechly::config::v1::ListBaseModelsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void ListBaseModels(::grpc::ServerContext* /*context*/, const ::speechly::config::v1::ListBaseModelsRequest* /*request*/, ::speechly::config::v1::ListBaseModelsResponse* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  typedef ExperimentalWithCallbackMethod_DownloadModel<ExperimentalWithCallbackMethod_ListBaseModels<Service > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_DownloadModel : public BaseClass {
    private:
@@ -174,6 +256,23 @@ class ModelAPI final {
     }
     // disable synchronous version of this method
     ::grpc::Status DownloadModel(::grpc::ServerContext* /*context*/, const ::speechly::config::v1::DownloadModelRequest* /*request*/, ::grpc::ServerWriter< ::speechly::config::v1::DownloadModelResponse>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_ListBaseModels : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_ListBaseModels() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_ListBaseModels() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListBaseModels(::grpc::ServerContext* /*context*/, const ::speechly::config::v1::ListBaseModelsRequest* /*request*/, ::speechly::config::v1::ListBaseModelsResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -199,6 +298,26 @@ class ModelAPI final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_ListBaseModels : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_ListBaseModels() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_ListBaseModels() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListBaseModels(::grpc::ServerContext* /*context*/, const ::speechly::config::v1::ListBaseModelsRequest* /*request*/, ::speechly::config::v1::ListBaseModelsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestListBaseModels(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_DownloadModel : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -220,7 +339,52 @@ class ModelAPI final {
       return new ::grpc_impl::internal::UnimplementedWriteReactor<
         ::grpc::ByteBuffer, ::grpc::ByteBuffer>;}
   };
-  typedef Service StreamedUnaryService;
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_ListBaseModels : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_ListBaseModels() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(1,
+        new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->ListBaseModels(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_ListBaseModels() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status ListBaseModels(::grpc::ServerContext* /*context*/, const ::speechly::config::v1::ListBaseModelsRequest* /*request*/, ::speechly::config::v1::ListBaseModelsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void ListBaseModels(::grpc::ServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_ListBaseModels : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_ListBaseModels() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler< ::speechly::config::v1::ListBaseModelsRequest, ::speechly::config::v1::ListBaseModelsResponse>(std::bind(&WithStreamedUnaryMethod_ListBaseModels<BaseClass>::StreamedListBaseModels, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_ListBaseModels() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status ListBaseModels(::grpc::ServerContext* /*context*/, const ::speechly::config::v1::ListBaseModelsRequest* /*request*/, ::speechly::config::v1::ListBaseModelsResponse* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedListBaseModels(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::speechly::config::v1::ListBaseModelsRequest,::speechly::config::v1::ListBaseModelsResponse>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_ListBaseModels<Service > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_DownloadModel : public BaseClass {
    private:
@@ -242,7 +406,7 @@ class ModelAPI final {
     virtual ::grpc::Status StreamedDownloadModel(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::speechly::config::v1::DownloadModelRequest,::speechly::config::v1::DownloadModelResponse>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_DownloadModel<Service > SplitStreamedService;
-  typedef WithSplitStreamingMethod_DownloadModel<Service > StreamedService;
+  typedef WithSplitStreamingMethod_DownloadModel<WithStreamedUnaryMethod_ListBaseModels<Service > > StreamedService;
 };
 
 }  // namespace v1

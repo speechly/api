@@ -22,6 +22,7 @@ namespace v1 {
 
 static const char* ModelAPI_method_names[] = {
   "/speechly.config.v1.ModelAPI/DownloadModel",
+  "/speechly.config.v1.ModelAPI/ListBaseModels",
 };
 
 std::unique_ptr< ModelAPI::Stub> ModelAPI::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -32,6 +33,7 @@ std::unique_ptr< ModelAPI::Stub> ModelAPI::NewStub(const std::shared_ptr< ::grpc
 
 ModelAPI::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_DownloadModel_(ModelAPI_method_names[0], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_ListBaseModels_(ModelAPI_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::ClientReader< ::speechly::config::v1::DownloadModelResponse>* ModelAPI::Stub::DownloadModelRaw(::grpc::ClientContext* context, const ::speechly::config::v1::DownloadModelRequest& request) {
@@ -50,12 +52,45 @@ void ModelAPI::Stub::experimental_async::DownloadModel(::grpc::ClientContext* co
   return ::grpc_impl::internal::ClientAsyncReaderFactory< ::speechly::config::v1::DownloadModelResponse>::Create(channel_.get(), cq, rpcmethod_DownloadModel_, context, request, false, nullptr);
 }
 
+::grpc::Status ModelAPI::Stub::ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::speechly::config::v1::ListBaseModelsResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_ListBaseModels_, context, request, response);
+}
+
+void ModelAPI::Stub::experimental_async::ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest* request, ::speechly::config::v1::ListBaseModelsResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ListBaseModels_, context, request, response, std::move(f));
+}
+
+void ModelAPI::Stub::experimental_async::ListBaseModels(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::config::v1::ListBaseModelsResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ListBaseModels_, context, request, response, std::move(f));
+}
+
+void ModelAPI::Stub::experimental_async::ListBaseModels(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest* request, ::speechly::config::v1::ListBaseModelsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_ListBaseModels_, context, request, response, reactor);
+}
+
+void ModelAPI::Stub::experimental_async::ListBaseModels(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::config::v1::ListBaseModelsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_ListBaseModels_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::speechly::config::v1::ListBaseModelsResponse>* ModelAPI::Stub::AsyncListBaseModelsRaw(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::config::v1::ListBaseModelsResponse>::Create(channel_.get(), cq, rpcmethod_ListBaseModels_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::speechly::config::v1::ListBaseModelsResponse>* ModelAPI::Stub::PrepareAsyncListBaseModelsRaw(::grpc::ClientContext* context, const ::speechly::config::v1::ListBaseModelsRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::config::v1::ListBaseModelsResponse>::Create(channel_.get(), cq, rpcmethod_ListBaseModels_, context, request, false);
+}
+
 ModelAPI::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       ModelAPI_method_names[0],
       ::grpc::internal::RpcMethod::SERVER_STREAMING,
       new ::grpc::internal::ServerStreamingHandler< ModelAPI::Service, ::speechly::config::v1::DownloadModelRequest, ::speechly::config::v1::DownloadModelResponse>(
           std::mem_fn(&ModelAPI::Service::DownloadModel), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      ModelAPI_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< ModelAPI::Service, ::speechly::config::v1::ListBaseModelsRequest, ::speechly::config::v1::ListBaseModelsResponse>(
+          std::mem_fn(&ModelAPI::Service::ListBaseModels), this)));
 }
 
 ModelAPI::Service::~Service() {
@@ -65,6 +100,13 @@ ModelAPI::Service::~Service() {
   (void) context;
   (void) request;
   (void) writer;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status ModelAPI::Service::ListBaseModels(::grpc::ServerContext* context, const ::speechly::config::v1::ListBaseModelsRequest* request, ::speechly::config::v1::ListBaseModelsResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
