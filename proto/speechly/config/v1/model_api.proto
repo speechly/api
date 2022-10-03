@@ -50,7 +50,8 @@ message DownloadModelResponse {
 
 // Top-level message sent by the client for the `ListBaseModels` method.
 message ListBaseModelsRequest {
-  string language = 1;
+  string project_id = 1;
+  string language = 2;
 }
 
 // Top-level message sent by the server for the `ListBaseModels` method.
