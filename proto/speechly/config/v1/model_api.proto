@@ -10,6 +10,8 @@ option java_package = "com.speechly.config.v1";
 option objc_class_prefix = "SCX";
 option php_namespace = "Speechly\\Config\\V1";
 
+import "speechly/config/v1/model.proto";
+
 // Speechly Model API provides operations related to the on-device models.
 //
 // The service requires a Speechly token, which is obtained from Speechly Dashboard (https://speechly.com/dashboard).
@@ -19,6 +21,8 @@ option php_namespace = "Speechly\\Config\\V1";
 service ModelAPI {
   // Downloads a model bundle for on-device use.
   rpc DownloadModel(DownloadModelRequest) returns (stream DownloadModelResponse);
+  // List the base models available for use as basis in training.
+  rpc ListBaseModels(ListBaseModelsRequest) returns (ListBaseModelsResponse);
 }
 
 // Top-level message sent by the client for the `DownloadModel` method.
@@ -44,3 +48,13 @@ message DownloadModelResponse {
   bytes chunk = 1;
 }
 
+// Top-level message sent by the client for the `ListBaseModels` method.
+message ListBaseModelsRequest {
+  string language = 1;
+}
+
+// Top-level message sent by the server for the `ListBaseModels` method.
+message ListBaseModelsResponse {
+  // Names of the available base models
+  repeated BaseModel model = 1;
+}
