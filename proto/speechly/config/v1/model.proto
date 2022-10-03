@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package speechly.config.v1;
+
+option csharp_namespace = "Speechly.Config.V1";
+option go_package = "speechly/config/v1;configv1";
+option java_multiple_files = true;
+option java_outer_classname = "ModelProto";
+option java_package = "com.speechly.config.v1";
+option objc_class_prefix = "SCX";
+option php_namespace = "Speechly\\Config\\V1";
+
+// BaseModel describes the base model that is used as basis for adaptation.
+message BaseModel {
+  // The human readable name of the base model
+  string name = 1;
+  // The alias of the model used in the config file
+  string alias = 2;
+  // Is the model available for the current tier
+  bool is_available = 3;
+  // Does the model allow downloading on-device model bundles
+  bool is_downloadable = 4;
+}
