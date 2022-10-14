@@ -13,7 +13,7 @@
 #
 # Then, run
 #
-# python speechly_client.py MY_APP_ID_HERE name_of_my_wav_file.wav
+# python speechly_grpc_example.py MY_APP_ID_HERE name_of_my_wav_file.wav
 #
 # The script will print the recognized transcript, one word per line,
 # together with the begin and end timestamps for each word.
