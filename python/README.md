@@ -100,3 +100,61 @@ async def stream_speech(channel, token, audio_stream, app_id=None):
         except grpc.aio.AioRpcError as e:
             print('Error in SLU', str(e.code()), e.details())
 ```
+
+# Using the HTTP REST API
+
+The gRPC API is available also as JSON-based HTTP version. The following is an example of calling the `BatchAPI` with python `requests` library:
+
+
+```python
+import requests
+import uuid
+import base64
+import time
+
+# read an audio file in memory (note that the it should be PCM 16Khz 1 channels to get good results)
+with open('test1_en.wav', 'rb') as f:
+    audio_data = f.read()
+
+# create a device ID (uuid)
+deviceId = uuid.uuid4()
+
+# get a Speechly access token to use the correct Speechly app
+r = requests.post(
+    'https://api.speechly.com/speechly.identity.v2.IdentityAPI/Login',
+    json={'deviceId': str(deviceId), 'application': {'appId': 'YOUR_APP_ID'}}
+)
+token = r.json()['token']
+
+# send the file to the BatchAPI to create a batch transcribe operation
+batch_req = [{
+    'config': {
+        'encoding': 1,
+        'channels': 1,
+        'sampleRateHertz': 16000
+    },
+    'audio': base64.b64encode(audio_data).decode('ascii')
+}]
+r = requests.post(
+    'https://api.speechly.com/speechly.slu.v1.BatchAPI/ProcessAudio',
+    headers={'authorization':f'Bearer {token}'},
+    json=batch_req
+)
+op = r.json()['operation']
+
+# poll the BatchAPI, waiting for the batch operation to be done
+while op['status'] != 'STATUS_DONE':
+    time.sleep(1)
+    r = requests.post(
+        'https://api.speechly.com/speechly.slu.v1.BatchAPI/QueryStatus',
+        headers={'authorization':f'Bearer {token}'},
+        json={'id': op['id']}
+    )
+    op = r.json()['operation']
+    if op['error'] != '':
+        raise Exception('error in transcribe: ' + op['error'])
+
+# collect the words from the transcripts
+transcript = [w['word'] for w in op['transcripts']]
+print(' '.join(transcript))
+```
