@@ -206,7 +206,8 @@ public struct Speechly_Slu_V1_Operation {
   /// the results of the operation.
   public var transcripts: [Speechly_Slu_V1_Transcript] = []
 
-  /// Contains a description of the error if the operation status is STATUS_ERROR.
+  /// Contains a description of the error if the operation status is
+  /// STATUS_ERROR.
   public var error: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -214,11 +215,27 @@ public struct Speechly_Slu_V1_Operation {
   /// The status of the operation.
   public enum Status: SwiftProtobuf.Enum {
     public typealias RawValue = Int
+
+    /// Default status is empty.
     case invalid // = 0
+
+    /// The operation is queued for processing.
     case queued // = 1
+
+    /// Audio is being decoded.
     case processing // = 2
+
+    /// The operation is ready and transcript is available.
     case done // = 3
+
+    /// The processing failed. Error reason is available.
     case error // = 4
+
+    /// Audio is being analysed, eg. language is detected.
+    case analysing // = 5
+
+    /// Audio has been analysed, the operation is waiting for a free decoder.
+    case waitingDecoder // = 6
     case UNRECOGNIZED(Int)
 
     public init() {
@@ -232,6 +249,8 @@ public struct Speechly_Slu_V1_Operation {
       case 2: self = .processing
       case 3: self = .done
       case 4: self = .error
+      case 5: self = .analysing
+      case 6: self = .waitingDecoder
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
@@ -243,6 +262,8 @@ public struct Speechly_Slu_V1_Operation {
       case .processing: return 2
       case .done: return 3
       case .error: return 4
+      case .analysing: return 5
+      case .waitingDecoder: return 6
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -262,6 +283,8 @@ extension Speechly_Slu_V1_Operation.Status: CaseIterable {
     .processing,
     .done,
     .error,
+    .analysing,
+    .waitingDecoder,
   ]
 }
 
@@ -556,6 +579,8 @@ extension Speechly_Slu_V1_Operation.Status: SwiftProtobuf._ProtoNameProviding {
     2: .same(proto: "STATUS_PROCESSING"),
     3: .same(proto: "STATUS_DONE"),
     4: .same(proto: "STATUS_ERROR"),
+    5: .same(proto: "STATUS_ANALYSING"),
+    6: .same(proto: "STATUS_WAITING_DECODER"),
   ]
 }
 

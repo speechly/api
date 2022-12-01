@@ -148,12 +148,14 @@ enum Operation_Status : int {
   Operation_Status_STATUS_PROCESSING = 2,
   Operation_Status_STATUS_DONE = 3,
   Operation_Status_STATUS_ERROR = 4,
+  Operation_Status_STATUS_ANALYSING = 5,
+  Operation_Status_STATUS_WAITING_DECODER = 6,
   Operation_Status_Operation_Status_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   Operation_Status_Operation_Status_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool Operation_Status_IsValid(int value);
 constexpr Operation_Status Operation_Status_Status_MIN = Operation_Status_STATUS_INVALID;
-constexpr Operation_Status Operation_Status_Status_MAX = Operation_Status_STATUS_ERROR;
+constexpr Operation_Status Operation_Status_Status_MAX = Operation_Status_STATUS_WAITING_DECODER;
 constexpr int Operation_Status_Status_ARRAYSIZE = Operation_Status_Status_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Operation_Status_descriptor();
@@ -883,6 +885,10 @@ class Operation final :
     Operation_Status_STATUS_DONE;
   static constexpr Status STATUS_ERROR =
     Operation_Status_STATUS_ERROR;
+  static constexpr Status STATUS_ANALYSING =
+    Operation_Status_STATUS_ANALYSING;
+  static constexpr Status STATUS_WAITING_DECODER =
+    Operation_Status_STATUS_WAITING_DECODER;
   static inline bool Status_IsValid(int value) {
     return Operation_Status_IsValid(value);
   }

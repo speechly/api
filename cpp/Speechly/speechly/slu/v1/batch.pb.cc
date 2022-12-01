@@ -204,25 +204,27 @@ const char descriptor_table_protodef_speechly_2fslu_2fv1_2fbatch_2eproto[] PROTO
   "2$.speechly.slu.v1.HttpResource.Header\032%"
   "\n\006Header\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"M\n"
   "\006Method\022\022\n\016METHOD_INVALID\020\000\022\016\n\nMETHOD_GE"
-  "T\020\001\022\017\n\013METHOD_POST\020\002\022\016\n\nMETHOD_PUT\020\003\"\303\002\n"
+  "T\020\001\022\017\n\013METHOD_POST\020\002\022\016\n\nMETHOD_PUT\020\003\"\366\002\n"
   "\tOperation\022\n\n\002id\030\001 \001(\t\022\021\n\treference\030\002 \001("
   "\t\0221\n\006status\030\003 \001(\0162!.speechly.slu.v1.Oper"
   "ation.Status\022\025\n\rlanguage_code\030\004 \001(\t\022\016\n\006a"
   "pp_id\030\005 \001(\t\022\021\n\tdevice_id\030\006 \001(\t\0220\n\013transc"
   "ripts\030\007 \003(\0132\033.speechly.slu.v1.Transcript"
-  "\022\r\n\005error\030\010 \001(\t\"i\n\006Status\022\022\n\016STATUS_INVA"
-  "LID\020\000\022\021\n\rSTATUS_QUEUED\020\001\022\025\n\021STATUS_PROCE"
-  "SSING\020\002\022\017\n\013STATUS_DONE\020\003\022\020\n\014STATUS_ERROR"
-  "\020\004\"O\n\nTranscript\022\014\n\004word\030\001 \001(\t\022\r\n\005index\030"
-  "\002 \001(\005\022\022\n\nstart_time\030\003 \001(\005\022\020\n\010end_time\030\004 "
-  "\001(\005\"$\n\006Option\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \003("
-  "\tBd\n\023com.speechly.slu.v1B\nBatchProtoP\001Z\025"
-  "speechly/slu/v1;sluv1\242\002\003SSX\252\002\017Speechly.S"
-  "lu.V1\312\002\017Speechly\\Slu\\V1b\006proto3"
+  "\022\r\n\005error\030\010 \001(\t\"\233\001\n\006Status\022\022\n\016STATUS_INV"
+  "ALID\020\000\022\021\n\rSTATUS_QUEUED\020\001\022\025\n\021STATUS_PROC"
+  "ESSING\020\002\022\017\n\013STATUS_DONE\020\003\022\020\n\014STATUS_ERRO"
+  "R\020\004\022\024\n\020STATUS_ANALYSING\020\005\022\032\n\026STATUS_WAIT"
+  "ING_DECODER\020\006\"O\n\nTranscript\022\014\n\004word\030\001 \001("
+  "\t\022\r\n\005index\030\002 \001(\005\022\022\n\nstart_time\030\003 \001(\005\022\020\n\010"
+  "end_time\030\004 \001(\005\"$\n\006Option\022\013\n\003key\030\001 \001(\t\022\r\n"
+  "\005value\030\002 \003(\tBd\n\023com.speechly.slu.v1B\nBat"
+  "chProtoP\001Z\025speechly/slu/v1;sluv1\242\002\003SSX\252\002"
+  "\017Speechly.Slu.V1\312\002\017Speechly\\Slu\\V1b\006prot"
+  "o3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto = {
-  false, false, 1071, descriptor_table_protodef_speechly_2fslu_2fv1_2fbatch_2eproto, "speechly/slu/v1/batch.proto", 
+  false, false, 1122, descriptor_table_protodef_speechly_2fslu_2fv1_2fbatch_2eproto, "speechly/slu/v1/batch.proto", 
   &descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto_once, nullptr, 0, 6,
   schemas, file_default_instances, TableStruct_speechly_2fslu_2fv1_2fbatch_2eproto::offsets,
   file_level_metadata_speechly_2fslu_2fv1_2fbatch_2eproto, file_level_enum_descriptors_speechly_2fslu_2fv1_2fbatch_2eproto, file_level_service_descriptors_speechly_2fslu_2fv1_2fbatch_2eproto,
@@ -293,6 +295,8 @@ bool Operation_Status_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;
@@ -305,6 +309,8 @@ constexpr Operation_Status Operation::STATUS_QUEUED;
 constexpr Operation_Status Operation::STATUS_PROCESSING;
 constexpr Operation_Status Operation::STATUS_DONE;
 constexpr Operation_Status Operation::STATUS_ERROR;
+constexpr Operation_Status Operation::STATUS_ANALYSING;
+constexpr Operation_Status Operation::STATUS_WAITING_DECODER;
 constexpr Operation_Status Operation::Status_MIN;
 constexpr Operation_Status Operation::Status_MAX;
 constexpr int Operation::Status_ARRAYSIZE;

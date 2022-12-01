@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.8.9](https://github.com/speechly/api/tree/0.8.9) (2022-12-01)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.8...0.8.9)
+
+**Merged pull requests:**
+
+- Add new statuses for BatchAPI Operation [\#55](https://github.com/speechly/api/pull/55) ([langma](https://github.com/langma))
+- Add python JSON REST example [\#54](https://github.com/speechly/api/pull/54) ([langma](https://github.com/langma))
+- Bump protobuf-java from 3.19.3 to 3.19.6 in /java [\#53](https://github.com/speechly/api/pull/53) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [0.8.8](https://github.com/speechly/api/tree/0.8.8) (2022-10-03)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.6...0.8.8)

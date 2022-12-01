@@ -153,7 +153,7 @@ Describes a single batch operation.
 | app_id | [string](#string) | The application context for the operation. |
 | device_id | [string](#string) | The device or microphone id for the audio, if applicable. |
 | transcripts | [Transcript](#speechly.slu.v1.Transcript) | If the operation status is STATUS_DONE and the destination is not set,<br/>the results of the operation. |
-| error | [string](#string) | Contains a description of the error if the operation status is STATUS_ERROR. |
+| error | [string](#string) | Contains a description of the error if the operation status is<br/>STATUS_ERROR. |
 
 
 <a name="speechly.slu.v1.Option"></a>
