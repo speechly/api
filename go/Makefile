@@ -1,4 +1,4 @@
-PROTOS := $(shell find ../speechly -name *.proto)
+PROTOS := $(shell find ../proto/speechly -name *.proto)
 TARGET := speechly
 GOMOD  := go.mod
 
@@ -13,6 +13,6 @@ clean:
 .PHONY: clean
 
 $(TARGET): $(PROTOS) $(GOMOD)
-	@protoc -I .. --go_out=plugins=grpc:. $(PROTOS)
+	@protoc -I ../proto --go_out=. --go-grpc_out=. $(PROTOS)
 	@go mod tidy
 	@touch $@
