@@ -7,7 +7,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
   <artifactId>api</artifactId>
   <packaging>jar</packaging>
   <version>${revision}</version>
-  <url>http://maven.apache.org</url>
+  <url>https://www.speechly.com</url>
   <scm>
     <connection>
     scm:git:git://github.com/speechly/api.git</connection>
@@ -29,7 +29,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
       <name>Speechly</name>
       <email>admin@speechly.com</email>
       <organization>Speechly</organization>
-      <organizationUrl>http://www.speechly.com</organizationUrl>
+      <organizationUrl>https://www.speechly.com</organizationUrl>
     </developer>
   </developers>
   <properties>
