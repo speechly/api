@@ -194,7 +194,7 @@ message SLUTranscript {
   string word = 1;
   // The position of the word in the whole phrase, zero-based.
   int32 index = 2;
-  // The end time of the word in the audio, in milliseconds from the beginning of the audio.
+  // The start time of the word in the audio, in milliseconds from the beginning of the audio.
   int32 start_time = 3;
   // The end time of the word in the audio, in milliseconds from the beginning of the audio.
   int32 end_time = 4;
