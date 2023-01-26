@@ -18,4 +18,6 @@ message BaseModel {
   string alias = 2;
   // Does the model allow downloading on-device model bundles
   bool is_downloadable = 3;
+  // Can the model be used in streaming applications
+  bool is_streamable = 4;
 }
