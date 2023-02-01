@@ -23,6 +23,8 @@ service ModelAPI {
   rpc DownloadModel(DownloadModelRequest) returns (stream DownloadModelResponse);
   // List the base models available for use as basis in training.
   rpc ListBaseModels(ListBaseModelsRequest) returns (ListBaseModelsResponse);
+  // List supported languages.
+  rpc ListLanguages(ListLanguagesRequest) returns (ListLanguagesResponse);
 }
 
 // Top-level message sent by the client for the `DownloadModel` method.
@@ -58,4 +60,17 @@ message ListBaseModelsRequest {
 message ListBaseModelsResponse {
   // Names of the available base models
   repeated BaseModel model = 1;
+}
+
+// Top-level message to list the available languages in the API.
+message ListLanguagesRequest {}
+
+// Response for the language listing request, listing available languages.
+message ListLanguagesResponse {
+  // Language contains language code (ISO 639-1) and name of language.
+  message Language {
+    string code = 1;
+    string name = 2;
+  }
+  repeated Language languages = 1;
 }
