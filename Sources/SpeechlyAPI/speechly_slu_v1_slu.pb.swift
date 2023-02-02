@@ -574,7 +574,7 @@ public struct Speechly_Slu_V1_SLUTranscript {
   /// The position of the word in the whole phrase, zero-based.
   public var index: Int32 = 0
 
-  /// The end time of the word in the audio, in milliseconds from the beginning of the audio.
+  /// The start time of the word in the audio, in milliseconds from the beginning of the audio.
   public var startTime: Int32 = 0
 
   /// The end time of the word in the audio, in milliseconds from the beginning of the audio.

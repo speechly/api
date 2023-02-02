@@ -48,7 +48,7 @@ struct TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[7]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -70,6 +70,15 @@ extern ListBaseModelsRequestDefaultTypeInternal _ListBaseModelsRequest_default_i
 class ListBaseModelsResponse;
 struct ListBaseModelsResponseDefaultTypeInternal;
 extern ListBaseModelsResponseDefaultTypeInternal _ListBaseModelsResponse_default_instance_;
+class ListLanguagesRequest;
+struct ListLanguagesRequestDefaultTypeInternal;
+extern ListLanguagesRequestDefaultTypeInternal _ListLanguagesRequest_default_instance_;
+class ListLanguagesResponse;
+struct ListLanguagesResponseDefaultTypeInternal;
+extern ListLanguagesResponseDefaultTypeInternal _ListLanguagesResponse_default_instance_;
+class ListLanguagesResponse_Language;
+struct ListLanguagesResponse_LanguageDefaultTypeInternal;
+extern ListLanguagesResponse_LanguageDefaultTypeInternal _ListLanguagesResponse_Language_default_instance_;
 }  // namespace v1
 }  // namespace config
 }  // namespace speechly
@@ -78,6 +87,9 @@ template<> ::speechly::config::v1::DownloadModelRequest* Arena::CreateMaybeMessa
 template<> ::speechly::config::v1::DownloadModelResponse* Arena::CreateMaybeMessage<::speechly::config::v1::DownloadModelResponse>(Arena*);
 template<> ::speechly::config::v1::ListBaseModelsRequest* Arena::CreateMaybeMessage<::speechly::config::v1::ListBaseModelsRequest>(Arena*);
 template<> ::speechly::config::v1::ListBaseModelsResponse* Arena::CreateMaybeMessage<::speechly::config::v1::ListBaseModelsResponse>(Arena*);
+template<> ::speechly::config::v1::ListLanguagesRequest* Arena::CreateMaybeMessage<::speechly::config::v1::ListLanguagesRequest>(Arena*);
+template<> ::speechly::config::v1::ListLanguagesResponse* Arena::CreateMaybeMessage<::speechly::config::v1::ListLanguagesResponse>(Arena*);
+template<> ::speechly::config::v1::ListLanguagesResponse_Language* Arena::CreateMaybeMessage<::speechly::config::v1::ListLanguagesResponse_Language>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace speechly {
 namespace config {
@@ -767,6 +779,442 @@ class ListBaseModelsResponse final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ListLanguagesRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.config.v1.ListLanguagesRequest) */ {
+ public:
+  inline ListLanguagesRequest() : ListLanguagesRequest(nullptr) {}
+  ~ListLanguagesRequest() override;
+  explicit constexpr ListLanguagesRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ListLanguagesRequest(const ListLanguagesRequest& from);
+  ListLanguagesRequest(ListLanguagesRequest&& from) noexcept
+    : ListLanguagesRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ListLanguagesRequest& operator=(const ListLanguagesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListLanguagesRequest& operator=(ListLanguagesRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListLanguagesRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListLanguagesRequest* internal_default_instance() {
+    return reinterpret_cast<const ListLanguagesRequest*>(
+               &_ListLanguagesRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(ListLanguagesRequest& a, ListLanguagesRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ListLanguagesRequest* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListLanguagesRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ListLanguagesRequest* New() const final {
+    return new ListLanguagesRequest();
+  }
+
+  ListLanguagesRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ListLanguagesRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ListLanguagesRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ListLanguagesRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ListLanguagesRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.config.v1.ListLanguagesRequest";
+  }
+  protected:
+  explicit ListLanguagesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:speechly.config.v1.ListLanguagesRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ListLanguagesResponse_Language final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.config.v1.ListLanguagesResponse.Language) */ {
+ public:
+  inline ListLanguagesResponse_Language() : ListLanguagesResponse_Language(nullptr) {}
+  ~ListLanguagesResponse_Language() override;
+  explicit constexpr ListLanguagesResponse_Language(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ListLanguagesResponse_Language(const ListLanguagesResponse_Language& from);
+  ListLanguagesResponse_Language(ListLanguagesResponse_Language&& from) noexcept
+    : ListLanguagesResponse_Language() {
+    *this = ::std::move(from);
+  }
+
+  inline ListLanguagesResponse_Language& operator=(const ListLanguagesResponse_Language& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListLanguagesResponse_Language& operator=(ListLanguagesResponse_Language&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListLanguagesResponse_Language& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListLanguagesResponse_Language* internal_default_instance() {
+    return reinterpret_cast<const ListLanguagesResponse_Language*>(
+               &_ListLanguagesResponse_Language_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(ListLanguagesResponse_Language& a, ListLanguagesResponse_Language& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ListLanguagesResponse_Language* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListLanguagesResponse_Language* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ListLanguagesResponse_Language* New() const final {
+    return new ListLanguagesResponse_Language();
+  }
+
+  ListLanguagesResponse_Language* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ListLanguagesResponse_Language>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ListLanguagesResponse_Language& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ListLanguagesResponse_Language& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ListLanguagesResponse_Language* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.config.v1.ListLanguagesResponse.Language";
+  }
+  protected:
+  explicit ListLanguagesResponse_Language(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kCodeFieldNumber = 1,
+    kNameFieldNumber = 2,
+  };
+  // string code = 1;
+  void clear_code();
+  const std::string& code() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_code(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_code();
+  PROTOBUF_MUST_USE_RESULT std::string* release_code();
+  void set_allocated_code(std::string* code);
+  private:
+  const std::string& _internal_code() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_code(const std::string& value);
+  std::string* _internal_mutable_code();
+  public:
+
+  // string name = 2;
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_MUST_USE_RESULT std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // @@protoc_insertion_point(class_scope:speechly.config.v1.ListLanguagesResponse.Language)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr code_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ListLanguagesResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.config.v1.ListLanguagesResponse) */ {
+ public:
+  inline ListLanguagesResponse() : ListLanguagesResponse(nullptr) {}
+  ~ListLanguagesResponse() override;
+  explicit constexpr ListLanguagesResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ListLanguagesResponse(const ListLanguagesResponse& from);
+  ListLanguagesResponse(ListLanguagesResponse&& from) noexcept
+    : ListLanguagesResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ListLanguagesResponse& operator=(const ListLanguagesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListLanguagesResponse& operator=(ListLanguagesResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListLanguagesResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListLanguagesResponse* internal_default_instance() {
+    return reinterpret_cast<const ListLanguagesResponse*>(
+               &_ListLanguagesResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(ListLanguagesResponse& a, ListLanguagesResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ListLanguagesResponse* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListLanguagesResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ListLanguagesResponse* New() const final {
+    return new ListLanguagesResponse();
+  }
+
+  ListLanguagesResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ListLanguagesResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ListLanguagesResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ListLanguagesResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ListLanguagesResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.config.v1.ListLanguagesResponse";
+  }
+  protected:
+  explicit ListLanguagesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef ListLanguagesResponse_Language Language;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kLanguagesFieldNumber = 1,
+  };
+  // repeated .speechly.config.v1.ListLanguagesResponse.Language languages = 1;
+  int languages_size() const;
+  private:
+  int _internal_languages_size() const;
+  public:
+  void clear_languages();
+  ::speechly::config::v1::ListLanguagesResponse_Language* mutable_languages(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::ListLanguagesResponse_Language >*
+      mutable_languages();
+  private:
+  const ::speechly::config::v1::ListLanguagesResponse_Language& _internal_languages(int index) const;
+  ::speechly::config::v1::ListLanguagesResponse_Language* _internal_add_languages();
+  public:
+  const ::speechly::config::v1::ListLanguagesResponse_Language& languages(int index) const;
+  ::speechly::config::v1::ListLanguagesResponse_Language* add_languages();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::ListLanguagesResponse_Language >&
+      languages() const;
+
+  // @@protoc_insertion_point(class_scope:speechly.config.v1.ListLanguagesResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::ListLanguagesResponse_Language > languages_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_5fapi_2eproto;
+};
 // ===================================================================
 
 
@@ -1077,9 +1525,159 @@ ListBaseModelsResponse::model() const {
   return model_;
 }
 
+// -------------------------------------------------------------------
+
+// ListLanguagesRequest
+
+// -------------------------------------------------------------------
+
+// ListLanguagesResponse_Language
+
+// string code = 1;
+inline void ListLanguagesResponse_Language::clear_code() {
+  code_.ClearToEmpty();
+}
+inline const std::string& ListLanguagesResponse_Language::code() const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.ListLanguagesResponse.Language.code)
+  return _internal_code();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ListLanguagesResponse_Language::set_code(ArgT0&& arg0, ArgT... args) {
+ 
+ code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.config.v1.ListLanguagesResponse.Language.code)
+}
+inline std::string* ListLanguagesResponse_Language::mutable_code() {
+  std::string* _s = _internal_mutable_code();
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.ListLanguagesResponse.Language.code)
+  return _s;
+}
+inline const std::string& ListLanguagesResponse_Language::_internal_code() const {
+  return code_.Get();
+}
+inline void ListLanguagesResponse_Language::_internal_set_code(const std::string& value) {
+  
+  code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ListLanguagesResponse_Language::_internal_mutable_code() {
+  
+  return code_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ListLanguagesResponse_Language::release_code() {
+  // @@protoc_insertion_point(field_release:speechly.config.v1.ListLanguagesResponse.Language.code)
+  return code_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ListLanguagesResponse_Language::set_allocated_code(std::string* code) {
+  if (code != nullptr) {
+    
+  } else {
+    
+  }
+  code_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), code,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.config.v1.ListLanguagesResponse.Language.code)
+}
+
+// string name = 2;
+inline void ListLanguagesResponse_Language::clear_name() {
+  name_.ClearToEmpty();
+}
+inline const std::string& ListLanguagesResponse_Language::name() const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.ListLanguagesResponse.Language.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ListLanguagesResponse_Language::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.config.v1.ListLanguagesResponse.Language.name)
+}
+inline std::string* ListLanguagesResponse_Language::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.ListLanguagesResponse.Language.name)
+  return _s;
+}
+inline const std::string& ListLanguagesResponse_Language::_internal_name() const {
+  return name_.Get();
+}
+inline void ListLanguagesResponse_Language::_internal_set_name(const std::string& value) {
+  
+  name_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ListLanguagesResponse_Language::_internal_mutable_name() {
+  
+  return name_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ListLanguagesResponse_Language::release_name() {
+  // @@protoc_insertion_point(field_release:speechly.config.v1.ListLanguagesResponse.Language.name)
+  return name_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ListLanguagesResponse_Language::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  name_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.config.v1.ListLanguagesResponse.Language.name)
+}
+
+// -------------------------------------------------------------------
+
+// ListLanguagesResponse
+
+// repeated .speechly.config.v1.ListLanguagesResponse.Language languages = 1;
+inline int ListLanguagesResponse::_internal_languages_size() const {
+  return languages_.size();
+}
+inline int ListLanguagesResponse::languages_size() const {
+  return _internal_languages_size();
+}
+inline void ListLanguagesResponse::clear_languages() {
+  languages_.Clear();
+}
+inline ::speechly::config::v1::ListLanguagesResponse_Language* ListLanguagesResponse::mutable_languages(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.ListLanguagesResponse.languages)
+  return languages_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::ListLanguagesResponse_Language >*
+ListLanguagesResponse::mutable_languages() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.config.v1.ListLanguagesResponse.languages)
+  return &languages_;
+}
+inline const ::speechly::config::v1::ListLanguagesResponse_Language& ListLanguagesResponse::_internal_languages(int index) const {
+  return languages_.Get(index);
+}
+inline const ::speechly::config::v1::ListLanguagesResponse_Language& ListLanguagesResponse::languages(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.ListLanguagesResponse.languages)
+  return _internal_languages(index);
+}
+inline ::speechly::config::v1::ListLanguagesResponse_Language* ListLanguagesResponse::_internal_add_languages() {
+  return languages_.Add();
+}
+inline ::speechly::config::v1::ListLanguagesResponse_Language* ListLanguagesResponse::add_languages() {
+  ::speechly::config::v1::ListLanguagesResponse_Language* _add = _internal_add_languages();
+  // @@protoc_insertion_point(field_add:speechly.config.v1.ListLanguagesResponse.languages)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::config::v1::ListLanguagesResponse_Language >&
+ListLanguagesResponse::languages() const {
+  // @@protoc_insertion_point(field_list:speechly.config.v1.ListLanguagesResponse.languages)
+  return languages_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

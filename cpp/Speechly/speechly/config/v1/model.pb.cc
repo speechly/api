@@ -23,7 +23,8 @@ constexpr BaseModel::BaseModel(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , alias_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , is_downloadable_(false){}
+  , is_downloadable_(false)
+  , is_streamable_(false){}
 struct BaseModelDefaultTypeInternal {
   constexpr BaseModelDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -49,6 +50,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fconfig_2fv1_2fmodel
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::BaseModel, name_),
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::BaseModel, alias_),
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::BaseModel, is_downloadable_),
+  PROTOBUF_FIELD_OFFSET(::speechly::config::v1::BaseModel, is_streamable_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::speechly::config::v1::BaseModel)},
@@ -60,16 +62,16 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_speechly_2fconfig_2fv1_2fmodel_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\036speechly/config/v1/model.proto\022\022speech"
-  "ly.config.v1\"A\n\tBaseModel\022\014\n\004name\030\001 \001(\t\022"
-  "\r\n\005alias\030\002 \001(\t\022\027\n\017is_downloadable\030\003 \001(\010B"
-  "s\n\026com.speechly.config.v1B\nModelProtoP\001Z"
-  "\033speechly/config/v1;configv1\242\002\003SCX\252\002\022Spe"
-  "echly.Config.V1\312\002\022Speechly\\Config\\V1b\006pr"
-  "oto3"
+  "ly.config.v1\"X\n\tBaseModel\022\014\n\004name\030\001 \001(\t\022"
+  "\r\n\005alias\030\002 \001(\t\022\027\n\017is_downloadable\030\003 \001(\010\022"
+  "\025\n\ris_streamable\030\004 \001(\010Bs\n\026com.speechly.c"
+  "onfig.v1B\nModelProtoP\001Z\033speechly/config/"
+  "v1;configv1\242\002\003SCX\252\002\022Speechly.Config.V1\312\002"
+  "\022Speechly\\Config\\V1b\006proto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fconfig_2fv1_2fmodel_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fconfig_2fv1_2fmodel_2eproto = {
-  false, false, 244, descriptor_table_protodef_speechly_2fconfig_2fv1_2fmodel_2eproto, "speechly/config/v1/model.proto", 
+  false, false, 267, descriptor_table_protodef_speechly_2fconfig_2fv1_2fmodel_2eproto, "speechly/config/v1/model.proto", 
   &descriptor_table_speechly_2fconfig_2fv1_2fmodel_2eproto_once, nullptr, 0, 1,
   schemas, file_default_instances, TableStruct_speechly_2fconfig_2fv1_2fmodel_2eproto::offsets,
   file_level_metadata_speechly_2fconfig_2fv1_2fmodel_2eproto, file_level_enum_descriptors_speechly_2fconfig_2fv1_2fmodel_2eproto, file_level_service_descriptors_speechly_2fconfig_2fv1_2fmodel_2eproto,
@@ -112,14 +114,19 @@ BaseModel::BaseModel(const BaseModel& from)
     alias_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_alias(), 
       GetArenaForAllocation());
   }
-  is_downloadable_ = from.is_downloadable_;
+  ::memcpy(&is_downloadable_, &from.is_downloadable_,
+    static_cast<size_t>(reinterpret_cast<char*>(&is_streamable_) -
+    reinterpret_cast<char*>(&is_downloadable_)) + sizeof(is_streamable_));
   // @@protoc_insertion_point(copy_constructor:speechly.config.v1.BaseModel)
 }
 
 inline void BaseModel::SharedCtor() {
 name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 alias_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-is_downloadable_ = false;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&is_downloadable_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&is_streamable_) -
+    reinterpret_cast<char*>(&is_downloadable_)) + sizeof(is_streamable_));
 }
 
 BaseModel::~BaseModel() {
@@ -153,7 +160,9 @@ void BaseModel::Clear() {
 
   name_.ClearToEmpty();
   alias_.ClearToEmpty();
-  is_downloadable_ = false;
+  ::memset(&is_downloadable_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&is_streamable_) -
+      reinterpret_cast<char*>(&is_downloadable_)) + sizeof(is_streamable_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -185,6 +194,13 @@ const char* BaseModel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
           is_downloadable_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // bool is_streamable = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          is_streamable_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -243,6 +259,12 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_is_downloadable(), target);
   }
 
+  // bool is_streamable = 4;
+  if (this->_internal_is_streamable() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(4, this->_internal_is_streamable(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -275,6 +297,11 @@ size_t BaseModel::ByteSizeLong() const {
 
   // bool is_downloadable = 3;
   if (this->_internal_is_downloadable() != 0) {
+    total_size += 1 + 1;
+  }
+
+  // bool is_streamable = 4;
+  if (this->_internal_is_streamable() != 0) {
     total_size += 1 + 1;
   }
 
@@ -315,6 +342,9 @@ void BaseModel::MergeFrom(const BaseModel& from) {
   if (from._internal_is_downloadable() != 0) {
     _internal_set_is_downloadable(from._internal_is_downloadable());
   }
+  if (from._internal_is_streamable() != 0) {
+    _internal_set_is_streamable(from._internal_is_streamable());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -342,7 +372,12 @@ void BaseModel::InternalSwap(BaseModel* other) {
       &alias_, GetArenaForAllocation(),
       &other->alias_, other->GetArenaForAllocation()
   );
-  swap(is_downloadable_, other->is_downloadable_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(BaseModel, is_streamable_)
+      + sizeof(BaseModel::is_streamable_)
+      - PROTOBUF_FIELD_OFFSET(BaseModel, is_downloadable_)>(
+          reinterpret_cast<char*>(&is_downloadable_),
+          reinterpret_cast<char*>(&other->is_downloadable_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BaseModel::GetMetadata() const {

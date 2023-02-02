@@ -510,7 +510,7 @@ A transcript is a speech-to-text element of the phrase, i.e. a word recognised f
 | ---- | ---- | ----------- |
 | word | [string](#string) | The word recongised from the audio. |
 | index | [int32](#int32) | The position of the word in the whole phrase, zero-based. |
-| start_time | [int32](#int32) | The end time of the word in the audio, in milliseconds from the beginning of the audio. |
+| start_time | [int32](#int32) | The start time of the word in the audio, in milliseconds from the beginning of the audio. |
 | end_time | [int32](#int32) | The end time of the word in the audio, in milliseconds from the beginning of the audio. |
 
 

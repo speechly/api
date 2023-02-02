@@ -189,6 +189,7 @@ class BaseModel final :
     kNameFieldNumber = 1,
     kAliasFieldNumber = 2,
     kIsDownloadableFieldNumber = 3,
+    kIsStreamableFieldNumber = 4,
   };
   // string name = 1;
   void clear_name();
@@ -227,6 +228,15 @@ class BaseModel final :
   void _internal_set_is_downloadable(bool value);
   public:
 
+  // bool is_streamable = 4;
+  void clear_is_streamable();
+  bool is_streamable() const;
+  void set_is_streamable(bool value);
+  private:
+  bool _internal_is_streamable() const;
+  void _internal_set_is_streamable(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:speechly.config.v1.BaseModel)
  private:
   class _Internal;
@@ -237,6 +247,7 @@ class BaseModel final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr alias_;
   bool is_downloadable_;
+  bool is_streamable_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fconfig_2fv1_2fmodel_2eproto;
 };
@@ -361,6 +372,26 @@ inline void BaseModel::_internal_set_is_downloadable(bool value) {
 inline void BaseModel::set_is_downloadable(bool value) {
   _internal_set_is_downloadable(value);
   // @@protoc_insertion_point(field_set:speechly.config.v1.BaseModel.is_downloadable)
+}
+
+// bool is_streamable = 4;
+inline void BaseModel::clear_is_streamable() {
+  is_streamable_ = false;
+}
+inline bool BaseModel::_internal_is_streamable() const {
+  return is_streamable_;
+}
+inline bool BaseModel::is_streamable() const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.BaseModel.is_streamable)
+  return _internal_is_streamable();
+}
+inline void BaseModel::_internal_set_is_streamable(bool value) {
+  
+  is_streamable_ = value;
+}
+inline void BaseModel::set_is_streamable(bool value) {
+  _internal_set_is_streamable(value);
+  // @@protoc_insertion_point(field_set:speechly.config.v1.BaseModel.is_streamable)
 }
 
 #ifdef __GNUC__

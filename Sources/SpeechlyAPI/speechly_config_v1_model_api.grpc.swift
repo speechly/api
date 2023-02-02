@@ -47,6 +47,11 @@ public protocol Speechly_Config_V1_ModelAPIClientProtocol: GRPCClient {
     _ request: Speechly_Config_V1_ListBaseModelsRequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Speechly_Config_V1_ListBaseModelsRequest, Speechly_Config_V1_ListBaseModelsResponse>
+
+  func listLanguages(
+    _ request: Speechly_Config_V1_ListLanguagesRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Speechly_Config_V1_ListLanguagesRequest, Speechly_Config_V1_ListLanguagesResponse>
 }
 
 extension Speechly_Config_V1_ModelAPIClientProtocol {
@@ -92,6 +97,24 @@ extension Speechly_Config_V1_ModelAPIClientProtocol {
       interceptors: self.interceptors?.makeListBaseModelsInterceptors() ?? []
     )
   }
+
+  /// List supported languages.
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to ListLanguages.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func listLanguages(
+    _ request: Speechly_Config_V1_ListLanguagesRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Speechly_Config_V1_ListLanguagesRequest, Speechly_Config_V1_ListLanguagesResponse> {
+    return self.makeUnaryCall(
+      path: "/speechly.config.v1.ModelAPI/ListLanguages",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeListLanguagesInterceptors() ?? []
+    )
+  }
 }
 
 public protocol Speechly_Config_V1_ModelAPIClientInterceptorFactoryProtocol {
@@ -101,6 +124,9 @@ public protocol Speechly_Config_V1_ModelAPIClientInterceptorFactoryProtocol {
 
   /// - Returns: Interceptors to use when invoking 'listBaseModels'.
   func makeListBaseModelsInterceptors() -> [ClientInterceptor<Speechly_Config_V1_ListBaseModelsRequest, Speechly_Config_V1_ListBaseModelsResponse>]
+
+  /// - Returns: Interceptors to use when invoking 'listLanguages'.
+  func makeListLanguagesInterceptors() -> [ClientInterceptor<Speechly_Config_V1_ListLanguagesRequest, Speechly_Config_V1_ListLanguagesResponse>]
 }
 
 public final class Speechly_Config_V1_ModelAPIClient: Speechly_Config_V1_ModelAPIClientProtocol {
@@ -141,6 +167,9 @@ public protocol Speechly_Config_V1_ModelAPIProvider: CallHandlerProvider {
 
   /// List the base models available for use as basis in training.
   func listBaseModels(request: Speechly_Config_V1_ListBaseModelsRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Config_V1_ListBaseModelsResponse>
+
+  /// List supported languages.
+  func listLanguages(request: Speechly_Config_V1_ListLanguagesRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Config_V1_ListLanguagesResponse>
 }
 
 extension Speechly_Config_V1_ModelAPIProvider {
@@ -171,6 +200,15 @@ extension Speechly_Config_V1_ModelAPIProvider {
         userFunction: self.listBaseModels(request:context:)
       )
 
+    case "ListLanguages":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Config_V1_ListLanguagesRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Config_V1_ListLanguagesResponse>(),
+        interceptors: self.interceptors?.makeListLanguagesInterceptors() ?? [],
+        userFunction: self.listLanguages(request:context:)
+      )
+
     default:
       return nil
     }
@@ -186,4 +224,8 @@ public protocol Speechly_Config_V1_ModelAPIServerInterceptorFactoryProtocol {
   /// - Returns: Interceptors to use when handling 'listBaseModels'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeListBaseModelsInterceptors() -> [ServerInterceptor<Speechly_Config_V1_ListBaseModelsRequest, Speechly_Config_V1_ListBaseModelsResponse>]
+
+  /// - Returns: Interceptors to use when handling 'listLanguages'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeListLanguagesInterceptors() -> [ServerInterceptor<Speechly_Config_V1_ListLanguagesRequest, Speechly_Config_V1_ListLanguagesResponse>]
 }

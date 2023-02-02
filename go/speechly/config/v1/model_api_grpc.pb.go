@@ -26,6 +26,8 @@ type ModelAPIClient interface {
 	DownloadModel(ctx context.Context, in *DownloadModelRequest, opts ...grpc.CallOption) (ModelAPI_DownloadModelClient, error)
 	// List the base models available for use as basis in training.
 	ListBaseModels(ctx context.Context, in *ListBaseModelsRequest, opts ...grpc.CallOption) (*ListBaseModelsResponse, error)
+	// List supported languages.
+	ListLanguages(ctx context.Context, in *ListLanguagesRequest, opts ...grpc.CallOption) (*ListLanguagesResponse, error)
 }
 
 type modelAPIClient struct {
@@ -77,6 +79,15 @@ func (c *modelAPIClient) ListBaseModels(ctx context.Context, in *ListBaseModelsR
 	return out, nil
 }
 
+func (c *modelAPIClient) ListLanguages(ctx context.Context, in *ListLanguagesRequest, opts ...grpc.CallOption) (*ListLanguagesResponse, error) {
+	out := new(ListLanguagesResponse)
+	err := c.cc.Invoke(ctx, "/speechly.config.v1.ModelAPI/ListLanguages", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ModelAPIServer is the server API for ModelAPI service.
 // All implementations must embed UnimplementedModelAPIServer
 // for forward compatibility
@@ -85,6 +96,8 @@ type ModelAPIServer interface {
 	DownloadModel(*DownloadModelRequest, ModelAPI_DownloadModelServer) error
 	// List the base models available for use as basis in training.
 	ListBaseModels(context.Context, *ListBaseModelsRequest) (*ListBaseModelsResponse, error)
+	// List supported languages.
+	ListLanguages(context.Context, *ListLanguagesRequest) (*ListLanguagesResponse, error)
 	mustEmbedUnimplementedModelAPIServer()
 }
 
@@ -97,6 +110,9 @@ func (UnimplementedModelAPIServer) DownloadModel(*DownloadModelRequest, ModelAPI
 }
 func (UnimplementedModelAPIServer) ListBaseModels(context.Context, *ListBaseModelsRequest) (*ListBaseModelsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBaseModels not implemented")
+}
+func (UnimplementedModelAPIServer) ListLanguages(context.Context, *ListLanguagesRequest) (*ListLanguagesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListLanguages not implemented")
 }
 func (UnimplementedModelAPIServer) mustEmbedUnimplementedModelAPIServer() {}
 
@@ -150,6 +166,24 @@ func _ModelAPI_ListBaseModels_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ModelAPI_ListLanguages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListLanguagesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ModelAPIServer).ListLanguages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/speechly.config.v1.ModelAPI/ListLanguages",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ModelAPIServer).ListLanguages(ctx, req.(*ListLanguagesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ModelAPI_ServiceDesc is the grpc.ServiceDesc for ModelAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -160,6 +194,10 @@ var ModelAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListBaseModels",
 			Handler:    _ModelAPI_ListBaseModels_Handler,
+		},
+		{
+			MethodName: "ListLanguages",
+			Handler:    _ModelAPI_ListLanguages_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

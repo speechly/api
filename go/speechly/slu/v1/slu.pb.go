@@ -765,7 +765,7 @@ type SLUTranscript struct {
 	Word string `protobuf:"bytes,1,opt,name=word,proto3" json:"word,omitempty"`
 	// The position of the word in the whole phrase, zero-based.
 	Index int32 `protobuf:"varint,2,opt,name=index,proto3" json:"index,omitempty"`
-	// The end time of the word in the audio, in milliseconds from the beginning of the audio.
+	// The start time of the word in the audio, in milliseconds from the beginning of the audio.
 	StartTime int32 `protobuf:"varint,3,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	// The end time of the word in the audio, in milliseconds from the beginning of the audio.
 	EndTime int32 `protobuf:"varint,4,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
