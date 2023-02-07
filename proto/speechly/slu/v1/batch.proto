@@ -10,6 +10,8 @@ option java_package = "com.speechly.slu.v1";
 option objc_class_prefix = "SSX";
 option php_namespace = "Speechly\\Slu\\V1";
 
+import "google/protobuf/duration.proto";
+
 // Describes the audio content of the batch operation.
 message AudioConfiguration {
   // The encoding of the audio data sent in the stream.
@@ -95,6 +97,8 @@ message Operation {
   // Contains a description of the error if the operation status is
   // STATUS_ERROR.
   string error = 8;
+  // The duration of the audio.
+  google.protobuf.Duration duration = 9;
 }
 
 // Describes an SLU transcript.
