@@ -12,6 +12,8 @@ option php_namespace = "Speechly\\Analytics\\V1";
 
 import "speechly/analytics/v1/analytics.proto";
 
+import "google/protobuf/timestamp.proto";
+
 // Speechly Analytics API contains methods to get accumulated access data
 // for given apps and/or projects.
 service AnalyticsAPI {
@@ -92,7 +94,7 @@ message UtterancesResponse {
     repeated Utterance utterances = 1;
 }
 
-// A single data point of an utterance recognized by Speechly On Device.
+// A single data point of an utterance recognized by Speechly On Device or Speechly On Premise.
 message RegisterUtteranceRequest {
     string app_id = 1;
     // device_id of the utterance.
@@ -103,6 +105,21 @@ message RegisterUtteranceRequest {
     int32 utterance_length_chars = 4;
     // Information about the on-device decoder.
     DecoderInfo decoder_info = 5;
+    // When the processing was initially requested.
+    google.protobuf.Timestamp created_time = 6;
+    // When the processing was finished.
+    google.protobuf.Timestamp finished_time = 7;
+    // The status of the processing.
+    enum Status {
+        // Default status is empty
+        STATUS_INVALID = 0;
+        // Processing completed successfully.
+        STATUS_SUCCESS = 1;
+        // The processing failed.
+        STATUS_ERROR = 2;
+    }
+    // The status of the processing.
+    Status status = 8;
 }
 
 message RegisterUtteranceResponse {
