@@ -20,4 +20,6 @@ message BaseModel {
   bool is_downloadable = 3;
   // Can the model be used in streaming applications
   bool is_streamable = 4;
+  // What language the model supports
+  string language = 5;
 }
