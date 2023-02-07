@@ -23,6 +23,7 @@ constexpr BaseModel::BaseModel(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , alias_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , language_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , is_downloadable_(false)
   , is_streamable_(false){}
 struct BaseModelDefaultTypeInternal {
@@ -51,6 +52,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fconfig_2fv1_2fmodel
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::BaseModel, alias_),
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::BaseModel, is_downloadable_),
   PROTOBUF_FIELD_OFFSET(::speechly::config::v1::BaseModel, is_streamable_),
+  PROTOBUF_FIELD_OFFSET(::speechly::config::v1::BaseModel, language_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::speechly::config::v1::BaseModel)},
@@ -62,16 +64,17 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_speechly_2fconfig_2fv1_2fmodel_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\036speechly/config/v1/model.proto\022\022speech"
-  "ly.config.v1\"X\n\tBaseModel\022\014\n\004name\030\001 \001(\t\022"
+  "ly.config.v1\"j\n\tBaseModel\022\014\n\004name\030\001 \001(\t\022"
   "\r\n\005alias\030\002 \001(\t\022\027\n\017is_downloadable\030\003 \001(\010\022"
-  "\025\n\ris_streamable\030\004 \001(\010Bs\n\026com.speechly.c"
-  "onfig.v1B\nModelProtoP\001Z\033speechly/config/"
-  "v1;configv1\242\002\003SCX\252\002\022Speechly.Config.V1\312\002"
-  "\022Speechly\\Config\\V1b\006proto3"
+  "\025\n\ris_streamable\030\004 \001(\010\022\020\n\010language\030\005 \001(\t"
+  "Bs\n\026com.speechly.config.v1B\nModelProtoP\001"
+  "Z\033speechly/config/v1;configv1\242\002\003SCX\252\002\022Sp"
+  "eechly.Config.V1\312\002\022Speechly\\Config\\V1b\006p"
+  "roto3"
   ;
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fconfig_2fv1_2fmodel_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fconfig_2fv1_2fmodel_2eproto = {
-  false, false, 267, descriptor_table_protodef_speechly_2fconfig_2fv1_2fmodel_2eproto, "speechly/config/v1/model.proto", 
+  false, false, 285, descriptor_table_protodef_speechly_2fconfig_2fv1_2fmodel_2eproto, "speechly/config/v1/model.proto", 
   &descriptor_table_speechly_2fconfig_2fv1_2fmodel_2eproto_once, nullptr, 0, 1,
   schemas, file_default_instances, TableStruct_speechly_2fconfig_2fv1_2fmodel_2eproto::offsets,
   file_level_metadata_speechly_2fconfig_2fv1_2fmodel_2eproto, file_level_enum_descriptors_speechly_2fconfig_2fv1_2fmodel_2eproto, file_level_service_descriptors_speechly_2fconfig_2fv1_2fmodel_2eproto,
@@ -114,6 +117,11 @@ BaseModel::BaseModel(const BaseModel& from)
     alias_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_alias(), 
       GetArenaForAllocation());
   }
+  language_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_language().empty()) {
+    language_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_language(), 
+      GetArenaForAllocation());
+  }
   ::memcpy(&is_downloadable_, &from.is_downloadable_,
     static_cast<size_t>(reinterpret_cast<char*>(&is_streamable_) -
     reinterpret_cast<char*>(&is_downloadable_)) + sizeof(is_streamable_));
@@ -123,6 +131,7 @@ BaseModel::BaseModel(const BaseModel& from)
 inline void BaseModel::SharedCtor() {
 name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 alias_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+language_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&is_downloadable_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&is_streamable_) -
@@ -140,6 +149,7 @@ inline void BaseModel::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   name_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   alias_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  language_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void BaseModel::ArenaDtor(void* object) {
@@ -160,6 +170,7 @@ void BaseModel::Clear() {
 
   name_.ClearToEmpty();
   alias_.ClearToEmpty();
+  language_.ClearToEmpty();
   ::memset(&is_downloadable_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&is_streamable_) -
       reinterpret_cast<char*>(&is_downloadable_)) + sizeof(is_streamable_));
@@ -201,6 +212,15 @@ const char* BaseModel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
           is_streamable_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string language = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          auto str = _internal_mutable_language();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.config.v1.BaseModel.language"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -265,6 +285,16 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(4, this->_internal_is_streamable(), target);
   }
 
+  // string language = 5;
+  if (!this->_internal_language().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_language().data(), static_cast<int>(this->_internal_language().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "speechly.config.v1.BaseModel.language");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_language(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -293,6 +323,13 @@ size_t BaseModel::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_alias());
+  }
+
+  // string language = 5;
+  if (!this->_internal_language().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_language());
   }
 
   // bool is_downloadable = 3;
@@ -339,6 +376,9 @@ void BaseModel::MergeFrom(const BaseModel& from) {
   if (!from._internal_alias().empty()) {
     _internal_set_alias(from._internal_alias());
   }
+  if (!from._internal_language().empty()) {
+    _internal_set_language(from._internal_language());
+  }
   if (from._internal_is_downloadable() != 0) {
     _internal_set_is_downloadable(from._internal_is_downloadable());
   }
@@ -371,6 +411,11 @@ void BaseModel::InternalSwap(BaseModel* other) {
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       &alias_, GetArenaForAllocation(),
       &other->alias_, other->GetArenaForAllocation()
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      &language_, GetArenaForAllocation(),
+      &other->language_, other->GetArenaForAllocation()
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
       PROTOBUF_FIELD_OFFSET(BaseModel, is_streamable_)

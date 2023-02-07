@@ -38,6 +38,9 @@ public struct Speechly_Config_V1_BaseModel {
   /// Can the model be used in streaming applications
   public var isStreamable: Bool = false
 
+  /// What language the model supports
+  public var language: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -58,6 +61,7 @@ extension Speechly_Config_V1_BaseModel: SwiftProtobuf.Message, SwiftProtobuf._Me
     2: .same(proto: "alias"),
     3: .standard(proto: "is_downloadable"),
     4: .standard(proto: "is_streamable"),
+    5: .same(proto: "language"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -70,6 +74,7 @@ extension Speechly_Config_V1_BaseModel: SwiftProtobuf.Message, SwiftProtobuf._Me
       case 2: try { try decoder.decodeSingularStringField(value: &self.alias) }()
       case 3: try { try decoder.decodeSingularBoolField(value: &self.isDownloadable) }()
       case 4: try { try decoder.decodeSingularBoolField(value: &self.isStreamable) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.language) }()
       default: break
       }
     }
@@ -88,6 +93,9 @@ extension Speechly_Config_V1_BaseModel: SwiftProtobuf.Message, SwiftProtobuf._Me
     if self.isStreamable != false {
       try visitor.visitSingularBoolField(value: self.isStreamable, fieldNumber: 4)
     }
+    if !self.language.isEmpty {
+      try visitor.visitSingularStringField(value: self.language, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -96,6 +104,7 @@ extension Speechly_Config_V1_BaseModel: SwiftProtobuf.Message, SwiftProtobuf._Me
     if lhs.alias != rhs.alias {return false}
     if lhs.isDownloadable != rhs.isDownloadable {return false}
     if lhs.isStreamable != rhs.isStreamable {return false}
+    if lhs.language != rhs.language {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

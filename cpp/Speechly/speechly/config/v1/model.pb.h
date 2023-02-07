@@ -188,6 +188,7 @@ class BaseModel final :
   enum : int {
     kNameFieldNumber = 1,
     kAliasFieldNumber = 2,
+    kLanguageFieldNumber = 5,
     kIsDownloadableFieldNumber = 3,
     kIsStreamableFieldNumber = 4,
   };
@@ -219,6 +220,20 @@ class BaseModel final :
   std::string* _internal_mutable_alias();
   public:
 
+  // string language = 5;
+  void clear_language();
+  const std::string& language() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_language(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_language();
+  PROTOBUF_MUST_USE_RESULT std::string* release_language();
+  void set_allocated_language(std::string* language);
+  private:
+  const std::string& _internal_language() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_language(const std::string& value);
+  std::string* _internal_mutable_language();
+  public:
+
   // bool is_downloadable = 3;
   void clear_is_downloadable();
   bool is_downloadable() const;
@@ -246,6 +261,7 @@ class BaseModel final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr alias_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr language_;
   bool is_downloadable_;
   bool is_streamable_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -392,6 +408,52 @@ inline void BaseModel::_internal_set_is_streamable(bool value) {
 inline void BaseModel::set_is_streamable(bool value) {
   _internal_set_is_streamable(value);
   // @@protoc_insertion_point(field_set:speechly.config.v1.BaseModel.is_streamable)
+}
+
+// string language = 5;
+inline void BaseModel::clear_language() {
+  language_.ClearToEmpty();
+}
+inline const std::string& BaseModel::language() const {
+  // @@protoc_insertion_point(field_get:speechly.config.v1.BaseModel.language)
+  return _internal_language();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void BaseModel::set_language(ArgT0&& arg0, ArgT... args) {
+ 
+ language_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.config.v1.BaseModel.language)
+}
+inline std::string* BaseModel::mutable_language() {
+  std::string* _s = _internal_mutable_language();
+  // @@protoc_insertion_point(field_mutable:speechly.config.v1.BaseModel.language)
+  return _s;
+}
+inline const std::string& BaseModel::_internal_language() const {
+  return language_.Get();
+}
+inline void BaseModel::_internal_set_language(const std::string& value) {
+  
+  language_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* BaseModel::_internal_mutable_language() {
+  
+  return language_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* BaseModel::release_language() {
+  // @@protoc_insertion_point(field_release:speechly.config.v1.BaseModel.language)
+  return language_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void BaseModel::set_allocated_language(std::string* language) {
+  if (language != nullptr) {
+    
+  } else {
+    
+  }
+  language_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), language,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.config.v1.BaseModel.language)
 }
 
 #ifdef __GNUC__

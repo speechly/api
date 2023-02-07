@@ -1,11 +1,12 @@
 # Changelog
 
-## [0.8.10](https://github.com/speechly/api/tree/0.8.10) (2023-02-02)
+## [0.8.11](https://github.com/speechly/api/tree/0.8.11) (2023-02-07)
 
-[Full Changelog](https://github.com/speechly/api/compare/0.8.9...0.8.10)
+[Full Changelog](https://github.com/speechly/api/compare/0.8.9...0.8.11)
 
 **Merged pull requests:**
 
+- Add supported language code in BaseModel [\#59](https://github.com/speechly/api/pull/59) ([langma](https://github.com/langma))
 - Add a method to list supported languages [\#58](https://github.com/speechly/api/pull/58) ([langma](https://github.com/langma))
 - Add notice if the model can be used in streaming transcode or not [\#57](https://github.com/speechly/api/pull/57) ([langma](https://github.com/langma))
 - Fix typos [\#56](https://github.com/speechly/api/pull/56) ([teelisyys](https://github.com/teelisyys))
