@@ -32,6 +32,7 @@
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
+#include <google/protobuf/duration.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_speechly_2fslu_2fv1_2fbatch_2eproto
@@ -924,6 +925,7 @@ class Operation final :
     kAppIdFieldNumber = 5,
     kDeviceIdFieldNumber = 6,
     kErrorFieldNumber = 8,
+    kDurationFieldNumber = 9,
     kStatusFieldNumber = 3,
   };
   // repeated .speechly.slu.v1.Transcript transcripts = 7;
@@ -1028,6 +1030,24 @@ class Operation final :
   std::string* _internal_mutable_error();
   public:
 
+  // .google.protobuf.Duration duration = 9;
+  bool has_duration() const;
+  private:
+  bool _internal_has_duration() const;
+  public:
+  void clear_duration();
+  const PROTOBUF_NAMESPACE_ID::Duration& duration() const;
+  PROTOBUF_MUST_USE_RESULT PROTOBUF_NAMESPACE_ID::Duration* release_duration();
+  PROTOBUF_NAMESPACE_ID::Duration* mutable_duration();
+  void set_allocated_duration(PROTOBUF_NAMESPACE_ID::Duration* duration);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Duration& _internal_duration() const;
+  PROTOBUF_NAMESPACE_ID::Duration* _internal_mutable_duration();
+  public:
+  void unsafe_arena_set_allocated_duration(
+      PROTOBUF_NAMESPACE_ID::Duration* duration);
+  PROTOBUF_NAMESPACE_ID::Duration* unsafe_arena_release_duration();
+
   // .speechly.slu.v1.Operation.Status status = 3;
   void clear_status();
   ::speechly::slu::v1::Operation_Status status() const;
@@ -1051,6 +1071,7 @@ class Operation final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr app_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_;
+  PROTOBUF_NAMESPACE_ID::Duration* duration_;
   int status_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv1_2fbatch_2eproto;
@@ -2092,6 +2113,92 @@ inline void Operation::set_allocated_error(std::string* error) {
   error_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), error,
       GetArenaForAllocation());
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.Operation.error)
+}
+
+// .google.protobuf.Duration duration = 9;
+inline bool Operation::_internal_has_duration() const {
+  return this != internal_default_instance() && duration_ != nullptr;
+}
+inline bool Operation::has_duration() const {
+  return _internal_has_duration();
+}
+inline const PROTOBUF_NAMESPACE_ID::Duration& Operation::_internal_duration() const {
+  const PROTOBUF_NAMESPACE_ID::Duration* p = duration_;
+  return p != nullptr ? *p : reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Duration&>(
+      PROTOBUF_NAMESPACE_ID::_Duration_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Duration& Operation::duration() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v1.Operation.duration)
+  return _internal_duration();
+}
+inline void Operation::unsafe_arena_set_allocated_duration(
+    PROTOBUF_NAMESPACE_ID::Duration* duration) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(duration_);
+  }
+  duration_ = duration;
+  if (duration) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v1.Operation.duration)
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* Operation::release_duration() {
+  
+  PROTOBUF_NAMESPACE_ID::Duration* temp = duration_;
+  duration_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* Operation::unsafe_arena_release_duration() {
+  // @@protoc_insertion_point(field_release:speechly.slu.v1.Operation.duration)
+  
+  PROTOBUF_NAMESPACE_ID::Duration* temp = duration_;
+  duration_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* Operation::_internal_mutable_duration() {
+  
+  if (duration_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Duration>(GetArenaForAllocation());
+    duration_ = p;
+  }
+  return duration_;
+}
+inline PROTOBUF_NAMESPACE_ID::Duration* Operation::mutable_duration() {
+  PROTOBUF_NAMESPACE_ID::Duration* _msg = _internal_mutable_duration();
+  // @@protoc_insertion_point(field_mutable:speechly.slu.v1.Operation.duration)
+  return _msg;
+}
+inline void Operation::set_allocated_duration(PROTOBUF_NAMESPACE_ID::Duration* duration) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(duration_);
+  }
+  if (duration) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(duration));
+    if (message_arena != submessage_arena) {
+      duration = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, duration, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  duration_ = duration;
+  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v1.Operation.duration)
 }
 
 // -------------------------------------------------------------------

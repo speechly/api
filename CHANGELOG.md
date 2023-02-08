@@ -1,11 +1,12 @@
 # Changelog
 
-## [0.8.11](https://github.com/speechly/api/tree/0.8.11) (2023-02-07)
+## [0.8.12](https://github.com/speechly/api/tree/0.8.12) (2023-02-08)
 
-[Full Changelog](https://github.com/speechly/api/compare/0.8.9...0.8.11)
+[Full Changelog](https://github.com/speechly/api/compare/0.8.9...0.8.12)
 
 **Merged pull requests:**
 
+- Extend RegisterUtterance for On Premise use [\#60](https://github.com/speechly/api/pull/60) ([teelisyys](https://github.com/teelisyys))
 - Add supported language code in BaseModel [\#59](https://github.com/speechly/api/pull/59) ([langma](https://github.com/langma))
 - Add a method to list supported languages [\#58](https://github.com/speechly/api/pull/58) ([langma](https://github.com/langma))
 - Add notice if the model can be used in streaming transcode or not [\#57](https://github.com/speechly/api/pull/57) ([langma](https://github.com/langma))

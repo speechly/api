@@ -72,6 +72,7 @@ constexpr Operation::Operation(
   , app_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , device_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , error_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , duration_(nullptr)
   , status_(0)
 {}
 struct OperationDefaultTypeInternal {
@@ -156,6 +157,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fslu_2fv1_2fbatch_2e
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::Operation, device_id_),
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::Operation, transcripts_),
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::Operation, error_),
+  PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::Operation, duration_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v1::Transcript, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -178,8 +180,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 9, -1, sizeof(::speechly::slu::v1::HttpResource_Header)},
   { 16, -1, sizeof(::speechly::slu::v1::HttpResource)},
   { 24, -1, sizeof(::speechly::slu::v1::Operation)},
-  { 37, -1, sizeof(::speechly::slu::v1::Transcript)},
-  { 46, -1, sizeof(::speechly::slu::v1::Option)},
+  { 38, -1, sizeof(::speechly::slu::v1::Transcript)},
+  { 47, -1, sizeof(::speechly::slu::v1::Option)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -193,39 +195,43 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 
 const char descriptor_table_protodef_speechly_2fslu_2fv1_2fbatch_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\033speechly/slu/v1/batch.proto\022\017speechly."
-  "slu.v1\"\322\001\n\022AudioConfiguration\022>\n\010encodin"
-  "g\030\001 \001(\0162,.speechly.slu.v1.AudioConfigura"
-  "tion.Encoding\022\020\n\010channels\030\002 \001(\005\022\031\n\021sampl"
-  "e_rate_hertz\030\003 \001(\005\022\026\n\016language_codes\030\004 \003"
-  "(\t\"7\n\010Encoding\022\024\n\020ENCODING_INVALID\020\000\022\025\n\021"
-  "ENCODING_LINEAR16\020\001\"\376\001\n\014HttpResource\022\013\n\003"
-  "url\030\001 \001(\t\0224\n\006method\030\002 \001(\0162$.speechly.slu"
-  ".v1.HttpResource.Method\0225\n\007headers\030\003 \003(\013"
-  "2$.speechly.slu.v1.HttpResource.Header\032%"
-  "\n\006Header\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"M\n"
-  "\006Method\022\022\n\016METHOD_INVALID\020\000\022\016\n\nMETHOD_GE"
-  "T\020\001\022\017\n\013METHOD_POST\020\002\022\016\n\nMETHOD_PUT\020\003\"\366\002\n"
-  "\tOperation\022\n\n\002id\030\001 \001(\t\022\021\n\treference\030\002 \001("
-  "\t\0221\n\006status\030\003 \001(\0162!.speechly.slu.v1.Oper"
-  "ation.Status\022\025\n\rlanguage_code\030\004 \001(\t\022\016\n\006a"
-  "pp_id\030\005 \001(\t\022\021\n\tdevice_id\030\006 \001(\t\0220\n\013transc"
-  "ripts\030\007 \003(\0132\033.speechly.slu.v1.Transcript"
-  "\022\r\n\005error\030\010 \001(\t\"\233\001\n\006Status\022\022\n\016STATUS_INV"
-  "ALID\020\000\022\021\n\rSTATUS_QUEUED\020\001\022\025\n\021STATUS_PROC"
-  "ESSING\020\002\022\017\n\013STATUS_DONE\020\003\022\020\n\014STATUS_ERRO"
-  "R\020\004\022\024\n\020STATUS_ANALYSING\020\005\022\032\n\026STATUS_WAIT"
-  "ING_DECODER\020\006\"O\n\nTranscript\022\014\n\004word\030\001 \001("
-  "\t\022\r\n\005index\030\002 \001(\005\022\022\n\nstart_time\030\003 \001(\005\022\020\n\010"
-  "end_time\030\004 \001(\005\"$\n\006Option\022\013\n\003key\030\001 \001(\t\022\r\n"
-  "\005value\030\002 \003(\tBd\n\023com.speechly.slu.v1B\nBat"
-  "chProtoP\001Z\025speechly/slu/v1;sluv1\242\002\003SSX\252\002"
-  "\017Speechly.Slu.V1\312\002\017Speechly\\Slu\\V1b\006prot"
-  "o3"
+  "slu.v1\032\036google/protobuf/duration.proto\"\322"
+  "\001\n\022AudioConfiguration\022>\n\010encoding\030\001 \001(\0162"
+  ",.speechly.slu.v1.AudioConfiguration.Enc"
+  "oding\022\020\n\010channels\030\002 \001(\005\022\031\n\021sample_rate_h"
+  "ertz\030\003 \001(\005\022\026\n\016language_codes\030\004 \003(\t\"7\n\010En"
+  "coding\022\024\n\020ENCODING_INVALID\020\000\022\025\n\021ENCODING"
+  "_LINEAR16\020\001\"\376\001\n\014HttpResource\022\013\n\003url\030\001 \001("
+  "\t\0224\n\006method\030\002 \001(\0162$.speechly.slu.v1.Http"
+  "Resource.Method\0225\n\007headers\030\003 \003(\0132$.speec"
+  "hly.slu.v1.HttpResource.Header\032%\n\006Header"
+  "\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"M\n\006Method\022"
+  "\022\n\016METHOD_INVALID\020\000\022\016\n\nMETHOD_GET\020\001\022\017\n\013M"
+  "ETHOD_POST\020\002\022\016\n\nMETHOD_PUT\020\003\"\243\003\n\tOperati"
+  "on\022\n\n\002id\030\001 \001(\t\022\021\n\treference\030\002 \001(\t\0221\n\006sta"
+  "tus\030\003 \001(\0162!.speechly.slu.v1.Operation.St"
+  "atus\022\025\n\rlanguage_code\030\004 \001(\t\022\016\n\006app_id\030\005 "
+  "\001(\t\022\021\n\tdevice_id\030\006 \001(\t\0220\n\013transcripts\030\007 "
+  "\003(\0132\033.speechly.slu.v1.Transcript\022\r\n\005erro"
+  "r\030\010 \001(\t\022+\n\010duration\030\t \001(\0132\031.google.proto"
+  "buf.Duration\"\233\001\n\006Status\022\022\n\016STATUS_INVALI"
+  "D\020\000\022\021\n\rSTATUS_QUEUED\020\001\022\025\n\021STATUS_PROCESS"
+  "ING\020\002\022\017\n\013STATUS_DONE\020\003\022\020\n\014STATUS_ERROR\020\004"
+  "\022\024\n\020STATUS_ANALYSING\020\005\022\032\n\026STATUS_WAITING"
+  "_DECODER\020\006\"O\n\nTranscript\022\014\n\004word\030\001 \001(\t\022\r"
+  "\n\005index\030\002 \001(\005\022\022\n\nstart_time\030\003 \001(\005\022\020\n\010end"
+  "_time\030\004 \001(\005\"$\n\006Option\022\013\n\003key\030\001 \001(\t\022\r\n\005va"
+  "lue\030\002 \003(\tBd\n\023com.speechly.slu.v1B\nBatchP"
+  "rotoP\001Z\025speechly/slu/v1;sluv1\242\002\003SSX\252\002\017Sp"
+  "eechly.Slu.V1\312\002\017Speechly\\Slu\\V1b\006proto3"
   ;
+static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto_deps[1] = {
+  &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
+};
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto = {
-  false, false, 1122, descriptor_table_protodef_speechly_2fslu_2fv1_2fbatch_2eproto, "speechly/slu/v1/batch.proto", 
-  &descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto_once, nullptr, 0, 6,
+  false, false, 1199, descriptor_table_protodef_speechly_2fslu_2fv1_2fbatch_2eproto, "speechly/slu/v1/batch.proto", 
+  &descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto_once, descriptor_table_speechly_2fslu_2fv1_2fbatch_2eproto_deps, 1, 6,
   schemas, file_default_instances, TableStruct_speechly_2fslu_2fv1_2fbatch_2eproto::offsets,
   file_level_metadata_speechly_2fslu_2fv1_2fbatch_2eproto, file_level_enum_descriptors_speechly_2fslu_2fv1_2fbatch_2eproto, file_level_service_descriptors_speechly_2fslu_2fv1_2fbatch_2eproto,
 };
@@ -1103,8 +1109,19 @@ void HttpResource::InternalSwap(HttpResource* other) {
 
 class Operation::_Internal {
  public:
+  static const PROTOBUF_NAMESPACE_ID::Duration& duration(const Operation* msg);
 };
 
+const PROTOBUF_NAMESPACE_ID::Duration&
+Operation::_Internal::duration(const Operation* msg) {
+  return *msg->duration_;
+}
+void Operation::clear_duration() {
+  if (GetArenaForAllocation() == nullptr && duration_ != nullptr) {
+    delete duration_;
+  }
+  duration_ = nullptr;
+}
 Operation::Operation(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
@@ -1149,6 +1166,11 @@ Operation::Operation(const Operation& from)
     error_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_error(), 
       GetArenaForAllocation());
   }
+  if (from._internal_has_duration()) {
+    duration_ = new PROTOBUF_NAMESPACE_ID::Duration(*from.duration_);
+  } else {
+    duration_ = nullptr;
+  }
   status_ = from.status_;
   // @@protoc_insertion_point(copy_constructor:speechly.slu.v1.Operation)
 }
@@ -1160,7 +1182,10 @@ language_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStri
 app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 device_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 error_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-status_ = 0;
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&duration_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&status_) -
+    reinterpret_cast<char*>(&duration_)) + sizeof(status_));
 }
 
 Operation::~Operation() {
@@ -1178,6 +1203,7 @@ inline void Operation::SharedDtor() {
   app_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   device_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   error_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (this != internal_default_instance()) delete duration_;
 }
 
 void Operation::ArenaDtor(void* object) {
@@ -1203,6 +1229,10 @@ void Operation::Clear() {
   app_id_.ClearToEmpty();
   device_id_.ClearToEmpty();
   error_.ClearToEmpty();
+  if (GetArenaForAllocation() == nullptr && duration_ != nullptr) {
+    delete duration_;
+  }
+  duration_ = nullptr;
   status_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -1284,6 +1314,13 @@ const char* Operation::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::
           auto str = _internal_mutable_error();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.slu.v1.Operation.error"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .google.protobuf.Duration duration = 9;
+      case 9:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 74)) {
+          ptr = ctx->ParseMessage(_internal_mutable_duration(), ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1391,6 +1428,14 @@ failure:
         8, this->_internal_error(), target);
   }
 
+  // .google.protobuf.Duration duration = 9;
+  if (this->_internal_has_duration()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        9, _Internal::duration(this), target, stream);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1456,6 +1501,13 @@ size_t Operation::ByteSizeLong() const {
         this->_internal_error());
   }
 
+  // .google.protobuf.Duration duration = 9;
+  if (this->_internal_has_duration()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *duration_);
+  }
+
   // .speechly.slu.v1.Operation.Status status = 3;
   if (this->_internal_status() != 0) {
     total_size += 1 +
@@ -1509,6 +1561,9 @@ void Operation::MergeFrom(const Operation& from) {
   if (!from._internal_error().empty()) {
     _internal_set_error(from._internal_error());
   }
+  if (from._internal_has_duration()) {
+    _internal_mutable_duration()->PROTOBUF_NAMESPACE_ID::Duration::MergeFrom(from._internal_duration());
+  }
   if (from._internal_status() != 0) {
     _internal_set_status(from._internal_status());
   }
@@ -1560,7 +1615,12 @@ void Operation::InternalSwap(Operation* other) {
       &error_, GetArenaForAllocation(),
       &other->error_, other->GetArenaForAllocation()
   );
-  swap(status_, other->status_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Operation, status_)
+      + sizeof(Operation::status_)
+      - PROTOBUF_FIELD_OFFSET(Operation, duration_)>(
+          reinterpret_cast<char*>(&duration_),
+          reinterpret_cast<char*>(&other->duration_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Operation::GetMetadata() const {

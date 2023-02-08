@@ -210,6 +210,16 @@ public struct Speechly_Slu_V1_Operation {
   /// STATUS_ERROR.
   public var error: String = String()
 
+  /// The duration of the audio.
+  public var duration: SwiftProtobuf.Google_Protobuf_Duration {
+    get {return _duration ?? SwiftProtobuf.Google_Protobuf_Duration()}
+    set {_duration = newValue}
+  }
+  /// Returns true if `duration` has been explicitly set.
+  public var hasDuration: Bool {return self._duration != nil}
+  /// Clears the value of `duration`. Subsequent reads from it will return its default value.
+  public mutating func clearDuration() {self._duration = nil}
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// The status of the operation.
@@ -271,6 +281,8 @@ public struct Speechly_Slu_V1_Operation {
   }
 
   public init() {}
+
+  fileprivate var _duration: SwiftProtobuf.Google_Protobuf_Duration? = nil
 }
 
 #if swift(>=4.2)
@@ -509,6 +521,7 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     6: .standard(proto: "device_id"),
     7: .same(proto: "transcripts"),
     8: .same(proto: "error"),
+    9: .same(proto: "duration"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -525,12 +538,17 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
       case 6: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
       case 7: try { try decoder.decodeRepeatedMessageField(value: &self.transcripts) }()
       case 8: try { try decoder.decodeSingularStringField(value: &self.error) }()
+      case 9: try { try decoder.decodeSingularMessageField(value: &self._duration) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
     if !self.id.isEmpty {
       try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
     }
@@ -555,6 +573,9 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if !self.error.isEmpty {
       try visitor.visitSingularStringField(value: self.error, fieldNumber: 8)
     }
+    try { if let v = self._duration {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+    } }()
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -567,6 +588,7 @@ extension Speechly_Slu_V1_Operation: SwiftProtobuf.Message, SwiftProtobuf._Messa
     if lhs.deviceID != rhs.deviceID {return false}
     if lhs.transcripts != rhs.transcripts {return false}
     if lhs.error != rhs.error {return false}
+    if lhs._duration != rhs._duration {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

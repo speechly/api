@@ -33,6 +33,7 @@
 #include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "speechly/analytics/v1/analytics.pb.h"
+#include <google/protobuf/timestamp.pb.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
 #define PROTOBUF_INTERNAL_EXPORT_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto
@@ -117,6 +118,32 @@ inline bool UtteranceStatisticsRequest_Scope_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, UtteranceStatisticsRequest_Scope* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<UtteranceStatisticsRequest_Scope>(
     UtteranceStatisticsRequest_Scope_descriptor(), name, value);
+}
+enum RegisterUtteranceRequest_Status : int {
+  RegisterUtteranceRequest_Status_STATUS_INVALID = 0,
+  RegisterUtteranceRequest_Status_STATUS_SUCCESS = 1,
+  RegisterUtteranceRequest_Status_STATUS_ERROR = 2,
+  RegisterUtteranceRequest_Status_RegisterUtteranceRequest_Status_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  RegisterUtteranceRequest_Status_RegisterUtteranceRequest_Status_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool RegisterUtteranceRequest_Status_IsValid(int value);
+constexpr RegisterUtteranceRequest_Status RegisterUtteranceRequest_Status_Status_MIN = RegisterUtteranceRequest_Status_STATUS_INVALID;
+constexpr RegisterUtteranceRequest_Status RegisterUtteranceRequest_Status_Status_MAX = RegisterUtteranceRequest_Status_STATUS_ERROR;
+constexpr int RegisterUtteranceRequest_Status_Status_ARRAYSIZE = RegisterUtteranceRequest_Status_Status_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* RegisterUtteranceRequest_Status_descriptor();
+template<typename T>
+inline const std::string& RegisterUtteranceRequest_Status_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, RegisterUtteranceRequest_Status>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function RegisterUtteranceRequest_Status_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    RegisterUtteranceRequest_Status_descriptor(), enum_t_value);
+}
+inline bool RegisterUtteranceRequest_Status_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, RegisterUtteranceRequest_Status* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<RegisterUtteranceRequest_Status>(
+    RegisterUtteranceRequest_Status_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -1007,14 +1034,49 @@ class RegisterUtteranceRequest final :
 
   // nested types ----------------------------------------------------
 
+  typedef RegisterUtteranceRequest_Status Status;
+  static constexpr Status STATUS_INVALID =
+    RegisterUtteranceRequest_Status_STATUS_INVALID;
+  static constexpr Status STATUS_SUCCESS =
+    RegisterUtteranceRequest_Status_STATUS_SUCCESS;
+  static constexpr Status STATUS_ERROR =
+    RegisterUtteranceRequest_Status_STATUS_ERROR;
+  static inline bool Status_IsValid(int value) {
+    return RegisterUtteranceRequest_Status_IsValid(value);
+  }
+  static constexpr Status Status_MIN =
+    RegisterUtteranceRequest_Status_Status_MIN;
+  static constexpr Status Status_MAX =
+    RegisterUtteranceRequest_Status_Status_MAX;
+  static constexpr int Status_ARRAYSIZE =
+    RegisterUtteranceRequest_Status_Status_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  Status_descriptor() {
+    return RegisterUtteranceRequest_Status_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& Status_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, Status>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function Status_Name.");
+    return RegisterUtteranceRequest_Status_Name(enum_t_value);
+  }
+  static inline bool Status_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      Status* value) {
+    return RegisterUtteranceRequest_Status_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
     kAppIdFieldNumber = 1,
     kDeviceIdFieldNumber = 2,
     kDecoderInfoFieldNumber = 5,
+    kCreatedTimeFieldNumber = 6,
+    kFinishedTimeFieldNumber = 7,
     kUtteranceLengthSecondsFieldNumber = 3,
     kUtteranceLengthCharsFieldNumber = 4,
+    kStatusFieldNumber = 8,
   };
   // string app_id = 1;
   void clear_app_id();
@@ -1062,6 +1124,42 @@ class RegisterUtteranceRequest final :
       ::speechly::analytics::v1::DecoderInfo* decoder_info);
   ::speechly::analytics::v1::DecoderInfo* unsafe_arena_release_decoder_info();
 
+  // .google.protobuf.Timestamp created_time = 6;
+  bool has_created_time() const;
+  private:
+  bool _internal_has_created_time() const;
+  public:
+  void clear_created_time();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& created_time() const;
+  PROTOBUF_MUST_USE_RESULT PROTOBUF_NAMESPACE_ID::Timestamp* release_created_time();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_created_time();
+  void set_allocated_created_time(PROTOBUF_NAMESPACE_ID::Timestamp* created_time);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_created_time() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_created_time();
+  public:
+  void unsafe_arena_set_allocated_created_time(
+      PROTOBUF_NAMESPACE_ID::Timestamp* created_time);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_created_time();
+
+  // .google.protobuf.Timestamp finished_time = 7;
+  bool has_finished_time() const;
+  private:
+  bool _internal_has_finished_time() const;
+  public:
+  void clear_finished_time();
+  const PROTOBUF_NAMESPACE_ID::Timestamp& finished_time() const;
+  PROTOBUF_MUST_USE_RESULT PROTOBUF_NAMESPACE_ID::Timestamp* release_finished_time();
+  PROTOBUF_NAMESPACE_ID::Timestamp* mutable_finished_time();
+  void set_allocated_finished_time(PROTOBUF_NAMESPACE_ID::Timestamp* finished_time);
+  private:
+  const PROTOBUF_NAMESPACE_ID::Timestamp& _internal_finished_time() const;
+  PROTOBUF_NAMESPACE_ID::Timestamp* _internal_mutable_finished_time();
+  public:
+  void unsafe_arena_set_allocated_finished_time(
+      PROTOBUF_NAMESPACE_ID::Timestamp* finished_time);
+  PROTOBUF_NAMESPACE_ID::Timestamp* unsafe_arena_release_finished_time();
+
   // int32 utterance_length_seconds = 3;
   void clear_utterance_length_seconds();
   ::PROTOBUF_NAMESPACE_ID::int32 utterance_length_seconds() const;
@@ -1080,6 +1178,15 @@ class RegisterUtteranceRequest final :
   void _internal_set_utterance_length_chars(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
+  // .speechly.analytics.v1.RegisterUtteranceRequest.Status status = 8;
+  void clear_status();
+  ::speechly::analytics::v1::RegisterUtteranceRequest_Status status() const;
+  void set_status(::speechly::analytics::v1::RegisterUtteranceRequest_Status value);
+  private:
+  ::speechly::analytics::v1::RegisterUtteranceRequest_Status _internal_status() const;
+  void _internal_set_status(::speechly::analytics::v1::RegisterUtteranceRequest_Status value);
+  public:
+
   // @@protoc_insertion_point(class_scope:speechly.analytics.v1.RegisterUtteranceRequest)
  private:
   class _Internal;
@@ -1090,8 +1197,11 @@ class RegisterUtteranceRequest final :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr app_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_id_;
   ::speechly::analytics::v1::DecoderInfo* decoder_info_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* created_time_;
+  PROTOBUF_NAMESPACE_ID::Timestamp* finished_time_;
   ::PROTOBUF_NAMESPACE_ID::int32 utterance_length_seconds_;
   ::PROTOBUF_NAMESPACE_ID::int32 utterance_length_chars_;
+  int status_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
 };
@@ -2002,6 +2112,198 @@ inline void RegisterUtteranceRequest::set_allocated_decoder_info(::speechly::ana
   // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.decoder_info)
 }
 
+// .google.protobuf.Timestamp created_time = 6;
+inline bool RegisterUtteranceRequest::_internal_has_created_time() const {
+  return this != internal_default_instance() && created_time_ != nullptr;
+}
+inline bool RegisterUtteranceRequest::has_created_time() const {
+  return _internal_has_created_time();
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& RegisterUtteranceRequest::_internal_created_time() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = created_time_;
+  return p != nullptr ? *p : reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& RegisterUtteranceRequest::created_time() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.RegisterUtteranceRequest.created_time)
+  return _internal_created_time();
+}
+inline void RegisterUtteranceRequest::unsafe_arena_set_allocated_created_time(
+    PROTOBUF_NAMESPACE_ID::Timestamp* created_time) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_time_);
+  }
+  created_time_ = created_time;
+  if (created_time) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.created_time)
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* RegisterUtteranceRequest::release_created_time() {
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = created_time_;
+  created_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* RegisterUtteranceRequest::unsafe_arena_release_created_time() {
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.RegisterUtteranceRequest.created_time)
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = created_time_;
+  created_time_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* RegisterUtteranceRequest::_internal_mutable_created_time() {
+  
+  if (created_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    created_time_ = p;
+  }
+  return created_time_;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* RegisterUtteranceRequest::mutable_created_time() {
+  PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_created_time();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.RegisterUtteranceRequest.created_time)
+  return _msg;
+}
+inline void RegisterUtteranceRequest::set_allocated_created_time(PROTOBUF_NAMESPACE_ID::Timestamp* created_time) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_time_);
+  }
+  if (created_time) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(created_time));
+    if (message_arena != submessage_arena) {
+      created_time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, created_time, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  created_time_ = created_time;
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.created_time)
+}
+
+// .google.protobuf.Timestamp finished_time = 7;
+inline bool RegisterUtteranceRequest::_internal_has_finished_time() const {
+  return this != internal_default_instance() && finished_time_ != nullptr;
+}
+inline bool RegisterUtteranceRequest::has_finished_time() const {
+  return _internal_has_finished_time();
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& RegisterUtteranceRequest::_internal_finished_time() const {
+  const PROTOBUF_NAMESPACE_ID::Timestamp* p = finished_time_;
+  return p != nullptr ? *p : reinterpret_cast<const PROTOBUF_NAMESPACE_ID::Timestamp&>(
+      PROTOBUF_NAMESPACE_ID::_Timestamp_default_instance_);
+}
+inline const PROTOBUF_NAMESPACE_ID::Timestamp& RegisterUtteranceRequest::finished_time() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.RegisterUtteranceRequest.finished_time)
+  return _internal_finished_time();
+}
+inline void RegisterUtteranceRequest::unsafe_arena_set_allocated_finished_time(
+    PROTOBUF_NAMESPACE_ID::Timestamp* finished_time) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(finished_time_);
+  }
+  finished_time_ = finished_time;
+  if (finished_time) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.finished_time)
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* RegisterUtteranceRequest::release_finished_time() {
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = finished_time_;
+  finished_time_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* RegisterUtteranceRequest::unsafe_arena_release_finished_time() {
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.RegisterUtteranceRequest.finished_time)
+  
+  PROTOBUF_NAMESPACE_ID::Timestamp* temp = finished_time_;
+  finished_time_ = nullptr;
+  return temp;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* RegisterUtteranceRequest::_internal_mutable_finished_time() {
+  
+  if (finished_time_ == nullptr) {
+    auto* p = CreateMaybeMessage<PROTOBUF_NAMESPACE_ID::Timestamp>(GetArenaForAllocation());
+    finished_time_ = p;
+  }
+  return finished_time_;
+}
+inline PROTOBUF_NAMESPACE_ID::Timestamp* RegisterUtteranceRequest::mutable_finished_time() {
+  PROTOBUF_NAMESPACE_ID::Timestamp* _msg = _internal_mutable_finished_time();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.RegisterUtteranceRequest.finished_time)
+  return _msg;
+}
+inline void RegisterUtteranceRequest::set_allocated_finished_time(PROTOBUF_NAMESPACE_ID::Timestamp* finished_time) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(finished_time_);
+  }
+  if (finished_time) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(finished_time));
+    if (message_arena != submessage_arena) {
+      finished_time = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, finished_time, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  finished_time_ = finished_time;
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.finished_time)
+}
+
+// .speechly.analytics.v1.RegisterUtteranceRequest.Status status = 8;
+inline void RegisterUtteranceRequest::clear_status() {
+  status_ = 0;
+}
+inline ::speechly::analytics::v1::RegisterUtteranceRequest_Status RegisterUtteranceRequest::_internal_status() const {
+  return static_cast< ::speechly::analytics::v1::RegisterUtteranceRequest_Status >(status_);
+}
+inline ::speechly::analytics::v1::RegisterUtteranceRequest_Status RegisterUtteranceRequest::status() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.RegisterUtteranceRequest.status)
+  return _internal_status();
+}
+inline void RegisterUtteranceRequest::_internal_set_status(::speechly::analytics::v1::RegisterUtteranceRequest_Status value) {
+  
+  status_ = value;
+}
+inline void RegisterUtteranceRequest::set_status(::speechly::analytics::v1::RegisterUtteranceRequest_Status value) {
+  _internal_set_status(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.RegisterUtteranceRequest.status)
+}
+
 // -------------------------------------------------------------------
 
 // RegisterUtteranceResponse
@@ -2032,6 +2334,11 @@ template <> struct is_proto_enum< ::speechly::analytics::v1::UtteranceStatistics
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::speechly::analytics::v1::UtteranceStatisticsRequest_Scope>() {
   return ::speechly::analytics::v1::UtteranceStatisticsRequest_Scope_descriptor();
+}
+template <> struct is_proto_enum< ::speechly::analytics::v1::RegisterUtteranceRequest_Status> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::speechly::analytics::v1::RegisterUtteranceRequest_Status>() {
+  return ::speechly::analytics::v1::RegisterUtteranceRequest_Status_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

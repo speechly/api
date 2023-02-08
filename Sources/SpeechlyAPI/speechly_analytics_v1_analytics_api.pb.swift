@@ -178,7 +178,7 @@ public struct Speechly_Analytics_V1_UtterancesResponse {
   public init() {}
 }
 
-/// A single data point of an utterance recognized by Speechly On Device.
+/// A single data point of an utterance recognized by Speechly On Device or Speechly On Premise.
 public struct Speechly_Analytics_V1_RegisterUtteranceRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -205,12 +205,88 @@ public struct Speechly_Analytics_V1_RegisterUtteranceRequest {
   /// Clears the value of `decoderInfo`. Subsequent reads from it will return its default value.
   public mutating func clearDecoderInfo() {self._decoderInfo = nil}
 
+  /// When the processing was initially requested.
+  public var createdTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _createdTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_createdTime = newValue}
+  }
+  /// Returns true if `createdTime` has been explicitly set.
+  public var hasCreatedTime: Bool {return self._createdTime != nil}
+  /// Clears the value of `createdTime`. Subsequent reads from it will return its default value.
+  public mutating func clearCreatedTime() {self._createdTime = nil}
+
+  /// When the processing was finished.
+  public var finishedTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _finishedTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_finishedTime = newValue}
+  }
+  /// Returns true if `finishedTime` has been explicitly set.
+  public var hasFinishedTime: Bool {return self._finishedTime != nil}
+  /// Clears the value of `finishedTime`. Subsequent reads from it will return its default value.
+  public mutating func clearFinishedTime() {self._finishedTime = nil}
+
+  /// The status of the processing.
+  public var status: Speechly_Analytics_V1_RegisterUtteranceRequest.Status = .invalid
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  /// The status of the processing.
+  public enum Status: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
+
+    /// Default status is empty
+    case invalid // = 0
+
+    /// Processing completed successfully.
+    case success // = 1
+
+    /// The processing failed.
+    case error // = 2
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .invalid
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .invalid
+      case 1: self = .success
+      case 2: self = .error
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .invalid: return 0
+      case .success: return 1
+      case .error: return 2
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
 
   public init() {}
 
   fileprivate var _decoderInfo: Speechly_Analytics_V1_DecoderInfo? = nil
+  fileprivate var _createdTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+  fileprivate var _finishedTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 }
+
+#if swift(>=4.2)
+
+extension Speechly_Analytics_V1_RegisterUtteranceRequest.Status: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static var allCases: [Speechly_Analytics_V1_RegisterUtteranceRequest.Status] = [
+    .invalid,
+    .success,
+    .error,
+  ]
+}
+
+#endif  // swift(>=4.2)
 
 public struct Speechly_Analytics_V1_RegisterUtteranceResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -229,6 +305,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsResponse: @unchecked Sendable
 extension Speechly_Analytics_V1_UtterancesRequest: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtterancesResponse: @unchecked Sendable {}
 extension Speechly_Analytics_V1_RegisterUtteranceRequest: @unchecked Sendable {}
+extension Speechly_Analytics_V1_RegisterUtteranceRequest.Status: @unchecked Sendable {}
 extension Speechly_Analytics_V1_RegisterUtteranceResponse: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
@@ -453,6 +530,9 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
     3: .standard(proto: "utterance_length_seconds"),
     4: .standard(proto: "utterance_length_chars"),
     5: .standard(proto: "decoder_info"),
+    6: .standard(proto: "created_time"),
+    7: .standard(proto: "finished_time"),
+    8: .same(proto: "status"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -466,6 +546,9 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
       case 3: try { try decoder.decodeSingularInt32Field(value: &self.utteranceLengthSeconds) }()
       case 4: try { try decoder.decodeSingularInt32Field(value: &self.utteranceLengthChars) }()
       case 5: try { try decoder.decodeSingularMessageField(value: &self._decoderInfo) }()
+      case 6: try { try decoder.decodeSingularMessageField(value: &self._createdTime) }()
+      case 7: try { try decoder.decodeSingularMessageField(value: &self._finishedTime) }()
+      case 8: try { try decoder.decodeSingularEnumField(value: &self.status) }()
       default: break
       }
     }
@@ -491,6 +574,15 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
     try { if let v = self._decoderInfo {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
     } }()
+    try { if let v = self._createdTime {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+    } }()
+    try { if let v = self._finishedTime {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+    } }()
+    if self.status != .invalid {
+      try visitor.visitSingularEnumField(value: self.status, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -500,9 +592,20 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
     if lhs.utteranceLengthSeconds != rhs.utteranceLengthSeconds {return false}
     if lhs.utteranceLengthChars != rhs.utteranceLengthChars {return false}
     if lhs._decoderInfo != rhs._decoderInfo {return false}
+    if lhs._createdTime != rhs._createdTime {return false}
+    if lhs._finishedTime != rhs._finishedTime {return false}
+    if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
+}
+
+extension Speechly_Analytics_V1_RegisterUtteranceRequest.Status: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "STATUS_INVALID"),
+    1: .same(proto: "STATUS_SUCCESS"),
+    2: .same(proto: "STATUS_ERROR"),
+  ]
 }
 
 extension Speechly_Analytics_V1_RegisterUtteranceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {

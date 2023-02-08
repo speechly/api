@@ -43,7 +43,7 @@ Information about the on-device decoder.
 <a name="speechly.analytics.v1.RegisterUtteranceRequest"></a>
 ### RegisterUtteranceRequest
 
-A single data point of an utterance recognized by Speechly On Device.
+A single data point of an utterance recognized by Speechly On Device or Speechly On Premise.
 
 #### Fields
 
@@ -54,6 +54,9 @@ A single data point of an utterance recognized by Speechly On Device.
 | utterance_length_seconds | [int32](#int32) | Length of the recognized utterance in seconds. |
 | utterance_length_chars | [int32](#int32) | Length of the recognized utterance in characters. |
 | decoder_info | [DecoderInfo](#speechly.analytics.v1.DecoderInfo) | Information about the on-device decoder. |
+| created_time | [Timestamp](#google.protobuf.Timestamp) | When the processing was initially requested. |
+| finished_time | [Timestamp](#google.protobuf.Timestamp) | When the processing was finished. |
+| status | [Status](#speechly.analytics.v1.RegisterUtteranceRequest.Status) | The status of the processing. |
 
 
 <a name="speechly.analytics.v1.RegisterUtteranceResponse"></a>
