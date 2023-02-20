@@ -120,10 +120,10 @@ message RegisterUtteranceRequest {
     }
     // The status of the processing.
     Status status = 8;
-    // operation id of the utterance
+    // batch api operation id of the utterance
     string operation_id = 9;
-    // id of the job the operation belongs to
-    string job_id = 10;
+    // id of the batch the operation belongs to
+    string batch_id = 10;
 }
 
 message RegisterUtteranceResponse {
