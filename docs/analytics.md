@@ -57,6 +57,8 @@ A single data point of an utterance recognized by Speechly On Device or Speechly
 | created_time | [Timestamp](#google.protobuf.Timestamp) | When the processing was initially requested. |
 | finished_time | [Timestamp](#google.protobuf.Timestamp) | When the processing was finished. |
 | status | [Status](#speechly.analytics.v1.RegisterUtteranceRequest.Status) | The status of the processing. |
+| operation_id | [string](#string) | batch api operation id of the utterance |
+| batch_id | [string](#string) | id of the batch the operation belongs to |
 
 
 <a name="speechly.analytics.v1.RegisterUtteranceResponse"></a>

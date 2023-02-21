@@ -228,6 +228,12 @@ public struct Speechly_Analytics_V1_RegisterUtteranceRequest {
   /// The status of the processing.
   public var status: Speechly_Analytics_V1_RegisterUtteranceRequest.Status = .invalid
 
+  /// batch api operation id of the utterance
+  public var operationID: String = String()
+
+  /// id of the batch the operation belongs to
+  public var batchID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   /// The status of the processing.
@@ -533,6 +539,8 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
     6: .standard(proto: "created_time"),
     7: .standard(proto: "finished_time"),
     8: .same(proto: "status"),
+    9: .standard(proto: "operation_id"),
+    10: .standard(proto: "batch_id"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -549,6 +557,8 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
       case 6: try { try decoder.decodeSingularMessageField(value: &self._createdTime) }()
       case 7: try { try decoder.decodeSingularMessageField(value: &self._finishedTime) }()
       case 8: try { try decoder.decodeSingularEnumField(value: &self.status) }()
+      case 9: try { try decoder.decodeSingularStringField(value: &self.operationID) }()
+      case 10: try { try decoder.decodeSingularStringField(value: &self.batchID) }()
       default: break
       }
     }
@@ -583,6 +593,12 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
     if self.status != .invalid {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 8)
     }
+    if !self.operationID.isEmpty {
+      try visitor.visitSingularStringField(value: self.operationID, fieldNumber: 9)
+    }
+    if !self.batchID.isEmpty {
+      try visitor.visitSingularStringField(value: self.batchID, fieldNumber: 10)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -595,6 +611,8 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
     if lhs._createdTime != rhs._createdTime {return false}
     if lhs._finishedTime != rhs._finishedTime {return false}
     if lhs.status != rhs.status {return false}
+    if lhs.operationID != rhs.operationID {return false}
+    if lhs.batchID != rhs.batchID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

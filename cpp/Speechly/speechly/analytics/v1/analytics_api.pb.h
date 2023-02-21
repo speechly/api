@@ -1071,6 +1071,8 @@ class RegisterUtteranceRequest final :
   enum : int {
     kAppIdFieldNumber = 1,
     kDeviceIdFieldNumber = 2,
+    kOperationIdFieldNumber = 9,
+    kBatchIdFieldNumber = 10,
     kDecoderInfoFieldNumber = 5,
     kCreatedTimeFieldNumber = 6,
     kFinishedTimeFieldNumber = 7,
@@ -1104,6 +1106,34 @@ class RegisterUtteranceRequest final :
   const std::string& _internal_device_id() const;
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_device_id(const std::string& value);
   std::string* _internal_mutable_device_id();
+  public:
+
+  // string operation_id = 9;
+  void clear_operation_id();
+  const std::string& operation_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_operation_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_operation_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_operation_id();
+  void set_allocated_operation_id(std::string* operation_id);
+  private:
+  const std::string& _internal_operation_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_operation_id(const std::string& value);
+  std::string* _internal_mutable_operation_id();
+  public:
+
+  // string batch_id = 10;
+  void clear_batch_id();
+  const std::string& batch_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_batch_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_batch_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_batch_id();
+  void set_allocated_batch_id(std::string* batch_id);
+  private:
+  const std::string& _internal_batch_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_batch_id(const std::string& value);
+  std::string* _internal_mutable_batch_id();
   public:
 
   // .speechly.analytics.v1.DecoderInfo decoder_info = 5;
@@ -1196,6 +1226,8 @@ class RegisterUtteranceRequest final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr app_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr device_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr operation_id_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr batch_id_;
   ::speechly::analytics::v1::DecoderInfo* decoder_info_;
   PROTOBUF_NAMESPACE_ID::Timestamp* created_time_;
   PROTOBUF_NAMESPACE_ID::Timestamp* finished_time_;
@@ -2302,6 +2334,98 @@ inline void RegisterUtteranceRequest::_internal_set_status(::speechly::analytics
 inline void RegisterUtteranceRequest::set_status(::speechly::analytics::v1::RegisterUtteranceRequest_Status value) {
   _internal_set_status(value);
   // @@protoc_insertion_point(field_set:speechly.analytics.v1.RegisterUtteranceRequest.status)
+}
+
+// string operation_id = 9;
+inline void RegisterUtteranceRequest::clear_operation_id() {
+  operation_id_.ClearToEmpty();
+}
+inline const std::string& RegisterUtteranceRequest::operation_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.RegisterUtteranceRequest.operation_id)
+  return _internal_operation_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RegisterUtteranceRequest::set_operation_id(ArgT0&& arg0, ArgT... args) {
+ 
+ operation_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.RegisterUtteranceRequest.operation_id)
+}
+inline std::string* RegisterUtteranceRequest::mutable_operation_id() {
+  std::string* _s = _internal_mutable_operation_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.RegisterUtteranceRequest.operation_id)
+  return _s;
+}
+inline const std::string& RegisterUtteranceRequest::_internal_operation_id() const {
+  return operation_id_.Get();
+}
+inline void RegisterUtteranceRequest::_internal_set_operation_id(const std::string& value) {
+  
+  operation_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* RegisterUtteranceRequest::_internal_mutable_operation_id() {
+  
+  return operation_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* RegisterUtteranceRequest::release_operation_id() {
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.RegisterUtteranceRequest.operation_id)
+  return operation_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void RegisterUtteranceRequest::set_allocated_operation_id(std::string* operation_id) {
+  if (operation_id != nullptr) {
+    
+  } else {
+    
+  }
+  operation_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), operation_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.operation_id)
+}
+
+// string batch_id = 10;
+inline void RegisterUtteranceRequest::clear_batch_id() {
+  batch_id_.ClearToEmpty();
+}
+inline const std::string& RegisterUtteranceRequest::batch_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.RegisterUtteranceRequest.batch_id)
+  return _internal_batch_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RegisterUtteranceRequest::set_batch_id(ArgT0&& arg0, ArgT... args) {
+ 
+ batch_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.RegisterUtteranceRequest.batch_id)
+}
+inline std::string* RegisterUtteranceRequest::mutable_batch_id() {
+  std::string* _s = _internal_mutable_batch_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.RegisterUtteranceRequest.batch_id)
+  return _s;
+}
+inline const std::string& RegisterUtteranceRequest::_internal_batch_id() const {
+  return batch_id_.Get();
+}
+inline void RegisterUtteranceRequest::_internal_set_batch_id(const std::string& value) {
+  
+  batch_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* RegisterUtteranceRequest::_internal_mutable_batch_id() {
+  
+  return batch_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* RegisterUtteranceRequest::release_batch_id() {
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.RegisterUtteranceRequest.batch_id)
+  return batch_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void RegisterUtteranceRequest::set_allocated_batch_id(std::string* batch_id) {
+  if (batch_id != nullptr) {
+    
+  } else {
+    
+  }
+  batch_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), batch_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.RegisterUtteranceRequest.batch_id)
 }
 
 // -------------------------------------------------------------------

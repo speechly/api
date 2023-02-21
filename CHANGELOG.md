@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.13](https://github.com/speechly/api/tree/0.8.13) (2023-02-21)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.12...0.8.13)
+
+**Merged pull requests:**
+
+- add operation and batch id to RegisterUtteranceRequest [\#62](https://github.com/speechly/api/pull/62) ([aukkonen](https://github.com/aukkonen))
+
 ## [0.8.12](https://github.com/speechly/api/tree/0.8.12) (2023-02-08)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.9...0.8.12)
