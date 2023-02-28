@@ -1,0 +1,183 @@
+syntax = "proto3";
+
+package speechly.slu.v2beta1;
+
+option csharp_namespace = "Speechly.Slu.V2beta1";
+option go_package = "speechly/slu/v2beta1;sluv2beta1";
+option java_multiple_files = true;
+option java_outer_classname = "BatchProto";
+option java_package = "com.speechly.slu.v2beta1";
+option objc_class_prefix = "SSX";
+option php_namespace = "Speechly\\Slu\\V2beta1";
+
+import "google/protobuf/duration.proto";
+
+// Describes the audio content of the batch operation.
+message AudioConfiguration {
+  // The encoding of the audio data sent in the stream.
+  enum Encoding {
+    ENCODING_INVALID = 0;
+    // The encoding should be determined from the audio data sent in the stream. The
+    // data must be of supported type and contain the appropriate container/header.
+    ENCODING_DETECT_FROM_HEADER = 7;
+    // Uncompressed 16-bit signed little-endian samples (Linear PCM).
+    // May optionally include RIFF WAVE header.
+    ENCODING_LINEAR16 = 1;
+    // Audio compressed using Free Lossless Audio Codec (FLAC).
+    // Must be wrapped in a FLAC container.
+    ENCODING_FLAC = 2;
+    // Audio compressed using OPUS codec. Must be wrapped in an OGG container.
+    // Please note that using lossy codec can degrade the recognition accuracy.
+    ENCODING_OGG_OPUS = 3;
+    // Audio compressed using Vorbis codec. Must be wrapped in an OGG container.
+    // Please note that using lossy codec can degrade the recognition accuracy.
+    ENCODING_OGG_VORBIS = 4;
+  }
+  // The encoding of the audio data sent in the stream.
+  // Required.
+  Encoding encoding = 1;
+  // The number of channels in the input audio data.
+  // Required if not present in header.
+  int32 channels = 2;
+  // Sample rate in Hertz of the audio data sent in the stream (e.g. 16000).
+  // Required if not present in header.
+  int32 sample_rate_hertz = 3;
+  // The language(s) of the audio sent in the stream as a BCP-47 language tag
+  // (e.g. "en-US"). Defaults to the target application language.
+  // Optional.
+  repeated string language_codes = 4;
+}
+
+// Option to change the default behaviour of the SLU.
+message Option {
+  // The key of the option to be set.
+  string key = 1;
+  // The values to set the option to.
+  repeated string value = 2;
+}
+
+// Describes full properties of an HTTP endpoint.
+message HttpResource {
+  // The HTTP method to use.
+  enum Method {
+    METHOD_INVALID = 0;
+    METHOD_GET = 1;
+    METHOD_POST = 2;
+    METHOD_PUT = 3;
+  }
+  // A single header value.
+  message Header {
+    string name = 1;
+    string value = 2;
+  }
+  // URL of the endpoint (protocol://server/path)
+  // Required.
+  string url = 1;
+  // method to use in connection.
+  // Required.
+  Method method = 2;
+  // Possible additional headers to include in the connection.
+  // Optional.
+  repeated Header headers = 3;
+}
+
+message ProcessAudioBatchConfig {
+  // The processing context, Speechly Application ID.
+  // Optional. If not provided, the processing context will be determined
+  // from the login information.
+  string app_id = 1;
+  // Audio configuration.
+  // Required.
+  AudioConfiguration config = 2;
+  // Processing configuration.
+  // Required.
+  ProcessingConfiguration processing_config = 3;
+  // Reference id for a set of related operations. For example an identifier of the source
+  // system.
+  // Optional.
+  string batch_reference = 6;
+  // Additional operation specific options.
+  // Optional.
+  repeated Option options = 8;
+}
+
+message ProcessingConfiguration {
+  bool tokenize = 1;
+  bool translate = 2;
+  bool skip_transcribe = 3;
+}
+
+// Describes a single batch operation.
+message Operation {
+  // The status of the operation.
+  enum Status {
+    // Default status is empty.
+    STATUS_INVALID = 0;
+    // The operation is queued for processing.
+    STATUS_QUEUED = 1;
+    // Audio is being decoded.
+    STATUS_PROCESSING = 2;
+    // The operation is complete and transcript is available.
+    STATUS_DONE = 3;
+    // The processing failed. Error reason is available.
+    STATUS_ERROR = 4;
+    // Audio is being analysed, eg. language is detected.
+    STATUS_ANALYSING = 5;
+    // Audio has been analysed, the operation is waiting for a free decoder.
+    STATUS_WAITING_DECODER = 6;
+    // Audio has been analysed and decoded, but the transcript is not yet available.
+    STATUS_FINALIZING = 7;
+  }
+  // The id of the operation.
+  string id = 1;
+  // The reference id of the operation, if given.
+  string reference = 2;
+  // The id of the batch the operation belongs to.
+  string batch_id = 11;
+  // The reference id of the operation, if given.
+  string batch_reference = 12;
+  // The current status of the operation.
+  Status status = 3;
+  // The language code of the detected language.
+  string language_code = 4;
+  // The application context for the operation.
+  string app_id = 5;
+  // The device or microphone id for the audio, if applicable.
+  string device_id = 6;
+  // If the operation status is STATUS_DONE and the destination is not set,
+  // the results of the operation.
+  OperationResult result = 7;
+  // Contains a description of the error if the operation status is
+  // STATUS_ERROR.
+  string error = 8;
+  // The duration of the audio.
+  google.protobuf.Duration duration = 9;
+}
+
+message OperationResult {
+  repeated Transcript transcripts = 1;
+}
+
+message Transcript {
+  enum TranscriptType {
+    TRANSCRIPT_TYPE_INVALID = 0;
+    TRANSCRIPT_TYPE_LEXICAL = 1;
+    TRANSCRIPT_TYPE_DISPLAY = 2;
+    TRANSCRIPT_TYPE_TRANSLATION = 3;
+  }
+  TranscriptType type = 1;
+  string text = 2;
+  repeated Token tokens = 3;
+}
+
+message Token {
+  string token = 1;
+  // The position of the token in the whole phrase, zero-based.
+  int32 index = 2;
+  // The end time of the token in the audio, in milliseconds from the beginning
+  // of the audio.
+  int32 start_time = 3;
+  // The end time of the token in the audio, in milliseconds from the beginning
+  // of the audio.
+  int32 end_time = 4;
+}

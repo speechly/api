@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+package speechly.slu.v2beta1;
+
+option csharp_namespace = "Speechly.Slu.V2beta1";
+option go_package = "speechly/slu/v2beta1;sluv2beta1";
+option java_multiple_files = true;
+option java_outer_classname = "BatchApiProto";
+option java_package = "com.speechly.slu.v2beta1";
+option objc_class_prefix = "SSX";
+option php_namespace = "Speechly\\Slu\\V2beta1";
+
+import "speechly/slu/v2beta1/batch.proto";
+
+// Run SLU operations on audio sources without actively waiting the results.
+service BatchAPI {
+  rpc ProcessAudioSource(stream ProcessAudioSourceRequest) returns (ProcessAudioSourceResponse);
+  rpc ProcessAudioStream(ProcessAudioStreamRequest) returns (ProcessAudioStreamResponse);
+
+  rpc QueryStatus(QueryStatusRequest) returns (QueryStatusResponse);
+}
+
+// If sending a stream of `ProcessAudioRequest` messages, the first one must
+// contain the `ProcessAudioConfiguration` for the audio data. The `config` is ignored
+// in the following messages.
+message ProcessAudioStreamRequest {
+  oneof request {
+    ProcessAudioStreamConfig config = 1;
+    bytes audio = 2;
+  }
+}
+
+message ProcessAudioStreamConfig {
+  ProcessAudioBatchConfig config = 1;
+  HttpResource destination = 2;
+  string reference = 3;
+  string device_id = 4;
+}
+
+message ProcessAudioStreamResponse {
+  // The details of the created operation.
+  Operation operation = 1;
+  // Where the results will be stored.
+  HttpResource destination = 2;
+}
+
+
+
+
+message ProcessAudioSourceRequest {
+  ProcessAudioBatchConfig config = 1;
+  repeated ProcessAudioSourceRequestItem source = 2;
+}
+
+message ProcessAudioSourceRequestItem {
+  HttpResource source = 1;
+  HttpResource destination = 2;
+  string reference = 3;
+  string device_id = 4;
+}
+
+message ProcessAudioSourceResponse {
+  // The details of the created operations.
+  repeated Operation operation = 3;
+}
+
+// Query the status of an operation. At least one of these must be given.
+message QueryStatusRequest {
+  // ID of an audio processing operation.
+  repeated string operation_ids = 1;
+  // Reference ID of an operation.
+  repeated string references = 2;
+
+  string batch_id = 4;
+  string batch_reference = 5;
+}
+
+message QueryStatusResponse {
+  // The details of the audio processing operation.
+  repeated Operation operation = 1;
+}
+
+
+
