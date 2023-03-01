@@ -12,50 +12,6 @@ option php_namespace = "Speechly\\Slu\\V2beta1";
 
 import "google/protobuf/duration.proto";
 
-// Describes the audio content of the batch operation.
-message AudioConfiguration {
-  // The encoding of the audio data sent in the stream.
-  enum Encoding {
-    ENCODING_INVALID = 0;
-    // The encoding should be determined from the audio data sent in the stream. The
-    // data must be of supported type and contain the appropriate container/header.
-    ENCODING_DETECT_FROM_HEADER = 7;
-    // Uncompressed 16-bit signed little-endian samples (Linear PCM).
-    // May optionally include RIFF WAVE header.
-    ENCODING_LINEAR16 = 1;
-    // Audio compressed using Free Lossless Audio Codec (FLAC).
-    // Must be wrapped in a FLAC container.
-    ENCODING_FLAC = 2;
-    // Audio compressed using OPUS codec. Must be wrapped in an OGG container.
-    // Please note that using lossy codec can degrade the recognition accuracy.
-    ENCODING_OGG_OPUS = 3;
-    // Audio compressed using Vorbis codec. Must be wrapped in an OGG container.
-    // Please note that using lossy codec can degrade the recognition accuracy.
-    ENCODING_OGG_VORBIS = 4;
-  }
-  // The encoding of the audio data sent in the stream.
-  // Required.
-  Encoding encoding = 1;
-  // The number of channels in the input audio data.
-  // Required if not present in header.
-  int32 channels = 2;
-  // Sample rate in Hertz of the audio data sent in the stream (e.g. 16000).
-  // Required if not present in header.
-  int32 sample_rate_hertz = 3;
-  // The language(s) of the audio sent in the stream as a BCP-47 language tag
-  // (e.g. "en-US"). Defaults to the target application language.
-  // Optional.
-  repeated string language_codes = 4;
-}
-
-// Option to change the default behaviour of the SLU.
-message Option {
-  // The key of the option to be set.
-  string key = 1;
-  // The values to set the option to.
-  repeated string value = 2;
-}
-
 // Describes full properties of an HTTP endpoint.
 message HttpResource {
   // The HTTP method to use.
@@ -74,7 +30,7 @@ message HttpResource {
   // Required.
   string url = 1;
   // method to use in connection.
-  // Required.
+  // Optional.
   Method method = 2;
   // Possible additional headers to include in the connection.
   // Optional.
@@ -87,29 +43,34 @@ message ProcessAudioBatchConfig {
   // Optional. If not provided, the processing context will be determined
   // from the login information.
   string app_id = 1;
-  // Audio configuration.
-  // Required.
-  AudioConfiguration config = 2;
+  // The language(s) of the audio sent in the request as a BCP-47 language tag
+  // (e.g. "en-US"). Defaults to the target application language(s).
+  // Optional.
+  repeated string language_codes = 2;
   // Processing configuration.
   // Required.
   ProcessingConfiguration processing_config = 3;
   // Reference id for a set of related operations. For example an identifier of the source
   // system.
   // Optional.
-  string batch_reference = 6;
+  string batch_reference = 4;
   // Additional operation specific options.
   // Optional.
-  repeated Option options = 8;
+  repeated Option options = 5;
 }
 
 // Describes the configuration options unique to a single audio source.
 message ProcessAudioSourceRequestItem {
   // The locator to the source audio.
   // Required.
-  HttpResource source = 1;
+  string source_url = 1;
   // The locator to the result target. The payload will be `Operation` as JSON.
   // Optional.
-  HttpResource destination = 2;
+  string destination_url = 2;
+  // HTTP endpoint to be notified on completion of the processing. The payload
+  // will be `Operation` as JSON.
+  // Optional.
+  HttpResource completion_webhook = 5;
   // Reference id for the operation. For example an identifier of the source
   // system.
   // Optional.
@@ -138,19 +99,11 @@ message Operation {
     // Default status is empty.
     STATUS_INVALID = 0;
     // The operation is queued for processing.
-    STATUS_QUEUED = 1;
-    // Audio is being decoded.
-    STATUS_PROCESSING = 2;
+    STATUS_PENDING = 1;
     // The operation is complete and transcript is available.
-    STATUS_DONE = 3;
+    STATUS_DONE = 2;
     // The processing failed. Error reason is available.
-    STATUS_ERROR = 4;
-    // Audio is being analysed, eg. language is detected.
-    STATUS_ANALYSING = 5;
-    // Audio has been analysed, the operation is waiting for a free decoder.
-    STATUS_WAITING_DECODER = 6;
-    // Audio has been analysed and decoded, but the transcript is not yet available.
-    STATUS_FINALIZING = 7;
+    STATUS_ERROR = 3;
   }
   // The id of the operation.
   string id = 1;
@@ -166,16 +119,34 @@ message Operation {
   string language_code = 4;
   // The application context for the operation.
   string app_id = 5;
-  // The device or microphone id for the audio, if applicable.
-  string device_id = 6;
   // If the operation status is STATUS_DONE and the destination is not set,
   // the results of the processing.
-  OperationResult result = 7;
-  // Contains a description of the error if the operation status is
-  // STATUS_ERROR.
-  string error = 8;
+  OperationResult result = 6;
   // The duration of the audio.
-  google.protobuf.Duration duration = 9;
+  google.protobuf.Duration duration = 7;
+  // Contains a machine readable error type if the operation status is
+  // STATUS_ERROR.
+  enum Error {
+    OPERATION_ERROR_UNSPECIFIED = 0;
+    // The input was in a language that was not supported in this context.
+    OPERATION_ERROR_UNSUPPORTED_LANGUAGE = 1;
+    // An internal error occurred.
+    OPERATION_ERROR_INTERNAL = 2;
+    // The source could not be read or understood.
+    OPERATION_ERROR_INVALID_SOURCE = 4;
+    // The results could not be written to the destination.
+    OPERATION_ERROR_INVALID_DESTINATION = 5;
+    // The provided audio was not in a supported format.
+    OPERATION_ERROR_INVALID_AUDIO = 6;
+  }
+  Error error_code = 13;
+  // Contains a human readable description of the error if the operation status is
+  // STATUS_ERROR.
+  string error_description = 14;
+  // The locator to the source audio.
+  string source_url = 15;
+  // The locator to the result target.
+  string destination_url = 16;
 }
 
 // Describes the results of the processing that took place.
@@ -218,4 +189,12 @@ message Token {
   // The end time of the token in the audio, in milliseconds from the beginning
   // of the audio.
   int32 end_time = 4;
+}
+
+// Option to change the default behaviour of the SLU.
+message Option {
+  // The key of the option to be set.
+  string key = 1;
+  // The values to set the option to.
+  repeated string value = 2;
 }
