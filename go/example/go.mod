@@ -3,18 +3,18 @@ module github.com/speechly/api/go/example
 go 1.18
 
 require (
-	github.com/speechly/api/go v0.0.0-20220523043154-8a226fc06705
+	github.com/speechly/api/go v0.0.0-20230301112744-44052e8200a4
 	github.com/youpy/go-wav v0.3.2
-	google.golang.org/grpc v1.46.2
+	google.golang.org/grpc v1.53.0
 )
 
 require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/youpy/go-riff v0.1.0 // indirect
-	github.com/zaf/g711 v0.0.0-20190814101024-76a4a538f52b // indirect
-	golang.org/x/net v0.0.0-20201021035429-f5854403a974 // indirect
-	golang.org/x/sys v0.0.0-20220722155257-8c9f86f7a55f // indirect
-	golang.org/x/text v0.3.8 // indirect
-	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
-	google.golang.org/protobuf v1.27.1 // indirect
+	github.com/zaf/g711 v0.0.0-20220109202201-cf0017bf0359 // indirect
+	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/sys v0.5.0 // indirect
+	golang.org/x/text v0.7.0 // indirect
+	google.golang.org/genproto v0.0.0-20230227214838-9b19f0bdc514 // indirect
+	google.golang.org/protobuf v1.28.1 // indirect
 )
