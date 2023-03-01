@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package speechly.slu.v2beta1;
 
-option csharp_namespace = "Speechly.Slu.V2beta1";
+option csharp_namespace = "Speechly.Slu.V2Beta1";
 option go_package = "speechly/slu/v2beta1;sluv2beta1";
 option java_multiple_files = true;
 option java_outer_classname = "BatchApiProto";
 option java_package = "com.speechly.slu.v2beta1";
 option objc_class_prefix = "SSX";
-option php_namespace = "Speechly\\Slu\\V2beta1";
+option php_namespace = "Speechly\\Slu\\V2Beta1";
 
 import "speechly/slu/v2beta1/batch.proto";
 

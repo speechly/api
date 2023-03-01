@@ -2,13 +2,13 @@ syntax = "proto3";
 
 package speechly.slu.v2beta1;
 
-option csharp_namespace = "Speechly.Slu.V2beta1";
+option csharp_namespace = "Speechly.Slu.V2Beta1";
 option go_package = "speechly/slu/v2beta1;sluv2beta1";
 option java_multiple_files = true;
 option java_outer_classname = "BatchProto";
 option java_package = "com.speechly.slu.v2beta1";
 option objc_class_prefix = "SSX";
-option php_namespace = "Speechly\\Slu\\V2beta1";
+option php_namespace = "Speechly\\Slu\\V2Beta1";
 
 import "google/protobuf/duration.proto";
 
@@ -126,8 +126,8 @@ message Operation {
   google.protobuf.Duration duration = 7;
   // Contains a machine readable error type if the operation status is
   // STATUS_ERROR.
-  enum Error {
-    OPERATION_ERROR_UNSPECIFIED = 0;
+  enum OperationError {
+    OPERATION_ERROR_INVALID = 0;
     // The input was in a language that was not supported in this context.
     OPERATION_ERROR_UNSUPPORTED_LANGUAGE = 1;
     // An internal error occurred.
@@ -139,7 +139,7 @@ message Operation {
     // The provided audio was not in a supported format.
     OPERATION_ERROR_INVALID_AUDIO = 6;
   }
-  Error error_code = 13;
+  OperationError error_code = 13;
   // Contains a human readable description of the error if the operation status is
   // STATUS_ERROR.
   string error_description = 14;
