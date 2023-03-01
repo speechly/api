@@ -81,6 +81,7 @@ message HttpResource {
   repeated Header headers = 3;
 }
 
+// Describes the configuration options common for the input batch.
 message ProcessAudioBatchConfig {
   // The processing context, Speechly Application ID.
   // Optional. If not provided, the processing context will be determined
@@ -101,9 +102,32 @@ message ProcessAudioBatchConfig {
   repeated Option options = 8;
 }
 
+// Describes the configuration options unique to a single audio source.
+message ProcessAudioSourceRequestItem {
+  // The locator to the source audio.
+  // Required.
+  HttpResource source = 1;
+  // The locator to the result target. The payload will be `Operation` as JSON.
+  // Optional.
+  HttpResource destination = 2;
+  // Reference id for the operation. For example an identifier of the source
+  // system.
+  // Optional.
+  string reference = 3;
+  // Additional operation specific options.
+  // Optional.
+  string device_id = 4;
+}
+
+// Describes the processing options for the audio. Note that not all options are available for
+// all languages or on all Payment Plans.
 message ProcessingConfiguration {
+  // The processing should include the token level transcription and determination of time stamps for tokens.
   bool tokenize = 1;
+  // The processing should include translating the audio to English.
   bool translate = 2;
+  // The processing should not include transcribing the audio to the source language. This option should be used
+  // with translate (or other similar option) to suppress the normal Speech Recognition processing.
   bool skip_transcribe = 3;
 }
 
@@ -145,7 +169,7 @@ message Operation {
   // The device or microphone id for the audio, if applicable.
   string device_id = 6;
   // If the operation status is STATUS_DONE and the destination is not set,
-  // the results of the operation.
+  // the results of the processing.
   OperationResult result = 7;
   // Contains a description of the error if the operation status is
   // STATUS_ERROR.
@@ -154,23 +178,37 @@ message Operation {
   google.protobuf.Duration duration = 9;
 }
 
+// Describes the results of the processing that took place.
 message OperationResult {
+  // The various transcripts describing the content of the processed audio.
   repeated Transcript transcripts = 1;
 }
 
+// Describes the content of an audio as text.
 message Transcript {
+  // The possible types for the transcript.
   enum TranscriptType {
     TRANSCRIPT_TYPE_INVALID = 0;
+    // The actual words of the audio with no additional processing applied.
     TRANSCRIPT_TYPE_LEXICAL = 1;
+    // The content of the audio formatted to be displayed on screen, with eg. punctuation
+    // and capitalization included.
     TRANSCRIPT_TYPE_DISPLAY = 2;
+    // The content of the audio translated to English.
     TRANSCRIPT_TYPE_TRANSLATION = 3;
   }
+  // The type of this transcript.
   TranscriptType type = 1;
+  // The content of the audio as text.
   string text = 2;
+  // The content of the audio as tokens. Only available if requested in the `ProcessingConfiguration`.
   repeated Token tokens = 3;
 }
 
+// Describes a single meaningful unit of speech. In languages that use spaces to separate words,
+// closely maps to those words.
 message Token {
+  // The token described.
   string token = 1;
   // The position of the token in the whole phrase, zero-based.
   int32 index = 2;
