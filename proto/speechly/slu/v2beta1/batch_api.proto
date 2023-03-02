@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package speechly.slu.v2beta1;
+
+option csharp_namespace = "Speechly.Slu.V2Beta1";
+option go_package = "speechly/slu/v2beta1;sluv2beta1";
+option java_multiple_files = true;
+option java_outer_classname = "BatchApiProto";
+option java_package = "com.speechly.slu.v2beta1";
+option objc_class_prefix = "SSX";
+option php_namespace = "Speechly\\Slu\\V2Beta1";
+
+import "speechly/slu/v2beta1/batch.proto";
+
+// Run Speechly Batch API operations on audio sources without actively waiting the results.
+service BatchAPI {
+  // Create a new background Speechly Batch API operation for a one or more audio sources.
+  // Audio sources must be URIs of a files, reachable from the API
+  // The response includes an `id` that is used to match the operation to the
+  // results. A `reference` identifier can also be set.
+  // Also a `batch_reference` can be set to mark that multiple audio sources form a
+  // logical batch. In that case, the response will include a `batch_id`.
+  rpc ProcessAudioSource(ProcessAudioSourceRequest) returns (ProcessAudioSourceResponse);
+
+  // Query the status of given operations.
+  // If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`
+  // as a destination, the results are returned in the `QueryStatusResponse`.
+  rpc QueryStatus(QueryStatusRequest) returns (QueryStatusResponse);
+}
+
+// Describes a request to process audio from a pre-existing source.
+message ProcessAudioSourceRequest {
+  // The options shared by all of the source audios.
+  ProcessAudioBatchConfig config = 1;
+  // The source audios, and their unique options.
+  repeated ProcessAudioSourceRequestItem source = 2;
+}
+
+// Describes a response to request to process audio from a pre-existing source.
+message ProcessAudioSourceResponse {
+  // The details of the created operations.
+  repeated Operation operation = 1;
+}
+
+// Query the status of an operation. At least one of these must be given.
+message QueryStatusRequest {
+  // ID of an audio processing operation.
+  repeated string operation_ids = 1;
+  // Reference ID of an operation.
+  repeated string operation_references = 2;
+
+  // ID of an audio processing batch.
+  string batch_id = 3;
+  // Reference ID of a batch.
+  string batch_reference = 4;
+}
+
+// Describes the statuses of the queried operations.
+message QueryStatusResponse {
+  // The details of the audio processing operation.
+  repeated Operation operation = 1;
+}
+
+
+

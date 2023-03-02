@@ -1,0 +1,194 @@
+syntax = "proto3";
+
+package speechly.slu.v2beta1;
+
+option csharp_namespace = "Speechly.Slu.V2Beta1";
+option go_package = "speechly/slu/v2beta1;sluv2beta1";
+option java_multiple_files = true;
+option java_outer_classname = "BatchProto";
+option java_package = "com.speechly.slu.v2beta1";
+option objc_class_prefix = "SSX";
+option php_namespace = "Speechly\\Slu\\V2Beta1";
+
+import "google/protobuf/duration.proto";
+
+// Describes full properties of an HTTP endpoint.
+message HttpResource {
+  // The HTTP method to use.
+  enum Method {
+    METHOD_INVALID = 0;
+    METHOD_GET = 1;
+    METHOD_POST = 2;
+    METHOD_PUT = 3;
+  }
+  // A single header value.
+  message Header {
+    string name = 1;
+    string value = 2;
+  }
+  // URL of the endpoint (protocol://server/path)
+  // Required.
+  string url = 1;
+  // method to use in connection.
+  // Optional.
+  Method method = 2;
+  // Possible additional headers to include in the connection.
+  // Optional.
+  repeated Header headers = 3;
+}
+
+// Describes the configuration options common for the input batch.
+message ProcessAudioBatchConfig {
+  // The processing context, Speechly Application ID.
+  // Optional. If not provided, the processing context will be determined
+  // from the login information.
+  string app_id = 1;
+  // The language(s) of the audio sent in the request as a BCP-47 language tag
+  // (e.g. "en-US"). Defaults to the target application language(s).
+  // Optional.
+  repeated string language_codes = 2;
+  // Processing configuration.
+  // Required.
+  ProcessingConfiguration processing_config = 3;
+  // Reference id for a set of related operations. For example an identifier of the source
+  // system.
+  // Optional.
+  string batch_reference = 4;
+  // Additional batch specific options.
+  // Optional.
+  repeated Option options = 5;
+}
+
+// Describes the configuration options unique to a single audio source.
+message ProcessAudioSourceRequestItem {
+  // The locator to the source audio.
+  // Required.
+  string source_url = 1;
+  // The locator to the result target. The payload will be `Operation` as JSON.
+  // Optional.
+  string destination_url = 2;
+  // HTTP endpoint to be notified on completion of the processing. The payload
+  // will be `Operation` as JSON.
+  // Optional.
+  HttpResource completion_webhook = 3;
+  // Reference id for the operation. For example an identifier of the source
+  // system.
+  // Optional.
+  string reference = 4;
+  // The device ID of the audio source, for example a microphone identifier as UUID.
+  // Optional.
+  string device_id = 5;
+}
+
+// Describes the processing options for the audio. Note that not all options are available for
+// all languages or on all Payment Plans.
+message ProcessingConfiguration {
+  // The processing should include the token level transcription and determination of time stamps for tokens.
+  bool tokenize = 1;
+  // The processing should include translating the audio to English.
+  bool translate = 2;
+  // The processing should not include transcribing the audio to the source language. This option should be used
+  // with translate (or other similar option) to suppress the normal Speech Recognition processing.
+  bool skip_transcribe = 3;
+}
+
+// Describes a single batch operation.
+message Operation {
+  // The status of the operation.
+  enum Status {
+    // Default status is empty.
+    STATUS_INVALID = 0;
+    // The operation is queued for processing.
+    STATUS_PENDING = 1;
+    // The operation is complete and transcript is available.
+    STATUS_DONE = 2;
+    // The processing failed. Error reason is available.
+    STATUS_ERROR = 3;
+  }
+  // The id of the operation.
+  string id = 1;
+  // The reference id of the operation, if given.
+  string reference = 2;
+  // The id of the batch the operation belongs to.
+  string batch_id = 16;
+  // The reference id of the operation, if given.
+  string batch_reference = 17;
+  // The current status of the operation.
+  Status status = 3;
+  // The language code of the detected language.
+  string language_code = 4;
+  // The application context for the operation.
+  string app_id = 5;
+  // If the operation status is STATUS_DONE and the destination is not set,
+  // the results of the processing.
+  repeated OperationResult result = 6;
+  // The duration of the audio.
+  google.protobuf.Duration duration = 7;
+  // Contains a machine readable error type if the operation status is
+  // STATUS_ERROR.
+  enum OperationError {
+    OPERATION_ERROR_INVALID = 0;
+    // The input was in a language that was not supported in this context.
+    OPERATION_ERROR_UNSUPPORTED_LANGUAGE = 1;
+    // An internal error occurred.
+    OPERATION_ERROR_INTERNAL = 2;
+    // The source could not be read or understood.
+    OPERATION_ERROR_INVALID_SOURCE = 4;
+    // The results could not be written to the destination.
+    OPERATION_ERROR_INVALID_DESTINATION = 5;
+    // The provided audio was not in a supported format.
+    OPERATION_ERROR_INVALID_AUDIO = 6;
+  }
+  OperationError error_code = 18;
+  // Contains a human readable description of the error if the operation status is
+  // STATUS_ERROR.
+  string error_description = 19;
+  // The locator to the source audio.
+  string source_url = 20;
+  // The locator to the result target.
+  string destination_url = 21;
+}
+
+// Describes the results of the processing that took place.
+message OperationResult {
+  // The possible types for the operation result.
+  enum ResultType {
+    RESULT_TYPE_INVALID = 0;
+    // The actual words of the audio with no additional processing applied.
+    RESULT_TYPE_TRANSCRIPT_LEXICAL = 1;
+    // The content of the audio formatted to be displayed on screen, with eg. punctuation
+    // and capitalization included.
+    RESULT_TYPE_TRANSCRIPT_DISPLAY = 2;
+    // The content of the audio translated to English.
+    RESULT_TYPE_TRANSCRIPT_TRANSLATION = 3;
+  }
+  // The type of this result.
+  ResultType type = 1;
+  // The textual representation of the results.
+  string text = 2;
+  // The tokenized representation of the result. Only available if requested in the `ProcessingConfiguration`.
+  repeated Token tokens = 3;
+}
+
+// Describes a single meaningful unit of speech. In languages that use spaces to separate words,
+// closely maps to those words.
+message Token {
+  // The token described.
+  string token = 1;
+  // The position of the token in the whole phrase, zero-based.
+  int32 index = 2;
+  // The end time of the token in the audio, in milliseconds from the beginning
+  // of the audio.
+  int32 start_time = 3;
+  // The end time of the token in the audio, in milliseconds from the beginning
+  // of the audio.
+  int32 end_time = 4;
+}
+
+// Option to change the default behaviour of the SLU.
+message Option {
+  // The key of the option to be set.
+  string key = 1;
+  // The values to set the option to.
+  repeated string value = 2;
+}
