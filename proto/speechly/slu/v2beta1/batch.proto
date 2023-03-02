@@ -121,7 +121,7 @@ message Operation {
   string app_id = 5;
   // If the operation status is STATUS_DONE and the destination is not set,
   // the results of the processing.
-  OperationResult result = 6;
+  repeated OperationResult result = 6;
   // The duration of the audio.
   google.protobuf.Duration duration = 7;
   // Contains a machine readable error type if the operation status is
@@ -151,28 +151,22 @@ message Operation {
 
 // Describes the results of the processing that took place.
 message OperationResult {
-  // The various transcripts describing the content of the processed audio.
-  repeated Transcript transcripts = 1;
-}
-
-// Describes the content of an audio as text.
-message Transcript {
-  // The possible types for the transcript.
-  enum TranscriptType {
-    TRANSCRIPT_TYPE_INVALID = 0;
+  // The possible types for the operation result.
+  enum ResultType {
+    RESULT_TYPE_INVALID = 0;
     // The actual words of the audio with no additional processing applied.
-    TRANSCRIPT_TYPE_LEXICAL = 1;
+    RESULT_TYPE_TRANSCRIPT_LEXICAL = 1;
     // The content of the audio formatted to be displayed on screen, with eg. punctuation
     // and capitalization included.
-    TRANSCRIPT_TYPE_DISPLAY = 2;
+    RESULT_TYPE_TRANSCRIPT_DISPLAY = 2;
     // The content of the audio translated to English.
-    TRANSCRIPT_TYPE_TRANSLATION = 3;
+    RESULT_TYPE_TRANSCRIPT_TRANSLATION = 3;
   }
-  // The type of this transcript.
-  TranscriptType type = 1;
-  // The content of the audio as text.
+  // The type of this result.
+  ResultType type = 1;
+  // The textual representation of the results.
   string text = 2;
-  // The content of the audio as tokens. Only available if requested in the `ProcessingConfiguration`.
+  // The tokenized representation of the result. Only available if requested in the `ProcessingConfiguration`.
   repeated Token tokens = 3;
 }
 
