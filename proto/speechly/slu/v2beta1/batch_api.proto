@@ -30,7 +30,7 @@ service BatchAPI {
 
 // Describes a request to process audio from a pre-existing source.
 message ProcessAudioSourceRequest {
-  // The options to the common all the source audios.
+  // The options shared by all of the source audios.
   ProcessAudioBatchConfig config = 1;
   // The source audios, and their unique options.
   repeated ProcessAudioSourceRequestItem source = 2;
@@ -39,7 +39,7 @@ message ProcessAudioSourceRequest {
 // Describes a response to request to process audio from a pre-existing source.
 message ProcessAudioSourceResponse {
   // The details of the created operations.
-  repeated Operation operation = 3;
+  repeated Operation operation = 1;
 }
 
 // Query the status of an operation. At least one of these must be given.
@@ -47,12 +47,12 @@ message QueryStatusRequest {
   // ID of an audio processing operation.
   repeated string operation_ids = 1;
   // Reference ID of an operation.
-  repeated string references = 2;
+  repeated string operation_references = 2;
 
   // ID of an audio processing batch.
-  string batch_id = 4;
+  string batch_id = 3;
   // Reference ID of a batch.
-  string batch_reference = 5;
+  string batch_reference = 4;
 }
 
 // Describes the statuses of the queried operations.

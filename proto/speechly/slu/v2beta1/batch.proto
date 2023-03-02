@@ -54,7 +54,7 @@ message ProcessAudioBatchConfig {
   // system.
   // Optional.
   string batch_reference = 4;
-  // Additional operation specific options.
+  // Additional batch specific options.
   // Optional.
   repeated Option options = 5;
 }
@@ -70,14 +70,14 @@ message ProcessAudioSourceRequestItem {
   // HTTP endpoint to be notified on completion of the processing. The payload
   // will be `Operation` as JSON.
   // Optional.
-  HttpResource completion_webhook = 5;
+  HttpResource completion_webhook = 3;
   // Reference id for the operation. For example an identifier of the source
   // system.
   // Optional.
-  string reference = 3;
-  // Additional operation specific options.
+  string reference = 4;
+  // The device ID of the audio source, for example a microphone identifier as UUID.
   // Optional.
-  string device_id = 4;
+  string device_id = 5;
 }
 
 // Describes the processing options for the audio. Note that not all options are available for
@@ -110,9 +110,9 @@ message Operation {
   // The reference id of the operation, if given.
   string reference = 2;
   // The id of the batch the operation belongs to.
-  string batch_id = 11;
+  string batch_id = 16;
   // The reference id of the operation, if given.
-  string batch_reference = 12;
+  string batch_reference = 17;
   // The current status of the operation.
   Status status = 3;
   // The language code of the detected language.
@@ -139,14 +139,14 @@ message Operation {
     // The provided audio was not in a supported format.
     OPERATION_ERROR_INVALID_AUDIO = 6;
   }
-  OperationError error_code = 13;
+  OperationError error_code = 18;
   // Contains a human readable description of the error if the operation status is
   // STATUS_ERROR.
-  string error_description = 14;
+  string error_description = 19;
   // The locator to the source audio.
-  string source_url = 15;
+  string source_url = 20;
   // The locator to the result target.
-  string destination_url = 16;
+  string destination_url = 21;
 }
 
 // Describes the results of the processing that took place.
