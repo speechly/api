@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.8.14](https://github.com/speechly/api/tree/0.8.14) (2023-03-02)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.13...0.8.14)
+
+**Merged pull requests:**
+
+- BatchAPI V2 Beta [\#65](https://github.com/speechly/api/pull/65) ([teelisyys](https://github.com/teelisyys))
+- Bump golang.org/x/text from 0.3.3 to 0.3.8 in /go/example [\#63](https://github.com/speechly/api/pull/63) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [0.8.13](https://github.com/speechly/api/tree/0.8.13) (2023-02-21)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.12...0.8.13)
