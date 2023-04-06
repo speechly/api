@@ -16,7 +16,7 @@ import "google/protobuf/duration.proto";
 message HttpResource {
   // The HTTP method to use.
   enum Method {
-    METHOD_INVALID = 0;
+    METHOD_UNSPECIFIED = 0;
     METHOD_GET = 1;
     METHOD_POST = 2;
     METHOD_PUT = 3;
@@ -50,8 +50,8 @@ message ProcessAudioBatchConfig {
   // Processing configuration.
   // Required.
   ProcessingConfiguration processing_config = 3;
-  // Reference id for a set of related operations. For example an identifier of the source
-  // system.
+  // Reference id for a set of related operations. For example an identifier of
+  // the source system. Optional.
   // Optional.
   string batch_reference = 4;
   // Additional batch specific options.
@@ -75,20 +75,26 @@ message ProcessAudioSourceRequestItem {
   // system.
   // Optional.
   string reference = 4;
-  // The device ID of the audio source, for example a microphone identifier as UUID.
+  // The device ID of the audio source, for example a microphone identifier as
+  // UUID.
   // Optional.
   string device_id = 5;
 }
 
-// Describes the processing options for the audio. Note that not all options are available for
-// all languages or on all Payment Plans.
+// Describes the processing options for the audio. Note that not all options are
+// available for all languages or on all Payment Plans.
 message ProcessingConfiguration {
-  // The processing should include the token level transcription and determination of time stamps for tokens.
+  // The processing should include the token level transcription and
+  // determination of time stamps for tokens.
+  // Optional.
   bool tokenize = 1;
   // The processing should include translating the audio to English.
+  // Optional.
   bool translate = 2;
-  // The processing should not include transcribing the audio to the source language. This option should be used
-  // with translate (or other similar option) to suppress the normal Speech Recognition processing.
+  // The processing should not include transcribing the audio to the source
+  // language. This option should be used with translate (or other similar
+  // option) to suppress the normal Speech Recognition processing.
+  // Optional.
   bool skip_transcribe = 3;
 }
 
@@ -97,7 +103,7 @@ message Operation {
   // The status of the operation.
   enum Status {
     // Default status is empty.
-    STATUS_INVALID = 0;
+    STATUS_UNSPECIFIED = 0;
     // The operation is queued for processing.
     STATUS_PENDING = 1;
     // The operation is complete and transcript is available.
@@ -126,22 +132,24 @@ message Operation {
   google.protobuf.Duration duration = 7;
   // Contains a machine readable error type if the operation status is
   // STATUS_ERROR.
-  enum OperationError {
-    OPERATION_ERROR_INVALID = 0;
+  enum ErrorCode {
+    ERROR_UNSPECIFIED = 0;
     // The input was in a language that was not supported in this context.
-    OPERATION_ERROR_UNSUPPORTED_LANGUAGE = 1;
+    ERROR_UNSUPPORTED_LANGUAGE = 1;
     // An internal error occurred.
-    OPERATION_ERROR_INTERNAL = 2;
+    ERROR_INTERNAL = 2;
+    // Given parameters cannot be used to process the given input.
+    ERROR_INVALID_PARAMETERS = 3;
     // The source could not be read or understood.
-    OPERATION_ERROR_INVALID_SOURCE = 4;
+    ERROR_INVALID_SOURCE = 4;
     // The results could not be written to the destination.
-    OPERATION_ERROR_INVALID_DESTINATION = 5;
+    ERROR_INVALID_DESTINATION = 5;
     // The provided audio was not in a supported format.
-    OPERATION_ERROR_INVALID_AUDIO = 6;
+    ERROR_INVALID_AUDIO = 6;
   }
-  OperationError error_code = 18;
-  // Contains a human readable description of the error if the operation status is
-  // STATUS_ERROR.
+  ErrorCode error_code = 18;
+  // Contains a human readable description of the error if the operation status
+  // is STATUS_ERROR.
   string error_description = 19;
   // The locator to the source audio.
   string source_url = 20;
@@ -153,11 +161,11 @@ message Operation {
 message OperationResult {
   // The possible types for the operation result.
   enum ResultType {
-    RESULT_TYPE_INVALID = 0;
+    RESULT_TYPE_UNSPECIFIED = 0;
     // The actual words of the audio with no additional processing applied.
     RESULT_TYPE_TRANSCRIPT_LEXICAL = 1;
-    // The content of the audio formatted to be displayed on screen, with eg. punctuation
-    // and capitalization included.
+    // The content of the audio formatted to be displayed on screen, with eg.
+    // punctuation and capitalization included.
     RESULT_TYPE_TRANSCRIPT_DISPLAY = 2;
     // The content of the audio translated to English.
     RESULT_TYPE_TRANSCRIPT_TRANSLATION = 3;
@@ -166,12 +174,13 @@ message OperationResult {
   ResultType type = 1;
   // The textual representation of the results.
   string text = 2;
-  // The tokenized representation of the result. Only available if requested in the `ProcessingConfiguration`.
+  // The tokenized representation of the result. Only available if requested in
+  // the `ProcessingConfiguration`.
   repeated Token tokens = 3;
 }
 
-// Describes a single meaningful unit of speech. In languages that use spaces to separate words,
-// closely maps to those words.
+// Describes a single meaningful unit of speech. In languages that use spaces to
+// separate words, closely maps to those words.
 message Token {
   // The token described.
   string token = 1;
