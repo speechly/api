@@ -47,7 +47,7 @@ struct TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[3]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -60,6 +60,9 @@ namespace v1 {
 class DecoderInfo;
 struct DecoderInfoDefaultTypeInternal;
 extern DecoderInfoDefaultTypeInternal _DecoderInfo_default_instance_;
+class ProcessingInfo;
+struct ProcessingInfoDefaultTypeInternal;
+extern ProcessingInfoDefaultTypeInternal _ProcessingInfo_default_instance_;
 class Utterance;
 struct UtteranceDefaultTypeInternal;
 extern UtteranceDefaultTypeInternal _Utterance_default_instance_;
@@ -71,6 +74,7 @@ extern UtteranceStatisticsPeriodDefaultTypeInternal _UtteranceStatisticsPeriod_d
 }  // namespace speechly
 PROTOBUF_NAMESPACE_OPEN
 template<> ::speechly::analytics::v1::DecoderInfo* Arena::CreateMaybeMessage<::speechly::analytics::v1::DecoderInfo>(Arena*);
+template<> ::speechly::analytics::v1::ProcessingInfo* Arena::CreateMaybeMessage<::speechly::analytics::v1::ProcessingInfo>(Arena*);
 template<> ::speechly::analytics::v1::Utterance* Arena::CreateMaybeMessage<::speechly::analytics::v1::Utterance>(Arena*);
 template<> ::speechly::analytics::v1::UtteranceStatisticsPeriod* Arena::CreateMaybeMessage<::speechly::analytics::v1::UtteranceStatisticsPeriod>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -104,6 +108,38 @@ inline bool Aggregation_Parse(
     ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Aggregation* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Aggregation>(
     Aggregation_descriptor(), name, value);
+}
+enum ProcessingType : int {
+  PROCESSING_TYPE_INVALID = 0,
+  PROCESSING_TYPE_TRANSCRIPTION = 1,
+  PROCESSING_TYPE_NLU = 2,
+  PROCESSING_TYPE_LANGUAGE_DETECTION = 3,
+  PROCESSING_TYPE_VAD = 4,
+  PROCESSING_TYPE_TRANSLATION = 5,
+  PROCESSING_TYPE_AUDIO_EVENT_DETECTION = 6,
+  PROCESSING_TYPE_TONE_OF_VOICE_LABELLING = 7,
+  PROCESSING_TYPE_SHALLOW_FUSION = 8,
+  ProcessingType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  ProcessingType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool ProcessingType_IsValid(int value);
+constexpr ProcessingType ProcessingType_MIN = PROCESSING_TYPE_INVALID;
+constexpr ProcessingType ProcessingType_MAX = PROCESSING_TYPE_SHALLOW_FUSION;
+constexpr int ProcessingType_ARRAYSIZE = ProcessingType_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ProcessingType_descriptor();
+template<typename T>
+inline const std::string& ProcessingType_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ProcessingType>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ProcessingType_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ProcessingType_descriptor(), enum_t_value);
+}
+inline bool ProcessingType_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, ProcessingType* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ProcessingType>(
+    ProcessingType_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -656,6 +692,170 @@ class DecoderInfo final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ProcessingInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.ProcessingInfo) */ {
+ public:
+  inline ProcessingInfo() : ProcessingInfo(nullptr) {}
+  ~ProcessingInfo() override;
+  explicit constexpr ProcessingInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  ProcessingInfo(const ProcessingInfo& from);
+  ProcessingInfo(ProcessingInfo&& from) noexcept
+    : ProcessingInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline ProcessingInfo& operator=(const ProcessingInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ProcessingInfo& operator=(ProcessingInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ProcessingInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ProcessingInfo* internal_default_instance() {
+    return reinterpret_cast<const ProcessingInfo*>(
+               &_ProcessingInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(ProcessingInfo& a, ProcessingInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ProcessingInfo* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ProcessingInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ProcessingInfo* New() const final {
+    return new ProcessingInfo();
+  }
+
+  ProcessingInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<ProcessingInfo>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const ProcessingInfo& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const ProcessingInfo& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ProcessingInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.analytics.v1.ProcessingInfo";
+  }
+  protected:
+  explicit ProcessingInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kProcessingTypesFieldNumber = 1,
+    kModelIdFieldNumber = 2,
+  };
+  // repeated .speechly.analytics.v1.ProcessingType processing_types = 1;
+  int processing_types_size() const;
+  private:
+  int _internal_processing_types_size() const;
+  public:
+  void clear_processing_types();
+  private:
+  ::speechly::analytics::v1::ProcessingType _internal_processing_types(int index) const;
+  void _internal_add_processing_types(::speechly::analytics::v1::ProcessingType value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* _internal_mutable_processing_types();
+  public:
+  ::speechly::analytics::v1::ProcessingType processing_types(int index) const;
+  void set_processing_types(int index, ::speechly::analytics::v1::ProcessingType value);
+  void add_processing_types(::speechly::analytics::v1::ProcessingType value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>& processing_types() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>* mutable_processing_types();
+
+  // string model_id = 2;
+  void clear_model_id();
+  const std::string& model_id() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_model_id(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_model_id();
+  PROTOBUF_MUST_USE_RESULT std::string* release_model_id();
+  void set_allocated_model_id(std::string* model_id);
+  private:
+  const std::string& _internal_model_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model_id(const std::string& value);
+  std::string* _internal_mutable_model_id();
+  public:
+
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.ProcessingInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField<int> processing_types_;
+  mutable std::atomic<int> _processing_types_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto;
+};
 // ===================================================================
 
 
@@ -1097,9 +1297,104 @@ inline void DecoderInfo::set_total_seconds_transcribed(::PROTOBUF_NAMESPACE_ID::
   // @@protoc_insertion_point(field_set:speechly.analytics.v1.DecoderInfo.total_seconds_transcribed)
 }
 
+// -------------------------------------------------------------------
+
+// ProcessingInfo
+
+// repeated .speechly.analytics.v1.ProcessingType processing_types = 1;
+inline int ProcessingInfo::_internal_processing_types_size() const {
+  return processing_types_.size();
+}
+inline int ProcessingInfo::processing_types_size() const {
+  return _internal_processing_types_size();
+}
+inline void ProcessingInfo::clear_processing_types() {
+  processing_types_.Clear();
+}
+inline ::speechly::analytics::v1::ProcessingType ProcessingInfo::_internal_processing_types(int index) const {
+  return static_cast< ::speechly::analytics::v1::ProcessingType >(processing_types_.Get(index));
+}
+inline ::speechly::analytics::v1::ProcessingType ProcessingInfo::processing_types(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ProcessingInfo.processing_types)
+  return _internal_processing_types(index);
+}
+inline void ProcessingInfo::set_processing_types(int index, ::speechly::analytics::v1::ProcessingType value) {
+  processing_types_.Set(index, value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ProcessingInfo.processing_types)
+}
+inline void ProcessingInfo::_internal_add_processing_types(::speechly::analytics::v1::ProcessingType value) {
+  processing_types_.Add(value);
+}
+inline void ProcessingInfo::add_processing_types(::speechly::analytics::v1::ProcessingType value) {
+  _internal_add_processing_types(value);
+  // @@protoc_insertion_point(field_add:speechly.analytics.v1.ProcessingInfo.processing_types)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>&
+ProcessingInfo::processing_types() const {
+  // @@protoc_insertion_point(field_list:speechly.analytics.v1.ProcessingInfo.processing_types)
+  return processing_types_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+ProcessingInfo::_internal_mutable_processing_types() {
+  return &processing_types_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField<int>*
+ProcessingInfo::mutable_processing_types() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.analytics.v1.ProcessingInfo.processing_types)
+  return _internal_mutable_processing_types();
+}
+
+// string model_id = 2;
+inline void ProcessingInfo::clear_model_id() {
+  model_id_.ClearToEmpty();
+}
+inline const std::string& ProcessingInfo::model_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ProcessingInfo.model_id)
+  return _internal_model_id();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void ProcessingInfo::set_model_id(ArgT0&& arg0, ArgT... args) {
+ 
+ model_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ProcessingInfo.model_id)
+}
+inline std::string* ProcessingInfo::mutable_model_id() {
+  std::string* _s = _internal_mutable_model_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ProcessingInfo.model_id)
+  return _s;
+}
+inline const std::string& ProcessingInfo::_internal_model_id() const {
+  return model_id_.Get();
+}
+inline void ProcessingInfo::_internal_set_model_id(const std::string& value) {
+  
+  model_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, value, GetArenaForAllocation());
+}
+inline std::string* ProcessingInfo::_internal_mutable_model_id() {
+  
+  return model_id_.Mutable(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, GetArenaForAllocation());
+}
+inline std::string* ProcessingInfo::release_model_id() {
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ProcessingInfo.model_id)
+  return model_id_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArenaForAllocation());
+}
+inline void ProcessingInfo::set_allocated_model_id(std::string* model_id) {
+  if (model_id != nullptr) {
+    
+  } else {
+    
+  }
+  model_id_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), model_id,
+      GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ProcessingInfo.model_id)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1117,6 +1412,11 @@ template <> struct is_proto_enum< ::speechly::analytics::v1::Aggregation> : ::st
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::speechly::analytics::v1::Aggregation>() {
   return ::speechly::analytics::v1::Aggregation_descriptor();
+}
+template <> struct is_proto_enum< ::speechly::analytics::v1::ProcessingType> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::speechly::analytics::v1::ProcessingType>() {
+  return ::speechly::analytics::v1::ProcessingType_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

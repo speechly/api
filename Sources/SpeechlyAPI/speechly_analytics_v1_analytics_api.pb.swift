@@ -184,55 +184,99 @@ public struct Speechly_Analytics_V1_RegisterUtteranceRequest {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var appID: String = String()
+  /// id of the application the operation belongs to
+  public var appID: String {
+    get {return _storage._appID}
+    set {_uniqueStorage()._appID = newValue}
+  }
 
   /// device_id of the utterance.
-  public var deviceID: String = String()
+  public var deviceID: String {
+    get {return _storage._deviceID}
+    set {_uniqueStorage()._deviceID = newValue}
+  }
 
   /// Length of the recognized utterance in seconds.
-  public var utteranceLengthSeconds: Int32 = 0
+  public var utteranceLengthSeconds: Int32 {
+    get {return _storage._utteranceLengthSeconds}
+    set {_uniqueStorage()._utteranceLengthSeconds = newValue}
+  }
 
   /// Length of the recognized utterance in characters.
-  public var utteranceLengthChars: Int32 = 0
+  public var utteranceLengthChars: Int32 {
+    get {return _storage._utteranceLengthChars}
+    set {_uniqueStorage()._utteranceLengthChars = newValue}
+  }
 
   /// Information about the on-device decoder.
   public var decoderInfo: Speechly_Analytics_V1_DecoderInfo {
-    get {return _decoderInfo ?? Speechly_Analytics_V1_DecoderInfo()}
-    set {_decoderInfo = newValue}
+    get {return _storage._decoderInfo ?? Speechly_Analytics_V1_DecoderInfo()}
+    set {_uniqueStorage()._decoderInfo = newValue}
   }
   /// Returns true if `decoderInfo` has been explicitly set.
-  public var hasDecoderInfo: Bool {return self._decoderInfo != nil}
+  public var hasDecoderInfo: Bool {return _storage._decoderInfo != nil}
   /// Clears the value of `decoderInfo`. Subsequent reads from it will return its default value.
-  public mutating func clearDecoderInfo() {self._decoderInfo = nil}
+  public mutating func clearDecoderInfo() {_uniqueStorage()._decoderInfo = nil}
 
   /// When the processing was initially requested.
   public var createdTime: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _createdTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_createdTime = newValue}
+    get {return _storage._createdTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._createdTime = newValue}
   }
   /// Returns true if `createdTime` has been explicitly set.
-  public var hasCreatedTime: Bool {return self._createdTime != nil}
+  public var hasCreatedTime: Bool {return _storage._createdTime != nil}
   /// Clears the value of `createdTime`. Subsequent reads from it will return its default value.
-  public mutating func clearCreatedTime() {self._createdTime = nil}
+  public mutating func clearCreatedTime() {_uniqueStorage()._createdTime = nil}
 
   /// When the processing was finished.
   public var finishedTime: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _finishedTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_finishedTime = newValue}
+    get {return _storage._finishedTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._finishedTime = newValue}
   }
   /// Returns true if `finishedTime` has been explicitly set.
-  public var hasFinishedTime: Bool {return self._finishedTime != nil}
+  public var hasFinishedTime: Bool {return _storage._finishedTime != nil}
   /// Clears the value of `finishedTime`. Subsequent reads from it will return its default value.
-  public mutating func clearFinishedTime() {self._finishedTime = nil}
+  public mutating func clearFinishedTime() {_uniqueStorage()._finishedTime = nil}
 
   /// The status of the processing.
-  public var status: Speechly_Analytics_V1_RegisterUtteranceRequest.Status = .invalid
+  public var status: Speechly_Analytics_V1_RegisterUtteranceRequest.Status {
+    get {return _storage._status}
+    set {_uniqueStorage()._status = newValue}
+  }
 
   /// batch api operation id of the utterance
-  public var operationID: String = String()
+  public var operationID: String {
+    get {return _storage._operationID}
+    set {_uniqueStorage()._operationID = newValue}
+  }
 
   /// id of the batch the operation belongs to
-  public var batchID: String = String()
+  public var batchID: String {
+    get {return _storage._batchID}
+    set {_uniqueStorage()._batchID = newValue}
+  }
+
+  /// id of the project the operation belongs to
+  public var projectID: String {
+    get {return _storage._projectID}
+    set {_uniqueStorage()._projectID = newValue}
+  }
+
+  /// language of the utterance (BCP-47)
+  public var language: String {
+    get {return _storage._language}
+    set {_uniqueStorage()._language = newValue}
+  }
+
+  /// Information about the processing applied to the utterance
+  public var processingInfo: Speechly_Analytics_V1_ProcessingInfo {
+    get {return _storage._processingInfo ?? Speechly_Analytics_V1_ProcessingInfo()}
+    set {_uniqueStorage()._processingInfo = newValue}
+  }
+  /// Returns true if `processingInfo` has been explicitly set.
+  public var hasProcessingInfo: Bool {return _storage._processingInfo != nil}
+  /// Clears the value of `processingInfo`. Subsequent reads from it will return its default value.
+  public mutating func clearProcessingInfo() {_uniqueStorage()._processingInfo = nil}
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -276,9 +320,7 @@ public struct Speechly_Analytics_V1_RegisterUtteranceRequest {
 
   public init() {}
 
-  fileprivate var _decoderInfo: Speechly_Analytics_V1_DecoderInfo? = nil
-  fileprivate var _createdTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-  fileprivate var _finishedTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 #if swift(>=4.2)
@@ -541,78 +583,152 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest: SwiftProtobuf.Message,
     8: .same(proto: "status"),
     9: .standard(proto: "operation_id"),
     10: .standard(proto: "batch_id"),
+    11: .standard(proto: "project_id"),
+    12: .same(proto: "language"),
+    13: .standard(proto: "processing_info"),
   ]
 
+  fileprivate class _StorageClass {
+    var _appID: String = String()
+    var _deviceID: String = String()
+    var _utteranceLengthSeconds: Int32 = 0
+    var _utteranceLengthChars: Int32 = 0
+    var _decoderInfo: Speechly_Analytics_V1_DecoderInfo? = nil
+    var _createdTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _finishedTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _status: Speechly_Analytics_V1_RegisterUtteranceRequest.Status = .invalid
+    var _operationID: String = String()
+    var _batchID: String = String()
+    var _projectID: String = String()
+    var _language: String = String()
+    var _processingInfo: Speechly_Analytics_V1_ProcessingInfo? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _appID = source._appID
+      _deviceID = source._deviceID
+      _utteranceLengthSeconds = source._utteranceLengthSeconds
+      _utteranceLengthChars = source._utteranceLengthChars
+      _decoderInfo = source._decoderInfo
+      _createdTime = source._createdTime
+      _finishedTime = source._finishedTime
+      _status = source._status
+      _operationID = source._operationID
+      _batchID = source._batchID
+      _projectID = source._projectID
+      _language = source._language
+      _processingInfo = source._processingInfo
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.appID) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.deviceID) }()
-      case 3: try { try decoder.decodeSingularInt32Field(value: &self.utteranceLengthSeconds) }()
-      case 4: try { try decoder.decodeSingularInt32Field(value: &self.utteranceLengthChars) }()
-      case 5: try { try decoder.decodeSingularMessageField(value: &self._decoderInfo) }()
-      case 6: try { try decoder.decodeSingularMessageField(value: &self._createdTime) }()
-      case 7: try { try decoder.decodeSingularMessageField(value: &self._finishedTime) }()
-      case 8: try { try decoder.decodeSingularEnumField(value: &self.status) }()
-      case 9: try { try decoder.decodeSingularStringField(value: &self.operationID) }()
-      case 10: try { try decoder.decodeSingularStringField(value: &self.batchID) }()
-      default: break
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        // The use of inline closures is to circumvent an issue where the compiler
+        // allocates stack space for every case branch when no optimizations are
+        // enabled. https://github.com/apple/swift-protobuf/issues/1034
+        switch fieldNumber {
+        case 1: try { try decoder.decodeSingularStringField(value: &_storage._appID) }()
+        case 2: try { try decoder.decodeSingularStringField(value: &_storage._deviceID) }()
+        case 3: try { try decoder.decodeSingularInt32Field(value: &_storage._utteranceLengthSeconds) }()
+        case 4: try { try decoder.decodeSingularInt32Field(value: &_storage._utteranceLengthChars) }()
+        case 5: try { try decoder.decodeSingularMessageField(value: &_storage._decoderInfo) }()
+        case 6: try { try decoder.decodeSingularMessageField(value: &_storage._createdTime) }()
+        case 7: try { try decoder.decodeSingularMessageField(value: &_storage._finishedTime) }()
+        case 8: try { try decoder.decodeSingularEnumField(value: &_storage._status) }()
+        case 9: try { try decoder.decodeSingularStringField(value: &_storage._operationID) }()
+        case 10: try { try decoder.decodeSingularStringField(value: &_storage._batchID) }()
+        case 11: try { try decoder.decodeSingularStringField(value: &_storage._projectID) }()
+        case 12: try { try decoder.decodeSingularStringField(value: &_storage._language) }()
+        case 13: try { try decoder.decodeSingularMessageField(value: &_storage._processingInfo) }()
+        default: break
+        }
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    // The use of inline closures is to circumvent an issue where the compiler
-    // allocates stack space for every if/case branch local when no optimizations
-    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
-    // https://github.com/apple/swift-protobuf/issues/1182
-    if !self.appID.isEmpty {
-      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 1)
-    }
-    if !self.deviceID.isEmpty {
-      try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 2)
-    }
-    if self.utteranceLengthSeconds != 0 {
-      try visitor.visitSingularInt32Field(value: self.utteranceLengthSeconds, fieldNumber: 3)
-    }
-    if self.utteranceLengthChars != 0 {
-      try visitor.visitSingularInt32Field(value: self.utteranceLengthChars, fieldNumber: 4)
-    }
-    try { if let v = self._decoderInfo {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-    } }()
-    try { if let v = self._createdTime {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
-    } }()
-    try { if let v = self._finishedTime {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
-    } }()
-    if self.status != .invalid {
-      try visitor.visitSingularEnumField(value: self.status, fieldNumber: 8)
-    }
-    if !self.operationID.isEmpty {
-      try visitor.visitSingularStringField(value: self.operationID, fieldNumber: 9)
-    }
-    if !self.batchID.isEmpty {
-      try visitor.visitSingularStringField(value: self.batchID, fieldNumber: 10)
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every if/case branch local when no optimizations
+      // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+      // https://github.com/apple/swift-protobuf/issues/1182
+      if !_storage._appID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._appID, fieldNumber: 1)
+      }
+      if !_storage._deviceID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._deviceID, fieldNumber: 2)
+      }
+      if _storage._utteranceLengthSeconds != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._utteranceLengthSeconds, fieldNumber: 3)
+      }
+      if _storage._utteranceLengthChars != 0 {
+        try visitor.visitSingularInt32Field(value: _storage._utteranceLengthChars, fieldNumber: 4)
+      }
+      try { if let v = _storage._decoderInfo {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+      } }()
+      try { if let v = _storage._createdTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
+      } }()
+      try { if let v = _storage._finishedTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
+      } }()
+      if _storage._status != .invalid {
+        try visitor.visitSingularEnumField(value: _storage._status, fieldNumber: 8)
+      }
+      if !_storage._operationID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._operationID, fieldNumber: 9)
+      }
+      if !_storage._batchID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._batchID, fieldNumber: 10)
+      }
+      if !_storage._projectID.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._projectID, fieldNumber: 11)
+      }
+      if !_storage._language.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._language, fieldNumber: 12)
+      }
+      try { if let v = _storage._processingInfo {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 13)
+      } }()
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Analytics_V1_RegisterUtteranceRequest, rhs: Speechly_Analytics_V1_RegisterUtteranceRequest) -> Bool {
-    if lhs.appID != rhs.appID {return false}
-    if lhs.deviceID != rhs.deviceID {return false}
-    if lhs.utteranceLengthSeconds != rhs.utteranceLengthSeconds {return false}
-    if lhs.utteranceLengthChars != rhs.utteranceLengthChars {return false}
-    if lhs._decoderInfo != rhs._decoderInfo {return false}
-    if lhs._createdTime != rhs._createdTime {return false}
-    if lhs._finishedTime != rhs._finishedTime {return false}
-    if lhs.status != rhs.status {return false}
-    if lhs.operationID != rhs.operationID {return false}
-    if lhs.batchID != rhs.batchID {return false}
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._appID != rhs_storage._appID {return false}
+        if _storage._deviceID != rhs_storage._deviceID {return false}
+        if _storage._utteranceLengthSeconds != rhs_storage._utteranceLengthSeconds {return false}
+        if _storage._utteranceLengthChars != rhs_storage._utteranceLengthChars {return false}
+        if _storage._decoderInfo != rhs_storage._decoderInfo {return false}
+        if _storage._createdTime != rhs_storage._createdTime {return false}
+        if _storage._finishedTime != rhs_storage._finishedTime {return false}
+        if _storage._status != rhs_storage._status {return false}
+        if _storage._operationID != rhs_storage._operationID {return false}
+        if _storage._batchID != rhs_storage._batchID {return false}
+        if _storage._projectID != rhs_storage._projectID {return false}
+        if _storage._language != rhs_storage._language {return false}
+        if _storage._processingInfo != rhs_storage._processingInfo {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

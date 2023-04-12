@@ -32,7 +32,7 @@ public struct Speechly_Slu_V2beta1_HttpResource {
 
   /// method to use in connection.
   /// Optional.
-  public var method: Speechly_Slu_V2beta1_HttpResource.Method = .invalid
+  public var method: Speechly_Slu_V2beta1_HttpResource.Method = .unspecified
 
   /// Possible additional headers to include in the connection.
   /// Optional.
@@ -43,19 +43,19 @@ public struct Speechly_Slu_V2beta1_HttpResource {
   /// The HTTP method to use.
   public enum Method: SwiftProtobuf.Enum {
     public typealias RawValue = Int
-    case invalid // = 0
+    case unspecified // = 0
     case get // = 1
     case post // = 2
     case put // = 3
     case UNRECOGNIZED(Int)
 
     public init() {
-      self = .invalid
+      self = .unspecified
     }
 
     public init?(rawValue: Int) {
       switch rawValue {
-      case 0: self = .invalid
+      case 0: self = .unspecified
       case 1: self = .get
       case 2: self = .post
       case 3: self = .put
@@ -65,7 +65,7 @@ public struct Speechly_Slu_V2beta1_HttpResource {
 
     public var rawValue: Int {
       switch self {
-      case .invalid: return 0
+      case .unspecified: return 0
       case .get: return 1
       case .post: return 2
       case .put: return 3
@@ -98,7 +98,7 @@ public struct Speechly_Slu_V2beta1_HttpResource {
 extension Speechly_Slu_V2beta1_HttpResource.Method: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
   public static var allCases: [Speechly_Slu_V2beta1_HttpResource.Method] = [
-    .invalid,
+    .unspecified,
     .get,
     .post,
     .put,
@@ -134,8 +134,8 @@ public struct Speechly_Slu_V2beta1_ProcessAudioBatchConfig {
   /// Clears the value of `processingConfig`. Subsequent reads from it will return its default value.
   public mutating func clearProcessingConfig() {self._processingConfig = nil}
 
-  /// Reference id for a set of related operations. For example an identifier of the source
-  /// system.
+  /// Reference id for a set of related operations. For example an identifier of
+  /// the source system. Optional.
   /// Optional.
   public var batchReference: String = String()
 
@@ -181,7 +181,8 @@ public struct Speechly_Slu_V2beta1_ProcessAudioSourceRequestItem {
   /// Optional.
   public var reference: String = String()
 
-  /// The device ID of the audio source, for example a microphone identifier as UUID.
+  /// The device ID of the audio source, for example a microphone identifier as
+  /// UUID.
   /// Optional.
   public var deviceID: String = String()
 
@@ -192,21 +193,26 @@ public struct Speechly_Slu_V2beta1_ProcessAudioSourceRequestItem {
   fileprivate var _completionWebhook: Speechly_Slu_V2beta1_HttpResource? = nil
 }
 
-/// Describes the processing options for the audio. Note that not all options are available for
-/// all languages or on all Payment Plans.
+/// Describes the processing options for the audio. Note that not all options are
+/// available for all languages or on all Payment Plans.
 public struct Speechly_Slu_V2beta1_ProcessingConfiguration {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// The processing should include the token level transcription and determination of time stamps for tokens.
+  /// The processing should include the token level transcription and
+  /// determination of time stamps for tokens.
+  /// Optional.
   public var tokenize: Bool = false
 
   /// The processing should include translating the audio to English.
+  /// Optional.
   public var translate: Bool = false
 
-  /// The processing should not include transcribing the audio to the source language. This option should be used
-  /// with translate (or other similar option) to suppress the normal Speech Recognition processing.
+  /// The processing should not include transcribing the audio to the source
+  /// language. This option should be used with translate (or other similar
+  /// option) to suppress the normal Speech Recognition processing.
+  /// Optional.
   public var skipTranscribe: Bool = false
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -233,7 +239,7 @@ public struct Speechly_Slu_V2beta1_Operation {
   public var batchReference: String = String()
 
   /// The current status of the operation.
-  public var status: Speechly_Slu_V2beta1_Operation.Status = .invalid
+  public var status: Speechly_Slu_V2beta1_Operation.Status = .unspecified
 
   /// The language code of the detected language.
   public var languageCode: String = String()
@@ -255,10 +261,10 @@ public struct Speechly_Slu_V2beta1_Operation {
   /// Clears the value of `duration`. Subsequent reads from it will return its default value.
   public mutating func clearDuration() {self._duration = nil}
 
-  public var errorCode: Speechly_Slu_V2beta1_Operation.OperationError = .invalid
+  public var errorCode: Speechly_Slu_V2beta1_Operation.ErrorCode = .errorUnspecified
 
-  /// Contains a human readable description of the error if the operation status is
-  /// STATUS_ERROR.
+  /// Contains a human readable description of the error if the operation status
+  /// is STATUS_ERROR.
   public var errorDescription: String = String()
 
   /// The locator to the source audio.
@@ -274,7 +280,7 @@ public struct Speechly_Slu_V2beta1_Operation {
     public typealias RawValue = Int
 
     /// Default status is empty.
-    case invalid // = 0
+    case unspecified // = 0
 
     /// The operation is queued for processing.
     case pending // = 1
@@ -287,12 +293,12 @@ public struct Speechly_Slu_V2beta1_Operation {
     case UNRECOGNIZED(Int)
 
     public init() {
-      self = .invalid
+      self = .unspecified
     }
 
     public init?(rawValue: Int) {
       switch rawValue {
-      case 0: self = .invalid
+      case 0: self = .unspecified
       case 1: self = .pending
       case 2: self = .done
       case 3: self = .error
@@ -302,7 +308,7 @@ public struct Speechly_Slu_V2beta1_Operation {
 
     public var rawValue: Int {
       switch self {
-      case .invalid: return 0
+      case .unspecified: return 0
       case .pending: return 1
       case .done: return 2
       case .error: return 3
@@ -314,50 +320,55 @@ public struct Speechly_Slu_V2beta1_Operation {
 
   /// Contains a machine readable error type if the operation status is
   /// STATUS_ERROR.
-  public enum OperationError: SwiftProtobuf.Enum {
+  public enum ErrorCode: SwiftProtobuf.Enum {
     public typealias RawValue = Int
-    case invalid // = 0
+    case errorUnspecified // = 0
 
     /// The input was in a language that was not supported in this context.
-    case unsupportedLanguage // = 1
+    case errorUnsupportedLanguage // = 1
 
     /// An internal error occurred.
-    case `internal` // = 2
+    case errorInternal // = 2
+
+    /// Given parameters cannot be used to process the given input.
+    case errorInvalidParameters // = 3
 
     /// The source could not be read or understood.
-    case invalidSource // = 4
+    case errorInvalidSource // = 4
 
     /// The results could not be written to the destination.
-    case invalidDestination // = 5
+    case errorInvalidDestination // = 5
 
     /// The provided audio was not in a supported format.
-    case invalidAudio // = 6
+    case errorInvalidAudio // = 6
     case UNRECOGNIZED(Int)
 
     public init() {
-      self = .invalid
+      self = .errorUnspecified
     }
 
     public init?(rawValue: Int) {
       switch rawValue {
-      case 0: self = .invalid
-      case 1: self = .unsupportedLanguage
-      case 2: self = .internal
-      case 4: self = .invalidSource
-      case 5: self = .invalidDestination
-      case 6: self = .invalidAudio
+      case 0: self = .errorUnspecified
+      case 1: self = .errorUnsupportedLanguage
+      case 2: self = .errorInternal
+      case 3: self = .errorInvalidParameters
+      case 4: self = .errorInvalidSource
+      case 5: self = .errorInvalidDestination
+      case 6: self = .errorInvalidAudio
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
 
     public var rawValue: Int {
       switch self {
-      case .invalid: return 0
-      case .unsupportedLanguage: return 1
-      case .internal: return 2
-      case .invalidSource: return 4
-      case .invalidDestination: return 5
-      case .invalidAudio: return 6
+      case .errorUnspecified: return 0
+      case .errorUnsupportedLanguage: return 1
+      case .errorInternal: return 2
+      case .errorInvalidParameters: return 3
+      case .errorInvalidSource: return 4
+      case .errorInvalidDestination: return 5
+      case .errorInvalidAudio: return 6
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -374,22 +385,23 @@ public struct Speechly_Slu_V2beta1_Operation {
 extension Speechly_Slu_V2beta1_Operation.Status: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
   public static var allCases: [Speechly_Slu_V2beta1_Operation.Status] = [
-    .invalid,
+    .unspecified,
     .pending,
     .done,
     .error,
   ]
 }
 
-extension Speechly_Slu_V2beta1_Operation.OperationError: CaseIterable {
+extension Speechly_Slu_V2beta1_Operation.ErrorCode: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Speechly_Slu_V2beta1_Operation.OperationError] = [
-    .invalid,
-    .unsupportedLanguage,
-    .internal,
-    .invalidSource,
-    .invalidDestination,
-    .invalidAudio,
+  public static var allCases: [Speechly_Slu_V2beta1_Operation.ErrorCode] = [
+    .errorUnspecified,
+    .errorUnsupportedLanguage,
+    .errorInternal,
+    .errorInvalidParameters,
+    .errorInvalidSource,
+    .errorInvalidDestination,
+    .errorInvalidAudio,
   ]
 }
 
@@ -402,12 +414,13 @@ public struct Speechly_Slu_V2beta1_OperationResult {
   // methods supported on all messages.
 
   /// The type of this result.
-  public var type: Speechly_Slu_V2beta1_OperationResult.ResultType = .invalid
+  public var type: Speechly_Slu_V2beta1_OperationResult.ResultType = .unspecified
 
   /// The textual representation of the results.
   public var text: String = String()
 
-  /// The tokenized representation of the result. Only available if requested in the `ProcessingConfiguration`.
+  /// The tokenized representation of the result. Only available if requested in
+  /// the `ProcessingConfiguration`.
   public var tokens: [Speechly_Slu_V2beta1_Token] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -415,13 +428,13 @@ public struct Speechly_Slu_V2beta1_OperationResult {
   /// The possible types for the operation result.
   public enum ResultType: SwiftProtobuf.Enum {
     public typealias RawValue = Int
-    case invalid // = 0
+    case unspecified // = 0
 
     /// The actual words of the audio with no additional processing applied.
     case transcriptLexical // = 1
 
-    /// The content of the audio formatted to be displayed on screen, with eg. punctuation
-    /// and capitalization included.
+    /// The content of the audio formatted to be displayed on screen, with eg.
+    /// punctuation and capitalization included.
     case transcriptDisplay // = 2
 
     /// The content of the audio translated to English.
@@ -429,12 +442,12 @@ public struct Speechly_Slu_V2beta1_OperationResult {
     case UNRECOGNIZED(Int)
 
     public init() {
-      self = .invalid
+      self = .unspecified
     }
 
     public init?(rawValue: Int) {
       switch rawValue {
-      case 0: self = .invalid
+      case 0: self = .unspecified
       case 1: self = .transcriptLexical
       case 2: self = .transcriptDisplay
       case 3: self = .transcriptTranslation
@@ -444,7 +457,7 @@ public struct Speechly_Slu_V2beta1_OperationResult {
 
     public var rawValue: Int {
       switch self {
-      case .invalid: return 0
+      case .unspecified: return 0
       case .transcriptLexical: return 1
       case .transcriptDisplay: return 2
       case .transcriptTranslation: return 3
@@ -462,7 +475,7 @@ public struct Speechly_Slu_V2beta1_OperationResult {
 extension Speechly_Slu_V2beta1_OperationResult.ResultType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
   public static var allCases: [Speechly_Slu_V2beta1_OperationResult.ResultType] = [
-    .invalid,
+    .unspecified,
     .transcriptLexical,
     .transcriptDisplay,
     .transcriptTranslation,
@@ -471,8 +484,8 @@ extension Speechly_Slu_V2beta1_OperationResult.ResultType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-/// Describes a single meaningful unit of speech. In languages that use spaces to separate words,
-/// closely maps to those words.
+/// Describes a single meaningful unit of speech. In languages that use spaces to
+/// separate words, closely maps to those words.
 public struct Speechly_Slu_V2beta1_Token {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -523,7 +536,7 @@ extension Speechly_Slu_V2beta1_ProcessAudioSourceRequestItem: @unchecked Sendabl
 extension Speechly_Slu_V2beta1_ProcessingConfiguration: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_Operation: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_Operation.Status: @unchecked Sendable {}
-extension Speechly_Slu_V2beta1_Operation.OperationError: @unchecked Sendable {}
+extension Speechly_Slu_V2beta1_Operation.ErrorCode: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_OperationResult: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_OperationResult.ResultType: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_Token: @unchecked Sendable {}
@@ -560,7 +573,7 @@ extension Speechly_Slu_V2beta1_HttpResource: SwiftProtobuf.Message, SwiftProtobu
     if !self.url.isEmpty {
       try visitor.visitSingularStringField(value: self.url, fieldNumber: 1)
     }
-    if self.method != .invalid {
+    if self.method != .unspecified {
       try visitor.visitSingularEnumField(value: self.method, fieldNumber: 2)
     }
     if !self.headers.isEmpty {
@@ -580,7 +593,7 @@ extension Speechly_Slu_V2beta1_HttpResource: SwiftProtobuf.Message, SwiftProtobu
 
 extension Speechly_Slu_V2beta1_HttpResource.Method: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "METHOD_INVALID"),
+    0: .same(proto: "METHOD_UNSPECIFIED"),
     1: .same(proto: "METHOD_GET"),
     2: .same(proto: "METHOD_POST"),
     3: .same(proto: "METHOD_PUT"),
@@ -842,7 +855,7 @@ extension Speechly_Slu_V2beta1_Operation: SwiftProtobuf.Message, SwiftProtobuf._
     if !self.reference.isEmpty {
       try visitor.visitSingularStringField(value: self.reference, fieldNumber: 2)
     }
-    if self.status != .invalid {
+    if self.status != .unspecified {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 3)
     }
     if !self.languageCode.isEmpty {
@@ -863,7 +876,7 @@ extension Speechly_Slu_V2beta1_Operation: SwiftProtobuf.Message, SwiftProtobuf._
     if !self.batchReference.isEmpty {
       try visitor.visitSingularStringField(value: self.batchReference, fieldNumber: 17)
     }
-    if self.errorCode != .invalid {
+    if self.errorCode != .errorUnspecified {
       try visitor.visitSingularEnumField(value: self.errorCode, fieldNumber: 18)
     }
     if !self.errorDescription.isEmpty {
@@ -899,21 +912,22 @@ extension Speechly_Slu_V2beta1_Operation: SwiftProtobuf.Message, SwiftProtobuf._
 
 extension Speechly_Slu_V2beta1_Operation.Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "STATUS_INVALID"),
+    0: .same(proto: "STATUS_UNSPECIFIED"),
     1: .same(proto: "STATUS_PENDING"),
     2: .same(proto: "STATUS_DONE"),
     3: .same(proto: "STATUS_ERROR"),
   ]
 }
 
-extension Speechly_Slu_V2beta1_Operation.OperationError: SwiftProtobuf._ProtoNameProviding {
+extension Speechly_Slu_V2beta1_Operation.ErrorCode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "OPERATION_ERROR_INVALID"),
-    1: .same(proto: "OPERATION_ERROR_UNSUPPORTED_LANGUAGE"),
-    2: .same(proto: "OPERATION_ERROR_INTERNAL"),
-    4: .same(proto: "OPERATION_ERROR_INVALID_SOURCE"),
-    5: .same(proto: "OPERATION_ERROR_INVALID_DESTINATION"),
-    6: .same(proto: "OPERATION_ERROR_INVALID_AUDIO"),
+    0: .same(proto: "ERROR_UNSPECIFIED"),
+    1: .same(proto: "ERROR_UNSUPPORTED_LANGUAGE"),
+    2: .same(proto: "ERROR_INTERNAL"),
+    3: .same(proto: "ERROR_INVALID_PARAMETERS"),
+    4: .same(proto: "ERROR_INVALID_SOURCE"),
+    5: .same(proto: "ERROR_INVALID_DESTINATION"),
+    6: .same(proto: "ERROR_INVALID_AUDIO"),
   ]
 }
 
@@ -940,7 +954,7 @@ extension Speechly_Slu_V2beta1_OperationResult: SwiftProtobuf.Message, SwiftProt
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.type != .invalid {
+    if self.type != .unspecified {
       try visitor.visitSingularEnumField(value: self.type, fieldNumber: 1)
     }
     if !self.text.isEmpty {
@@ -963,7 +977,7 @@ extension Speechly_Slu_V2beta1_OperationResult: SwiftProtobuf.Message, SwiftProt
 
 extension Speechly_Slu_V2beta1_OperationResult.ResultType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "RESULT_TYPE_INVALID"),
+    0: .same(proto: "RESULT_TYPE_UNSPECIFIED"),
     1: .same(proto: "RESULT_TYPE_TRANSCRIPT_LEXICAL"),
     2: .same(proto: "RESULT_TYPE_TRANSCRIPT_DISPLAY"),
     3: .same(proto: "RESULT_TYPE_TRANSCRIPT_TRANSLATION"),

@@ -69,6 +69,75 @@ extension Speechly_Analytics_V1_Aggregation: CaseIterable {
 
 #endif  // swift(>=4.2)
 
+/// The various types of processing that can be applied to the audio.
+public enum Speechly_Analytics_V1_ProcessingType: SwiftProtobuf.Enum {
+  public typealias RawValue = Int
+  case invalid // = 0
+  case transcription // = 1
+  case nlu // = 2
+  case languageDetection // = 3
+  case vad // = 4
+  case translation // = 5
+  case audioEventDetection // = 6
+  case toneOfVoiceLabelling // = 7
+  case shallowFusion // = 8
+  case UNRECOGNIZED(Int)
+
+  public init() {
+    self = .invalid
+  }
+
+  public init?(rawValue: Int) {
+    switch rawValue {
+    case 0: self = .invalid
+    case 1: self = .transcription
+    case 2: self = .nlu
+    case 3: self = .languageDetection
+    case 4: self = .vad
+    case 5: self = .translation
+    case 6: self = .audioEventDetection
+    case 7: self = .toneOfVoiceLabelling
+    case 8: self = .shallowFusion
+    default: self = .UNRECOGNIZED(rawValue)
+    }
+  }
+
+  public var rawValue: Int {
+    switch self {
+    case .invalid: return 0
+    case .transcription: return 1
+    case .nlu: return 2
+    case .languageDetection: return 3
+    case .vad: return 4
+    case .translation: return 5
+    case .audioEventDetection: return 6
+    case .toneOfVoiceLabelling: return 7
+    case .shallowFusion: return 8
+    case .UNRECOGNIZED(let i): return i
+    }
+  }
+
+}
+
+#if swift(>=4.2)
+
+extension Speechly_Analytics_V1_ProcessingType: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static var allCases: [Speechly_Analytics_V1_ProcessingType] = [
+    .invalid,
+    .transcription,
+    .nlu,
+    .languageDetection,
+    .vad,
+    .translation,
+    .audioEventDetection,
+    .toneOfVoiceLabelling,
+    .shallowFusion,
+  ]
+}
+
+#endif  // swift(>=4.2)
+
 /// Single row of statistics response.
 public struct Speechly_Analytics_V1_UtteranceStatisticsPeriod {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
@@ -90,7 +159,7 @@ public struct Speechly_Analytics_V1_UtteranceStatisticsPeriod {
   /// Total duration of annotated utterances in the current period.
   public var annotatedSeconds: Int32 = 0
 
-  /// project_id or empty, if specifiying a project.
+  /// project_id or empty, if specifying a project.
   public var projectID: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -138,11 +207,30 @@ public struct Speechly_Analytics_V1_DecoderInfo {
   public init() {}
 }
 
+/// Specifies what processing has been applied to an utterance.
+public struct Speechly_Analytics_V1_ProcessingInfo {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// The processing types that were applied
+  public var processingTypes: [Speechly_Analytics_V1_ProcessingType] = []
+
+  /// id of the model that was used for processing
+  public var modelID: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 #if swift(>=5.5) && canImport(_Concurrency)
 extension Speechly_Analytics_V1_Aggregation: @unchecked Sendable {}
+extension Speechly_Analytics_V1_ProcessingType: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: @unchecked Sendable {}
 extension Speechly_Analytics_V1_Utterance: @unchecked Sendable {}
 extension Speechly_Analytics_V1_DecoderInfo: @unchecked Sendable {}
+extension Speechly_Analytics_V1_ProcessingInfo: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -155,6 +243,20 @@ extension Speechly_Analytics_V1_Aggregation: SwiftProtobuf._ProtoNameProviding {
     1: .same(proto: "AGGREGATION_MONTHLY"),
     2: .same(proto: "AGGREGATION_DAILY"),
     3: .same(proto: "AGGREGATION_HOURLY"),
+  ]
+}
+
+extension Speechly_Analytics_V1_ProcessingType: SwiftProtobuf._ProtoNameProviding {
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    0: .same(proto: "PROCESSING_TYPE_INVALID"),
+    1: .same(proto: "PROCESSING_TYPE_TRANSCRIPTION"),
+    2: .same(proto: "PROCESSING_TYPE_NLU"),
+    3: .same(proto: "PROCESSING_TYPE_LANGUAGE_DETECTION"),
+    4: .same(proto: "PROCESSING_TYPE_VAD"),
+    5: .same(proto: "PROCESSING_TYPE_TRANSLATION"),
+    6: .same(proto: "PROCESSING_TYPE_AUDIO_EVENT_DETECTION"),
+    7: .same(proto: "PROCESSING_TYPE_TONE_OF_VOICE_LABELLING"),
+    8: .same(proto: "PROCESSING_TYPE_SHALLOW_FUSION"),
   ]
 }
 
@@ -303,6 +405,44 @@ extension Speechly_Analytics_V1_DecoderInfo: SwiftProtobuf.Message, SwiftProtobu
     if lhs.version != rhs.version {return false}
     if lhs.utteranceCount != rhs.utteranceCount {return false}
     if lhs.totalSecondsTranscribed != rhs.totalSecondsTranscribed {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_ProcessingInfo: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ProcessingInfo"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "processing_types"),
+    2: .standard(proto: "model_id"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedEnumField(value: &self.processingTypes) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.modelID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.processingTypes.isEmpty {
+      try visitor.visitPackedEnumField(value: self.processingTypes, fieldNumber: 1)
+    }
+    if !self.modelID.isEmpty {
+      try visitor.visitSingularStringField(value: self.modelID, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_ProcessingInfo, rhs: Speechly_Analytics_V1_ProcessingInfo) -> Bool {
+    if lhs.processingTypes != rhs.processingTypes {return false}
+    if lhs.modelID != rhs.modelID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
