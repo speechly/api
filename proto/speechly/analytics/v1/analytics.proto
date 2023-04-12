@@ -30,7 +30,7 @@ message UtteranceStatisticsPeriod {
     int32 utterances_seconds = 5;
     // Total duration of annotated utterances in the current period.
     int32 annotated_seconds = 6;
-    // project_id or empty, if specifiying a project.
+    // project_id or empty, if specifying a project.
     string project_id = 7;
 }
 
@@ -52,4 +52,25 @@ message DecoderInfo {
     int32 utterance_count = 2;
     // Cumulative sum of the utterance length in seconds for the decoder.
     int32 total_seconds_transcribed = 3;
+}
+
+// The various types of processing that can be applied to the audio.
+enum ProcessingType {
+    PROCESSING_TYPE_INVALID = 0;
+    PROCESSING_TYPE_TRANSCRIPTION = 1;
+    PROCESSING_TYPE_NLU = 2;
+    PROCESSING_TYPE_LANGUAGE_DETECTION = 3;
+    PROCESSING_TYPE_VAD = 4;
+    PROCESSING_TYPE_TRANSLATION = 5;
+    PROCESSING_TYPE_AUDIO_EVENT_DETECTION = 6;
+    PROCESSING_TYPE_TONE_OF_VOICE_LABELLING = 7;
+    PROCESSING_TYPE_SHALLOW_FUSION = 8;
+}
+
+// Specifies what processing has been applied to an utterance.
+message ProcessingInfo {
+    // The processing types that were applied
+    repeated ProcessingType processing_types = 1;
+    // id of the model that was used for processing
+    string model_id = 2;
 }
