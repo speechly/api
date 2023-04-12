@@ -16,6 +16,7 @@ for given apps and/or projects.
 ## Messages
 
 - [DecoderInfo](#speechly.analytics.v1.DecoderInfo)
+- [ProcessingInfo](#speechly.analytics.v1.ProcessingInfo)
 - [RegisterUtteranceRequest](#speechly.analytics.v1.RegisterUtteranceRequest)
 - [RegisterUtteranceResponse](#speechly.analytics.v1.RegisterUtteranceResponse)
 - [Utterance](#speechly.analytics.v1.Utterance)
@@ -40,6 +41,19 @@ Information about the on-device decoder.
 | total_seconds_transcribed | [int32](#int32) | Cumulative sum of the utterance length in seconds for the decoder. |
 
 
+<a name="speechly.analytics.v1.ProcessingInfo"></a>
+### ProcessingInfo
+
+Specifies what processing has been applied to an utterance.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| processing_types | [ProcessingType](#speechly.analytics.v1.ProcessingType) | The processing types that were applied |
+| model_id | [string](#string) | id of the model that was used for processing |
+
+
 <a name="speechly.analytics.v1.RegisterUtteranceRequest"></a>
 ### RegisterUtteranceRequest
 
@@ -49,7 +63,7 @@ A single data point of an utterance recognized by Speechly On Device or Speechly
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| app_id | [string](#string) |  |
+| app_id | [string](#string) | id of the application the operation belongs to |
 | device_id | [string](#string) | device_id of the utterance. |
 | utterance_length_seconds | [int32](#int32) | Length of the recognized utterance in seconds. |
 | utterance_length_chars | [int32](#int32) | Length of the recognized utterance in characters. |
@@ -59,6 +73,9 @@ A single data point of an utterance recognized by Speechly On Device or Speechly
 | status | [Status](#speechly.analytics.v1.RegisterUtteranceRequest.Status) | The status of the processing. |
 | operation_id | [string](#string) | batch api operation id of the utterance |
 | batch_id | [string](#string) | id of the batch the operation belongs to |
+| project_id | [string](#string) | id of the project the operation belongs to |
+| language | [string](#string) | language of the utterance (BCP-47) |
+| processing_info | [ProcessingInfo](#speechly.analytics.v1.ProcessingInfo) | Information about the processing applied to the utterance |
 
 
 <a name="speechly.analytics.v1.RegisterUtteranceResponse"></a>
@@ -101,7 +118,7 @@ Single row of statistics response.
 | count | [int32](#int32) | Count (sum) of utterances in the current period. |
 | utterances_seconds | [int32](#int32) | Total duration of the utterances in the current period. |
 | annotated_seconds | [int32](#int32) | Total duration of annotated utterances in the current period. |
-| project_id | [string](#string) | project_id or empty, if specifiying a project. |
+| project_id | [string](#string) | project_id or empty, if specifying a project. |
 
 
 <a name="speechly.analytics.v1.UtteranceStatisticsRequest"></a>

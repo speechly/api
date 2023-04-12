@@ -104,7 +104,7 @@ namespace slu {
 namespace v2beta1 {
 
 enum HttpResource_Method : int {
-  HttpResource_Method_METHOD_INVALID = 0,
+  HttpResource_Method_METHOD_UNSPECIFIED = 0,
   HttpResource_Method_METHOD_GET = 1,
   HttpResource_Method_METHOD_POST = 2,
   HttpResource_Method_METHOD_PUT = 3,
@@ -112,7 +112,7 @@ enum HttpResource_Method : int {
   HttpResource_Method_HttpResource_Method_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool HttpResource_Method_IsValid(int value);
-constexpr HttpResource_Method HttpResource_Method_Method_MIN = HttpResource_Method_METHOD_INVALID;
+constexpr HttpResource_Method HttpResource_Method_Method_MIN = HttpResource_Method_METHOD_UNSPECIFIED;
 constexpr HttpResource_Method HttpResource_Method_Method_MAX = HttpResource_Method_METHOD_PUT;
 constexpr int HttpResource_Method_Method_ARRAYSIZE = HttpResource_Method_Method_MAX + 1;
 
@@ -131,7 +131,7 @@ inline bool HttpResource_Method_Parse(
     HttpResource_Method_descriptor(), name, value);
 }
 enum Operation_Status : int {
-  Operation_Status_STATUS_INVALID = 0,
+  Operation_Status_STATUS_UNSPECIFIED = 0,
   Operation_Status_STATUS_PENDING = 1,
   Operation_Status_STATUS_DONE = 2,
   Operation_Status_STATUS_ERROR = 3,
@@ -139,7 +139,7 @@ enum Operation_Status : int {
   Operation_Status_Operation_Status_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool Operation_Status_IsValid(int value);
-constexpr Operation_Status Operation_Status_Status_MIN = Operation_Status_STATUS_INVALID;
+constexpr Operation_Status Operation_Status_Status_MIN = Operation_Status_STATUS_UNSPECIFIED;
 constexpr Operation_Status Operation_Status_Status_MAX = Operation_Status_STATUS_ERROR;
 constexpr int Operation_Status_Status_ARRAYSIZE = Operation_Status_Status_MAX + 1;
 
@@ -157,37 +157,38 @@ inline bool Operation_Status_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Operation_Status>(
     Operation_Status_descriptor(), name, value);
 }
-enum Operation_OperationError : int {
-  Operation_OperationError_OPERATION_ERROR_INVALID = 0,
-  Operation_OperationError_OPERATION_ERROR_UNSUPPORTED_LANGUAGE = 1,
-  Operation_OperationError_OPERATION_ERROR_INTERNAL = 2,
-  Operation_OperationError_OPERATION_ERROR_INVALID_SOURCE = 4,
-  Operation_OperationError_OPERATION_ERROR_INVALID_DESTINATION = 5,
-  Operation_OperationError_OPERATION_ERROR_INVALID_AUDIO = 6,
-  Operation_OperationError_Operation_OperationError_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
-  Operation_OperationError_Operation_OperationError_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+enum Operation_ErrorCode : int {
+  Operation_ErrorCode_ERROR_UNSPECIFIED = 0,
+  Operation_ErrorCode_ERROR_UNSUPPORTED_LANGUAGE = 1,
+  Operation_ErrorCode_ERROR_INTERNAL = 2,
+  Operation_ErrorCode_ERROR_INVALID_PARAMETERS = 3,
+  Operation_ErrorCode_ERROR_INVALID_SOURCE = 4,
+  Operation_ErrorCode_ERROR_INVALID_DESTINATION = 5,
+  Operation_ErrorCode_ERROR_INVALID_AUDIO = 6,
+  Operation_ErrorCode_Operation_ErrorCode_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  Operation_ErrorCode_Operation_ErrorCode_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
-bool Operation_OperationError_IsValid(int value);
-constexpr Operation_OperationError Operation_OperationError_OperationError_MIN = Operation_OperationError_OPERATION_ERROR_INVALID;
-constexpr Operation_OperationError Operation_OperationError_OperationError_MAX = Operation_OperationError_OPERATION_ERROR_INVALID_AUDIO;
-constexpr int Operation_OperationError_OperationError_ARRAYSIZE = Operation_OperationError_OperationError_MAX + 1;
+bool Operation_ErrorCode_IsValid(int value);
+constexpr Operation_ErrorCode Operation_ErrorCode_ErrorCode_MIN = Operation_ErrorCode_ERROR_UNSPECIFIED;
+constexpr Operation_ErrorCode Operation_ErrorCode_ErrorCode_MAX = Operation_ErrorCode_ERROR_INVALID_AUDIO;
+constexpr int Operation_ErrorCode_ErrorCode_ARRAYSIZE = Operation_ErrorCode_ErrorCode_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Operation_OperationError_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Operation_ErrorCode_descriptor();
 template<typename T>
-inline const std::string& Operation_OperationError_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, Operation_OperationError>::value ||
+inline const std::string& Operation_ErrorCode_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, Operation_ErrorCode>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function Operation_OperationError_Name.");
+    "Incorrect type passed to function Operation_ErrorCode_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    Operation_OperationError_descriptor(), enum_t_value);
+    Operation_ErrorCode_descriptor(), enum_t_value);
 }
-inline bool Operation_OperationError_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Operation_OperationError* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Operation_OperationError>(
-    Operation_OperationError_descriptor(), name, value);
+inline bool Operation_ErrorCode_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Operation_ErrorCode* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Operation_ErrorCode>(
+    Operation_ErrorCode_descriptor(), name, value);
 }
 enum OperationResult_ResultType : int {
-  OperationResult_ResultType_RESULT_TYPE_INVALID = 0,
+  OperationResult_ResultType_RESULT_TYPE_UNSPECIFIED = 0,
   OperationResult_ResultType_RESULT_TYPE_TRANSCRIPT_LEXICAL = 1,
   OperationResult_ResultType_RESULT_TYPE_TRANSCRIPT_DISPLAY = 2,
   OperationResult_ResultType_RESULT_TYPE_TRANSCRIPT_TRANSLATION = 3,
@@ -195,7 +196,7 @@ enum OperationResult_ResultType : int {
   OperationResult_ResultType_OperationResult_ResultType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool OperationResult_ResultType_IsValid(int value);
-constexpr OperationResult_ResultType OperationResult_ResultType_ResultType_MIN = OperationResult_ResultType_RESULT_TYPE_INVALID;
+constexpr OperationResult_ResultType OperationResult_ResultType_ResultType_MIN = OperationResult_ResultType_RESULT_TYPE_UNSPECIFIED;
 constexpr OperationResult_ResultType OperationResult_ResultType_ResultType_MAX = OperationResult_ResultType_RESULT_TYPE_TRANSCRIPT_TRANSLATION;
 constexpr int OperationResult_ResultType_ResultType_ARRAYSIZE = OperationResult_ResultType_ResultType_MAX + 1;
 
@@ -490,8 +491,8 @@ class HttpResource final :
   typedef HttpResource_Header Header;
 
   typedef HttpResource_Method Method;
-  static constexpr Method METHOD_INVALID =
-    HttpResource_Method_METHOD_INVALID;
+  static constexpr Method METHOD_UNSPECIFIED =
+    HttpResource_Method_METHOD_UNSPECIFIED;
   static constexpr Method METHOD_GET =
     HttpResource_Method_METHOD_GET;
   static constexpr Method METHOD_POST =
@@ -1298,8 +1299,8 @@ class Operation final :
   // nested types ----------------------------------------------------
 
   typedef Operation_Status Status;
-  static constexpr Status STATUS_INVALID =
-    Operation_Status_STATUS_INVALID;
+  static constexpr Status STATUS_UNSPECIFIED =
+    Operation_Status_STATUS_UNSPECIFIED;
   static constexpr Status STATUS_PENDING =
     Operation_Status_STATUS_PENDING;
   static constexpr Status STATUS_DONE =
@@ -1331,42 +1332,44 @@ class Operation final :
     return Operation_Status_Parse(name, value);
   }
 
-  typedef Operation_OperationError OperationError;
-  static constexpr OperationError OPERATION_ERROR_INVALID =
-    Operation_OperationError_OPERATION_ERROR_INVALID;
-  static constexpr OperationError OPERATION_ERROR_UNSUPPORTED_LANGUAGE =
-    Operation_OperationError_OPERATION_ERROR_UNSUPPORTED_LANGUAGE;
-  static constexpr OperationError OPERATION_ERROR_INTERNAL =
-    Operation_OperationError_OPERATION_ERROR_INTERNAL;
-  static constexpr OperationError OPERATION_ERROR_INVALID_SOURCE =
-    Operation_OperationError_OPERATION_ERROR_INVALID_SOURCE;
-  static constexpr OperationError OPERATION_ERROR_INVALID_DESTINATION =
-    Operation_OperationError_OPERATION_ERROR_INVALID_DESTINATION;
-  static constexpr OperationError OPERATION_ERROR_INVALID_AUDIO =
-    Operation_OperationError_OPERATION_ERROR_INVALID_AUDIO;
-  static inline bool OperationError_IsValid(int value) {
-    return Operation_OperationError_IsValid(value);
+  typedef Operation_ErrorCode ErrorCode;
+  static constexpr ErrorCode ERROR_UNSPECIFIED =
+    Operation_ErrorCode_ERROR_UNSPECIFIED;
+  static constexpr ErrorCode ERROR_UNSUPPORTED_LANGUAGE =
+    Operation_ErrorCode_ERROR_UNSUPPORTED_LANGUAGE;
+  static constexpr ErrorCode ERROR_INTERNAL =
+    Operation_ErrorCode_ERROR_INTERNAL;
+  static constexpr ErrorCode ERROR_INVALID_PARAMETERS =
+    Operation_ErrorCode_ERROR_INVALID_PARAMETERS;
+  static constexpr ErrorCode ERROR_INVALID_SOURCE =
+    Operation_ErrorCode_ERROR_INVALID_SOURCE;
+  static constexpr ErrorCode ERROR_INVALID_DESTINATION =
+    Operation_ErrorCode_ERROR_INVALID_DESTINATION;
+  static constexpr ErrorCode ERROR_INVALID_AUDIO =
+    Operation_ErrorCode_ERROR_INVALID_AUDIO;
+  static inline bool ErrorCode_IsValid(int value) {
+    return Operation_ErrorCode_IsValid(value);
   }
-  static constexpr OperationError OperationError_MIN =
-    Operation_OperationError_OperationError_MIN;
-  static constexpr OperationError OperationError_MAX =
-    Operation_OperationError_OperationError_MAX;
-  static constexpr int OperationError_ARRAYSIZE =
-    Operation_OperationError_OperationError_ARRAYSIZE;
+  static constexpr ErrorCode ErrorCode_MIN =
+    Operation_ErrorCode_ErrorCode_MIN;
+  static constexpr ErrorCode ErrorCode_MAX =
+    Operation_ErrorCode_ErrorCode_MAX;
+  static constexpr int ErrorCode_ARRAYSIZE =
+    Operation_ErrorCode_ErrorCode_ARRAYSIZE;
   static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  OperationError_descriptor() {
-    return Operation_OperationError_descriptor();
+  ErrorCode_descriptor() {
+    return Operation_ErrorCode_descriptor();
   }
   template<typename T>
-  static inline const std::string& OperationError_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, OperationError>::value ||
+  static inline const std::string& ErrorCode_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, ErrorCode>::value ||
       ::std::is_integral<T>::value,
-      "Incorrect type passed to function OperationError_Name.");
-    return Operation_OperationError_Name(enum_t_value);
+      "Incorrect type passed to function ErrorCode_Name.");
+    return Operation_ErrorCode_Name(enum_t_value);
   }
-  static inline bool OperationError_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
-      OperationError* value) {
-    return Operation_OperationError_Parse(name, value);
+  static inline bool ErrorCode_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      ErrorCode* value) {
+    return Operation_ErrorCode_Parse(name, value);
   }
 
   // accessors -------------------------------------------------------
@@ -1557,13 +1560,13 @@ class Operation final :
   void _internal_set_status(::speechly::slu::v2beta1::Operation_Status value);
   public:
 
-  // .speechly.slu.v2beta1.Operation.OperationError error_code = 18;
+  // .speechly.slu.v2beta1.Operation.ErrorCode error_code = 18;
   void clear_error_code();
-  ::speechly::slu::v2beta1::Operation_OperationError error_code() const;
-  void set_error_code(::speechly::slu::v2beta1::Operation_OperationError value);
+  ::speechly::slu::v2beta1::Operation_ErrorCode error_code() const;
+  void set_error_code(::speechly::slu::v2beta1::Operation_ErrorCode value);
   private:
-  ::speechly::slu::v2beta1::Operation_OperationError _internal_error_code() const;
-  void _internal_set_error_code(::speechly::slu::v2beta1::Operation_OperationError value);
+  ::speechly::slu::v2beta1::Operation_ErrorCode _internal_error_code() const;
+  void _internal_set_error_code(::speechly::slu::v2beta1::Operation_ErrorCode value);
   public:
 
   // @@protoc_insertion_point(class_scope:speechly.slu.v2beta1.Operation)
@@ -1704,8 +1707,8 @@ class OperationResult final :
   // nested types ----------------------------------------------------
 
   typedef OperationResult_ResultType ResultType;
-  static constexpr ResultType RESULT_TYPE_INVALID =
-    OperationResult_ResultType_RESULT_TYPE_INVALID;
+  static constexpr ResultType RESULT_TYPE_UNSPECIFIED =
+    OperationResult_ResultType_RESULT_TYPE_UNSPECIFIED;
   static constexpr ResultType RESULT_TYPE_TRANSCRIPT_LEXICAL =
     OperationResult_ResultType_RESULT_TYPE_TRANSCRIPT_LEXICAL;
   static constexpr ResultType RESULT_TYPE_TRANSCRIPT_DISPLAY =
@@ -3427,22 +3430,22 @@ inline void Operation::set_allocated_duration(PROTOBUF_NAMESPACE_ID::Duration* d
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v2beta1.Operation.duration)
 }
 
-// .speechly.slu.v2beta1.Operation.OperationError error_code = 18;
+// .speechly.slu.v2beta1.Operation.ErrorCode error_code = 18;
 inline void Operation::clear_error_code() {
   error_code_ = 0;
 }
-inline ::speechly::slu::v2beta1::Operation_OperationError Operation::_internal_error_code() const {
-  return static_cast< ::speechly::slu::v2beta1::Operation_OperationError >(error_code_);
+inline ::speechly::slu::v2beta1::Operation_ErrorCode Operation::_internal_error_code() const {
+  return static_cast< ::speechly::slu::v2beta1::Operation_ErrorCode >(error_code_);
 }
-inline ::speechly::slu::v2beta1::Operation_OperationError Operation::error_code() const {
+inline ::speechly::slu::v2beta1::Operation_ErrorCode Operation::error_code() const {
   // @@protoc_insertion_point(field_get:speechly.slu.v2beta1.Operation.error_code)
   return _internal_error_code();
 }
-inline void Operation::_internal_set_error_code(::speechly::slu::v2beta1::Operation_OperationError value) {
+inline void Operation::_internal_set_error_code(::speechly::slu::v2beta1::Operation_ErrorCode value) {
   
   error_code_ = value;
 }
-inline void Operation::set_error_code(::speechly::slu::v2beta1::Operation_OperationError value) {
+inline void Operation::set_error_code(::speechly::slu::v2beta1::Operation_ErrorCode value) {
   _internal_set_error_code(value);
   // @@protoc_insertion_point(field_set:speechly.slu.v2beta1.Operation.error_code)
 }
@@ -3968,10 +3971,10 @@ template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::speechly::slu::v2beta1::Operation_Status>() {
   return ::speechly::slu::v2beta1::Operation_Status_descriptor();
 }
-template <> struct is_proto_enum< ::speechly::slu::v2beta1::Operation_OperationError> : ::std::true_type {};
+template <> struct is_proto_enum< ::speechly::slu::v2beta1::Operation_ErrorCode> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::speechly::slu::v2beta1::Operation_OperationError>() {
-  return ::speechly::slu::v2beta1::Operation_OperationError_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::speechly::slu::v2beta1::Operation_ErrorCode>() {
+  return ::speechly::slu::v2beta1::Operation_ErrorCode_descriptor();
 }
 template <> struct is_proto_enum< ::speechly::slu::v2beta1::OperationResult_ResultType> : ::std::true_type {};
 template <>
