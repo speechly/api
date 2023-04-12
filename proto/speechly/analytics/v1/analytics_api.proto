@@ -96,6 +96,7 @@ message UtterancesResponse {
 
 // A single data point of an utterance recognized by Speechly On Device or Speechly On Premise.
 message RegisterUtteranceRequest {
+    // id of the application the operation belongs to
     string app_id = 1;
     // device_id of the utterance.
     string device_id = 2;
@@ -124,6 +125,12 @@ message RegisterUtteranceRequest {
     string operation_id = 9;
     // id of the batch the operation belongs to
     string batch_id = 10;
+    // id of the project the operation belongs to
+    string project_id = 11;
+    // language of the utterance (BCP-47)
+    string language = 12;
+    // Information about the processing applied to the utterance
+    ProcessingInfo processing_info = 13;
 }
 
 message RegisterUtteranceResponse {
