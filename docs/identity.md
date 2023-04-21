@@ -1,5 +1,5 @@
 
-# <a name="speechly.identity.v2.IdentityAPI">speechly.identity.v2.IdentityAPI</a>
+# <a name="speechly.identity.v2.IdentityAPI"></a>speechly.identity.v2.IdentityAPI
 
 Speechly Identity API is used for creating access tokens for the Speechly
 APIs.
@@ -18,7 +18,7 @@ APIs.
 - [ProjectScope](#speechly.identity.v2.ProjectScope)
 
 
-### <a name="speechly.identity.v2.ApplicationScope">ApplicationScope</a>
+### <a name="speechly.identity.v2.ApplicationScope"></a>ApplicationScope
 
 Used as the scope in `LoginRequest` when the access is for a single Speechly application.
 
@@ -30,7 +30,7 @@ Used as the scope in `LoginRequest` when the access is for a single Speechly app
 | config_id | string | Define a specific model configuration to use.<br/>Defaults to the application's latest configuration. |
 
 
-### <a name="speechly.identity.v2.LoginRequest">LoginRequest</a>
+### <a name="speechly.identity.v2.LoginRequest"></a>LoginRequest
 
 Top-level message sent by the client for the `Login` method.
 
@@ -43,7 +43,7 @@ Top-level message sent by the client for the `Login` method.
 | project | [ProjectScope](#speechly.identity.v2.ProjectScope) | Login scope project: define the target application per utterance.<br/>The target applications must be located in the same project. |
 
 
-### <a name="speechly.identity.v2.LoginResponse">LoginResponse</a>
+### <a name="speechly.identity.v2.LoginResponse"></a>LoginResponse
 
 Top-level message returned by the server for the `Login` method.
 
@@ -57,7 +57,7 @@ Top-level message returned by the server for the `Login` method.
 | expires_at | string | ISO-formatted UTC timestamp of the expiration time of the returned token. |
 
 
-### <a name="speechly.identity.v2.ProjectScope">ProjectScope</a>
+### <a name="speechly.identity.v2.ProjectScope"></a>ProjectScope
 
 Used as the scope in `LoginRequest` when access is required for every application in a Speechly project.
 

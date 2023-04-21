@@ -3,7 +3,7 @@ import json
 
 
 service_template = """
-# <a name="{fullName}">{fullName}</a>
+# <a name="{fullName}"></a>{fullName}
 
 {description}
 
@@ -23,7 +23,7 @@ messages_template = """
 """
 
 message_template = """
-### <a name="{fullName}">{name}</a>
+### <a name="{fullName}"></a>{name}
 
 {description}
 
@@ -43,7 +43,7 @@ enums_template = """
 """
 
 enum_template = """
-### <a name="{fullName}">{name}</a>
+### <a name="{fullName}"></a>{name}
 
 {description}
 

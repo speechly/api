@@ -1,5 +1,5 @@
 
-# <a name="speechly.slu.v1.WLU">speechly.slu.v1.WLU</a>
+# <a name="speechly.slu.v1.WLU"></a>speechly.slu.v1.WLU
 
 Service that implements Speechly WLU (Written Language Understanding).
 
@@ -31,7 +31,7 @@ res, err := speechlyWLUClient.Text(ctx, req)
 - [WLUToken](#speechly.slu.v1.WLUToken)
 
 
-### <a name="speechly.slu.v1.TextsRequest">TextsRequest</a>
+### <a name="speechly.slu.v1.TextsRequest"></a>TextsRequest
 
 Top-level message sent by the client for the `Texts` method.
 
@@ -43,7 +43,7 @@ Top-level message sent by the client for the `Texts` method.
 | requests | [WLURequest](#speechly.slu.v1.WLURequest) | List of WLURequest.<br/>Required. |
 
 
-### <a name="speechly.slu.v1.TextsResponse">TextsResponse</a>
+### <a name="speechly.slu.v1.TextsResponse"></a>TextsResponse
 
 Top-level message sent by the server for the `Texts` method.
 
@@ -54,7 +54,7 @@ Top-level message sent by the server for the `Texts` method.
 | responses | [WLUResponse](#speechly.slu.v1.WLUResponse) | List of WLUResponses.<br/>Required. |
 
 
-### <a name="speechly.slu.v1.WLUEntity">WLUEntity</a>
+### <a name="speechly.slu.v1.WLUEntity"></a>WLUEntity
 
 Describes a single entity in a segment.
 
@@ -81,7 +81,7 @@ The start index is inclusive, but the end index is exclusive, i.e. the interval 
 | end_position | int32 | The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Exclusive. |
 
 
-### <a name="speechly.slu.v1.WLUIntent">WLUIntent</a>
+### <a name="speechly.slu.v1.WLUIntent"></a>WLUIntent
 
 Describes the intent of a segment.
 There can only be one intent per segment.
@@ -93,7 +93,7 @@ There can only be one intent per segment.
 | intent | string | The value of the intent, as defined in SAL. |
 
 
-### <a name="speechly.slu.v1.WLURequest">WLURequest</a>
+### <a name="speechly.slu.v1.WLURequest"></a>WLURequest
 
 Top-level message sent by the client for the `Text` method.
 
@@ -106,7 +106,7 @@ Top-level message sent by the client for the `Text` method.
 | reference_time | [Timestamp](#google.protobuf.Timestamp) | The reference time for postprocessing. By default, the current date is used.<br/>Optional. |
 
 
-### <a name="speechly.slu.v1.WLUResponse">WLUResponse</a>
+### <a name="speechly.slu.v1.WLUResponse"></a>WLUResponse
 
 Top-level message sent by the server for the `Text` method.
 
@@ -117,7 +117,7 @@ Top-level message sent by the server for the `Text` method.
 | segments | [WLUSegment](#speechly.slu.v1.WLUSegment) | A list of WLU segments. |
 
 
-### <a name="speechly.slu.v1.WLUSegment">WLUSegment</a>
+### <a name="speechly.slu.v1.WLUSegment"></a>WLUSegment
 
 Describes a WLU segment.
 A segment is a logical portion of text denoted by its intent,
@@ -135,7 +135,7 @@ there would be a segment for "book me a flight" and another for "rent a car".
 | annotated_text | string | The value of text annotated in SAL format. |
 
 
-### <a name="speechly.slu.v1.WLUToken">WLUToken</a>
+### <a name="speechly.slu.v1.WLUToken"></a>WLUToken
 
 Describes a single word token in a segment.
 
