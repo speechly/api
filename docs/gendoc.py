@@ -115,7 +115,7 @@ def message(m):
 
 def enum(e):
     values_table = "\n".join(
-        [f'| {v["name"]} | {v["number"]} | {v["description"]} |' for v in e["values"]]
+        [f'| {v["name"]} | {v["number"]} | {format_for_table(v["description"])} |' for v in e["values"]]
     )
     return enum_template.format(
         name=e["longName"],

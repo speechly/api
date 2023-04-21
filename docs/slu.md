@@ -238,8 +238,7 @@ The HTTP method to use when accessing an HTTP resource.
 
 | name | value | description |
 | ---- | ----- | ----------- |
-| METHOD_UNSPECIFIED | 0 | Method is not given, and default method is used for requests.
-Data fetches use GET, and result sending POST. |
+| METHOD_UNSPECIFIED | 0 | Method is not given, and default method is used for requests.<br/>Data fetches use GET, and result sending POST. |
 | METHOD_GET | 1 | Use HTTP GET. |
 | METHOD_POST | 2 | Use HTTP POST. |
 | METHOD_PUT | 3 | Use HTTP PUT. |
@@ -290,8 +289,7 @@ The possible types for the operation result.
 | ---- | ----- | ----------- |
 | RESULT_TYPE_UNSPECIFIED | 0 | Result type is not set. |
 | RESULT_TYPE_TRANSCRIPT_LEXICAL | 1 | The actual words of the audio with no additional processing applied. |
-| RESULT_TYPE_TRANSCRIPT_DISPLAY | 2 | The content of the audio formatted to be displayed on screen, with eg.
-punctuation and capitalization included. |
+| RESULT_TYPE_TRANSCRIPT_DISPLAY | 2 | The content of the audio formatted to be displayed on screen, with eg.<br/>punctuation and capitalization included. |
 | RESULT_TYPE_TRANSCRIPT_TRANSLATION | 3 | The content of the audio translated to English. |
 
 
