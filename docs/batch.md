@@ -1,4 +1,3 @@
-{'bytes', 'double', 'fixed32', 'sfixed64', 'string', 'float', 'sint64', 'int64', 'fixed64', 'uint32', 'sfixed32', 'uint64', 'bool', 'sint32', 'int32'}
 
 # <a name="speechly.slu.v2beta1.BatchAPI">speechly.slu.v2beta1.BatchAPI</a>
 

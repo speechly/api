@@ -1,4 +1,3 @@
-{'string', 'bool', 'fixed64', 'uint32', 'uint64', 'sfixed32', 'int32', 'sfixed64', 'sint32', 'bytes', 'float', 'sint64', 'fixed32', 'int64', 'double'}
 
 # <a name="speechly.identity.v2.IdentityAPI">speechly.identity.v2.IdentityAPI</a>
 

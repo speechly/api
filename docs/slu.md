@@ -1,4 +1,3 @@
-{'sint64', 'bytes', 'string', 'uint64', 'bool', 'fixed32', 'int64', 'sint32', 'float', 'uint32', 'fixed64', 'sfixed32', 'double', 'sfixed64', 'int32'}
 
 # <a name="speechly.slu.v1.SLU">speechly.slu.v1.SLU</a>
 
