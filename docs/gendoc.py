@@ -1,6 +1,7 @@
 import sys
 import json
-
+import os.path
+import shutil
 
 service_template = """
 # {fullName}
@@ -132,13 +133,14 @@ def enum(e):
     )
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        raise Exception(f"Single JSON doc file required as parameter, got {sys.argv}")
-
-    with open(sys.argv[1], "r") as fp:
+def write_docs(source, dest):
+    with open(source, "r") as fp:
         doc = json.load(fp)
-
+    groupname = os.path.splitext(os.path.basename(source))[0]
+    dest = os.path.join(dest, groupname)
+    print("process", source, "to", dest)
+    shutil.rmtree(dest, ignore_errors=True)
+    os.makedirs(dest)
     packages = {}
     for f in doc["files"]:
         p = packages.get(
@@ -152,10 +154,12 @@ if __name__ == "__main__":
         p["enums"] += f["enums"]
         packages[f["package"]] = p
     scalars = set(s["protoType"] for s in doc["scalarValueTypes"])
-    doc = ""
+
+    docs = {}
     for name, p in packages.items():
-        if name in ["speechly.identity.v1"]:
-            continue
+        # if name in ["speechly.identity.v1"]:
+        #     continue
+        doc = docs.get(name, "")
         doc += "\n".join(
             [service(s) for s in sorted(p["services"], key=lambda x: x["name"])]
         )
@@ -169,4 +173,19 @@ if __name__ == "__main__":
             toc = "\n".join(f'- [{e["longName"]}](#{e["fullName"]})' for e in enums)
             es = "\n".join(enum(e) for e in enums)
             doc += enums_template.format(enums_toc=toc, enums=es)
-    print(doc)
+        docs[name] = doc
+
+    for name, doc in docs.items():
+        with open(os.path.join(dest, name + ".md"), "w") as f:
+            f.write(doc)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        raise Exception(
+            f"at least groupname, one JSON doc file, and destination directory required as parameter, got {sys.argv[1:]}"
+        )
+    sources = sys.argv[1:-1]
+    dest = sys.argv[-1]
+    for s in sources:
+        write_docs(s, dest)
