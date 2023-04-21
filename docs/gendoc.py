@@ -152,7 +152,6 @@ if __name__ == "__main__":
         p["enums"] += f["enums"]
         packages[f["package"]] = p
     scalars = set(s["protoType"] for s in doc["scalarValueTypes"])
-    print(scalars)
     doc = ""
     for name, p in packages.items():
         if name in ["speechly.identity.v1"]:
