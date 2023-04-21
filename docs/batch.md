@@ -1,3 +1,4 @@
+{'bytes', 'double', 'fixed32', 'sfixed64', 'string', 'float', 'sint64', 'int64', 'fixed64', 'uint32', 'sfixed32', 'uint64', 'bool', 'sint32', 'int32'}
 
 # <a name="speechly.slu.v2beta1.BatchAPI">speechly.slu.v2beta1.BatchAPI</a>
 
@@ -202,9 +203,9 @@ separate words, closely maps to those words.
 | name | type | description |
 | ---- | ---- | ----------- |
 | token | string | The token described. |
-| index | [int32](#int32) | The position of the token in the whole phrase, zero-based. |
-| start_time | [int32](#int32) | The end time of the token in the audio, in milliseconds from the beginning<br/>of the audio. |
-| end_time | [int32](#int32) | The end time of the token in the audio, in milliseconds from the beginning<br/>of the audio. |
+| index | int32 | The position of the token in the whole phrase, zero-based. |
+| start_time | int32 | The end time of the token in the audio, in milliseconds from the beginning<br/>of the audio. |
+| end_time | int32 | The end time of the token in the audio, in milliseconds from the beginning<br/>of the audio. |
 
 
 ## Enums
@@ -309,8 +310,8 @@ Describes the audio content of the batch operation.
 | name | type | description |
 | ---- | ---- | ----------- |
 | encoding | [Encoding](#speechly.slu.v1.AudioConfiguration.Encoding) | The encoding of the audio data sent in the stream.<br/>Required. |
-| channels | [int32](#int32) | The number of channels in the input audio data.<br/>Required. |
-| sample_rate_hertz | [int32](#int32) | Sample rate in Hertz of the audio data sent in the stream (e.g. 16000).<br/>Required. |
+| channels | int32 | The number of channels in the input audio data.<br/>Required. |
+| sample_rate_hertz | int32 | Sample rate in Hertz of the audio data sent in the stream (e.g. 16000).<br/>Required. |
 | language_codes | string | The language(s) of the audio sent in the stream as a BCP-47 language tag<br/>(e.g. "en-US"). Defaults to the target application language.<br/>Optional. |
 
 
@@ -383,7 +384,7 @@ in the following messages.
 | app_id | string | The processing context, Speechly application ID.<br/>Required. |
 | device_id | string | The device ID of the audio source, for example a microphone<br/>identifier as UUID.<br/>Optional. |
 | config | [AudioConfiguration](#speechly.slu.v1.AudioConfiguration) | Audio configuration.<br/>Required. |
-| audio | [bytes](#bytes) | Raw audio data. |
+| audio | bytes | Raw audio data. |
 | uri | string | URI of audio data. Can be http or GCS. |
 | http_source | [HttpResource](#speechly.slu.v1.HttpResource) | Detailed HTTP source data. |
 | results_uri | string | Basic HTTP POST destination.<br/>The payload will be `Operation` as JSON. |
@@ -437,9 +438,9 @@ recognised from the audio.
 | name | type | description |
 | ---- | ---- | ----------- |
 | word | string | The word recongised from the audio. |
-| index | [int32](#int32) | The position of the word in the whole phrase, zero-based. |
-| start_time | [int32](#int32) | The end time of the word in the audio, in milliseconds from the beginning<br/>of the audio. |
-| end_time | [int32](#int32) | The end time of the word in the audio, in milliseconds from the beginning<br/>of the audio. |
+| index | int32 | The position of the word in the whole phrase, zero-based. |
+| start_time | int32 | The end time of the word in the audio, in milliseconds from the beginning<br/>of the audio. |
+| end_time | int32 | The end time of the word in the audio, in milliseconds from the beginning<br/>of the audio. |
 
 
 ## Enums

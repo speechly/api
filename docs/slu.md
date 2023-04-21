@@ -1,3 +1,4 @@
+{'sint64', 'bytes', 'string', 'uint64', 'bool', 'fixed32', 'int64', 'sint32', 'float', 'uint32', 'fixed64', 'sfixed32', 'double', 'sfixed64', 'int32'}
 
 # <a name="speechly.slu.v1.SLU">speechly.slu.v1.SLU</a>
 
@@ -50,7 +51,7 @@ to receive a message and the server to receive the client's response. Also known
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| id | [int32](#int32) | Measurement id. Multiple measurements can be sent during one connection, so the response should contain<br/>the same `id` as in the request. |
+| id | int32 | Measurement id. Multiple measurements can be sent during one connection, so the response should contain<br/>the same `id` as in the request. |
 
 
 ### <a name="speechly.slu.v1.RoundTripMeasurementResponse">RoundTripMeasurementResponse</a>
@@ -61,7 +62,7 @@ Response sent from the client immediately after seeing the RoundTripMeasurementR
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| id | [int32](#int32) | `id` should match the request's id. |
+| id | int32 | `id` should match the request's id. |
 
 
 ### <a name="speechly.slu.v1.SLUConfig">SLUConfig</a>
@@ -74,8 +75,8 @@ Currently the API only supports single-channel Linear PCM with sample rate of 16
 | name | type | description |
 | ---- | ---- | ----------- |
 | encoding | [Encoding](#speechly.slu.v1.SLUConfig.Encoding) | The encoding of the audio data sent in the stream.<br/>Required. |
-| channels | [int32](#int32) | The number of channels in the input audio data.<br/>Required. |
-| sample_rate_hertz | [int32](#int32) | Sample rate in Hertz of the audio data sent in the stream.<br/>Required. |
+| channels | int32 | The number of channels in the input audio data.<br/>Required. |
+| sample_rate_hertz | int32 | Sample rate in Hertz of the audio data sent in the stream.<br/>Required. |
 | language_code | string | The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").<br/>Defaults to the target application language. |
 | options | [Option](#speechly.slu.v1.SLUConfig.Option) | Special options to change the default behaviour of the SLU for all logical audio segment. |
 
@@ -115,8 +116,8 @@ The start index is inclusive, but the end index is exclusive, i.e. the interval 
 | ---- | ---- | ----------- |
 | entity | string | The type of the entity, e.g. `restaurant_type` or `date`. |
 | value | string | The value of the entity, e.g. `burger restaurant` or `tomorrow`. |
-| start_position | [int32](#int32) | The starting index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Inclusive. |
-| end_position | [int32](#int32) | The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Exclusive. |
+| start_position | int32 | The starting index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Inclusive. |
+| end_position | int32 | The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Exclusive. |
 
 
 ### <a name="speechly.slu.v1.SLUError">SLUError</a>
@@ -178,7 +179,7 @@ Top-level message sent by the client for the `Stream` method.
 | ---- | ---- | ----------- |
 | config | [SLUConfig](#speechly.slu.v1.SLUConfig) | Describes the configuration of the audio sent by the client.<br/>MUST be the first message sent to the stream. |
 | event | [SLUEvent](#speechly.slu.v1.SLUEvent) | Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a start event and concluded with a stop event,<br/>otherwise the server WILL terminate the stream with an error.<br/>DEPRECATED in favour of SLUStart and SLUStop |
-| audio | [bytes](#bytes) | Contains a chunk of the audio being streamed. |
+| audio | bytes | Contains a chunk of the audio being streamed. |
 | rtt_response | [RoundTripMeasurementResponse](#speechly.slu.v1.RoundTripMeasurementResponse) | Response to an RTT measurement request from server. Should be sent immediately<br/>after receiving the RoundTripMeasurementRequest in the stream.<br/>If ignored, no round trip measurements are made. |
 | start | [SLUStart](#speechly.slu.v1.SLUStart) | Indicates the beginning of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a SLUStart, (or the deprecated SLUEvent start event)<br/>otherwise the server WILL terminate the stream with an error. |
 | stop | [SLUStop](#speechly.slu.v1.SLUStop) | Indicates the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be concluded with a SLUStop, (or the deprecated SLUEvent stop event)<br/>otherwise the server WILL terminate the stream with an error. |
@@ -193,7 +194,7 @@ Top-level message sent by the server for the `Stream` method.
 | name | type | description |
 | ---- | ---- | ----------- |
 | audio_context | string | The ID of the audio context that this response belongs to. |
-| segment_id | [int32](#int32) | The ID of the SLU segment that this response belongs to.<br/>This will be 0 for SLUStarted and SLUFinished responses. |
+| segment_id | int32 | The ID of the SLU segment that this response belongs to.<br/>This will be 0 for SLUStarted and SLUFinished responses. |
 | transcript | [SLUTranscript](#speechly.slu.v1.SLUTranscript) | Final SLU transcript. |
 | entity | [SLUEntity](#speechly.slu.v1.SLUEntity) | Final SLU entity. |
 | intent | [SLUIntent](#speechly.slu.v1.SLUIntent) | Final SLU intent. |
@@ -302,9 +303,9 @@ A transcript is a speech-to-text element of the phrase, i.e. a word recognised f
 | name | type | description |
 | ---- | ---- | ----------- |
 | word | string | The word recongised from the audio. |
-| index | [int32](#int32) | The position of the word in the whole phrase, zero-based. |
-| start_time | [int32](#int32) | The start time of the word in the audio, in milliseconds from the beginning of the audio. |
-| end_time | [int32](#int32) | The end time of the word in the audio, in milliseconds from the beginning of the audio. |
+| index | int32 | The position of the word in the whole phrase, zero-based. |
+| start_time | int32 | The start time of the word in the audio, in milliseconds from the beginning of the audio. |
+| end_time | int32 | The end time of the word in the audio, in milliseconds from the beginning of the audio. |
 
 
 ## Enums

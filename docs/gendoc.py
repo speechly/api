@@ -96,12 +96,14 @@ def is_scalar(f: dict) -> bool:
     return f["type"] in ["string", "int64", "bool"]
 
 
-def message(m):
+def message(m, scalars):
     field_table = "\n".join(
         [
             field_template.format(
                 name=f["name"],
-                type=f["type"] if is_scalar(f) else f"[{f['type']}](#{f['fullType']})",
+                type=f["type"]
+                if f["type"] in scalars
+                else f"[{f['type']}](#{f['fullType']})",
                 description=format_for_table(f["description"]),
             )
             for f in m["fields"]
@@ -149,7 +151,8 @@ if __name__ == "__main__":
         p["messages"] += f["messages"]
         p["enums"] += f["enums"]
         packages[f["package"]] = p
-
+    scalars = set(s["protoType"] for s in doc["scalarValueTypes"])
+    print(scalars)
     doc = ""
     for name, p in packages.items():
         if name in ["speechly.identity.v1"]:
@@ -160,7 +163,7 @@ if __name__ == "__main__":
         if p["messages"]:
             messages = sorted(p["messages"], key=lambda x: x["longName"])
             toc = "\n".join(f'- [{m["longName"]}](#{m["fullName"]})' for m in messages)
-            msgs = "\n".join(message(m) for m in messages)
+            msgs = "\n".join(message(m, scalars) for m in messages)
             doc += messages_template.format(messages_toc=toc, messages=msgs)
         if p["enums"]:
             enums = sorted(p["enums"], key=lambda x: x["longName"])

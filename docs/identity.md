@@ -1,3 +1,4 @@
+{'string', 'bool', 'fixed64', 'uint32', 'uint64', 'sfixed32', 'int32', 'sfixed64', 'sint32', 'bytes', 'float', 'sint64', 'fixed32', 'int64', 'double'}
 
 # <a name="speechly.identity.v2.IdentityAPI">speechly.identity.v2.IdentityAPI</a>
 
@@ -52,8 +53,8 @@ Top-level message returned by the server for the `Login` method.
 | name | type | description |
 | ---- | ---- | ----------- |
 | token | string | Access token which can used for the Speechly API.<br/>The token is a JSON Web Token and includes all standard claims, as well as<br/>custom ones. The token has expiration, so you should check whether it has<br/>expired before using it. It is safe to cache the token for future use until<br/>its expiration date. |
-| valid_for_s | [uint32](#uint32) | Amount of seconds the returned token is valid. |
-| expires_at_epoch | [uint64](#uint64) | Token expiration time in seconds after 1970-01-01 ("unix time"). |
+| valid_for_s | uint32 | Amount of seconds the returned token is valid. |
+| expires_at_epoch | uint64 | Token expiration time in seconds after 1970-01-01 ("unix time"). |
 | expires_at | string | ISO-formatted UTC timestamp of the expiration time of the returned token. |
 
 

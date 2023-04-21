@@ -1,3 +1,4 @@
+{'double', 'sint32', 'sint64', 'string', 'sfixed64', 'bytes', 'fixed32', 'float', 'uint32', 'bool', 'fixed64', 'int32', 'uint64', 'sfixed32', 'int64'}
 
 # <a name="speechly.slu.v1.WLU">speechly.slu.v1.WLU</a>
 
@@ -77,8 +78,8 @@ The start index is inclusive, but the end index is exclusive, i.e. the interval 
 | ---- | ---- | ----------- |
 | entity | string | The type of the entity, e.g. `restaurant_type` or `date`. |
 | value | string | The value of the entity, e.g. `burger restaurant` or `tomorrow`. |
-| start_position | [int32](#int32) | The starting index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Inclusive. |
-| end_position | [int32](#int32) | The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Exclusive. |
+| start_position | int32 | The starting index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Inclusive. |
+| end_position | int32 | The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Exclusive. |
 
 
 ### <a name="speechly.slu.v1.WLUIntent">WLUIntent</a>
@@ -144,6 +145,6 @@ Describes a single word token in a segment.
 | name | type | description |
 | ---- | ---- | ----------- |
 | word | string | The value of the word. |
-| index | [int32](#int32) | Position of the token in the text. |
+| index | int32 | Position of the token in the text. |
 
 
