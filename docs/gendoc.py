@@ -3,7 +3,7 @@ import json
 
 
 service_template = """
-# <a name="{fullName}"></a>{fullName}
+# {fullName}
 
 {description}
 
@@ -23,7 +23,7 @@ messages_template = """
 """
 
 message_template = """
-### <a name="{fullName}"></a>{name}
+### {name}
 
 {description}
 
@@ -43,7 +43,7 @@ enums_template = """
 """
 
 enum_template = """
-### <a name="{fullName}"></a>{name}
+### {name}
 
 {description}
 
@@ -54,14 +54,14 @@ enum_template = """
 {values_table}
 """
 
-type_template = "[{type}](#{fullType})"
+type_template = "[{type}](#{type})"
 
 field_template = """
 | {name} | {type} | {description} |
 """.strip()
 
 method_template = """
-| {name} | [{request}](#{requestFullType}) | [{response}](#{responseFullType}) | {description} |
+| {name} | [{request}](#{requestType}) | [{response}](#{responseType}) | {description} |
 """.strip()
 
 
@@ -76,10 +76,10 @@ def service(s):
                 name=m["name"],
                 request=m["requestLongType"]
                 + (" stream" if m["requestStreaming"] else ""),
-                requestFullType=m["requestFullType"],
+                requestType=m["requestFullType"].replace(".", "").lower(),
                 response=m["responseLongType"]
                 + (" stream" if m["responseStreaming"] else ""),
-                responseFullType=m["responseFullType"],
+                responseType=m["responseFullType"].replace(".", "").lower(),
                 description=format_for_table(m["description"]),
             )
             for m in s["methods"]
@@ -103,14 +103,14 @@ def message(m, scalars):
                 name=f["name"],
                 type=f["type"]
                 if f["type"] in scalars
-                else f"[{f['type']}](#{f['fullType']})",
+                else f"[{f['type']}](#{f['fullType'].replace('.', '').lower()})",
                 description=format_for_table(f["description"]),
             )
             for f in m["fields"]
         ]
     )
     return message_template.format(
-        name=m["longName"],
+        name=m["fullName"],
         fullName=m["fullName"],
         description=m["description"],
         field_table=field_table,
@@ -125,7 +125,7 @@ def enum(e):
         ]
     )
     return enum_template.format(
-        name=e["longName"],
+        name=e["fullName"],
         fullName=e["fullName"],
         description=e["description"],
         values_table=values_table,
