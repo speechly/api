@@ -77,10 +77,10 @@ def service(s):
                 name=m["name"],
                 request=m["requestLongType"]
                 + (" stream" if m["requestStreaming"] else ""),
-                requestType=m["requestFullType"].replace(".", "").lower(),
+                requestType=m["requestLongType"].replace(".", "").lower(),
                 response=m["responseLongType"]
                 + (" stream" if m["responseStreaming"] else ""),
-                responseType=m["responseFullType"].replace(".", "").lower(),
+                responseType=m["responseLongType"].replace(".", "").lower(),
                 description=format_for_table(m["description"]),
             )
             for m in s["methods"]
@@ -93,10 +93,6 @@ def service(s):
     )
 
 
-def is_scalar(f: dict) -> bool:
-    return f["type"] in ["string", "int64", "bool"]
-
-
 def message(m, scalars):
     field_table = "\n".join(
         [
@@ -104,15 +100,14 @@ def message(m, scalars):
                 name=f["name"],
                 type=f["type"]
                 if f["type"] in scalars
-                else f"[{f['type']}](#{f['fullType'].replace('.', '').lower()})",
+                else f"[{f['type']}](#{f['longType'].replace('.', '').lower()})",
                 description=format_for_table(f["description"]),
             )
             for f in m["fields"]
         ]
     )
     return message_template.format(
-        name=m["fullName"],
-        fullName=m["fullName"],
+        name=m["longName"],
         description=m["description"],
         field_table=field_table,
     )
@@ -126,8 +121,7 @@ def enum(e):
         ]
     )
     return enum_template.format(
-        name=e["fullName"],
-        fullName=e["fullName"],
+        name=e["longName"],
         description=e["description"],
         values_table=values_table,
     )
@@ -165,12 +159,14 @@ def write_docs(source, dest):
         )
         if p["messages"]:
             messages = sorted(p["messages"], key=lambda x: x["longName"])
-            toc = "\n".join(f'- [{m["longName"]}](#{m["fullName"]})' for m in messages)
+            toc = "\n".join(
+                f'- [{m["longName"]}](#{m["longName"].lower()})' for m in messages
+            )
             msgs = "\n".join(message(m, scalars) for m in messages)
             doc += messages_template.format(messages_toc=toc, messages=msgs)
         if p["enums"]:
             enums = sorted(p["enums"], key=lambda x: x["longName"])
-            toc = "\n".join(f'- [{e["longName"]}](#{e["fullName"]})' for e in enums)
+            toc = "\n".join(f'- [{e["longName"]}](#{e["longName"]})' for e in enums)
             es = "\n".join(enum(e) for e in enums)
             doc += enums_template.format(enums_toc=toc, enums=es)
         docs[name] = doc

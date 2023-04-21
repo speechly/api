@@ -7,27 +7,27 @@ Run Speechly Batch API operations on audio sources without actively waiting the 
 
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
-| ProcessAudioSource | [ProcessAudioSourceRequest](#speechlysluv2beta1processaudiosourcerequest) | [ProcessAudioSourceResponse](#speechlysluv2beta1processaudiosourceresponse) | Create a new background Speechly Batch API operation for a one or more audio sources.<br/>Audio sources must be URIs of a files, reachable from the API<br/>The response includes an `id` that is used to match the operation to the<br/>results. A `reference` identifier can also be set.<br/>Also a `batch_reference` can be set to mark that multiple audio sources form a<br/>logical batch. In that case, the response will include a `batch_id`. |
-| QueryStatus | [QueryStatusRequest](#speechlysluv2beta1querystatusrequest) | [QueryStatusResponse](#speechlysluv2beta1querystatusresponse) | Query the status of given operations.<br/>If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`<br/>as a destination, the results are returned in the `QueryStatusResponse`. |
+| ProcessAudioSource | [ProcessAudioSourceRequest](#processaudiosourcerequest) | [ProcessAudioSourceResponse](#processaudiosourceresponse) | Create a new background Speechly Batch API operation for a one or more audio sources.<br/>Audio sources must be URIs of a files, reachable from the API<br/>The response includes an `id` that is used to match the operation to the<br/>results. A `reference` identifier can also be set.<br/>Also a `batch_reference` can be set to mark that multiple audio sources form a<br/>logical batch. In that case, the response will include a `batch_id`. |
+| QueryStatus | [QueryStatusRequest](#querystatusrequest) | [QueryStatusResponse](#querystatusresponse) | Query the status of given operations.<br/>If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`<br/>as a destination, the results are returned in the `QueryStatusResponse`. |
 
 ## Messages
 
-- [HttpResource](#speechly.slu.v2beta1.HttpResource)
-- [HttpResource.Header](#speechly.slu.v2beta1.HttpResource.Header)
-- [Operation](#speechly.slu.v2beta1.Operation)
-- [OperationResult](#speechly.slu.v2beta1.OperationResult)
-- [Option](#speechly.slu.v2beta1.Option)
-- [ProcessAudioBatchConfig](#speechly.slu.v2beta1.ProcessAudioBatchConfig)
-- [ProcessAudioSourceRequest](#speechly.slu.v2beta1.ProcessAudioSourceRequest)
-- [ProcessAudioSourceRequestItem](#speechly.slu.v2beta1.ProcessAudioSourceRequestItem)
-- [ProcessAudioSourceResponse](#speechly.slu.v2beta1.ProcessAudioSourceResponse)
-- [ProcessingConfiguration](#speechly.slu.v2beta1.ProcessingConfiguration)
-- [QueryStatusRequest](#speechly.slu.v2beta1.QueryStatusRequest)
-- [QueryStatusResponse](#speechly.slu.v2beta1.QueryStatusResponse)
-- [Token](#speechly.slu.v2beta1.Token)
+- [HttpResource](#httpresource)
+- [HttpResource.Header](#httpresource.header)
+- [Operation](#operation)
+- [OperationResult](#operationresult)
+- [Option](#option)
+- [ProcessAudioBatchConfig](#processaudiobatchconfig)
+- [ProcessAudioSourceRequest](#processaudiosourcerequest)
+- [ProcessAudioSourceRequestItem](#processaudiosourcerequestitem)
+- [ProcessAudioSourceResponse](#processaudiosourceresponse)
+- [ProcessingConfiguration](#processingconfiguration)
+- [QueryStatusRequest](#querystatusrequest)
+- [QueryStatusResponse](#querystatusresponse)
+- [Token](#token)
 
 
-### speechly.slu.v2beta1.HttpResource
+### HttpResource
 
 Describes full properties of an HTTP endpoint.
 
@@ -36,11 +36,11 @@ Describes full properties of an HTTP endpoint.
 | name | type | description |
 | ---- | ---- | ----------- |
 | url | string | URL of the endpoint (protocol://server/path)<br/>Required. |
-| method | [Method](#speechlysluv2beta1httpresourcemethod) | method to use in connection.<br/>Optional. |
-| headers | [Header](#speechlysluv2beta1httpresourceheader) | Possible additional headers to include in the connection.<br/>Optional. |
+| method | [Method](#httpresourcemethod) | method to use in connection.<br/>Optional. |
+| headers | [Header](#httpresourceheader) | Possible additional headers to include in the connection.<br/>Optional. |
 
 
-### speechly.slu.v2beta1.HttpResource.Header
+### HttpResource.Header
 
 A single header value in an HTTP request.
 
@@ -52,7 +52,7 @@ A single header value in an HTTP request.
 | value | string | Value of the given header in request. |
 
 
-### speechly.slu.v2beta1.Operation
+### Operation
 
 Describes a single batch operation.
 
@@ -64,18 +64,18 @@ Describes a single batch operation.
 | reference | string | The reference id of the operation, if given. |
 | batch_id | string | The id of the batch the operation belongs to. |
 | batch_reference | string | The reference id of the operation, if given. |
-| status | [Status](#speechlysluv2beta1operationstatus) | The current status of the operation. |
+| status | [Status](#operationstatus) | The current status of the operation. |
 | language_code | string | The language code of the detected language. |
 | app_id | string | The application context for the operation. |
-| result | [OperationResult](#speechlysluv2beta1operationresult) | If the operation status is STATUS_DONE and the destination is not set,<br/>the results of the processing. |
+| result | [OperationResult](#operationresult) | If the operation status is STATUS_DONE and the destination is not set,<br/>the results of the processing. |
 | duration | [Duration](#googleprotobufduration) | The duration of the audio. |
-| error_code | [ErrorCode](#speechlysluv2beta1operationerrorcode) | Machine-readable status for the operation.<br/>Only set if operation status is STATUS_ERROR. |
+| error_code | [ErrorCode](#operationerrorcode) | Machine-readable status for the operation.<br/>Only set if operation status is STATUS_ERROR. |
 | error_description | string | Contains a human readable description of the error.<br/>Only set if operation status is STATUS_ERROR. |
 | source_url | string | The locator to the source audio. |
 | destination_url | string | The locator to the result target. |
 
 
-### speechly.slu.v2beta1.OperationResult
+### OperationResult
 
 Describes the results of the processing that took place.
 
@@ -83,12 +83,12 @@ Describes the results of the processing that took place.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| type | [ResultType](#speechlysluv2beta1operationresultresulttype) | The type of this result. |
+| type | [ResultType](#operationresultresulttype) | The type of this result. |
 | text | string | The textual representation of the results. |
-| tokens | [Token](#speechlysluv2beta1token) | The tokenized representation of the result. Only available if requested in<br/>the `ProcessingConfiguration`. |
+| tokens | [Token](#token) | The tokenized representation of the result. Only available if requested in<br/>the `ProcessingConfiguration`. |
 
 
-### speechly.slu.v2beta1.Option
+### Option
 
 Option to change the default behaviour of the SLU.
 
@@ -100,7 +100,7 @@ Option to change the default behaviour of the SLU.
 | value | string | The values to set the option to. |
 
 
-### speechly.slu.v2beta1.ProcessAudioBatchConfig
+### ProcessAudioBatchConfig
 
 Describes the configuration options common for the input batch.
 
@@ -110,12 +110,12 @@ Describes the configuration options common for the input batch.
 | ---- | ---- | ----------- |
 | app_id | string | The processing context, Speechly Application ID.<br/>Optional. If not provided, the processing context will be determined<br/>from the login information. |
 | language_codes | string | The language(s) of the audio sent in the request as a BCP-47 language tag<br/>(e.g. "en-US"). Defaults to the target application language(s).<br/>Optional. |
-| processing_config | [ProcessingConfiguration](#speechlysluv2beta1processingconfiguration) | Processing configuration.<br/>Optional, defaults to transcribe. |
+| processing_config | [ProcessingConfiguration](#processingconfiguration) | Processing configuration.<br/>Optional, defaults to transcribe. |
 | batch_reference | string | Reference id for a set of related operations. For example an identifier of<br/>the source system.<br/>Optional. |
-| options | [Option](#speechlysluv2beta1option) | Additional batch specific options.<br/>Optional. |
+| options | [Option](#option) | Additional batch specific options.<br/>Optional. |
 
 
-### speechly.slu.v2beta1.ProcessAudioSourceRequest
+### ProcessAudioSourceRequest
 
 Describes a request to process audio from a pre-existing source.
 
@@ -123,11 +123,11 @@ Describes a request to process audio from a pre-existing source.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| config | [ProcessAudioBatchConfig](#speechlysluv2beta1processaudiobatchconfig) | The options shared by all of the source audios. |
-| source | [ProcessAudioSourceRequestItem](#speechlysluv2beta1processaudiosourcerequestitem) | The source audios, and their unique options. |
+| config | [ProcessAudioBatchConfig](#processaudiobatchconfig) | The options shared by all of the source audios. |
+| source | [ProcessAudioSourceRequestItem](#processaudiosourcerequestitem) | The source audios, and their unique options. |
 
 
-### speechly.slu.v2beta1.ProcessAudioSourceRequestItem
+### ProcessAudioSourceRequestItem
 
 Describes the configuration options unique to a single audio source.
 
@@ -137,12 +137,12 @@ Describes the configuration options unique to a single audio source.
 | ---- | ---- | ----------- |
 | source_url | string | The locator to the source audio.<br/>Required. |
 | destination_url | string | The locator to the result target. The payload will be `Operation` as JSON.<br/>Optional. |
-| completion_webhook | [HttpResource](#speechlysluv2beta1httpresource) | HTTP endpoint to be notified on completion of the processing. The payload<br/>will be `Operation` as JSON.<br/>Optional. |
+| completion_webhook | [HttpResource](#httpresource) | HTTP endpoint to be notified on completion of the processing. The payload<br/>will be `Operation` as JSON.<br/>Optional. |
 | reference | string | Reference id for the operation. For example an identifier of the source<br/>system.<br/>Optional. |
 | device_id | string | The device ID of the audio source, for example a microphone identifier as<br/>UUID.<br/>Optional. |
 
 
-### speechly.slu.v2beta1.ProcessAudioSourceResponse
+### ProcessAudioSourceResponse
 
 Describes a response to request to process audio from a pre-existing source.
 
@@ -150,10 +150,10 @@ Describes a response to request to process audio from a pre-existing source.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| operation | [Operation](#speechlysluv2beta1operation) | The details of the created operations. |
+| operation | [Operation](#operation) | The details of the created operations. |
 
 
-### speechly.slu.v2beta1.ProcessingConfiguration
+### ProcessingConfiguration
 
 Describes the processing options for the audio. Note that not all options are
 available for all languages or on all Payment Plans.
@@ -167,7 +167,7 @@ available for all languages or on all Payment Plans.
 | skip_transcribe | bool | The processing should not include transcribing the audio to the source<br/>language. This option should be used with translate (or other similar<br/>option) to suppress the normal Speech Recognition processing.<br/>Optional, defaults to false. |
 
 
-### speechly.slu.v2beta1.QueryStatusRequest
+### QueryStatusRequest
 
 Query the status of an operation. At least one of these must be given.
 
@@ -181,7 +181,7 @@ Query the status of an operation. At least one of these must be given.
 | batch_reference | string | Reference ID of a batch. |
 
 
-### speechly.slu.v2beta1.QueryStatusResponse
+### QueryStatusResponse
 
 Describes the statuses of the queried operations.
 
@@ -189,10 +189,10 @@ Describes the statuses of the queried operations.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| operation | [Operation](#speechlysluv2beta1operation) | The details of the audio processing operation. |
+| operation | [Operation](#operation) | The details of the audio processing operation. |
 
 
-### speechly.slu.v2beta1.Token
+### Token
 
 Describes a single meaningful unit of speech. In languages that use spaces to
 separate words, closely maps to those words.
@@ -209,13 +209,13 @@ separate words, closely maps to those words.
 
 ## Enums
 
-- [HttpResource.Method](#speechly.slu.v2beta1.HttpResource.Method)
-- [Operation.ErrorCode](#speechly.slu.v2beta1.Operation.ErrorCode)
-- [Operation.Status](#speechly.slu.v2beta1.Operation.Status)
-- [OperationResult.ResultType](#speechly.slu.v2beta1.OperationResult.ResultType)
+- [HttpResource.Method](#HttpResource.Method)
+- [Operation.ErrorCode](#Operation.ErrorCode)
+- [Operation.Status](#Operation.Status)
+- [OperationResult.ResultType](#OperationResult.ResultType)
 
 
-### speechly.slu.v2beta1.HttpResource.Method
+### HttpResource.Method
 
 The HTTP method to use when accessing an HTTP resource.
 
@@ -229,7 +229,7 @@ The HTTP method to use when accessing an HTTP resource.
 | METHOD_PUT | 3 | Use HTTP PUT. |
 
 
-### speechly.slu.v2beta1.Operation.ErrorCode
+### Operation.ErrorCode
 
 Contains a machine readable error type if the operation status is
 STATUS_ERROR.
@@ -247,7 +247,7 @@ STATUS_ERROR.
 | ERROR_INVALID_AUDIO | 6 | The provided audio was not in a supported format. |
 
 
-### speechly.slu.v2beta1.Operation.Status
+### Operation.Status
 
 The status of the operation.
 
@@ -261,7 +261,7 @@ The status of the operation.
 | STATUS_ERROR | 3 | The processing failed. Error reason is available. |
 
 
-### speechly.slu.v2beta1.OperationResult.ResultType
+### OperationResult.ResultType
 
 The possible types for the operation result.
 

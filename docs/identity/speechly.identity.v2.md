@@ -8,17 +8,17 @@ APIs.
 
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
-| Login | [LoginRequest](#speechlyidentityv2loginrequest) | [LoginResponse](#speechlyidentityv2loginresponse) | Performs a login of specific Speechly application.<br/>Returns an access token which can be used to access the Speechly API. |
+| Login | [LoginRequest](#loginrequest) | [LoginResponse](#loginresponse) | Performs a login of specific Speechly application.<br/>Returns an access token which can be used to access the Speechly API. |
 
 ## Messages
 
-- [ApplicationScope](#speechly.identity.v2.ApplicationScope)
-- [LoginRequest](#speechly.identity.v2.LoginRequest)
-- [LoginResponse](#speechly.identity.v2.LoginResponse)
-- [ProjectScope](#speechly.identity.v2.ProjectScope)
+- [ApplicationScope](#applicationscope)
+- [LoginRequest](#loginrequest)
+- [LoginResponse](#loginresponse)
+- [ProjectScope](#projectscope)
 
 
-### speechly.identity.v2.ApplicationScope
+### ApplicationScope
 
 Used as the scope in `LoginRequest` when the access is for a single Speechly application.
 
@@ -30,7 +30,7 @@ Used as the scope in `LoginRequest` when the access is for a single Speechly app
 | config_id | string | Define a specific model configuration to use.<br/>Defaults to the application's latest configuration. |
 
 
-### speechly.identity.v2.LoginRequest
+### LoginRequest
 
 Top-level message sent by the client for the `Login` method.
 
@@ -39,11 +39,11 @@ Top-level message sent by the client for the `Login` method.
 | name | type | description |
 | ---- | ---- | ----------- |
 | device_id | string | A unique end-user device identifier.<br/>Must be a `UUID`.<br/>Required. |
-| application | [ApplicationScope](#speechlyidentityv2applicationscope) | Login scope application: use the given application context for all<br/>utterances. |
-| project | [ProjectScope](#speechlyidentityv2projectscope) | Login scope project: define the target application per utterance.<br/>The target applications must be located in the same project. |
+| application | [ApplicationScope](#applicationscope) | Login scope application: use the given application context for all<br/>utterances. |
+| project | [ProjectScope](#projectscope) | Login scope project: define the target application per utterance.<br/>The target applications must be located in the same project. |
 
 
-### speechly.identity.v2.LoginResponse
+### LoginResponse
 
 Top-level message returned by the server for the `Login` method.
 
@@ -57,7 +57,7 @@ Top-level message returned by the server for the `Login` method.
 | expires_at | string | ISO-formatted UTC timestamp of the expiration time of the returned token. |
 
 
-### speechly.identity.v2.ProjectScope
+### ProjectScope
 
 Used as the scope in `LoginRequest` when access is required for every application in a Speechly project.
 

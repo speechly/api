@@ -16,32 +16,32 @@ stream, err := speechlySLUClient.Stream(ctx)
 
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
-| Stream | [SLURequest stream](#speechlysluv1slurequest) | [SLUResponse stream](#speechlysluv1sluresponse) | Performs bidirectional streaming speech recognition: receive results while sending audio.<br/><br/>First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.<br/><br/>This RPC can handle multiple logical audio segments with the use of `SLUEvent_START` and `SLUEvent_STOP` messages,<br/>which are used to indicate the beginning and the end of a segment.<br/><br/>A typical call timeline will look like this:<br/><br/>1. Client starts the RPC.<br/>2. Client sends `SLUConfig` message with audio configuration.<br/>3. Client sends `SLUEvent.START`.<br/>4. Client sends audio and receives responses from the server.<br/>5. Client sends `SLUEvent.STOP`.<br/>6. Client sends `SLUEvent.START`.<br/>7. Client sends audio and receives responses from the server.<br/>8. Client sends `SLUEvent.STOP`.<br/>9. Client closes the stream and receives responses from the server until EOF is received.<br/><br/>NB: the client does not have to wait until the server acknowledges the start / stop events,<br/>this is done asynchronously. The client can deduplicate responses based on the audio context ID,<br/>which will be present in every response message. |
+| Stream | [SLURequest stream](#slurequest) | [SLUResponse stream](#sluresponse) | Performs bidirectional streaming speech recognition: receive results while sending audio.<br/><br/>First request MUST be an SLUConfig message with the configuration that describes the audio format being sent.<br/><br/>This RPC can handle multiple logical audio segments with the use of `SLUEvent_START` and `SLUEvent_STOP` messages,<br/>which are used to indicate the beginning and the end of a segment.<br/><br/>A typical call timeline will look like this:<br/><br/>1. Client starts the RPC.<br/>2. Client sends `SLUConfig` message with audio configuration.<br/>3. Client sends `SLUEvent.START`.<br/>4. Client sends audio and receives responses from the server.<br/>5. Client sends `SLUEvent.STOP`.<br/>6. Client sends `SLUEvent.START`.<br/>7. Client sends audio and receives responses from the server.<br/>8. Client sends `SLUEvent.STOP`.<br/>9. Client closes the stream and receives responses from the server until EOF is received.<br/><br/>NB: the client does not have to wait until the server acknowledges the start / stop events,<br/>this is done asynchronously. The client can deduplicate responses based on the audio context ID,<br/>which will be present in every response message. |
 
 ## Messages
 
-- [RoundTripMeasurementRequest](#speechly.slu.v1.RoundTripMeasurementRequest)
-- [RoundTripMeasurementResponse](#speechly.slu.v1.RoundTripMeasurementResponse)
-- [SLUConfig](#speechly.slu.v1.SLUConfig)
-- [SLUConfig.Option](#speechly.slu.v1.SLUConfig.Option)
-- [SLUEntity](#speechly.slu.v1.SLUEntity)
-- [SLUError](#speechly.slu.v1.SLUError)
-- [SLUEvent](#speechly.slu.v1.SLUEvent)
-- [SLUFinished](#speechly.slu.v1.SLUFinished)
-- [SLUIntent](#speechly.slu.v1.SLUIntent)
-- [SLURequest](#speechly.slu.v1.SLURequest)
-- [SLUResponse](#speechly.slu.v1.SLUResponse)
-- [SLUSegmentEnd](#speechly.slu.v1.SLUSegmentEnd)
-- [SLUStart](#speechly.slu.v1.SLUStart)
-- [SLUStart.Option](#speechly.slu.v1.SLUStart.Option)
-- [SLUStarted](#speechly.slu.v1.SLUStarted)
-- [SLUStop](#speechly.slu.v1.SLUStop)
-- [SLUTentativeEntities](#speechly.slu.v1.SLUTentativeEntities)
-- [SLUTentativeTranscript](#speechly.slu.v1.SLUTentativeTranscript)
-- [SLUTranscript](#speechly.slu.v1.SLUTranscript)
+- [RoundTripMeasurementRequest](#roundtripmeasurementrequest)
+- [RoundTripMeasurementResponse](#roundtripmeasurementresponse)
+- [SLUConfig](#sluconfig)
+- [SLUConfig.Option](#sluconfig.option)
+- [SLUEntity](#sluentity)
+- [SLUError](#sluerror)
+- [SLUEvent](#sluevent)
+- [SLUFinished](#slufinished)
+- [SLUIntent](#sluintent)
+- [SLURequest](#slurequest)
+- [SLUResponse](#sluresponse)
+- [SLUSegmentEnd](#slusegmentend)
+- [SLUStart](#slustart)
+- [SLUStart.Option](#slustart.option)
+- [SLUStarted](#slustarted)
+- [SLUStop](#slustop)
+- [SLUTentativeEntities](#slutentativeentities)
+- [SLUTentativeTranscript](#slutentativetranscript)
+- [SLUTranscript](#slutranscript)
 
 
-### speechly.slu.v1.RoundTripMeasurementRequest
+### RoundTripMeasurementRequest
 
 Network latency measurement request. Sent from the server to measure the time it takes for the client
 to receive a message and the server to receive the client's response. Also known as RTT.
@@ -53,7 +53,7 @@ to receive a message and the server to receive the client's response. Also known
 | id | int32 | Measurement id. Multiple measurements can be sent during one connection, so the response should contain<br/>the same `id` as in the request. |
 
 
-### speechly.slu.v1.RoundTripMeasurementResponse
+### RoundTripMeasurementResponse
 
 Response sent from the client immediately after seeing the RoundTripMeasurementRequest.
 
@@ -64,7 +64,7 @@ Response sent from the client immediately after seeing the RoundTripMeasurementR
 | id | int32 | `id` should match the request's id. |
 
 
-### speechly.slu.v1.SLUConfig
+### SLUConfig
 
 Describes the configuration of the audio sent by the client.
 Currently the API only supports single-channel Linear PCM with sample rate of 16 kHz.
@@ -73,14 +73,14 @@ Currently the API only supports single-channel Linear PCM with sample rate of 16
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| encoding | [Encoding](#speechlysluv1sluconfigencoding) | The encoding of the audio data sent in the stream.<br/>Required. |
+| encoding | [Encoding](#sluconfigencoding) | The encoding of the audio data sent in the stream.<br/>Required. |
 | channels | int32 | The number of channels in the input audio data.<br/>Required. |
 | sample_rate_hertz | int32 | Sample rate in Hertz of the audio data sent in the stream.<br/>Required. |
 | language_code | string | The language of the audio sent in the stream as a BCP-47 language tag (e.g. "en-US").<br/>Defaults to the target application language. |
-| options | [Option](#speechlysluv1sluconfigoption) | Special options to change the default behaviour of the SLU for all logical audio segment. |
+| options | [Option](#sluconfigoption) | Special options to change the default behaviour of the SLU for all logical audio segment. |
 
 
-### speechly.slu.v1.SLUConfig.Option
+### SLUConfig.Option
 
 Option to change the default behaviour of the SLU.
 
@@ -92,7 +92,7 @@ Option to change the default behaviour of the SLU.
 | value | string | The values to set the option to. |
 
 
-### speechly.slu.v1.SLUEntity
+### SLUEntity
 
 Describes an SLU entity.
 
@@ -119,7 +119,7 @@ The start index is inclusive, but the end index is exclusive, i.e. the interval 
 | end_position | int32 | The finishing index of the entity in the phrase, maps to the `index` field in `SLUTranscript`.<br/>Exclusive. |
 
 
-### speechly.slu.v1.SLUError
+### SLUError
 
 Describes the error that happened when processing an audio context.
 DEPRECATED: Will not be returned. Any errors are returned as gRCP status codes with detail messages.
@@ -132,7 +132,7 @@ DEPRECATED: Will not be returned. Any errors are returned as gRCP status codes w
 | message | string | Error message. |
 
 
-### speechly.slu.v1.SLUEvent
+### SLUEvent
 
 Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
 
@@ -140,11 +140,11 @@ Indicates the beginning and the end of a logical audio segment (audio context in
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| event | [Event](#speechlysluv1slueventevent) | The event type being sent. Required. |
+| event | [Event](#slueventevent) | The event type being sent. Required. |
 | app_id | string | The `appId` for the utterance.<br/>Required in the `START` event if the authorization token is *project based*. The<br/>given application must be part of the project set in the token.<br/>Not required if the authorization token is *application based*. |
 
 
-### speechly.slu.v1.SLUFinished
+### SLUFinished
 
 Indicates that the API has stopped processing current audio context.
 It guarantees that no new messages for that context will be sent by the server.
@@ -153,10 +153,10 @@ It guarantees that no new messages for that context will be sent by the server.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| error | [SLUError](#speechlysluv1sluerror) | DEPRECATED<br/>An error which has happened when processing the context, if any. |
+| error | [SLUError](#sluerror) | DEPRECATED<br/>An error which has happened when processing the context, if any. |
 
 
-### speechly.slu.v1.SLUIntent
+### SLUIntent
 
 Describes an SLU intent.
 There can be only one intent per SLU segment.
@@ -168,7 +168,7 @@ There can be only one intent per SLU segment.
 | intent | string | The value of the intent, as defined in SAL. |
 
 
-### speechly.slu.v1.SLURequest
+### SLURequest
 
 Top-level message sent by the client for the `Stream` method.
 
@@ -176,15 +176,15 @@ Top-level message sent by the client for the `Stream` method.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| config | [SLUConfig](#speechlysluv1sluconfig) | Describes the configuration of the audio sent by the client.<br/>MUST be the first message sent to the stream. |
-| event | [SLUEvent](#speechlysluv1sluevent) | Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a start event and concluded with a stop event,<br/>otherwise the server WILL terminate the stream with an error.<br/>DEPRECATED in favour of SLUStart and SLUStop |
+| config | [SLUConfig](#sluconfig) | Describes the configuration of the audio sent by the client.<br/>MUST be the first message sent to the stream. |
+| event | [SLUEvent](#sluevent) | Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a start event and concluded with a stop event,<br/>otherwise the server WILL terminate the stream with an error.<br/>DEPRECATED in favour of SLUStart and SLUStop |
 | audio | bytes | Contains a chunk of the audio being streamed. |
-| rtt_response | [RoundTripMeasurementResponse](#speechlysluv1roundtripmeasurementresponse) | Response to an RTT measurement request from server. Should be sent immediately<br/>after receiving the RoundTripMeasurementRequest in the stream.<br/>If ignored, no round trip measurements are made. |
-| start | [SLUStart](#speechlysluv1slustart) | Indicates the beginning of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a SLUStart, (or the deprecated SLUEvent start event)<br/>otherwise the server WILL terminate the stream with an error. |
-| stop | [SLUStop](#speechlysluv1slustop) | Indicates the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be concluded with a SLUStop, (or the deprecated SLUEvent stop event)<br/>otherwise the server WILL terminate the stream with an error. |
+| rtt_response | [RoundTripMeasurementResponse](#roundtripmeasurementresponse) | Response to an RTT measurement request from server. Should be sent immediately<br/>after receiving the RoundTripMeasurementRequest in the stream.<br/>If ignored, no round trip measurements are made. |
+| start | [SLUStart](#slustart) | Indicates the beginning of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be preceded by a SLUStart, (or the deprecated SLUEvent start event)<br/>otherwise the server WILL terminate the stream with an error. |
+| stop | [SLUStop](#slustop) | Indicates the end of a logical audio segment (audio context in Speechly terms).<br/>A context MUST be concluded with a SLUStop, (or the deprecated SLUEvent stop event)<br/>otherwise the server WILL terminate the stream with an error. |
 
 
-### speechly.slu.v1.SLUResponse
+### SLUResponse
 
 Top-level message sent by the server for the `Stream` method.
 
@@ -194,19 +194,19 @@ Top-level message sent by the server for the `Stream` method.
 | ---- | ---- | ----------- |
 | audio_context | string | The ID of the audio context that this response belongs to. |
 | segment_id | int32 | The ID of the SLU segment that this response belongs to.<br/>This will be 0 for SLUStarted and SLUFinished responses. |
-| transcript | [SLUTranscript](#speechlysluv1slutranscript) | Final SLU transcript. |
-| entity | [SLUEntity](#speechlysluv1sluentity) | Final SLU entity. |
-| intent | [SLUIntent](#speechlysluv1sluintent) | Final SLU intent. |
-| segment_end | [SLUSegmentEnd](#speechlysluv1slusegmentend) | A special marker message that indicates that the segment with specified `segment_id`<br/>has been finalised and no new responses belonging to that segment will be sent.<br/>The client is expected to discard any tentative responses in this segment. |
-| tentative_transcript | [SLUTentativeTranscript](#speechlysluv1slutentativetranscript) | Tentative SLU transcript. |
-| tentative_entities | [SLUTentativeEntities](#speechlysluv1slutentativeentities) | Tentative SLU entities. |
-| tentative_intent | [SLUIntent](#speechlysluv1sluintent) | Tentative SLU intent. |
-| started | [SLUStarted](#speechlysluv1slustarted) | A special marker message that indicates that the audio context with specified `audio_context` id<br/>has been started by the API and all audio data sent by the client will be processed in that context.<br/>This message is an asynchronous acknowledgement for client-side SLUEvent_START message. |
-| finished | [SLUFinished](#speechlysluv1slufinished) | A special marker message that indicates that the audio context with specified `audio_context` id<br/>has been stopped by the API and no new responses for that context will be sent.<br/>The client is expected to discard any non-finalised segments.<br/>This message is an asynchronous acknowledgement for client-side SLUEvent_STOP message. |
-| rtt_request | [RoundTripMeasurementRequest](#speechlysluv1roundtripmeasurementrequest) | Initiates a round trip network latency measurement. The response handler should respond to this<br/>message by sending a RoundTripMeasurementResponse in the request stream.<br/>The measurement is stored server side and used to minimise the latency in the future. |
+| transcript | [SLUTranscript](#slutranscript) | Final SLU transcript. |
+| entity | [SLUEntity](#sluentity) | Final SLU entity. |
+| intent | [SLUIntent](#sluintent) | Final SLU intent. |
+| segment_end | [SLUSegmentEnd](#slusegmentend) | A special marker message that indicates that the segment with specified `segment_id`<br/>has been finalised and no new responses belonging to that segment will be sent.<br/>The client is expected to discard any tentative responses in this segment. |
+| tentative_transcript | [SLUTentativeTranscript](#slutentativetranscript) | Tentative SLU transcript. |
+| tentative_entities | [SLUTentativeEntities](#slutentativeentities) | Tentative SLU entities. |
+| tentative_intent | [SLUIntent](#sluintent) | Tentative SLU intent. |
+| started | [SLUStarted](#slustarted) | A special marker message that indicates that the audio context with specified `audio_context` id<br/>has been started by the API and all audio data sent by the client will be processed in that context.<br/>This message is an asynchronous acknowledgement for client-side SLUEvent_START message. |
+| finished | [SLUFinished](#slufinished) | A special marker message that indicates that the audio context with specified `audio_context` id<br/>has been stopped by the API and no new responses for that context will be sent.<br/>The client is expected to discard any non-finalised segments.<br/>This message is an asynchronous acknowledgement for client-side SLUEvent_STOP message. |
+| rtt_request | [RoundTripMeasurementRequest](#roundtripmeasurementrequest) | Initiates a round trip network latency measurement. The response handler should respond to this<br/>message by sending a RoundTripMeasurementResponse in the request stream.<br/>The measurement is stored server side and used to minimise the latency in the future. |
 
 
-### speechly.slu.v1.SLUSegmentEnd
+### SLUSegmentEnd
 
 Indicates the end of the segment.
 Upon receiving this, the segment should be finalised and all future messages for that segment (if any) discarded.
@@ -218,7 +218,7 @@ Upon receiving this, the segment should be finalised and all future messages for
 
 
 
-### speechly.slu.v1.SLUStart
+### SLUStart
 
 Indicates the beginning and the end of a logical audio segment (audio context in Speechly terms).
 
@@ -227,10 +227,10 @@ Indicates the beginning and the end of a logical audio segment (audio context in
 | name | type | description |
 | ---- | ---- | ----------- |
 | app_id | string | The `appId` for the utterance.<br/>Required if the authorization token is *project based*. The<br/>given application must be part of the project set in the token.<br/>Not required if the authorization token is *application based*. |
-| options | [Option](#speechlysluv1slustartoption) | Special options to change the default behaviour of the SLU for this audio segment. |
+| options | [Option](#slustartoption) | Special options to change the default behaviour of the SLU for this audio segment. |
 
 
-### speechly.slu.v1.SLUStart.Option
+### SLUStart.Option
 
 Option to change the default behaviour of the SLU.
 
@@ -242,7 +242,7 @@ Option to change the default behaviour of the SLU.
 | value | string | The values to set the option to. |
 
 
-### speechly.slu.v1.SLUStarted
+### SLUStarted
 
 Indicates that the API has started processing the portion of audio as new audio context.
 This does not guarantee that the server will not send any more messages for the previous audio context.
@@ -254,7 +254,7 @@ This does not guarantee that the server will not send any more messages for the 
 
 
 
-### speechly.slu.v1.SLUStop
+### SLUStop
 
 Indicates the end of a logical audio segment (audio context in Speechly terms).
 
@@ -265,7 +265,7 @@ Indicates the end of a logical audio segment (audio context in Speechly terms).
 
 
 
-### speechly.slu.v1.SLUTentativeEntities
+### SLUTentativeEntities
 
 Describes tentative entities.
 
@@ -273,10 +273,10 @@ Describes tentative entities.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| tentative_entities | [SLUEntity](#speechlysluv1sluentity) | A list of entities, which must be treated as tentative.<br/><br/>This is not an aggregate of all entities in the audio,<br/>but rather it ONLY contains entities that have not been finalised yet.<br/><br/>e.g. if at the start there are two tentatively recognised entities - ["burger restaurant", "tomorrow"]<br/>but then the API marks "burger restaurant" as final and recognises a new tentative entity "for two",<br/>this will contain ["tomorrow", "for two"]. |
+| tentative_entities | [SLUEntity](#sluentity) | A list of entities, which must be treated as tentative.<br/><br/>This is not an aggregate of all entities in the audio,<br/>but rather it ONLY contains entities that have not been finalised yet.<br/><br/>e.g. if at the start there are two tentatively recognised entities - ["burger restaurant", "tomorrow"]<br/>but then the API marks "burger restaurant" as final and recognises a new tentative entity "for two",<br/>this will contain ["tomorrow", "for two"]. |
 
 
-### speechly.slu.v1.SLUTentativeTranscript
+### SLUTentativeTranscript
 
 Describes a tentative transcript.
 
@@ -289,10 +289,10 @@ until the API processes the audio completely.
 | name | type | description |
 | ---- | ---- | ----------- |
 | tentative_transcript | string | Aggregated tentative transcript from the beginning of the audio until current moment in time.<br/>Consecutive transcripts will have this value appended to,<br/>e.g. if in the first message it's "find me", in the next it may be "find me a t-shirt". |
-| tentative_words | [SLUTranscript](#speechlysluv1slutranscript) | A list of individual words which compose `tentative_transcript`.<br/>All words must be considered tentative. |
+| tentative_words | [SLUTranscript](#slutranscript) | A list of individual words which compose `tentative_transcript`.<br/>All words must be considered tentative. |
 
 
-### speechly.slu.v1.SLUTranscript
+### SLUTranscript
 
 Describes an SLU transcript.
 A transcript is a speech-to-text element of the phrase, i.e. a word recognised from the audio.
@@ -309,11 +309,11 @@ A transcript is a speech-to-text element of the phrase, i.e. a word recognised f
 
 ## Enums
 
-- [SLUConfig.Encoding](#speechly.slu.v1.SLUConfig.Encoding)
-- [SLUEvent.Event](#speechly.slu.v1.SLUEvent.Event)
+- [SLUConfig.Encoding](#SLUConfig.Encoding)
+- [SLUEvent.Event](#SLUEvent.Event)
 
 
-### speechly.slu.v1.SLUConfig.Encoding
+### SLUConfig.Encoding
 
 The encoding of the audio data sent in the stream.
 
@@ -324,7 +324,7 @@ The encoding of the audio data sent in the stream.
 | LINEAR16 | 0 | Uncompressed 16-bit signed little-endian samples (Linear PCM). |
 
 
-### speechly.slu.v1.SLUEvent.Event
+### SLUEvent.Event
 
 The event type value.
 

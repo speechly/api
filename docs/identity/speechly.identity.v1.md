@@ -7,15 +7,15 @@ Speechly Identity API is used for creating access tokens for the Speechly APIs.
 
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
-| Login | [LoginRequest](#speechlyidentityv1loginrequest) | [LoginResponse](#speechlyidentityv1loginresponse) | Performs a login of specific Speechly application.<br/>Returns an access token, that can be used to access Speechly SLU API. |
+| Login | [LoginRequest](#loginrequest) | [LoginResponse](#loginresponse) | Performs a login of specific Speechly application.<br/>Returns an access token, that can be used to access Speechly SLU API. |
 
 ## Messages
 
-- [LoginRequest](#speechly.identity.v1.LoginRequest)
-- [LoginResponse](#speechly.identity.v1.LoginResponse)
+- [LoginRequest](#loginrequest)
+- [LoginResponse](#loginresponse)
 
 
-### speechly.identity.v1.LoginRequest
+### LoginRequest
 
 Top-level message sent by the client for the `Login` method.
 
@@ -29,7 +29,7 @@ Top-level message sent by the client for the `Login` method.
 | config_id | string | Define a specific model configuration to use.<br/>Defaults to the application's latest configuration. |
 
 
-### speechly.identity.v1.LoginResponse
+### LoginResponse
 
 Top-level message sent by the server for the `Login` method.
 
