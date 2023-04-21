@@ -14,16 +14,23 @@ import "google/protobuf/duration.proto";
 
 // Describes full properties of an HTTP endpoint.
 message HttpResource {
-  // The HTTP method to use.
+  // The HTTP method to use when accessing an HTTP resource.
   enum Method {
+    // Method is not given, and default method is used for requests.
+    // Data fetches use GET, and result sending POST.
     METHOD_UNSPECIFIED = 0;
+    // Use HTTP GET.
     METHOD_GET = 1;
+    // Use HTTP POST.
     METHOD_POST = 2;
+    // Use HTTP PUT.
     METHOD_PUT = 3;
   }
-  // A single header value.
+  // A single header value in an HTTP request.
   message Header {
+    // Name of the header to set in request.
     string name = 1;
+    // Value of the given header in request.
     string value = 2;
   }
   // URL of the endpoint (protocol://server/path)
@@ -48,10 +55,10 @@ message ProcessAudioBatchConfig {
   // Optional.
   repeated string language_codes = 2;
   // Processing configuration.
-  // Required.
+  // Optional, defaults to transcribe.
   ProcessingConfiguration processing_config = 3;
   // Reference id for a set of related operations. For example an identifier of
-  // the source system. Optional.
+  // the source system.
   // Optional.
   string batch_reference = 4;
   // Additional batch specific options.
@@ -86,15 +93,15 @@ message ProcessAudioSourceRequestItem {
 message ProcessingConfiguration {
   // The processing should include the token level transcription and
   // determination of time stamps for tokens.
-  // Optional.
+  // Optional, defaults to false.
   bool tokenize = 1;
   // The processing should include translating the audio to English.
-  // Optional.
+  // Optional, defaults to false.
   bool translate = 2;
   // The processing should not include transcribing the audio to the source
   // language. This option should be used with translate (or other similar
   // option) to suppress the normal Speech Recognition processing.
-  // Optional.
+  // Optional, defaults to false.
   bool skip_transcribe = 3;
 }
 
@@ -133,6 +140,7 @@ message Operation {
   // Contains a machine readable error type if the operation status is
   // STATUS_ERROR.
   enum ErrorCode {
+    // No error is set.
     ERROR_UNSPECIFIED = 0;
     // The input was in a language that was not supported in this context.
     ERROR_UNSUPPORTED_LANGUAGE = 1;
@@ -147,9 +155,11 @@ message Operation {
     // The provided audio was not in a supported format.
     ERROR_INVALID_AUDIO = 6;
   }
+  // Machine-readable status for the operation.
+  // Only set if operation status is STATUS_ERROR.
   ErrorCode error_code = 18;
-  // Contains a human readable description of the error if the operation status
-  // is STATUS_ERROR.
+  // Contains a human readable description of the error.
+  // Only set if operation status is STATUS_ERROR.
   string error_description = 19;
   // The locator to the source audio.
   string source_url = 20;
@@ -161,6 +171,7 @@ message Operation {
 message OperationResult {
   // The possible types for the operation result.
   enum ResultType {
+    // Result type is not set.
     RESULT_TYPE_UNSPECIFIED = 0;
     // The actual words of the audio with no additional processing applied.
     RESULT_TYPE_TRANSCRIPT_LEXICAL = 1;
