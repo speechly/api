@@ -24,7 +24,7 @@ Make sure to check language-specific READMEs.
 
 See the language specific examples in the respective subdirectories for more detailed description about using the generated code. The following describes the basic API flow of a Speechly client, which sends speech to the API and receives results at the same time.
 
-An [API Reference](docs/README.md) is generated from the protobuf source files, which contains detailed documentation about the APIs.
+An [API Reference](API.md) is generated from the protobuf source files, which contains detailed documentation about the APIs.
 
 All gRPC connections to Speechly APIs must use secure channels, meaning that the connection is done using TLS encryption. The secure channel should be opened to `api.speechly.com:443`. This channel can then be used to access all of the APIs.
 

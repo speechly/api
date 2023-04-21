@@ -6,7 +6,7 @@ CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) githubchang
 PYTHON    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) python:3-slim python
 
 SUBDIRS   = python javascript dotnet java
-APIREFS   = docs/slu.md docs/wlu.md docs/batch.md docs/identity.md
+APIREFS   = docs/slu.json docs/wlu.json docs/batch.json docs/identity.json
 
 test:
 	@$(PROTOTOOL) lint
@@ -23,10 +23,8 @@ endif
 docs/%.json: $(PROTOS)
 	@$(PROTODOC) --proto_path=proto --doc_out=docs --doc_opt=json,$*.json $(shell find proto/speechly/ -type f -name $**.proto)
 
-docs/%.md: docs/%.json
-	@$(PYTHON) docs/gendoc.py docs/$*.json > $@
-
 docs: $(APIREFS)
+	@$(PYTHON) docs/gendoc.py $(wildcard docs/*.json) docs/
 
 deploy: $(SUBDIRS)
 

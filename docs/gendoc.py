@@ -1,9 +1,10 @@
 import sys
 import json
-
+import os.path
+import shutil
 
 service_template = """
-# <a name="{fullName}">{fullName}</a>
+# {fullName}
 
 {description}
 
@@ -23,7 +24,7 @@ messages_template = """
 """
 
 message_template = """
-### <a name="{fullName}">{name}</a>
+### {name}
 
 {description}
 
@@ -43,7 +44,7 @@ enums_template = """
 """
 
 enum_template = """
-### <a name="{fullName}">{name}</a>
+### {name}
 
 {description}
 
@@ -54,14 +55,14 @@ enum_template = """
 {values_table}
 """
 
-type_template = "[{type}](#{fullType})"
+type_template = "[{type}](#{type})"
 
 field_template = """
 | {name} | {type} | {description} |
 """.strip()
 
 method_template = """
-| {name} | [{request}](#{requestFullType}) | [{response}](#{responseFullType}) | {description} |
+| {name} | [{request}](#{requestType}) | [{response}](#{responseType}) | {description} |
 """.strip()
 
 
@@ -76,10 +77,10 @@ def service(s):
                 name=m["name"],
                 request=m["requestLongType"]
                 + (" stream" if m["requestStreaming"] else ""),
-                requestFullType=m["requestFullType"],
+                requestType=m["requestLongType"].replace(".", "").lower(),
                 response=m["responseLongType"]
                 + (" stream" if m["responseStreaming"] else ""),
-                responseFullType=m["responseFullType"],
+                responseType=m["responseLongType"].replace(".", "").lower(),
                 description=format_for_table(m["description"]),
             )
             for m in s["methods"]
@@ -92,10 +93,6 @@ def service(s):
     )
 
 
-def is_scalar(f: dict) -> bool:
-    return f["type"] in ["string", "int64", "bool"]
-
-
 def message(m, scalars):
     field_table = "\n".join(
         [
@@ -103,7 +100,7 @@ def message(m, scalars):
                 name=f["name"],
                 type=f["type"]
                 if f["type"] in scalars
-                else f"[{f['type']}](#{f['fullType']})",
+                else f"[{f['type']}](#{f['longType'].replace('.', '').lower()})",
                 description=format_for_table(f["description"]),
             )
             for f in m["fields"]
@@ -111,7 +108,6 @@ def message(m, scalars):
     )
     return message_template.format(
         name=m["longName"],
-        fullName=m["fullName"],
         description=m["description"],
         field_table=field_table,
     )
@@ -126,19 +122,19 @@ def enum(e):
     )
     return enum_template.format(
         name=e["longName"],
-        fullName=e["fullName"],
         description=e["description"],
         values_table=values_table,
     )
 
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        raise Exception(f"Single JSON doc file required as parameter, got {sys.argv}")
-
-    with open(sys.argv[1], "r") as fp:
+def write_docs(source, dest):
+    with open(source, "r") as fp:
         doc = json.load(fp)
-
+    groupname = os.path.splitext(os.path.basename(source))[0]
+    dest = os.path.join(dest, groupname)
+    print("process", source, "to", dest)
+    shutil.rmtree(dest, ignore_errors=True)
+    os.makedirs(dest)
     packages = {}
     for f in doc["files"]:
         p = packages.get(
@@ -152,21 +148,40 @@ if __name__ == "__main__":
         p["enums"] += f["enums"]
         packages[f["package"]] = p
     scalars = set(s["protoType"] for s in doc["scalarValueTypes"])
-    doc = ""
+
+    docs = {}
     for name, p in packages.items():
-        if name in ["speechly.identity.v1"]:
-            continue
+        # if name in ["speechly.identity.v1"]:
+        #     continue
+        doc = docs.get(name, "")
         doc += "\n".join(
             [service(s) for s in sorted(p["services"], key=lambda x: x["name"])]
         )
         if p["messages"]:
             messages = sorted(p["messages"], key=lambda x: x["longName"])
-            toc = "\n".join(f'- [{m["longName"]}](#{m["fullName"]})' for m in messages)
+            toc = "\n".join(
+                f'- [{m["longName"]}](#{m["longName"].lower()})' for m in messages
+            )
             msgs = "\n".join(message(m, scalars) for m in messages)
             doc += messages_template.format(messages_toc=toc, messages=msgs)
         if p["enums"]:
             enums = sorted(p["enums"], key=lambda x: x["longName"])
-            toc = "\n".join(f'- [{e["longName"]}](#{e["fullName"]})' for e in enums)
+            toc = "\n".join(f'- [{e["longName"]}](#{e["longName"]})' for e in enums)
             es = "\n".join(enum(e) for e in enums)
             doc += enums_template.format(enums_toc=toc, enums=es)
-    print(doc)
+        docs[name] = doc
+
+    for name, doc in docs.items():
+        with open(os.path.join(dest, name + ".md"), "w") as f:
+            f.write(doc)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        raise Exception(
+            f"at least groupname, one JSON doc file, and destination directory required as parameter, got {sys.argv[1:]}"
+        )
+    sources = sys.argv[1:-1]
+    dest = sys.argv[-1]
+    for s in sources:
+        write_docs(s, dest)
