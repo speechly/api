@@ -3,8 +3,7 @@ import json
 
 
 service_template = """
-<a name="{fullName}"></a>
-# {fullName}
+# <a name="{fullName}">{fullName}</a>
 
 {description}
 
@@ -24,8 +23,7 @@ messages_template = """
 """
 
 message_template = """
-<a name="{fullName}"></a>
-### {name}
+### <a name="{fullName}">{name}</a>
 
 {description}
 
@@ -45,8 +43,7 @@ enums_template = """
 """
 
 enum_template = """
-<a name="{fullName}"></a>
-### {name}
+### <a name="{fullName}">{name}</a>
 
 {description}
 
@@ -57,8 +54,10 @@ enum_template = """
 {values_table}
 """
 
+type_template = "[{type}](#{fullType})"
+
 field_template = """
-| {name} | [{type}](#{fullType}) | {description} |
+| {name} | {type} | {description} |
 """.strip()
 
 method_template = """
@@ -93,13 +92,16 @@ def service(s):
     )
 
 
+def is_scalar(f: dict) -> bool:
+    return f["type"] in ["string", "int64", "bool"]
+
+
 def message(m):
     field_table = "\n".join(
         [
             field_template.format(
                 name=f["name"],
-                type=f["type"],
-                fullType=f["fullType"],
+                type=f["type"] if is_scalar(f) else f"[{f['type']}](#{f['fullType']})",
                 description=format_for_table(f["description"]),
             )
             for f in m["fields"]
@@ -115,7 +117,10 @@ def message(m):
 
 def enum(e):
     values_table = "\n".join(
-        [f'| {v["name"]} | {v["number"]} | {format_for_table(v["description"])} |' for v in e["values"]]
+        [
+            f'| {v["name"]} | {v["number"]} | {format_for_table(v["description"])} |'
+            for v in e["values"]
+        ]
     )
     return enum_template.format(
         name=e["longName"],
