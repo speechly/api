@@ -143,3 +143,81 @@ Top-level message sent by the server for the `Validate` method.
 | messages | [LineReference](#speechly.sal.v1.LineReference) | A list of error / warning messages, may be empty if validation didn't find any issues. |
 
 
+## Enums
+
+- [AppSource.ContentType](#speechly.sal.v1.AppSource.ContentType)
+- [CompileResult.Result](#speechly.sal.v1.CompileResult.Result)
+- [ConvertRequest.InputFormat](#speechly.sal.v1.ConvertRequest.InputFormat)
+- [ConvertResult.Status](#speechly.sal.v1.ConvertResult.Status)
+- [LineReference.Level](#speechly.sal.v1.LineReference.Level)
+
+
+<a name="speechly.sal.v1.AppSource.ContentType"></a>
+### AppSource.ContentType
+
+Content type options.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| CONTENT_TYPE_UNSPECIFIED | 0 |  |
+| CONTENT_TYPE_YAML | 1 |  |
+| CONTENT_TYPE_TAR | 2 |  |
+
+
+<a name="speechly.sal.v1.CompileResult.Result"></a>
+### CompileResult.Result
+
+Describes the status of result.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| COMPILE_SUCCESS | 0 | Result has been successfully compiled. |
+| COMPILE_FAILURE | 1 | Result has failed to compile. |
+| COMPILE_WARNING | 2 | Result has been compiled, but with warnings. |
+
+
+<a name="speechly.sal.v1.ConvertRequest.InputFormat"></a>
+### ConvertRequest.InputFormat
+
+Describes the input format.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| FORMAT_UNKNOWN | 0 | No input format or unknown format. |
+| FORMAT_ALEXA | 1 | Input is an Alexa configuration in JSON format. |
+
+
+<a name="speechly.sal.v1.ConvertResult.Status"></a>
+### ConvertResult.Status
+
+Describes the conversion status.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| CONVERT_SUCCESS | 0 | Successful conversion without warnings. |
+| CONVERT_WARNINGS | 1 | Successful conversion, but with warnings. |
+| CONVERT_FAILED | 2 | Failed to convert. |
+
+
+<a name="speechly.sal.v1.LineReference.Level"></a>
+### LineReference.Level
+
+The level of the message.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| LEVEL_NOTE | 0 | A notice - for information only. |
+| LEVEL_WARNING | 1 | A warning, does not fail compilation or validation, but should be addressed. |
+| LEVEL_ERROR | 2 | An error, fails compilation and validation. |
+
+

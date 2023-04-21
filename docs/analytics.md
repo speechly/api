@@ -183,3 +183,75 @@ Contains a list of statistics entries for utterances, based on the requested sco
 | utterances | [Utterance](#speechly.analytics.v1.Utterance) | Sample of utterances. |
 
 
+## Enums
+
+- [Aggregation](#speechly.analytics.v1.Aggregation)
+- [ProcessingType](#speechly.analytics.v1.ProcessingType)
+- [RegisterUtteranceRequest.Status](#speechly.analytics.v1.RegisterUtteranceRequest.Status)
+- [UtteranceStatisticsRequest.Scope](#speechly.analytics.v1.UtteranceStatisticsRequest.Scope)
+
+
+<a name="speechly.analytics.v1.Aggregation"></a>
+### Aggregation
+
+Aggregation granularity.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| AGGREGATION_INVALID | 0 |  |
+| AGGREGATION_MONTHLY | 1 |  |
+| AGGREGATION_DAILY | 2 |  |
+| AGGREGATION_HOURLY | 3 |  |
+
+
+<a name="speechly.analytics.v1.ProcessingType"></a>
+### ProcessingType
+
+The various types of processing that can be applied to the audio.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| PROCESSING_TYPE_INVALID | 0 |  |
+| PROCESSING_TYPE_TRANSCRIPTION | 1 |  |
+| PROCESSING_TYPE_NLU | 2 |  |
+| PROCESSING_TYPE_LANGUAGE_DETECTION | 3 |  |
+| PROCESSING_TYPE_VAD | 4 |  |
+| PROCESSING_TYPE_TRANSLATION | 5 |  |
+| PROCESSING_TYPE_AUDIO_EVENT_DETECTION | 6 |  |
+| PROCESSING_TYPE_TONE_OF_VOICE_LABELLING | 7 |  |
+| PROCESSING_TYPE_SHALLOW_FUSION | 8 |  |
+
+
+<a name="speechly.analytics.v1.RegisterUtteranceRequest.Status"></a>
+### RegisterUtteranceRequest.Status
+
+The status of the processing.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| STATUS_INVALID | 0 | Default status is empty |
+| STATUS_SUCCESS | 1 | Processing completed successfully. |
+| STATUS_ERROR | 2 | The processing failed. |
+
+
+<a name="speechly.analytics.v1.UtteranceStatisticsRequest.Scope"></a>
+### UtteranceStatisticsRequest.Scope
+
+The scope of the returned items.
+
+#### Values
+
+| name | value | description |
+| ---- | ----- | ----------- |
+| SCOPE_INVALID | 0 |  |
+| SCOPE_UTTERANCES | 1 | Include only utterance data. |
+| SCOPE_ANNOTATIONS | 2 | Include annotated data. |
+| SCOPE_ALL | 3 | Include both utterance and annotated data. |
+
+
