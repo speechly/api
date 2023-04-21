@@ -6,7 +6,7 @@ CHANGELOG := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) githubchang
 PYTHON    := docker run -it --rm -v $(CURDIR):$(CURDIR) -w $(CURDIR) python:3-slim python
 
 SUBDIRS   = python javascript dotnet java
-APIREFS   = docs/slu.md docs/batch.md docs/identity.md
+APIREFS   = docs/slu.md docs/wlu.md docs/batch.md docs/identity.md
 
 test:
 	@$(PROTOTOOL) lint
