@@ -1,6 +1,6 @@
 # Speechly API Reference
 
 - [IdentityAPI](identity.md), to create access tokens
+- [Batch API](batch.md), for asynchronous audio operations
 - [SLU](slu.md), to stream audio and get results
-- [SAL](sal.md), to check your local SAL file syntax
-- [AnalyticsAPI](analytics.md), for fetching API usage history
+- [WLU](wlu.md), to process textual data
