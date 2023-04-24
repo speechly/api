@@ -1,11 +1,22 @@
 # Changelog
 
+## [0.8.16](https://github.com/speechly/api/tree/0.8.16) (2023-04-24)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.15...0.8.16)
+
+**Merged pull requests:**
+
+- Separate versions to own files, use long names instead of full names [\#75](https://github.com/speechly/api/pull/75) ([langma](https://github.com/langma))
+- Restructure generated API documentation [\#73](https://github.com/speechly/api/pull/73) ([langma](https://github.com/langma))
+- Support enum types in generated docs [\#71](https://github.com/speechly/api/pull/71) ([langma](https://github.com/langma))
+
 ## [0.8.15](https://github.com/speechly/api/tree/0.8.15) (2023-04-12)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.14...0.8.15)
 
 **Merged pull requests:**
 
+- Release 0.8.15 [\#70](https://github.com/speechly/api/pull/70) ([langma](https://github.com/langma))
 - Extend RegisterUtterance with processing information [\#69](https://github.com/speechly/api/pull/69) ([teelisyys](https://github.com/teelisyys))
 - Set enum defaults to UNSPECIFIED instead of INVALID [\#68](https://github.com/speechly/api/pull/68) ([langma](https://github.com/langma))
 - Add BatchAPI v2 missing stubs [\#67](https://github.com/speechly/api/pull/67) ([langma](https://github.com/langma))

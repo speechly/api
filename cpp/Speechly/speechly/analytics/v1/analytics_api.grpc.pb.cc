@@ -24,6 +24,7 @@ static const char* AnalyticsAPI_method_names[] = {
   "/speechly.analytics.v1.AnalyticsAPI/UtteranceStatistics",
   "/speechly.analytics.v1.AnalyticsAPI/Utterances",
   "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterance",
+  "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterances",
 };
 
 std::unique_ptr< AnalyticsAPI::Stub> AnalyticsAPI::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -36,6 +37,7 @@ AnalyticsAPI::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   : channel_(channel), rpcmethod_UtteranceStatistics_(AnalyticsAPI_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Utterances_(AnalyticsAPI_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RegisterUtterance_(AnalyticsAPI_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RegisterUtterances_(AnalyticsAPI_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status AnalyticsAPI::Stub::UtteranceStatistics(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtteranceStatisticsRequest& request, ::speechly::analytics::v1::UtteranceStatisticsResponse* response) {
@@ -122,6 +124,34 @@ void AnalyticsAPI::Stub::experimental_async::RegisterUtterance(::grpc::ClientCon
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::analytics::v1::RegisterUtteranceResponse>::Create(channel_.get(), cq, rpcmethod_RegisterUtterance_, context, request, false);
 }
 
+::grpc::Status AnalyticsAPI::Stub::RegisterUtterances(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtterancesRequest& request, ::speechly::analytics::v1::RegisterUtterancesResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_RegisterUtterances_, context, request, response);
+}
+
+void AnalyticsAPI::Stub::experimental_async::RegisterUtterances(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtterancesRequest* request, ::speechly::analytics::v1::RegisterUtterancesResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_RegisterUtterances_, context, request, response, std::move(f));
+}
+
+void AnalyticsAPI::Stub::experimental_async::RegisterUtterances(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::RegisterUtterancesResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_RegisterUtterances_, context, request, response, std::move(f));
+}
+
+void AnalyticsAPI::Stub::experimental_async::RegisterUtterances(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtterancesRequest* request, ::speechly::analytics::v1::RegisterUtterancesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_RegisterUtterances_, context, request, response, reactor);
+}
+
+void AnalyticsAPI::Stub::experimental_async::RegisterUtterances(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::RegisterUtterancesResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_RegisterUtterances_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::RegisterUtterancesResponse>* AnalyticsAPI::Stub::AsyncRegisterUtterancesRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtterancesRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::analytics::v1::RegisterUtterancesResponse>::Create(channel_.get(), cq, rpcmethod_RegisterUtterances_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::RegisterUtterancesResponse>* AnalyticsAPI::Stub::PrepareAsyncRegisterUtterancesRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::RegisterUtterancesRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::analytics::v1::RegisterUtterancesResponse>::Create(channel_.get(), cq, rpcmethod_RegisterUtterances_, context, request, false);
+}
+
 AnalyticsAPI::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       AnalyticsAPI_method_names[0],
@@ -138,6 +168,11 @@ AnalyticsAPI::Service::Service() {
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< AnalyticsAPI::Service, ::speechly::analytics::v1::RegisterUtteranceRequest, ::speechly::analytics::v1::RegisterUtteranceResponse>(
           std::mem_fn(&AnalyticsAPI::Service::RegisterUtterance), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AnalyticsAPI_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AnalyticsAPI::Service, ::speechly::analytics::v1::RegisterUtterancesRequest, ::speechly::analytics::v1::RegisterUtterancesResponse>(
+          std::mem_fn(&AnalyticsAPI::Service::RegisterUtterances), this)));
 }
 
 AnalyticsAPI::Service::~Service() {
@@ -158,6 +193,13 @@ AnalyticsAPI::Service::~Service() {
 }
 
 ::grpc::Status AnalyticsAPI::Service::RegisterUtterance(::grpc::ServerContext* context, const ::speechly::analytics::v1::RegisterUtteranceRequest* request, ::speechly::analytics::v1::RegisterUtteranceResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AnalyticsAPI::Service::RegisterUtterances(::grpc::ServerContext* context, const ::speechly::analytics::v1::RegisterUtterancesRequest* request, ::speechly::analytics::v1::RegisterUtterancesResponse* response) {
   (void) context;
   (void) request;
   (void) response;

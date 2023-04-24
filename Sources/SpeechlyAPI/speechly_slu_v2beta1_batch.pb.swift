@@ -40,12 +40,21 @@ public struct Speechly_Slu_V2beta1_HttpResource {
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  /// The HTTP method to use.
+  /// The HTTP method to use when accessing an HTTP resource.
   public enum Method: SwiftProtobuf.Enum {
     public typealias RawValue = Int
+
+    /// Method is not given, and default method is used for requests.
+    /// Data fetches use GET, and result sending POST.
     case unspecified // = 0
+
+    /// Use HTTP GET.
     case get // = 1
+
+    /// Use HTTP POST.
     case post // = 2
+
+    /// Use HTTP PUT.
     case put // = 3
     case UNRECOGNIZED(Int)
 
@@ -75,14 +84,16 @@ public struct Speechly_Slu_V2beta1_HttpResource {
 
   }
 
-  /// A single header value.
+  /// A single header value in an HTTP request.
   public struct Header {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
+    /// Name of the header to set in request.
     public var name: String = String()
 
+    /// Value of the given header in request.
     public var value: String = String()
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -124,7 +135,7 @@ public struct Speechly_Slu_V2beta1_ProcessAudioBatchConfig {
   public var languageCodes: [String] = []
 
   /// Processing configuration.
-  /// Required.
+  /// Optional, defaults to transcribe.
   public var processingConfig: Speechly_Slu_V2beta1_ProcessingConfiguration {
     get {return _processingConfig ?? Speechly_Slu_V2beta1_ProcessingConfiguration()}
     set {_processingConfig = newValue}
@@ -135,7 +146,7 @@ public struct Speechly_Slu_V2beta1_ProcessAudioBatchConfig {
   public mutating func clearProcessingConfig() {self._processingConfig = nil}
 
   /// Reference id for a set of related operations. For example an identifier of
-  /// the source system. Optional.
+  /// the source system.
   /// Optional.
   public var batchReference: String = String()
 
@@ -202,17 +213,17 @@ public struct Speechly_Slu_V2beta1_ProcessingConfiguration {
 
   /// The processing should include the token level transcription and
   /// determination of time stamps for tokens.
-  /// Optional.
+  /// Optional, defaults to false.
   public var tokenize: Bool = false
 
   /// The processing should include translating the audio to English.
-  /// Optional.
+  /// Optional, defaults to false.
   public var translate: Bool = false
 
   /// The processing should not include transcribing the audio to the source
   /// language. This option should be used with translate (or other similar
   /// option) to suppress the normal Speech Recognition processing.
-  /// Optional.
+  /// Optional, defaults to false.
   public var skipTranscribe: Bool = false
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -261,10 +272,12 @@ public struct Speechly_Slu_V2beta1_Operation {
   /// Clears the value of `duration`. Subsequent reads from it will return its default value.
   public mutating func clearDuration() {self._duration = nil}
 
+  /// Machine-readable status for the operation.
+  /// Only set if operation status is STATUS_ERROR.
   public var errorCode: Speechly_Slu_V2beta1_Operation.ErrorCode = .errorUnspecified
 
-  /// Contains a human readable description of the error if the operation status
-  /// is STATUS_ERROR.
+  /// Contains a human readable description of the error.
+  /// Only set if operation status is STATUS_ERROR.
   public var errorDescription: String = String()
 
   /// The locator to the source audio.
@@ -322,6 +335,8 @@ public struct Speechly_Slu_V2beta1_Operation {
   /// STATUS_ERROR.
   public enum ErrorCode: SwiftProtobuf.Enum {
     public typealias RawValue = Int
+
+    /// No error is set.
     case errorUnspecified // = 0
 
     /// The input was in a language that was not supported in this context.
@@ -428,6 +443,8 @@ public struct Speechly_Slu_V2beta1_OperationResult {
   /// The possible types for the operation result.
   public enum ResultType: SwiftProtobuf.Enum {
     public typealias RawValue = Int
+
+    /// Result type is not set.
     case unspecified // = 0
 
     /// The actual words of the audio with no additional processing applied.

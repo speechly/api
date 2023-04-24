@@ -21,14 +21,19 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// The HTTP method to use.
+// The HTTP method to use when accessing an HTTP resource.
 type HttpResource_Method int32
 
 const (
+	// Method is not given, and default method is used for requests.
+	// Data fetches use GET, and result sending POST.
 	HttpResource_METHOD_UNSPECIFIED HttpResource_Method = 0
-	HttpResource_METHOD_GET         HttpResource_Method = 1
-	HttpResource_METHOD_POST        HttpResource_Method = 2
-	HttpResource_METHOD_PUT         HttpResource_Method = 3
+	// Use HTTP GET.
+	HttpResource_METHOD_GET HttpResource_Method = 1
+	// Use HTTP POST.
+	HttpResource_METHOD_POST HttpResource_Method = 2
+	// Use HTTP PUT.
+	HttpResource_METHOD_PUT HttpResource_Method = 3
 )
 
 // Enum value maps for HttpResource_Method.
@@ -136,6 +141,7 @@ func (Operation_Status) EnumDescriptor() ([]byte, []int) {
 type Operation_ErrorCode int32
 
 const (
+	// No error is set.
 	Operation_ERROR_UNSPECIFIED Operation_ErrorCode = 0
 	// The input was in a language that was not supported in this context.
 	Operation_ERROR_UNSUPPORTED_LANGUAGE Operation_ErrorCode = 1
@@ -204,6 +210,7 @@ func (Operation_ErrorCode) EnumDescriptor() ([]byte, []int) {
 type OperationResult_ResultType int32
 
 const (
+	// Result type is not set.
 	OperationResult_RESULT_TYPE_UNSPECIFIED OperationResult_ResultType = 0
 	// The actual words of the audio with no additional processing applied.
 	OperationResult_RESULT_TYPE_TRANSCRIPT_LEXICAL OperationResult_ResultType = 1
@@ -342,10 +349,10 @@ type ProcessAudioBatchConfig struct {
 	// Optional.
 	LanguageCodes []string `protobuf:"bytes,2,rep,name=language_codes,json=languageCodes,proto3" json:"language_codes,omitempty"`
 	// Processing configuration.
-	// Required.
+	// Optional, defaults to transcribe.
 	ProcessingConfig *ProcessingConfiguration `protobuf:"bytes,3,opt,name=processing_config,json=processingConfig,proto3" json:"processing_config,omitempty"`
 	// Reference id for a set of related operations. For example an identifier of
-	// the source system. Optional.
+	// the source system.
 	// Optional.
 	BatchReference string `protobuf:"bytes,4,opt,name=batch_reference,json=batchReference,proto3" json:"batch_reference,omitempty"`
 	// Additional batch specific options.
@@ -522,15 +529,15 @@ type ProcessingConfiguration struct {
 
 	// The processing should include the token level transcription and
 	// determination of time stamps for tokens.
-	// Optional.
+	// Optional, defaults to false.
 	Tokenize bool `protobuf:"varint,1,opt,name=tokenize,proto3" json:"tokenize,omitempty"`
 	// The processing should include translating the audio to English.
-	// Optional.
+	// Optional, defaults to false.
 	Translate bool `protobuf:"varint,2,opt,name=translate,proto3" json:"translate,omitempty"`
 	// The processing should not include transcribing the audio to the source
 	// language. This option should be used with translate (or other similar
 	// option) to suppress the normal Speech Recognition processing.
-	// Optional.
+	// Optional, defaults to false.
 	SkipTranscribe bool `protobuf:"varint,3,opt,name=skip_transcribe,json=skipTranscribe,proto3" json:"skip_transcribe,omitempty"`
 }
 
@@ -611,10 +618,12 @@ type Operation struct {
 	// the results of the processing.
 	Result []*OperationResult `protobuf:"bytes,6,rep,name=result,proto3" json:"result,omitempty"`
 	// The duration of the audio.
-	Duration  *durationpb.Duration `protobuf:"bytes,7,opt,name=duration,proto3" json:"duration,omitempty"`
-	ErrorCode Operation_ErrorCode  `protobuf:"varint,18,opt,name=error_code,json=errorCode,proto3,enum=speechly.slu.v2beta1.Operation_ErrorCode" json:"error_code,omitempty"`
-	// Contains a human readable description of the error if the operation status
-	// is STATUS_ERROR.
+	Duration *durationpb.Duration `protobuf:"bytes,7,opt,name=duration,proto3" json:"duration,omitempty"`
+	// Machine-readable status for the operation.
+	// Only set if operation status is STATUS_ERROR.
+	ErrorCode Operation_ErrorCode `protobuf:"varint,18,opt,name=error_code,json=errorCode,proto3,enum=speechly.slu.v2beta1.Operation_ErrorCode" json:"error_code,omitempty"`
+	// Contains a human readable description of the error.
+	// Only set if operation status is STATUS_ERROR.
 	ErrorDescription string `protobuf:"bytes,19,opt,name=error_description,json=errorDescription,proto3" json:"error_description,omitempty"`
 	// The locator to the source audio.
 	SourceUrl string `protobuf:"bytes,20,opt,name=source_url,json=sourceUrl,proto3" json:"source_url,omitempty"`
@@ -950,13 +959,15 @@ func (x *Option) GetValue() []string {
 	return nil
 }
 
-// A single header value.
+// A single header value in an HTTP request.
 type HttpResource_Header struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Name  string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Name of the header to set in request.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// Value of the given header in request.
 	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 }
 

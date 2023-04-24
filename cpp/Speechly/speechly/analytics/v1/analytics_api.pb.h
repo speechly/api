@@ -49,7 +49,7 @@ struct TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[8]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -65,6 +65,12 @@ extern RegisterUtteranceRequestDefaultTypeInternal _RegisterUtteranceRequest_def
 class RegisterUtteranceResponse;
 struct RegisterUtteranceResponseDefaultTypeInternal;
 extern RegisterUtteranceResponseDefaultTypeInternal _RegisterUtteranceResponse_default_instance_;
+class RegisterUtterancesRequest;
+struct RegisterUtterancesRequestDefaultTypeInternal;
+extern RegisterUtterancesRequestDefaultTypeInternal _RegisterUtterancesRequest_default_instance_;
+class RegisterUtterancesResponse;
+struct RegisterUtterancesResponseDefaultTypeInternal;
+extern RegisterUtterancesResponseDefaultTypeInternal _RegisterUtterancesResponse_default_instance_;
 class UtteranceStatisticsRequest;
 struct UtteranceStatisticsRequestDefaultTypeInternal;
 extern UtteranceStatisticsRequestDefaultTypeInternal _UtteranceStatisticsRequest_default_instance_;
@@ -83,6 +89,8 @@ extern UtterancesResponseDefaultTypeInternal _UtterancesResponse_default_instanc
 PROTOBUF_NAMESPACE_OPEN
 template<> ::speechly::analytics::v1::RegisterUtteranceRequest* Arena::CreateMaybeMessage<::speechly::analytics::v1::RegisterUtteranceRequest>(Arena*);
 template<> ::speechly::analytics::v1::RegisterUtteranceResponse* Arena::CreateMaybeMessage<::speechly::analytics::v1::RegisterUtteranceResponse>(Arena*);
+template<> ::speechly::analytics::v1::RegisterUtterancesRequest* Arena::CreateMaybeMessage<::speechly::analytics::v1::RegisterUtterancesRequest>(Arena*);
+template<> ::speechly::analytics::v1::RegisterUtterancesResponse* Arena::CreateMaybeMessage<::speechly::analytics::v1::RegisterUtterancesResponse>(Arena*);
 template<> ::speechly::analytics::v1::UtteranceStatisticsRequest* Arena::CreateMaybeMessage<::speechly::analytics::v1::UtteranceStatisticsRequest>(Arena*);
 template<> ::speechly::analytics::v1::UtteranceStatisticsResponse* Arena::CreateMaybeMessage<::speechly::analytics::v1::UtteranceStatisticsResponse>(Arena*);
 template<> ::speechly::analytics::v1::UtterancesRequest* Arena::CreateMaybeMessage<::speechly::analytics::v1::UtterancesRequest>(Arena*);
@@ -1415,6 +1423,280 @@ class RegisterUtteranceResponse final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
 };
+// -------------------------------------------------------------------
+
+class RegisterUtterancesRequest final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.RegisterUtterancesRequest) */ {
+ public:
+  inline RegisterUtterancesRequest() : RegisterUtterancesRequest(nullptr) {}
+  ~RegisterUtterancesRequest() override;
+  explicit constexpr RegisterUtterancesRequest(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RegisterUtterancesRequest(const RegisterUtterancesRequest& from);
+  RegisterUtterancesRequest(RegisterUtterancesRequest&& from) noexcept
+    : RegisterUtterancesRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RegisterUtterancesRequest& operator=(const RegisterUtterancesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RegisterUtterancesRequest& operator=(RegisterUtterancesRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RegisterUtterancesRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RegisterUtterancesRequest* internal_default_instance() {
+    return reinterpret_cast<const RegisterUtterancesRequest*>(
+               &_RegisterUtterancesRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(RegisterUtterancesRequest& a, RegisterUtterancesRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RegisterUtterancesRequest* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RegisterUtterancesRequest* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RegisterUtterancesRequest* New() const final {
+    return new RegisterUtterancesRequest();
+  }
+
+  RegisterUtterancesRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RegisterUtterancesRequest>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RegisterUtterancesRequest& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const RegisterUtterancesRequest& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RegisterUtterancesRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.analytics.v1.RegisterUtterancesRequest";
+  }
+  protected:
+  explicit RegisterUtterancesRequest(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRequestsFieldNumber = 1,
+  };
+  // repeated .speechly.analytics.v1.RegisterUtteranceRequest requests = 1;
+  int requests_size() const;
+  private:
+  int _internal_requests_size() const;
+  public:
+  void clear_requests();
+  ::speechly::analytics::v1::RegisterUtteranceRequest* mutable_requests(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::analytics::v1::RegisterUtteranceRequest >*
+      mutable_requests();
+  private:
+  const ::speechly::analytics::v1::RegisterUtteranceRequest& _internal_requests(int index) const;
+  ::speechly::analytics::v1::RegisterUtteranceRequest* _internal_add_requests();
+  public:
+  const ::speechly::analytics::v1::RegisterUtteranceRequest& requests(int index) const;
+  ::speechly::analytics::v1::RegisterUtteranceRequest* add_requests();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::analytics::v1::RegisterUtteranceRequest >&
+      requests() const;
+
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.RegisterUtterancesRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::analytics::v1::RegisterUtteranceRequest > requests_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RegisterUtterancesResponse final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.RegisterUtterancesResponse) */ {
+ public:
+  inline RegisterUtterancesResponse() : RegisterUtterancesResponse(nullptr) {}
+  ~RegisterUtterancesResponse() override;
+  explicit constexpr RegisterUtterancesResponse(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RegisterUtterancesResponse(const RegisterUtterancesResponse& from);
+  RegisterUtterancesResponse(RegisterUtterancesResponse&& from) noexcept
+    : RegisterUtterancesResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline RegisterUtterancesResponse& operator=(const RegisterUtterancesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RegisterUtterancesResponse& operator=(RegisterUtterancesResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RegisterUtterancesResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RegisterUtterancesResponse* internal_default_instance() {
+    return reinterpret_cast<const RegisterUtterancesResponse*>(
+               &_RegisterUtterancesResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(RegisterUtterancesResponse& a, RegisterUtterancesResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RegisterUtterancesResponse* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RegisterUtterancesResponse* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RegisterUtterancesResponse* New() const final {
+    return new RegisterUtterancesResponse();
+  }
+
+  RegisterUtterancesResponse* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RegisterUtterancesResponse>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RegisterUtterancesResponse& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const RegisterUtterancesResponse& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to, const ::PROTOBUF_NAMESPACE_ID::Message&from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RegisterUtterancesResponse* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "speechly.analytics.v1.RegisterUtterancesResponse";
+  }
+  protected:
+  explicit RegisterUtterancesResponse(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.RegisterUtterancesResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
+};
 // ===================================================================
 
 
@@ -2662,9 +2944,61 @@ inline void RegisterUtteranceRequest::set_allocated_processing_info(::speechly::
 
 // RegisterUtteranceResponse
 
+// -------------------------------------------------------------------
+
+// RegisterUtterancesRequest
+
+// repeated .speechly.analytics.v1.RegisterUtteranceRequest requests = 1;
+inline int RegisterUtterancesRequest::_internal_requests_size() const {
+  return requests_.size();
+}
+inline int RegisterUtterancesRequest::requests_size() const {
+  return _internal_requests_size();
+}
+inline void RegisterUtterancesRequest::clear_requests() {
+  requests_.Clear();
+}
+inline ::speechly::analytics::v1::RegisterUtteranceRequest* RegisterUtterancesRequest::mutable_requests(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.RegisterUtterancesRequest.requests)
+  return requests_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::analytics::v1::RegisterUtteranceRequest >*
+RegisterUtterancesRequest::mutable_requests() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.analytics.v1.RegisterUtterancesRequest.requests)
+  return &requests_;
+}
+inline const ::speechly::analytics::v1::RegisterUtteranceRequest& RegisterUtterancesRequest::_internal_requests(int index) const {
+  return requests_.Get(index);
+}
+inline const ::speechly::analytics::v1::RegisterUtteranceRequest& RegisterUtterancesRequest::requests(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.RegisterUtterancesRequest.requests)
+  return _internal_requests(index);
+}
+inline ::speechly::analytics::v1::RegisterUtteranceRequest* RegisterUtterancesRequest::_internal_add_requests() {
+  return requests_.Add();
+}
+inline ::speechly::analytics::v1::RegisterUtteranceRequest* RegisterUtterancesRequest::add_requests() {
+  ::speechly::analytics::v1::RegisterUtteranceRequest* _add = _internal_add_requests();
+  // @@protoc_insertion_point(field_add:speechly.analytics.v1.RegisterUtterancesRequest.requests)
+  return _add;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::analytics::v1::RegisterUtteranceRequest >&
+RegisterUtterancesRequest::requests() const {
+  // @@protoc_insertion_point(field_list:speechly.analytics.v1.RegisterUtterancesRequest.requests)
+  return requests_;
+}
+
+// -------------------------------------------------------------------
+
+// RegisterUtterancesResponse
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

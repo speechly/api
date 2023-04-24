@@ -346,6 +346,29 @@ public struct Speechly_Analytics_V1_RegisterUtteranceResponse {
   public init() {}
 }
 
+/// Register multiple utterances in the same request.
+public struct Speechly_Analytics_V1_RegisterUtterancesRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var requests: [Speechly_Analytics_V1_RegisterUtteranceRequest] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+public struct Speechly_Analytics_V1_RegisterUtterancesResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 #if swift(>=5.5) && canImport(_Concurrency)
 extension Speechly_Analytics_V1_UtteranceStatisticsRequest: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtteranceStatisticsRequest.Scope: @unchecked Sendable {}
@@ -355,6 +378,8 @@ extension Speechly_Analytics_V1_UtterancesResponse: @unchecked Sendable {}
 extension Speechly_Analytics_V1_RegisterUtteranceRequest: @unchecked Sendable {}
 extension Speechly_Analytics_V1_RegisterUtteranceRequest.Status: @unchecked Sendable {}
 extension Speechly_Analytics_V1_RegisterUtteranceResponse: @unchecked Sendable {}
+extension Speechly_Analytics_V1_RegisterUtterancesRequest: @unchecked Sendable {}
+extension Speechly_Analytics_V1_RegisterUtterancesResponse: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -756,6 +781,57 @@ extension Speechly_Analytics_V1_RegisterUtteranceResponse: SwiftProtobuf.Message
   }
 
   public static func ==(lhs: Speechly_Analytics_V1_RegisterUtteranceResponse, rhs: Speechly_Analytics_V1_RegisterUtteranceResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_RegisterUtterancesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RegisterUtterancesRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "requests"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeRepeatedMessageField(value: &self.requests) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.requests.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.requests, fieldNumber: 1)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_RegisterUtterancesRequest, rhs: Speechly_Analytics_V1_RegisterUtterancesRequest) -> Bool {
+    if lhs.requests != rhs.requests {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_RegisterUtterancesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".RegisterUtterancesResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_RegisterUtterancesResponse, rhs: Speechly_Analytics_V1_RegisterUtterancesResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

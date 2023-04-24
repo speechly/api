@@ -47,6 +47,11 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIClientProtocol: GRPCClient {
     _ request: Speechly_Analytics_V1_RegisterUtteranceRequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Speechly_Analytics_V1_RegisterUtteranceRequest, Speechly_Analytics_V1_RegisterUtteranceResponse>
+
+  func registerUtterances(
+    _ request: Speechly_Analytics_V1_RegisterUtterancesRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Speechly_Analytics_V1_RegisterUtterancesRequest, Speechly_Analytics_V1_RegisterUtterancesResponse>
 }
 
 extension Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
@@ -90,7 +95,7 @@ extension Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
     )
   }
 
-  /// Register a data point of an on-device utterance.
+  /// Register a data point of an on-device or on-premise utterance.
   ///
   /// - Parameters:
   ///   - request: Request to send to RegisterUtterance.
@@ -107,6 +112,24 @@ extension Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
       interceptors: self.interceptors?.makeRegisterUtteranceInterceptors() ?? []
     )
   }
+
+  /// Register multiple utterances in a single request.
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to RegisterUtterances.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func registerUtterances(
+    _ request: Speechly_Analytics_V1_RegisterUtterancesRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Speechly_Analytics_V1_RegisterUtterancesRequest, Speechly_Analytics_V1_RegisterUtterancesResponse> {
+    return self.makeUnaryCall(
+      path: "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterances",
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeRegisterUtterancesInterceptors() ?? []
+    )
+  }
 }
 
 public protocol Speechly_Analytics_V1_AnalyticsAPIClientInterceptorFactoryProtocol {
@@ -119,6 +142,9 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIClientInterceptorFactoryProtoc
 
   /// - Returns: Interceptors to use when invoking 'registerUtterance'.
   func makeRegisterUtteranceInterceptors() -> [ClientInterceptor<Speechly_Analytics_V1_RegisterUtteranceRequest, Speechly_Analytics_V1_RegisterUtteranceResponse>]
+
+  /// - Returns: Interceptors to use when invoking 'registerUtterances'.
+  func makeRegisterUtterancesInterceptors() -> [ClientInterceptor<Speechly_Analytics_V1_RegisterUtterancesRequest, Speechly_Analytics_V1_RegisterUtterancesResponse>]
 }
 
 public final class Speechly_Analytics_V1_AnalyticsAPIClient: Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
@@ -156,8 +182,11 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIProvider: CallHandlerProvider 
   /// Get a sample of recent utterances.
   func utterances(request: Speechly_Analytics_V1_UtterancesRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Analytics_V1_UtterancesResponse>
 
-  /// Register a data point of an on-device utterance.
+  /// Register a data point of an on-device or on-premise utterance.
   func registerUtterance(request: Speechly_Analytics_V1_RegisterUtteranceRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Analytics_V1_RegisterUtteranceResponse>
+
+  /// Register multiple utterances in a single request.
+  func registerUtterances(request: Speechly_Analytics_V1_RegisterUtterancesRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Analytics_V1_RegisterUtterancesResponse>
 }
 
 extension Speechly_Analytics_V1_AnalyticsAPIProvider {
@@ -197,6 +226,15 @@ extension Speechly_Analytics_V1_AnalyticsAPIProvider {
         userFunction: self.registerUtterance(request:context:)
       )
 
+    case "RegisterUtterances":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Analytics_V1_RegisterUtterancesRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Analytics_V1_RegisterUtterancesResponse>(),
+        interceptors: self.interceptors?.makeRegisterUtterancesInterceptors() ?? [],
+        userFunction: self.registerUtterances(request:context:)
+      )
+
     default:
       return nil
     }
@@ -216,4 +254,8 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIServerInterceptorFactoryProtoc
   /// - Returns: Interceptors to use when handling 'registerUtterance'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeRegisterUtteranceInterceptors() -> [ServerInterceptor<Speechly_Analytics_V1_RegisterUtteranceRequest, Speechly_Analytics_V1_RegisterUtteranceResponse>]
+
+  /// - Returns: Interceptors to use when handling 'registerUtterances'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeRegisterUtterancesInterceptors() -> [ServerInterceptor<Speechly_Analytics_V1_RegisterUtterancesRequest, Speechly_Analytics_V1_RegisterUtterancesResponse>]
 }
