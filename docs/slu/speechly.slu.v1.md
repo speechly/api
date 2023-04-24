@@ -97,12 +97,12 @@ Option to change the default behaviour of the SLU.
 Describes an SLU entity.
 
 An entity is a specific object in the phrase that falls into some kind of category,
-e.g. in a SAL example "*book book a [burger restaurant](restaurant_type) for [tomorrow](date)"
+e.g. in a SAL example `*book book a [burger restaurant](restaurant_type) for [tomorrow](date)`
 "burger restaurant" would be an entity of type `restaurant_type`,
 and "tomorrow" would be an entity of type `date`.
 
 An entity has a start and end indices which map to the indices of words in SLUTranscript messages,
-e.g. in the example "book a [burger restaurant](restaurant_type) for [tomorrow](date)" it would be:
+e.g. in the example `*book book a [burger restaurant](restaurant_type) for [tomorrow](date)` it would be:
 
 - Entity "burger restaurant" - `start_position = 2, end_position = 3`
 - Entity "tomorrow" - `start_position = 5, end_position = 5`
