@@ -21,8 +21,10 @@ service AnalyticsAPI {
     rpc UtteranceStatistics(UtteranceStatisticsRequest) returns (UtteranceStatisticsResponse);
     // Get a sample of recent utterances.
     rpc Utterances(UtterancesRequest) returns (UtterancesResponse);
-    // Register a data point of an on-device utterance.
+    // Register a data point of an on-device or on-premise utterance.
     rpc RegisterUtterance(RegisterUtteranceRequest) returns (RegisterUtteranceResponse);
+    // Register multiple utterances in a single request.
+    rpc RegisterUtterances(RegisterUtterancesRequest) returns (RegisterUtterancesResponse);
 }
 
 // Includes keys for the UtteranceStatistics method.
@@ -134,4 +136,12 @@ message RegisterUtteranceRequest {
 }
 
 message RegisterUtteranceResponse {
+}
+
+// Register multiple utterances in the same request.
+message RegisterUtterancesRequest {
+    repeated RegisterUtteranceRequest requests = 1;
+}
+
+message RegisterUtterancesResponse {
 }
