@@ -19,13 +19,9 @@ message BatchTasks {
   // Results will include a transcription of the audio.
   // Optional, defaults to true.
   bool transcribe = 1;
-  // The processing should include the token level transcription and
-  // determination of time stamps for tokens.
-  // Optional, defaults to false.
-  bool tokenize = 2;
   // The processing should include translating the audio to English.
   // Optional, defaults to false.
-  bool translate = 3;
+  bool translate = 2;
 }
 
 // Define the output formats for results. If all options are set as false,
@@ -38,6 +34,9 @@ message BatchOutput {
   // punctuation.
   // Optional, defaults to false.
   bool lexical = 2;
+  // return the token level transcription and time stamps for tokens.
+  // Optional, defaults to false.
+  bool tokenized = 3;
 }
 
 // Describes the configuration options common for the input batch.

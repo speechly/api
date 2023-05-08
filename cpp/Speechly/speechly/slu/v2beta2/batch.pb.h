@@ -336,8 +336,7 @@ class BatchTasks final :
 
   enum : int {
     kTranscribeFieldNumber = 1,
-    kTokenizeFieldNumber = 2,
-    kTranslateFieldNumber = 3,
+    kTranslateFieldNumber = 2,
   };
   // bool transcribe = 1;
   void clear_transcribe();
@@ -348,16 +347,7 @@ class BatchTasks final :
   void _internal_set_transcribe(bool value);
   public:
 
-  // bool tokenize = 2;
-  void clear_tokenize();
-  bool tokenize() const;
-  void set_tokenize(bool value);
-  private:
-  bool _internal_tokenize() const;
-  void _internal_set_tokenize(bool value);
-  public:
-
-  // bool translate = 3;
+  // bool translate = 2;
   void clear_translate();
   bool translate() const;
   void set_translate(bool value);
@@ -374,7 +364,6 @@ class BatchTasks final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   bool transcribe_;
-  bool tokenize_;
   bool translate_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv2beta2_2fbatch_2eproto;
@@ -498,6 +487,7 @@ class BatchOutput final :
   enum : int {
     kDisplayFieldNumber = 1,
     kLexicalFieldNumber = 2,
+    kTokenizedFieldNumber = 3,
   };
   // bool display = 1;
   void clear_display();
@@ -517,6 +507,15 @@ class BatchOutput final :
   void _internal_set_lexical(bool value);
   public:
 
+  // bool tokenized = 3;
+  void clear_tokenized();
+  bool tokenized() const;
+  void set_tokenized(bool value);
+  private:
+  bool _internal_tokenized() const;
+  void _internal_set_tokenized(bool value);
+  public:
+
   // @@protoc_insertion_point(class_scope:speechly.slu.v2beta2.BatchOutput)
  private:
   class _Internal;
@@ -526,6 +525,7 @@ class BatchOutput final :
   typedef void DestructorSkippable_;
   bool display_;
   bool lexical_;
+  bool tokenized_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv2beta2_2fbatch_2eproto;
 };
@@ -2313,27 +2313,7 @@ inline void BatchTasks::set_transcribe(bool value) {
   // @@protoc_insertion_point(field_set:speechly.slu.v2beta2.BatchTasks.transcribe)
 }
 
-// bool tokenize = 2;
-inline void BatchTasks::clear_tokenize() {
-  tokenize_ = false;
-}
-inline bool BatchTasks::_internal_tokenize() const {
-  return tokenize_;
-}
-inline bool BatchTasks::tokenize() const {
-  // @@protoc_insertion_point(field_get:speechly.slu.v2beta2.BatchTasks.tokenize)
-  return _internal_tokenize();
-}
-inline void BatchTasks::_internal_set_tokenize(bool value) {
-  
-  tokenize_ = value;
-}
-inline void BatchTasks::set_tokenize(bool value) {
-  _internal_set_tokenize(value);
-  // @@protoc_insertion_point(field_set:speechly.slu.v2beta2.BatchTasks.tokenize)
-}
-
-// bool translate = 3;
+// bool translate = 2;
 inline void BatchTasks::clear_translate() {
   translate_ = false;
 }
@@ -2395,6 +2375,26 @@ inline void BatchOutput::_internal_set_lexical(bool value) {
 inline void BatchOutput::set_lexical(bool value) {
   _internal_set_lexical(value);
   // @@protoc_insertion_point(field_set:speechly.slu.v2beta2.BatchOutput.lexical)
+}
+
+// bool tokenized = 3;
+inline void BatchOutput::clear_tokenized() {
+  tokenized_ = false;
+}
+inline bool BatchOutput::_internal_tokenized() const {
+  return tokenized_;
+}
+inline bool BatchOutput::tokenized() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v2beta2.BatchOutput.tokenized)
+  return _internal_tokenized();
+}
+inline void BatchOutput::_internal_set_tokenized(bool value) {
+  
+  tokenized_ = value;
+}
+inline void BatchOutput::set_tokenized(bool value) {
+  _internal_set_tokenized(value);
+  // @@protoc_insertion_point(field_set:speechly.slu.v2beta2.BatchOutput.tokenized)
 }
 
 // -------------------------------------------------------------------
