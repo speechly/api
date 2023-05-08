@@ -12,51 +12,44 @@ option php_namespace = "Speechly\\Slu\\V2Beta1";
 
 import "google/protobuf/duration.proto";
 
-// Describes full properties of an HTTP endpoint.
-message HttpResource {
-  // The HTTP method to use when accessing an HTTP resource.
-  enum Method {
-    // Method is not given, and default method is used for requests.
-    // Data fetches use GET, and result sending POST.
-    METHOD_UNSPECIFIED = 0;
-    // Use HTTP GET.
-    METHOD_GET = 1;
-    // Use HTTP POST.
-    METHOD_POST = 2;
-    // Use HTTP PUT.
-    METHOD_PUT = 3;
-  }
-  // A single header value in an HTTP request.
-  message Header {
-    // Name of the header to set in request.
-    string name = 1;
-    // Value of the given header in request.
-    string value = 2;
-  }
-  // URL of the endpoint (protocol://server/path)
-  // Required.
-  string url = 1;
-  // method to use in connection.
-  // Optional.
-  Method method = 2;
-  // Possible additional headers to include in the connection.
-  // Optional.
-  repeated Header headers = 3;
+// Describes the processing options for the audio. Note that not all options are
+// available for all languages or on all Payment Plans.
+// If all options are left to default values, `transcribe` is set as default.
+message BatchTasks {
+  // Results will include a transcription of the audio.
+  // Optional, defaults to true.
+  bool transcribe = 1;
+  // The processing should include the token level transcription and
+  // determination of time stamps for tokens.
+  // Optional, defaults to false.
+  bool tokenize = 2;
+  // The processing should include translating the audio to English.
+  // Optional, defaults to false.
+  bool translate = 3;
+}
+
+// Define the output formats for results. If all options are set as false,
+// `display` is returned.
+message BatchOutput {
+  // return text formatted for display, ie. capitalized and punctuated.
+  // Optional, defaults to false.
+  bool display = 1;
+  // return lexical version of the transcript, ie. lower case and no
+  // punctuation.
+  // Optional, defaults to false.
+  bool lexical = 2;
 }
 
 // Describes the configuration options common for the input batch.
-message ProcessAudioBatchConfig {
-  // The processing context, Speechly Application ID.
-  // Optional. If not provided, the processing context will be determined
-  // from the login information.
-  string app_id = 1;
+message BatchConfig {
+  // ID of the language model to use when processing the audio.
+  // Optional. If not provided, the model to use will be determined
+  // from the login information or from language detection.
+  string model_id = 1;
   // The language(s) of the audio sent in the request as a BCP-47 language tag
   // (e.g. "en-US"). Defaults to the target application language(s).
   // Optional.
   repeated string language_codes = 2;
-  // Processing configuration.
-  // Optional, defaults to transcribe.
-  ProcessingConfiguration processing_config = 3;
   // Reference id for a set of related operations. For example an identifier of
   // the source system.
   // Optional.
@@ -86,23 +79,6 @@ message ProcessAudioSourceRequestItem {
   // UUID.
   // Optional.
   string device_id = 5;
-}
-
-// Describes the processing options for the audio. Note that not all options are
-// available for all languages or on all Payment Plans.
-message ProcessingConfiguration {
-  // The processing should include the token level transcription and
-  // determination of time stamps for tokens.
-  // Optional, defaults to false.
-  bool tokenize = 1;
-  // The processing should include translating the audio to English.
-  // Optional, defaults to false.
-  bool translate = 2;
-  // The processing should not include transcribing the audio to the source
-  // language. This option should be used with translate (or other similar
-  // option) to suppress the normal Speech Recognition processing.
-  // Optional, defaults to false.
-  bool skip_transcribe = 3;
 }
 
 // Describes a single batch operation.
@@ -211,4 +187,36 @@ message Option {
   string key = 1;
   // The values to set the option to.
   repeated string value = 2;
+}
+
+// Describes full properties of an HTTP endpoint.
+message HttpResource {
+  // The HTTP method to use when accessing an HTTP resource.
+  enum Method {
+    // Method is not given, and default method is used for requests.
+    // Data fetches use GET, and result sending POST.
+    METHOD_UNSPECIFIED = 0;
+    // Use HTTP GET.
+    METHOD_GET = 1;
+    // Use HTTP POST.
+    METHOD_POST = 2;
+    // Use HTTP PUT.
+    METHOD_PUT = 3;
+  }
+  // A single header value in an HTTP request.
+  message Header {
+    // Name of the header to set in request.
+    string name = 1;
+    // Value of the given header in request.
+    string value = 2;
+  }
+  // URL of the endpoint (protocol://server/path)
+  // Required.
+  string url = 1;
+  // method to use in connection.
+  // Optional.
+  Method method = 2;
+  // Possible additional headers to include in the connection.
+  // Optional.
+  repeated Header headers = 3;
 }
