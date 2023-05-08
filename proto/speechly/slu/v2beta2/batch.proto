@@ -7,7 +7,7 @@ option go_package = "speechly/slu/v2beta2;sluv2beta2";
 option java_multiple_files = true;
 option java_outer_classname = "BatchProto";
 option java_package = "com.speechly.slu.v2beta2";
-option objc_class_prefix = "SSX";
+option objc_class_prefix = "SSB";
 option php_namespace = "Speechly\\Slu\\V2Beta2";
 
 import "google/protobuf/duration.proto";
