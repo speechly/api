@@ -1,74 +1,30 @@
 
 # speechly.slu.v2beta1.BatchAPI
 
-Run Speechly Batch API operations on audio sources without actively waiting
-the results.
+Run Speechly Batch API operations on audio sources without actively waiting the results.
 
 ## Methods
 
 | name | request | response | description |
 | ---- | ------- | -------- | ----------- |
-| ProcessAudioSource | [ProcessAudioSourceRequest](#processaudiosourcerequest) | [ProcessAudioSourceResponse](#processaudiosourceresponse) | Create a new background Speechly Batch API operation for a one or more<br/>audio sources. Audio sources must be URIs of a files, reachable from the<br/>API The response includes an `id` that is used to match the operation to<br/>the results. A `reference` identifier can also be set. Also a<br/>`batch_reference` can be set to mark that multiple audio sources form a<br/>logical batch. In that case, the response will include a `batch_id`. |
-| QueryStatus | [QueryStatusRequest](#querystatusrequest) | [QueryStatusResponse](#querystatusresponse) | Query the status of given operations.<br/>If the `ProcessAudioSourceRequest` did not define a `destination` or<br/>`completion_webhook` as a destination, the results are returned in the<br/>`QueryStatusResponse`. |
+| ProcessAudioSource | [ProcessAudioSourceRequest](#processaudiosourcerequest) | [ProcessAudioSourceResponse](#processaudiosourceresponse) | Create a new background Speechly Batch API operation for a one or more audio sources.<br/>Audio sources must be URIs of a files, reachable from the API<br/>The response includes an `id` that is used to match the operation to the<br/>results. A `reference` identifier can also be set.<br/>Also a `batch_reference` can be set to mark that multiple audio sources form a<br/>logical batch. In that case, the response will include a `batch_id`. |
+| QueryStatus | [QueryStatusRequest](#querystatusrequest) | [QueryStatusResponse](#querystatusresponse) | Query the status of given operations.<br/>If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`<br/>as a destination, the results are returned in the `QueryStatusResponse`. |
 
 ## Messages
 
-- [BatchConfig](#batchconfig)
-- [BatchOutput](#batchoutput)
-- [BatchTasks](#batchtasks)
 - [HttpResource](#httpresource)
 - [HttpResource.Header](#httpresource.header)
 - [Operation](#operation)
 - [OperationResult](#operationresult)
 - [Option](#option)
+- [ProcessAudioBatchConfig](#processaudiobatchconfig)
 - [ProcessAudioSourceRequest](#processaudiosourcerequest)
 - [ProcessAudioSourceRequestItem](#processaudiosourcerequestitem)
 - [ProcessAudioSourceResponse](#processaudiosourceresponse)
+- [ProcessingConfiguration](#processingconfiguration)
 - [QueryStatusRequest](#querystatusrequest)
 - [QueryStatusResponse](#querystatusresponse)
 - [Token](#token)
-
-
-### BatchConfig
-
-Describes the configuration options common for the input batch.
-
-#### Fields
-
-| name | type | description |
-| ---- | ---- | ----------- |
-| model_id | string | ID of the language model to use when processing the audio.<br/>Optional. If not provided, the model to use will be determined<br/>from the login information or from language detection. |
-| language_codes | string | The language(s) of the audio sent in the request as a BCP-47 language tag<br/>(e.g. "en-US"). Defaults to the target application language(s).<br/>Optional. |
-| batch_reference | string | Reference id for a set of related operations. For example an identifier of<br/>the source system.<br/>Optional. |
-| options | [Option](#option) | Additional batch specific options.<br/>Optional. |
-
-
-### BatchOutput
-
-Define the output formats for results. If all options are set as false,
-`display` is returned.
-
-#### Fields
-
-| name | type | description |
-| ---- | ---- | ----------- |
-| display | bool | return text formatted for display, ie. capitalized and punctuated.<br/>Optional, defaults to false. |
-| lexical | bool | return lexical version of the transcript, ie. lower case and no<br/>punctuation.<br/>Optional, defaults to false. |
-
-
-### BatchTasks
-
-Describes the processing options for the audio. Note that not all options are
-available for all languages or on all Payment Plans.
-If all options are left to default values, `transcribe` is set as default.
-
-#### Fields
-
-| name | type | description |
-| ---- | ---- | ----------- |
-| transcribe | bool | Results will include a transcription of the audio.<br/>Optional, defaults to true. |
-| tokenize | bool | The processing should include the token level transcription and<br/>determination of time stamps for tokens.<br/>Optional, defaults to false. |
-| translate | bool | The processing should include translating the audio to English.<br/>Optional, defaults to false. |
 
 
 ### HttpResource
@@ -144,6 +100,21 @@ Option to change the default behaviour of the SLU.
 | value | string | The values to set the option to. |
 
 
+### ProcessAudioBatchConfig
+
+Describes the configuration options common for the input batch.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| app_id | string | The processing context, Speechly Application ID.<br/>Optional. If not provided, the processing context will be determined<br/>from the login information. |
+| language_codes | string | The language(s) of the audio sent in the request as a BCP-47 language tag<br/>(e.g. "en-US"). Defaults to the target application language(s).<br/>Optional. |
+| processing_config | [ProcessingConfiguration](#processingconfiguration) | Processing configuration.<br/>Optional, defaults to transcribe. |
+| batch_reference | string | Reference id for a set of related operations. For example an identifier of<br/>the source system.<br/>Optional. |
+| options | [Option](#option) | Additional batch specific options.<br/>Optional. |
+
+
 ### ProcessAudioSourceRequest
 
 Describes a request to process audio from a pre-existing source.
@@ -152,9 +123,7 @@ Describes a request to process audio from a pre-existing source.
 
 | name | type | description |
 | ---- | ---- | ----------- |
-| tasks | [BatchTasks](#batchtasks) | tasks describe the requested operations for the given audio.<br/>Optional, defaults to `transcribe`. |
-| config | [BatchConfig](#batchconfig) | The options shared by all of the source audios.<br/>Optional. |
-| output | [BatchOutput](#batchoutput) | Define the output formatting for text results.<br/>Optional, defaults to `display`. |
+| config | [ProcessAudioBatchConfig](#processaudiobatchconfig) | The options shared by all of the source audios. |
 | source | [ProcessAudioSourceRequestItem](#processaudiosourcerequestitem) | The source audios, and their unique options. |
 
 
@@ -184,6 +153,20 @@ Describes a response to request to process audio from a pre-existing source.
 | operation | [Operation](#operation) | The details of the created operations. |
 
 
+### ProcessingConfiguration
+
+Describes the processing options for the audio. Note that not all options are
+available for all languages or on all Payment Plans.
+
+#### Fields
+
+| name | type | description |
+| ---- | ---- | ----------- |
+| tokenize | bool | The processing should include the token level transcription and<br/>determination of time stamps for tokens.<br/>Optional, defaults to false. |
+| translate | bool | The processing should include translating the audio to English.<br/>Optional, defaults to false. |
+| skip_transcribe | bool | The processing should not include transcribing the audio to the source<br/>language. This option should be used with translate (or other similar<br/>option) to suppress the normal Speech Recognition processing.<br/>Optional, defaults to false. |
+
+
 ### QueryStatusRequest
 
 Query the status of an operation. At least one of these must be given.
@@ -193,9 +176,9 @@ Query the status of an operation. At least one of these must be given.
 | name | type | description |
 | ---- | ---- | ----------- |
 | operation_ids | string | ID of an audio processing operation. |
-| operation_references | string | Reference ID of an operation.<br/>Optional. |
-| batch_id | string | ID of an audio processing batch.<br/>Optional. |
-| batch_reference | string | Reference ID of a batch.<br/>Optional. |
+| operation_references | string | Reference ID of an operation. |
+| batch_id | string | ID of an audio processing batch. |
+| batch_reference | string | Reference ID of a batch. |
 
 
 ### QueryStatusResponse
