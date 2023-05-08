@@ -54,6 +54,7 @@ Define the output formats for results. If all options are set as false,
 | ---- | ---- | ----------- |
 | display | bool | return text formatted for display, ie. capitalized and punctuated.<br/>Optional, defaults to false. |
 | lexical | bool | return lexical version of the transcript, ie. lower case and no<br/>punctuation.<br/>Optional, defaults to false. |
+| tokenized | bool | return the token level transcription and time stamps for tokens.<br/>Optional, defaults to false. |
 
 
 ### BatchTasks
@@ -67,7 +68,6 @@ If all options are left to default values, `transcribe` is set as default.
 | name | type | description |
 | ---- | ---- | ----------- |
 | transcribe | bool | Results will include a transcription of the audio.<br/>Optional, defaults to true. |
-| tokenize | bool | The processing should include the token level transcription and<br/>determination of time stamps for tokens.<br/>Optional, defaults to false. |
 | translate | bool | The processing should include translating the audio to English.<br/>Optional, defaults to false. |
 
 

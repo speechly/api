@@ -32,11 +32,6 @@ public struct Speechly_Slu_V2beta2_BatchTasks {
   /// Optional, defaults to true.
   public var transcribe: Bool = false
 
-  /// The processing should include the token level transcription and
-  /// determination of time stamps for tokens.
-  /// Optional, defaults to false.
-  public var tokenize: Bool = false
-
   /// The processing should include translating the audio to English.
   /// Optional, defaults to false.
   public var translate: Bool = false
@@ -61,6 +56,10 @@ public struct Speechly_Slu_V2beta2_BatchOutput {
   /// punctuation.
   /// Optional, defaults to false.
   public var lexical: Bool = false
+
+  /// return the token level transcription and time stamps for tokens.
+  /// Optional, defaults to false.
+  public var tokenized: Bool = false
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -576,8 +575,7 @@ extension Speechly_Slu_V2beta2_BatchTasks: SwiftProtobuf.Message, SwiftProtobuf.
   public static let protoMessageName: String = _protobuf_package + ".BatchTasks"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transcribe"),
-    2: .same(proto: "tokenize"),
-    3: .same(proto: "translate"),
+    2: .same(proto: "translate"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -587,8 +585,7 @@ extension Speechly_Slu_V2beta2_BatchTasks: SwiftProtobuf.Message, SwiftProtobuf.
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularBoolField(value: &self.transcribe) }()
-      case 2: try { try decoder.decodeSingularBoolField(value: &self.tokenize) }()
-      case 3: try { try decoder.decodeSingularBoolField(value: &self.translate) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.translate) }()
       default: break
       }
     }
@@ -598,18 +595,14 @@ extension Speechly_Slu_V2beta2_BatchTasks: SwiftProtobuf.Message, SwiftProtobuf.
     if self.transcribe != false {
       try visitor.visitSingularBoolField(value: self.transcribe, fieldNumber: 1)
     }
-    if self.tokenize != false {
-      try visitor.visitSingularBoolField(value: self.tokenize, fieldNumber: 2)
-    }
     if self.translate != false {
-      try visitor.visitSingularBoolField(value: self.translate, fieldNumber: 3)
+      try visitor.visitSingularBoolField(value: self.translate, fieldNumber: 2)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Slu_V2beta2_BatchTasks, rhs: Speechly_Slu_V2beta2_BatchTasks) -> Bool {
     if lhs.transcribe != rhs.transcribe {return false}
-    if lhs.tokenize != rhs.tokenize {return false}
     if lhs.translate != rhs.translate {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -621,6 +614,7 @@ extension Speechly_Slu_V2beta2_BatchOutput: SwiftProtobuf.Message, SwiftProtobuf
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "display"),
     2: .same(proto: "lexical"),
+    3: .same(proto: "tokenized"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -631,6 +625,7 @@ extension Speechly_Slu_V2beta2_BatchOutput: SwiftProtobuf.Message, SwiftProtobuf
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularBoolField(value: &self.display) }()
       case 2: try { try decoder.decodeSingularBoolField(value: &self.lexical) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.tokenized) }()
       default: break
       }
     }
@@ -643,12 +638,16 @@ extension Speechly_Slu_V2beta2_BatchOutput: SwiftProtobuf.Message, SwiftProtobuf
     if self.lexical != false {
       try visitor.visitSingularBoolField(value: self.lexical, fieldNumber: 2)
     }
+    if self.tokenized != false {
+      try visitor.visitSingularBoolField(value: self.tokenized, fieldNumber: 3)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Slu_V2beta2_BatchOutput, rhs: Speechly_Slu_V2beta2_BatchOutput) -> Bool {
     if lhs.display != rhs.display {return false}
     if lhs.lexical != rhs.lexical {return false}
+    if lhs.tokenized != rhs.tokenized {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
