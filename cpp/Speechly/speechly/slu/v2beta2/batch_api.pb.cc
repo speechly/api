@@ -150,7 +150,7 @@ const char descriptor_table_protodef_speechly_2fslu_2fv2beta2_2fbatch_5fapi_2epr
   "tusRequest\032).speechly.slu.v2beta2.QueryS"
   "tatusResponseB\200\001\n\030com.speechly.slu.v2bet"
   "a2B\rBatchApiProtoP\001Z\037speechly/slu/v2beta"
-  "2;sluv2beta2\242\002\003SSB\252\002\024Speechly.Slu.V2Beta"
+  "2;sluv2beta2\242\002\003SSX\252\002\024Speechly.Slu.V2Beta"
   "2\312\002\024Speechly\\Slu\\V2Beta2b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fslu_2fv2beta2_2fbatch_5fapi_2eproto_deps[1] = {

@@ -25,8 +25,7 @@ import NIO
 import SwiftProtobuf
 
 
-/// Run Speechly Batch API operations on audio sources without actively waiting
-/// the results.
+/// Run Speechly Batch API operations on audio sources without actively waiting the results.
 ///
 /// Usage: instantiate `Speechly_Slu_V2beta1_BatchAPIClient`, then call methods of this protocol to make API calls.
 public protocol Speechly_Slu_V2beta1_BatchAPIClientProtocol: GRPCClient {
@@ -49,11 +48,11 @@ extension Speechly_Slu_V2beta1_BatchAPIClientProtocol {
     return "speechly.slu.v2beta1.BatchAPI"
   }
 
-  /// Create a new background Speechly Batch API operation for a one or more
-  /// audio sources. Audio sources must be URIs of a files, reachable from the
-  /// API The response includes an `id` that is used to match the operation to
-  /// the results. A `reference` identifier can also be set. Also a
-  /// `batch_reference` can be set to mark that multiple audio sources form a
+  /// Create a new background Speechly Batch API operation for a one or more audio sources.
+  /// Audio sources must be URIs of a files, reachable from the API
+  /// The response includes an `id` that is used to match the operation to the
+  /// results. A `reference` identifier can also be set.
+  /// Also a `batch_reference` can be set to mark that multiple audio sources form a
   /// logical batch. In that case, the response will include a `batch_id`.
   ///
   /// - Parameters:
@@ -73,9 +72,8 @@ extension Speechly_Slu_V2beta1_BatchAPIClientProtocol {
   }
 
   /// Query the status of given operations.
-  /// If the `ProcessAudioSourceRequest` did not define a `destination` or
-  /// `completion_webhook` as a destination, the results are returned in the
-  /// `QueryStatusResponse`.
+  /// If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`
+  /// as a destination, the results are returned in the `QueryStatusResponse`.
   ///
   /// - Parameters:
   ///   - request: Request to send to QueryStatus.
@@ -125,25 +123,23 @@ public final class Speechly_Slu_V2beta1_BatchAPIClient: Speechly_Slu_V2beta1_Bat
   }
 }
 
-/// Run Speechly Batch API operations on audio sources without actively waiting
-/// the results.
+/// Run Speechly Batch API operations on audio sources without actively waiting the results.
 ///
 /// To build a server, implement a class that conforms to this protocol.
 public protocol Speechly_Slu_V2beta1_BatchAPIProvider: CallHandlerProvider {
   var interceptors: Speechly_Slu_V2beta1_BatchAPIServerInterceptorFactoryProtocol? { get }
 
-  /// Create a new background Speechly Batch API operation for a one or more
-  /// audio sources. Audio sources must be URIs of a files, reachable from the
-  /// API The response includes an `id` that is used to match the operation to
-  /// the results. A `reference` identifier can also be set. Also a
-  /// `batch_reference` can be set to mark that multiple audio sources form a
+  /// Create a new background Speechly Batch API operation for a one or more audio sources.
+  /// Audio sources must be URIs of a files, reachable from the API
+  /// The response includes an `id` that is used to match the operation to the
+  /// results. A `reference` identifier can also be set.
+  /// Also a `batch_reference` can be set to mark that multiple audio sources form a
   /// logical batch. In that case, the response will include a `batch_id`.
   func processAudioSource(request: Speechly_Slu_V2beta1_ProcessAudioSourceRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Slu_V2beta1_ProcessAudioSourceResponse>
 
   /// Query the status of given operations.
-  /// If the `ProcessAudioSourceRequest` did not define a `destination` or
-  /// `completion_webhook` as a destination, the results are returned in the
-  /// `QueryStatusResponse`.
+  /// If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`
+  /// as a destination, the results are returned in the `QueryStatusResponse`.
   func queryStatus(request: Speechly_Slu_V2beta1_QueryStatusRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Slu_V2beta1_QueryStatusResponse>
 }
 

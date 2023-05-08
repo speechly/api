@@ -22,17 +22,16 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BatchAPIClient interface {
-	// Create a new background Speechly Batch API operation for a one or more
-	// audio sources. Audio sources must be URIs of a files, reachable from the
-	// API The response includes an `id` that is used to match the operation to
-	// the results. A `reference` identifier can also be set. Also a
-	// `batch_reference` can be set to mark that multiple audio sources form a
+	// Create a new background Speechly Batch API operation for a one or more audio sources.
+	// Audio sources must be URIs of a files, reachable from the API
+	// The response includes an `id` that is used to match the operation to the
+	// results. A `reference` identifier can also be set.
+	// Also a `batch_reference` can be set to mark that multiple audio sources form a
 	// logical batch. In that case, the response will include a `batch_id`.
 	ProcessAudioSource(ctx context.Context, in *ProcessAudioSourceRequest, opts ...grpc.CallOption) (*ProcessAudioSourceResponse, error)
 	// Query the status of given operations.
-	// If the `ProcessAudioSourceRequest` did not define a `destination` or
-	// `completion_webhook` as a destination, the results are returned in the
-	// `QueryStatusResponse`.
+	// If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`
+	// as a destination, the results are returned in the `QueryStatusResponse`.
 	QueryStatus(ctx context.Context, in *QueryStatusRequest, opts ...grpc.CallOption) (*QueryStatusResponse, error)
 }
 
@@ -66,17 +65,16 @@ func (c *batchAPIClient) QueryStatus(ctx context.Context, in *QueryStatusRequest
 // All implementations must embed UnimplementedBatchAPIServer
 // for forward compatibility
 type BatchAPIServer interface {
-	// Create a new background Speechly Batch API operation for a one or more
-	// audio sources. Audio sources must be URIs of a files, reachable from the
-	// API The response includes an `id` that is used to match the operation to
-	// the results. A `reference` identifier can also be set. Also a
-	// `batch_reference` can be set to mark that multiple audio sources form a
+	// Create a new background Speechly Batch API operation for a one or more audio sources.
+	// Audio sources must be URIs of a files, reachable from the API
+	// The response includes an `id` that is used to match the operation to the
+	// results. A `reference` identifier can also be set.
+	// Also a `batch_reference` can be set to mark that multiple audio sources form a
 	// logical batch. In that case, the response will include a `batch_id`.
 	ProcessAudioSource(context.Context, *ProcessAudioSourceRequest) (*ProcessAudioSourceResponse, error)
 	// Query the status of given operations.
-	// If the `ProcessAudioSourceRequest` did not define a `destination` or
-	// `completion_webhook` as a destination, the results are returned in the
-	// `QueryStatusResponse`.
+	// If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`
+	// as a destination, the results are returned in the `QueryStatusResponse`.
 	QueryStatus(context.Context, *QueryStatusRequest) (*QueryStatusResponse, error)
 	mustEmbedUnimplementedBatchAPIServer()
 }

@@ -20,68 +20,130 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-/// Describes the processing options for the audio. Note that not all options are
-/// available for all languages or on all Payment Plans.
-/// If all options are left to default values, `transcribe` is set as default.
-public struct Speechly_Slu_V2beta1_BatchTasks {
+/// Describes full properties of an HTTP endpoint.
+public struct Speechly_Slu_V2beta1_HttpResource {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// Results will include a transcription of the audio.
-  /// Optional, defaults to true.
-  public var transcribe: Bool = false
+  /// URL of the endpoint (protocol://server/path)
+  /// Required.
+  public var url: String = String()
 
-  /// The processing should include the token level transcription and
-  /// determination of time stamps for tokens.
-  /// Optional, defaults to false.
-  public var tokenize: Bool = false
+  /// method to use in connection.
+  /// Optional.
+  public var method: Speechly_Slu_V2beta1_HttpResource.Method = .unspecified
 
-  /// The processing should include translating the audio to English.
-  /// Optional, defaults to false.
-  public var translate: Bool = false
+  /// Possible additional headers to include in the connection.
+  /// Optional.
+  public var headers: [Speechly_Slu_V2beta1_HttpResource.Header] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  /// The HTTP method to use when accessing an HTTP resource.
+  public enum Method: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
+
+    /// Method is not given, and default method is used for requests.
+    /// Data fetches use GET, and result sending POST.
+    case unspecified // = 0
+
+    /// Use HTTP GET.
+    case get // = 1
+
+    /// Use HTTP POST.
+    case post // = 2
+
+    /// Use HTTP PUT.
+    case put // = 3
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unspecified
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unspecified
+      case 1: self = .get
+      case 2: self = .post
+      case 3: self = .put
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unspecified: return 0
+      case .get: return 1
+      case .post: return 2
+      case .put: return 3
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
+
+  /// A single header value in an HTTP request.
+  public struct Header {
+    // SwiftProtobuf.Message conformance is added in an extension below. See the
+    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+    // methods supported on all messages.
+
+    /// Name of the header to set in request.
+    public var name: String = String()
+
+    /// Value of the given header in request.
+    public var value: String = String()
+
+    public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+    public init() {}
+  }
 
   public init() {}
 }
 
-/// Define the output formats for results. If all options are set as false,
-/// `display` is returned.
-public struct Speechly_Slu_V2beta1_BatchOutput {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
+#if swift(>=4.2)
 
-  /// return text formatted for display, ie. capitalized and punctuated.
-  /// Optional, defaults to false.
-  public var display: Bool = false
-
-  /// return lexical version of the transcript, ie. lower case and no
-  /// punctuation.
-  /// Optional, defaults to false.
-  public var lexical: Bool = false
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
+extension Speechly_Slu_V2beta1_HttpResource.Method: CaseIterable {
+  // The compiler won't synthesize support with the UNRECOGNIZED case.
+  public static var allCases: [Speechly_Slu_V2beta1_HttpResource.Method] = [
+    .unspecified,
+    .get,
+    .post,
+    .put,
+  ]
 }
+
+#endif  // swift(>=4.2)
 
 /// Describes the configuration options common for the input batch.
-public struct Speechly_Slu_V2beta1_BatchConfig {
+public struct Speechly_Slu_V2beta1_ProcessAudioBatchConfig {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// ID of the language model to use when processing the audio.
-  /// Optional. If not provided, the model to use will be determined
-  /// from the login information or from language detection.
-  public var modelID: String = String()
+  /// The processing context, Speechly Application ID.
+  /// Optional. If not provided, the processing context will be determined
+  /// from the login information.
+  public var appID: String = String()
 
   /// The language(s) of the audio sent in the request as a BCP-47 language tag
   /// (e.g. "en-US"). Defaults to the target application language(s).
   /// Optional.
   public var languageCodes: [String] = []
+
+  /// Processing configuration.
+  /// Optional, defaults to transcribe.
+  public var processingConfig: Speechly_Slu_V2beta1_ProcessingConfiguration {
+    get {return _processingConfig ?? Speechly_Slu_V2beta1_ProcessingConfiguration()}
+    set {_processingConfig = newValue}
+  }
+  /// Returns true if `processingConfig` has been explicitly set.
+  public var hasProcessingConfig: Bool {return self._processingConfig != nil}
+  /// Clears the value of `processingConfig`. Subsequent reads from it will return its default value.
+  public mutating func clearProcessingConfig() {self._processingConfig = nil}
 
   /// Reference id for a set of related operations. For example an identifier of
   /// the source system.
@@ -95,6 +157,8 @@ public struct Speechly_Slu_V2beta1_BatchConfig {
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
+
+  fileprivate var _processingConfig: Speechly_Slu_V2beta1_ProcessingConfiguration? = nil
 }
 
 /// Describes the configuration options unique to a single audio source.
@@ -138,6 +202,33 @@ public struct Speechly_Slu_V2beta1_ProcessAudioSourceRequestItem {
   public init() {}
 
   fileprivate var _completionWebhook: Speechly_Slu_V2beta1_HttpResource? = nil
+}
+
+/// Describes the processing options for the audio. Note that not all options are
+/// available for all languages or on all Payment Plans.
+public struct Speechly_Slu_V2beta1_ProcessingConfiguration {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// The processing should include the token level transcription and
+  /// determination of time stamps for tokens.
+  /// Optional, defaults to false.
+  public var tokenize: Bool = false
+
+  /// The processing should include translating the audio to English.
+  /// Optional, defaults to false.
+  public var translate: Bool = false
+
+  /// The processing should not include transcribing the audio to the source
+  /// language. This option should be used with translate (or other similar
+  /// option) to suppress the normal Speech Recognition processing.
+  /// Optional, defaults to false.
+  public var skipTranscribe: Bool = false
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
 }
 
 /// Describes a single batch operation.
@@ -453,109 +544,13 @@ public struct Speechly_Slu_V2beta1_Option {
   public init() {}
 }
 
-/// Describes full properties of an HTTP endpoint.
-public struct Speechly_Slu_V2beta1_HttpResource {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  /// URL of the endpoint (protocol://server/path)
-  /// Required.
-  public var url: String = String()
-
-  /// method to use in connection.
-  /// Optional.
-  public var method: Speechly_Slu_V2beta1_HttpResource.Method = .unspecified
-
-  /// Possible additional headers to include in the connection.
-  /// Optional.
-  public var headers: [Speechly_Slu_V2beta1_HttpResource.Header] = []
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  /// The HTTP method to use when accessing an HTTP resource.
-  public enum Method: SwiftProtobuf.Enum {
-    public typealias RawValue = Int
-
-    /// Method is not given, and default method is used for requests.
-    /// Data fetches use GET, and result sending POST.
-    case unspecified // = 0
-
-    /// Use HTTP GET.
-    case get // = 1
-
-    /// Use HTTP POST.
-    case post // = 2
-
-    /// Use HTTP PUT.
-    case put // = 3
-    case UNRECOGNIZED(Int)
-
-    public init() {
-      self = .unspecified
-    }
-
-    public init?(rawValue: Int) {
-      switch rawValue {
-      case 0: self = .unspecified
-      case 1: self = .get
-      case 2: self = .post
-      case 3: self = .put
-      default: self = .UNRECOGNIZED(rawValue)
-      }
-    }
-
-    public var rawValue: Int {
-      switch self {
-      case .unspecified: return 0
-      case .get: return 1
-      case .post: return 2
-      case .put: return 3
-      case .UNRECOGNIZED(let i): return i
-      }
-    }
-
-  }
-
-  /// A single header value in an HTTP request.
-  public struct Header {
-    // SwiftProtobuf.Message conformance is added in an extension below. See the
-    // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-    // methods supported on all messages.
-
-    /// Name of the header to set in request.
-    public var name: String = String()
-
-    /// Value of the given header in request.
-    public var value: String = String()
-
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-    public init() {}
-  }
-
-  public init() {}
-}
-
-#if swift(>=4.2)
-
-extension Speechly_Slu_V2beta1_HttpResource.Method: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Speechly_Slu_V2beta1_HttpResource.Method] = [
-    .unspecified,
-    .get,
-    .post,
-    .put,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
 #if swift(>=5.5) && canImport(_Concurrency)
-extension Speechly_Slu_V2beta1_BatchTasks: @unchecked Sendable {}
-extension Speechly_Slu_V2beta1_BatchOutput: @unchecked Sendable {}
-extension Speechly_Slu_V2beta1_BatchConfig: @unchecked Sendable {}
+extension Speechly_Slu_V2beta1_HttpResource: @unchecked Sendable {}
+extension Speechly_Slu_V2beta1_HttpResource.Method: @unchecked Sendable {}
+extension Speechly_Slu_V2beta1_HttpResource.Header: @unchecked Sendable {}
+extension Speechly_Slu_V2beta1_ProcessAudioBatchConfig: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_ProcessAudioSourceRequestItem: @unchecked Sendable {}
+extension Speechly_Slu_V2beta1_ProcessingConfiguration: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_Operation: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_Operation.Status: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_Operation.ErrorCode: @unchecked Sendable {}
@@ -563,21 +558,18 @@ extension Speechly_Slu_V2beta1_OperationResult: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_OperationResult.ResultType: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_Token: @unchecked Sendable {}
 extension Speechly_Slu_V2beta1_Option: @unchecked Sendable {}
-extension Speechly_Slu_V2beta1_HttpResource: @unchecked Sendable {}
-extension Speechly_Slu_V2beta1_HttpResource.Method: @unchecked Sendable {}
-extension Speechly_Slu_V2beta1_HttpResource.Header: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 fileprivate let _protobuf_package = "speechly.slu.v2beta1"
 
-extension Speechly_Slu_V2beta1_BatchTasks: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".BatchTasks"
+extension Speechly_Slu_V2beta1_HttpResource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".HttpResource"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "transcribe"),
-    2: .same(proto: "tokenize"),
-    3: .same(proto: "translate"),
+    1: .same(proto: "url"),
+    2: .same(proto: "method"),
+    3: .same(proto: "headers"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -586,41 +578,50 @@ extension Speechly_Slu_V2beta1_BatchTasks: SwiftProtobuf.Message, SwiftProtobuf.
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularBoolField(value: &self.transcribe) }()
-      case 2: try { try decoder.decodeSingularBoolField(value: &self.tokenize) }()
-      case 3: try { try decoder.decodeSingularBoolField(value: &self.translate) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self.url) }()
+      case 2: try { try decoder.decodeSingularEnumField(value: &self.method) }()
+      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.headers) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.transcribe != false {
-      try visitor.visitSingularBoolField(value: self.transcribe, fieldNumber: 1)
+    if !self.url.isEmpty {
+      try visitor.visitSingularStringField(value: self.url, fieldNumber: 1)
     }
-    if self.tokenize != false {
-      try visitor.visitSingularBoolField(value: self.tokenize, fieldNumber: 2)
+    if self.method != .unspecified {
+      try visitor.visitSingularEnumField(value: self.method, fieldNumber: 2)
     }
-    if self.translate != false {
-      try visitor.visitSingularBoolField(value: self.translate, fieldNumber: 3)
+    if !self.headers.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.headers, fieldNumber: 3)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Speechly_Slu_V2beta1_BatchTasks, rhs: Speechly_Slu_V2beta1_BatchTasks) -> Bool {
-    if lhs.transcribe != rhs.transcribe {return false}
-    if lhs.tokenize != rhs.tokenize {return false}
-    if lhs.translate != rhs.translate {return false}
+  public static func ==(lhs: Speechly_Slu_V2beta1_HttpResource, rhs: Speechly_Slu_V2beta1_HttpResource) -> Bool {
+    if lhs.url != rhs.url {return false}
+    if lhs.method != rhs.method {return false}
+    if lhs.headers != rhs.headers {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Speechly_Slu_V2beta1_BatchOutput: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".BatchOutput"
+extension Speechly_Slu_V2beta1_HttpResource.Method: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "display"),
-    2: .same(proto: "lexical"),
+    0: .same(proto: "METHOD_UNSPECIFIED"),
+    1: .same(proto: "METHOD_GET"),
+    2: .same(proto: "METHOD_POST"),
+    3: .same(proto: "METHOD_PUT"),
+  ]
+}
+
+extension Speechly_Slu_V2beta1_HttpResource.Header: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = Speechly_Slu_V2beta1_HttpResource.protoMessageName + ".Header"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "name"),
+    2: .same(proto: "value"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -629,36 +630,37 @@ extension Speechly_Slu_V2beta1_BatchOutput: SwiftProtobuf.Message, SwiftProtobuf
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularBoolField(value: &self.display) }()
-      case 2: try { try decoder.decodeSingularBoolField(value: &self.lexical) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self.name) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.value) }()
       default: break
       }
     }
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.display != false {
-      try visitor.visitSingularBoolField(value: self.display, fieldNumber: 1)
+    if !self.name.isEmpty {
+      try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
     }
-    if self.lexical != false {
-      try visitor.visitSingularBoolField(value: self.lexical, fieldNumber: 2)
+    if !self.value.isEmpty {
+      try visitor.visitSingularStringField(value: self.value, fieldNumber: 2)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Speechly_Slu_V2beta1_BatchOutput, rhs: Speechly_Slu_V2beta1_BatchOutput) -> Bool {
-    if lhs.display != rhs.display {return false}
-    if lhs.lexical != rhs.lexical {return false}
+  public static func ==(lhs: Speechly_Slu_V2beta1_HttpResource.Header, rhs: Speechly_Slu_V2beta1_HttpResource.Header) -> Bool {
+    if lhs.name != rhs.name {return false}
+    if lhs.value != rhs.value {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Speechly_Slu_V2beta1_BatchConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".BatchConfig"
+extension Speechly_Slu_V2beta1_ProcessAudioBatchConfig: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ProcessAudioBatchConfig"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "model_id"),
+    1: .standard(proto: "app_id"),
     2: .standard(proto: "language_codes"),
+    3: .standard(proto: "processing_config"),
     4: .standard(proto: "batch_reference"),
     5: .same(proto: "options"),
   ]
@@ -669,8 +671,9 @@ extension Speechly_Slu_V2beta1_BatchConfig: SwiftProtobuf.Message, SwiftProtobuf
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.modelID) }()
+      case 1: try { try decoder.decodeSingularStringField(value: &self.appID) }()
       case 2: try { try decoder.decodeRepeatedStringField(value: &self.languageCodes) }()
+      case 3: try { try decoder.decodeSingularMessageField(value: &self._processingConfig) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.batchReference) }()
       case 5: try { try decoder.decodeRepeatedMessageField(value: &self.options) }()
       default: break
@@ -679,12 +682,19 @@ extension Speechly_Slu_V2beta1_BatchConfig: SwiftProtobuf.Message, SwiftProtobuf
   }
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.modelID.isEmpty {
-      try visitor.visitSingularStringField(value: self.modelID, fieldNumber: 1)
+    // The use of inline closures is to circumvent an issue where the compiler
+    // allocates stack space for every if/case branch local when no optimizations
+    // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
+    // https://github.com/apple/swift-protobuf/issues/1182
+    if !self.appID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 1)
     }
     if !self.languageCodes.isEmpty {
       try visitor.visitRepeatedStringField(value: self.languageCodes, fieldNumber: 2)
     }
+    try { if let v = self._processingConfig {
+      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
+    } }()
     if !self.batchReference.isEmpty {
       try visitor.visitSingularStringField(value: self.batchReference, fieldNumber: 4)
     }
@@ -694,9 +704,10 @@ extension Speechly_Slu_V2beta1_BatchConfig: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Speechly_Slu_V2beta1_BatchConfig, rhs: Speechly_Slu_V2beta1_BatchConfig) -> Bool {
-    if lhs.modelID != rhs.modelID {return false}
+  public static func ==(lhs: Speechly_Slu_V2beta1_ProcessAudioBatchConfig, rhs: Speechly_Slu_V2beta1_ProcessAudioBatchConfig) -> Bool {
+    if lhs.appID != rhs.appID {return false}
     if lhs.languageCodes != rhs.languageCodes {return false}
+    if lhs._processingConfig != rhs._processingConfig {return false}
     if lhs.batchReference != rhs.batchReference {return false}
     if lhs.options != rhs.options {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -759,6 +770,50 @@ extension Speechly_Slu_V2beta1_ProcessAudioSourceRequestItem: SwiftProtobuf.Mess
     if lhs._completionWebhook != rhs._completionWebhook {return false}
     if lhs.reference != rhs.reference {return false}
     if lhs.deviceID != rhs.deviceID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Slu_V2beta1_ProcessingConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ProcessingConfiguration"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "tokenize"),
+    2: .same(proto: "translate"),
+    3: .standard(proto: "skip_transcribe"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularBoolField(value: &self.tokenize) }()
+      case 2: try { try decoder.decodeSingularBoolField(value: &self.translate) }()
+      case 3: try { try decoder.decodeSingularBoolField(value: &self.skipTranscribe) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if self.tokenize != false {
+      try visitor.visitSingularBoolField(value: self.tokenize, fieldNumber: 1)
+    }
+    if self.translate != false {
+      try visitor.visitSingularBoolField(value: self.translate, fieldNumber: 2)
+    }
+    if self.skipTranscribe != false {
+      try visitor.visitSingularBoolField(value: self.skipTranscribe, fieldNumber: 3)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Slu_V2beta1_ProcessingConfiguration, rhs: Speechly_Slu_V2beta1_ProcessingConfiguration) -> Bool {
+    if lhs.tokenize != rhs.tokenize {return false}
+    if lhs.translate != rhs.translate {return false}
+    if lhs.skipTranscribe != rhs.skipTranscribe {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -1028,97 +1083,6 @@ extension Speechly_Slu_V2beta1_Option: SwiftProtobuf.Message, SwiftProtobuf._Mes
 
   public static func ==(lhs: Speechly_Slu_V2beta1_Option, rhs: Speechly_Slu_V2beta1_Option) -> Bool {
     if lhs.key != rhs.key {return false}
-    if lhs.value != rhs.value {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Speechly_Slu_V2beta1_HttpResource: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = _protobuf_package + ".HttpResource"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "url"),
-    2: .same(proto: "method"),
-    3: .same(proto: "headers"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.url) }()
-      case 2: try { try decoder.decodeSingularEnumField(value: &self.method) }()
-      case 3: try { try decoder.decodeRepeatedMessageField(value: &self.headers) }()
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.url.isEmpty {
-      try visitor.visitSingularStringField(value: self.url, fieldNumber: 1)
-    }
-    if self.method != .unspecified {
-      try visitor.visitSingularEnumField(value: self.method, fieldNumber: 2)
-    }
-    if !self.headers.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.headers, fieldNumber: 3)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: Speechly_Slu_V2beta1_HttpResource, rhs: Speechly_Slu_V2beta1_HttpResource) -> Bool {
-    if lhs.url != rhs.url {return false}
-    if lhs.method != rhs.method {return false}
-    if lhs.headers != rhs.headers {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension Speechly_Slu_V2beta1_HttpResource.Method: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "METHOD_UNSPECIFIED"),
-    1: .same(proto: "METHOD_GET"),
-    2: .same(proto: "METHOD_POST"),
-    3: .same(proto: "METHOD_PUT"),
-  ]
-}
-
-extension Speechly_Slu_V2beta1_HttpResource.Header: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Speechly_Slu_V2beta1_HttpResource.protoMessageName + ".Header"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "name"),
-    2: .same(proto: "value"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      // The use of inline closures is to circumvent an issue where the compiler
-      // allocates stack space for every case branch when no optimizations are
-      // enabled. https://github.com/apple/swift-protobuf/issues/1034
-      switch fieldNumber {
-      case 1: try { try decoder.decodeSingularStringField(value: &self.name) }()
-      case 2: try { try decoder.decodeSingularStringField(value: &self.value) }()
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.name.isEmpty {
-      try visitor.visitSingularStringField(value: self.name, fieldNumber: 1)
-    }
-    if !self.value.isEmpty {
-      try visitor.visitSingularStringField(value: self.value, fieldNumber: 2)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: Speechly_Slu_V2beta1_HttpResource.Header, rhs: Speechly_Slu_V2beta1_HttpResource.Header) -> Bool {
-    if lhs.name != rhs.name {return false}
     if lhs.value != rhs.value {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

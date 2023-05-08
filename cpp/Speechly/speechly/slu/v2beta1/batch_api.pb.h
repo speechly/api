@@ -199,12 +199,10 @@ class ProcessAudioSourceRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kSourceFieldNumber = 4,
-    kTasksFieldNumber = 1,
-    kConfigFieldNumber = 2,
-    kOutputFieldNumber = 3,
+    kSourceFieldNumber = 2,
+    kConfigFieldNumber = 1,
   };
-  // repeated .speechly.slu.v2beta1.ProcessAudioSourceRequestItem source = 4;
+  // repeated .speechly.slu.v2beta1.ProcessAudioSourceRequestItem source = 2;
   int source_size() const;
   private:
   int _internal_source_size() const;
@@ -222,59 +220,23 @@ class ProcessAudioSourceRequest final :
   const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v2beta1::ProcessAudioSourceRequestItem >&
       source() const;
 
-  // .speechly.slu.v2beta1.BatchTasks tasks = 1;
-  bool has_tasks() const;
-  private:
-  bool _internal_has_tasks() const;
-  public:
-  void clear_tasks();
-  const ::speechly::slu::v2beta1::BatchTasks& tasks() const;
-  PROTOBUF_MUST_USE_RESULT ::speechly::slu::v2beta1::BatchTasks* release_tasks();
-  ::speechly::slu::v2beta1::BatchTasks* mutable_tasks();
-  void set_allocated_tasks(::speechly::slu::v2beta1::BatchTasks* tasks);
-  private:
-  const ::speechly::slu::v2beta1::BatchTasks& _internal_tasks() const;
-  ::speechly::slu::v2beta1::BatchTasks* _internal_mutable_tasks();
-  public:
-  void unsafe_arena_set_allocated_tasks(
-      ::speechly::slu::v2beta1::BatchTasks* tasks);
-  ::speechly::slu::v2beta1::BatchTasks* unsafe_arena_release_tasks();
-
-  // .speechly.slu.v2beta1.BatchConfig config = 2;
+  // .speechly.slu.v2beta1.ProcessAudioBatchConfig config = 1;
   bool has_config() const;
   private:
   bool _internal_has_config() const;
   public:
   void clear_config();
-  const ::speechly::slu::v2beta1::BatchConfig& config() const;
-  PROTOBUF_MUST_USE_RESULT ::speechly::slu::v2beta1::BatchConfig* release_config();
-  ::speechly::slu::v2beta1::BatchConfig* mutable_config();
-  void set_allocated_config(::speechly::slu::v2beta1::BatchConfig* config);
+  const ::speechly::slu::v2beta1::ProcessAudioBatchConfig& config() const;
+  PROTOBUF_MUST_USE_RESULT ::speechly::slu::v2beta1::ProcessAudioBatchConfig* release_config();
+  ::speechly::slu::v2beta1::ProcessAudioBatchConfig* mutable_config();
+  void set_allocated_config(::speechly::slu::v2beta1::ProcessAudioBatchConfig* config);
   private:
-  const ::speechly::slu::v2beta1::BatchConfig& _internal_config() const;
-  ::speechly::slu::v2beta1::BatchConfig* _internal_mutable_config();
+  const ::speechly::slu::v2beta1::ProcessAudioBatchConfig& _internal_config() const;
+  ::speechly::slu::v2beta1::ProcessAudioBatchConfig* _internal_mutable_config();
   public:
   void unsafe_arena_set_allocated_config(
-      ::speechly::slu::v2beta1::BatchConfig* config);
-  ::speechly::slu::v2beta1::BatchConfig* unsafe_arena_release_config();
-
-  // .speechly.slu.v2beta1.BatchOutput output = 3;
-  bool has_output() const;
-  private:
-  bool _internal_has_output() const;
-  public:
-  void clear_output();
-  const ::speechly::slu::v2beta1::BatchOutput& output() const;
-  PROTOBUF_MUST_USE_RESULT ::speechly::slu::v2beta1::BatchOutput* release_output();
-  ::speechly::slu::v2beta1::BatchOutput* mutable_output();
-  void set_allocated_output(::speechly::slu::v2beta1::BatchOutput* output);
-  private:
-  const ::speechly::slu::v2beta1::BatchOutput& _internal_output() const;
-  ::speechly::slu::v2beta1::BatchOutput* _internal_mutable_output();
-  public:
-  void unsafe_arena_set_allocated_output(
-      ::speechly::slu::v2beta1::BatchOutput* output);
-  ::speechly::slu::v2beta1::BatchOutput* unsafe_arena_release_output();
+      ::speechly::slu::v2beta1::ProcessAudioBatchConfig* config);
+  ::speechly::slu::v2beta1::ProcessAudioBatchConfig* unsafe_arena_release_config();
 
   // @@protoc_insertion_point(class_scope:speechly.slu.v2beta1.ProcessAudioSourceRequest)
  private:
@@ -284,9 +246,7 @@ class ProcessAudioSourceRequest final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v2beta1::ProcessAudioSourceRequestItem > source_;
-  ::speechly::slu::v2beta1::BatchTasks* tasks_;
-  ::speechly::slu::v2beta1::BatchConfig* config_;
-  ::speechly::slu::v2beta1::BatchOutput* output_;
+  ::speechly::slu::v2beta1::ProcessAudioBatchConfig* config_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv2beta1_2fbatch_5fapi_2eproto;
 };
@@ -809,110 +769,24 @@ class QueryStatusResponse final :
 #endif  // __GNUC__
 // ProcessAudioSourceRequest
 
-// .speechly.slu.v2beta1.BatchTasks tasks = 1;
-inline bool ProcessAudioSourceRequest::_internal_has_tasks() const {
-  return this != internal_default_instance() && tasks_ != nullptr;
-}
-inline bool ProcessAudioSourceRequest::has_tasks() const {
-  return _internal_has_tasks();
-}
-inline const ::speechly::slu::v2beta1::BatchTasks& ProcessAudioSourceRequest::_internal_tasks() const {
-  const ::speechly::slu::v2beta1::BatchTasks* p = tasks_;
-  return p != nullptr ? *p : reinterpret_cast<const ::speechly::slu::v2beta1::BatchTasks&>(
-      ::speechly::slu::v2beta1::_BatchTasks_default_instance_);
-}
-inline const ::speechly::slu::v2beta1::BatchTasks& ProcessAudioSourceRequest::tasks() const {
-  // @@protoc_insertion_point(field_get:speechly.slu.v2beta1.ProcessAudioSourceRequest.tasks)
-  return _internal_tasks();
-}
-inline void ProcessAudioSourceRequest::unsafe_arena_set_allocated_tasks(
-    ::speechly::slu::v2beta1::BatchTasks* tasks) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(tasks_);
-  }
-  tasks_ = tasks;
-  if (tasks) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v2beta1.ProcessAudioSourceRequest.tasks)
-}
-inline ::speechly::slu::v2beta1::BatchTasks* ProcessAudioSourceRequest::release_tasks() {
-  
-  ::speechly::slu::v2beta1::BatchTasks* temp = tasks_;
-  tasks_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::speechly::slu::v2beta1::BatchTasks* ProcessAudioSourceRequest::unsafe_arena_release_tasks() {
-  // @@protoc_insertion_point(field_release:speechly.slu.v2beta1.ProcessAudioSourceRequest.tasks)
-  
-  ::speechly::slu::v2beta1::BatchTasks* temp = tasks_;
-  tasks_ = nullptr;
-  return temp;
-}
-inline ::speechly::slu::v2beta1::BatchTasks* ProcessAudioSourceRequest::_internal_mutable_tasks() {
-  
-  if (tasks_ == nullptr) {
-    auto* p = CreateMaybeMessage<::speechly::slu::v2beta1::BatchTasks>(GetArenaForAllocation());
-    tasks_ = p;
-  }
-  return tasks_;
-}
-inline ::speechly::slu::v2beta1::BatchTasks* ProcessAudioSourceRequest::mutable_tasks() {
-  ::speechly::slu::v2beta1::BatchTasks* _msg = _internal_mutable_tasks();
-  // @@protoc_insertion_point(field_mutable:speechly.slu.v2beta1.ProcessAudioSourceRequest.tasks)
-  return _msg;
-}
-inline void ProcessAudioSourceRequest::set_allocated_tasks(::speechly::slu::v2beta1::BatchTasks* tasks) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(tasks_);
-  }
-  if (tasks) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(tasks));
-    if (message_arena != submessage_arena) {
-      tasks = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, tasks, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  tasks_ = tasks;
-  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v2beta1.ProcessAudioSourceRequest.tasks)
-}
-
-// .speechly.slu.v2beta1.BatchConfig config = 2;
+// .speechly.slu.v2beta1.ProcessAudioBatchConfig config = 1;
 inline bool ProcessAudioSourceRequest::_internal_has_config() const {
   return this != internal_default_instance() && config_ != nullptr;
 }
 inline bool ProcessAudioSourceRequest::has_config() const {
   return _internal_has_config();
 }
-inline const ::speechly::slu::v2beta1::BatchConfig& ProcessAudioSourceRequest::_internal_config() const {
-  const ::speechly::slu::v2beta1::BatchConfig* p = config_;
-  return p != nullptr ? *p : reinterpret_cast<const ::speechly::slu::v2beta1::BatchConfig&>(
-      ::speechly::slu::v2beta1::_BatchConfig_default_instance_);
+inline const ::speechly::slu::v2beta1::ProcessAudioBatchConfig& ProcessAudioSourceRequest::_internal_config() const {
+  const ::speechly::slu::v2beta1::ProcessAudioBatchConfig* p = config_;
+  return p != nullptr ? *p : reinterpret_cast<const ::speechly::slu::v2beta1::ProcessAudioBatchConfig&>(
+      ::speechly::slu::v2beta1::_ProcessAudioBatchConfig_default_instance_);
 }
-inline const ::speechly::slu::v2beta1::BatchConfig& ProcessAudioSourceRequest::config() const {
+inline const ::speechly::slu::v2beta1::ProcessAudioBatchConfig& ProcessAudioSourceRequest::config() const {
   // @@protoc_insertion_point(field_get:speechly.slu.v2beta1.ProcessAudioSourceRequest.config)
   return _internal_config();
 }
 inline void ProcessAudioSourceRequest::unsafe_arena_set_allocated_config(
-    ::speechly::slu::v2beta1::BatchConfig* config) {
+    ::speechly::slu::v2beta1::ProcessAudioBatchConfig* config) {
   if (GetArenaForAllocation() == nullptr) {
     delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(config_);
   }
@@ -924,9 +798,9 @@ inline void ProcessAudioSourceRequest::unsafe_arena_set_allocated_config(
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v2beta1.ProcessAudioSourceRequest.config)
 }
-inline ::speechly::slu::v2beta1::BatchConfig* ProcessAudioSourceRequest::release_config() {
+inline ::speechly::slu::v2beta1::ProcessAudioBatchConfig* ProcessAudioSourceRequest::release_config() {
   
-  ::speechly::slu::v2beta1::BatchConfig* temp = config_;
+  ::speechly::slu::v2beta1::ProcessAudioBatchConfig* temp = config_;
   config_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
@@ -939,27 +813,27 @@ inline ::speechly::slu::v2beta1::BatchConfig* ProcessAudioSourceRequest::release
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::speechly::slu::v2beta1::BatchConfig* ProcessAudioSourceRequest::unsafe_arena_release_config() {
+inline ::speechly::slu::v2beta1::ProcessAudioBatchConfig* ProcessAudioSourceRequest::unsafe_arena_release_config() {
   // @@protoc_insertion_point(field_release:speechly.slu.v2beta1.ProcessAudioSourceRequest.config)
   
-  ::speechly::slu::v2beta1::BatchConfig* temp = config_;
+  ::speechly::slu::v2beta1::ProcessAudioBatchConfig* temp = config_;
   config_ = nullptr;
   return temp;
 }
-inline ::speechly::slu::v2beta1::BatchConfig* ProcessAudioSourceRequest::_internal_mutable_config() {
+inline ::speechly::slu::v2beta1::ProcessAudioBatchConfig* ProcessAudioSourceRequest::_internal_mutable_config() {
   
   if (config_ == nullptr) {
-    auto* p = CreateMaybeMessage<::speechly::slu::v2beta1::BatchConfig>(GetArenaForAllocation());
+    auto* p = CreateMaybeMessage<::speechly::slu::v2beta1::ProcessAudioBatchConfig>(GetArenaForAllocation());
     config_ = p;
   }
   return config_;
 }
-inline ::speechly::slu::v2beta1::BatchConfig* ProcessAudioSourceRequest::mutable_config() {
-  ::speechly::slu::v2beta1::BatchConfig* _msg = _internal_mutable_config();
+inline ::speechly::slu::v2beta1::ProcessAudioBatchConfig* ProcessAudioSourceRequest::mutable_config() {
+  ::speechly::slu::v2beta1::ProcessAudioBatchConfig* _msg = _internal_mutable_config();
   // @@protoc_insertion_point(field_mutable:speechly.slu.v2beta1.ProcessAudioSourceRequest.config)
   return _msg;
 }
-inline void ProcessAudioSourceRequest::set_allocated_config(::speechly::slu::v2beta1::BatchConfig* config) {
+inline void ProcessAudioSourceRequest::set_allocated_config(::speechly::slu::v2beta1::ProcessAudioBatchConfig* config) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
     delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(config_);
@@ -981,93 +855,7 @@ inline void ProcessAudioSourceRequest::set_allocated_config(::speechly::slu::v2b
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v2beta1.ProcessAudioSourceRequest.config)
 }
 
-// .speechly.slu.v2beta1.BatchOutput output = 3;
-inline bool ProcessAudioSourceRequest::_internal_has_output() const {
-  return this != internal_default_instance() && output_ != nullptr;
-}
-inline bool ProcessAudioSourceRequest::has_output() const {
-  return _internal_has_output();
-}
-inline const ::speechly::slu::v2beta1::BatchOutput& ProcessAudioSourceRequest::_internal_output() const {
-  const ::speechly::slu::v2beta1::BatchOutput* p = output_;
-  return p != nullptr ? *p : reinterpret_cast<const ::speechly::slu::v2beta1::BatchOutput&>(
-      ::speechly::slu::v2beta1::_BatchOutput_default_instance_);
-}
-inline const ::speechly::slu::v2beta1::BatchOutput& ProcessAudioSourceRequest::output() const {
-  // @@protoc_insertion_point(field_get:speechly.slu.v2beta1.ProcessAudioSourceRequest.output)
-  return _internal_output();
-}
-inline void ProcessAudioSourceRequest::unsafe_arena_set_allocated_output(
-    ::speechly::slu::v2beta1::BatchOutput* output) {
-  if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(output_);
-  }
-  output_ = output;
-  if (output) {
-    
-  } else {
-    
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:speechly.slu.v2beta1.ProcessAudioSourceRequest.output)
-}
-inline ::speechly::slu::v2beta1::BatchOutput* ProcessAudioSourceRequest::release_output() {
-  
-  ::speechly::slu::v2beta1::BatchOutput* temp = output_;
-  output_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
-  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  if (GetArenaForAllocation() == nullptr) { delete old; }
-#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArenaForAllocation() != nullptr) {
-    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
-  }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return temp;
-}
-inline ::speechly::slu::v2beta1::BatchOutput* ProcessAudioSourceRequest::unsafe_arena_release_output() {
-  // @@protoc_insertion_point(field_release:speechly.slu.v2beta1.ProcessAudioSourceRequest.output)
-  
-  ::speechly::slu::v2beta1::BatchOutput* temp = output_;
-  output_ = nullptr;
-  return temp;
-}
-inline ::speechly::slu::v2beta1::BatchOutput* ProcessAudioSourceRequest::_internal_mutable_output() {
-  
-  if (output_ == nullptr) {
-    auto* p = CreateMaybeMessage<::speechly::slu::v2beta1::BatchOutput>(GetArenaForAllocation());
-    output_ = p;
-  }
-  return output_;
-}
-inline ::speechly::slu::v2beta1::BatchOutput* ProcessAudioSourceRequest::mutable_output() {
-  ::speechly::slu::v2beta1::BatchOutput* _msg = _internal_mutable_output();
-  // @@protoc_insertion_point(field_mutable:speechly.slu.v2beta1.ProcessAudioSourceRequest.output)
-  return _msg;
-}
-inline void ProcessAudioSourceRequest::set_allocated_output(::speechly::slu::v2beta1::BatchOutput* output) {
-  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
-  if (message_arena == nullptr) {
-    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(output_);
-  }
-  if (output) {
-    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
-            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
-                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(output));
-    if (message_arena != submessage_arena) {
-      output = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, output, submessage_arena);
-    }
-    
-  } else {
-    
-  }
-  output_ = output;
-  // @@protoc_insertion_point(field_set_allocated:speechly.slu.v2beta1.ProcessAudioSourceRequest.output)
-}
-
-// repeated .speechly.slu.v2beta1.ProcessAudioSourceRequestItem source = 4;
+// repeated .speechly.slu.v2beta1.ProcessAudioSourceRequestItem source = 2;
 inline int ProcessAudioSourceRequest::_internal_source_size() const {
   return source_.size();
 }

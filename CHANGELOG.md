@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.17](https://github.com/speechly/api/tree/0.8.17) (2023-05-08)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.16...0.8.17)
+
+**Merged pull requests:**
+
+- Batch API v2beta2 [\#78](https://github.com/speechly/api/pull/78) ([langma](https://github.com/langma))
+
 ## [0.8.16](https://github.com/speechly/api/tree/0.8.16) (2023-04-24)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.15...0.8.16)

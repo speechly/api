@@ -26,38 +26,15 @@ public struct Speechly_Slu_V2beta1_ProcessAudioSourceRequest {
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  /// tasks describe the requested operations for the given audio.
-  /// Optional, defaults to `transcribe`.
-  public var tasks: Speechly_Slu_V2beta1_BatchTasks {
-    get {return _tasks ?? Speechly_Slu_V2beta1_BatchTasks()}
-    set {_tasks = newValue}
-  }
-  /// Returns true if `tasks` has been explicitly set.
-  public var hasTasks: Bool {return self._tasks != nil}
-  /// Clears the value of `tasks`. Subsequent reads from it will return its default value.
-  public mutating func clearTasks() {self._tasks = nil}
-
   /// The options shared by all of the source audios.
-  /// Optional.
-  public var config: Speechly_Slu_V2beta1_BatchConfig {
-    get {return _config ?? Speechly_Slu_V2beta1_BatchConfig()}
+  public var config: Speechly_Slu_V2beta1_ProcessAudioBatchConfig {
+    get {return _config ?? Speechly_Slu_V2beta1_ProcessAudioBatchConfig()}
     set {_config = newValue}
   }
   /// Returns true if `config` has been explicitly set.
   public var hasConfig: Bool {return self._config != nil}
   /// Clears the value of `config`. Subsequent reads from it will return its default value.
   public mutating func clearConfig() {self._config = nil}
-
-  /// Define the output formatting for text results.
-  /// Optional, defaults to `display`.
-  public var output: Speechly_Slu_V2beta1_BatchOutput {
-    get {return _output ?? Speechly_Slu_V2beta1_BatchOutput()}
-    set {_output = newValue}
-  }
-  /// Returns true if `output` has been explicitly set.
-  public var hasOutput: Bool {return self._output != nil}
-  /// Clears the value of `output`. Subsequent reads from it will return its default value.
-  public mutating func clearOutput() {self._output = nil}
 
   /// The source audios, and their unique options.
   public var source: [Speechly_Slu_V2beta1_ProcessAudioSourceRequestItem] = []
@@ -66,9 +43,7 @@ public struct Speechly_Slu_V2beta1_ProcessAudioSourceRequest {
 
   public init() {}
 
-  fileprivate var _tasks: Speechly_Slu_V2beta1_BatchTasks? = nil
-  fileprivate var _config: Speechly_Slu_V2beta1_BatchConfig? = nil
-  fileprivate var _output: Speechly_Slu_V2beta1_BatchOutput? = nil
+  fileprivate var _config: Speechly_Slu_V2beta1_ProcessAudioBatchConfig? = nil
 }
 
 /// Describes a response to request to process audio from a pre-existing source.
@@ -95,15 +70,12 @@ public struct Speechly_Slu_V2beta1_QueryStatusRequest {
   public var operationIds: [String] = []
 
   /// Reference ID of an operation.
-  /// Optional.
   public var operationReferences: [String] = []
 
   /// ID of an audio processing batch.
-  /// Optional.
   public var batchID: String = String()
 
   /// Reference ID of a batch.
-  /// Optional.
   public var batchReference: String = String()
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -139,10 +111,8 @@ fileprivate let _protobuf_package = "speechly.slu.v2beta1"
 extension Speechly_Slu_V2beta1_ProcessAudioSourceRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = _protobuf_package + ".ProcessAudioSourceRequest"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "tasks"),
-    2: .same(proto: "config"),
-    3: .same(proto: "output"),
-    4: .same(proto: "source"),
+    1: .same(proto: "config"),
+    2: .same(proto: "source"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -151,10 +121,8 @@ extension Speechly_Slu_V2beta1_ProcessAudioSourceRequest: SwiftProtobuf.Message,
       // allocates stack space for every case branch when no optimizations are
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
-      case 1: try { try decoder.decodeSingularMessageField(value: &self._tasks) }()
-      case 2: try { try decoder.decodeSingularMessageField(value: &self._config) }()
-      case 3: try { try decoder.decodeSingularMessageField(value: &self._output) }()
-      case 4: try { try decoder.decodeRepeatedMessageField(value: &self.source) }()
+      case 1: try { try decoder.decodeSingularMessageField(value: &self._config) }()
+      case 2: try { try decoder.decodeRepeatedMessageField(value: &self.source) }()
       default: break
       }
     }
@@ -165,25 +133,17 @@ extension Speechly_Slu_V2beta1_ProcessAudioSourceRequest: SwiftProtobuf.Message,
     // allocates stack space for every if/case branch local when no optimizations
     // are enabled. https://github.com/apple/swift-protobuf/issues/1034 and
     // https://github.com/apple/swift-protobuf/issues/1182
-    try { if let v = self._tasks {
+    try { if let v = self._config {
       try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
     } }()
-    try { if let v = self._config {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-    } }()
-    try { if let v = self._output {
-      try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-    } }()
     if !self.source.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.source, fieldNumber: 4)
+      try visitor.visitRepeatedMessageField(value: self.source, fieldNumber: 2)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   public static func ==(lhs: Speechly_Slu_V2beta1_ProcessAudioSourceRequest, rhs: Speechly_Slu_V2beta1_ProcessAudioSourceRequest) -> Bool {
-    if lhs._tasks != rhs._tasks {return false}
     if lhs._config != rhs._config {return false}
-    if lhs._output != rhs._output {return false}
     if lhs.source != rhs.source {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
