@@ -40,7 +40,8 @@ namespace speechly {
 namespace slu {
 namespace v2beta1 {
 
-// Run Speechly Batch API operations on audio sources without actively waiting the results.
+// Run Speechly Batch API operations on audio sources without actively waiting
+// the results.
 class BatchAPI final {
  public:
   static constexpr char const* service_full_name() {
@@ -49,11 +50,11 @@ class BatchAPI final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    // Create a new background Speechly Batch API operation for a one or more audio sources.
-    // Audio sources must be URIs of a files, reachable from the API
-    // The response includes an `id` that is used to match the operation to the
-    // results. A `reference` identifier can also be set.
-    // Also a `batch_reference` can be set to mark that multiple audio sources form a
+    // Create a new background Speechly Batch API operation for a one or more
+    // audio sources. Audio sources must be URIs of a files, reachable from the
+    // API The response includes an `id` that is used to match the operation to
+    // the results. A `reference` identifier can also be set. Also a
+    // `batch_reference` can be set to mark that multiple audio sources form a
     // logical batch. In that case, the response will include a `batch_id`.
     virtual ::grpc::Status ProcessAudioSource(::grpc::ClientContext* context, const ::speechly::slu::v2beta1::ProcessAudioSourceRequest& request, ::speechly::slu::v2beta1::ProcessAudioSourceResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::slu::v2beta1::ProcessAudioSourceResponse>> AsyncProcessAudioSource(::grpc::ClientContext* context, const ::speechly::slu::v2beta1::ProcessAudioSourceRequest& request, ::grpc::CompletionQueue* cq) {
@@ -63,8 +64,9 @@ class BatchAPI final {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::slu::v2beta1::ProcessAudioSourceResponse>>(PrepareAsyncProcessAudioSourceRaw(context, request, cq));
     }
     // Query the status of given operations.
-    // If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`
-    // as a destination, the results are returned in the `QueryStatusResponse`.
+    // If the `ProcessAudioSourceRequest` did not define a `destination` or
+    // `completion_webhook` as a destination, the results are returned in the
+    // `QueryStatusResponse`.
     virtual ::grpc::Status QueryStatus(::grpc::ClientContext* context, const ::speechly::slu::v2beta1::QueryStatusRequest& request, ::speechly::slu::v2beta1::QueryStatusResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::slu::v2beta1::QueryStatusResponse>> AsyncQueryStatus(::grpc::ClientContext* context, const ::speechly::slu::v2beta1::QueryStatusRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::speechly::slu::v2beta1::QueryStatusResponse>>(AsyncQueryStatusRaw(context, request, cq));
@@ -75,19 +77,20 @@ class BatchAPI final {
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
-      // Create a new background Speechly Batch API operation for a one or more audio sources.
-      // Audio sources must be URIs of a files, reachable from the API
-      // The response includes an `id` that is used to match the operation to the
-      // results. A `reference` identifier can also be set.
-      // Also a `batch_reference` can be set to mark that multiple audio sources form a
+      // Create a new background Speechly Batch API operation for a one or more
+      // audio sources. Audio sources must be URIs of a files, reachable from the
+      // API The response includes an `id` that is used to match the operation to
+      // the results. A `reference` identifier can also be set. Also a
+      // `batch_reference` can be set to mark that multiple audio sources form a
       // logical batch. In that case, the response will include a `batch_id`.
       virtual void ProcessAudioSource(::grpc::ClientContext* context, const ::speechly::slu::v2beta1::ProcessAudioSourceRequest* request, ::speechly::slu::v2beta1::ProcessAudioSourceResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ProcessAudioSource(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::slu::v2beta1::ProcessAudioSourceResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void ProcessAudioSource(::grpc::ClientContext* context, const ::speechly::slu::v2beta1::ProcessAudioSourceRequest* request, ::speechly::slu::v2beta1::ProcessAudioSourceResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       virtual void ProcessAudioSource(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::slu::v2beta1::ProcessAudioSourceResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       // Query the status of given operations.
-      // If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`
-      // as a destination, the results are returned in the `QueryStatusResponse`.
+      // If the `ProcessAudioSourceRequest` did not define a `destination` or
+      // `completion_webhook` as a destination, the results are returned in the
+      // `QueryStatusResponse`.
       virtual void QueryStatus(::grpc::ClientContext* context, const ::speechly::slu::v2beta1::QueryStatusRequest* request, ::speechly::slu::v2beta1::QueryStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void QueryStatus(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::slu::v2beta1::QueryStatusResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void QueryStatus(::grpc::ClientContext* context, const ::speechly::slu::v2beta1::QueryStatusRequest* request, ::speechly::slu::v2beta1::QueryStatusResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
@@ -152,16 +155,17 @@ class BatchAPI final {
    public:
     Service();
     virtual ~Service();
-    // Create a new background Speechly Batch API operation for a one or more audio sources.
-    // Audio sources must be URIs of a files, reachable from the API
-    // The response includes an `id` that is used to match the operation to the
-    // results. A `reference` identifier can also be set.
-    // Also a `batch_reference` can be set to mark that multiple audio sources form a
+    // Create a new background Speechly Batch API operation for a one or more
+    // audio sources. Audio sources must be URIs of a files, reachable from the
+    // API The response includes an `id` that is used to match the operation to
+    // the results. A `reference` identifier can also be set. Also a
+    // `batch_reference` can be set to mark that multiple audio sources form a
     // logical batch. In that case, the response will include a `batch_id`.
     virtual ::grpc::Status ProcessAudioSource(::grpc::ServerContext* context, const ::speechly::slu::v2beta1::ProcessAudioSourceRequest* request, ::speechly::slu::v2beta1::ProcessAudioSourceResponse* response);
     // Query the status of given operations.
-    // If the `ProcessAudioSourceRequest` did not define a `destination` or `completion_webhook`
-    // as a destination, the results are returned in the `QueryStatusResponse`.
+    // If the `ProcessAudioSourceRequest` did not define a `destination` or
+    // `completion_webhook` as a destination, the results are returned in the
+    // `QueryStatusResponse`.
     virtual ::grpc::Status QueryStatus(::grpc::ServerContext* context, const ::speechly::slu::v2beta1::QueryStatusRequest* request, ::speechly::slu::v2beta1::QueryStatusResponse* response);
   };
   template <class BaseClass>

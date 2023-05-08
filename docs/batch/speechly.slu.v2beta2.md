@@ -1,5 +1,5 @@
 
-# speechly.slu.v2beta1.BatchAPI
+# speechly.slu.v2beta2.BatchAPI
 
 Run Speechly Batch API operations on audio sources without actively waiting
 the results.
