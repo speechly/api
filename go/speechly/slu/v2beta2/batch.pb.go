@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.28.0
 // 	protoc        v3.17.3
-// source: speechly/slu/v2beta1/batch.proto
+// source: speechly/slu/v2beta2/batch.proto
 
-package sluv2beta1
+package sluv2beta2
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -62,11 +62,11 @@ func (x Operation_Status) String() string {
 }
 
 func (Operation_Status) Descriptor() protoreflect.EnumDescriptor {
-	return file_speechly_slu_v2beta1_batch_proto_enumTypes[0].Descriptor()
+	return file_speechly_slu_v2beta2_batch_proto_enumTypes[0].Descriptor()
 }
 
 func (Operation_Status) Type() protoreflect.EnumType {
-	return &file_speechly_slu_v2beta1_batch_proto_enumTypes[0]
+	return &file_speechly_slu_v2beta2_batch_proto_enumTypes[0]
 }
 
 func (x Operation_Status) Number() protoreflect.EnumNumber {
@@ -75,7 +75,7 @@ func (x Operation_Status) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Operation_Status.Descriptor instead.
 func (Operation_Status) EnumDescriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{4, 0}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{4, 0}
 }
 
 // Contains a machine readable error type if the operation status is
@@ -132,11 +132,11 @@ func (x Operation_ErrorCode) String() string {
 }
 
 func (Operation_ErrorCode) Descriptor() protoreflect.EnumDescriptor {
-	return file_speechly_slu_v2beta1_batch_proto_enumTypes[1].Descriptor()
+	return file_speechly_slu_v2beta2_batch_proto_enumTypes[1].Descriptor()
 }
 
 func (Operation_ErrorCode) Type() protoreflect.EnumType {
-	return &file_speechly_slu_v2beta1_batch_proto_enumTypes[1]
+	return &file_speechly_slu_v2beta2_batch_proto_enumTypes[1]
 }
 
 func (x Operation_ErrorCode) Number() protoreflect.EnumNumber {
@@ -145,7 +145,7 @@ func (x Operation_ErrorCode) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use Operation_ErrorCode.Descriptor instead.
 func (Operation_ErrorCode) EnumDescriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{4, 1}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{4, 1}
 }
 
 // The possible types for the operation result.
@@ -190,11 +190,11 @@ func (x OperationResult_ResultType) String() string {
 }
 
 func (OperationResult_ResultType) Descriptor() protoreflect.EnumDescriptor {
-	return file_speechly_slu_v2beta1_batch_proto_enumTypes[2].Descriptor()
+	return file_speechly_slu_v2beta2_batch_proto_enumTypes[2].Descriptor()
 }
 
 func (OperationResult_ResultType) Type() protoreflect.EnumType {
-	return &file_speechly_slu_v2beta1_batch_proto_enumTypes[2]
+	return &file_speechly_slu_v2beta2_batch_proto_enumTypes[2]
 }
 
 func (x OperationResult_ResultType) Number() protoreflect.EnumNumber {
@@ -203,7 +203,7 @@ func (x OperationResult_ResultType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use OperationResult_ResultType.Descriptor instead.
 func (OperationResult_ResultType) EnumDescriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{5, 0}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{5, 0}
 }
 
 // The HTTP method to use when accessing an HTTP resource.
@@ -248,11 +248,11 @@ func (x HttpResource_Method) String() string {
 }
 
 func (HttpResource_Method) Descriptor() protoreflect.EnumDescriptor {
-	return file_speechly_slu_v2beta1_batch_proto_enumTypes[3].Descriptor()
+	return file_speechly_slu_v2beta2_batch_proto_enumTypes[3].Descriptor()
 }
 
 func (HttpResource_Method) Type() protoreflect.EnumType {
-	return &file_speechly_slu_v2beta1_batch_proto_enumTypes[3]
+	return &file_speechly_slu_v2beta2_batch_proto_enumTypes[3]
 }
 
 func (x HttpResource_Method) Number() protoreflect.EnumNumber {
@@ -261,7 +261,7 @@ func (x HttpResource_Method) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use HttpResource_Method.Descriptor instead.
 func (HttpResource_Method) EnumDescriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{8, 0}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{8, 0}
 }
 
 // Describes the processing options for the audio. Note that not all options are
@@ -287,7 +287,7 @@ type BatchTasks struct {
 func (x *BatchTasks) Reset() {
 	*x = BatchTasks{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[0]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -300,7 +300,7 @@ func (x *BatchTasks) String() string {
 func (*BatchTasks) ProtoMessage() {}
 
 func (x *BatchTasks) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[0]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -313,7 +313,7 @@ func (x *BatchTasks) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchTasks.ProtoReflect.Descriptor instead.
 func (*BatchTasks) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{0}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *BatchTasks) GetTranscribe() bool {
@@ -356,7 +356,7 @@ type BatchOutput struct {
 func (x *BatchOutput) Reset() {
 	*x = BatchOutput{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[1]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -369,7 +369,7 @@ func (x *BatchOutput) String() string {
 func (*BatchOutput) ProtoMessage() {}
 
 func (x *BatchOutput) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[1]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -382,7 +382,7 @@ func (x *BatchOutput) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchOutput.ProtoReflect.Descriptor instead.
 func (*BatchOutput) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{1}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *BatchOutput) GetDisplay() bool {
@@ -425,7 +425,7 @@ type BatchConfig struct {
 func (x *BatchConfig) Reset() {
 	*x = BatchConfig{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[2]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -438,7 +438,7 @@ func (x *BatchConfig) String() string {
 func (*BatchConfig) ProtoMessage() {}
 
 func (x *BatchConfig) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[2]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -451,7 +451,7 @@ func (x *BatchConfig) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BatchConfig.ProtoReflect.Descriptor instead.
 func (*BatchConfig) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{2}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *BatchConfig) GetModelId() string {
@@ -511,7 +511,7 @@ type ProcessAudioSourceRequestItem struct {
 func (x *ProcessAudioSourceRequestItem) Reset() {
 	*x = ProcessAudioSourceRequestItem{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[3]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -524,7 +524,7 @@ func (x *ProcessAudioSourceRequestItem) String() string {
 func (*ProcessAudioSourceRequestItem) ProtoMessage() {}
 
 func (x *ProcessAudioSourceRequestItem) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[3]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -537,7 +537,7 @@ func (x *ProcessAudioSourceRequestItem) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ProcessAudioSourceRequestItem.ProtoReflect.Descriptor instead.
 func (*ProcessAudioSourceRequestItem) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{3}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ProcessAudioSourceRequestItem) GetSourceUrl() string {
@@ -590,7 +590,7 @@ type Operation struct {
 	// The reference id of the operation, if given.
 	BatchReference string `protobuf:"bytes,17,opt,name=batch_reference,json=batchReference,proto3" json:"batch_reference,omitempty"`
 	// The current status of the operation.
-	Status Operation_Status `protobuf:"varint,3,opt,name=status,proto3,enum=speechly.slu.v2beta1.Operation_Status" json:"status,omitempty"`
+	Status Operation_Status `protobuf:"varint,3,opt,name=status,proto3,enum=speechly.slu.v2beta2.Operation_Status" json:"status,omitempty"`
 	// The language code of the detected language.
 	LanguageCode string `protobuf:"bytes,4,opt,name=language_code,json=languageCode,proto3" json:"language_code,omitempty"`
 	// The application context for the operation.
@@ -602,7 +602,7 @@ type Operation struct {
 	Duration *durationpb.Duration `protobuf:"bytes,7,opt,name=duration,proto3" json:"duration,omitempty"`
 	// Machine-readable status for the operation.
 	// Only set if operation status is STATUS_ERROR.
-	ErrorCode Operation_ErrorCode `protobuf:"varint,18,opt,name=error_code,json=errorCode,proto3,enum=speechly.slu.v2beta1.Operation_ErrorCode" json:"error_code,omitempty"`
+	ErrorCode Operation_ErrorCode `protobuf:"varint,18,opt,name=error_code,json=errorCode,proto3,enum=speechly.slu.v2beta2.Operation_ErrorCode" json:"error_code,omitempty"`
 	// Contains a human readable description of the error.
 	// Only set if operation status is STATUS_ERROR.
 	ErrorDescription string `protobuf:"bytes,19,opt,name=error_description,json=errorDescription,proto3" json:"error_description,omitempty"`
@@ -615,7 +615,7 @@ type Operation struct {
 func (x *Operation) Reset() {
 	*x = Operation{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[4]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -628,7 +628,7 @@ func (x *Operation) String() string {
 func (*Operation) ProtoMessage() {}
 
 func (x *Operation) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[4]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -641,7 +641,7 @@ func (x *Operation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Operation.ProtoReflect.Descriptor instead.
 func (*Operation) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{4}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Operation) GetId() string {
@@ -742,7 +742,7 @@ type OperationResult struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The type of this result.
-	Type OperationResult_ResultType `protobuf:"varint,1,opt,name=type,proto3,enum=speechly.slu.v2beta1.OperationResult_ResultType" json:"type,omitempty"`
+	Type OperationResult_ResultType `protobuf:"varint,1,opt,name=type,proto3,enum=speechly.slu.v2beta2.OperationResult_ResultType" json:"type,omitempty"`
 	// The textual representation of the results.
 	Text string `protobuf:"bytes,2,opt,name=text,proto3" json:"text,omitempty"`
 	// The tokenized representation of the result. Only available if requested in
@@ -753,7 +753,7 @@ type OperationResult struct {
 func (x *OperationResult) Reset() {
 	*x = OperationResult{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[5]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -766,7 +766,7 @@ func (x *OperationResult) String() string {
 func (*OperationResult) ProtoMessage() {}
 
 func (x *OperationResult) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[5]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -779,7 +779,7 @@ func (x *OperationResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use OperationResult.ProtoReflect.Descriptor instead.
 func (*OperationResult) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{5}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *OperationResult) GetType() OperationResult_ResultType {
@@ -825,7 +825,7 @@ type Token struct {
 func (x *Token) Reset() {
 	*x = Token{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[6]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -838,7 +838,7 @@ func (x *Token) String() string {
 func (*Token) ProtoMessage() {}
 
 func (x *Token) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[6]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -851,7 +851,7 @@ func (x *Token) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Token.ProtoReflect.Descriptor instead.
 func (*Token) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{6}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Token) GetToken() string {
@@ -897,7 +897,7 @@ type Option struct {
 func (x *Option) Reset() {
 	*x = Option{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[7]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -910,7 +910,7 @@ func (x *Option) String() string {
 func (*Option) ProtoMessage() {}
 
 func (x *Option) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[7]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -923,7 +923,7 @@ func (x *Option) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Option.ProtoReflect.Descriptor instead.
 func (*Option) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{7}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *Option) GetKey() string {
@@ -951,7 +951,7 @@ type HttpResource struct {
 	Url string `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
 	// method to use in connection.
 	// Optional.
-	Method HttpResource_Method `protobuf:"varint,2,opt,name=method,proto3,enum=speechly.slu.v2beta1.HttpResource_Method" json:"method,omitempty"`
+	Method HttpResource_Method `protobuf:"varint,2,opt,name=method,proto3,enum=speechly.slu.v2beta2.HttpResource_Method" json:"method,omitempty"`
 	// Possible additional headers to include in the connection.
 	// Optional.
 	Headers []*HttpResource_Header `protobuf:"bytes,3,rep,name=headers,proto3" json:"headers,omitempty"`
@@ -960,7 +960,7 @@ type HttpResource struct {
 func (x *HttpResource) Reset() {
 	*x = HttpResource{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[8]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -973,7 +973,7 @@ func (x *HttpResource) String() string {
 func (*HttpResource) ProtoMessage() {}
 
 func (x *HttpResource) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[8]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -986,7 +986,7 @@ func (x *HttpResource) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HttpResource.ProtoReflect.Descriptor instead.
 func (*HttpResource) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{8}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *HttpResource) GetUrl() string {
@@ -1025,7 +1025,7 @@ type HttpResource_Header struct {
 func (x *HttpResource_Header) Reset() {
 	*x = HttpResource_Header{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[9]
+		mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1038,7 +1038,7 @@ func (x *HttpResource_Header) String() string {
 func (*HttpResource_Header) ProtoMessage() {}
 
 func (x *HttpResource_Header) ProtoReflect() protoreflect.Message {
-	mi := &file_speechly_slu_v2beta1_batch_proto_msgTypes[9]
+	mi := &file_speechly_slu_v2beta2_batch_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1051,7 +1051,7 @@ func (x *HttpResource_Header) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use HttpResource_Header.ProtoReflect.Descriptor instead.
 func (*HttpResource_Header) Descriptor() ([]byte, []int) {
-	return file_speechly_slu_v2beta1_batch_proto_rawDescGZIP(), []int{8, 0}
+	return file_speechly_slu_v2beta2_batch_proto_rawDescGZIP(), []int{8, 0}
 }
 
 func (x *HttpResource_Header) GetName() string {
@@ -1068,13 +1068,13 @@ func (x *HttpResource_Header) GetValue() string {
 	return ""
 }
 
-var File_speechly_slu_v2beta1_batch_proto protoreflect.FileDescriptor
+var File_speechly_slu_v2beta2_batch_proto protoreflect.FileDescriptor
 
-var file_speechly_slu_v2beta1_batch_proto_rawDesc = []byte{
+var file_speechly_slu_v2beta2_batch_proto_rawDesc = []byte{
 	0x0a, 0x20, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2f, 0x73, 0x6c, 0x75, 0x2f, 0x76,
-	0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2f, 0x62, 0x61, 0x74, 0x63, 0x68, 0x2e, 0x70, 0x72, 0x6f,
+	0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x2f, 0x62, 0x61, 0x74, 0x63, 0x68, 0x2e, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x12, 0x14, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75,
-	0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x1a, 0x1e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
 	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69,
 	0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x66, 0x0a, 0x0a, 0x42, 0x61, 0x74, 0x63,
 	0x68, 0x54, 0x61, 0x73, 0x6b, 0x73, 0x12, 0x1e, 0x0a, 0x0a, 0x74, 0x72, 0x61, 0x6e, 0x73, 0x63,
@@ -1097,7 +1097,7 @@ var file_speechly_slu_v2beta1_batch_proto_rawDesc = []byte{
 	0x62, 0x61, 0x74, 0x63, 0x68, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x36,
 	0x0a, 0x07, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x0b, 0x32,
 	0x1c, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76,
-	0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x07, 0x6f,
+	0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x2e, 0x4f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x07, 0x6f,
 	0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x22, 0xf5, 0x01, 0x0a, 0x1d, 0x50, 0x72, 0x6f, 0x63, 0x65,
 	0x73, 0x73, 0x41, 0x75, 0x64, 0x69, 0x6f, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x52, 0x65, 0x71,
 	0x75, 0x65, 0x73, 0x74, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x1d, 0x0a, 0x0a, 0x73, 0x6f, 0x75, 0x72,
@@ -1108,7 +1108,7 @@ var file_speechly_slu_v2beta1_batch_proto_rawDesc = []byte{
 	0x12, 0x51, 0x0a, 0x12, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x69, 0x6f, 0x6e, 0x5f, 0x77,
 	0x65, 0x62, 0x68, 0x6f, 0x6f, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x73,
 	0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65,
-	0x74, 0x61, 0x31, 0x2e, 0x48, 0x74, 0x74, 0x70, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65,
+	0x74, 0x61, 0x32, 0x2e, 0x48, 0x74, 0x74, 0x70, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65,
 	0x52, 0x11, 0x63, 0x6f, 0x6d, 0x70, 0x6c, 0x65, 0x74, 0x69, 0x6f, 0x6e, 0x57, 0x65, 0x62, 0x68,
 	0x6f, 0x6f, 0x6b, 0x12, 0x1c, 0x0a, 0x09, 0x72, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65,
 	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x72, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63,
@@ -1124,7 +1124,7 @@ var file_speechly_slu_v2beta1_batch_proto_rawDesc = []byte{
 	0x62, 0x61, 0x74, 0x63, 0x68, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x3e,
 	0x0a, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x26,
 	0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32,
-	0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
+	0x62, 0x65, 0x74, 0x61, 0x32, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e,
 	0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x52, 0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x23,
 	0x0a, 0x0d, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18,
 	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x43,
@@ -1132,14 +1132,14 @@ var file_speechly_slu_v2beta1_batch_proto_rawDesc = []byte{
 	0x01, 0x28, 0x09, 0x52, 0x05, 0x61, 0x70, 0x70, 0x49, 0x64, 0x12, 0x3d, 0x0a, 0x06, 0x72, 0x65,
 	0x73, 0x75, 0x6c, 0x74, 0x18, 0x06, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x25, 0x2e, 0x73, 0x70, 0x65,
 	0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61,
-	0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c,
+	0x32, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c,
 	0x74, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x35, 0x0a, 0x08, 0x64, 0x75, 0x72,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x67, 0x6f,
 	0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x44, 0x75,
 	0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x08, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e,
 	0x12, 0x48, 0x0a, 0x0a, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x12,
 	0x20, 0x01, 0x28, 0x0e, 0x32, 0x29, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e,
-	0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72,
+	0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x2e, 0x4f, 0x70, 0x65, 0x72,
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x2e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x6f, 0x64, 0x65, 0x52,
 	0x09, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x2b, 0x0a, 0x11, 0x65, 0x72,
 	0x72, 0x6f, 0x72, 0x5f, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18,
@@ -1170,13 +1170,13 @@ var file_speechly_slu_v2beta1_batch_proto_rawDesc = []byte{
 	0x06, 0x22, 0xbc, 0x02, 0x0a, 0x0f, 0x4f, 0x70, 0x65, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x52,
 	0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x44, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x0e, 0x32, 0x30, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73,
-	0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61,
+	0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x2e, 0x4f, 0x70, 0x65, 0x72, 0x61,
 	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x2e, 0x52, 0x65, 0x73, 0x75, 0x6c,
 	0x74, 0x54, 0x79, 0x70, 0x65, 0x52, 0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x74,
 	0x65, 0x78, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x74, 0x65, 0x78, 0x74, 0x12,
 	0x33, 0x0a, 0x06, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32,
 	0x1b, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76,
-	0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x06, 0x74, 0x6f,
+	0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x2e, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x52, 0x06, 0x74, 0x6f,
 	0x6b, 0x65, 0x6e, 0x73, 0x22, 0x99, 0x01, 0x0a, 0x0a, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x54,
 	0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x17, 0x52, 0x45, 0x53, 0x55, 0x4c, 0x54, 0x5f, 0x54, 0x59,
 	0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00,
@@ -1201,11 +1201,11 @@ var file_speechly_slu_v2beta1_batch_proto_rawDesc = []byte{
 	0x63, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x72, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x03, 0x75, 0x72, 0x6c, 0x12, 0x41, 0x0a, 0x06, 0x6d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x18, 0x02,
 	0x20, 0x01, 0x28, 0x0e, 0x32, 0x29, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e,
-	0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e, 0x48, 0x74, 0x74, 0x70,
+	0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x2e, 0x48, 0x74, 0x74, 0x70,
 	0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x2e, 0x4d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x52,
 	0x06, 0x6d, 0x65, 0x74, 0x68, 0x6f, 0x64, 0x12, 0x43, 0x0a, 0x07, 0x68, 0x65, 0x61, 0x64, 0x65,
 	0x72, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x29, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63,
-	0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x2e,
+	0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x2e,
 	0x48, 0x74, 0x74, 0x70, 0x52, 0x65, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x2e, 0x48, 0x65, 0x61,
 	0x64, 0x65, 0x72, 0x52, 0x07, 0x68, 0x65, 0x61, 0x64, 0x65, 0x72, 0x73, 0x1a, 0x32, 0x0a, 0x06,
 	0x48, 0x65, 0x61, 0x64, 0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01,
@@ -1217,58 +1217,58 @@ var file_speechly_slu_v2beta1_batch_proto_rawDesc = []byte{
 	0x10, 0x01, 0x12, 0x0f, 0x0a, 0x0b, 0x4d, 0x45, 0x54, 0x48, 0x4f, 0x44, 0x5f, 0x50, 0x4f, 0x53,
 	0x54, 0x10, 0x02, 0x12, 0x0e, 0x0a, 0x0a, 0x4d, 0x45, 0x54, 0x48, 0x4f, 0x44, 0x5f, 0x50, 0x55,
 	0x54, 0x10, 0x03, 0x42, 0x7d, 0x0a, 0x18, 0x63, 0x6f, 0x6d, 0x2e, 0x73, 0x70, 0x65, 0x65, 0x63,
-	0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0x42,
+	0x68, 0x6c, 0x79, 0x2e, 0x73, 0x6c, 0x75, 0x2e, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0x42,
 	0x0a, 0x42, 0x61, 0x74, 0x63, 0x68, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x1f, 0x73,
 	0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2f, 0x73, 0x6c, 0x75, 0x2f, 0x76, 0x32, 0x62, 0x65,
-	0x74, 0x61, 0x31, 0x3b, 0x73, 0x6c, 0x75, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x31, 0xa2, 0x02,
+	0x74, 0x61, 0x32, 0x3b, 0x73, 0x6c, 0x75, 0x76, 0x32, 0x62, 0x65, 0x74, 0x61, 0x32, 0xa2, 0x02,
 	0x03, 0x53, 0x53, 0x58, 0xaa, 0x02, 0x14, 0x53, 0x70, 0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x2e,
-	0x53, 0x6c, 0x75, 0x2e, 0x56, 0x32, 0x42, 0x65, 0x74, 0x61, 0x31, 0xca, 0x02, 0x14, 0x53, 0x70,
+	0x53, 0x6c, 0x75, 0x2e, 0x56, 0x32, 0x42, 0x65, 0x74, 0x61, 0x32, 0xca, 0x02, 0x14, 0x53, 0x70,
 	0x65, 0x65, 0x63, 0x68, 0x6c, 0x79, 0x5c, 0x53, 0x6c, 0x75, 0x5c, 0x56, 0x32, 0x42, 0x65, 0x74,
-	0x61, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x61, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_speechly_slu_v2beta1_batch_proto_rawDescOnce sync.Once
-	file_speechly_slu_v2beta1_batch_proto_rawDescData = file_speechly_slu_v2beta1_batch_proto_rawDesc
+	file_speechly_slu_v2beta2_batch_proto_rawDescOnce sync.Once
+	file_speechly_slu_v2beta2_batch_proto_rawDescData = file_speechly_slu_v2beta2_batch_proto_rawDesc
 )
 
-func file_speechly_slu_v2beta1_batch_proto_rawDescGZIP() []byte {
-	file_speechly_slu_v2beta1_batch_proto_rawDescOnce.Do(func() {
-		file_speechly_slu_v2beta1_batch_proto_rawDescData = protoimpl.X.CompressGZIP(file_speechly_slu_v2beta1_batch_proto_rawDescData)
+func file_speechly_slu_v2beta2_batch_proto_rawDescGZIP() []byte {
+	file_speechly_slu_v2beta2_batch_proto_rawDescOnce.Do(func() {
+		file_speechly_slu_v2beta2_batch_proto_rawDescData = protoimpl.X.CompressGZIP(file_speechly_slu_v2beta2_batch_proto_rawDescData)
 	})
-	return file_speechly_slu_v2beta1_batch_proto_rawDescData
+	return file_speechly_slu_v2beta2_batch_proto_rawDescData
 }
 
-var file_speechly_slu_v2beta1_batch_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_speechly_slu_v2beta1_batch_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
-var file_speechly_slu_v2beta1_batch_proto_goTypes = []interface{}{
-	(Operation_Status)(0),                 // 0: speechly.slu.v2beta1.Operation.Status
-	(Operation_ErrorCode)(0),              // 1: speechly.slu.v2beta1.Operation.ErrorCode
-	(OperationResult_ResultType)(0),       // 2: speechly.slu.v2beta1.OperationResult.ResultType
-	(HttpResource_Method)(0),              // 3: speechly.slu.v2beta1.HttpResource.Method
-	(*BatchTasks)(nil),                    // 4: speechly.slu.v2beta1.BatchTasks
-	(*BatchOutput)(nil),                   // 5: speechly.slu.v2beta1.BatchOutput
-	(*BatchConfig)(nil),                   // 6: speechly.slu.v2beta1.BatchConfig
-	(*ProcessAudioSourceRequestItem)(nil), // 7: speechly.slu.v2beta1.ProcessAudioSourceRequestItem
-	(*Operation)(nil),                     // 8: speechly.slu.v2beta1.Operation
-	(*OperationResult)(nil),               // 9: speechly.slu.v2beta1.OperationResult
-	(*Token)(nil),                         // 10: speechly.slu.v2beta1.Token
-	(*Option)(nil),                        // 11: speechly.slu.v2beta1.Option
-	(*HttpResource)(nil),                  // 12: speechly.slu.v2beta1.HttpResource
-	(*HttpResource_Header)(nil),           // 13: speechly.slu.v2beta1.HttpResource.Header
+var file_speechly_slu_v2beta2_batch_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
+var file_speechly_slu_v2beta2_batch_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_speechly_slu_v2beta2_batch_proto_goTypes = []interface{}{
+	(Operation_Status)(0),                 // 0: speechly.slu.v2beta2.Operation.Status
+	(Operation_ErrorCode)(0),              // 1: speechly.slu.v2beta2.Operation.ErrorCode
+	(OperationResult_ResultType)(0),       // 2: speechly.slu.v2beta2.OperationResult.ResultType
+	(HttpResource_Method)(0),              // 3: speechly.slu.v2beta2.HttpResource.Method
+	(*BatchTasks)(nil),                    // 4: speechly.slu.v2beta2.BatchTasks
+	(*BatchOutput)(nil),                   // 5: speechly.slu.v2beta2.BatchOutput
+	(*BatchConfig)(nil),                   // 6: speechly.slu.v2beta2.BatchConfig
+	(*ProcessAudioSourceRequestItem)(nil), // 7: speechly.slu.v2beta2.ProcessAudioSourceRequestItem
+	(*Operation)(nil),                     // 8: speechly.slu.v2beta2.Operation
+	(*OperationResult)(nil),               // 9: speechly.slu.v2beta2.OperationResult
+	(*Token)(nil),                         // 10: speechly.slu.v2beta2.Token
+	(*Option)(nil),                        // 11: speechly.slu.v2beta2.Option
+	(*HttpResource)(nil),                  // 12: speechly.slu.v2beta2.HttpResource
+	(*HttpResource_Header)(nil),           // 13: speechly.slu.v2beta2.HttpResource.Header
 	(*durationpb.Duration)(nil),           // 14: google.protobuf.Duration
 }
-var file_speechly_slu_v2beta1_batch_proto_depIdxs = []int32{
-	11, // 0: speechly.slu.v2beta1.BatchConfig.options:type_name -> speechly.slu.v2beta1.Option
-	12, // 1: speechly.slu.v2beta1.ProcessAudioSourceRequestItem.completion_webhook:type_name -> speechly.slu.v2beta1.HttpResource
-	0,  // 2: speechly.slu.v2beta1.Operation.status:type_name -> speechly.slu.v2beta1.Operation.Status
-	9,  // 3: speechly.slu.v2beta1.Operation.result:type_name -> speechly.slu.v2beta1.OperationResult
-	14, // 4: speechly.slu.v2beta1.Operation.duration:type_name -> google.protobuf.Duration
-	1,  // 5: speechly.slu.v2beta1.Operation.error_code:type_name -> speechly.slu.v2beta1.Operation.ErrorCode
-	2,  // 6: speechly.slu.v2beta1.OperationResult.type:type_name -> speechly.slu.v2beta1.OperationResult.ResultType
-	10, // 7: speechly.slu.v2beta1.OperationResult.tokens:type_name -> speechly.slu.v2beta1.Token
-	3,  // 8: speechly.slu.v2beta1.HttpResource.method:type_name -> speechly.slu.v2beta1.HttpResource.Method
-	13, // 9: speechly.slu.v2beta1.HttpResource.headers:type_name -> speechly.slu.v2beta1.HttpResource.Header
+var file_speechly_slu_v2beta2_batch_proto_depIdxs = []int32{
+	11, // 0: speechly.slu.v2beta2.BatchConfig.options:type_name -> speechly.slu.v2beta2.Option
+	12, // 1: speechly.slu.v2beta2.ProcessAudioSourceRequestItem.completion_webhook:type_name -> speechly.slu.v2beta2.HttpResource
+	0,  // 2: speechly.slu.v2beta2.Operation.status:type_name -> speechly.slu.v2beta2.Operation.Status
+	9,  // 3: speechly.slu.v2beta2.Operation.result:type_name -> speechly.slu.v2beta2.OperationResult
+	14, // 4: speechly.slu.v2beta2.Operation.duration:type_name -> google.protobuf.Duration
+	1,  // 5: speechly.slu.v2beta2.Operation.error_code:type_name -> speechly.slu.v2beta2.Operation.ErrorCode
+	2,  // 6: speechly.slu.v2beta2.OperationResult.type:type_name -> speechly.slu.v2beta2.OperationResult.ResultType
+	10, // 7: speechly.slu.v2beta2.OperationResult.tokens:type_name -> speechly.slu.v2beta2.Token
+	3,  // 8: speechly.slu.v2beta2.HttpResource.method:type_name -> speechly.slu.v2beta2.HttpResource.Method
+	13, // 9: speechly.slu.v2beta2.HttpResource.headers:type_name -> speechly.slu.v2beta2.HttpResource.Header
 	10, // [10:10] is the sub-list for method output_type
 	10, // [10:10] is the sub-list for method input_type
 	10, // [10:10] is the sub-list for extension type_name
@@ -1276,13 +1276,13 @@ var file_speechly_slu_v2beta1_batch_proto_depIdxs = []int32{
 	0,  // [0:10] is the sub-list for field type_name
 }
 
-func init() { file_speechly_slu_v2beta1_batch_proto_init() }
-func file_speechly_slu_v2beta1_batch_proto_init() {
-	if File_speechly_slu_v2beta1_batch_proto != nil {
+func init() { file_speechly_slu_v2beta2_batch_proto_init() }
+func file_speechly_slu_v2beta2_batch_proto_init() {
+	if File_speechly_slu_v2beta2_batch_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BatchTasks); i {
 			case 0:
 				return &v.state
@@ -1294,7 +1294,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BatchOutput); i {
 			case 0:
 				return &v.state
@@ -1306,7 +1306,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BatchConfig); i {
 			case 0:
 				return &v.state
@@ -1318,7 +1318,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ProcessAudioSourceRequestItem); i {
 			case 0:
 				return &v.state
@@ -1330,7 +1330,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Operation); i {
 			case 0:
 				return &v.state
@@ -1342,7 +1342,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*OperationResult); i {
 			case 0:
 				return &v.state
@@ -1354,7 +1354,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Token); i {
 			case 0:
 				return &v.state
@@ -1366,7 +1366,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Option); i {
 			case 0:
 				return &v.state
@@ -1378,7 +1378,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*HttpResource); i {
 			case 0:
 				return &v.state
@@ -1390,7 +1390,7 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 				return nil
 			}
 		}
-		file_speechly_slu_v2beta1_batch_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_speechly_slu_v2beta2_batch_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*HttpResource_Header); i {
 			case 0:
 				return &v.state
@@ -1407,19 +1407,19 @@ func file_speechly_slu_v2beta1_batch_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_speechly_slu_v2beta1_batch_proto_rawDesc,
+			RawDescriptor: file_speechly_slu_v2beta2_batch_proto_rawDesc,
 			NumEnums:      4,
 			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_speechly_slu_v2beta1_batch_proto_goTypes,
-		DependencyIndexes: file_speechly_slu_v2beta1_batch_proto_depIdxs,
-		EnumInfos:         file_speechly_slu_v2beta1_batch_proto_enumTypes,
-		MessageInfos:      file_speechly_slu_v2beta1_batch_proto_msgTypes,
+		GoTypes:           file_speechly_slu_v2beta2_batch_proto_goTypes,
+		DependencyIndexes: file_speechly_slu_v2beta2_batch_proto_depIdxs,
+		EnumInfos:         file_speechly_slu_v2beta2_batch_proto_enumTypes,
+		MessageInfos:      file_speechly_slu_v2beta2_batch_proto_msgTypes,
 	}.Build()
-	File_speechly_slu_v2beta1_batch_proto = out.File
-	file_speechly_slu_v2beta1_batch_proto_rawDesc = nil
-	file_speechly_slu_v2beta1_batch_proto_goTypes = nil
-	file_speechly_slu_v2beta1_batch_proto_depIdxs = nil
+	File_speechly_slu_v2beta2_batch_proto = out.File
+	file_speechly_slu_v2beta2_batch_proto_rawDesc = nil
+	file_speechly_slu_v2beta2_batch_proto_goTypes = nil
+	file_speechly_slu_v2beta2_batch_proto_depIdxs = nil
 }

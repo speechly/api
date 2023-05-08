@@ -82,12 +82,14 @@ lint:
         - speechly/sal/v1/compiler.proto
         - speechly/slu/v1/slu.proto
         - speechly/slu/v2beta1/batch.proto
+        - speechly/slu/v2beta2/batch.proto
     - id: ENUM_ZERO_VALUES_INVALID_EXCEPT_MESSAGE
       files:
         - speechly/config/v1/config_api.proto
         - speechly/sal/v1/compiler.proto
         - speechly/slu/v1/slu.proto
         - speechly/slu/v2beta1/batch.proto
+        - speechly/slu/v2beta2/batch.proto
     - id: FILE_OPTIONS_EQUAL_JAVA_PACKAGE_PREFIX
       files:
         - speechly/config/v1/config_api.proto

@@ -6,8 +6,12 @@
 
 **Merged pull requests:**
 
+- Fix markdown formatting [\#77](https://github.com/speechly/api/pull/77) ([thisismatu](https://github.com/thisismatu))
+- Register multiple utterances in a single request [\#76](https://github.com/speechly/api/pull/76) ([langma](https://github.com/langma))
 - Separate versions to own files, use long names instead of full names [\#75](https://github.com/speechly/api/pull/75) ([langma](https://github.com/langma))
+- Remove unnecessary print [\#74](https://github.com/speechly/api/pull/74) ([langma](https://github.com/langma))
 - Restructure generated API documentation [\#73](https://github.com/speechly/api/pull/73) ([langma](https://github.com/langma))
+- Fix linebreaks in doc tables [\#72](https://github.com/speechly/api/pull/72) ([langma](https://github.com/langma))
 - Support enum types in generated docs [\#71](https://github.com/speechly/api/pull/71) ([langma](https://github.com/langma))
 
 ## [0.8.15](https://github.com/speechly/api/tree/0.8.15) (2023-04-12)
