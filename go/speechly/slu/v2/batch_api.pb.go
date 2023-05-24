@@ -10,7 +10,6 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	v2beta2 "speechly/slu/v2beta2"
 	sync "sync"
 )
 
@@ -29,15 +28,15 @@ type ProcessAudioSourceRequest struct {
 
 	// tasks describe the requested operations for the given audio.
 	// Optional, defaults to `transcribe`.
-	Tasks *v2beta2.BatchTasks `protobuf:"bytes,1,opt,name=tasks,proto3" json:"tasks,omitempty"`
+	Tasks *BatchTasks `protobuf:"bytes,1,opt,name=tasks,proto3" json:"tasks,omitempty"`
 	// The options shared by all of the source audios.
 	// Optional.
-	Config *v2beta2.BatchConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
+	Config *BatchConfig `protobuf:"bytes,2,opt,name=config,proto3" json:"config,omitempty"`
 	// Define the output formatting for text results.
 	// Optional, defaults to `display`.
-	Output *v2beta2.BatchOutput `protobuf:"bytes,3,opt,name=output,proto3" json:"output,omitempty"`
+	Output *BatchOutput `protobuf:"bytes,3,opt,name=output,proto3" json:"output,omitempty"`
 	// The source audios, and their unique options.
-	Source []*v2beta2.ProcessAudioSourceRequestItem `protobuf:"bytes,4,rep,name=source,proto3" json:"source,omitempty"`
+	Source []*ProcessAudioSourceRequestItem `protobuf:"bytes,4,rep,name=source,proto3" json:"source,omitempty"`
 }
 
 func (x *ProcessAudioSourceRequest) Reset() {
@@ -72,28 +71,28 @@ func (*ProcessAudioSourceRequest) Descriptor() ([]byte, []int) {
 	return file_speechly_slu_v2_batch_api_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *ProcessAudioSourceRequest) GetTasks() *v2beta2.BatchTasks {
+func (x *ProcessAudioSourceRequest) GetTasks() *BatchTasks {
 	if x != nil {
 		return x.Tasks
 	}
 	return nil
 }
 
-func (x *ProcessAudioSourceRequest) GetConfig() *v2beta2.BatchConfig {
+func (x *ProcessAudioSourceRequest) GetConfig() *BatchConfig {
 	if x != nil {
 		return x.Config
 	}
 	return nil
 }
 
-func (x *ProcessAudioSourceRequest) GetOutput() *v2beta2.BatchOutput {
+func (x *ProcessAudioSourceRequest) GetOutput() *BatchOutput {
 	if x != nil {
 		return x.Output
 	}
 	return nil
 }
 
-func (x *ProcessAudioSourceRequest) GetSource() []*v2beta2.ProcessAudioSourceRequestItem {
+func (x *ProcessAudioSourceRequest) GetSource() []*ProcessAudioSourceRequestItem {
 	if x != nil {
 		return x.Source
 	}
@@ -107,7 +106,7 @@ type ProcessAudioSourceResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The details of the created operations.
-	Operation []*v2beta2.Operation `protobuf:"bytes,1,rep,name=operation,proto3" json:"operation,omitempty"`
+	Operation []*Operation `protobuf:"bytes,1,rep,name=operation,proto3" json:"operation,omitempty"`
 }
 
 func (x *ProcessAudioSourceResponse) Reset() {
@@ -142,7 +141,7 @@ func (*ProcessAudioSourceResponse) Descriptor() ([]byte, []int) {
 	return file_speechly_slu_v2_batch_api_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ProcessAudioSourceResponse) GetOperation() []*v2beta2.Operation {
+func (x *ProcessAudioSourceResponse) GetOperation() []*Operation {
 	if x != nil {
 		return x.Operation
 	}
@@ -235,7 +234,7 @@ type QueryStatusResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The details of the audio processing operation.
-	Operation []*v2beta2.Operation `protobuf:"bytes,1,rep,name=operation,proto3" json:"operation,omitempty"`
+	Operation []*Operation `protobuf:"bytes,1,rep,name=operation,proto3" json:"operation,omitempty"`
 }
 
 func (x *QueryStatusResponse) Reset() {
@@ -270,7 +269,7 @@ func (*QueryStatusResponse) Descriptor() ([]byte, []int) {
 	return file_speechly_slu_v2_batch_api_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *QueryStatusResponse) GetOperation() []*v2beta2.Operation {
+func (x *QueryStatusResponse) GetOperation() []*Operation {
 	if x != nil {
 		return x.Operation
 	}
@@ -360,15 +359,15 @@ func file_speechly_slu_v2_batch_api_proto_rawDescGZIP() []byte {
 
 var file_speechly_slu_v2_batch_api_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_speechly_slu_v2_batch_api_proto_goTypes = []interface{}{
-	(*ProcessAudioSourceRequest)(nil),             // 0: speechly.slu.v2.ProcessAudioSourceRequest
-	(*ProcessAudioSourceResponse)(nil),            // 1: speechly.slu.v2.ProcessAudioSourceResponse
-	(*QueryStatusRequest)(nil),                    // 2: speechly.slu.v2.QueryStatusRequest
-	(*QueryStatusResponse)(nil),                   // 3: speechly.slu.v2.QueryStatusResponse
-	(*v2beta2.BatchTasks)(nil),                    // 4: speechly.slu.v2.BatchTasks
-	(*v2beta2.BatchConfig)(nil),                   // 5: speechly.slu.v2.BatchConfig
-	(*v2beta2.BatchOutput)(nil),                   // 6: speechly.slu.v2.BatchOutput
-	(*v2beta2.ProcessAudioSourceRequestItem)(nil), // 7: speechly.slu.v2.ProcessAudioSourceRequestItem
-	(*v2beta2.Operation)(nil),                     // 8: speechly.slu.v2.Operation
+	(*ProcessAudioSourceRequest)(nil),     // 0: speechly.slu.v2.ProcessAudioSourceRequest
+	(*ProcessAudioSourceResponse)(nil),    // 1: speechly.slu.v2.ProcessAudioSourceResponse
+	(*QueryStatusRequest)(nil),            // 2: speechly.slu.v2.QueryStatusRequest
+	(*QueryStatusResponse)(nil),           // 3: speechly.slu.v2.QueryStatusResponse
+	(*BatchTasks)(nil),                    // 4: speechly.slu.v2.BatchTasks
+	(*BatchConfig)(nil),                   // 5: speechly.slu.v2.BatchConfig
+	(*BatchOutput)(nil),                   // 6: speechly.slu.v2.BatchOutput
+	(*ProcessAudioSourceRequestItem)(nil), // 7: speechly.slu.v2.ProcessAudioSourceRequestItem
+	(*Operation)(nil),                     // 8: speechly.slu.v2.Operation
 }
 var file_speechly_slu_v2_batch_api_proto_depIdxs = []int32{
 	4, // 0: speechly.slu.v2.ProcessAudioSourceRequest.tasks:type_name -> speechly.slu.v2.BatchTasks
@@ -393,6 +392,7 @@ func file_speechly_slu_v2_batch_api_proto_init() {
 	if File_speechly_slu_v2_batch_api_proto != nil {
 		return
 	}
+	file_speechly_slu_v2_batch_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_speechly_slu_v2_batch_api_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ProcessAudioSourceRequest); i {

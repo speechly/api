@@ -347,17 +347,16 @@ const char descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_2eproto[] PROTO
   "ader\032%\n\006Header\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 "
   "\001(\t\"Q\n\006Method\022\026\n\022METHOD_UNSPECIFIED\020\000\022\016\n"
   "\nMETHOD_GET\020\001\022\017\n\013METHOD_POST\020\002\022\016\n\nMETHOD"
-  "_PUT\020\003Bi\n\023com.speechly.slu.v2B\nBatchProt"
-  "oP\001Z\032speechly/slu/v2beta2;sluv2\242\002\003SSX\252\002\017"
-  "Speechly.Slu.V2\312\002\017Speechly\\Slu\\V2b\006proto"
-  "3"
+  "_PUT\020\003Bd\n\023com.speechly.slu.v2B\nBatchProt"
+  "oP\001Z\025speechly/slu/v2;sluv2\242\002\003SSX\252\002\017Speec"
+  "hly.Slu.V2\312\002\017Speechly\\Slu\\V2b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto = {
-  false, false, 1961, descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_2eproto, "speechly/slu/v2/batch.proto", 
+  false, false, 1956, descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_2eproto, "speechly/slu/v2/batch.proto", 
   &descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto_once, descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto_deps, 1, 10,
   schemas, file_default_instances, TableStruct_speechly_2fslu_2fv2_2fbatch_2eproto::offsets,
   file_level_metadata_speechly_2fslu_2fv2_2fbatch_2eproto, file_level_enum_descriptors_speechly_2fslu_2fv2_2fbatch_2eproto, file_level_service_descriptors_speechly_2fslu_2fv2_2fbatch_2eproto,
