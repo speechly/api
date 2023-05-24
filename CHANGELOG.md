@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.9.0](https://github.com/speechly/api/tree/0.9.0) (2023-05-24)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.8.17...0.9.0)
+
+**Merged pull requests:**
+
+- BatchAPI v2 release [\#80](https://github.com/speechly/api/pull/80) ([langma](https://github.com/langma))
+- Move `tokenize` option under `BatchOutput` [\#79](https://github.com/speechly/api/pull/79) ([langma](https://github.com/langma))
+
 ## [0.8.17](https://github.com/speechly/api/tree/0.8.17) (2023-05-08)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.16...0.8.17)

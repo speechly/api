@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.2.0
 // - protoc             v3.17.3
-// source: speechly/slu/v2beta2/batch_api.proto
+// source: speechly/slu/v2/batch_api.proto
 
-package sluv2beta2
+package sluv2
 
 import (
 	context "context"
@@ -46,7 +46,7 @@ func NewBatchAPIClient(cc grpc.ClientConnInterface) BatchAPIClient {
 
 func (c *batchAPIClient) ProcessAudioSource(ctx context.Context, in *ProcessAudioSourceRequest, opts ...grpc.CallOption) (*ProcessAudioSourceResponse, error) {
 	out := new(ProcessAudioSourceResponse)
-	err := c.cc.Invoke(ctx, "/speechly.slu.v2beta2.BatchAPI/ProcessAudioSource", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/speechly.slu.v2.BatchAPI/ProcessAudioSource", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -55,7 +55,7 @@ func (c *batchAPIClient) ProcessAudioSource(ctx context.Context, in *ProcessAudi
 
 func (c *batchAPIClient) QueryStatus(ctx context.Context, in *QueryStatusRequest, opts ...grpc.CallOption) (*QueryStatusResponse, error) {
 	out := new(QueryStatusResponse)
-	err := c.cc.Invoke(ctx, "/speechly.slu.v2beta2.BatchAPI/QueryStatus", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/speechly.slu.v2.BatchAPI/QueryStatus", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -114,7 +114,7 @@ func _BatchAPI_ProcessAudioSource_Handler(srv interface{}, ctx context.Context, 
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/speechly.slu.v2beta2.BatchAPI/ProcessAudioSource",
+		FullMethod: "/speechly.slu.v2.BatchAPI/ProcessAudioSource",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BatchAPIServer).ProcessAudioSource(ctx, req.(*ProcessAudioSourceRequest))
@@ -132,7 +132,7 @@ func _BatchAPI_QueryStatus_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/speechly.slu.v2beta2.BatchAPI/QueryStatus",
+		FullMethod: "/speechly.slu.v2.BatchAPI/QueryStatus",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BatchAPIServer).QueryStatus(ctx, req.(*QueryStatusRequest))
@@ -144,7 +144,7 @@ func _BatchAPI_QueryStatus_Handler(srv interface{}, ctx context.Context, dec fun
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var BatchAPI_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "speechly.slu.v2beta2.BatchAPI",
+	ServiceName: "speechly.slu.v2.BatchAPI",
 	HandlerType: (*BatchAPIServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -157,5 +157,5 @@ var BatchAPI_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "speechly/slu/v2beta2/batch_api.proto",
+	Metadata: "speechly/slu/v2/batch_api.proto",
 }
