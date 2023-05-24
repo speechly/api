@@ -146,17 +146,17 @@ const char descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto[]
   "SourceRequest\032+.speechly.slu.v2.ProcessA"
   "udioSourceResponse\022X\n\013QueryStatus\022#.spee"
   "chly.slu.v2.QueryStatusRequest\032$.speechl"
-  "y.slu.v2.QueryStatusResponseBl\n\023com.spee"
-  "chly.slu.v2B\rBatchApiProtoP\001Z\032speechly/s"
-  "lu/v2beta2;sluv2\242\002\003SSX\252\002\017Speechly.Slu.V2"
-  "\312\002\017Speechly\\Slu\\V2b\006proto3"
+  "y.slu.v2.QueryStatusResponseBg\n\023com.spee"
+  "chly.slu.v2B\rBatchApiProtoP\001Z\025speechly/s"
+  "lu/v2;sluv2\242\002\003SSX\252\002\017Speechly.Slu.V2\312\002\017Sp"
+  "eechly\\Slu\\V2b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto_deps[1] = {
   &::descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto = {
-  false, false, 906, descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto, "speechly/slu/v2/batch_api.proto", 
+  false, false, 901, descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto, "speechly/slu/v2/batch_api.proto", 
   &descriptor_table_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto_once, descriptor_table_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto_deps, 1, 4,
   schemas, file_default_instances, TableStruct_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto::offsets,
   file_level_metadata_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto, file_level_enum_descriptors_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto, file_level_service_descriptors_speechly_2fslu_2fv2_2fbatch_5fapi_2eproto,

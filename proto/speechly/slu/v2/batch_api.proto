@@ -3,7 +3,7 @@ syntax = "proto3";
 package speechly.slu.v2;
 
 option csharp_namespace = "Speechly.Slu.V2";
-option go_package = "speechly/slu/v2beta2;sluv2";
+option go_package = "speechly/slu/v2;sluv2";
 option java_multiple_files = true;
 option java_outer_classname = "BatchApiProto";
 option java_package = "com.speechly.slu.v2";
