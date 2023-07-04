@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SpeechlyAPI'
-  s.version          = '0.8.5'
+  s.version          = '0.9.0'
   s.summary          = 'Definitions and generated code for Speechly public APIs.'
 
   s.homepage         = 'https://github.com/speechly/api'
@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Sources/SpeechlyAPI/*'
   
-  s.dependency 'SwiftNIO', '~> 2.40.0'
-  s.dependency 'gRPC-Swift', '~> 1.8.0'
+  s.dependency 'SwiftNIO', '~> 2.54.0'
+  s.dependency 'gRPC-Swift', '~> 1.17.0'
 end
