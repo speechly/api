@@ -9,7 +9,7 @@ let package = Package(
         .library(name: "SpeechlyAPI", targets: ["SpeechlyAPI"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/grpc/grpc-swift.git", from: "1.0.0"),
+        .package(url: "https://github.com/grpc/grpc-swift.git", from: "1.17.0"),
     ],
     targets: [
         .target(
