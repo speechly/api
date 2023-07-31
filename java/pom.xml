@@ -37,7 +37,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <kotlin.version>1.6.10</kotlin.version>
-    <grpc.version>1.43.2</grpc.version>
+    <grpc.version>1.53.0</grpc.version>
     <project.build.sourceEncoding>
     UTF-8</project.build.sourceEncoding>
   </properties>
