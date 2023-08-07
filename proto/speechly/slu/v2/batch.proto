@@ -53,6 +53,11 @@ message BatchConfig {
   // the source system.
   // Optional.
   string batch_reference = 4;
+  // Priority for the operation. Operations are processed in the order they are
+  // created, but higher priority operations are processed before the lower
+  // priority operations.
+  // Optional, defaults to 0 (normal priority).
+  int32 priority = 6;
   // Additional batch specific options.
   // Optional.
   repeated Option options = 5;
