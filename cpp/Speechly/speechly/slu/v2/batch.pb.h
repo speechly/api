@@ -650,6 +650,7 @@ class BatchConfig final :
     kOptionsFieldNumber = 5,
     kModelIdFieldNumber = 1,
     kBatchReferenceFieldNumber = 4,
+    kPriorityFieldNumber = 6,
   };
   // repeated string language_codes = 2;
   int language_codes_size() const;
@@ -721,6 +722,15 @@ class BatchConfig final :
   std::string* _internal_mutable_batch_reference();
   public:
 
+  // int32 priority = 6;
+  void clear_priority();
+  ::PROTOBUF_NAMESPACE_ID::int32 priority() const;
+  void set_priority(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_priority() const;
+  void _internal_set_priority(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
   // @@protoc_insertion_point(class_scope:speechly.slu.v2.BatchConfig)
  private:
   class _Internal;
@@ -732,6 +742,7 @@ class BatchConfig final :
   ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::speechly::slu::v2::Option > options_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr model_id_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr batch_reference_;
+  ::PROTOBUF_NAMESPACE_ID::int32 priority_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_speechly_2fslu_2fv2_2fbatch_2eproto;
 };
@@ -2566,6 +2577,26 @@ inline void BatchConfig::set_allocated_batch_reference(std::string* batch_refere
   batch_reference_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), batch_reference,
       GetArenaForAllocation());
   // @@protoc_insertion_point(field_set_allocated:speechly.slu.v2.BatchConfig.batch_reference)
+}
+
+// int32 priority = 6;
+inline void BatchConfig::clear_priority() {
+  priority_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BatchConfig::_internal_priority() const {
+  return priority_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 BatchConfig::priority() const {
+  // @@protoc_insertion_point(field_get:speechly.slu.v2.BatchConfig.priority)
+  return _internal_priority();
+}
+inline void BatchConfig::_internal_set_priority(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  priority_ = value;
+}
+inline void BatchConfig::set_priority(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_priority(value);
+  // @@protoc_insertion_point(field_set:speechly.slu.v2.BatchConfig.priority)
 }
 
 // repeated .speechly.slu.v2.Option options = 5;

@@ -51,7 +51,8 @@ constexpr BatchConfig::BatchConfig(
   : language_codes_()
   , options_()
   , model_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , batch_reference_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+  , batch_reference_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
+  , priority_(0){}
 struct BatchConfigDefaultTypeInternal {
   constexpr BatchConfigDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -205,6 +206,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fslu_2fv2_2fbatch_2e
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v2::BatchConfig, model_id_),
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v2::BatchConfig, language_codes_),
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v2::BatchConfig, batch_reference_),
+  PROTOBUF_FIELD_OFFSET(::speechly::slu::v2::BatchConfig, priority_),
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v2::BatchConfig, options_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::speechly::slu::v2::ProcessAudioSourceRequestItem, _internal_metadata_),
@@ -278,13 +280,13 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 0, -1, sizeof(::speechly::slu::v2::BatchTasks)},
   { 7, -1, sizeof(::speechly::slu::v2::BatchOutput)},
   { 15, -1, sizeof(::speechly::slu::v2::BatchConfig)},
-  { 24, -1, sizeof(::speechly::slu::v2::ProcessAudioSourceRequestItem)},
-  { 34, -1, sizeof(::speechly::slu::v2::Operation)},
-  { 52, -1, sizeof(::speechly::slu::v2::OperationResult)},
-  { 60, -1, sizeof(::speechly::slu::v2::Token)},
-  { 69, -1, sizeof(::speechly::slu::v2::Option)},
-  { 76, -1, sizeof(::speechly::slu::v2::HttpResource_Header)},
-  { 83, -1, sizeof(::speechly::slu::v2::HttpResource)},
+  { 25, -1, sizeof(::speechly::slu::v2::ProcessAudioSourceRequestItem)},
+  { 35, -1, sizeof(::speechly::slu::v2::Operation)},
+  { 53, -1, sizeof(::speechly::slu::v2::OperationResult)},
+  { 61, -1, sizeof(::speechly::slu::v2::Token)},
+  { 70, -1, sizeof(::speechly::slu::v2::Option)},
+  { 77, -1, sizeof(::speechly::slu::v2::HttpResource_Header)},
+  { 84, -1, sizeof(::speechly::slu::v2::HttpResource)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -306,57 +308,58 @@ const char descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_2eproto[] PROTO
   "\n\nBatchTasks\022\022\n\ntranscribe\030\001 \001(\010\022\021\n\ttran"
   "slate\030\002 \001(\010\"B\n\013BatchOutput\022\017\n\007display\030\001 "
   "\001(\010\022\017\n\007lexical\030\002 \001(\010\022\021\n\ttokenized\030\003 \001(\010\""
-  "z\n\013BatchConfig\022\020\n\010model_id\030\001 \001(\t\022\026\n\016lang"
-  "uage_codes\030\002 \003(\t\022\027\n\017batch_reference\030\004 \001("
-  "\t\022(\n\007options\030\005 \003(\0132\027.speechly.slu.v2.Opt"
-  "ion\"\255\001\n\035ProcessAudioSourceRequestItem\022\022\n"
-  "\nsource_url\030\001 \001(\t\022\027\n\017destination_url\030\002 \001"
-  "(\t\0229\n\022completion_webhook\030\003 \001(\0132\035.speechl"
-  "y.slu.v2.HttpResource\022\021\n\treference\030\004 \001(\t"
-  "\022\021\n\tdevice_id\030\005 \001(\t\"\262\005\n\tOperation\022\n\n\002id\030"
-  "\001 \001(\t\022\021\n\treference\030\002 \001(\t\022\020\n\010batch_id\030\020 \001"
-  "(\t\022\027\n\017batch_reference\030\021 \001(\t\0221\n\006status\030\003 "
-  "\001(\0162!.speechly.slu.v2.Operation.Status\022\025"
-  "\n\rlanguage_code\030\004 \001(\t\022\016\n\006app_id\030\005 \001(\t\0220\n"
-  "\006result\030\006 \003(\0132 .speechly.slu.v2.Operatio"
-  "nResult\022+\n\010duration\030\007 \001(\0132\031.google.proto"
-  "buf.Duration\0228\n\nerror_code\030\022 \001(\0162$.speec"
-  "hly.slu.v2.Operation.ErrorCode\022\031\n\021error_"
-  "description\030\023 \001(\t\022\022\n\nsource_url\030\024 \001(\t\022\027\n"
-  "\017destination_url\030\025 \001(\t\"W\n\006Status\022\026\n\022STAT"
-  "US_UNSPECIFIED\020\000\022\022\n\016STATUS_PENDING\020\001\022\017\n\013"
-  "STATUS_DONE\020\002\022\020\n\014STATUS_ERROR\020\003\"\306\001\n\tErro"
-  "rCode\022\025\n\021ERROR_UNSPECIFIED\020\000\022\036\n\032ERROR_UN"
-  "SUPPORTED_LANGUAGE\020\001\022\022\n\016ERROR_INTERNAL\020\002"
-  "\022\034\n\030ERROR_INVALID_PARAMETERS\020\003\022\030\n\024ERROR_"
-  "INVALID_SOURCE\020\004\022\035\n\031ERROR_INVALID_DESTIN"
-  "ATION\020\005\022\027\n\023ERROR_INVALID_AUDIO\020\006\"\223\002\n\017Ope"
-  "rationResult\0229\n\004type\030\001 \001(\0162+.speechly.sl"
-  "u.v2.OperationResult.ResultType\022\014\n\004text\030"
-  "\002 \001(\t\022&\n\006tokens\030\003 \003(\0132\026.speechly.slu.v2."
-  "Token\"\216\001\n\nResultType\022\033\n\027RESULT_TYPE_UNSP"
-  "ECIFIED\020\000\022\"\n\036RESULT_TYPE_TRANSCRIPT_LEXI"
-  "CAL\020\001\022\"\n\036RESULT_TYPE_TRANSCRIPT_DISPLAY\020"
-  "\002\022\033\n\027RESULT_TYPE_TRANSLATION\020\003\"K\n\005Token\022"
-  "\r\n\005token\030\001 \001(\t\022\r\n\005index\030\002 \001(\005\022\022\n\nstart_t"
-  "ime\030\003 \001(\005\022\020\n\010end_time\030\004 \001(\005\"$\n\006Option\022\013\n"
-  "\003key\030\001 \001(\t\022\r\n\005value\030\002 \003(\t\"\202\002\n\014HttpResour"
-  "ce\022\013\n\003url\030\001 \001(\t\0224\n\006method\030\002 \001(\0162$.speech"
-  "ly.slu.v2.HttpResource.Method\0225\n\007headers"
-  "\030\003 \003(\0132$.speechly.slu.v2.HttpResource.He"
-  "ader\032%\n\006Header\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 "
-  "\001(\t\"Q\n\006Method\022\026\n\022METHOD_UNSPECIFIED\020\000\022\016\n"
-  "\nMETHOD_GET\020\001\022\017\n\013METHOD_POST\020\002\022\016\n\nMETHOD"
-  "_PUT\020\003Bd\n\023com.speechly.slu.v2B\nBatchProt"
-  "oP\001Z\025speechly/slu/v2;sluv2\242\002\003SSX\252\002\017Speec"
-  "hly.Slu.V2\312\002\017Speechly\\Slu\\V2b\006proto3"
+  "\214\001\n\013BatchConfig\022\020\n\010model_id\030\001 \001(\t\022\026\n\016lan"
+  "guage_codes\030\002 \003(\t\022\027\n\017batch_reference\030\004 \001"
+  "(\t\022\020\n\010priority\030\006 \001(\005\022(\n\007options\030\005 \003(\0132\027."
+  "speechly.slu.v2.Option\"\255\001\n\035ProcessAudioS"
+  "ourceRequestItem\022\022\n\nsource_url\030\001 \001(\t\022\027\n\017"
+  "destination_url\030\002 \001(\t\0229\n\022completion_webh"
+  "ook\030\003 \001(\0132\035.speechly.slu.v2.HttpResource"
+  "\022\021\n\treference\030\004 \001(\t\022\021\n\tdevice_id\030\005 \001(\t\"\262"
+  "\005\n\tOperation\022\n\n\002id\030\001 \001(\t\022\021\n\treference\030\002 "
+  "\001(\t\022\020\n\010batch_id\030\020 \001(\t\022\027\n\017batch_reference"
+  "\030\021 \001(\t\0221\n\006status\030\003 \001(\0162!.speechly.slu.v2"
+  ".Operation.Status\022\025\n\rlanguage_code\030\004 \001(\t"
+  "\022\016\n\006app_id\030\005 \001(\t\0220\n\006result\030\006 \003(\0132 .speec"
+  "hly.slu.v2.OperationResult\022+\n\010duration\030\007"
+  " \001(\0132\031.google.protobuf.Duration\0228\n\nerror"
+  "_code\030\022 \001(\0162$.speechly.slu.v2.Operation."
+  "ErrorCode\022\031\n\021error_description\030\023 \001(\t\022\022\n\n"
+  "source_url\030\024 \001(\t\022\027\n\017destination_url\030\025 \001("
+  "\t\"W\n\006Status\022\026\n\022STATUS_UNSPECIFIED\020\000\022\022\n\016S"
+  "TATUS_PENDING\020\001\022\017\n\013STATUS_DONE\020\002\022\020\n\014STAT"
+  "US_ERROR\020\003\"\306\001\n\tErrorCode\022\025\n\021ERROR_UNSPEC"
+  "IFIED\020\000\022\036\n\032ERROR_UNSUPPORTED_LANGUAGE\020\001\022"
+  "\022\n\016ERROR_INTERNAL\020\002\022\034\n\030ERROR_INVALID_PAR"
+  "AMETERS\020\003\022\030\n\024ERROR_INVALID_SOURCE\020\004\022\035\n\031E"
+  "RROR_INVALID_DESTINATION\020\005\022\027\n\023ERROR_INVA"
+  "LID_AUDIO\020\006\"\223\002\n\017OperationResult\0229\n\004type\030"
+  "\001 \001(\0162+.speechly.slu.v2.OperationResult."
+  "ResultType\022\014\n\004text\030\002 \001(\t\022&\n\006tokens\030\003 \003(\013"
+  "2\026.speechly.slu.v2.Token\"\216\001\n\nResultType\022"
+  "\033\n\027RESULT_TYPE_UNSPECIFIED\020\000\022\"\n\036RESULT_T"
+  "YPE_TRANSCRIPT_LEXICAL\020\001\022\"\n\036RESULT_TYPE_"
+  "TRANSCRIPT_DISPLAY\020\002\022\033\n\027RESULT_TYPE_TRAN"
+  "SLATION\020\003\"K\n\005Token\022\r\n\005token\030\001 \001(\t\022\r\n\005ind"
+  "ex\030\002 \001(\005\022\022\n\nstart_time\030\003 \001(\005\022\020\n\010end_time"
+  "\030\004 \001(\005\"$\n\006Option\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002"
+  " \003(\t\"\202\002\n\014HttpResource\022\013\n\003url\030\001 \001(\t\0224\n\006me"
+  "thod\030\002 \001(\0162$.speechly.slu.v2.HttpResourc"
+  "e.Method\0225\n\007headers\030\003 \003(\0132$.speechly.slu"
+  ".v2.HttpResource.Header\032%\n\006Header\022\014\n\004nam"
+  "e\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\"Q\n\006Method\022\026\n\022METH"
+  "OD_UNSPECIFIED\020\000\022\016\n\nMETHOD_GET\020\001\022\017\n\013METH"
+  "OD_POST\020\002\022\016\n\nMETHOD_PUT\020\003Bd\n\023com.speechl"
+  "y.slu.v2B\nBatchProtoP\001Z\025speechly/slu/v2;"
+  "sluv2\242\002\003SSX\252\002\017Speechly.Slu.V2\312\002\017Speechly"
+  "\\Slu\\V2b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fduration_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto = {
-  false, false, 1956, descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_2eproto, "speechly/slu/v2/batch.proto", 
+  false, false, 1975, descriptor_table_protodef_speechly_2fslu_2fv2_2fbatch_2eproto, "speechly/slu/v2/batch.proto", 
   &descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto_once, descriptor_table_speechly_2fslu_2fv2_2fbatch_2eproto_deps, 1, 10,
   schemas, file_default_instances, TableStruct_speechly_2fslu_2fv2_2fbatch_2eproto::offsets,
   file_level_metadata_speechly_2fslu_2fv2_2fbatch_2eproto, file_level_enum_descriptors_speechly_2fslu_2fv2_2fbatch_2eproto, file_level_service_descriptors_speechly_2fslu_2fv2_2fbatch_2eproto,
@@ -962,12 +965,14 @@ BatchConfig::BatchConfig(const BatchConfig& from)
     batch_reference_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_batch_reference(), 
       GetArenaForAllocation());
   }
+  priority_ = from.priority_;
   // @@protoc_insertion_point(copy_constructor:speechly.slu.v2.BatchConfig)
 }
 
 inline void BatchConfig::SharedCtor() {
 model_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 batch_reference_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+priority_ = 0;
 }
 
 BatchConfig::~BatchConfig() {
@@ -1003,6 +1008,7 @@ void BatchConfig::Clear() {
   options_.Clear();
   model_id_.ClearToEmpty();
   batch_reference_.ClearToEmpty();
+  priority_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -1054,6 +1060,13 @@ const char* BatchConfig::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
           } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<42>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // int32 priority = 6;
+      case 6:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
+          priority_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
         } else goto handle_unusual;
         continue;
       default: {
@@ -1123,6 +1136,12 @@ failure:
       InternalWriteMessage(5, this->_internal_options(i), target, stream);
   }
 
+  // int32 priority = 6;
+  if (this->_internal_priority() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_priority(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1168,6 +1187,13 @@ size_t BatchConfig::ByteSizeLong() const {
         this->_internal_batch_reference());
   }
 
+  // int32 priority = 6;
+  if (this->_internal_priority() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_priority());
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
         _internal_metadata_, total_size, &_cached_size_);
@@ -1204,6 +1230,9 @@ void BatchConfig::MergeFrom(const BatchConfig& from) {
   if (!from._internal_batch_reference().empty()) {
     _internal_set_batch_reference(from._internal_batch_reference());
   }
+  if (from._internal_priority() != 0) {
+    _internal_set_priority(from._internal_priority());
+  }
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1233,6 +1262,7 @@ void BatchConfig::InternalSwap(BatchConfig* other) {
       &batch_reference_, GetArenaForAllocation(),
       &other->batch_reference_, other->GetArenaForAllocation()
   );
+  swap(priority_, other->priority_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata BatchConfig::GetMetadata() const {

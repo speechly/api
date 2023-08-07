@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.9.1](https://github.com/speechly/api/tree/0.9.1) (2023-08-07)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.9.0...0.9.1)
+
+**Merged pull requests:**
+
+- Add priority field to batch\_api config message [\#86](https://github.com/speechly/api/pull/86) ([langma](https://github.com/langma))
+- Update iOS dependencies [\#85](https://github.com/speechly/api/pull/85) ([thisismatu](https://github.com/thisismatu))
+- Bump @grpc/grpc-js from 1.3.7 to 1.8.17 in /javascript [\#84](https://github.com/speechly/api/pull/84) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump grpc-protobuf from 1.43.2 to 1.53.0 in /java [\#83](https://github.com/speechly/api/pull/83) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Grpc.Net.Client from 2.35.0 to 2.52.0 in /dotnet [\#82](https://github.com/speechly/api/pull/82) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update iOS dependencies [\#81](https://github.com/speechly/api/pull/81) ([langma](https://github.com/langma))
+
 ## [0.9.0](https://github.com/speechly/api/tree/0.9.0) (2023-05-24)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.8.17...0.9.0)

@@ -40,6 +40,7 @@ Describes the configuration options common for the input batch.
 | model_id | string | ID of the language model to use when processing the audio.<br/>Optional. If not provided, the model to use will be determined<br/>from the login information or from language detection. |
 | language_codes | string | The language(s) of the audio sent in the request as a BCP-47 language tag<br/>(e.g. "en-US"). Defaults to the target application language(s).<br/>Optional. |
 | batch_reference | string | Reference id for a set of related operations. For example an identifier of<br/>the source system.<br/>Optional. |
+| priority | int32 | Priority for the operation. Operations are processed in the order they are<br/>created, but higher priority operations are processed before the lower<br/>priority operations.<br/>Optional, defaults to 0 (normal priority). |
 | options | [Option](#option) | Additional batch specific options.<br/>Optional. |
 
 

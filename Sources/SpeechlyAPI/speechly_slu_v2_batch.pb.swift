@@ -87,6 +87,12 @@ public struct Speechly_Slu_V2_BatchConfig {
   /// Optional.
   public var batchReference: String = String()
 
+  /// Priority for the operation. Operations are processed in the order they are
+  /// created, but higher priority operations are processed before the lower
+  /// priority operations.
+  /// Optional, defaults to 0 (normal priority).
+  public var priority: Int32 = 0
+
   /// Additional batch specific options.
   /// Optional.
   public var options: [Speechly_Slu_V2_Option] = []
@@ -660,6 +666,7 @@ extension Speechly_Slu_V2_BatchConfig: SwiftProtobuf.Message, SwiftProtobuf._Mes
     1: .standard(proto: "model_id"),
     2: .standard(proto: "language_codes"),
     4: .standard(proto: "batch_reference"),
+    6: .same(proto: "priority"),
     5: .same(proto: "options"),
   ]
 
@@ -673,6 +680,7 @@ extension Speechly_Slu_V2_BatchConfig: SwiftProtobuf.Message, SwiftProtobuf._Mes
       case 2: try { try decoder.decodeRepeatedStringField(value: &self.languageCodes) }()
       case 4: try { try decoder.decodeSingularStringField(value: &self.batchReference) }()
       case 5: try { try decoder.decodeRepeatedMessageField(value: &self.options) }()
+      case 6: try { try decoder.decodeSingularInt32Field(value: &self.priority) }()
       default: break
       }
     }
@@ -691,6 +699,9 @@ extension Speechly_Slu_V2_BatchConfig: SwiftProtobuf.Message, SwiftProtobuf._Mes
     if !self.options.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.options, fieldNumber: 5)
     }
+    if self.priority != 0 {
+      try visitor.visitSingularInt32Field(value: self.priority, fieldNumber: 6)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -698,6 +709,7 @@ extension Speechly_Slu_V2_BatchConfig: SwiftProtobuf.Message, SwiftProtobuf._Mes
     if lhs.modelID != rhs.modelID {return false}
     if lhs.languageCodes != rhs.languageCodes {return false}
     if lhs.batchReference != rhs.batchReference {return false}
+    if lhs.priority != rhs.priority {return false}
     if lhs.options != rhs.options {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
