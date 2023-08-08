@@ -45,8 +45,8 @@ message BatchConfig {
   // Optional. If not provided, the model to use will be determined
   // from the login information or from language detection.
   string model_id = 1;
-  // The language(s) of the audio sent in the request as a BCP-47 language tag
-  // (e.g. "en-US"). Defaults to the target application language(s).
+  // The expected languages for this batch. Used when detecting audio language
+  // as a hint of possible values.
   // Optional.
   repeated string language_codes = 2;
   // Reference id for a set of related operations. For example an identifier of
@@ -83,6 +83,10 @@ message ProcessAudioSourceRequestItem {
   // UUID.
   // Optional.
   string device_id = 5;
+  // The language of the audio as BCP-47 code, if known. Language detection is
+  // skipped if value is given.
+  // Optional.
+  string language = 6;
 }
 
 // Describes a single batch operation.
