@@ -27,7 +27,10 @@ setup(
     package_dir={
         '': 'src'
     },
-    python_requires='>=3.6',
+    package_data={
+        '': ['py.typed', '**/*.pyi']
+    },
+    python_requires='>=3.8',
     project_urls={
         'Speechly': 'https://www.speechly.com/',
         'Source': 'https://github.com/speechly/api'
