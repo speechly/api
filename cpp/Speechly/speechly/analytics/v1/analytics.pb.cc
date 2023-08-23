@@ -4,184 +4,265 @@
 #include "speechly/analytics/v1/analytics.pb.h"
 
 #include <algorithm>
-
-#include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/extension_set.h>
-#include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
+#include "google/protobuf/io/coded_stream.h"
+#include "google/protobuf/extension_set.h"
+#include "google/protobuf/wire_format_lite.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/generated_message_reflection.h"
+#include "google/protobuf/reflection_ops.h"
+#include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
-#include <google/protobuf/port_def.inc>
 
+// Must be included last.
+#include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace speechly {
 namespace analytics {
 namespace v1 {
-constexpr UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : app_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , start_time_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , project_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , count_(0)
-  , utterances_seconds_(0)
-  , annotated_seconds_(0){}
+        template <typename>
+PROTOBUF_CONSTEXPR UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.app_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.start_time_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.project_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.count_)*/ 0,
+      /*decltype(_impl_.utterances_seconds_)*/ 0,
+      /*decltype(_impl_.annotated_seconds_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct UtteranceStatisticsPeriodDefaultTypeInternal {
-  constexpr UtteranceStatisticsPeriodDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UtteranceStatisticsPeriodDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~UtteranceStatisticsPeriodDefaultTypeInternal() {}
   union {
     UtteranceStatisticsPeriod _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UtteranceStatisticsPeriodDefaultTypeInternal _UtteranceStatisticsPeriod_default_instance_;
-constexpr Utterance::Utterance(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : transcript_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , annotated_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , date_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UtteranceStatisticsPeriodDefaultTypeInternal _UtteranceStatisticsPeriod_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR Utterance::Utterance(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.transcript_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.annotated_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.date_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct UtteranceDefaultTypeInternal {
-  constexpr UtteranceDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR UtteranceDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~UtteranceDefaultTypeInternal() {}
   union {
     Utterance _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UtteranceDefaultTypeInternal _Utterance_default_instance_;
-constexpr DecoderInfo::DecoderInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : version_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , utterance_count_(0)
-  , total_seconds_transcribed_(0){}
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UtteranceDefaultTypeInternal _Utterance_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR DecoderInfo::DecoderInfo(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.version_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.utterance_count_)*/ 0,
+      /*decltype(_impl_.total_seconds_transcribed_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct DecoderInfoDefaultTypeInternal {
-  constexpr DecoderInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR DecoderInfoDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~DecoderInfoDefaultTypeInternal() {}
   union {
     DecoderInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DecoderInfoDefaultTypeInternal _DecoderInfo_default_instance_;
-constexpr ProcessingInfo::ProcessingInfo(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : processing_types_()
-  , _processing_types_cached_byte_size_(0)
-  , model_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DecoderInfoDefaultTypeInternal _DecoderInfo_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ProcessingInfo::ProcessingInfo(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.processing_types_)*/ {},
+      /*decltype(_impl_._processing_types_cached_byte_size_)*/ {0},
+      /*decltype(_impl_.model_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct ProcessingInfoDefaultTypeInternal {
-  constexpr ProcessingInfoDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ProcessingInfoDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ProcessingInfoDefaultTypeInternal() {}
   union {
     ProcessingInfo _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ProcessingInfoDefaultTypeInternal _ProcessingInfo_default_instance_;
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProcessingInfoDefaultTypeInternal _ProcessingInfo_default_instance_;
 }  // namespace v1
 }  // namespace analytics
 }  // namespace speechly
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto[4];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto[2];
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto[4];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto[2];
+static constexpr const ::_pb::ServiceDescriptor**
+    file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto = nullptr;
+const ::uint32_t TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
+    protodesc_cold) = {
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, _impl_.app_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, _impl_.start_time_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, _impl_.count_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, _impl_.utterances_seconds_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, _impl_.annotated_seconds_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, _impl_.project_id_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, _impl_.transcript_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, _impl_.annotated_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, _impl_.date_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::DecoderInfo, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::DecoderInfo, _impl_.version_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::DecoderInfo, _impl_.utterance_count_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::DecoderInfo, _impl_.total_seconds_transcribed_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ProcessingInfo, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ProcessingInfo, _impl_.processing_types_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ProcessingInfo, _impl_.model_id_),
+};
 
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, app_id_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, start_time_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, count_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, utterances_seconds_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, annotated_seconds_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UtteranceStatisticsPeriod, project_id_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, transcript_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, annotated_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::Utterance, date_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::DecoderInfo, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::DecoderInfo, version_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::DecoderInfo, utterance_count_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::DecoderInfo, total_seconds_transcribed_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ProcessingInfo, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ProcessingInfo, processing_types_),
-  PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ProcessingInfo, model_id_),
-};
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::speechly::analytics::v1::UtteranceStatisticsPeriod)},
-  { 11, -1, sizeof(::speechly::analytics::v1::Utterance)},
-  { 19, -1, sizeof(::speechly::analytics::v1::DecoderInfo)},
-  { 27, -1, sizeof(::speechly::analytics::v1::ProcessingInfo)},
+static const ::_pbi::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        {0, -1, -1, sizeof(::speechly::analytics::v1::UtteranceStatisticsPeriod)},
+        {14, -1, -1, sizeof(::speechly::analytics::v1::Utterance)},
+        {25, -1, -1, sizeof(::speechly::analytics::v1::DecoderInfo)},
+        {36, -1, -1, sizeof(::speechly::analytics::v1::ProcessingInfo)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_UtteranceStatisticsPeriod_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_Utterance_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_DecoderInfo_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::analytics::v1::_ProcessingInfo_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+    &::speechly::analytics::v1::_UtteranceStatisticsPeriod_default_instance_._instance,
+    &::speechly::analytics::v1::_Utterance_default_instance_._instance,
+    &::speechly::analytics::v1::_DecoderInfo_default_instance_._instance,
+    &::speechly::analytics::v1::_ProcessingInfo_default_instance_._instance,
+};
+const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+    "\n%speechly/analytics/v1/analytics.proto\022"
+    "\025speechly.analytics.v1\"\231\001\n\031UtteranceStat"
+    "isticsPeriod\022\016\n\006app_id\030\002 \001(\t\022\022\n\nstart_ti"
+    "me\030\003 \001(\t\022\r\n\005count\030\004 \001(\005\022\032\n\022utterances_se"
+    "conds\030\005 \001(\005\022\031\n\021annotated_seconds\030\006 \001(\005\022\022"
+    "\n\nproject_id\030\007 \001(\t\"@\n\tUtterance\022\022\n\ntrans"
+    "cript\030\001 \001(\t\022\021\n\tannotated\030\002 \001(\t\022\014\n\004date\030\003"
+    " \001(\t\"Z\n\013DecoderInfo\022\017\n\007version\030\001 \001(\t\022\027\n\017"
+    "utterance_count\030\002 \001(\005\022!\n\031total_seconds_t"
+    "ranscribed\030\003 \001(\005\"c\n\016ProcessingInfo\022\?\n\020pr"
+    "ocessing_types\030\001 \003(\0162%.speechly.analytic"
+    "s.v1.ProcessingType\022\020\n\010model_id\030\002 \001(\t*n\n"
+    "\013Aggregation\022\027\n\023AGGREGATION_INVALID\020\000\022\027\n"
+    "\023AGGREGATION_MONTHLY\020\001\022\025\n\021AGGREGATION_DA"
+    "ILY\020\002\022\026\n\022AGGREGATION_HOURLY\020\003*\307\002\n\016Proces"
+    "singType\022\033\n\027PROCESSING_TYPE_INVALID\020\000\022!\n"
+    "\035PROCESSING_TYPE_TRANSCRIPTION\020\001\022\027\n\023PROC"
+    "ESSING_TYPE_NLU\020\002\022&\n\"PROCESSING_TYPE_LAN"
+    "GUAGE_DETECTION\020\003\022\027\n\023PROCESSING_TYPE_VAD"
+    "\020\004\022\037\n\033PROCESSING_TYPE_TRANSLATION\020\005\022)\n%P"
+    "ROCESSING_TYPE_AUDIO_EVENT_DETECTION\020\006\022+"
+    "\n\'PROCESSING_TYPE_TONE_OF_VOICE_LABELLIN"
+    "G\020\007\022\"\n\036PROCESSING_TYPE_SHALLOW_FUSION\020\010B"
+    "\206\001\n\031com.speechly.analytics.v1B\016Analytics"
+    "ProtoP\001Z!speechly/analytics/v1;analytics"
+    "v1\242\002\003SAX\252\002\025Speechly.Analytics.V1\312\002\025Speec"
+    "hly\\Analytics\\V1b\006proto3"
+};
+static ::absl::once_flag descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto = {
+    false,
+    false,
+    1064,
+    descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
+    "speechly/analytics/v1/analytics.proto",
+    &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once,
+    nullptr,
+    0,
+    4,
+    schemas,
+    file_default_instances,
+    TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto::offsets,
+    file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
+    file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
+    file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
 };
 
-const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n%speechly/analytics/v1/analytics.proto\022"
-  "\025speechly.analytics.v1\"\231\001\n\031UtteranceStat"
-  "isticsPeriod\022\016\n\006app_id\030\002 \001(\t\022\022\n\nstart_ti"
-  "me\030\003 \001(\t\022\r\n\005count\030\004 \001(\005\022\032\n\022utterances_se"
-  "conds\030\005 \001(\005\022\031\n\021annotated_seconds\030\006 \001(\005\022\022"
-  "\n\nproject_id\030\007 \001(\t\"@\n\tUtterance\022\022\n\ntrans"
-  "cript\030\001 \001(\t\022\021\n\tannotated\030\002 \001(\t\022\014\n\004date\030\003"
-  " \001(\t\"Z\n\013DecoderInfo\022\017\n\007version\030\001 \001(\t\022\027\n\017"
-  "utterance_count\030\002 \001(\005\022!\n\031total_seconds_t"
-  "ranscribed\030\003 \001(\005\"c\n\016ProcessingInfo\022\?\n\020pr"
-  "ocessing_types\030\001 \003(\0162%.speechly.analytic"
-  "s.v1.ProcessingType\022\020\n\010model_id\030\002 \001(\t*n\n"
-  "\013Aggregation\022\027\n\023AGGREGATION_INVALID\020\000\022\027\n"
-  "\023AGGREGATION_MONTHLY\020\001\022\025\n\021AGGREGATION_DA"
-  "ILY\020\002\022\026\n\022AGGREGATION_HOURLY\020\003*\307\002\n\016Proces"
-  "singType\022\033\n\027PROCESSING_TYPE_INVALID\020\000\022!\n"
-  "\035PROCESSING_TYPE_TRANSCRIPTION\020\001\022\027\n\023PROC"
-  "ESSING_TYPE_NLU\020\002\022&\n\"PROCESSING_TYPE_LAN"
-  "GUAGE_DETECTION\020\003\022\027\n\023PROCESSING_TYPE_VAD"
-  "\020\004\022\037\n\033PROCESSING_TYPE_TRANSLATION\020\005\022)\n%P"
-  "ROCESSING_TYPE_AUDIO_EVENT_DETECTION\020\006\022+"
-  "\n\'PROCESSING_TYPE_TONE_OF_VOICE_LABELLIN"
-  "G\020\007\022\"\n\036PROCESSING_TYPE_SHALLOW_FUSION\020\010B"
-  "\206\001\n\031com.speechly.analytics.v1B\016Analytics"
-  "ProtoP\001Z!speechly/analytics/v1;analytics"
-  "v1\242\002\003SAX\252\002\025Speechly.Analytics.V1\312\002\025Speec"
-  "hly\\Analytics\\V1b\006proto3"
-  ;
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto = {
-  false, false, 1064, descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2eproto, "speechly/analytics/v1/analytics.proto", 
-  &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once, nullptr, 0, 4,
-  schemas, file_default_instances, TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto::offsets,
-  file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto, file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto, file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
-};
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_getter() {
+// This function exists to be marked as weak.
+// It can significantly speed up compilation by breaking up LLVM's SCC
+// in the .pb.cc translation units. Large translation units see a
+// reduction of more than 35% of walltime for optimized builds. Without
+// the weak attribute all the messages in the file, including all the
+// vtables and everything they use become part of the same SCC through
+// a cycle like:
+// GetMetadata -> descriptor table -> default instances ->
+//   vtables -> GetMetadata
+// By adding a weak function here we break the connection from the
+// individual vtables back into the descriptor table.
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_getter() {
   return &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto;
 }
-
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_speechly_2fanalytics_2fv1_2fanalytics_2eproto(&descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
+static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_speechly_2fanalytics_2fv1_2fanalytics_2eproto(&descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto);
 namespace speechly {
 namespace analytics {
 namespace v1 {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Aggregation_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto);
+const ::google::protobuf::EnumDescriptor* Aggregation_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto);
   return file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto[0];
 }
 bool Aggregation_IsValid(int value) {
@@ -195,9 +276,8 @@ bool Aggregation_IsValid(int value) {
       return false;
   }
 }
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ProcessingType_descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto);
+const ::google::protobuf::EnumDescriptor* ProcessingType_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto);
   return file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_2eproto[1];
 }
 bool ProcessingType_IsValid(int value) {
@@ -216,332 +296,328 @@ bool ProcessingType_IsValid(int value) {
       return false;
   }
 }
-
-
 // ===================================================================
 
 class UtteranceStatisticsPeriod::_Internal {
  public:
 };
 
-UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.UtteranceStatisticsPeriod)
 }
-UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(const UtteranceStatisticsPeriod& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+UtteranceStatisticsPeriod::UtteranceStatisticsPeriod(const UtteranceStatisticsPeriod& from) : ::google::protobuf::Message() {
+  UtteranceStatisticsPeriod* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.start_time_){},
+      decltype(_impl_.project_id_){},
+      decltype(_impl_.count_){},
+      decltype(_impl_.utterances_seconds_){},
+      decltype(_impl_.annotated_seconds_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.app_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_app_id().empty()) {
-    app_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_app_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
   }
-  start_time_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.start_time_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.start_time_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_start_time().empty()) {
-    start_time_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_start_time(), 
-      GetArenaForAllocation());
+    _this->_impl_.start_time_.Set(from._internal_start_time(), _this->GetArenaForAllocation());
   }
-  project_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.project_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.project_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_project_id().empty()) {
-    project_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_project_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.project_id_.Set(from._internal_project_id(), _this->GetArenaForAllocation());
   }
-  ::memcpy(&count_, &from.count_,
-    static_cast<size_t>(reinterpret_cast<char*>(&annotated_seconds_) -
-    reinterpret_cast<char*>(&count_)) + sizeof(annotated_seconds_));
+  ::memcpy(&_impl_.count_, &from._impl_.count_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.annotated_seconds_) -
+    reinterpret_cast<char*>(&_impl_.count_)) + sizeof(_impl_.annotated_seconds_));
+
   // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.UtteranceStatisticsPeriod)
 }
-
-inline void UtteranceStatisticsPeriod::SharedCtor() {
-app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-start_time_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-project_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&count_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&annotated_seconds_) -
-    reinterpret_cast<char*>(&count_)) + sizeof(annotated_seconds_));
+inline void UtteranceStatisticsPeriod::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.start_time_){},
+      decltype(_impl_.project_id_){},
+      decltype(_impl_.count_){0},
+      decltype(_impl_.utterances_seconds_){0},
+      decltype(_impl_.annotated_seconds_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.app_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.start_time_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.start_time_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.project_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.project_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 UtteranceStatisticsPeriod::~UtteranceStatisticsPeriod() {
   // @@protoc_insertion_point(destructor:speechly.analytics.v1.UtteranceStatisticsPeriod)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void UtteranceStatisticsPeriod::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  app_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  start_time_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  project_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void UtteranceStatisticsPeriod::ArenaDtor(void* object) {
-  UtteranceStatisticsPeriod* _this = reinterpret_cast< UtteranceStatisticsPeriod* >(object);
-  (void)_this;
-}
-void UtteranceStatisticsPeriod::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.app_id_.Destroy();
+  _impl_.start_time_.Destroy();
+  _impl_.project_id_.Destroy();
 }
 void UtteranceStatisticsPeriod::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void UtteranceStatisticsPeriod::Clear() {
+PROTOBUF_NOINLINE void UtteranceStatisticsPeriod::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.analytics.v1.UtteranceStatisticsPeriod)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  app_id_.ClearToEmpty();
-  start_time_.ClearToEmpty();
-  project_id_.ClearToEmpty();
-  ::memset(&count_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&annotated_seconds_) -
-      reinterpret_cast<char*>(&count_)) + sizeof(annotated_seconds_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _impl_.app_id_.ClearToEmpty();
+  _impl_.start_time_.ClearToEmpty();
+  _impl_.project_id_.ClearToEmpty();
+  ::memset(&_impl_.count_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.annotated_seconds_) -
+      reinterpret_cast<char*>(&_impl_.count_)) + sizeof(_impl_.annotated_seconds_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* UtteranceStatisticsPeriod::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string app_id = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_app_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.UtteranceStatisticsPeriod.app_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string start_time = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          auto str = _internal_mutable_start_time();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.UtteranceStatisticsPeriod.start_time"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 count = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 utterances_seconds = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          utterances_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 annotated_seconds = 6;
-      case 6:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 48)) {
-          annotated_seconds_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string project_id = 7;
-      case 7:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 58)) {
-          auto str = _internal_mutable_project_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.UtteranceStatisticsPeriod.project_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* UtteranceStatisticsPeriod::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* UtteranceStatisticsPeriod::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 0, 82, 2> UtteranceStatisticsPeriod::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    7, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967169,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_UtteranceStatisticsPeriod_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // string app_id = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.app_id_)}},
+    // string start_time = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.start_time_)}},
+    // int32 count = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(UtteranceStatisticsPeriod, _impl_.count_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.count_)}},
+    // int32 utterances_seconds = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(UtteranceStatisticsPeriod, _impl_.utterances_seconds_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.utterances_seconds_)}},
+    // int32 annotated_seconds = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(UtteranceStatisticsPeriod, _impl_.annotated_seconds_), 63>(),
+     {48, 63, 0, PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.annotated_seconds_)}},
+    // string project_id = 7;
+    {::_pbi::TcParser::FastUS1,
+     {58, 63, 0, PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.project_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string app_id = 2;
+    {PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.app_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string start_time = 3;
+    {PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.start_time_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 count = 4;
+    {PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.count_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 utterances_seconds = 5;
+    {PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.utterances_seconds_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 annotated_seconds = 6;
+    {PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.annotated_seconds_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // string project_id = 7;
+    {PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.project_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\57\6\12\0\0\0\12\0"
+    "speechly.analytics.v1.UtteranceStatisticsPeriod"
+    "app_id"
+    "start_time"
+    "project_id"
+  }},
+};
+
+::uint8_t* UtteranceStatisticsPeriod::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.analytics.v1.UtteranceStatisticsPeriod)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string app_id = 2;
   if (!this->_internal_app_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_app_id().data(), static_cast<int>(this->_internal_app_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.analytics.v1.UtteranceStatisticsPeriod.app_id");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_app_id(), target);
+    const std::string& _s = this->_internal_app_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.UtteranceStatisticsPeriod.app_id");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string start_time = 3;
   if (!this->_internal_start_time().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_start_time().data(), static_cast<int>(this->_internal_start_time().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.analytics.v1.UtteranceStatisticsPeriod.start_time");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_start_time(), target);
+    const std::string& _s = this->_internal_start_time();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.UtteranceStatisticsPeriod.start_time");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   // int32 count = 4;
   if (this->_internal_count() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_count(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<4>(
+            stream, this->_internal_count(), target);
   }
 
   // int32 utterances_seconds = 5;
   if (this->_internal_utterances_seconds() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_utterances_seconds(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<5>(
+            stream, this->_internal_utterances_seconds(), target);
   }
 
   // int32 annotated_seconds = 6;
   if (this->_internal_annotated_seconds() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(6, this->_internal_annotated_seconds(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<6>(
+            stream, this->_internal_annotated_seconds(), target);
   }
 
   // string project_id = 7;
   if (!this->_internal_project_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_project_id().data(), static_cast<int>(this->_internal_project_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.analytics.v1.UtteranceStatisticsPeriod.project_id");
-    target = stream->WriteStringMaybeAliased(
-        7, this->_internal_project_id(), target);
+    const std::string& _s = this->_internal_project_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.UtteranceStatisticsPeriod.project_id");
+    target = stream->WriteStringMaybeAliased(7, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.analytics.v1.UtteranceStatisticsPeriod)
   return target;
 }
 
-size_t UtteranceStatisticsPeriod::ByteSizeLong() const {
+::size_t UtteranceStatisticsPeriod::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.analytics.v1.UtteranceStatisticsPeriod)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string app_id = 2;
   if (!this->_internal_app_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_app_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_app_id());
   }
 
   // string start_time = 3;
   if (!this->_internal_start_time().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_start_time());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_start_time());
   }
 
   // string project_id = 7;
   if (!this->_internal_project_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_project_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_project_id());
   }
 
   // int32 count = 4;
   if (this->_internal_count() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_count());
   }
 
   // int32 utterances_seconds = 5;
   if (this->_internal_utterances_seconds() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_utterances_seconds());
   }
 
   // int32 annotated_seconds = 6;
   if (this->_internal_annotated_seconds() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_annotated_seconds());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UtteranceStatisticsPeriod::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData UtteranceStatisticsPeriod::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     UtteranceStatisticsPeriod::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UtteranceStatisticsPeriod::GetClassData() const { return &_class_data_; }
-
-void UtteranceStatisticsPeriod::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<UtteranceStatisticsPeriod *>(to)->MergeFrom(
-      static_cast<const UtteranceStatisticsPeriod &>(from));
-}
+const ::google::protobuf::Message::ClassData*UtteranceStatisticsPeriod::GetClassData() const { return &_class_data_; }
 
 
-void UtteranceStatisticsPeriod::MergeFrom(const UtteranceStatisticsPeriod& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.UtteranceStatisticsPeriod)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void UtteranceStatisticsPeriod::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<UtteranceStatisticsPeriod*>(&to_msg);
+  auto& from = static_cast<const UtteranceStatisticsPeriod&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.UtteranceStatisticsPeriod)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_app_id().empty()) {
-    _internal_set_app_id(from._internal_app_id());
+    _this->_internal_set_app_id(from._internal_app_id());
   }
   if (!from._internal_start_time().empty()) {
-    _internal_set_start_time(from._internal_start_time());
+    _this->_internal_set_start_time(from._internal_start_time());
   }
   if (!from._internal_project_id().empty()) {
-    _internal_set_project_id(from._internal_project_id());
+    _this->_internal_set_project_id(from._internal_project_id());
   }
   if (from._internal_count() != 0) {
-    _internal_set_count(from._internal_count());
+    _this->_internal_set_count(from._internal_count());
   }
   if (from._internal_utterances_seconds() != 0) {
-    _internal_set_utterances_seconds(from._internal_utterances_seconds());
+    _this->_internal_set_utterances_seconds(from._internal_utterances_seconds());
   }
   if (from._internal_annotated_seconds() != 0) {
-    _internal_set_annotated_seconds(from._internal_annotated_seconds());
+    _this->_internal_set_annotated_seconds(from._internal_annotated_seconds());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void UtteranceStatisticsPeriod::CopyFrom(const UtteranceStatisticsPeriod& from) {
@@ -551,287 +627,277 @@ void UtteranceStatisticsPeriod::CopyFrom(const UtteranceStatisticsPeriod& from) 
   MergeFrom(from);
 }
 
-bool UtteranceStatisticsPeriod::IsInitialized() const {
+PROTOBUF_NOINLINE bool UtteranceStatisticsPeriod::IsInitialized() const {
   return true;
 }
 
 void UtteranceStatisticsPeriod::InternalSwap(UtteranceStatisticsPeriod* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &app_id_, GetArenaForAllocation(),
-      &other->app_id_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &start_time_, GetArenaForAllocation(),
-      &other->start_time_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &project_id_, GetArenaForAllocation(),
-      &other->project_id_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, annotated_seconds_)
-      + sizeof(UtteranceStatisticsPeriod::annotated_seconds_)
-      - PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, count_)>(
-          reinterpret_cast<char*>(&count_),
-          reinterpret_cast<char*>(&other->count_));
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
+                                       &other->_impl_.app_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.start_time_, lhs_arena,
+                                       &other->_impl_.start_time_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.project_id_, lhs_arena,
+                                       &other->_impl_.project_id_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.annotated_seconds_)
+      + sizeof(UtteranceStatisticsPeriod::_impl_.annotated_seconds_)
+      - PROTOBUF_FIELD_OFFSET(UtteranceStatisticsPeriod, _impl_.count_)>(
+          reinterpret_cast<char*>(&_impl_.count_),
+          reinterpret_cast<char*>(&other->_impl_.count_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata UtteranceStatisticsPeriod::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata UtteranceStatisticsPeriod::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once,
       file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto[0]);
 }
-
 // ===================================================================
 
 class Utterance::_Internal {
  public:
 };
 
-Utterance::Utterance(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+Utterance::Utterance(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.Utterance)
 }
-Utterance::Utterance(const Utterance& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  transcript_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+Utterance::Utterance(const Utterance& from) : ::google::protobuf::Message() {
+  Utterance* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.transcript_){},
+      decltype(_impl_.annotated_){},
+      decltype(_impl_.date_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.transcript_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.transcript_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_transcript().empty()) {
-    transcript_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_transcript(), 
-      GetArenaForAllocation());
+    _this->_impl_.transcript_.Set(from._internal_transcript(), _this->GetArenaForAllocation());
   }
-  annotated_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.annotated_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.annotated_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_annotated().empty()) {
-    annotated_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_annotated(), 
-      GetArenaForAllocation());
+    _this->_impl_.annotated_.Set(from._internal_annotated(), _this->GetArenaForAllocation());
   }
-  date_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_date().empty()) {
-    date_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_date(), 
-      GetArenaForAllocation());
+    _this->_impl_.date_.Set(from._internal_date(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.Utterance)
 }
-
-inline void Utterance::SharedCtor() {
-transcript_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-annotated_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-date_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void Utterance::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.transcript_){},
+      decltype(_impl_.annotated_){},
+      decltype(_impl_.date_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.transcript_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.transcript_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.annotated_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.annotated_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 Utterance::~Utterance() {
   // @@protoc_insertion_point(destructor:speechly.analytics.v1.Utterance)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void Utterance::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  transcript_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  annotated_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  date_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void Utterance::ArenaDtor(void* object) {
-  Utterance* _this = reinterpret_cast< Utterance* >(object);
-  (void)_this;
-}
-void Utterance::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.transcript_.Destroy();
+  _impl_.annotated_.Destroy();
+  _impl_.date_.Destroy();
 }
 void Utterance::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void Utterance::Clear() {
+PROTOBUF_NOINLINE void Utterance::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.analytics.v1.Utterance)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  transcript_.ClearToEmpty();
-  annotated_.ClearToEmpty();
-  date_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _impl_.transcript_.ClearToEmpty();
+  _impl_.annotated_.ClearToEmpty();
+  _impl_.date_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* Utterance::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string transcript = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_transcript();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.Utterance.transcript"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string annotated = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_annotated();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.Utterance.annotated"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string date = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          auto str = _internal_mutable_date();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.Utterance.date"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* Utterance::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* Utterance::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 63, 2> Utterance::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_Utterance_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string transcript = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Utterance, _impl_.transcript_)}},
+    // string annotated = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Utterance, _impl_.annotated_)}},
+    // string date = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(Utterance, _impl_.date_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string transcript = 1;
+    {PROTOBUF_FIELD_OFFSET(Utterance, _impl_.transcript_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string annotated = 2;
+    {PROTOBUF_FIELD_OFFSET(Utterance, _impl_.annotated_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string date = 3;
+    {PROTOBUF_FIELD_OFFSET(Utterance, _impl_.date_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\37\12\11\4\0\0\0\0"
+    "speechly.analytics.v1.Utterance"
+    "transcript"
+    "annotated"
+    "date"
+  }},
+};
+
+::uint8_t* Utterance::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.analytics.v1.Utterance)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string transcript = 1;
   if (!this->_internal_transcript().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_transcript().data(), static_cast<int>(this->_internal_transcript().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.analytics.v1.Utterance.transcript");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_transcript(), target);
+    const std::string& _s = this->_internal_transcript();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.Utterance.transcript");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string annotated = 2;
   if (!this->_internal_annotated().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_annotated().data(), static_cast<int>(this->_internal_annotated().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.analytics.v1.Utterance.annotated");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_annotated(), target);
+    const std::string& _s = this->_internal_annotated();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.Utterance.annotated");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // string date = 3;
   if (!this->_internal_date().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_date().data(), static_cast<int>(this->_internal_date().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.analytics.v1.Utterance.date");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_date(), target);
+    const std::string& _s = this->_internal_date();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.Utterance.date");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.analytics.v1.Utterance)
   return target;
 }
 
-size_t Utterance::ByteSizeLong() const {
+::size_t Utterance::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.analytics.v1.Utterance)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string transcript = 1;
   if (!this->_internal_transcript().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_transcript());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_transcript());
   }
 
   // string annotated = 2;
   if (!this->_internal_annotated().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_annotated());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_annotated());
   }
 
   // string date = 3;
   if (!this->_internal_date().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_date());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_date());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Utterance::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData Utterance::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     Utterance::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Utterance::GetClassData() const { return &_class_data_; }
-
-void Utterance::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<Utterance *>(to)->MergeFrom(
-      static_cast<const Utterance &>(from));
-}
+const ::google::protobuf::Message::ClassData*Utterance::GetClassData() const { return &_class_data_; }
 
 
-void Utterance::MergeFrom(const Utterance& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.Utterance)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void Utterance::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<Utterance*>(&to_msg);
+  auto& from = static_cast<const Utterance&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.Utterance)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_transcript().empty()) {
-    _internal_set_transcript(from._internal_transcript());
+    _this->_internal_set_transcript(from._internal_transcript());
   }
   if (!from._internal_annotated().empty()) {
-    _internal_set_annotated(from._internal_annotated());
+    _this->_internal_set_annotated(from._internal_annotated());
   }
   if (!from._internal_date().empty()) {
-    _internal_set_date(from._internal_date());
+    _this->_internal_set_date(from._internal_date());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void Utterance::CopyFrom(const Utterance& from) {
@@ -841,263 +907,247 @@ void Utterance::CopyFrom(const Utterance& from) {
   MergeFrom(from);
 }
 
-bool Utterance::IsInitialized() const {
+PROTOBUF_NOINLINE bool Utterance::IsInitialized() const {
   return true;
 }
 
 void Utterance::InternalSwap(Utterance* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &transcript_, GetArenaForAllocation(),
-      &other->transcript_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &annotated_, GetArenaForAllocation(),
-      &other->annotated_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &date_, GetArenaForAllocation(),
-      &other->date_, other->GetArenaForAllocation()
-  );
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.transcript_, lhs_arena,
+                                       &other->_impl_.transcript_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.annotated_, lhs_arena,
+                                       &other->_impl_.annotated_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.date_, lhs_arena,
+                                       &other->_impl_.date_, rhs_arena);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata Utterance::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata Utterance::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once,
       file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto[1]);
 }
-
 // ===================================================================
 
 class DecoderInfo::_Internal {
  public:
 };
 
-DecoderInfo::DecoderInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+DecoderInfo::DecoderInfo(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.DecoderInfo)
 }
-DecoderInfo::DecoderInfo(const DecoderInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  version_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+DecoderInfo::DecoderInfo(const DecoderInfo& from) : ::google::protobuf::Message() {
+  DecoderInfo* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.version_){},
+      decltype(_impl_.utterance_count_){},
+      decltype(_impl_.total_seconds_transcribed_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.version_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.version_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_version().empty()) {
-    version_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_version(), 
-      GetArenaForAllocation());
+    _this->_impl_.version_.Set(from._internal_version(), _this->GetArenaForAllocation());
   }
-  ::memcpy(&utterance_count_, &from.utterance_count_,
-    static_cast<size_t>(reinterpret_cast<char*>(&total_seconds_transcribed_) -
-    reinterpret_cast<char*>(&utterance_count_)) + sizeof(total_seconds_transcribed_));
+  ::memcpy(&_impl_.utterance_count_, &from._impl_.utterance_count_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.total_seconds_transcribed_) -
+    reinterpret_cast<char*>(&_impl_.utterance_count_)) + sizeof(_impl_.total_seconds_transcribed_));
+
   // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.DecoderInfo)
 }
-
-inline void DecoderInfo::SharedCtor() {
-version_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&utterance_count_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&total_seconds_transcribed_) -
-    reinterpret_cast<char*>(&utterance_count_)) + sizeof(total_seconds_transcribed_));
+inline void DecoderInfo::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.version_){},
+      decltype(_impl_.utterance_count_){0},
+      decltype(_impl_.total_seconds_transcribed_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.version_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.version_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 DecoderInfo::~DecoderInfo() {
   // @@protoc_insertion_point(destructor:speechly.analytics.v1.DecoderInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void DecoderInfo::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  version_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void DecoderInfo::ArenaDtor(void* object) {
-  DecoderInfo* _this = reinterpret_cast< DecoderInfo* >(object);
-  (void)_this;
-}
-void DecoderInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.version_.Destroy();
 }
 void DecoderInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void DecoderInfo::Clear() {
+PROTOBUF_NOINLINE void DecoderInfo::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.analytics.v1.DecoderInfo)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  version_.ClearToEmpty();
-  ::memset(&utterance_count_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&total_seconds_transcribed_) -
-      reinterpret_cast<char*>(&utterance_count_)) + sizeof(total_seconds_transcribed_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _impl_.version_.ClearToEmpty();
+  ::memset(&_impl_.utterance_count_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.total_seconds_transcribed_) -
+      reinterpret_cast<char*>(&_impl_.utterance_count_)) + sizeof(_impl_.total_seconds_transcribed_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* DecoderInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string version = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_version();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.DecoderInfo.version"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 utterance_count = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
-          utterance_count_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int32 total_seconds_transcribed = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          total_seconds_transcribed_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* DecoderInfo::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DecoderInfo::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 49, 2> DecoderInfo::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_DecoderInfo_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string version = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DecoderInfo, _impl_.version_)}},
+    // int32 utterance_count = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DecoderInfo, _impl_.utterance_count_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DecoderInfo, _impl_.utterance_count_)}},
+    // int32 total_seconds_transcribed = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DecoderInfo, _impl_.total_seconds_transcribed_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(DecoderInfo, _impl_.total_seconds_transcribed_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string version = 1;
+    {PROTOBUF_FIELD_OFFSET(DecoderInfo, _impl_.version_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 utterance_count = 2;
+    {PROTOBUF_FIELD_OFFSET(DecoderInfo, _impl_.utterance_count_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 total_seconds_transcribed = 3;
+    {PROTOBUF_FIELD_OFFSET(DecoderInfo, _impl_.total_seconds_transcribed_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+  }},
+  // no aux_entries
+  {{
+    "\41\7\0\0\0\0\0\0"
+    "speechly.analytics.v1.DecoderInfo"
+    "version"
+  }},
+};
+
+::uint8_t* DecoderInfo::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.analytics.v1.DecoderInfo)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string version = 1;
   if (!this->_internal_version().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_version().data(), static_cast<int>(this->_internal_version().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.analytics.v1.DecoderInfo.version");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_version(), target);
+    const std::string& _s = this->_internal_version();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.DecoderInfo.version");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // int32 utterance_count = 2;
   if (this->_internal_utterance_count() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_utterance_count(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<2>(
+            stream, this->_internal_utterance_count(), target);
   }
 
   // int32 total_seconds_transcribed = 3;
   if (this->_internal_total_seconds_transcribed() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_total_seconds_transcribed(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<3>(
+            stream, this->_internal_total_seconds_transcribed(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.analytics.v1.DecoderInfo)
   return target;
 }
 
-size_t DecoderInfo::ByteSizeLong() const {
+::size_t DecoderInfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.analytics.v1.DecoderInfo)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string version = 1;
   if (!this->_internal_version().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_version());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_version());
   }
 
   // int32 utterance_count = 2;
   if (this->_internal_utterance_count() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_utterance_count());
   }
 
   // int32 total_seconds_transcribed = 3;
   if (this->_internal_total_seconds_transcribed() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_total_seconds_transcribed());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DecoderInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData DecoderInfo::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     DecoderInfo::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DecoderInfo::GetClassData() const { return &_class_data_; }
-
-void DecoderInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<DecoderInfo *>(to)->MergeFrom(
-      static_cast<const DecoderInfo &>(from));
-}
+const ::google::protobuf::Message::ClassData*DecoderInfo::GetClassData() const { return &_class_data_; }
 
 
-void DecoderInfo::MergeFrom(const DecoderInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.DecoderInfo)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void DecoderInfo::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<DecoderInfo*>(&to_msg);
+  auto& from = static_cast<const DecoderInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.DecoderInfo)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_version().empty()) {
-    _internal_set_version(from._internal_version());
+    _this->_internal_set_version(from._internal_version());
   }
   if (from._internal_utterance_count() != 0) {
-    _internal_set_utterance_count(from._internal_utterance_count());
+    _this->_internal_set_utterance_count(from._internal_utterance_count());
   }
   if (from._internal_total_seconds_transcribed() != 0) {
-    _internal_set_total_seconds_transcribed(from._internal_total_seconds_transcribed());
+    _this->_internal_set_total_seconds_transcribed(from._internal_total_seconds_transcribed());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DecoderInfo::CopyFrom(const DecoderInfo& from) {
@@ -1107,245 +1157,233 @@ void DecoderInfo::CopyFrom(const DecoderInfo& from) {
   MergeFrom(from);
 }
 
-bool DecoderInfo::IsInitialized() const {
+PROTOBUF_NOINLINE bool DecoderInfo::IsInitialized() const {
   return true;
 }
 
 void DecoderInfo::InternalSwap(DecoderInfo* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &version_, GetArenaForAllocation(),
-      &other->version_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DecoderInfo, total_seconds_transcribed_)
-      + sizeof(DecoderInfo::total_seconds_transcribed_)
-      - PROTOBUF_FIELD_OFFSET(DecoderInfo, utterance_count_)>(
-          reinterpret_cast<char*>(&utterance_count_),
-          reinterpret_cast<char*>(&other->utterance_count_));
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, lhs_arena,
+                                       &other->_impl_.version_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(DecoderInfo, _impl_.total_seconds_transcribed_)
+      + sizeof(DecoderInfo::_impl_.total_seconds_transcribed_)
+      - PROTOBUF_FIELD_OFFSET(DecoderInfo, _impl_.utterance_count_)>(
+          reinterpret_cast<char*>(&_impl_.utterance_count_),
+          reinterpret_cast<char*>(&other->_impl_.utterance_count_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata DecoderInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata DecoderInfo::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once,
       file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto[2]);
 }
-
 // ===================================================================
 
 class ProcessingInfo::_Internal {
  public:
 };
 
-ProcessingInfo::ProcessingInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  processing_types_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+ProcessingInfo::ProcessingInfo(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.ProcessingInfo)
 }
-ProcessingInfo::ProcessingInfo(const ProcessingInfo& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      processing_types_(from.processing_types_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  model_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+ProcessingInfo::ProcessingInfo(const ProcessingInfo& from) : ::google::protobuf::Message() {
+  ProcessingInfo* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.processing_types_){from._internal_processing_types()},
+      /*decltype(_impl_._processing_types_cached_byte_size_)*/ {0},
+      decltype(_impl_.model_id_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.model_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.model_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_model_id().empty()) {
-    model_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_model_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.model_id_.Set(from._internal_model_id(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.ProcessingInfo)
 }
-
-inline void ProcessingInfo::SharedCtor() {
-model_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void ProcessingInfo::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.processing_types_){arena},
+      /*decltype(_impl_._processing_types_cached_byte_size_)*/ {0},
+      decltype(_impl_.model_id_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.model_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.model_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 ProcessingInfo::~ProcessingInfo() {
   // @@protoc_insertion_point(destructor:speechly.analytics.v1.ProcessingInfo)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void ProcessingInfo::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  model_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void ProcessingInfo::ArenaDtor(void* object) {
-  ProcessingInfo* _this = reinterpret_cast< ProcessingInfo* >(object);
-  (void)_this;
-}
-void ProcessingInfo::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_processing_types()->~RepeatedField();
+  _impl_.model_id_.Destroy();
 }
 void ProcessingInfo::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void ProcessingInfo::Clear() {
+PROTOBUF_NOINLINE void ProcessingInfo::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.analytics.v1.ProcessingInfo)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  processing_types_.Clear();
-  model_id_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_mutable_processing_types()->Clear();
+  _impl_.model_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ProcessingInfo::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // repeated .speechly.analytics.v1.ProcessingType processing_types = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::PackedEnumParser(_internal_mutable_processing_types(), ptr, ctx);
-          CHK_(ptr);
-        } else if (static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8) {
-          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-          _internal_add_processing_types(static_cast<::speechly::analytics::v1::ProcessingType>(val));
-        } else goto handle_unusual;
-        continue;
-      // string model_id = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_model_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.analytics.v1.ProcessingInfo.model_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* ProcessingInfo::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ProcessingInfo::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 53, 2> ProcessingInfo::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ProcessingInfo_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string model_id = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ProcessingInfo, _impl_.model_id_)}},
+    // repeated .speechly.analytics.v1.ProcessingType processing_types = 1;
+    {::_pbi::TcParser::FastV32P1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ProcessingInfo, _impl_.processing_types_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // repeated .speechly.analytics.v1.ProcessingType processing_types = 1;
+    {PROTOBUF_FIELD_OFFSET(ProcessingInfo, _impl_.processing_types_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kPackedOpenEnum)},
+    // string model_id = 2;
+    {PROTOBUF_FIELD_OFFSET(ProcessingInfo, _impl_.model_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\44\0\10\0\0\0\0\0"
+    "speechly.analytics.v1.ProcessingInfo"
+    "model_id"
+  }},
+};
+
+::uint8_t* ProcessingInfo::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.analytics.v1.ProcessingInfo)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // repeated .speechly.analytics.v1.ProcessingType processing_types = 1;
   {
-    int byte_size = _processing_types_cached_byte_size_.load(std::memory_order_relaxed);
+    int byte_size = _impl_._processing_types_cached_byte_size_.Get();
     if (byte_size > 0) {
-      target = stream->WriteEnumPacked(
-          1, processing_types_, byte_size, target);
+      target = stream->WriteEnumPacked(1, _internal_processing_types(),
+                                       byte_size, target);
     }
   }
 
   // string model_id = 2;
   if (!this->_internal_model_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_model_id().data(), static_cast<int>(this->_internal_model_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.analytics.v1.ProcessingInfo.model_id");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_model_id(), target);
+    const std::string& _s = this->_internal_model_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ProcessingInfo.model_id");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.analytics.v1.ProcessingInfo)
   return target;
 }
 
-size_t ProcessingInfo::ByteSizeLong() const {
+::size_t ProcessingInfo::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.analytics.v1.ProcessingInfo)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .speechly.analytics.v1.ProcessingType processing_types = 1;
   {
-    size_t data_size = 0;
-    unsigned int count = static_cast<unsigned int>(this->_internal_processing_types_size());for (unsigned int i = 0; i < count; i++) {
-      data_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(
-        this->_internal_processing_types(static_cast<int>(i)));
-    }
-    if (data_size > 0) {
-      total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
-            static_cast<::PROTOBUF_NAMESPACE_ID::int32>(data_size));
-    }
-    int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(data_size);
-    _processing_types_cached_byte_size_.store(cached_size,
-                                    std::memory_order_relaxed);
-    total_size += data_size;
-  }
+    std::size_t data_size = 0;
+    auto count = static_cast<std::size_t>(this->_internal_processing_types_size());
 
+    for (std::size_t i = 0; i < count; ++i) {
+      data_size += ::_pbi::WireFormatLite::EnumSize(
+          this->_internal_processing_types().Get(static_cast<int>(i)));
+    }
+    total_size += data_size;
+    if (data_size > 0) {
+      total_size += 1;
+      total_size += ::_pbi::WireFormatLite::Int32Size(
+          static_cast<int32_t>(data_size));
+    }
+    _impl_._processing_types_cached_byte_size_.Set(::_pbi::ToCachedSize(data_size));
+  }
   // string model_id = 2;
   if (!this->_internal_model_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_model_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_model_id());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ProcessingInfo::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData ProcessingInfo::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ProcessingInfo::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ProcessingInfo::GetClassData() const { return &_class_data_; }
-
-void ProcessingInfo::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ProcessingInfo *>(to)->MergeFrom(
-      static_cast<const ProcessingInfo &>(from));
-}
+const ::google::protobuf::Message::ClassData*ProcessingInfo::GetClassData() const { return &_class_data_; }
 
 
-void ProcessingInfo::MergeFrom(const ProcessingInfo& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.ProcessingInfo)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void ProcessingInfo::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ProcessingInfo*>(&to_msg);
+  auto& from = static_cast<const ProcessingInfo&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.ProcessingInfo)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  processing_types_.MergeFrom(from.processing_types_);
+  _this->_internal_mutable_processing_types()->MergeFrom(from._internal_processing_types());
   if (!from._internal_model_id().empty()) {
-    _internal_set_model_id(from._internal_model_id());
+    _this->_internal_set_model_id(from._internal_model_id());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ProcessingInfo::CopyFrom(const ProcessingInfo& from) {
@@ -1355,45 +1393,32 @@ void ProcessingInfo::CopyFrom(const ProcessingInfo& from) {
   MergeFrom(from);
 }
 
-bool ProcessingInfo::IsInitialized() const {
+PROTOBUF_NOINLINE bool ProcessingInfo::IsInitialized() const {
   return true;
 }
 
 void ProcessingInfo::InternalSwap(ProcessingInfo* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  processing_types_.InternalSwap(&other->processing_types_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &model_id_, GetArenaForAllocation(),
-      &other->model_id_, other->GetArenaForAllocation()
-  );
+  _impl_.processing_types_.InternalSwap(&other->_impl_.processing_types_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.model_id_, lhs_arena,
+                                       &other->_impl_.model_id_, rhs_arena);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ProcessingInfo::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata ProcessingInfo::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once,
       file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_2eproto[3]);
 }
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1
 }  // namespace analytics
 }  // namespace speechly
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::speechly::analytics::v1::UtteranceStatisticsPeriod* Arena::CreateMaybeMessage< ::speechly::analytics::v1::UtteranceStatisticsPeriod >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::analytics::v1::UtteranceStatisticsPeriod >(arena);
-}
-template<> PROTOBUF_NOINLINE ::speechly::analytics::v1::Utterance* Arena::CreateMaybeMessage< ::speechly::analytics::v1::Utterance >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::analytics::v1::Utterance >(arena);
-}
-template<> PROTOBUF_NOINLINE ::speechly::analytics::v1::DecoderInfo* Arena::CreateMaybeMessage< ::speechly::analytics::v1::DecoderInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::analytics::v1::DecoderInfo >(arena);
-}
-template<> PROTOBUF_NOINLINE ::speechly::analytics::v1::ProcessingInfo* Arena::CreateMaybeMessage< ::speechly::analytics::v1::ProcessingInfo >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::analytics::v1::ProcessingInfo >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
-
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
-#include <google/protobuf/port_undef.inc>
+#include "google/protobuf/port_undef.inc"

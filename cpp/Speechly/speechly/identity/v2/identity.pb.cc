@@ -4,313 +4,362 @@
 #include "speechly/identity/v2/identity.pb.h"
 
 #include <algorithm>
-
-#include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/extension_set.h>
-#include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
+#include "google/protobuf/io/coded_stream.h"
+#include "google/protobuf/extension_set.h"
+#include "google/protobuf/wire_format_lite.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/generated_message_reflection.h"
+#include "google/protobuf/reflection_ops.h"
+#include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
-#include <google/protobuf/port_def.inc>
 
+// Must be included last.
+#include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace speechly {
 namespace identity {
 namespace v2 {
-constexpr ApplicationScope::ApplicationScope(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : app_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , config_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+        template <typename>
+PROTOBUF_CONSTEXPR ApplicationScope::ApplicationScope(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.app_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.config_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct ApplicationScopeDefaultTypeInternal {
-  constexpr ApplicationScopeDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ApplicationScopeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ApplicationScopeDefaultTypeInternal() {}
   union {
     ApplicationScope _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ApplicationScopeDefaultTypeInternal _ApplicationScope_default_instance_;
-constexpr ProjectScope::ProjectScope(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : project_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string){}
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ApplicationScopeDefaultTypeInternal _ApplicationScope_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ProjectScope::ProjectScope(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.project_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct ProjectScopeDefaultTypeInternal {
-  constexpr ProjectScopeDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ProjectScopeDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ProjectScopeDefaultTypeInternal() {}
   union {
     ProjectScope _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ProjectScopeDefaultTypeInternal _ProjectScope_default_instance_;
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ProjectScopeDefaultTypeInternal _ProjectScope_default_instance_;
 }  // namespace v2
 }  // namespace identity
 }  // namespace speechly
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_speechly_2fidentity_2fv2_2fidentity_2eproto[2];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_speechly_2fidentity_2fv2_2fidentity_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_speechly_2fidentity_2fv2_2fidentity_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_speechly_2fidentity_2fv2_2fidentity_2eproto[2];
+static constexpr const ::_pb::EnumDescriptor**
+    file_level_enum_descriptors_speechly_2fidentity_2fv2_2fidentity_2eproto = nullptr;
+static constexpr const ::_pb::ServiceDescriptor**
+    file_level_service_descriptors_speechly_2fidentity_2fv2_2fidentity_2eproto = nullptr;
+const ::uint32_t TableStruct_speechly_2fidentity_2fv2_2fidentity_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
+    protodesc_cold) = {
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ApplicationScope, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ApplicationScope, _impl_.app_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ApplicationScope, _impl_.config_id_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ProjectScope, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ProjectScope, _impl_.project_id_),
+};
 
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fidentity_2fv2_2fidentity_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ApplicationScope, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ApplicationScope, app_id_),
-  PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ApplicationScope, config_id_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ProjectScope, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::identity::v2::ProjectScope, project_id_),
-};
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::speechly::identity::v2::ApplicationScope)},
-  { 7, -1, sizeof(::speechly::identity::v2::ProjectScope)},
+static const ::_pbi::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        {0, -1, -1, sizeof(::speechly::identity::v2::ApplicationScope)},
+        {10, -1, -1, sizeof(::speechly::identity::v2::ProjectScope)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::identity::v2::_ApplicationScope_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::identity::v2::_ProjectScope_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+    &::speechly::identity::v2::_ApplicationScope_default_instance_._instance,
+    &::speechly::identity::v2::_ProjectScope_default_instance_._instance,
+};
+const char descriptor_table_protodef_speechly_2fidentity_2fv2_2fidentity_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+    "\n#speechly/identity/v2/identity.proto\022\024s"
+    "peechly.identity.v2\"5\n\020ApplicationScope\022"
+    "\016\n\006app_id\030\001 \001(\t\022\021\n\tconfig_id\030\003 \001(\t\"\"\n\014Pr"
+    "ojectScope\022\022\n\nproject_id\030\001 \001(\tB\200\001\n\030com.s"
+    "peechly.identity.v2B\rIdentityProtoP\001Z\037sp"
+    "eechly/identity/v2;identityv2\242\002\003SIX\252\002\024Sp"
+    "eechly.Identity.V2\312\002\024Speechly\\Identity\\V"
+    "2b\006proto3"
+};
+static ::absl::once_flag descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto = {
+    false,
+    false,
+    289,
+    descriptor_table_protodef_speechly_2fidentity_2fv2_2fidentity_2eproto,
+    "speechly/identity/v2/identity.proto",
+    &descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_once,
+    nullptr,
+    0,
+    2,
+    schemas,
+    file_default_instances,
+    TableStruct_speechly_2fidentity_2fv2_2fidentity_2eproto::offsets,
+    file_level_metadata_speechly_2fidentity_2fv2_2fidentity_2eproto,
+    file_level_enum_descriptors_speechly_2fidentity_2fv2_2fidentity_2eproto,
+    file_level_service_descriptors_speechly_2fidentity_2fv2_2fidentity_2eproto,
 };
 
-const char descriptor_table_protodef_speechly_2fidentity_2fv2_2fidentity_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n#speechly/identity/v2/identity.proto\022\024s"
-  "peechly.identity.v2\"5\n\020ApplicationScope\022"
-  "\016\n\006app_id\030\001 \001(\t\022\021\n\tconfig_id\030\003 \001(\t\"\"\n\014Pr"
-  "ojectScope\022\022\n\nproject_id\030\001 \001(\tB\200\001\n\030com.s"
-  "peechly.identity.v2B\rIdentityProtoP\001Z\037sp"
-  "eechly/identity/v2;identityv2\242\002\003SIX\252\002\024Sp"
-  "eechly.Identity.V2\312\002\024Speechly\\Identity\\V"
-  "2b\006proto3"
-  ;
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto = {
-  false, false, 289, descriptor_table_protodef_speechly_2fidentity_2fv2_2fidentity_2eproto, "speechly/identity/v2/identity.proto", 
-  &descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_once, nullptr, 0, 2,
-  schemas, file_default_instances, TableStruct_speechly_2fidentity_2fv2_2fidentity_2eproto::offsets,
-  file_level_metadata_speechly_2fidentity_2fv2_2fidentity_2eproto, file_level_enum_descriptors_speechly_2fidentity_2fv2_2fidentity_2eproto, file_level_service_descriptors_speechly_2fidentity_2fv2_2fidentity_2eproto,
-};
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_getter() {
+// This function exists to be marked as weak.
+// It can significantly speed up compilation by breaking up LLVM's SCC
+// in the .pb.cc translation units. Large translation units see a
+// reduction of more than 35% of walltime for optimized builds. Without
+// the weak attribute all the messages in the file, including all the
+// vtables and everything they use become part of the same SCC through
+// a cycle like:
+// GetMetadata -> descriptor table -> default instances ->
+//   vtables -> GetMetadata
+// By adding a weak function here we break the connection from the
+// individual vtables back into the descriptor table.
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_getter() {
   return &descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto;
 }
-
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_speechly_2fidentity_2fv2_2fidentity_2eproto(&descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
+static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_speechly_2fidentity_2fv2_2fidentity_2eproto(&descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto);
 namespace speechly {
 namespace identity {
 namespace v2 {
-
 // ===================================================================
 
 class ApplicationScope::_Internal {
  public:
 };
 
-ApplicationScope::ApplicationScope(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+ApplicationScope::ApplicationScope(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.identity.v2.ApplicationScope)
 }
-ApplicationScope::ApplicationScope(const ApplicationScope& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+ApplicationScope::ApplicationScope(const ApplicationScope& from) : ::google::protobuf::Message() {
+  ApplicationScope* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.config_id_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.app_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_app_id().empty()) {
-    app_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_app_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
   }
-  config_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.config_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.config_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_config_id().empty()) {
-    config_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_config_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.config_id_.Set(from._internal_config_id(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:speechly.identity.v2.ApplicationScope)
 }
-
-inline void ApplicationScope::SharedCtor() {
-app_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-config_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void ApplicationScope::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.config_id_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.app_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.config_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.config_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 ApplicationScope::~ApplicationScope() {
   // @@protoc_insertion_point(destructor:speechly.identity.v2.ApplicationScope)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void ApplicationScope::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  app_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  config_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void ApplicationScope::ArenaDtor(void* object) {
-  ApplicationScope* _this = reinterpret_cast< ApplicationScope* >(object);
-  (void)_this;
-}
-void ApplicationScope::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.app_id_.Destroy();
+  _impl_.config_id_.Destroy();
 }
 void ApplicationScope::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void ApplicationScope::Clear() {
+PROTOBUF_NOINLINE void ApplicationScope::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.identity.v2.ApplicationScope)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  app_id_.ClearToEmpty();
-  config_id_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _impl_.app_id_.ClearToEmpty();
+  _impl_.config_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ApplicationScope::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string app_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_app_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.identity.v2.ApplicationScope.app_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string config_id = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          auto str = _internal_mutable_config_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.identity.v2.ApplicationScope.config_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* ApplicationScope::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ApplicationScope::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 2, 0, 61, 2> ApplicationScope::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967290,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ApplicationScope_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string app_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ApplicationScope, _impl_.app_id_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    // string config_id = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(ApplicationScope, _impl_.config_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string app_id = 1;
+    {PROTOBUF_FIELD_OFFSET(ApplicationScope, _impl_.app_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string config_id = 3;
+    {PROTOBUF_FIELD_OFFSET(ApplicationScope, _impl_.config_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\45\6\11\0\0\0\0\0"
+    "speechly.identity.v2.ApplicationScope"
+    "app_id"
+    "config_id"
+  }},
+};
+
+::uint8_t* ApplicationScope::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.identity.v2.ApplicationScope)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_app_id().data(), static_cast<int>(this->_internal_app_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.identity.v2.ApplicationScope.app_id");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_app_id(), target);
+    const std::string& _s = this->_internal_app_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.identity.v2.ApplicationScope.app_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string config_id = 3;
   if (!this->_internal_config_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_config_id().data(), static_cast<int>(this->_internal_config_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.identity.v2.ApplicationScope.config_id");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_config_id(), target);
+    const std::string& _s = this->_internal_config_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.identity.v2.ApplicationScope.config_id");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.identity.v2.ApplicationScope)
   return target;
 }
 
-size_t ApplicationScope::ByteSizeLong() const {
+::size_t ApplicationScope::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.identity.v2.ApplicationScope)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string app_id = 1;
   if (!this->_internal_app_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_app_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_app_id());
   }
 
   // string config_id = 3;
   if (!this->_internal_config_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_config_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_config_id());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ApplicationScope::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData ApplicationScope::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ApplicationScope::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ApplicationScope::GetClassData() const { return &_class_data_; }
-
-void ApplicationScope::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ApplicationScope *>(to)->MergeFrom(
-      static_cast<const ApplicationScope &>(from));
-}
+const ::google::protobuf::Message::ClassData*ApplicationScope::GetClassData() const { return &_class_data_; }
 
 
-void ApplicationScope::MergeFrom(const ApplicationScope& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.identity.v2.ApplicationScope)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void ApplicationScope::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ApplicationScope*>(&to_msg);
+  auto& from = static_cast<const ApplicationScope&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.identity.v2.ApplicationScope)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_app_id().empty()) {
-    _internal_set_app_id(from._internal_app_id());
+    _this->_internal_set_app_id(from._internal_app_id());
   }
   if (!from._internal_config_id().empty()) {
-    _internal_set_config_id(from._internal_config_id());
+    _this->_internal_set_config_id(from._internal_config_id());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ApplicationScope::CopyFrom(const ApplicationScope& from) {
@@ -320,202 +369,190 @@ void ApplicationScope::CopyFrom(const ApplicationScope& from) {
   MergeFrom(from);
 }
 
-bool ApplicationScope::IsInitialized() const {
+PROTOBUF_NOINLINE bool ApplicationScope::IsInitialized() const {
   return true;
 }
 
 void ApplicationScope::InternalSwap(ApplicationScope* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &app_id_, GetArenaForAllocation(),
-      &other->app_id_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &config_id_, GetArenaForAllocation(),
-      &other->config_id_, other->GetArenaForAllocation()
-  );
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
+                                       &other->_impl_.app_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.config_id_, lhs_arena,
+                                       &other->_impl_.config_id_, rhs_arena);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ApplicationScope::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata ApplicationScope::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_getter, &descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_once,
       file_level_metadata_speechly_2fidentity_2fv2_2fidentity_2eproto[0]);
 }
-
 // ===================================================================
 
 class ProjectScope::_Internal {
  public:
 };
 
-ProjectScope::ProjectScope(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+ProjectScope::ProjectScope(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.identity.v2.ProjectScope)
 }
-ProjectScope::ProjectScope(const ProjectScope& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  project_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+ProjectScope::ProjectScope(const ProjectScope& from) : ::google::protobuf::Message() {
+  ProjectScope* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.project_id_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.project_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.project_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_project_id().empty()) {
-    project_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_project_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.project_id_.Set(from._internal_project_id(), _this->GetArenaForAllocation());
   }
+
   // @@protoc_insertion_point(copy_constructor:speechly.identity.v2.ProjectScope)
 }
-
-inline void ProjectScope::SharedCtor() {
-project_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+inline void ProjectScope::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.project_id_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.project_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.project_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 ProjectScope::~ProjectScope() {
   // @@protoc_insertion_point(destructor:speechly.identity.v2.ProjectScope)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void ProjectScope::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  project_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void ProjectScope::ArenaDtor(void* object) {
-  ProjectScope* _this = reinterpret_cast< ProjectScope* >(object);
-  (void)_this;
-}
-void ProjectScope::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.project_id_.Destroy();
 }
 void ProjectScope::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void ProjectScope::Clear() {
+PROTOBUF_NOINLINE void ProjectScope::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.identity.v2.ProjectScope)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  project_id_.ClearToEmpty();
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _impl_.project_id_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ProjectScope::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string project_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_project_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.identity.v2.ProjectScope.project_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* ProjectScope::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ProjectScope::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 52, 2> ProjectScope::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    1, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967294,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ProjectScope_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    // string project_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ProjectScope, _impl_.project_id_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string project_id = 1;
+    {PROTOBUF_FIELD_OFFSET(ProjectScope, _impl_.project_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\41\12\0\0\0\0\0\0"
+    "speechly.identity.v2.ProjectScope"
+    "project_id"
+  }},
+};
+
+::uint8_t* ProjectScope::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.identity.v2.ProjectScope)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string project_id = 1;
   if (!this->_internal_project_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_project_id().data(), static_cast<int>(this->_internal_project_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.identity.v2.ProjectScope.project_id");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_project_id(), target);
+    const std::string& _s = this->_internal_project_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.identity.v2.ProjectScope.project_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.identity.v2.ProjectScope)
   return target;
 }
 
-size_t ProjectScope::ByteSizeLong() const {
+::size_t ProjectScope::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.identity.v2.ProjectScope)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string project_id = 1;
   if (!this->_internal_project_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_project_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_project_id());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ProjectScope::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData ProjectScope::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ProjectScope::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ProjectScope::GetClassData() const { return &_class_data_; }
-
-void ProjectScope::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ProjectScope *>(to)->MergeFrom(
-      static_cast<const ProjectScope &>(from));
-}
+const ::google::protobuf::Message::ClassData*ProjectScope::GetClassData() const { return &_class_data_; }
 
 
-void ProjectScope::MergeFrom(const ProjectScope& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.identity.v2.ProjectScope)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void ProjectScope::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ProjectScope*>(&to_msg);
+  auto& from = static_cast<const ProjectScope&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.identity.v2.ProjectScope)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_project_id().empty()) {
-    _internal_set_project_id(from._internal_project_id());
+    _this->_internal_set_project_id(from._internal_project_id());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ProjectScope::CopyFrom(const ProjectScope& from) {
@@ -525,38 +562,31 @@ void ProjectScope::CopyFrom(const ProjectScope& from) {
   MergeFrom(from);
 }
 
-bool ProjectScope::IsInitialized() const {
+PROTOBUF_NOINLINE bool ProjectScope::IsInitialized() const {
   return true;
 }
 
 void ProjectScope::InternalSwap(ProjectScope* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &project_id_, GetArenaForAllocation(),
-      &other->project_id_, other->GetArenaForAllocation()
-  );
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.project_id_, lhs_arena,
+                                       &other->_impl_.project_id_, rhs_arena);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ProjectScope::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata ProjectScope::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_getter, &descriptor_table_speechly_2fidentity_2fv2_2fidentity_2eproto_once,
       file_level_metadata_speechly_2fidentity_2fv2_2fidentity_2eproto[1]);
 }
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v2
 }  // namespace identity
 }  // namespace speechly
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::speechly::identity::v2::ApplicationScope* Arena::CreateMaybeMessage< ::speechly::identity::v2::ApplicationScope >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::identity::v2::ApplicationScope >(arena);
-}
-template<> PROTOBUF_NOINLINE ::speechly::identity::v2::ProjectScope* Arena::CreateMaybeMessage< ::speechly::identity::v2::ProjectScope >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::identity::v2::ProjectScope >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
-
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
-#include <google/protobuf/port_undef.inc>
+#include "google/protobuf/port_undef.inc"

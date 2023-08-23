@@ -1,5 +1,5 @@
 protoc:
-  version: 3.17.3
+  version: 24.1
 generate:
   go_options:
     import_path: github.com/speechly/api/proto
@@ -12,6 +12,8 @@ generate:
       path: grpc_python_plugin
       output: ../python/src
     - name: python
+      output: ../python/src
+    - name: pyi
       output: ../python/src
     - name: java
       output: ../java/src/main/java
@@ -27,6 +29,7 @@ generate:
       output: ../Sources/SpeechlyAPI
     - name: js
       flags: import_style=commonjs,binary
+      path: grpc_tools_node_protoc_plugin
       output: ../javascript
     - name: grpc
       flags: grpc_js

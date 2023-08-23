@@ -4,523 +4,608 @@
 #include "speechly/moderation/v1beta1/moderation.pb.h"
 
 #include <algorithm>
-
-#include <google/protobuf/io/coded_stream.h>
-#include <google/protobuf/extension_set.h>
-#include <google/protobuf/wire_format_lite.h>
-#include <google/protobuf/descriptor.h>
-#include <google/protobuf/generated_message_reflection.h>
-#include <google/protobuf/reflection_ops.h>
-#include <google/protobuf/wire_format.h>
+#include "google/protobuf/io/coded_stream.h"
+#include "google/protobuf/extension_set.h"
+#include "google/protobuf/wire_format_lite.h"
+#include "google/protobuf/descriptor.h"
+#include "google/protobuf/generated_message_reflection.h"
+#include "google/protobuf/reflection_ops.h"
+#include "google/protobuf/wire_format.h"
+#include "google/protobuf/generated_message_tctable_impl.h"
 // @@protoc_insertion_point(includes)
-#include <google/protobuf/port_def.inc>
 
+// Must be included last.
+#include "google/protobuf/port_def.inc"
 PROTOBUF_PRAGMA_INIT_SEG
+namespace _pb = ::google::protobuf;
+namespace _pbi = ::google::protobuf::internal;
+namespace _fl = ::google::protobuf::internal::field_layout;
 namespace speechly {
 namespace moderation {
 namespace v1beta1 {
-constexpr DiscourseContext::DiscourseContext(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : listener_ids_()
-  , channel_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , speaker_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , start_time_(nullptr)
-  , end_time_(nullptr){}
+        template <typename>
+PROTOBUF_CONSTEXPR DiscourseContext::DiscourseContext(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.listener_ids_)*/ {},
+      /*decltype(_impl_.channel_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.speaker_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.start_time_)*/ nullptr,
+      /*decltype(_impl_.end_time_)*/ nullptr,
+    } {}
 struct DiscourseContextDefaultTypeInternal {
-  constexpr DiscourseContextDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR DiscourseContextDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~DiscourseContextDefaultTypeInternal() {}
   union {
     DiscourseContext _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DiscourseContextDefaultTypeInternal _DiscourseContext_default_instance_;
-constexpr ModerationLabel::ModerationLabel(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : label_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , score_(0)
-  , flagged_(false){}
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DiscourseContextDefaultTypeInternal _DiscourseContext_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ModerationLabel::ModerationLabel(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.label_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.score_)*/ 0,
+      /*decltype(_impl_.flagged_)*/ false,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct ModerationLabelDefaultTypeInternal {
-  constexpr ModerationLabelDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ModerationLabelDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ModerationLabelDefaultTypeInternal() {}
   union {
     ModerationLabel _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ModerationLabelDefaultTypeInternal _ModerationLabel_default_instance_;
-constexpr AudioModerationConfig::AudioModerationConfig(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : model_id_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , language_code_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , discourse_context_(nullptr){}
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ModerationLabelDefaultTypeInternal _ModerationLabel_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR AudioModerationConfig::AudioModerationConfig(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_._has_bits_)*/ {},
+      /*decltype(_impl_._cached_size_)*/ {},
+      /*decltype(_impl_.model_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.language_code_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.discourse_context_)*/ nullptr,
+    } {}
 struct AudioModerationConfigDefaultTypeInternal {
-  constexpr AudioModerationConfigDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR AudioModerationConfigDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~AudioModerationConfigDefaultTypeInternal() {}
   union {
     AudioModerationConfig _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT AudioModerationConfigDefaultTypeInternal _AudioModerationConfig_default_instance_;
-constexpr ModerationSegment::ModerationSegment(
-  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : labels_()
-  , transcript_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
-  , index_(0u)
-  , start_ms_(0u)
-  , end_ms_(0u){}
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AudioModerationConfigDefaultTypeInternal _AudioModerationConfig_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ModerationSegment::ModerationSegment(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.labels_)*/ {},
+      /*decltype(_impl_.transcript_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.index_)*/ 0u,
+      /*decltype(_impl_.start_ms_)*/ 0u,
+      /*decltype(_impl_.end_ms_)*/ 0u,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
 struct ModerationSegmentDefaultTypeInternal {
-  constexpr ModerationSegmentDefaultTypeInternal()
-    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  PROTOBUF_CONSTEXPR ModerationSegmentDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
   ~ModerationSegmentDefaultTypeInternal() {}
   union {
     ModerationSegment _instance;
   };
 };
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ModerationSegmentDefaultTypeInternal _ModerationSegment_default_instance_;
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ModerationSegmentDefaultTypeInternal _ModerationSegment_default_instance_;
 }  // namespace v1beta1
 }  // namespace moderation
 }  // namespace speechly
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto[4];
-static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto = nullptr;
-static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto = nullptr;
+static ::_pb::Metadata file_level_metadata_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto[4];
+static constexpr const ::_pb::EnumDescriptor**
+    file_level_enum_descriptors_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto = nullptr;
+static constexpr const ::_pb::ServiceDescriptor**
+    file_level_service_descriptors_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto = nullptr;
+const ::uint32_t TableStruct_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
+    protodesc_cold) = {
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, _impl_.channel_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, _impl_.speaker_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, _impl_.listener_ids_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, _impl_.start_time_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, _impl_.end_time_),
+    ~0u,
+    ~0u,
+    ~0u,
+    0,
+    1,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationLabel, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationLabel, _impl_.label_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationLabel, _impl_.score_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationLabel, _impl_.flagged_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, _impl_._has_bits_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, _impl_.model_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, _impl_.language_code_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, _impl_.discourse_context_),
+    ~0u,
+    ~0u,
+    0,
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, _impl_.index_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, _impl_.transcript_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, _impl_.labels_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, _impl_.start_ms_),
+    PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, _impl_.end_ms_),
+};
 
-const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, channel_id_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, speaker_id_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, listener_ids_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, start_time_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::DiscourseContext, end_time_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationLabel, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationLabel, label_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationLabel, score_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationLabel, flagged_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, model_id_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, language_code_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::AudioModerationConfig, discourse_context_),
-  ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, _internal_metadata_),
-  ~0u,  // no _extensions_
-  ~0u,  // no _oneof_case_
-  ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, index_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, transcript_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, labels_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, start_ms_),
-  PROTOBUF_FIELD_OFFSET(::speechly::moderation::v1beta1::ModerationSegment, end_ms_),
-};
-static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::speechly::moderation::v1beta1::DiscourseContext)},
-  { 10, -1, sizeof(::speechly::moderation::v1beta1::ModerationLabel)},
-  { 18, -1, sizeof(::speechly::moderation::v1beta1::AudioModerationConfig)},
-  { 26, -1, sizeof(::speechly::moderation::v1beta1::ModerationSegment)},
+static const ::_pbi::MigrationSchema
+    schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+        {0, 13, -1, sizeof(::speechly::moderation::v1beta1::DiscourseContext)},
+        {18, -1, -1, sizeof(::speechly::moderation::v1beta1::ModerationLabel)},
+        {29, 40, -1, sizeof(::speechly::moderation::v1beta1::AudioModerationConfig)},
+        {43, -1, -1, sizeof(::speechly::moderation::v1beta1::ModerationSegment)},
 };
 
-static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::moderation::v1beta1::_DiscourseContext_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::moderation::v1beta1::_ModerationLabel_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::moderation::v1beta1::_AudioModerationConfig_default_instance_),
-  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::speechly::moderation::v1beta1::_ModerationSegment_default_instance_),
+static const ::_pb::Message* const file_default_instances[] = {
+    &::speechly::moderation::v1beta1::_DiscourseContext_default_instance_._instance,
+    &::speechly::moderation::v1beta1::_ModerationLabel_default_instance_._instance,
+    &::speechly::moderation::v1beta1::_AudioModerationConfig_default_instance_._instance,
+    &::speechly::moderation::v1beta1::_ModerationSegment_default_instance_._instance,
+};
+const char descriptor_table_protodef_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+    "\n,speechly/moderation/v1beta1/moderation"
+    ".proto\022\033speechly.moderation.v1beta1\032\037goo"
+    "gle/protobuf/timestamp.proto\"\256\001\n\020Discour"
+    "seContext\022\022\n\nchannel_id\030\001 \001(\t\022\022\n\nspeaker"
+    "_id\030\002 \001(\t\022\024\n\014listener_ids\030\003 \003(\t\022.\n\nstart"
+    "_time\030\004 \001(\0132\032.google.protobuf.Timestamp\022"
+    ",\n\010end_time\030\005 \001(\0132\032.google.protobuf.Time"
+    "stamp\"@\n\017ModerationLabel\022\r\n\005label\030\001 \001(\t\022"
+    "\r\n\005score\030\002 \001(\002\022\017\n\007flagged\030\003 \001(\010\"\212\001\n\025Audi"
+    "oModerationConfig\022\020\n\010model_id\030\001 \001(\t\022\025\n\rl"
+    "anguage_code\030\002 \001(\t\022H\n\021discourse_context\030"
+    "\003 \001(\0132-.speechly.moderation.v1beta1.Disc"
+    "ourseContext\"\226\001\n\021ModerationSegment\022\r\n\005in"
+    "dex\030\001 \001(\r\022\022\n\ntranscript\030\002 \001(\t\022<\n\006labels\030"
+    "\003 \003(\0132,.speechly.moderation.v1beta1.Mode"
+    "rationLabel\022\020\n\010start_ms\030\004 \001(\r\022\016\n\006end_ms\030"
+    "\005 \001(\rB\236\001\n\037com.speechly.moderation.v1beta"
+    "1B\017ModerationProtoP\001Z&speechly/moderatio"
+    "n/v1beta1;sluv1beta1\242\002\003SMX\252\002\033Speechly.Mo"
+    "deration.V1Beta1\312\002\033Speechly\\Moderation\\V"
+    "1Beta1b\006proto3"
+};
+static const ::_pbi::DescriptorTable* const descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_deps[1] =
+    {
+        &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
+};
+static ::absl::once_flag descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_once;
+const ::_pbi::DescriptorTable descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto = {
+    false,
+    false,
+    814,
+    descriptor_table_protodef_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto,
+    "speechly/moderation/v1beta1/moderation.proto",
+    &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_once,
+    descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_deps,
+    1,
+    4,
+    schemas,
+    file_default_instances,
+    TableStruct_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto::offsets,
+    file_level_metadata_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto,
+    file_level_enum_descriptors_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto,
+    file_level_service_descriptors_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto,
 };
 
-const char descriptor_table_protodef_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n,speechly/moderation/v1beta1/moderation"
-  ".proto\022\033speechly.moderation.v1beta1\032\037goo"
-  "gle/protobuf/timestamp.proto\"\256\001\n\020Discour"
-  "seContext\022\022\n\nchannel_id\030\001 \001(\t\022\022\n\nspeaker"
-  "_id\030\002 \001(\t\022\024\n\014listener_ids\030\003 \003(\t\022.\n\nstart"
-  "_time\030\004 \001(\0132\032.google.protobuf.Timestamp\022"
-  ",\n\010end_time\030\005 \001(\0132\032.google.protobuf.Time"
-  "stamp\"@\n\017ModerationLabel\022\r\n\005label\030\001 \001(\t\022"
-  "\r\n\005score\030\002 \001(\002\022\017\n\007flagged\030\003 \001(\010\"\212\001\n\025Audi"
-  "oModerationConfig\022\020\n\010model_id\030\001 \001(\t\022\025\n\rl"
-  "anguage_code\030\002 \001(\t\022H\n\021discourse_context\030"
-  "\003 \001(\0132-.speechly.moderation.v1beta1.Disc"
-  "ourseContext\"\226\001\n\021ModerationSegment\022\r\n\005in"
-  "dex\030\001 \001(\r\022\022\n\ntranscript\030\002 \001(\t\022<\n\006labels\030"
-  "\003 \003(\0132,.speechly.moderation.v1beta1.Mode"
-  "rationLabel\022\020\n\010start_ms\030\004 \001(\r\022\016\n\006end_ms\030"
-  "\005 \001(\rB\236\001\n\037com.speechly.moderation.v1beta"
-  "1B\017ModerationProtoP\001Z&speechly/moderatio"
-  "n/v1beta1;sluv1beta1\242\002\003SMX\252\002\033Speechly.Mo"
-  "deration.V1Beta1\312\002\033Speechly\\Moderation\\V"
-  "1Beta1b\006proto3"
-  ;
-static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_deps[1] = {
-  &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
-};
-static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_once;
-const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto = {
-  false, false, 814, descriptor_table_protodef_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto, "speechly/moderation/v1beta1/moderation.proto", 
-  &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_once, descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_deps, 1, 4,
-  schemas, file_default_instances, TableStruct_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto::offsets,
-  file_level_metadata_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto, file_level_enum_descriptors_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto, file_level_service_descriptors_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto,
-};
-PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable* descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_getter() {
+// This function exists to be marked as weak.
+// It can significantly speed up compilation by breaking up LLVM's SCC
+// in the .pb.cc translation units. Large translation units see a
+// reduction of more than 35% of walltime for optimized builds. Without
+// the weak attribute all the messages in the file, including all the
+// vtables and everything they use become part of the same SCC through
+// a cycle like:
+// GetMetadata -> descriptor table -> default instances ->
+//   vtables -> GetMetadata
+// By adding a weak function here we break the connection from the
+// individual vtables back into the descriptor table.
+PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_getter() {
   return &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto;
 }
-
 // Force running AddDescriptors() at dynamic initialization time.
-PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto(&descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto);
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
+static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto(&descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto);
 namespace speechly {
 namespace moderation {
 namespace v1beta1 {
-
 // ===================================================================
 
 class DiscourseContext::_Internal {
  public:
-  static const PROTOBUF_NAMESPACE_ID::Timestamp& start_time(const DiscourseContext* msg);
-  static const PROTOBUF_NAMESPACE_ID::Timestamp& end_time(const DiscourseContext* msg);
+  using HasBits = decltype(std::declval<DiscourseContext>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_._has_bits_);
+  static const ::google::protobuf::Timestamp& start_time(const DiscourseContext* msg);
+  static void set_has_start_time(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
+  static const ::google::protobuf::Timestamp& end_time(const DiscourseContext* msg);
+  static void set_has_end_time(HasBits* has_bits) {
+    (*has_bits)[0] |= 2u;
+  }
 };
 
-const PROTOBUF_NAMESPACE_ID::Timestamp&
-DiscourseContext::_Internal::start_time(const DiscourseContext* msg) {
-  return *msg->start_time_;
+const ::google::protobuf::Timestamp& DiscourseContext::_Internal::start_time(const DiscourseContext* msg) {
+  return *msg->_impl_.start_time_;
 }
-const PROTOBUF_NAMESPACE_ID::Timestamp&
-DiscourseContext::_Internal::end_time(const DiscourseContext* msg) {
-  return *msg->end_time_;
+const ::google::protobuf::Timestamp& DiscourseContext::_Internal::end_time(const DiscourseContext* msg) {
+  return *msg->_impl_.end_time_;
 }
 void DiscourseContext::clear_start_time() {
-  if (GetArenaForAllocation() == nullptr && start_time_ != nullptr) {
-    delete start_time_;
-  }
-  start_time_ = nullptr;
+  if (_impl_.start_time_ != nullptr) _impl_.start_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 void DiscourseContext::clear_end_time() {
-  if (GetArenaForAllocation() == nullptr && end_time_ != nullptr) {
-    delete end_time_;
-  }
-  end_time_ = nullptr;
+  if (_impl_.end_time_ != nullptr) _impl_.end_time_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000002u;
 }
-DiscourseContext::DiscourseContext(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  listener_ids_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+DiscourseContext::DiscourseContext(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.moderation.v1beta1.DiscourseContext)
 }
-DiscourseContext::DiscourseContext(const DiscourseContext& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      listener_ids_(from.listener_ids_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  channel_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+DiscourseContext::DiscourseContext(const DiscourseContext& from) : ::google::protobuf::Message() {
+  DiscourseContext* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.listener_ids_){from._impl_.listener_ids_},
+      decltype(_impl_.channel_id_){},
+      decltype(_impl_.speaker_id_){},
+      decltype(_impl_.start_time_){nullptr},
+      decltype(_impl_.end_time_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.channel_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.channel_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_channel_id().empty()) {
-    channel_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_channel_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.channel_id_.Set(from._internal_channel_id(), _this->GetArenaForAllocation());
   }
-  speaker_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_speaker_id().empty()) {
-    speaker_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_speaker_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.speaker_id_.Set(from._internal_speaker_id(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_start_time()) {
-    start_time_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.start_time_);
-  } else {
-    start_time_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.start_time_ = new ::google::protobuf::Timestamp(*from._impl_.start_time_);
   }
-  if (from._internal_has_end_time()) {
-    end_time_ = new PROTOBUF_NAMESPACE_ID::Timestamp(*from.end_time_);
-  } else {
-    end_time_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000002u) != 0) {
+    _this->_impl_.end_time_ = new ::google::protobuf::Timestamp(*from._impl_.end_time_);
   }
+
   // @@protoc_insertion_point(copy_constructor:speechly.moderation.v1beta1.DiscourseContext)
 }
-
-inline void DiscourseContext::SharedCtor() {
-channel_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-speaker_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&start_time_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&end_time_) -
-    reinterpret_cast<char*>(&start_time_)) + sizeof(end_time_));
+inline void DiscourseContext::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.listener_ids_){arena},
+      decltype(_impl_.channel_id_){},
+      decltype(_impl_.speaker_id_){},
+      decltype(_impl_.start_time_){nullptr},
+      decltype(_impl_.end_time_){nullptr},
+  };
+  _impl_.channel_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.channel_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.speaker_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.speaker_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 DiscourseContext::~DiscourseContext() {
   // @@protoc_insertion_point(destructor:speechly.moderation.v1beta1.DiscourseContext)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void DiscourseContext::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  channel_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  speaker_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete start_time_;
-  if (this != internal_default_instance()) delete end_time_;
-}
-
-void DiscourseContext::ArenaDtor(void* object) {
-  DiscourseContext* _this = reinterpret_cast< DiscourseContext* >(object);
-  (void)_this;
-}
-void DiscourseContext::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _internal_mutable_listener_ids()->~RepeatedPtrField();
+  _impl_.channel_id_.Destroy();
+  _impl_.speaker_id_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.start_time_;
+  if (this != internal_default_instance()) delete _impl_.end_time_;
 }
 void DiscourseContext::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void DiscourseContext::Clear() {
+PROTOBUF_NOINLINE void DiscourseContext::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.moderation.v1beta1.DiscourseContext)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  listener_ids_.Clear();
-  channel_id_.ClearToEmpty();
-  speaker_id_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && start_time_ != nullptr) {
-    delete start_time_;
+  _internal_mutable_listener_ids()->Clear();
+  _impl_.channel_id_.ClearToEmpty();
+  _impl_.speaker_id_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      ABSL_DCHECK(_impl_.start_time_ != nullptr);
+      _impl_.start_time_->Clear();
+    }
+    if (cached_has_bits & 0x00000002u) {
+      ABSL_DCHECK(_impl_.end_time_ != nullptr);
+      _impl_.end_time_->Clear();
+    }
   }
-  start_time_ = nullptr;
-  if (GetArenaForAllocation() == nullptr && end_time_ != nullptr) {
-    delete end_time_;
-  }
-  end_time_ = nullptr;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* DiscourseContext::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string channel_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_channel_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.moderation.v1beta1.DiscourseContext.channel_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string speaker_id = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_speaker_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.moderation.v1beta1.DiscourseContext.speaker_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // repeated string listener_ids = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            auto str = _internal_add_listener_ids();
-            ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-            CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.moderation.v1beta1.DiscourseContext.listener_ids"));
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
-        } else goto handle_unusual;
-        continue;
-      // .google.protobuf.Timestamp start_time = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
-          ptr = ctx->ParseMessage(_internal_mutable_start_time(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // .google.protobuf.Timestamp end_time = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
-          ptr = ctx->ParseMessage(_internal_mutable_end_time(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* DiscourseContext::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* DiscourseContext::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 2, 85, 2> DiscourseContext::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_._has_bits_),
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    2,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_DiscourseContext_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string channel_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.channel_id_)}},
+    // string speaker_id = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.speaker_id_)}},
+    // repeated string listener_ids = 3;
+    {::_pbi::TcParser::FastUR1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.listener_ids_)}},
+    // .google.protobuf.Timestamp start_time = 4;
+    {::_pbi::TcParser::FastMtS1,
+     {34, 0, 0, PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.start_time_)}},
+    // .google.protobuf.Timestamp end_time = 5;
+    {::_pbi::TcParser::FastMtS1,
+     {42, 1, 1, PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.end_time_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string channel_id = 1;
+    {PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.channel_id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string speaker_id = 2;
+    {PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.speaker_id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated string listener_ids = 3;
+    {PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.listener_ids_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kUtf8String | ::_fl::kRepSString)},
+    // .google.protobuf.Timestamp start_time = 4;
+    {PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.start_time_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .google.protobuf.Timestamp end_time = 5;
+    {PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.end_time_), _Internal::kHasBitsOffset + 1, 1,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+    {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+  }}, {{
+    "\54\12\12\14\0\0\0\0"
+    "speechly.moderation.v1beta1.DiscourseContext"
+    "channel_id"
+    "speaker_id"
+    "listener_ids"
+  }},
+};
+
+::uint8_t* DiscourseContext::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.moderation.v1beta1.DiscourseContext)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string channel_id = 1;
   if (!this->_internal_channel_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_channel_id().data(), static_cast<int>(this->_internal_channel_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.moderation.v1beta1.DiscourseContext.channel_id");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_channel_id(), target);
+    const std::string& _s = this->_internal_channel_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.moderation.v1beta1.DiscourseContext.channel_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string speaker_id = 2;
   if (!this->_internal_speaker_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_speaker_id().data(), static_cast<int>(this->_internal_speaker_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.moderation.v1beta1.DiscourseContext.speaker_id");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_speaker_id(), target);
+    const std::string& _s = this->_internal_speaker_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.moderation.v1beta1.DiscourseContext.speaker_id");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // repeated string listener_ids = 3;
-  for (int i = 0, n = this->_internal_listener_ids_size(); i < n; i++) {
-    const auto& s = this->_internal_listener_ids(i);
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      s.data(), static_cast<int>(s.length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.moderation.v1beta1.DiscourseContext.listener_ids");
+  for (int i = 0, n = this->_internal_listener_ids_size(); i < n; ++i) {
+    const auto& s = this->_internal_listener_ids().Get(i);
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        s.data(), static_cast<int>(s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.moderation.v1beta1.DiscourseContext.listener_ids");
     target = stream->WriteString(3, s, target);
   }
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .google.protobuf.Timestamp start_time = 4;
-  if (this->_internal_has_start_time()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        4, _Internal::start_time(this), target, stream);
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(4, _Internal::start_time(this),
+        _Internal::start_time(this).GetCachedSize(), target, stream);
   }
 
   // .google.protobuf.Timestamp end_time = 5;
-  if (this->_internal_has_end_time()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        5, _Internal::end_time(this), target, stream);
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(5, _Internal::end_time(this),
+        _Internal::end_time(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.moderation.v1beta1.DiscourseContext)
   return target;
 }
 
-size_t DiscourseContext::ByteSizeLong() const {
+::size_t DiscourseContext::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.moderation.v1beta1.DiscourseContext)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated string listener_ids = 3;
-  total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(listener_ids_.size());
-  for (int i = 0, n = listener_ids_.size(); i < n; i++) {
-    total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      listener_ids_.Get(i));
+  total_size += 1 * ::google::protobuf::internal::FromIntSize(_internal_listener_ids().size());
+  for (int i = 0, n = _internal_listener_ids().size(); i < n; ++i) {
+    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
+        _internal_listener_ids().Get(i));
   }
-
   // string channel_id = 1;
   if (!this->_internal_channel_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_channel_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_channel_id());
   }
 
   // string speaker_id = 2;
   if (!this->_internal_speaker_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_speaker_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_speaker_id());
   }
 
-  // .google.protobuf.Timestamp start_time = 4;
-  if (this->_internal_has_start_time()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *start_time_);
-  }
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    // .google.protobuf.Timestamp start_time = 4;
+    if (cached_has_bits & 0x00000001u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.start_time_);
+    }
 
-  // .google.protobuf.Timestamp end_time = 5;
-  if (this->_internal_has_end_time()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *end_time_);
-  }
+    // .google.protobuf.Timestamp end_time = 5;
+    if (cached_has_bits & 0x00000002u) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSize(
+          *_impl_.end_time_);
+    }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
   }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData DiscourseContext::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData DiscourseContext::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     DiscourseContext::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*DiscourseContext::GetClassData() const { return &_class_data_; }
-
-void DiscourseContext::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<DiscourseContext *>(to)->MergeFrom(
-      static_cast<const DiscourseContext &>(from));
-}
+const ::google::protobuf::Message::ClassData*DiscourseContext::GetClassData() const { return &_class_data_; }
 
 
-void DiscourseContext::MergeFrom(const DiscourseContext& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.moderation.v1beta1.DiscourseContext)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void DiscourseContext::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<DiscourseContext*>(&to_msg);
+  auto& from = static_cast<const DiscourseContext&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.moderation.v1beta1.DiscourseContext)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  listener_ids_.MergeFrom(from.listener_ids_);
+  _this->_internal_mutable_listener_ids()->MergeFrom(from._internal_listener_ids());
   if (!from._internal_channel_id().empty()) {
-    _internal_set_channel_id(from._internal_channel_id());
+    _this->_internal_set_channel_id(from._internal_channel_id());
   }
   if (!from._internal_speaker_id().empty()) {
-    _internal_set_speaker_id(from._internal_speaker_id());
+    _this->_internal_set_speaker_id(from._internal_speaker_id());
   }
-  if (from._internal_has_start_time()) {
-    _internal_mutable_start_time()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_start_time());
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000003u) {
+    if (cached_has_bits & 0x00000001u) {
+      _this->_internal_mutable_start_time()->::google::protobuf::Timestamp::MergeFrom(
+          from._internal_start_time());
+    }
+    if (cached_has_bits & 0x00000002u) {
+      _this->_internal_mutable_end_time()->::google::protobuf::Timestamp::MergeFrom(
+          from._internal_end_time());
+    }
   }
-  if (from._internal_has_end_time()) {
-    _internal_mutable_end_time()->PROTOBUF_NAMESPACE_ID::Timestamp::MergeFrom(from._internal_end_time());
-  }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void DiscourseContext::CopyFrom(const DiscourseContext& from) {
@@ -530,261 +615,266 @@ void DiscourseContext::CopyFrom(const DiscourseContext& from) {
   MergeFrom(from);
 }
 
-bool DiscourseContext::IsInitialized() const {
+PROTOBUF_NOINLINE bool DiscourseContext::IsInitialized() const {
   return true;
 }
 
 void DiscourseContext::InternalSwap(DiscourseContext* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  listener_ids_.InternalSwap(&other->listener_ids_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &channel_id_, GetArenaForAllocation(),
-      &other->channel_id_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &speaker_id_, GetArenaForAllocation(),
-      &other->speaker_id_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DiscourseContext, end_time_)
-      + sizeof(DiscourseContext::end_time_)
-      - PROTOBUF_FIELD_OFFSET(DiscourseContext, start_time_)>(
-          reinterpret_cast<char*>(&start_time_),
-          reinterpret_cast<char*>(&other->start_time_));
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.listener_ids_.InternalSwap(&other->_impl_.listener_ids_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.channel_id_, lhs_arena,
+                                       &other->_impl_.channel_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.speaker_id_, lhs_arena,
+                                       &other->_impl_.speaker_id_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.end_time_)
+      + sizeof(DiscourseContext::_impl_.end_time_)
+      - PROTOBUF_FIELD_OFFSET(DiscourseContext, _impl_.start_time_)>(
+          reinterpret_cast<char*>(&_impl_.start_time_),
+          reinterpret_cast<char*>(&other->_impl_.start_time_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata DiscourseContext::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata DiscourseContext::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_getter, &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_once,
       file_level_metadata_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto[0]);
 }
-
 // ===================================================================
 
 class ModerationLabel::_Internal {
  public:
 };
 
-ModerationLabel::ModerationLabel(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+ModerationLabel::ModerationLabel(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.moderation.v1beta1.ModerationLabel)
 }
-ModerationLabel::ModerationLabel(const ModerationLabel& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  label_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+ModerationLabel::ModerationLabel(const ModerationLabel& from) : ::google::protobuf::Message() {
+  ModerationLabel* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.label_){},
+      decltype(_impl_.score_){},
+      decltype(_impl_.flagged_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.label_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.label_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_label().empty()) {
-    label_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_label(), 
-      GetArenaForAllocation());
+    _this->_impl_.label_.Set(from._internal_label(), _this->GetArenaForAllocation());
   }
-  ::memcpy(&score_, &from.score_,
-    static_cast<size_t>(reinterpret_cast<char*>(&flagged_) -
-    reinterpret_cast<char*>(&score_)) + sizeof(flagged_));
+  ::memcpy(&_impl_.score_, &from._impl_.score_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.flagged_) -
+    reinterpret_cast<char*>(&_impl_.score_)) + sizeof(_impl_.flagged_));
+
   // @@protoc_insertion_point(copy_constructor:speechly.moderation.v1beta1.ModerationLabel)
 }
-
-inline void ModerationLabel::SharedCtor() {
-label_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&score_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&flagged_) -
-    reinterpret_cast<char*>(&score_)) + sizeof(flagged_));
+inline void ModerationLabel::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.label_){},
+      decltype(_impl_.score_){0},
+      decltype(_impl_.flagged_){false},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.label_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.label_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 ModerationLabel::~ModerationLabel() {
   // @@protoc_insertion_point(destructor:speechly.moderation.v1beta1.ModerationLabel)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void ModerationLabel::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  label_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void ModerationLabel::ArenaDtor(void* object) {
-  ModerationLabel* _this = reinterpret_cast< ModerationLabel* >(object);
-  (void)_this;
-}
-void ModerationLabel::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.label_.Destroy();
 }
 void ModerationLabel::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void ModerationLabel::Clear() {
+PROTOBUF_NOINLINE void ModerationLabel::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.moderation.v1beta1.ModerationLabel)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  label_.ClearToEmpty();
-  ::memset(&score_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&flagged_) -
-      reinterpret_cast<char*>(&score_)) + sizeof(flagged_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _impl_.label_.ClearToEmpty();
+  ::memset(&_impl_.score_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.flagged_) -
+      reinterpret_cast<char*>(&_impl_.score_)) + sizeof(_impl_.flagged_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ModerationLabel::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string label = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_label();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.moderation.v1beta1.ModerationLabel.label"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // float score = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 21)) {
-          score_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<float>(ptr);
-          ptr += sizeof(float);
-        } else goto handle_unusual;
-        continue;
-      // bool flagged = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
-          flagged_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* ModerationLabel::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ModerationLabel::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 0, 57, 2> ModerationLabel::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ModerationLabel_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string label = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationLabel, _impl_.label_)}},
+    // float score = 2;
+    {::_pbi::TcParser::FastF32S1,
+     {21, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationLabel, _impl_.score_)}},
+    // bool flagged = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ModerationLabel, _impl_.flagged_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationLabel, _impl_.flagged_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string label = 1;
+    {PROTOBUF_FIELD_OFFSET(ModerationLabel, _impl_.label_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // float score = 2;
+    {PROTOBUF_FIELD_OFFSET(ModerationLabel, _impl_.score_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kFloat)},
+    // bool flagged = 3;
+    {PROTOBUF_FIELD_OFFSET(ModerationLabel, _impl_.flagged_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+    "\53\5\0\0\0\0\0\0"
+    "speechly.moderation.v1beta1.ModerationLabel"
+    "label"
+  }},
+};
+
+::uint8_t* ModerationLabel::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.moderation.v1beta1.ModerationLabel)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string label = 1;
   if (!this->_internal_label().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_label().data(), static_cast<int>(this->_internal_label().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.moderation.v1beta1.ModerationLabel.label");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_label(), target);
+    const std::string& _s = this->_internal_label();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.moderation.v1beta1.ModerationLabel.label");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // float score = 2;
-  if (!(this->_internal_score() <= 0 && this->_internal_score() >= 0)) {
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_score = this->_internal_score();
+  ::uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteFloatToArray(2, this->_internal_score(), target);
+    target = ::_pbi::WireFormatLite::WriteFloatToArray(
+        2, this->_internal_score(), target);
   }
 
   // bool flagged = 3;
   if (this->_internal_flagged() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteBoolToArray(3, this->_internal_flagged(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        3, this->_internal_flagged(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.moderation.v1beta1.ModerationLabel)
   return target;
 }
 
-size_t ModerationLabel::ByteSizeLong() const {
+::size_t ModerationLabel::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.moderation.v1beta1.ModerationLabel)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string label = 1;
   if (!this->_internal_label().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_label());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_label());
   }
 
   // float score = 2;
-  if (!(this->_internal_score() <= 0 && this->_internal_score() >= 0)) {
-    total_size += 1 + 4;
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_score = this->_internal_score();
+  ::uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
+    total_size += 5;
   }
 
   // bool flagged = 3;
   if (this->_internal_flagged() != 0) {
-    total_size += 1 + 1;
+    total_size += 2;
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ModerationLabel::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData ModerationLabel::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ModerationLabel::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ModerationLabel::GetClassData() const { return &_class_data_; }
-
-void ModerationLabel::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ModerationLabel *>(to)->MergeFrom(
-      static_cast<const ModerationLabel &>(from));
-}
+const ::google::protobuf::Message::ClassData*ModerationLabel::GetClassData() const { return &_class_data_; }
 
 
-void ModerationLabel::MergeFrom(const ModerationLabel& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.moderation.v1beta1.ModerationLabel)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void ModerationLabel::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ModerationLabel*>(&to_msg);
+  auto& from = static_cast<const ModerationLabel&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.moderation.v1beta1.ModerationLabel)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_label().empty()) {
-    _internal_set_label(from._internal_label());
+    _this->_internal_set_label(from._internal_label());
   }
-  if (!(from._internal_score() <= 0 && from._internal_score() >= 0)) {
-    _internal_set_score(from._internal_score());
+  static_assert(sizeof(::uint32_t) == sizeof(float),
+                "Code assumes ::uint32_t and float are the same size.");
+  float tmp_score = from._internal_score();
+  ::uint32_t raw_score;
+  memcpy(&raw_score, &tmp_score, sizeof(tmp_score));
+  if (raw_score != 0) {
+    _this->_internal_set_score(from._internal_score());
   }
   if (from._internal_flagged() != 0) {
-    _internal_set_flagged(from._internal_flagged());
+    _this->_internal_set_flagged(from._internal_flagged());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ModerationLabel::CopyFrom(const ModerationLabel& from) {
@@ -794,281 +884,284 @@ void ModerationLabel::CopyFrom(const ModerationLabel& from) {
   MergeFrom(from);
 }
 
-bool ModerationLabel::IsInitialized() const {
+PROTOBUF_NOINLINE bool ModerationLabel::IsInitialized() const {
   return true;
 }
 
 void ModerationLabel::InternalSwap(ModerationLabel* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &label_, GetArenaForAllocation(),
-      &other->label_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ModerationLabel, flagged_)
-      + sizeof(ModerationLabel::flagged_)
-      - PROTOBUF_FIELD_OFFSET(ModerationLabel, score_)>(
-          reinterpret_cast<char*>(&score_),
-          reinterpret_cast<char*>(&other->score_));
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.label_, lhs_arena,
+                                       &other->_impl_.label_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ModerationLabel, _impl_.flagged_)
+      + sizeof(ModerationLabel::_impl_.flagged_)
+      - PROTOBUF_FIELD_OFFSET(ModerationLabel, _impl_.score_)>(
+          reinterpret_cast<char*>(&_impl_.score_),
+          reinterpret_cast<char*>(&other->_impl_.score_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ModerationLabel::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata ModerationLabel::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_getter, &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_once,
       file_level_metadata_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto[1]);
 }
-
 // ===================================================================
 
 class AudioModerationConfig::_Internal {
  public:
+  using HasBits = decltype(std::declval<AudioModerationConfig>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+    8 * PROTOBUF_FIELD_OFFSET(AudioModerationConfig, _impl_._has_bits_);
   static const ::speechly::moderation::v1beta1::DiscourseContext& discourse_context(const AudioModerationConfig* msg);
+  static void set_has_discourse_context(HasBits* has_bits) {
+    (*has_bits)[0] |= 1u;
+  }
 };
 
-const ::speechly::moderation::v1beta1::DiscourseContext&
-AudioModerationConfig::_Internal::discourse_context(const AudioModerationConfig* msg) {
-  return *msg->discourse_context_;
+const ::speechly::moderation::v1beta1::DiscourseContext& AudioModerationConfig::_Internal::discourse_context(const AudioModerationConfig* msg) {
+  return *msg->_impl_.discourse_context_;
 }
-AudioModerationConfig::AudioModerationConfig(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+AudioModerationConfig::AudioModerationConfig(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.moderation.v1beta1.AudioModerationConfig)
 }
-AudioModerationConfig::AudioModerationConfig(const AudioModerationConfig& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message() {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  model_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+AudioModerationConfig::AudioModerationConfig(const AudioModerationConfig& from) : ::google::protobuf::Message() {
+  AudioModerationConfig* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){from._impl_._has_bits_},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.model_id_){},
+      decltype(_impl_.language_code_){},
+      decltype(_impl_.discourse_context_){nullptr},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.model_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.model_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_model_id().empty()) {
-    model_id_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_model_id(), 
-      GetArenaForAllocation());
+    _this->_impl_.model_id_.Set(from._internal_model_id(), _this->GetArenaForAllocation());
   }
-  language_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _impl_.language_code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.language_code_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_language_code().empty()) {
-    language_code_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_language_code(), 
-      GetArenaForAllocation());
+    _this->_impl_.language_code_.Set(from._internal_language_code(), _this->GetArenaForAllocation());
   }
-  if (from._internal_has_discourse_context()) {
-    discourse_context_ = new ::speechly::moderation::v1beta1::DiscourseContext(*from.discourse_context_);
-  } else {
-    discourse_context_ = nullptr;
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_impl_.discourse_context_ = new ::speechly::moderation::v1beta1::DiscourseContext(*from._impl_.discourse_context_);
   }
+
   // @@protoc_insertion_point(copy_constructor:speechly.moderation.v1beta1.AudioModerationConfig)
 }
-
-inline void AudioModerationConfig::SharedCtor() {
-model_id_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-language_code_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-discourse_context_ = nullptr;
+inline void AudioModerationConfig::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_._has_bits_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+      decltype(_impl_.model_id_){},
+      decltype(_impl_.language_code_){},
+      decltype(_impl_.discourse_context_){nullptr},
+  };
+  _impl_.model_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.model_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.language_code_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.language_code_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 AudioModerationConfig::~AudioModerationConfig() {
   // @@protoc_insertion_point(destructor:speechly.moderation.v1beta1.AudioModerationConfig)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void AudioModerationConfig::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  model_id_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  language_code_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (this != internal_default_instance()) delete discourse_context_;
-}
-
-void AudioModerationConfig::ArenaDtor(void* object) {
-  AudioModerationConfig* _this = reinterpret_cast< AudioModerationConfig* >(object);
-  (void)_this;
-}
-void AudioModerationConfig::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.model_id_.Destroy();
+  _impl_.language_code_.Destroy();
+  if (this != internal_default_instance()) delete _impl_.discourse_context_;
 }
 void AudioModerationConfig::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void AudioModerationConfig::Clear() {
+PROTOBUF_NOINLINE void AudioModerationConfig::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.moderation.v1beta1.AudioModerationConfig)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  model_id_.ClearToEmpty();
-  language_code_.ClearToEmpty();
-  if (GetArenaForAllocation() == nullptr && discourse_context_ != nullptr) {
-    delete discourse_context_;
+  _impl_.model_id_.ClearToEmpty();
+  _impl_.language_code_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.discourse_context_ != nullptr);
+    _impl_.discourse_context_->Clear();
   }
-  discourse_context_ = nullptr;
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* AudioModerationConfig::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // string model_id = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_model_id();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.moderation.v1beta1.AudioModerationConfig.model_id"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string language_code = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_language_code();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.moderation.v1beta1.AudioModerationConfig.language_code"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // .speechly.moderation.v1beta1.DiscourseContext discourse_context = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr = ctx->ParseMessage(_internal_mutable_discourse_context(), ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* AudioModerationConfig::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* AudioModerationConfig::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 3, 1, 79, 2> AudioModerationConfig::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(AudioModerationConfig, _impl_._has_bits_),
+    0, // no _extensions_
+    3, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967288,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    3,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_AudioModerationConfig_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string model_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(AudioModerationConfig, _impl_.model_id_)}},
+    // string language_code = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(AudioModerationConfig, _impl_.language_code_)}},
+    // .speechly.moderation.v1beta1.DiscourseContext discourse_context = 3;
+    {::_pbi::TcParser::FastMtS1,
+     {26, 0, 0, PROTOBUF_FIELD_OFFSET(AudioModerationConfig, _impl_.discourse_context_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string model_id = 1;
+    {PROTOBUF_FIELD_OFFSET(AudioModerationConfig, _impl_.model_id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string language_code = 2;
+    {PROTOBUF_FIELD_OFFSET(AudioModerationConfig, _impl_.language_code_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .speechly.moderation.v1beta1.DiscourseContext discourse_context = 3;
+    {PROTOBUF_FIELD_OFFSET(AudioModerationConfig, _impl_.discourse_context_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::speechly::moderation::v1beta1::DiscourseContext>()},
+  }}, {{
+    "\61\10\15\0\0\0\0\0"
+    "speechly.moderation.v1beta1.AudioModerationConfig"
+    "model_id"
+    "language_code"
+  }},
+};
+
+::uint8_t* AudioModerationConfig::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.moderation.v1beta1.AudioModerationConfig)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // string model_id = 1;
   if (!this->_internal_model_id().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_model_id().data(), static_cast<int>(this->_internal_model_id().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.moderation.v1beta1.AudioModerationConfig.model_id");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_model_id(), target);
+    const std::string& _s = this->_internal_model_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.moderation.v1beta1.AudioModerationConfig.model_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
   // string language_code = 2;
   if (!this->_internal_language_code().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_language_code().data(), static_cast<int>(this->_internal_language_code().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.moderation.v1beta1.AudioModerationConfig.language_code");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_language_code(), target);
+    const std::string& _s = this->_internal_language_code();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.moderation.v1beta1.AudioModerationConfig.language_code");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
+  cached_has_bits = _impl_._has_bits_[0];
   // .speechly.moderation.v1beta1.DiscourseContext discourse_context = 3;
-  if (this->_internal_has_discourse_context()) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(
-        3, _Internal::discourse_context(this), target, stream);
+  if (cached_has_bits & 0x00000001u) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::discourse_context(this),
+        _Internal::discourse_context(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.moderation.v1beta1.AudioModerationConfig)
   return target;
 }
 
-size_t AudioModerationConfig::ByteSizeLong() const {
+::size_t AudioModerationConfig::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.moderation.v1beta1.AudioModerationConfig)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // string model_id = 1;
   if (!this->_internal_model_id().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_model_id());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_model_id());
   }
 
   // string language_code = 2;
   if (!this->_internal_language_code().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_language_code());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_language_code());
   }
 
   // .speechly.moderation.v1beta1.DiscourseContext discourse_context = 3;
-  if (this->_internal_has_discourse_context()) {
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *discourse_context_);
+      ::google::protobuf::internal::WireFormatLite::MessageSize(
+        *_impl_.discourse_context_);
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData AudioModerationConfig::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData AudioModerationConfig::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     AudioModerationConfig::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*AudioModerationConfig::GetClassData() const { return &_class_data_; }
-
-void AudioModerationConfig::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<AudioModerationConfig *>(to)->MergeFrom(
-      static_cast<const AudioModerationConfig &>(from));
-}
+const ::google::protobuf::Message::ClassData*AudioModerationConfig::GetClassData() const { return &_class_data_; }
 
 
-void AudioModerationConfig::MergeFrom(const AudioModerationConfig& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.moderation.v1beta1.AudioModerationConfig)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void AudioModerationConfig::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<AudioModerationConfig*>(&to_msg);
+  auto& from = static_cast<const AudioModerationConfig&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.moderation.v1beta1.AudioModerationConfig)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
   if (!from._internal_model_id().empty()) {
-    _internal_set_model_id(from._internal_model_id());
+    _this->_internal_set_model_id(from._internal_model_id());
   }
   if (!from._internal_language_code().empty()) {
-    _internal_set_language_code(from._internal_language_code());
+    _this->_internal_set_language_code(from._internal_language_code());
   }
-  if (from._internal_has_discourse_context()) {
-    _internal_mutable_discourse_context()->::speechly::moderation::v1beta1::DiscourseContext::MergeFrom(from._internal_discourse_context());
+  if ((from._impl_._has_bits_[0] & 0x00000001u) != 0) {
+    _this->_internal_mutable_discourse_context()->::speechly::moderation::v1beta1::DiscourseContext::MergeFrom(
+        from._internal_discourse_context());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void AudioModerationConfig::CopyFrom(const AudioModerationConfig& from) {
@@ -1078,313 +1171,298 @@ void AudioModerationConfig::CopyFrom(const AudioModerationConfig& from) {
   MergeFrom(from);
 }
 
-bool AudioModerationConfig::IsInitialized() const {
+PROTOBUF_NOINLINE bool AudioModerationConfig::IsInitialized() const {
   return true;
 }
 
 void AudioModerationConfig::InternalSwap(AudioModerationConfig* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &model_id_, GetArenaForAllocation(),
-      &other->model_id_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &language_code_, GetArenaForAllocation(),
-      &other->language_code_, other->GetArenaForAllocation()
-  );
-  swap(discourse_context_, other->discourse_context_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.model_id_, lhs_arena,
+                                       &other->_impl_.model_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.language_code_, lhs_arena,
+                                       &other->_impl_.language_code_, rhs_arena);
+  swap(_impl_.discourse_context_, other->_impl_.discourse_context_);
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata AudioModerationConfig::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata AudioModerationConfig::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_getter, &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_once,
       file_level_metadata_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto[2]);
 }
-
 // ===================================================================
 
 class ModerationSegment::_Internal {
  public:
 };
 
-ModerationSegment::ModerationSegment(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  labels_(arena) {
-  SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+ModerationSegment::ModerationSegment(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:speechly.moderation.v1beta1.ModerationSegment)
 }
-ModerationSegment::ModerationSegment(const ModerationSegment& from)
-  : ::PROTOBUF_NAMESPACE_ID::Message(),
-      labels_(from.labels_) {
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  transcript_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+ModerationSegment::ModerationSegment(const ModerationSegment& from) : ::google::protobuf::Message() {
+  ModerationSegment* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.labels_){from._impl_.labels_},
+      decltype(_impl_.transcript_){},
+      decltype(_impl_.index_){},
+      decltype(_impl_.start_ms_){},
+      decltype(_impl_.end_ms_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.transcript_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.transcript_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   if (!from._internal_transcript().empty()) {
-    transcript_.Set(::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::EmptyDefault{}, from._internal_transcript(), 
-      GetArenaForAllocation());
+    _this->_impl_.transcript_.Set(from._internal_transcript(), _this->GetArenaForAllocation());
   }
-  ::memcpy(&index_, &from.index_,
-    static_cast<size_t>(reinterpret_cast<char*>(&end_ms_) -
-    reinterpret_cast<char*>(&index_)) + sizeof(end_ms_));
+  ::memcpy(&_impl_.index_, &from._impl_.index_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.end_ms_) -
+    reinterpret_cast<char*>(&_impl_.index_)) + sizeof(_impl_.end_ms_));
+
   // @@protoc_insertion_point(copy_constructor:speechly.moderation.v1beta1.ModerationSegment)
 }
-
-inline void ModerationSegment::SharedCtor() {
-transcript_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&index_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&end_ms_) -
-    reinterpret_cast<char*>(&index_)) + sizeof(end_ms_));
+inline void ModerationSegment::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.labels_){arena},
+      decltype(_impl_.transcript_){},
+      decltype(_impl_.index_){0u},
+      decltype(_impl_.start_ms_){0u},
+      decltype(_impl_.end_ms_){0u},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.transcript_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.transcript_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
-
 ModerationSegment::~ModerationSegment() {
   // @@protoc_insertion_point(destructor:speechly.moderation.v1beta1.ModerationSegment)
-  if (GetArenaForAllocation() != nullptr) return;
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
-  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
-
 inline void ModerationSegment::SharedDtor() {
-  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
-  transcript_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-
-void ModerationSegment::ArenaDtor(void* object) {
-  ModerationSegment* _this = reinterpret_cast< ModerationSegment* >(object);
-  (void)_this;
-}
-void ModerationSegment::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.labels_.~RepeatedPtrField();
+  _impl_.transcript_.Destroy();
 }
 void ModerationSegment::SetCachedSize(int size) const {
-  _cached_size_.Set(size);
+  _impl_._cached_size_.Set(size);
 }
 
-void ModerationSegment::Clear() {
+PROTOBUF_NOINLINE void ModerationSegment::Clear() {
 // @@protoc_insertion_point(message_clear_start:speechly.moderation.v1beta1.ModerationSegment)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  labels_.Clear();
-  transcript_.ClearToEmpty();
-  ::memset(&index_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&end_ms_) -
-      reinterpret_cast<char*>(&index_)) + sizeof(end_ms_));
-  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+  _internal_mutable_labels()->Clear();
+  _impl_.transcript_.ClearToEmpty();
+  ::memset(&_impl_.index_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.end_ms_) -
+      reinterpret_cast<char*>(&_impl_.index_)) + sizeof(_impl_.end_ms_));
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* ModerationSegment::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
-#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
-  while (!ctx->Done(&ptr)) {
-    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
-    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
-    switch (tag >> 3) {
-      // uint32 index = 1;
-      case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          index_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string transcript = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_transcript();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "speechly.moderation.v1beta1.ModerationSegment.transcript"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // repeated .speechly.moderation.v1beta1.ModerationLabel labels = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
-          ptr -= 1;
-          do {
-            ptr += 1;
-            ptr = ctx->ParseMessage(_internal_add_labels(), ptr);
-            CHK_(ptr);
-            if (!ctx->DataAvailable(ptr)) break;
-          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
-        } else goto handle_unusual;
-        continue;
-      // uint32 start_ms = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
-          start_ms_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // uint32 end_ms = 5;
-      case 5:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
-          end_ms_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      default: {
-      handle_unusual:
-        if ((tag == 0) || ((tag & 7) == 4)) {
-          CHK_(ptr);
-          ctx->SetLastTag(tag);
-          goto success;
-        }
-        ptr = UnknownFieldParse(tag,
-            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
-            ptr, ctx);
-        CHK_(ptr != nullptr);
-        continue;
-      }
-    }  // switch
-  }  // while
-success:
+const char* ModerationSegment::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
-failure:
-  ptr = nullptr;
-  goto success;
-#undef CHK_
 }
 
-::PROTOBUF_NAMESPACE_ID::uint8* ModerationSegment::_InternalSerialize(
-    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 1, 64, 2> ModerationSegment::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ModerationSegment_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint32 index = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationSegment, _impl_.index_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.index_)}},
+    // string transcript = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.transcript_)}},
+    // repeated .speechly.moderation.v1beta1.ModerationLabel labels = 3;
+    {::_pbi::TcParser::FastMtR1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.labels_)}},
+    // uint32 start_ms = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationSegment, _impl_.start_ms_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.start_ms_)}},
+    // uint32 end_ms = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationSegment, _impl_.end_ms_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.end_ms_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint32 index = 1;
+    {PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.index_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // string transcript = 2;
+    {PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.transcript_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated .speechly.moderation.v1beta1.ModerationLabel labels = 3;
+    {PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.labels_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // uint32 start_ms = 4;
+    {PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.start_ms_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // uint32 end_ms = 5;
+    {PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.end_ms_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::speechly::moderation::v1beta1::ModerationLabel>()},
+  }}, {{
+    "\55\0\12\0\0\0\0\0"
+    "speechly.moderation.v1beta1.ModerationSegment"
+    "transcript"
+  }},
+};
+
+::uint8_t* ModerationSegment::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
   // @@protoc_insertion_point(serialize_to_array_start:speechly.moderation.v1beta1.ModerationSegment)
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
-  (void) cached_has_bits;
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
 
   // uint32 index = 1;
   if (this->_internal_index() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(1, this->_internal_index(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        1, this->_internal_index(), target);
   }
 
   // string transcript = 2;
   if (!this->_internal_transcript().empty()) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_transcript().data(), static_cast<int>(this->_internal_transcript().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "speechly.moderation.v1beta1.ModerationSegment.transcript");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_transcript(), target);
+    const std::string& _s = this->_internal_transcript();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.moderation.v1beta1.ModerationSegment.transcript");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
   }
 
   // repeated .speechly.moderation.v1beta1.ModerationLabel labels = 3;
-  for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->_internal_labels_size()); i < n; i++) {
-    target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(3, this->_internal_labels(i), target, stream);
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_labels_size()); i < n; i++) {
+    const auto& repfield = this->_internal_labels().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessage(3, repfield, repfield.GetCachedSize(), target, stream);
   }
 
   // uint32 start_ms = 4;
   if (this->_internal_start_ms() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(4, this->_internal_start_ms(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        4, this->_internal_start_ms(), target);
   }
 
   // uint32 end_ms = 5;
   if (this->_internal_end_ms() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteUInt32ToArray(5, this->_internal_end_ms(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
+        5, this->_internal_end_ms(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
   // @@protoc_insertion_point(serialize_to_array_end:speechly.moderation.v1beta1.ModerationSegment)
   return target;
 }
 
-size_t ModerationSegment::ByteSizeLong() const {
+::size_t ModerationSegment::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:speechly.moderation.v1beta1.ModerationSegment)
-  size_t total_size = 0;
+  ::size_t total_size = 0;
 
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   // repeated .speechly.moderation.v1beta1.ModerationLabel labels = 3;
   total_size += 1UL * this->_internal_labels_size();
-  for (const auto& msg : this->labels_) {
+  for (const auto& msg : this->_internal_labels()) {
     total_size +=
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
   }
-
   // string transcript = 2;
   if (!this->_internal_transcript().empty()) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_transcript());
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_transcript());
   }
 
   // uint32 index = 1;
   if (this->_internal_index() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
         this->_internal_index());
   }
 
   // uint32 start_ms = 4;
   if (this->_internal_start_ms() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
         this->_internal_start_ms());
   }
 
   // uint32 end_ms = 5;
   if (this->_internal_end_ms() != 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::UInt32Size(
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
         this->_internal_end_ms());
   }
 
-  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
-    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
-        _internal_metadata_, total_size, &_cached_size_);
-  }
-  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
-  SetCachedSize(cached_size);
-  return total_size;
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ModerationSegment::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
+const ::google::protobuf::Message::ClassData ModerationSegment::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
     ModerationSegment::MergeImpl
 };
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ModerationSegment::GetClassData() const { return &_class_data_; }
-
-void ModerationSegment::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ModerationSegment *>(to)->MergeFrom(
-      static_cast<const ModerationSegment &>(from));
-}
+const ::google::protobuf::Message::ClassData*ModerationSegment::GetClassData() const { return &_class_data_; }
 
 
-void ModerationSegment::MergeFrom(const ModerationSegment& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:speechly.moderation.v1beta1.ModerationSegment)
-  GOOGLE_DCHECK_NE(&from, this);
-  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+void ModerationSegment::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ModerationSegment*>(&to_msg);
+  auto& from = static_cast<const ModerationSegment&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.moderation.v1beta1.ModerationSegment)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  labels_.MergeFrom(from.labels_);
+  _this->_internal_mutable_labels()->MergeFrom(from._internal_labels());
   if (!from._internal_transcript().empty()) {
-    _internal_set_transcript(from._internal_transcript());
+    _this->_internal_set_transcript(from._internal_transcript());
   }
   if (from._internal_index() != 0) {
-    _internal_set_index(from._internal_index());
+    _this->_internal_set_index(from._internal_index());
   }
   if (from._internal_start_ms() != 0) {
-    _internal_set_start_ms(from._internal_start_ms());
+    _this->_internal_set_start_ms(from._internal_start_ms());
   }
   if (from._internal_end_ms() != 0) {
-    _internal_set_end_ms(from._internal_end_ms());
+    _this->_internal_set_end_ms(from._internal_end_ms());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
 void ModerationSegment::CopyFrom(const ModerationSegment& from) {
@@ -1394,51 +1472,38 @@ void ModerationSegment::CopyFrom(const ModerationSegment& from) {
   MergeFrom(from);
 }
 
-bool ModerationSegment::IsInitialized() const {
+PROTOBUF_NOINLINE bool ModerationSegment::IsInitialized() const {
   return true;
 }
 
 void ModerationSegment::InternalSwap(ModerationSegment* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  labels_.InternalSwap(&other->labels_);
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
-      &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      &transcript_, GetArenaForAllocation(),
-      &other->transcript_, other->GetArenaForAllocation()
-  );
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ModerationSegment, end_ms_)
-      + sizeof(ModerationSegment::end_ms_)
-      - PROTOBUF_FIELD_OFFSET(ModerationSegment, index_)>(
-          reinterpret_cast<char*>(&index_),
-          reinterpret_cast<char*>(&other->index_));
+  _impl_.labels_.InternalSwap(&other->_impl_.labels_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.transcript_, lhs_arena,
+                                       &other->_impl_.transcript_, rhs_arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.end_ms_)
+      + sizeof(ModerationSegment::_impl_.end_ms_)
+      - PROTOBUF_FIELD_OFFSET(ModerationSegment, _impl_.index_)>(
+          reinterpret_cast<char*>(&_impl_.index_),
+          reinterpret_cast<char*>(&other->_impl_.index_));
 }
 
-::PROTOBUF_NAMESPACE_ID::Metadata ModerationSegment::GetMetadata() const {
-  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+::google::protobuf::Metadata ModerationSegment::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_getter, &descriptor_table_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto_once,
       file_level_metadata_speechly_2fmoderation_2fv1beta1_2fmoderation_2eproto[3]);
 }
-
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1beta1
 }  // namespace moderation
 }  // namespace speechly
-PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::speechly::moderation::v1beta1::DiscourseContext* Arena::CreateMaybeMessage< ::speechly::moderation::v1beta1::DiscourseContext >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::moderation::v1beta1::DiscourseContext >(arena);
-}
-template<> PROTOBUF_NOINLINE ::speechly::moderation::v1beta1::ModerationLabel* Arena::CreateMaybeMessage< ::speechly::moderation::v1beta1::ModerationLabel >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::moderation::v1beta1::ModerationLabel >(arena);
-}
-template<> PROTOBUF_NOINLINE ::speechly::moderation::v1beta1::AudioModerationConfig* Arena::CreateMaybeMessage< ::speechly::moderation::v1beta1::AudioModerationConfig >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::moderation::v1beta1::AudioModerationConfig >(arena);
-}
-template<> PROTOBUF_NOINLINE ::speechly::moderation::v1beta1::ModerationSegment* Arena::CreateMaybeMessage< ::speechly::moderation::v1beta1::ModerationSegment >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::speechly::moderation::v1beta1::ModerationSegment >(arena);
-}
-PROTOBUF_NAMESPACE_CLOSE
-
+namespace google {
+namespace protobuf {
+}  // namespace protobuf
+}  // namespace google
 // @@protoc_insertion_point(global_scope)
-#include <google/protobuf/port_undef.inc>
+#include "google/protobuf/port_undef.inc"
