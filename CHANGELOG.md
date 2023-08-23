@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.9.2](https://github.com/speechly/api/tree/0.9.2) (2023-08-23)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.9.1...0.9.2)
+
+**Closed issues:**
+
+- 415 Unsupported Media Type from Batch V2 [\#89](https://github.com/speechly/api/issues/89)
+
+**Merged pull requests:**
+
+- Add ModerationAPI v1beta1 [\#90](https://github.com/speechly/api/pull/90) ([teelisyys](https://github.com/teelisyys))
+
 ## [0.9.1](https://github.com/speechly/api/tree/0.9.1) (2023-08-07)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.9.0...0.9.1)
