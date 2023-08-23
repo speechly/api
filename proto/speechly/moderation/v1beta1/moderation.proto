@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package speechly.moderation.v1beta1;
+
+option csharp_namespace = "Speechly.Moderation.V1Beta1";
+option go_package = "speechly/moderation/v1beta1;sluv1beta1";
+option java_multiple_files = true;
+option java_outer_classname = "ModerationProto";
+option java_package = "com.speechly.moderation.v1beta1";
+option objc_class_prefix = "SMX";
+option php_namespace = "Speechly\\Moderation\\V1Beta1";
+
+import "google/protobuf/timestamp.proto";
+
+// Describes the context where the moderated discussion took place.
+message DiscourseContext {
+  // An identifier for the voice channel, e.g. voice chat room, the utterance originates from
+  string channel_id = 1;
+  // The identifier of the person who spoke the utterance
+  string speaker_id = 2;
+  // A list of person identifiers who were presumed to hear the utterance
+  repeated string listener_ids = 3;
+  // Start time of the utterance
+  google.protobuf.Timestamp start_time = 4;
+  // End time of the utterance
+  google.protobuf.Timestamp end_time = 5;
+}
+
+// Describes and identified label desbribing the content under moderation.
+message ModerationLabel {
+  // The label itself
+  string label = 1;
+  // Confidence score. Value is between 0 and 1. The score should not be interpreted as probability.
+  float score = 2;
+  // The value is true if the model flags the label as abusive, otherwise it's false.
+  bool flagged = 3;
+}
+
+// Describes the metadata of the audio to be moderated.
+message AudioModerationConfig {
+  // The identity of the model to be used for the moderation.
+  string model_id = 1;
+  // The language of the utterance (as BCP-47 language code)
+  string language_code = 2;
+  // Description of the context where the utterance was uttered.
+  DiscourseContext discourse_context = 3;
+}
+
+// Describes the moderation results applying to a sub segment of the content under moderation.
+message ModerationSegment{
+  // Index of the segment
+  uint32 index = 1;
+  // Transcript of the content of the segment
+  string transcript = 2;
+  // The moderation labels
+  repeated ModerationLabel labels = 3;
+  // Start time of the segment in milliseconds
+  uint32 start_ms = 4;
+  // End time of the segment in milliseconds
+  uint32 end_ms = 5;
+}

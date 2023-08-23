@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package speechly.moderation.v1beta1;
+
+option csharp_namespace = "Speechly.Moderation.V1Beta1";
+option go_package = "speechly/moderation/v1beta1;sluv1beta1";
+option java_multiple_files = true;
+option java_outer_classname = "ModerationApiProto";
+option java_package = "com.speechly.moderation.v1beta1";
+option objc_class_prefix = "SMX";
+option php_namespace = "Speechly\\Moderation\\V1Beta1";
+
+import "speechly/moderation/v1beta1/moderation.proto";
+
+// Run Speechly Moderation API with streamable audio content or text content.
+service ModerationAPI {
+  // Stream audio to be moderated and receive all results once whole audio has been processed.
+  // The discourse context may be described for improved performance.
+  // Audio must be in a format supported for Live Streaming, see https://docs.speechly.com/features/audio-formats
+  rpc AudioModeration (stream AudioModerationRequest) returns (AudioModerationResponse);
+
+  // Stream audio to be moderated and receive results for identified segments as soon results as possible.
+  // The discourse context may be described for improved performance.
+  // Audio must be in a format supported for Live Streaming, see https://docs.speechly.com/features/audio-formats
+  rpc StreamingAudioModeration (stream StreamingAudioModerationRequest) returns (stream StreamingAudioModerationResponse);
+
+  // Moderate a text utterance.
+  // The discourse context may be described for improved performance.
+  // The related audio may be identified using `audio_context_id`.
+  rpc TextModeration (TextModerationRequest) returns (TextModerationResponse);
+}
+
+message TextModerationRequest {
+  // The identity of the model to be used for the moderation.
+  string model_id = 1;
+  // Transcript of the utterance to moderate
+  string text = 2;
+  // Description of the context where the utterance was uttered.
+  DiscourseContext discourse_context = 3;
+  // The language of the utterance (as BCP-47 language code)
+  string language_code = 4;
+  // Audio context id corresponding to the text.
+  string audio_context_id = 5;
+}
+
+message TextModerationResponse{
+  repeated ModerationLabel labels = 1;
+}
+
+message AudioModerationRequest{
+  oneof streaming_request {
+    // Configuration related to the Audio Moderation request. Must be set on the first message.
+    AudioModerationConfig config = 1;
+    // Bytes of audio. Must be in a supported format, see https://docs.speechly.com/features/audio-formats
+    bytes audio = 2;
+  }
+}
+
+message AudioModerationResponse{
+  repeated ModerationSegment segments = 1;
+}
+
+message StreamingAudioModerationRequest{
+  oneof streaming_request {
+    // Configuration related to the Audio Moderation request. Must be set on the first message.
+    AudioModerationConfig config = 1;
+    // Bytes of audio. Must be in a supported format, see https://docs.speechly.com/features/audio-formats
+    bytes audio = 2;
+  }
+}
+
+message StreamingAudioModerationResponse{
+  ModerationSegment segment = 1;
+}
