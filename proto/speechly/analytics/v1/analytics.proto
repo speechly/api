@@ -32,6 +32,8 @@ message UtteranceStatisticsPeriod {
     int32 annotated_seconds = 6;
     // project_id or empty, if specifying a project.
     string project_id = 7;
+    // the id of the model used, if applicable.
+    string model_id = 8;
 }
 
 // A single utterances recognized by Speechly API.
@@ -73,4 +75,26 @@ message ProcessingInfo {
     repeated ProcessingType processing_types = 1;
     // id of the model that was used for processing
     string model_id = 2;
+}
+
+// A single time series entry for moderation statistics.
+message ModerationStatisticsPeriod {
+    // period start time
+    string start_time = 1;
+    // if grouping by users, the user id, or "OTHER"
+    string user_id = 5;
+    // total amount of moderation events for this period.
+    int32 count = 2;
+    // total amount of flagged events.
+    int32 flagged = 3;
+    // amount of moderation decisions made.
+    int32 decisions = 4;
+}
+
+// A single time series entry for user statistics.
+message UserStatisticsPeriod {
+    string start_time = 1;
+    int32 active_users = 2;
+    int32 toxic_users = 3;
+    int32 exposed_users = 4;
 }
