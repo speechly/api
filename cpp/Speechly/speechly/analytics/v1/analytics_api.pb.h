@@ -60,6 +60,12 @@ extern const ::google::protobuf::internal::DescriptorTable
 namespace speechly {
 namespace analytics {
 namespace v1 {
+class ModerationStatisticsRequest;
+struct ModerationStatisticsRequestDefaultTypeInternal;
+extern ModerationStatisticsRequestDefaultTypeInternal _ModerationStatisticsRequest_default_instance_;
+class ModerationStatisticsResponse;
+struct ModerationStatisticsResponseDefaultTypeInternal;
+extern ModerationStatisticsResponseDefaultTypeInternal _ModerationStatisticsResponse_default_instance_;
 class RegisterUtteranceRequest;
 struct RegisterUtteranceRequestDefaultTypeInternal;
 extern RegisterUtteranceRequestDefaultTypeInternal _RegisterUtteranceRequest_default_instance_;
@@ -72,6 +78,12 @@ extern RegisterUtterancesRequestDefaultTypeInternal _RegisterUtterancesRequest_d
 class RegisterUtterancesResponse;
 struct RegisterUtterancesResponseDefaultTypeInternal;
 extern RegisterUtterancesResponseDefaultTypeInternal _RegisterUtterancesResponse_default_instance_;
+class UserStatisticsRequest;
+struct UserStatisticsRequestDefaultTypeInternal;
+extern UserStatisticsRequestDefaultTypeInternal _UserStatisticsRequest_default_instance_;
+class UserStatisticsResponse;
+struct UserStatisticsResponseDefaultTypeInternal;
+extern UserStatisticsResponseDefaultTypeInternal _UserStatisticsResponse_default_instance_;
 class UtteranceStatisticsRequest;
 struct UtteranceStatisticsRequestDefaultTypeInternal;
 extern UtteranceStatisticsRequestDefaultTypeInternal _UtteranceStatisticsRequest_default_instance_;
@@ -1818,6 +1830,736 @@ class RegisterUtterancesResponse final :
     PROTOBUF_TSAN_DECLARE_MEMBER;
   };
   friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
+};// -------------------------------------------------------------------
+
+class ModerationStatisticsRequest final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.ModerationStatisticsRequest) */ {
+ public:
+  inline ModerationStatisticsRequest() : ModerationStatisticsRequest(nullptr) {}
+  ~ModerationStatisticsRequest() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ModerationStatisticsRequest(::google::protobuf::internal::ConstantInitialized);
+
+  ModerationStatisticsRequest(const ModerationStatisticsRequest& from);
+  ModerationStatisticsRequest(ModerationStatisticsRequest&& from) noexcept
+    : ModerationStatisticsRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline ModerationStatisticsRequest& operator=(const ModerationStatisticsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ModerationStatisticsRequest& operator=(ModerationStatisticsRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ModerationStatisticsRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ModerationStatisticsRequest* internal_default_instance() {
+    return reinterpret_cast<const ModerationStatisticsRequest*>(
+               &_ModerationStatisticsRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(ModerationStatisticsRequest& a, ModerationStatisticsRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ModerationStatisticsRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ModerationStatisticsRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ModerationStatisticsRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ModerationStatisticsRequest>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ModerationStatisticsRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ModerationStatisticsRequest& from) {
+    ModerationStatisticsRequest::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ModerationStatisticsRequest* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "speechly.analytics.v1.ModerationStatisticsRequest";
+  }
+  protected:
+  explicit ModerationStatisticsRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kProjectIdFieldNumber = 1,
+    kAppIdFieldNumber = 2,
+    kStartDateFieldNumber = 3,
+    kEndDateFieldNumber = 4,
+    kAggregationFieldNumber = 5,
+  };
+  // string project_id = 1;
+  void clear_project_id() ;
+  const std::string& project_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_project_id(Arg_&& arg, Args_... args);
+  std::string* mutable_project_id();
+  PROTOBUF_NODISCARD std::string* release_project_id();
+  void set_allocated_project_id(std::string* ptr);
+
+  private:
+  const std::string& _internal_project_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_project_id(
+      const std::string& value);
+  std::string* _internal_mutable_project_id();
+
+  public:
+  // string app_id = 2;
+  void clear_app_id() ;
+  const std::string& app_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_app_id(Arg_&& arg, Args_... args);
+  std::string* mutable_app_id();
+  PROTOBUF_NODISCARD std::string* release_app_id();
+  void set_allocated_app_id(std::string* ptr);
+
+  private:
+  const std::string& _internal_app_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_app_id(
+      const std::string& value);
+  std::string* _internal_mutable_app_id();
+
+  public:
+  // string start_date = 3;
+  void clear_start_date() ;
+  const std::string& start_date() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_start_date(Arg_&& arg, Args_... args);
+  std::string* mutable_start_date();
+  PROTOBUF_NODISCARD std::string* release_start_date();
+  void set_allocated_start_date(std::string* ptr);
+
+  private:
+  const std::string& _internal_start_date() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_start_date(
+      const std::string& value);
+  std::string* _internal_mutable_start_date();
+
+  public:
+  // string end_date = 4;
+  void clear_end_date() ;
+  const std::string& end_date() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_end_date(Arg_&& arg, Args_... args);
+  std::string* mutable_end_date();
+  PROTOBUF_NODISCARD std::string* release_end_date();
+  void set_allocated_end_date(std::string* ptr);
+
+  private:
+  const std::string& _internal_end_date() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_end_date(
+      const std::string& value);
+  std::string* _internal_mutable_end_date();
+
+  public:
+  // .speechly.analytics.v1.Aggregation aggregation = 5;
+  void clear_aggregation() ;
+  ::speechly::analytics::v1::Aggregation aggregation() const;
+  void set_aggregation(::speechly::analytics::v1::Aggregation value);
+
+  private:
+  ::speechly::analytics::v1::Aggregation _internal_aggregation() const;
+  void _internal_set_aggregation(::speechly::analytics::v1::Aggregation value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.ModerationStatisticsRequest)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 92, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr project_id_;
+    ::google::protobuf::internal::ArenaStringPtr app_id_;
+    ::google::protobuf::internal::ArenaStringPtr start_date_;
+    ::google::protobuf::internal::ArenaStringPtr end_date_;
+    int aggregation_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
+};// -------------------------------------------------------------------
+
+class ModerationStatisticsResponse final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.ModerationStatisticsResponse) */ {
+ public:
+  inline ModerationStatisticsResponse() : ModerationStatisticsResponse(nullptr) {}
+  ~ModerationStatisticsResponse() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ModerationStatisticsResponse(::google::protobuf::internal::ConstantInitialized);
+
+  ModerationStatisticsResponse(const ModerationStatisticsResponse& from);
+  ModerationStatisticsResponse(ModerationStatisticsResponse&& from) noexcept
+    : ModerationStatisticsResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline ModerationStatisticsResponse& operator=(const ModerationStatisticsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ModerationStatisticsResponse& operator=(ModerationStatisticsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ModerationStatisticsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ModerationStatisticsResponse* internal_default_instance() {
+    return reinterpret_cast<const ModerationStatisticsResponse*>(
+               &_ModerationStatisticsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(ModerationStatisticsResponse& a, ModerationStatisticsResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ModerationStatisticsResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ModerationStatisticsResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ModerationStatisticsResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ModerationStatisticsResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ModerationStatisticsResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ModerationStatisticsResponse& from) {
+    ModerationStatisticsResponse::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ModerationStatisticsResponse* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "speechly.analytics.v1.ModerationStatisticsResponse";
+  }
+  protected:
+  explicit ModerationStatisticsResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemsFieldNumber = 6,
+    kProjectIdFieldNumber = 1,
+    kAppIdFieldNumber = 2,
+    kStartDateFieldNumber = 3,
+    kEndDateFieldNumber = 4,
+    kAggregationFieldNumber = 5,
+  };
+  // repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+
+  public:
+  void clear_items() ;
+  ::speechly::analytics::v1::ModerationStatisticsPeriod* mutable_items(int index);
+  ::google::protobuf::RepeatedPtrField< ::speechly::analytics::v1::ModerationStatisticsPeriod >*
+      mutable_items();
+  private:
+  const ::google::protobuf::RepeatedPtrField<::speechly::analytics::v1::ModerationStatisticsPeriod>& _internal_items() const;
+  ::google::protobuf::RepeatedPtrField<::speechly::analytics::v1::ModerationStatisticsPeriod>* _internal_mutable_items();
+  public:
+  const ::speechly::analytics::v1::ModerationStatisticsPeriod& items(int index) const;
+  ::speechly::analytics::v1::ModerationStatisticsPeriod* add_items();
+  const ::google::protobuf::RepeatedPtrField< ::speechly::analytics::v1::ModerationStatisticsPeriod >&
+      items() const;
+  // string project_id = 1;
+  void clear_project_id() ;
+  const std::string& project_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_project_id(Arg_&& arg, Args_... args);
+  std::string* mutable_project_id();
+  PROTOBUF_NODISCARD std::string* release_project_id();
+  void set_allocated_project_id(std::string* ptr);
+
+  private:
+  const std::string& _internal_project_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_project_id(
+      const std::string& value);
+  std::string* _internal_mutable_project_id();
+
+  public:
+  // string app_id = 2;
+  void clear_app_id() ;
+  const std::string& app_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_app_id(Arg_&& arg, Args_... args);
+  std::string* mutable_app_id();
+  PROTOBUF_NODISCARD std::string* release_app_id();
+  void set_allocated_app_id(std::string* ptr);
+
+  private:
+  const std::string& _internal_app_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_app_id(
+      const std::string& value);
+  std::string* _internal_mutable_app_id();
+
+  public:
+  // string start_date = 3;
+  void clear_start_date() ;
+  const std::string& start_date() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_start_date(Arg_&& arg, Args_... args);
+  std::string* mutable_start_date();
+  PROTOBUF_NODISCARD std::string* release_start_date();
+  void set_allocated_start_date(std::string* ptr);
+
+  private:
+  const std::string& _internal_start_date() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_start_date(
+      const std::string& value);
+  std::string* _internal_mutable_start_date();
+
+  public:
+  // string end_date = 4;
+  void clear_end_date() ;
+  const std::string& end_date() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_end_date(Arg_&& arg, Args_... args);
+  std::string* mutable_end_date();
+  PROTOBUF_NODISCARD std::string* release_end_date();
+  void set_allocated_end_date(std::string* ptr);
+
+  private:
+  const std::string& _internal_end_date() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_end_date(
+      const std::string& value);
+  std::string* _internal_mutable_end_date();
+
+  public:
+  // .speechly.analytics.v1.Aggregation aggregation = 5;
+  void clear_aggregation() ;
+  ::speechly::analytics::v1::Aggregation aggregation() const;
+  void set_aggregation(::speechly::analytics::v1::Aggregation value);
+
+  private:
+  ::speechly::analytics::v1::Aggregation _internal_aggregation() const;
+  void _internal_set_aggregation(::speechly::analytics::v1::Aggregation value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.ModerationStatisticsResponse)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 6, 1, 93, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::RepeatedPtrField< ::speechly::analytics::v1::ModerationStatisticsPeriod > items_;
+    ::google::protobuf::internal::ArenaStringPtr project_id_;
+    ::google::protobuf::internal::ArenaStringPtr app_id_;
+    ::google::protobuf::internal::ArenaStringPtr start_date_;
+    ::google::protobuf::internal::ArenaStringPtr end_date_;
+    int aggregation_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
+};// -------------------------------------------------------------------
+
+class UserStatisticsRequest final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.UserStatisticsRequest) */ {
+ public:
+  inline UserStatisticsRequest() : UserStatisticsRequest(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR UserStatisticsRequest(::google::protobuf::internal::ConstantInitialized);
+
+  UserStatisticsRequest(const UserStatisticsRequest& from);
+  UserStatisticsRequest(UserStatisticsRequest&& from) noexcept
+    : UserStatisticsRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline UserStatisticsRequest& operator=(const UserStatisticsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UserStatisticsRequest& operator=(UserStatisticsRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UserStatisticsRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UserStatisticsRequest* internal_default_instance() {
+    return reinterpret_cast<const UserStatisticsRequest*>(
+               &_UserStatisticsRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(UserStatisticsRequest& a, UserStatisticsRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UserStatisticsRequest* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UserStatisticsRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UserStatisticsRequest* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UserStatisticsRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const UserStatisticsRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const UserStatisticsRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "speechly.analytics.v1.UserStatisticsRequest";
+  }
+  protected:
+  explicit UserStatisticsRequest(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.UserStatisticsRequest)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    PROTOBUF_TSAN_DECLARE_MEMBER;
+  };
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
+};// -------------------------------------------------------------------
+
+class UserStatisticsResponse final :
+    public ::google::protobuf::internal::ZeroFieldsBase /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.UserStatisticsResponse) */ {
+ public:
+  inline UserStatisticsResponse() : UserStatisticsResponse(nullptr) {}
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR UserStatisticsResponse(::google::protobuf::internal::ConstantInitialized);
+
+  UserStatisticsResponse(const UserStatisticsResponse& from);
+  UserStatisticsResponse(UserStatisticsResponse&& from) noexcept
+    : UserStatisticsResponse() {
+    *this = ::std::move(from);
+  }
+
+  inline UserStatisticsResponse& operator=(const UserStatisticsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UserStatisticsResponse& operator=(UserStatisticsResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UserStatisticsResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UserStatisticsResponse* internal_default_instance() {
+    return reinterpret_cast<const UserStatisticsResponse*>(
+               &_UserStatisticsResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(UserStatisticsResponse& a, UserStatisticsResponse& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UserStatisticsResponse* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UserStatisticsResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UserStatisticsResponse* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UserStatisticsResponse>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const UserStatisticsResponse& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const UserStatisticsResponse& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+  public:
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "speechly.analytics.v1.UserStatisticsResponse";
+  }
+  protected:
+  explicit UserStatisticsResponse(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.UserStatisticsResponse)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    PROTOBUF_TSAN_DECLARE_MEMBER;
+  };
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto;
 };
 
 // ===================================================================
@@ -3246,6 +3988,517 @@ RegisterUtterancesRequest::_internal_mutable_requests() {
 // -------------------------------------------------------------------
 
 // RegisterUtterancesResponse
+
+// -------------------------------------------------------------------
+
+// ModerationStatisticsRequest
+
+// string project_id = 1;
+inline void ModerationStatisticsRequest::clear_project_id() {
+  _impl_.project_id_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsRequest::project_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsRequest.project_id)
+  return _internal_project_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsRequest::set_project_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.project_id_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsRequest.project_id)
+}
+inline std::string* ModerationStatisticsRequest::mutable_project_id() {
+  std::string* _s = _internal_mutable_project_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsRequest.project_id)
+  return _s;
+}
+inline const std::string& ModerationStatisticsRequest::_internal_project_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.project_id_.Get();
+}
+inline void ModerationStatisticsRequest::_internal_set_project_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.project_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsRequest::_internal_mutable_project_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.project_id_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsRequest::release_project_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsRequest.project_id)
+  return _impl_.project_id_.Release();
+}
+inline void ModerationStatisticsRequest::set_allocated_project_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.project_id_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.project_id_.IsDefault()) {
+          _impl_.project_id_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsRequest.project_id)
+}
+
+// string app_id = 2;
+inline void ModerationStatisticsRequest::clear_app_id() {
+  _impl_.app_id_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsRequest::app_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsRequest.app_id)
+  return _internal_app_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsRequest::set_app_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.app_id_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsRequest.app_id)
+}
+inline std::string* ModerationStatisticsRequest::mutable_app_id() {
+  std::string* _s = _internal_mutable_app_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsRequest.app_id)
+  return _s;
+}
+inline const std::string& ModerationStatisticsRequest::_internal_app_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.app_id_.Get();
+}
+inline void ModerationStatisticsRequest::_internal_set_app_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.app_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsRequest::_internal_mutable_app_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.app_id_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsRequest::release_app_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsRequest.app_id)
+  return _impl_.app_id_.Release();
+}
+inline void ModerationStatisticsRequest::set_allocated_app_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.app_id_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.app_id_.IsDefault()) {
+          _impl_.app_id_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsRequest.app_id)
+}
+
+// string start_date = 3;
+inline void ModerationStatisticsRequest::clear_start_date() {
+  _impl_.start_date_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsRequest::start_date() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsRequest.start_date)
+  return _internal_start_date();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsRequest::set_start_date(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.start_date_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsRequest.start_date)
+}
+inline std::string* ModerationStatisticsRequest::mutable_start_date() {
+  std::string* _s = _internal_mutable_start_date();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsRequest.start_date)
+  return _s;
+}
+inline const std::string& ModerationStatisticsRequest::_internal_start_date() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.start_date_.Get();
+}
+inline void ModerationStatisticsRequest::_internal_set_start_date(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.start_date_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsRequest::_internal_mutable_start_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.start_date_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsRequest::release_start_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsRequest.start_date)
+  return _impl_.start_date_.Release();
+}
+inline void ModerationStatisticsRequest::set_allocated_start_date(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.start_date_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.start_date_.IsDefault()) {
+          _impl_.start_date_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsRequest.start_date)
+}
+
+// string end_date = 4;
+inline void ModerationStatisticsRequest::clear_end_date() {
+  _impl_.end_date_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsRequest::end_date() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsRequest.end_date)
+  return _internal_end_date();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsRequest::set_end_date(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.end_date_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsRequest.end_date)
+}
+inline std::string* ModerationStatisticsRequest::mutable_end_date() {
+  std::string* _s = _internal_mutable_end_date();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsRequest.end_date)
+  return _s;
+}
+inline const std::string& ModerationStatisticsRequest::_internal_end_date() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.end_date_.Get();
+}
+inline void ModerationStatisticsRequest::_internal_set_end_date(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.end_date_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsRequest::_internal_mutable_end_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.end_date_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsRequest::release_end_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsRequest.end_date)
+  return _impl_.end_date_.Release();
+}
+inline void ModerationStatisticsRequest::set_allocated_end_date(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.end_date_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.end_date_.IsDefault()) {
+          _impl_.end_date_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsRequest.end_date)
+}
+
+// .speechly.analytics.v1.Aggregation aggregation = 5;
+inline void ModerationStatisticsRequest::clear_aggregation() {
+  _impl_.aggregation_ = 0;
+}
+inline ::speechly::analytics::v1::Aggregation ModerationStatisticsRequest::aggregation() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsRequest.aggregation)
+  return _internal_aggregation();
+}
+inline void ModerationStatisticsRequest::set_aggregation(::speechly::analytics::v1::Aggregation value) {
+  _internal_set_aggregation(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsRequest.aggregation)
+}
+inline ::speechly::analytics::v1::Aggregation ModerationStatisticsRequest::_internal_aggregation() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return static_cast<::speechly::analytics::v1::Aggregation>(_impl_.aggregation_);
+}
+inline void ModerationStatisticsRequest::_internal_set_aggregation(::speechly::analytics::v1::Aggregation value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.aggregation_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ModerationStatisticsResponse
+
+// string project_id = 1;
+inline void ModerationStatisticsResponse::clear_project_id() {
+  _impl_.project_id_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsResponse::project_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.project_id)
+  return _internal_project_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsResponse::set_project_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.project_id_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsResponse.project_id)
+}
+inline std::string* ModerationStatisticsResponse::mutable_project_id() {
+  std::string* _s = _internal_mutable_project_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsResponse.project_id)
+  return _s;
+}
+inline const std::string& ModerationStatisticsResponse::_internal_project_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.project_id_.Get();
+}
+inline void ModerationStatisticsResponse::_internal_set_project_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.project_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsResponse::_internal_mutable_project_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.project_id_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsResponse::release_project_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsResponse.project_id)
+  return _impl_.project_id_.Release();
+}
+inline void ModerationStatisticsResponse::set_allocated_project_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.project_id_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.project_id_.IsDefault()) {
+          _impl_.project_id_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsResponse.project_id)
+}
+
+// string app_id = 2;
+inline void ModerationStatisticsResponse::clear_app_id() {
+  _impl_.app_id_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsResponse::app_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.app_id)
+  return _internal_app_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsResponse::set_app_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.app_id_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsResponse.app_id)
+}
+inline std::string* ModerationStatisticsResponse::mutable_app_id() {
+  std::string* _s = _internal_mutable_app_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsResponse.app_id)
+  return _s;
+}
+inline const std::string& ModerationStatisticsResponse::_internal_app_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.app_id_.Get();
+}
+inline void ModerationStatisticsResponse::_internal_set_app_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.app_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsResponse::_internal_mutable_app_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.app_id_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsResponse::release_app_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsResponse.app_id)
+  return _impl_.app_id_.Release();
+}
+inline void ModerationStatisticsResponse::set_allocated_app_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.app_id_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.app_id_.IsDefault()) {
+          _impl_.app_id_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsResponse.app_id)
+}
+
+// string start_date = 3;
+inline void ModerationStatisticsResponse::clear_start_date() {
+  _impl_.start_date_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsResponse::start_date() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.start_date)
+  return _internal_start_date();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsResponse::set_start_date(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.start_date_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsResponse.start_date)
+}
+inline std::string* ModerationStatisticsResponse::mutable_start_date() {
+  std::string* _s = _internal_mutable_start_date();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsResponse.start_date)
+  return _s;
+}
+inline const std::string& ModerationStatisticsResponse::_internal_start_date() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.start_date_.Get();
+}
+inline void ModerationStatisticsResponse::_internal_set_start_date(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.start_date_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsResponse::_internal_mutable_start_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.start_date_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsResponse::release_start_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsResponse.start_date)
+  return _impl_.start_date_.Release();
+}
+inline void ModerationStatisticsResponse::set_allocated_start_date(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.start_date_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.start_date_.IsDefault()) {
+          _impl_.start_date_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsResponse.start_date)
+}
+
+// string end_date = 4;
+inline void ModerationStatisticsResponse::clear_end_date() {
+  _impl_.end_date_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsResponse::end_date() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.end_date)
+  return _internal_end_date();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsResponse::set_end_date(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.end_date_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsResponse.end_date)
+}
+inline std::string* ModerationStatisticsResponse::mutable_end_date() {
+  std::string* _s = _internal_mutable_end_date();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsResponse.end_date)
+  return _s;
+}
+inline const std::string& ModerationStatisticsResponse::_internal_end_date() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.end_date_.Get();
+}
+inline void ModerationStatisticsResponse::_internal_set_end_date(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.end_date_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsResponse::_internal_mutable_end_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.end_date_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsResponse::release_end_date() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsResponse.end_date)
+  return _impl_.end_date_.Release();
+}
+inline void ModerationStatisticsResponse::set_allocated_end_date(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.end_date_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.end_date_.IsDefault()) {
+          _impl_.end_date_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsResponse.end_date)
+}
+
+// .speechly.analytics.v1.Aggregation aggregation = 5;
+inline void ModerationStatisticsResponse::clear_aggregation() {
+  _impl_.aggregation_ = 0;
+}
+inline ::speechly::analytics::v1::Aggregation ModerationStatisticsResponse::aggregation() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.aggregation)
+  return _internal_aggregation();
+}
+inline void ModerationStatisticsResponse::set_aggregation(::speechly::analytics::v1::Aggregation value) {
+  _internal_set_aggregation(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsResponse.aggregation)
+}
+inline ::speechly::analytics::v1::Aggregation ModerationStatisticsResponse::_internal_aggregation() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return static_cast<::speechly::analytics::v1::Aggregation>(_impl_.aggregation_);
+}
+inline void ModerationStatisticsResponse::_internal_set_aggregation(::speechly::analytics::v1::Aggregation value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.aggregation_ = value;
+}
+
+// repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
+inline int ModerationStatisticsResponse::_internal_items_size() const {
+  return _internal_items().size();
+}
+inline int ModerationStatisticsResponse::items_size() const {
+  return _internal_items_size();
+}
+inline ::speechly::analytics::v1::ModerationStatisticsPeriod* ModerationStatisticsResponse::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsResponse.items)
+  return _internal_mutable_items()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField< ::speechly::analytics::v1::ModerationStatisticsPeriod >*
+ModerationStatisticsResponse::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_list:speechly.analytics.v1.ModerationStatisticsResponse.items)
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  return _internal_mutable_items();
+}
+inline const ::speechly::analytics::v1::ModerationStatisticsPeriod& ModerationStatisticsResponse::items(int index) const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.items)
+    return _internal_items().Get(index);
+}
+inline ::speechly::analytics::v1::ModerationStatisticsPeriod* ModerationStatisticsResponse::add_items() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ::speechly::analytics::v1::ModerationStatisticsPeriod* _add = _internal_mutable_items()->Add();
+  // @@protoc_insertion_point(field_add:speechly.analytics.v1.ModerationStatisticsResponse.items)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::speechly::analytics::v1::ModerationStatisticsPeriod >&
+ModerationStatisticsResponse::items() const {
+  // @@protoc_insertion_point(field_list:speechly.analytics.v1.ModerationStatisticsResponse.items)
+  return _internal_items();
+}
+inline const ::google::protobuf::RepeatedPtrField<::speechly::analytics::v1::ModerationStatisticsPeriod>&
+ModerationStatisticsResponse::_internal_items() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.items_;
+}
+inline ::google::protobuf::RepeatedPtrField<::speechly::analytics::v1::ModerationStatisticsPeriod>*
+ModerationStatisticsResponse::_internal_mutable_items() {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return &_impl_.items_;
+}
+
+// -------------------------------------------------------------------
+
+// UserStatisticsRequest
+
+// -------------------------------------------------------------------
+
+// UserStatisticsResponse
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop

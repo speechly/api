@@ -162,6 +162,9 @@ public struct Speechly_Analytics_V1_UtteranceStatisticsPeriod {
   /// project_id or empty, if specifying a project.
   public var projectID: String = String()
 
+  /// the id of the model used, if applicable.
+  public var modelID: String = String()
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -224,6 +227,51 @@ public struct Speechly_Analytics_V1_ProcessingInfo {
   public init() {}
 }
 
+/// A single time series entry for moderation statistics.
+public struct Speechly_Analytics_V1_ModerationStatisticsPeriod {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// period start time
+  public var startTime: String = String()
+
+  /// if grouping by users, the user id, or "OTHER"
+  public var userID: String = String()
+
+  /// total amount of moderation events for this period.
+  public var count: Int32 = 0
+
+  /// total amount of flagged events.
+  public var flagged: Int32 = 0
+
+  /// amount of moderation decisions made.
+  public var decisions: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// A single time series entry for user statistics.
+public struct Speechly_Analytics_V1_UserStatisticsPeriod {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var startTime: String = String()
+
+  public var activeUsers: Int32 = 0
+
+  public var toxicUsers: Int32 = 0
+
+  public var exposedUsers: Int32 = 0
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 #if swift(>=5.5) && canImport(_Concurrency)
 extension Speechly_Analytics_V1_Aggregation: @unchecked Sendable {}
 extension Speechly_Analytics_V1_ProcessingType: @unchecked Sendable {}
@@ -231,6 +279,8 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: @unchecked Sendable {
 extension Speechly_Analytics_V1_Utterance: @unchecked Sendable {}
 extension Speechly_Analytics_V1_DecoderInfo: @unchecked Sendable {}
 extension Speechly_Analytics_V1_ProcessingInfo: @unchecked Sendable {}
+extension Speechly_Analytics_V1_ModerationStatisticsPeriod: @unchecked Sendable {}
+extension Speechly_Analytics_V1_UserStatisticsPeriod: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -269,6 +319,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
     5: .standard(proto: "utterances_seconds"),
     6: .standard(proto: "annotated_seconds"),
     7: .standard(proto: "project_id"),
+    8: .standard(proto: "model_id"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -283,6 +334,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
       case 5: try { try decoder.decodeSingularInt32Field(value: &self.utterancesSeconds) }()
       case 6: try { try decoder.decodeSingularInt32Field(value: &self.annotatedSeconds) }()
       case 7: try { try decoder.decodeSingularStringField(value: &self.projectID) }()
+      case 8: try { try decoder.decodeSingularStringField(value: &self.modelID) }()
       default: break
       }
     }
@@ -307,6 +359,9 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
     if !self.projectID.isEmpty {
       try visitor.visitSingularStringField(value: self.projectID, fieldNumber: 7)
     }
+    if !self.modelID.isEmpty {
+      try visitor.visitSingularStringField(value: self.modelID, fieldNumber: 8)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -317,6 +372,7 @@ extension Speechly_Analytics_V1_UtteranceStatisticsPeriod: SwiftProtobuf.Message
     if lhs.utterancesSeconds != rhs.utterancesSeconds {return false}
     if lhs.annotatedSeconds != rhs.annotatedSeconds {return false}
     if lhs.projectID != rhs.projectID {return false}
+    if lhs.modelID != rhs.modelID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -443,6 +499,112 @@ extension Speechly_Analytics_V1_ProcessingInfo: SwiftProtobuf.Message, SwiftProt
   public static func ==(lhs: Speechly_Analytics_V1_ProcessingInfo, rhs: Speechly_Analytics_V1_ProcessingInfo) -> Bool {
     if lhs.processingTypes != rhs.processingTypes {return false}
     if lhs.modelID != rhs.modelID {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_ModerationStatisticsPeriod: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ModerationStatisticsPeriod"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "start_time"),
+    5: .standard(proto: "user_id"),
+    2: .same(proto: "count"),
+    3: .same(proto: "flagged"),
+    4: .same(proto: "decisions"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.startTime) }()
+      case 2: try { try decoder.decodeSingularInt32Field(value: &self.count) }()
+      case 3: try { try decoder.decodeSingularInt32Field(value: &self.flagged) }()
+      case 4: try { try decoder.decodeSingularInt32Field(value: &self.decisions) }()
+      case 5: try { try decoder.decodeSingularStringField(value: &self.userID) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.startTime.isEmpty {
+      try visitor.visitSingularStringField(value: self.startTime, fieldNumber: 1)
+    }
+    if self.count != 0 {
+      try visitor.visitSingularInt32Field(value: self.count, fieldNumber: 2)
+    }
+    if self.flagged != 0 {
+      try visitor.visitSingularInt32Field(value: self.flagged, fieldNumber: 3)
+    }
+    if self.decisions != 0 {
+      try visitor.visitSingularInt32Field(value: self.decisions, fieldNumber: 4)
+    }
+    if !self.userID.isEmpty {
+      try visitor.visitSingularStringField(value: self.userID, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_ModerationStatisticsPeriod, rhs: Speechly_Analytics_V1_ModerationStatisticsPeriod) -> Bool {
+    if lhs.startTime != rhs.startTime {return false}
+    if lhs.userID != rhs.userID {return false}
+    if lhs.count != rhs.count {return false}
+    if lhs.flagged != rhs.flagged {return false}
+    if lhs.decisions != rhs.decisions {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_UserStatisticsPeriod: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UserStatisticsPeriod"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "start_time"),
+    2: .standard(proto: "active_users"),
+    3: .standard(proto: "toxic_users"),
+    4: .standard(proto: "exposed_users"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.startTime) }()
+      case 2: try { try decoder.decodeSingularInt32Field(value: &self.activeUsers) }()
+      case 3: try { try decoder.decodeSingularInt32Field(value: &self.toxicUsers) }()
+      case 4: try { try decoder.decodeSingularInt32Field(value: &self.exposedUsers) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.startTime.isEmpty {
+      try visitor.visitSingularStringField(value: self.startTime, fieldNumber: 1)
+    }
+    if self.activeUsers != 0 {
+      try visitor.visitSingularInt32Field(value: self.activeUsers, fieldNumber: 2)
+    }
+    if self.toxicUsers != 0 {
+      try visitor.visitSingularInt32Field(value: self.toxicUsers, fieldNumber: 3)
+    }
+    if self.exposedUsers != 0 {
+      try visitor.visitSingularInt32Field(value: self.exposedUsers, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_UserStatisticsPeriod, rhs: Speechly_Analytics_V1_UserStatisticsPeriod) -> Bool {
+    if lhs.startTime != rhs.startTime {return false}
+    if lhs.activeUsers != rhs.activeUsers {return false}
+    if lhs.toxicUsers != rhs.toxicUsers {return false}
+    if lhs.exposedUsers != rhs.exposedUsers {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -60,9 +60,15 @@ namespace v1 {
 class DecoderInfo;
 struct DecoderInfoDefaultTypeInternal;
 extern DecoderInfoDefaultTypeInternal _DecoderInfo_default_instance_;
+class ModerationStatisticsPeriod;
+struct ModerationStatisticsPeriodDefaultTypeInternal;
+extern ModerationStatisticsPeriodDefaultTypeInternal _ModerationStatisticsPeriod_default_instance_;
 class ProcessingInfo;
 struct ProcessingInfoDefaultTypeInternal;
 extern ProcessingInfoDefaultTypeInternal _ProcessingInfo_default_instance_;
+class UserStatisticsPeriod;
+struct UserStatisticsPeriodDefaultTypeInternal;
+extern UserStatisticsPeriodDefaultTypeInternal _UserStatisticsPeriod_default_instance_;
 class Utterance;
 struct UtteranceDefaultTypeInternal;
 extern UtteranceDefaultTypeInternal _Utterance_default_instance_;
@@ -290,6 +296,7 @@ class UtteranceStatisticsPeriod final :
     kAppIdFieldNumber = 2,
     kStartTimeFieldNumber = 3,
     kProjectIdFieldNumber = 7,
+    kModelIdFieldNumber = 8,
     kCountFieldNumber = 4,
     kUtterancesSecondsFieldNumber = 5,
     kAnnotatedSecondsFieldNumber = 6,
@@ -342,6 +349,22 @@ class UtteranceStatisticsPeriod final :
   std::string* _internal_mutable_project_id();
 
   public:
+  // string model_id = 8;
+  void clear_model_id() ;
+  const std::string& model_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_model_id(Arg_&& arg, Args_... args);
+  std::string* mutable_model_id();
+  PROTOBUF_NODISCARD std::string* release_model_id();
+  void set_allocated_model_id(std::string* ptr);
+
+  private:
+  const std::string& _internal_model_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_model_id(
+      const std::string& value);
+  std::string* _internal_mutable_model_id();
+
+  public:
   // int32 count = 4;
   void clear_count() ;
   ::int32_t count() const;
@@ -377,7 +400,7 @@ class UtteranceStatisticsPeriod final :
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 6, 0, 82, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 7, 0, 90, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -385,6 +408,7 @@ class UtteranceStatisticsPeriod final :
     ::google::protobuf::internal::ArenaStringPtr app_id_;
     ::google::protobuf::internal::ArenaStringPtr start_time_;
     ::google::protobuf::internal::ArenaStringPtr project_id_;
+    ::google::protobuf::internal::ArenaStringPtr model_id_;
     ::int32_t count_;
     ::int32_t utterances_seconds_;
     ::int32_t annotated_seconds_;
@@ -967,6 +991,424 @@ class ProcessingInfo final :
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto;
+};// -------------------------------------------------------------------
+
+class ModerationStatisticsPeriod final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.ModerationStatisticsPeriod) */ {
+ public:
+  inline ModerationStatisticsPeriod() : ModerationStatisticsPeriod(nullptr) {}
+  ~ModerationStatisticsPeriod() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR ModerationStatisticsPeriod(::google::protobuf::internal::ConstantInitialized);
+
+  ModerationStatisticsPeriod(const ModerationStatisticsPeriod& from);
+  ModerationStatisticsPeriod(ModerationStatisticsPeriod&& from) noexcept
+    : ModerationStatisticsPeriod() {
+    *this = ::std::move(from);
+  }
+
+  inline ModerationStatisticsPeriod& operator=(const ModerationStatisticsPeriod& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ModerationStatisticsPeriod& operator=(ModerationStatisticsPeriod&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ModerationStatisticsPeriod& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ModerationStatisticsPeriod* internal_default_instance() {
+    return reinterpret_cast<const ModerationStatisticsPeriod*>(
+               &_ModerationStatisticsPeriod_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  friend void swap(ModerationStatisticsPeriod& a, ModerationStatisticsPeriod& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(ModerationStatisticsPeriod* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ModerationStatisticsPeriod* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ModerationStatisticsPeriod* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<ModerationStatisticsPeriod>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ModerationStatisticsPeriod& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const ModerationStatisticsPeriod& from) {
+    ModerationStatisticsPeriod::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ModerationStatisticsPeriod* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "speechly.analytics.v1.ModerationStatisticsPeriod";
+  }
+  protected:
+  explicit ModerationStatisticsPeriod(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kStartTimeFieldNumber = 1,
+    kUserIdFieldNumber = 5,
+    kCountFieldNumber = 2,
+    kFlaggedFieldNumber = 3,
+    kDecisionsFieldNumber = 4,
+  };
+  // string start_time = 1;
+  void clear_start_time() ;
+  const std::string& start_time() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_start_time(Arg_&& arg, Args_... args);
+  std::string* mutable_start_time();
+  PROTOBUF_NODISCARD std::string* release_start_time();
+  void set_allocated_start_time(std::string* ptr);
+
+  private:
+  const std::string& _internal_start_time() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_start_time(
+      const std::string& value);
+  std::string* _internal_mutable_start_time();
+
+  public:
+  // string user_id = 5;
+  void clear_user_id() ;
+  const std::string& user_id() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_user_id(Arg_&& arg, Args_... args);
+  std::string* mutable_user_id();
+  PROTOBUF_NODISCARD std::string* release_user_id();
+  void set_allocated_user_id(std::string* ptr);
+
+  private:
+  const std::string& _internal_user_id() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_user_id(
+      const std::string& value);
+  std::string* _internal_mutable_user_id();
+
+  public:
+  // int32 count = 2;
+  void clear_count() ;
+  ::int32_t count() const;
+  void set_count(::int32_t value);
+
+  private:
+  ::int32_t _internal_count() const;
+  void _internal_set_count(::int32_t value);
+
+  public:
+  // int32 flagged = 3;
+  void clear_flagged() ;
+  ::int32_t flagged() const;
+  void set_flagged(::int32_t value);
+
+  private:
+  ::int32_t _internal_flagged() const;
+  void _internal_set_flagged(::int32_t value);
+
+  public:
+  // int32 decisions = 4;
+  void clear_decisions() ;
+  ::int32_t decisions() const;
+  void set_decisions(::int32_t value);
+
+  private:
+  ::int32_t _internal_decisions() const;
+  void _internal_set_decisions(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.ModerationStatisticsPeriod)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 74, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr start_time_;
+    ::google::protobuf::internal::ArenaStringPtr user_id_;
+    ::int32_t count_;
+    ::int32_t flagged_;
+    ::int32_t decisions_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto;
+};// -------------------------------------------------------------------
+
+class UserStatisticsPeriod final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:speechly.analytics.v1.UserStatisticsPeriod) */ {
+ public:
+  inline UserStatisticsPeriod() : UserStatisticsPeriod(nullptr) {}
+  ~UserStatisticsPeriod() override;
+  template<typename = void>
+  explicit PROTOBUF_CONSTEXPR UserStatisticsPeriod(::google::protobuf::internal::ConstantInitialized);
+
+  UserStatisticsPeriod(const UserStatisticsPeriod& from);
+  UserStatisticsPeriod(UserStatisticsPeriod&& from) noexcept
+    : UserStatisticsPeriod() {
+    *this = ::std::move(from);
+  }
+
+  inline UserStatisticsPeriod& operator=(const UserStatisticsPeriod& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UserStatisticsPeriod& operator=(UserStatisticsPeriod&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const UserStatisticsPeriod& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const UserStatisticsPeriod* internal_default_instance() {
+    return reinterpret_cast<const UserStatisticsPeriod*>(
+               &_UserStatisticsPeriod_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  friend void swap(UserStatisticsPeriod& a, UserStatisticsPeriod& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UserStatisticsPeriod* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(UserStatisticsPeriod* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  UserStatisticsPeriod* New(::google::protobuf::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<UserStatisticsPeriod>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const UserStatisticsPeriod& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom( const UserStatisticsPeriod& from) {
+    UserStatisticsPeriod::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  ::size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::google::protobuf::internal::ParseContext* ctx) final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target, ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UserStatisticsPeriod* other);
+
+  private:
+  friend class ::google::protobuf::internal::AnyMetadata;
+  static ::absl::string_view FullMessageName() {
+    return "speechly.analytics.v1.UserStatisticsPeriod";
+  }
+  protected:
+  explicit UserStatisticsPeriod(::google::protobuf::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::google::protobuf::Message::ClassData*GetClassData() const final;
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kStartTimeFieldNumber = 1,
+    kActiveUsersFieldNumber = 2,
+    kToxicUsersFieldNumber = 3,
+    kExposedUsersFieldNumber = 4,
+  };
+  // string start_time = 1;
+  void clear_start_time() ;
+  const std::string& start_time() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_start_time(Arg_&& arg, Args_... args);
+  std::string* mutable_start_time();
+  PROTOBUF_NODISCARD std::string* release_start_time();
+  void set_allocated_start_time(std::string* ptr);
+
+  private:
+  const std::string& _internal_start_time() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_start_time(
+      const std::string& value);
+  std::string* _internal_mutable_start_time();
+
+  public:
+  // int32 active_users = 2;
+  void clear_active_users() ;
+  ::int32_t active_users() const;
+  void set_active_users(::int32_t value);
+
+  private:
+  ::int32_t _internal_active_users() const;
+  void _internal_set_active_users(::int32_t value);
+
+  public:
+  // int32 toxic_users = 3;
+  void clear_toxic_users() ;
+  ::int32_t toxic_users() const;
+  void set_toxic_users(::int32_t value);
+
+  private:
+  ::int32_t _internal_toxic_users() const;
+  void _internal_set_toxic_users(::int32_t value);
+
+  public:
+  // int32 exposed_users = 4;
+  void clear_exposed_users() ;
+  ::int32_t exposed_users() const;
+  void set_exposed_users(::int32_t value);
+
+  private:
+  ::int32_t _internal_exposed_users() const;
+  void _internal_set_exposed_users(::int32_t value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:speechly.analytics.v1.UserStatisticsPeriod)
+ private:
+  class _Internal;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<2, 4, 0, 61, 2> _table_;
+  template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::google::protobuf::internal::ArenaStringPtr start_time_;
+    ::int32_t active_users_;
+    ::int32_t toxic_users_;
+    ::int32_t exposed_users_;
+    mutable ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto;
 };
 
 // ===================================================================
@@ -1202,6 +1644,57 @@ inline void UtteranceStatisticsPeriod::set_allocated_project_id(std::string* val
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.UtteranceStatisticsPeriod.project_id)
+}
+
+// string model_id = 8;
+inline void UtteranceStatisticsPeriod::clear_model_id() {
+  _impl_.model_id_.ClearToEmpty();
+}
+inline const std::string& UtteranceStatisticsPeriod::model_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.UtteranceStatisticsPeriod.model_id)
+  return _internal_model_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void UtteranceStatisticsPeriod::set_model_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.model_id_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.UtteranceStatisticsPeriod.model_id)
+}
+inline std::string* UtteranceStatisticsPeriod::mutable_model_id() {
+  std::string* _s = _internal_mutable_model_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.UtteranceStatisticsPeriod.model_id)
+  return _s;
+}
+inline const std::string& UtteranceStatisticsPeriod::_internal_model_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.model_id_.Get();
+}
+inline void UtteranceStatisticsPeriod::_internal_set_model_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.model_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UtteranceStatisticsPeriod::_internal_mutable_model_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.model_id_.Mutable( GetArenaForAllocation());
+}
+inline std::string* UtteranceStatisticsPeriod::release_model_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.UtteranceStatisticsPeriod.model_id)
+  return _impl_.model_id_.Release();
+}
+inline void UtteranceStatisticsPeriod::set_allocated_model_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.model_id_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.model_id_.IsDefault()) {
+          _impl_.model_id_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.UtteranceStatisticsPeriod.model_id)
 }
 
 // -------------------------------------------------------------------
@@ -1554,6 +2047,299 @@ inline void ProcessingInfo::set_allocated_model_id(std::string* value) {
         }
   #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
   // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ProcessingInfo.model_id)
+}
+
+// -------------------------------------------------------------------
+
+// ModerationStatisticsPeriod
+
+// string start_time = 1;
+inline void ModerationStatisticsPeriod::clear_start_time() {
+  _impl_.start_time_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsPeriod::start_time() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsPeriod.start_time)
+  return _internal_start_time();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsPeriod::set_start_time(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.start_time_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsPeriod.start_time)
+}
+inline std::string* ModerationStatisticsPeriod::mutable_start_time() {
+  std::string* _s = _internal_mutable_start_time();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsPeriod.start_time)
+  return _s;
+}
+inline const std::string& ModerationStatisticsPeriod::_internal_start_time() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.start_time_.Get();
+}
+inline void ModerationStatisticsPeriod::_internal_set_start_time(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.start_time_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsPeriod::_internal_mutable_start_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.start_time_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsPeriod::release_start_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsPeriod.start_time)
+  return _impl_.start_time_.Release();
+}
+inline void ModerationStatisticsPeriod::set_allocated_start_time(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.start_time_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.start_time_.IsDefault()) {
+          _impl_.start_time_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsPeriod.start_time)
+}
+
+// string user_id = 5;
+inline void ModerationStatisticsPeriod::clear_user_id() {
+  _impl_.user_id_.ClearToEmpty();
+}
+inline const std::string& ModerationStatisticsPeriod::user_id() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsPeriod.user_id)
+  return _internal_user_id();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ModerationStatisticsPeriod::set_user_id(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.user_id_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsPeriod.user_id)
+}
+inline std::string* ModerationStatisticsPeriod::mutable_user_id() {
+  std::string* _s = _internal_mutable_user_id();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.ModerationStatisticsPeriod.user_id)
+  return _s;
+}
+inline const std::string& ModerationStatisticsPeriod::_internal_user_id() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.user_id_.Get();
+}
+inline void ModerationStatisticsPeriod::_internal_set_user_id(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.user_id_.Set(value, GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsPeriod::_internal_mutable_user_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.user_id_.Mutable( GetArenaForAllocation());
+}
+inline std::string* ModerationStatisticsPeriod::release_user_id() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.ModerationStatisticsPeriod.user_id)
+  return _impl_.user_id_.Release();
+}
+inline void ModerationStatisticsPeriod::set_allocated_user_id(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.user_id_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.user_id_.IsDefault()) {
+          _impl_.user_id_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsPeriod.user_id)
+}
+
+// int32 count = 2;
+inline void ModerationStatisticsPeriod::clear_count() {
+  _impl_.count_ = 0;
+}
+inline ::int32_t ModerationStatisticsPeriod::count() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsPeriod.count)
+  return _internal_count();
+}
+inline void ModerationStatisticsPeriod::set_count(::int32_t value) {
+  _internal_set_count(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsPeriod.count)
+}
+inline ::int32_t ModerationStatisticsPeriod::_internal_count() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.count_;
+}
+inline void ModerationStatisticsPeriod::_internal_set_count(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.count_ = value;
+}
+
+// int32 flagged = 3;
+inline void ModerationStatisticsPeriod::clear_flagged() {
+  _impl_.flagged_ = 0;
+}
+inline ::int32_t ModerationStatisticsPeriod::flagged() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsPeriod.flagged)
+  return _internal_flagged();
+}
+inline void ModerationStatisticsPeriod::set_flagged(::int32_t value) {
+  _internal_set_flagged(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsPeriod.flagged)
+}
+inline ::int32_t ModerationStatisticsPeriod::_internal_flagged() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.flagged_;
+}
+inline void ModerationStatisticsPeriod::_internal_set_flagged(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.flagged_ = value;
+}
+
+// int32 decisions = 4;
+inline void ModerationStatisticsPeriod::clear_decisions() {
+  _impl_.decisions_ = 0;
+}
+inline ::int32_t ModerationStatisticsPeriod::decisions() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsPeriod.decisions)
+  return _internal_decisions();
+}
+inline void ModerationStatisticsPeriod::set_decisions(::int32_t value) {
+  _internal_set_decisions(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsPeriod.decisions)
+}
+inline ::int32_t ModerationStatisticsPeriod::_internal_decisions() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.decisions_;
+}
+inline void ModerationStatisticsPeriod::_internal_set_decisions(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.decisions_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// UserStatisticsPeriod
+
+// string start_time = 1;
+inline void UserStatisticsPeriod::clear_start_time() {
+  _impl_.start_time_.ClearToEmpty();
+}
+inline const std::string& UserStatisticsPeriod::start_time() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.UserStatisticsPeriod.start_time)
+  return _internal_start_time();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void UserStatisticsPeriod::set_start_time(Arg_&& arg,
+                                                     Args_... args) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.start_time_.Set(static_cast<Arg_&&>(arg), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.UserStatisticsPeriod.start_time)
+}
+inline std::string* UserStatisticsPeriod::mutable_start_time() {
+  std::string* _s = _internal_mutable_start_time();
+  // @@protoc_insertion_point(field_mutable:speechly.analytics.v1.UserStatisticsPeriod.start_time)
+  return _s;
+}
+inline const std::string& UserStatisticsPeriod::_internal_start_time() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.start_time_.Get();
+}
+inline void UserStatisticsPeriod::_internal_set_start_time(const std::string& value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.start_time_.Set(value, GetArenaForAllocation());
+}
+inline std::string* UserStatisticsPeriod::_internal_mutable_start_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  return _impl_.start_time_.Mutable( GetArenaForAllocation());
+}
+inline std::string* UserStatisticsPeriod::release_start_time() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  // @@protoc_insertion_point(field_release:speechly.analytics.v1.UserStatisticsPeriod.start_time)
+  return _impl_.start_time_.Release();
+}
+inline void UserStatisticsPeriod::set_allocated_start_time(std::string* value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.start_time_.SetAllocated(value, GetArenaForAllocation());
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        if (_impl_.start_time_.IsDefault()) {
+          _impl_.start_time_.Set("", GetArenaForAllocation());
+        }
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.UserStatisticsPeriod.start_time)
+}
+
+// int32 active_users = 2;
+inline void UserStatisticsPeriod::clear_active_users() {
+  _impl_.active_users_ = 0;
+}
+inline ::int32_t UserStatisticsPeriod::active_users() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.UserStatisticsPeriod.active_users)
+  return _internal_active_users();
+}
+inline void UserStatisticsPeriod::set_active_users(::int32_t value) {
+  _internal_set_active_users(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.UserStatisticsPeriod.active_users)
+}
+inline ::int32_t UserStatisticsPeriod::_internal_active_users() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.active_users_;
+}
+inline void UserStatisticsPeriod::_internal_set_active_users(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.active_users_ = value;
+}
+
+// int32 toxic_users = 3;
+inline void UserStatisticsPeriod::clear_toxic_users() {
+  _impl_.toxic_users_ = 0;
+}
+inline ::int32_t UserStatisticsPeriod::toxic_users() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.UserStatisticsPeriod.toxic_users)
+  return _internal_toxic_users();
+}
+inline void UserStatisticsPeriod::set_toxic_users(::int32_t value) {
+  _internal_set_toxic_users(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.UserStatisticsPeriod.toxic_users)
+}
+inline ::int32_t UserStatisticsPeriod::_internal_toxic_users() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.toxic_users_;
+}
+inline void UserStatisticsPeriod::_internal_set_toxic_users(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.toxic_users_ = value;
+}
+
+// int32 exposed_users = 4;
+inline void UserStatisticsPeriod::clear_exposed_users() {
+  _impl_.exposed_users_ = 0;
+}
+inline ::int32_t UserStatisticsPeriod::exposed_users() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.UserStatisticsPeriod.exposed_users)
+  return _internal_exposed_users();
+}
+inline void UserStatisticsPeriod::set_exposed_users(::int32_t value) {
+  _internal_set_exposed_users(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.UserStatisticsPeriod.exposed_users)
+}
+inline ::int32_t UserStatisticsPeriod::_internal_exposed_users() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.exposed_users_;
+}
+inline void UserStatisticsPeriod::_internal_set_exposed_users(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.exposed_users_ = value;
 }
 
 #ifdef __GNUC__

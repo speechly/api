@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.10.3](https://github.com/speechly/api/tree/0.10.3) (2023-08-31)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.10.1...0.10.3)
+
+**Merged pull requests:**
+
+- Add moderation event statistics endpoint [\#91](https://github.com/speechly/api/pull/91) ([langma](https://github.com/langma))
+
+## [0.10.1](https://github.com/speechly/api/tree/0.10.1) (2023-08-23)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.10.0...0.10.1)
+
+## [0.10.0](https://github.com/speechly/api/tree/0.10.0) (2023-08-23)
+
+[Full Changelog](https://github.com/speechly/api/compare/0.9.2...0.10.0)
+
 ## [0.9.2](https://github.com/speechly/api/tree/0.9.2) (2023-08-23)
 
 [Full Changelog](https://github.com/speechly/api/compare/0.9.1...0.9.2)

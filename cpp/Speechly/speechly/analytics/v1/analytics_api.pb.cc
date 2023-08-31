@@ -207,10 +207,99 @@ struct RegisterUtterancesResponseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RegisterUtterancesResponseDefaultTypeInternal _RegisterUtterancesResponse_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ModerationStatisticsRequest::ModerationStatisticsRequest(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.project_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.app_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.start_date_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.end_date_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.aggregation_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct ModerationStatisticsRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ModerationStatisticsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ModerationStatisticsRequestDefaultTypeInternal() {}
+  union {
+    ModerationStatisticsRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ModerationStatisticsRequestDefaultTypeInternal _ModerationStatisticsRequest_default_instance_;
+        template <typename>
+PROTOBUF_CONSTEXPR ModerationStatisticsResponse::ModerationStatisticsResponse(::_pbi::ConstantInitialized)
+    : _impl_{
+      /*decltype(_impl_.items_)*/ {},
+      /*decltype(_impl_.project_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.app_id_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.start_date_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.end_date_)*/ {
+          &::_pbi::fixed_address_empty_string,
+          ::_pbi::ConstantInitialized{},
+      },
+      /*decltype(_impl_.aggregation_)*/ 0,
+      /*decltype(_impl_._cached_size_)*/ {},
+    } {}
+struct ModerationStatisticsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR ModerationStatisticsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~ModerationStatisticsResponseDefaultTypeInternal() {}
+  union {
+    ModerationStatisticsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 ModerationStatisticsResponseDefaultTypeInternal _ModerationStatisticsResponse_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR UserStatisticsRequest::UserStatisticsRequest(::_pbi::ConstantInitialized) {}
+struct UserStatisticsRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserStatisticsRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserStatisticsRequestDefaultTypeInternal() {}
+  union {
+    UserStatisticsRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserStatisticsRequestDefaultTypeInternal _UserStatisticsRequest_default_instance_;
+      template <typename>
+PROTOBUF_CONSTEXPR UserStatisticsResponse::UserStatisticsResponse(::_pbi::ConstantInitialized) {}
+struct UserStatisticsResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR UserStatisticsResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~UserStatisticsResponseDefaultTypeInternal() {}
+  union {
+    UserStatisticsResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 UserStatisticsResponseDefaultTypeInternal _UserStatisticsResponse_default_instance_;
 }  // namespace v1
 }  // namespace analytics
 }  // namespace speechly
-static ::_pb::Metadata file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[8];
+static ::_pb::Metadata file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[12];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[2];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto = nullptr;
@@ -323,6 +412,49 @@ const ::uint32_t TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsRequest, _impl_.project_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsRequest, _impl_.app_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsRequest, _impl_.start_date_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsRequest, _impl_.end_date_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsRequest, _impl_.aggregation_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.project_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.app_id_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.start_date_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.end_date_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.aggregation_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.items_),
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UserStatisticsRequest, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
+    ~0u,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UserStatisticsResponse, _internal_metadata_),
+    ~0u,  // no _extensions_
+    ~0u,  // no _oneof_case_
+    ~0u,  // no _weak_field_map_
+    ~0u,  // no _inlined_string_donated_
+    ~0u,  // no _split_
+    ~0u,  // no sizeof(Split)
 };
 
 static const ::_pbi::MigrationSchema
@@ -335,6 +467,10 @@ static const ::_pbi::MigrationSchema
         {82, -1, -1, sizeof(::speechly::analytics::v1::RegisterUtteranceResponse)},
         {90, -1, -1, sizeof(::speechly::analytics::v1::RegisterUtterancesRequest)},
         {99, -1, -1, sizeof(::speechly::analytics::v1::RegisterUtterancesResponse)},
+        {107, -1, -1, sizeof(::speechly::analytics::v1::ModerationStatisticsRequest)},
+        {120, -1, -1, sizeof(::speechly::analytics::v1::ModerationStatisticsResponse)},
+        {134, -1, -1, sizeof(::speechly::analytics::v1::UserStatisticsRequest)},
+        {142, -1, -1, sizeof(::speechly::analytics::v1::UserStatisticsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -346,6 +482,10 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::speechly::analytics::v1::_RegisterUtteranceResponse_default_instance_._instance,
     &::speechly::analytics::v1::_RegisterUtterancesRequest_default_instance_._instance,
     &::speechly::analytics::v1::_RegisterUtterancesResponse_default_instance_._instance,
+    &::speechly::analytics::v1::_ModerationStatisticsRequest_default_instance_._instance,
+    &::speechly::analytics::v1::_ModerationStatisticsResponse_default_instance_._instance,
+    &::speechly::analytics::v1::_UserStatisticsRequest_default_instance_._instance,
+    &::speechly::analytics::v1::_UserStatisticsResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
     "\n)speechly/analytics/v1/analytics_api.pr"
@@ -387,23 +527,40 @@ const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi
     "\002\"\033\n\031RegisterUtteranceResponse\"^\n\031Regist"
     "erUtterancesRequest\022A\n\010requests\030\001 \003(\0132/."
     "speechly.analytics.v1.RegisterUtteranceR"
-    "equest\"\034\n\032RegisterUtterancesResponse2\342\003\n"
-    "\014AnalyticsAPI\022|\n\023UtteranceStatistics\0221.s"
-    "peechly.analytics.v1.UtteranceStatistics"
-    "Request\0322.speechly.analytics.v1.Utteranc"
-    "eStatisticsResponse\022a\n\nUtterances\022(.spee"
-    "chly.analytics.v1.UtterancesRequest\032).sp"
-    "eechly.analytics.v1.UtterancesResponse\022v"
-    "\n\021RegisterUtterance\022/.speechly.analytics"
-    ".v1.RegisterUtteranceRequest\0320.speechly."
-    "analytics.v1.RegisterUtteranceResponse\022y"
-    "\n\022RegisterUtterances\0220.speechly.analytic"
-    "s.v1.RegisterUtterancesRequest\0321.speechl"
-    "y.analytics.v1.RegisterUtterancesRespons"
-    "eB\211\001\n\031com.speechly.analytics.v1B\021Analyti"
-    "csApiProtoP\001Z!speechly/analytics/v1;anal"
-    "yticsv1\242\002\003SAX\252\002\025Speechly.Analytics.V1\312\002\025"
-    "Speechly\\Analytics\\V1b\006proto3"
+    "equest\"\034\n\032RegisterUtterancesResponse\"\240\001\n"
+    "\033ModerationStatisticsRequest\022\022\n\nproject_"
+    "id\030\001 \001(\t\022\016\n\006app_id\030\002 \001(\t\022\022\n\nstart_date\030\003"
+    " \001(\t\022\020\n\010end_date\030\004 \001(\t\0227\n\013aggregation\030\005 "
+    "\001(\0162\".speechly.analytics.v1.Aggregation\""
+    "\343\001\n\034ModerationStatisticsResponse\022\022\n\nproj"
+    "ect_id\030\001 \001(\t\022\016\n\006app_id\030\002 \001(\t\022\022\n\nstart_da"
+    "te\030\003 \001(\t\022\020\n\010end_date\030\004 \001(\t\0227\n\013aggregatio"
+    "n\030\005 \001(\0162\".speechly.analytics.v1.Aggregat"
+    "ion\022@\n\005items\030\006 \003(\01321.speechly.analytics."
+    "v1.ModerationStatisticsPeriod\"\027\n\025UserSta"
+    "tisticsRequest\"\030\n\026UserStatisticsResponse"
+    "2\322\005\n\014AnalyticsAPI\022|\n\023UtteranceStatistics"
+    "\0221.speechly.analytics.v1.UtteranceStatis"
+    "ticsRequest\0322.speechly.analytics.v1.Utte"
+    "ranceStatisticsResponse\022a\n\nUtterances\022(."
+    "speechly.analytics.v1.UtterancesRequest\032"
+    ").speechly.analytics.v1.UtterancesRespon"
+    "se\022v\n\021RegisterUtterance\022/.speechly.analy"
+    "tics.v1.RegisterUtteranceRequest\0320.speec"
+    "hly.analytics.v1.RegisterUtteranceRespon"
+    "se\022y\n\022RegisterUtterances\0220.speechly.anal"
+    "ytics.v1.RegisterUtterancesRequest\0321.spe"
+    "echly.analytics.v1.RegisterUtterancesRes"
+    "ponse\022\177\n\024ModerationStatistics\0222.speechly"
+    ".analytics.v1.ModerationStatisticsReques"
+    "t\0323.speechly.analytics.v1.ModerationStat"
+    "isticsResponse\022m\n\016UserStatistics\022,.speec"
+    "hly.analytics.v1.UserStatisticsRequest\032-"
+    ".speechly.analytics.v1.UserStatisticsRes"
+    "ponseB\211\001\n\031com.speechly.analytics.v1B\021Ana"
+    "lyticsApiProtoP\001Z!speechly/analytics/v1;"
+    "analyticsv1\242\002\003SAX\252\002\025Speechly.Analytics.V"
+    "1\312\002\025Speechly\\Analytics\\V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_deps[2] =
     {
@@ -414,13 +571,13 @@ static ::absl::once_flag descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_
 const ::_pbi::DescriptorTable descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto = {
     false,
     false,
-    2229,
+    2913,
     descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto,
     "speechly/analytics/v1/analytics_api.proto",
     &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
     descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_deps,
     2,
-    8,
+    12,
     schemas,
     file_default_instances,
     TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto::offsets,
@@ -2570,6 +2727,800 @@ const ::google::protobuf::Message::ClassData*RegisterUtterancesResponse::GetClas
   return ::_pbi::AssignDescriptors(
       &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
       file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[7]);
+}
+// ===================================================================
+
+class ModerationStatisticsRequest::_Internal {
+ public:
+};
+
+ModerationStatisticsRequest::ModerationStatisticsRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.ModerationStatisticsRequest)
+}
+ModerationStatisticsRequest::ModerationStatisticsRequest(const ModerationStatisticsRequest& from) : ::google::protobuf::Message() {
+  ModerationStatisticsRequest* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.project_id_){},
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.start_date_){},
+      decltype(_impl_.end_date_){},
+      decltype(_impl_.aggregation_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.project_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.project_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_project_id().empty()) {
+    _this->_impl_.project_id_.Set(from._internal_project_id(), _this->GetArenaForAllocation());
+  }
+  _impl_.app_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_app_id().empty()) {
+    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
+  }
+  _impl_.start_date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.start_date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_start_date().empty()) {
+    _this->_impl_.start_date_.Set(from._internal_start_date(), _this->GetArenaForAllocation());
+  }
+  _impl_.end_date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.end_date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_end_date().empty()) {
+    _this->_impl_.end_date_.Set(from._internal_end_date(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.aggregation_ = from._impl_.aggregation_;
+
+  // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.ModerationStatisticsRequest)
+}
+inline void ModerationStatisticsRequest::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.project_id_){},
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.start_date_){},
+      decltype(_impl_.end_date_){},
+      decltype(_impl_.aggregation_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.project_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.project_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.app_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.start_date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.start_date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.end_date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.end_date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+ModerationStatisticsRequest::~ModerationStatisticsRequest() {
+  // @@protoc_insertion_point(destructor:speechly.analytics.v1.ModerationStatisticsRequest)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void ModerationStatisticsRequest::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.project_id_.Destroy();
+  _impl_.app_id_.Destroy();
+  _impl_.start_date_.Destroy();
+  _impl_.end_date_.Destroy();
+}
+void ModerationStatisticsRequest::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void ModerationStatisticsRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:speechly.analytics.v1.ModerationStatisticsRequest)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.project_id_.ClearToEmpty();
+  _impl_.app_id_.ClearToEmpty();
+  _impl_.start_date_.ClearToEmpty();
+  _impl_.end_date_.ClearToEmpty();
+  _impl_.aggregation_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* ModerationStatisticsRequest::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 0, 92, 2> ModerationStatisticsRequest::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    &_ModerationStatisticsRequest_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string project_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.project_id_)}},
+    // string app_id = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.app_id_)}},
+    // string start_date = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.start_date_)}},
+    // string end_date = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.end_date_)}},
+    // .speechly.analytics.v1.Aggregation aggregation = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsRequest, _impl_.aggregation_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.aggregation_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string project_id = 1;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.project_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string app_id = 2;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.app_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string start_date = 3;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.start_date_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string end_date = 4;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.end_date_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .speechly.analytics.v1.Aggregation aggregation = 5;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsRequest, _impl_.aggregation_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+    "\61\12\6\12\10\0\0\0"
+    "speechly.analytics.v1.ModerationStatisticsRequest"
+    "project_id"
+    "app_id"
+    "start_date"
+    "end_date"
+  }},
+};
+
+::uint8_t* ModerationStatisticsRequest::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:speechly.analytics.v1.ModerationStatisticsRequest)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string project_id = 1;
+  if (!this->_internal_project_id().empty()) {
+    const std::string& _s = this->_internal_project_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsRequest.project_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string app_id = 2;
+  if (!this->_internal_app_id().empty()) {
+    const std::string& _s = this->_internal_app_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsRequest.app_id");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string start_date = 3;
+  if (!this->_internal_start_date().empty()) {
+    const std::string& _s = this->_internal_start_date();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsRequest.start_date");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // string end_date = 4;
+  if (!this->_internal_end_date().empty()) {
+    const std::string& _s = this->_internal_end_date();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsRequest.end_date");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
+  }
+
+  // .speechly.analytics.v1.Aggregation aggregation = 5;
+  if (this->_internal_aggregation() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        5, this->_internal_aggregation(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:speechly.analytics.v1.ModerationStatisticsRequest)
+  return target;
+}
+
+::size_t ModerationStatisticsRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:speechly.analytics.v1.ModerationStatisticsRequest)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string project_id = 1;
+  if (!this->_internal_project_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_project_id());
+  }
+
+  // string app_id = 2;
+  if (!this->_internal_app_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_app_id());
+  }
+
+  // string start_date = 3;
+  if (!this->_internal_start_date().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_start_date());
+  }
+
+  // string end_date = 4;
+  if (!this->_internal_end_date().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_end_date());
+  }
+
+  // .speechly.analytics.v1.Aggregation aggregation = 5;
+  if (this->_internal_aggregation() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_aggregation());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData ModerationStatisticsRequest::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    ModerationStatisticsRequest::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*ModerationStatisticsRequest::GetClassData() const { return &_class_data_; }
+
+
+void ModerationStatisticsRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ModerationStatisticsRequest*>(&to_msg);
+  auto& from = static_cast<const ModerationStatisticsRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.ModerationStatisticsRequest)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_project_id().empty()) {
+    _this->_internal_set_project_id(from._internal_project_id());
+  }
+  if (!from._internal_app_id().empty()) {
+    _this->_internal_set_app_id(from._internal_app_id());
+  }
+  if (!from._internal_start_date().empty()) {
+    _this->_internal_set_start_date(from._internal_start_date());
+  }
+  if (!from._internal_end_date().empty()) {
+    _this->_internal_set_end_date(from._internal_end_date());
+  }
+  if (from._internal_aggregation() != 0) {
+    _this->_internal_set_aggregation(from._internal_aggregation());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ModerationStatisticsRequest::CopyFrom(const ModerationStatisticsRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:speechly.analytics.v1.ModerationStatisticsRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool ModerationStatisticsRequest::IsInitialized() const {
+  return true;
+}
+
+void ModerationStatisticsRequest::InternalSwap(ModerationStatisticsRequest* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.project_id_, lhs_arena,
+                                       &other->_impl_.project_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
+                                       &other->_impl_.app_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.start_date_, lhs_arena,
+                                       &other->_impl_.start_date_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.end_date_, lhs_arena,
+                                       &other->_impl_.end_date_, rhs_arena);
+  swap(_impl_.aggregation_, other->_impl_.aggregation_);
+}
+
+::google::protobuf::Metadata ModerationStatisticsRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
+      file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[8]);
+}
+// ===================================================================
+
+class ModerationStatisticsResponse::_Internal {
+ public:
+};
+
+void ModerationStatisticsResponse::clear_items() {
+  _internal_mutable_items()->Clear();
+}
+ModerationStatisticsResponse::ModerationStatisticsResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::Message(arena) {
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.ModerationStatisticsResponse)
+}
+ModerationStatisticsResponse::ModerationStatisticsResponse(const ModerationStatisticsResponse& from) : ::google::protobuf::Message() {
+  ModerationStatisticsResponse* const _this = this;
+  (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){from._impl_.items_},
+      decltype(_impl_.project_id_){},
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.start_date_){},
+      decltype(_impl_.end_date_){},
+      decltype(_impl_.aggregation_){},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  _impl_.project_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.project_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_project_id().empty()) {
+    _this->_impl_.project_id_.Set(from._internal_project_id(), _this->GetArenaForAllocation());
+  }
+  _impl_.app_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_app_id().empty()) {
+    _this->_impl_.app_id_.Set(from._internal_app_id(), _this->GetArenaForAllocation());
+  }
+  _impl_.start_date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.start_date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_start_date().empty()) {
+    _this->_impl_.start_date_.Set(from._internal_start_date(), _this->GetArenaForAllocation());
+  }
+  _impl_.end_date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.end_date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_end_date().empty()) {
+    _this->_impl_.end_date_.Set(from._internal_end_date(), _this->GetArenaForAllocation());
+  }
+  _this->_impl_.aggregation_ = from._impl_.aggregation_;
+
+  // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.ModerationStatisticsResponse)
+}
+inline void ModerationStatisticsResponse::SharedCtor(::_pb::Arena* arena) {
+  (void)arena;
+  new (&_impl_) Impl_{
+      decltype(_impl_.items_){arena},
+      decltype(_impl_.project_id_){},
+      decltype(_impl_.app_id_){},
+      decltype(_impl_.start_date_){},
+      decltype(_impl_.end_date_){},
+      decltype(_impl_.aggregation_){0},
+      /*decltype(_impl_._cached_size_)*/ {},
+  };
+  _impl_.project_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.project_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.app_id_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.app_id_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.start_date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.start_date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.end_date_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+        _impl_.end_date_.Set("", GetArenaForAllocation());
+  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+ModerationStatisticsResponse::~ModerationStatisticsResponse() {
+  // @@protoc_insertion_point(destructor:speechly.analytics.v1.ModerationStatisticsResponse)
+  _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  SharedDtor();
+}
+inline void ModerationStatisticsResponse::SharedDtor() {
+  ABSL_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.items_.~RepeatedPtrField();
+  _impl_.project_id_.Destroy();
+  _impl_.app_id_.Destroy();
+  _impl_.start_date_.Destroy();
+  _impl_.end_date_.Destroy();
+}
+void ModerationStatisticsResponse::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+PROTOBUF_NOINLINE void ModerationStatisticsResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:speechly.analytics.v1.ModerationStatisticsResponse)
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_mutable_items()->Clear();
+  _impl_.project_id_.ClearToEmpty();
+  _impl_.app_id_.ClearToEmpty();
+  _impl_.start_date_.ClearToEmpty();
+  _impl_.end_date_.ClearToEmpty();
+  _impl_.aggregation_ = 0;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+const char* ModerationStatisticsResponse::_InternalParse(
+    const char* ptr, ::_pbi::ParseContext* ctx) {
+  ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
+  return ptr;
+}
+
+
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 6, 1, 93, 2> ModerationStatisticsResponse::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    6, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967232,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    6,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    &_ModerationStatisticsResponse_default_instance_._instance,
+    ::_pbi::TcParser::GenericFallback,  // fallback
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // string project_id = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.project_id_)}},
+    // string app_id = 2;
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.app_id_)}},
+    // string start_date = 3;
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.start_date_)}},
+    // string end_date = 4;
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.end_date_)}},
+    // .speechly.analytics.v1.Aggregation aggregation = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsResponse, _impl_.aggregation_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.aggregation_)}},
+    // repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
+    {::_pbi::TcParser::FastMtR1,
+     {50, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.items_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string project_id = 1;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.project_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string app_id = 2;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.app_id_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string start_date = 3;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.start_date_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string end_date = 4;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.end_date_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .speechly.analytics.v1.Aggregation aggregation = 5;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.aggregation_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.items_), 0, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::speechly::analytics::v1::ModerationStatisticsPeriod>()},
+  }}, {{
+    "\62\12\6\12\10\0\0\0"
+    "speechly.analytics.v1.ModerationStatisticsResponse"
+    "project_id"
+    "app_id"
+    "start_date"
+    "end_date"
+  }},
+};
+
+::uint8_t* ModerationStatisticsResponse::_InternalSerialize(
+    ::uint8_t* target,
+    ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:speechly.analytics.v1.ModerationStatisticsResponse)
+  ::uint32_t cached_has_bits = 0;
+  (void)cached_has_bits;
+
+  // string project_id = 1;
+  if (!this->_internal_project_id().empty()) {
+    const std::string& _s = this->_internal_project_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsResponse.project_id");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
+  }
+
+  // string app_id = 2;
+  if (!this->_internal_app_id().empty()) {
+    const std::string& _s = this->_internal_app_id();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsResponse.app_id");
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // string start_date = 3;
+  if (!this->_internal_start_date().empty()) {
+    const std::string& _s = this->_internal_start_date();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsResponse.start_date");
+    target = stream->WriteStringMaybeAliased(3, _s, target);
+  }
+
+  // string end_date = 4;
+  if (!this->_internal_end_date().empty()) {
+    const std::string& _s = this->_internal_end_date();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsResponse.end_date");
+    target = stream->WriteStringMaybeAliased(4, _s, target);
+  }
+
+  // .speechly.analytics.v1.Aggregation aggregation = 5;
+  if (this->_internal_aggregation() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteEnumToArray(
+        5, this->_internal_aggregation(), target);
+  }
+
+  // repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
+  for (unsigned i = 0,
+      n = static_cast<unsigned>(this->_internal_items_size()); i < n; i++) {
+    const auto& repfield = this->_internal_items().Get(i);
+    target = ::google::protobuf::internal::WireFormatLite::
+        InternalWriteMessage(6, repfield, repfield.GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target =
+        ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+            _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:speechly.analytics.v1.ModerationStatisticsResponse)
+  return target;
+}
+
+::size_t ModerationStatisticsResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:speechly.analytics.v1.ModerationStatisticsResponse)
+  ::size_t total_size = 0;
+
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
+  total_size += 1UL * this->_internal_items_size();
+  for (const auto& msg : this->_internal_items()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+  }
+  // string project_id = 1;
+  if (!this->_internal_project_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_project_id());
+  }
+
+  // string app_id = 2;
+  if (!this->_internal_app_id().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_app_id());
+  }
+
+  // string start_date = 3;
+  if (!this->_internal_start_date().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_start_date());
+  }
+
+  // string end_date = 4;
+  if (!this->_internal_end_date().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_end_date());
+  }
+
+  // .speechly.analytics.v1.Aggregation aggregation = 5;
+  if (this->_internal_aggregation() != 0) {
+    total_size += 1 +
+                  ::_pbi::WireFormatLite::EnumSize(this->_internal_aggregation());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::google::protobuf::Message::ClassData ModerationStatisticsResponse::_class_data_ = {
+    ::google::protobuf::Message::CopyWithSourceCheck,
+    ModerationStatisticsResponse::MergeImpl
+};
+const ::google::protobuf::Message::ClassData*ModerationStatisticsResponse::GetClassData() const { return &_class_data_; }
+
+
+void ModerationStatisticsResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<ModerationStatisticsResponse*>(&to_msg);
+  auto& from = static_cast<const ModerationStatisticsResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:speechly.analytics.v1.ModerationStatisticsResponse)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  _this->_internal_mutable_items()->MergeFrom(from._internal_items());
+  if (!from._internal_project_id().empty()) {
+    _this->_internal_set_project_id(from._internal_project_id());
+  }
+  if (!from._internal_app_id().empty()) {
+    _this->_internal_set_app_id(from._internal_app_id());
+  }
+  if (!from._internal_start_date().empty()) {
+    _this->_internal_set_start_date(from._internal_start_date());
+  }
+  if (!from._internal_end_date().empty()) {
+    _this->_internal_set_end_date(from._internal_end_date());
+  }
+  if (from._internal_aggregation() != 0) {
+    _this->_internal_set_aggregation(from._internal_aggregation());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ModerationStatisticsResponse::CopyFrom(const ModerationStatisticsResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:speechly.analytics.v1.ModerationStatisticsResponse)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+PROTOBUF_NOINLINE bool ModerationStatisticsResponse::IsInitialized() const {
+  return true;
+}
+
+void ModerationStatisticsResponse::InternalSwap(ModerationStatisticsResponse* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  _impl_.items_.InternalSwap(&other->_impl_.items_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.project_id_, lhs_arena,
+                                       &other->_impl_.project_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.app_id_, lhs_arena,
+                                       &other->_impl_.app_id_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.start_date_, lhs_arena,
+                                       &other->_impl_.start_date_, rhs_arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.end_date_, lhs_arena,
+                                       &other->_impl_.end_date_, rhs_arena);
+  swap(_impl_.aggregation_, other->_impl_.aggregation_);
+}
+
+::google::protobuf::Metadata ModerationStatisticsResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
+      file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[9]);
+}
+// ===================================================================
+
+class UserStatisticsRequest::_Internal {
+ public:
+};
+
+UserStatisticsRequest::UserStatisticsRequest(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.UserStatisticsRequest)
+}
+UserStatisticsRequest::UserStatisticsRequest(const UserStatisticsRequest& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+  UserStatisticsRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.UserStatisticsRequest)
+}
+
+
+
+
+const ::google::protobuf::Message::ClassData UserStatisticsRequest::_class_data_ = {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::google::protobuf::Message::ClassData*UserStatisticsRequest::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::google::protobuf::Metadata UserStatisticsRequest::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
+      file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[10]);
+}
+// ===================================================================
+
+class UserStatisticsResponse::_Internal {
+ public:
+};
+
+UserStatisticsResponse::UserStatisticsResponse(::google::protobuf::Arena* arena)
+    : ::google::protobuf::internal::ZeroFieldsBase(arena) {
+  // @@protoc_insertion_point(arena_constructor:speechly.analytics.v1.UserStatisticsResponse)
+}
+UserStatisticsResponse::UserStatisticsResponse(const UserStatisticsResponse& from) : ::google::protobuf::internal::ZeroFieldsBase() {
+  UserStatisticsResponse* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+
+  // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.UserStatisticsResponse)
+}
+
+
+
+
+const ::google::protobuf::Message::ClassData UserStatisticsResponse::_class_data_ = {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl,
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl,
+};
+const ::google::protobuf::Message::ClassData*UserStatisticsResponse::GetClassData() const { return &_class_data_; }
+
+
+
+
+
+
+
+::google::protobuf::Metadata UserStatisticsResponse::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_getter, &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
+      file_level_metadata_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto[11]);
 }
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v1

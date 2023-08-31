@@ -118,7 +118,8 @@ extension Speechly_Analytics_V1_UtteranceStatisticsRequest.Scope: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-/// Contains a list of statistics entries for utterances, based on the requested scope.
+/// Contains a list of statistics entries for utterances, based on the requested
+/// scope.
 public struct Speechly_Analytics_V1_UtteranceStatisticsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -336,6 +337,7 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest.Status: CaseIterable {
 
 #endif  // swift(>=4.2)
 
+/// Default empty response.
 public struct Speechly_Analytics_V1_RegisterUtteranceResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -369,6 +371,90 @@ public struct Speechly_Analytics_V1_RegisterUtterancesResponse {
   public init() {}
 }
 
+/// Request time series statistics about moderation events.
+public struct Speechly_Analytics_V1_ModerationStatisticsRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  /// the project to return statistics for.
+  /// Required when there are multiple projects to choose from.
+  public var projectID: String = String()
+
+  /// Limit statistics to a single app_id.
+  /// Default is none, returning statistics for the project in scope.
+  public var appID: String = String()
+
+  /// Start of requested statistics period.
+  /// Default is 15 days ago.
+  /// Must be YYYY-mm-DD formatted string if given.
+  public var startDate: String = String()
+
+  /// End of requested statistics period.
+  /// Default is 1 day ago, resulting in two full weeks.
+  /// Must be YYYY-mm-DD formatted string if given.
+  public var endDate: String = String()
+
+  /// Aggregation of the data.
+  /// Default is DAILY
+  public var aggregation: Speechly_Analytics_V1_Aggregation = .invalid
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// Contains the time series data for moderation events.
+public struct Speechly_Analytics_V1_ModerationStatisticsResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var projectID: String = String()
+
+  public var appID: String = String()
+
+  /// Start of this statistics period.
+  /// YYYY-mm-DD formatted string.
+  public var startDate: String = String()
+
+  /// End of this statistics period.
+  /// YYYY-mm-DD formatted string.
+  public var endDate: String = String()
+
+  /// Time period length.
+  public var aggregation: Speechly_Analytics_V1_Aggregation = .invalid
+
+  /// Aggregated results.
+  public var items: [Speechly_Analytics_V1_ModerationStatisticsPeriod] = []
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// Request for getting user statistics.
+public struct Speechly_Analytics_V1_UserStatisticsRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
+/// Contains the user statistics requested.
+public struct Speechly_Analytics_V1_UserStatisticsResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 #if swift(>=5.5) && canImport(_Concurrency)
 extension Speechly_Analytics_V1_UtteranceStatisticsRequest: @unchecked Sendable {}
 extension Speechly_Analytics_V1_UtteranceStatisticsRequest.Scope: @unchecked Sendable {}
@@ -380,6 +466,10 @@ extension Speechly_Analytics_V1_RegisterUtteranceRequest.Status: @unchecked Send
 extension Speechly_Analytics_V1_RegisterUtteranceResponse: @unchecked Sendable {}
 extension Speechly_Analytics_V1_RegisterUtterancesRequest: @unchecked Sendable {}
 extension Speechly_Analytics_V1_RegisterUtterancesResponse: @unchecked Sendable {}
+extension Speechly_Analytics_V1_ModerationStatisticsRequest: @unchecked Sendable {}
+extension Speechly_Analytics_V1_ModerationStatisticsResponse: @unchecked Sendable {}
+extension Speechly_Analytics_V1_UserStatisticsRequest: @unchecked Sendable {}
+extension Speechly_Analytics_V1_UserStatisticsResponse: @unchecked Sendable {}
 #endif  // swift(>=5.5) && canImport(_Concurrency)
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
@@ -832,6 +922,162 @@ extension Speechly_Analytics_V1_RegisterUtterancesResponse: SwiftProtobuf.Messag
   }
 
   public static func ==(lhs: Speechly_Analytics_V1_RegisterUtterancesResponse, rhs: Speechly_Analytics_V1_RegisterUtterancesResponse) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_ModerationStatisticsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ModerationStatisticsRequest"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "project_id"),
+    2: .standard(proto: "app_id"),
+    3: .standard(proto: "start_date"),
+    4: .standard(proto: "end_date"),
+    5: .same(proto: "aggregation"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.projectID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.appID) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.startDate) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.endDate) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.aggregation) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.projectID.isEmpty {
+      try visitor.visitSingularStringField(value: self.projectID, fieldNumber: 1)
+    }
+    if !self.appID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 2)
+    }
+    if !self.startDate.isEmpty {
+      try visitor.visitSingularStringField(value: self.startDate, fieldNumber: 3)
+    }
+    if !self.endDate.isEmpty {
+      try visitor.visitSingularStringField(value: self.endDate, fieldNumber: 4)
+    }
+    if self.aggregation != .invalid {
+      try visitor.visitSingularEnumField(value: self.aggregation, fieldNumber: 5)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_ModerationStatisticsRequest, rhs: Speechly_Analytics_V1_ModerationStatisticsRequest) -> Bool {
+    if lhs.projectID != rhs.projectID {return false}
+    if lhs.appID != rhs.appID {return false}
+    if lhs.startDate != rhs.startDate {return false}
+    if lhs.endDate != rhs.endDate {return false}
+    if lhs.aggregation != rhs.aggregation {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_ModerationStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".ModerationStatisticsResponse"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "project_id"),
+    2: .standard(proto: "app_id"),
+    3: .standard(proto: "start_date"),
+    4: .standard(proto: "end_date"),
+    5: .same(proto: "aggregation"),
+    6: .same(proto: "items"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      // The use of inline closures is to circumvent an issue where the compiler
+      // allocates stack space for every case branch when no optimizations are
+      // enabled. https://github.com/apple/swift-protobuf/issues/1034
+      switch fieldNumber {
+      case 1: try { try decoder.decodeSingularStringField(value: &self.projectID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.appID) }()
+      case 3: try { try decoder.decodeSingularStringField(value: &self.startDate) }()
+      case 4: try { try decoder.decodeSingularStringField(value: &self.endDate) }()
+      case 5: try { try decoder.decodeSingularEnumField(value: &self.aggregation) }()
+      case 6: try { try decoder.decodeRepeatedMessageField(value: &self.items) }()
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.projectID.isEmpty {
+      try visitor.visitSingularStringField(value: self.projectID, fieldNumber: 1)
+    }
+    if !self.appID.isEmpty {
+      try visitor.visitSingularStringField(value: self.appID, fieldNumber: 2)
+    }
+    if !self.startDate.isEmpty {
+      try visitor.visitSingularStringField(value: self.startDate, fieldNumber: 3)
+    }
+    if !self.endDate.isEmpty {
+      try visitor.visitSingularStringField(value: self.endDate, fieldNumber: 4)
+    }
+    if self.aggregation != .invalid {
+      try visitor.visitSingularEnumField(value: self.aggregation, fieldNumber: 5)
+    }
+    if !self.items.isEmpty {
+      try visitor.visitRepeatedMessageField(value: self.items, fieldNumber: 6)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_ModerationStatisticsResponse, rhs: Speechly_Analytics_V1_ModerationStatisticsResponse) -> Bool {
+    if lhs.projectID != rhs.projectID {return false}
+    if lhs.appID != rhs.appID {return false}
+    if lhs.startDate != rhs.startDate {return false}
+    if lhs.endDate != rhs.endDate {return false}
+    if lhs.aggregation != rhs.aggregation {return false}
+    if lhs.items != rhs.items {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_UserStatisticsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UserStatisticsRequest"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_UserStatisticsRequest, rhs: Speechly_Analytics_V1_UserStatisticsRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension Speechly_Analytics_V1_UserStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = _protobuf_package + ".UserStatisticsResponse"
+  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let _ = try decoder.nextFieldNumber() {
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: Speechly_Analytics_V1_UserStatisticsResponse, rhs: Speechly_Analytics_V1_UserStatisticsResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

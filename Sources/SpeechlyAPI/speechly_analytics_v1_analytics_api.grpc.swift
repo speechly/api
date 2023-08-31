@@ -38,6 +38,16 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIClientProtocol: GRPCClient {
     _ request: Speechly_Analytics_V1_RegisterUtterancesRequest,
     callOptions: CallOptions?
   ) -> UnaryCall<Speechly_Analytics_V1_RegisterUtterancesRequest, Speechly_Analytics_V1_RegisterUtterancesResponse>
+
+  func moderationStatistics(
+    _ request: Speechly_Analytics_V1_ModerationStatisticsRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Speechly_Analytics_V1_ModerationStatisticsRequest, Speechly_Analytics_V1_ModerationStatisticsResponse>
+
+  func userStatistics(
+    _ request: Speechly_Analytics_V1_UserStatisticsRequest,
+    callOptions: CallOptions?
+  ) -> UnaryCall<Speechly_Analytics_V1_UserStatisticsRequest, Speechly_Analytics_V1_UserStatisticsResponse>
 }
 
 extension Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
@@ -114,6 +124,42 @@ extension Speechly_Analytics_V1_AnalyticsAPIClientProtocol {
       request: request,
       callOptions: callOptions ?? self.defaultCallOptions,
       interceptors: self.interceptors?.makeRegisterUtterancesInterceptors() ?? []
+    )
+  }
+
+  /// Get moderation event statistics for a project.
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to ModerationStatistics.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func moderationStatistics(
+    _ request: Speechly_Analytics_V1_ModerationStatisticsRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Speechly_Analytics_V1_ModerationStatisticsRequest, Speechly_Analytics_V1_ModerationStatisticsResponse> {
+    return self.makeUnaryCall(
+      path: Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.moderationStatistics.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeModerationStatisticsInterceptors() ?? []
+    )
+  }
+
+  /// Get statistics about user behaviour.
+  ///
+  /// - Parameters:
+  ///   - request: Request to send to UserStatistics.
+  ///   - callOptions: Call options.
+  /// - Returns: A `UnaryCall` with futures for the metadata, status and response.
+  public func userStatistics(
+    _ request: Speechly_Analytics_V1_UserStatisticsRequest,
+    callOptions: CallOptions? = nil
+  ) -> UnaryCall<Speechly_Analytics_V1_UserStatisticsRequest, Speechly_Analytics_V1_UserStatisticsResponse> {
+    return self.makeUnaryCall(
+      path: Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.userStatistics.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeUserStatisticsInterceptors() ?? []
     )
   }
 }
@@ -201,6 +247,16 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIAsyncClientProtocol: GRPCClien
     _ request: Speechly_Analytics_V1_RegisterUtterancesRequest,
     callOptions: CallOptions?
   ) -> GRPCAsyncUnaryCall<Speechly_Analytics_V1_RegisterUtterancesRequest, Speechly_Analytics_V1_RegisterUtterancesResponse>
+
+  func makeModerationStatisticsCall(
+    _ request: Speechly_Analytics_V1_ModerationStatisticsRequest,
+    callOptions: CallOptions?
+  ) -> GRPCAsyncUnaryCall<Speechly_Analytics_V1_ModerationStatisticsRequest, Speechly_Analytics_V1_ModerationStatisticsResponse>
+
+  func makeUserStatisticsCall(
+    _ request: Speechly_Analytics_V1_UserStatisticsRequest,
+    callOptions: CallOptions?
+  ) -> GRPCAsyncUnaryCall<Speechly_Analytics_V1_UserStatisticsRequest, Speechly_Analytics_V1_UserStatisticsResponse>
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -260,6 +316,30 @@ extension Speechly_Analytics_V1_AnalyticsAPIAsyncClientProtocol {
       interceptors: self.interceptors?.makeRegisterUtterancesInterceptors() ?? []
     )
   }
+
+  public func makeModerationStatisticsCall(
+    _ request: Speechly_Analytics_V1_ModerationStatisticsRequest,
+    callOptions: CallOptions? = nil
+  ) -> GRPCAsyncUnaryCall<Speechly_Analytics_V1_ModerationStatisticsRequest, Speechly_Analytics_V1_ModerationStatisticsResponse> {
+    return self.makeAsyncUnaryCall(
+      path: Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.moderationStatistics.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeModerationStatisticsInterceptors() ?? []
+    )
+  }
+
+  public func makeUserStatisticsCall(
+    _ request: Speechly_Analytics_V1_UserStatisticsRequest,
+    callOptions: CallOptions? = nil
+  ) -> GRPCAsyncUnaryCall<Speechly_Analytics_V1_UserStatisticsRequest, Speechly_Analytics_V1_UserStatisticsResponse> {
+    return self.makeAsyncUnaryCall(
+      path: Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.userStatistics.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeUserStatisticsInterceptors() ?? []
+    )
+  }
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -311,6 +391,30 @@ extension Speechly_Analytics_V1_AnalyticsAPIAsyncClientProtocol {
       interceptors: self.interceptors?.makeRegisterUtterancesInterceptors() ?? []
     )
   }
+
+  public func moderationStatistics(
+    _ request: Speechly_Analytics_V1_ModerationStatisticsRequest,
+    callOptions: CallOptions? = nil
+  ) async throws -> Speechly_Analytics_V1_ModerationStatisticsResponse {
+    return try await self.performAsyncUnaryCall(
+      path: Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.moderationStatistics.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeModerationStatisticsInterceptors() ?? []
+    )
+  }
+
+  public func userStatistics(
+    _ request: Speechly_Analytics_V1_UserStatisticsRequest,
+    callOptions: CallOptions? = nil
+  ) async throws -> Speechly_Analytics_V1_UserStatisticsResponse {
+    return try await self.performAsyncUnaryCall(
+      path: Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.userStatistics.path,
+      request: request,
+      callOptions: callOptions ?? self.defaultCallOptions,
+      interceptors: self.interceptors?.makeUserStatisticsInterceptors() ?? []
+    )
+  }
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -343,6 +447,12 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIClientInterceptorFactoryProtoc
 
   /// - Returns: Interceptors to use when invoking 'registerUtterances'.
   func makeRegisterUtterancesInterceptors() -> [ClientInterceptor<Speechly_Analytics_V1_RegisterUtterancesRequest, Speechly_Analytics_V1_RegisterUtterancesResponse>]
+
+  /// - Returns: Interceptors to use when invoking 'moderationStatistics'.
+  func makeModerationStatisticsInterceptors() -> [ClientInterceptor<Speechly_Analytics_V1_ModerationStatisticsRequest, Speechly_Analytics_V1_ModerationStatisticsResponse>]
+
+  /// - Returns: Interceptors to use when invoking 'userStatistics'.
+  func makeUserStatisticsInterceptors() -> [ClientInterceptor<Speechly_Analytics_V1_UserStatisticsRequest, Speechly_Analytics_V1_UserStatisticsResponse>]
 }
 
 public enum Speechly_Analytics_V1_AnalyticsAPIClientMetadata {
@@ -354,6 +464,8 @@ public enum Speechly_Analytics_V1_AnalyticsAPIClientMetadata {
       Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.utterances,
       Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.registerUtterance,
       Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.registerUtterances,
+      Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.moderationStatistics,
+      Speechly_Analytics_V1_AnalyticsAPIClientMetadata.Methods.userStatistics,
     ]
   )
 
@@ -381,6 +493,18 @@ public enum Speechly_Analytics_V1_AnalyticsAPIClientMetadata {
       path: "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterances",
       type: GRPCCallType.unary
     )
+
+    public static let moderationStatistics = GRPCMethodDescriptor(
+      name: "ModerationStatistics",
+      path: "/speechly.analytics.v1.AnalyticsAPI/ModerationStatistics",
+      type: GRPCCallType.unary
+    )
+
+    public static let userStatistics = GRPCMethodDescriptor(
+      name: "UserStatistics",
+      path: "/speechly.analytics.v1.AnalyticsAPI/UserStatistics",
+      type: GRPCCallType.unary
+    )
   }
 }
 
@@ -402,6 +526,12 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIProvider: CallHandlerProvider 
 
   /// Register multiple utterances in a single request.
   func registerUtterances(request: Speechly_Analytics_V1_RegisterUtterancesRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Analytics_V1_RegisterUtterancesResponse>
+
+  /// Get moderation event statistics for a project.
+  func moderationStatistics(request: Speechly_Analytics_V1_ModerationStatisticsRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Analytics_V1_ModerationStatisticsResponse>
+
+  /// Get statistics about user behaviour.
+  func userStatistics(request: Speechly_Analytics_V1_UserStatisticsRequest, context: StatusOnlyCallContext) -> EventLoopFuture<Speechly_Analytics_V1_UserStatisticsResponse>
 }
 
 extension Speechly_Analytics_V1_AnalyticsAPIProvider {
@@ -452,6 +582,24 @@ extension Speechly_Analytics_V1_AnalyticsAPIProvider {
         userFunction: self.registerUtterances(request:context:)
       )
 
+    case "ModerationStatistics":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Analytics_V1_ModerationStatisticsRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Analytics_V1_ModerationStatisticsResponse>(),
+        interceptors: self.interceptors?.makeModerationStatisticsInterceptors() ?? [],
+        userFunction: self.moderationStatistics(request:context:)
+      )
+
+    case "UserStatistics":
+      return UnaryServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Analytics_V1_UserStatisticsRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Analytics_V1_UserStatisticsResponse>(),
+        interceptors: self.interceptors?.makeUserStatisticsInterceptors() ?? [],
+        userFunction: self.userStatistics(request:context:)
+      )
+
     default:
       return nil
     }
@@ -490,6 +638,18 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIAsyncProvider: CallHandlerProv
     request: Speechly_Analytics_V1_RegisterUtterancesRequest,
     context: GRPCAsyncServerCallContext
   ) async throws -> Speechly_Analytics_V1_RegisterUtterancesResponse
+
+  /// Get moderation event statistics for a project.
+  func moderationStatistics(
+    request: Speechly_Analytics_V1_ModerationStatisticsRequest,
+    context: GRPCAsyncServerCallContext
+  ) async throws -> Speechly_Analytics_V1_ModerationStatisticsResponse
+
+  /// Get statistics about user behaviour.
+  func userStatistics(
+    request: Speechly_Analytics_V1_UserStatisticsRequest,
+    context: GRPCAsyncServerCallContext
+  ) async throws -> Speechly_Analytics_V1_UserStatisticsResponse
 }
 
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -547,6 +707,24 @@ extension Speechly_Analytics_V1_AnalyticsAPIAsyncProvider {
         wrapping: { try await self.registerUtterances(request: $0, context: $1) }
       )
 
+    case "ModerationStatistics":
+      return GRPCAsyncServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Analytics_V1_ModerationStatisticsRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Analytics_V1_ModerationStatisticsResponse>(),
+        interceptors: self.interceptors?.makeModerationStatisticsInterceptors() ?? [],
+        wrapping: { try await self.moderationStatistics(request: $0, context: $1) }
+      )
+
+    case "UserStatistics":
+      return GRPCAsyncServerHandler(
+        context: context,
+        requestDeserializer: ProtobufDeserializer<Speechly_Analytics_V1_UserStatisticsRequest>(),
+        responseSerializer: ProtobufSerializer<Speechly_Analytics_V1_UserStatisticsResponse>(),
+        interceptors: self.interceptors?.makeUserStatisticsInterceptors() ?? [],
+        wrapping: { try await self.userStatistics(request: $0, context: $1) }
+      )
+
     default:
       return nil
     }
@@ -570,6 +748,14 @@ public protocol Speechly_Analytics_V1_AnalyticsAPIServerInterceptorFactoryProtoc
   /// - Returns: Interceptors to use when handling 'registerUtterances'.
   ///   Defaults to calling `self.makeInterceptors()`.
   func makeRegisterUtterancesInterceptors() -> [ServerInterceptor<Speechly_Analytics_V1_RegisterUtterancesRequest, Speechly_Analytics_V1_RegisterUtterancesResponse>]
+
+  /// - Returns: Interceptors to use when handling 'moderationStatistics'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeModerationStatisticsInterceptors() -> [ServerInterceptor<Speechly_Analytics_V1_ModerationStatisticsRequest, Speechly_Analytics_V1_ModerationStatisticsResponse>]
+
+  /// - Returns: Interceptors to use when handling 'userStatistics'.
+  ///   Defaults to calling `self.makeInterceptors()`.
+  func makeUserStatisticsInterceptors() -> [ServerInterceptor<Speechly_Analytics_V1_UserStatisticsRequest, Speechly_Analytics_V1_UserStatisticsResponse>]
 }
 
 public enum Speechly_Analytics_V1_AnalyticsAPIServerMetadata {
@@ -581,6 +767,8 @@ public enum Speechly_Analytics_V1_AnalyticsAPIServerMetadata {
       Speechly_Analytics_V1_AnalyticsAPIServerMetadata.Methods.utterances,
       Speechly_Analytics_V1_AnalyticsAPIServerMetadata.Methods.registerUtterance,
       Speechly_Analytics_V1_AnalyticsAPIServerMetadata.Methods.registerUtterances,
+      Speechly_Analytics_V1_AnalyticsAPIServerMetadata.Methods.moderationStatistics,
+      Speechly_Analytics_V1_AnalyticsAPIServerMetadata.Methods.userStatistics,
     ]
   )
 
@@ -606,6 +794,18 @@ public enum Speechly_Analytics_V1_AnalyticsAPIServerMetadata {
     public static let registerUtterances = GRPCMethodDescriptor(
       name: "RegisterUtterances",
       path: "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterances",
+      type: GRPCCallType.unary
+    )
+
+    public static let moderationStatistics = GRPCMethodDescriptor(
+      name: "ModerationStatistics",
+      path: "/speechly.analytics.v1.AnalyticsAPI/ModerationStatistics",
+      type: GRPCCallType.unary
+    )
+
+    public static let userStatistics = GRPCMethodDescriptor(
+      name: "UserStatistics",
+      path: "/speechly.analytics.v1.AnalyticsAPI/UserStatistics",
       type: GRPCCallType.unary
     )
   }

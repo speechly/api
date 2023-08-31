@@ -25,6 +25,8 @@ static const char* AnalyticsAPI_method_names[] = {
   "/speechly.analytics.v1.AnalyticsAPI/Utterances",
   "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterance",
   "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterances",
+  "/speechly.analytics.v1.AnalyticsAPI/ModerationStatistics",
+  "/speechly.analytics.v1.AnalyticsAPI/UserStatistics",
 };
 
 std::unique_ptr< AnalyticsAPI::Stub> AnalyticsAPI::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -38,6 +40,8 @@ AnalyticsAPI::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& chann
   , rpcmethod_Utterances_(AnalyticsAPI_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RegisterUtterance_(AnalyticsAPI_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_RegisterUtterances_(AnalyticsAPI_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_ModerationStatistics_(AnalyticsAPI_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_UserStatistics_(AnalyticsAPI_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status AnalyticsAPI::Stub::UtteranceStatistics(::grpc::ClientContext* context, const ::speechly::analytics::v1::UtteranceStatisticsRequest& request, ::speechly::analytics::v1::UtteranceStatisticsResponse* response) {
@@ -152,6 +156,62 @@ void AnalyticsAPI::Stub::experimental_async::RegisterUtterances(::grpc::ClientCo
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::analytics::v1::RegisterUtterancesResponse>::Create(channel_.get(), cq, rpcmethod_RegisterUtterances_, context, request, false);
 }
 
+::grpc::Status AnalyticsAPI::Stub::ModerationStatistics(::grpc::ClientContext* context, const ::speechly::analytics::v1::ModerationStatisticsRequest& request, ::speechly::analytics::v1::ModerationStatisticsResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_ModerationStatistics_, context, request, response);
+}
+
+void AnalyticsAPI::Stub::experimental_async::ModerationStatistics(::grpc::ClientContext* context, const ::speechly::analytics::v1::ModerationStatisticsRequest* request, ::speechly::analytics::v1::ModerationStatisticsResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ModerationStatistics_, context, request, response, std::move(f));
+}
+
+void AnalyticsAPI::Stub::experimental_async::ModerationStatistics(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::ModerationStatisticsResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_ModerationStatistics_, context, request, response, std::move(f));
+}
+
+void AnalyticsAPI::Stub::experimental_async::ModerationStatistics(::grpc::ClientContext* context, const ::speechly::analytics::v1::ModerationStatisticsRequest* request, ::speechly::analytics::v1::ModerationStatisticsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_ModerationStatistics_, context, request, response, reactor);
+}
+
+void AnalyticsAPI::Stub::experimental_async::ModerationStatistics(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::ModerationStatisticsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_ModerationStatistics_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::ModerationStatisticsResponse>* AnalyticsAPI::Stub::AsyncModerationStatisticsRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::ModerationStatisticsRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::analytics::v1::ModerationStatisticsResponse>::Create(channel_.get(), cq, rpcmethod_ModerationStatistics_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::ModerationStatisticsResponse>* AnalyticsAPI::Stub::PrepareAsyncModerationStatisticsRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::ModerationStatisticsRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::analytics::v1::ModerationStatisticsResponse>::Create(channel_.get(), cq, rpcmethod_ModerationStatistics_, context, request, false);
+}
+
+::grpc::Status AnalyticsAPI::Stub::UserStatistics(::grpc::ClientContext* context, const ::speechly::analytics::v1::UserStatisticsRequest& request, ::speechly::analytics::v1::UserStatisticsResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_UserStatistics_, context, request, response);
+}
+
+void AnalyticsAPI::Stub::experimental_async::UserStatistics(::grpc::ClientContext* context, const ::speechly::analytics::v1::UserStatisticsRequest* request, ::speechly::analytics::v1::UserStatisticsResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_UserStatistics_, context, request, response, std::move(f));
+}
+
+void AnalyticsAPI::Stub::experimental_async::UserStatistics(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::UserStatisticsResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_UserStatistics_, context, request, response, std::move(f));
+}
+
+void AnalyticsAPI::Stub::experimental_async::UserStatistics(::grpc::ClientContext* context, const ::speechly::analytics::v1::UserStatisticsRequest* request, ::speechly::analytics::v1::UserStatisticsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_UserStatistics_, context, request, response, reactor);
+}
+
+void AnalyticsAPI::Stub::experimental_async::UserStatistics(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::speechly::analytics::v1::UserStatisticsResponse* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_UserStatistics_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::UserStatisticsResponse>* AnalyticsAPI::Stub::AsyncUserStatisticsRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::UserStatisticsRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::analytics::v1::UserStatisticsResponse>::Create(channel_.get(), cq, rpcmethod_UserStatistics_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::speechly::analytics::v1::UserStatisticsResponse>* AnalyticsAPI::Stub::PrepareAsyncUserStatisticsRaw(::grpc::ClientContext* context, const ::speechly::analytics::v1::UserStatisticsRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::speechly::analytics::v1::UserStatisticsResponse>::Create(channel_.get(), cq, rpcmethod_UserStatistics_, context, request, false);
+}
+
 AnalyticsAPI::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       AnalyticsAPI_method_names[0],
@@ -173,6 +233,16 @@ AnalyticsAPI::Service::Service() {
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< AnalyticsAPI::Service, ::speechly::analytics::v1::RegisterUtterancesRequest, ::speechly::analytics::v1::RegisterUtterancesResponse>(
           std::mem_fn(&AnalyticsAPI::Service::RegisterUtterances), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AnalyticsAPI_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AnalyticsAPI::Service, ::speechly::analytics::v1::ModerationStatisticsRequest, ::speechly::analytics::v1::ModerationStatisticsResponse>(
+          std::mem_fn(&AnalyticsAPI::Service::ModerationStatistics), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AnalyticsAPI_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AnalyticsAPI::Service, ::speechly::analytics::v1::UserStatisticsRequest, ::speechly::analytics::v1::UserStatisticsResponse>(
+          std::mem_fn(&AnalyticsAPI::Service::UserStatistics), this)));
 }
 
 AnalyticsAPI::Service::~Service() {
@@ -200,6 +270,20 @@ AnalyticsAPI::Service::~Service() {
 }
 
 ::grpc::Status AnalyticsAPI::Service::RegisterUtterances(::grpc::ServerContext* context, const ::speechly::analytics::v1::RegisterUtterancesRequest* request, ::speechly::analytics::v1::RegisterUtterancesResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AnalyticsAPI::Service::ModerationStatistics(::grpc::ServerContext* context, const ::speechly::analytics::v1::ModerationStatisticsRequest* request, ::speechly::analytics::v1::ModerationStatisticsResponse* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AnalyticsAPI::Service::UserStatistics(::grpc::ServerContext* context, const ::speechly::analytics::v1::UserStatisticsRequest* request, ::speechly::analytics::v1::UserStatisticsResponse* response) {
   (void) context;
   (void) request;
   (void) response;

@@ -19,10 +19,12 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	AnalyticsAPI_UtteranceStatistics_FullMethodName = "/speechly.analytics.v1.AnalyticsAPI/UtteranceStatistics"
-	AnalyticsAPI_Utterances_FullMethodName          = "/speechly.analytics.v1.AnalyticsAPI/Utterances"
-	AnalyticsAPI_RegisterUtterance_FullMethodName   = "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterance"
-	AnalyticsAPI_RegisterUtterances_FullMethodName  = "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterances"
+	AnalyticsAPI_UtteranceStatistics_FullMethodName  = "/speechly.analytics.v1.AnalyticsAPI/UtteranceStatistics"
+	AnalyticsAPI_Utterances_FullMethodName           = "/speechly.analytics.v1.AnalyticsAPI/Utterances"
+	AnalyticsAPI_RegisterUtterance_FullMethodName    = "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterance"
+	AnalyticsAPI_RegisterUtterances_FullMethodName   = "/speechly.analytics.v1.AnalyticsAPI/RegisterUtterances"
+	AnalyticsAPI_ModerationStatistics_FullMethodName = "/speechly.analytics.v1.AnalyticsAPI/ModerationStatistics"
+	AnalyticsAPI_UserStatistics_FullMethodName       = "/speechly.analytics.v1.AnalyticsAPI/UserStatistics"
 )
 
 // AnalyticsAPIClient is the client API for AnalyticsAPI service.
@@ -37,6 +39,10 @@ type AnalyticsAPIClient interface {
 	RegisterUtterance(ctx context.Context, in *RegisterUtteranceRequest, opts ...grpc.CallOption) (*RegisterUtteranceResponse, error)
 	// Register multiple utterances in a single request.
 	RegisterUtterances(ctx context.Context, in *RegisterUtterancesRequest, opts ...grpc.CallOption) (*RegisterUtterancesResponse, error)
+	// Get moderation event statistics for a project.
+	ModerationStatistics(ctx context.Context, in *ModerationStatisticsRequest, opts ...grpc.CallOption) (*ModerationStatisticsResponse, error)
+	// Get statistics about user behaviour.
+	UserStatistics(ctx context.Context, in *UserStatisticsRequest, opts ...grpc.CallOption) (*UserStatisticsResponse, error)
 }
 
 type analyticsAPIClient struct {
@@ -83,6 +89,24 @@ func (c *analyticsAPIClient) RegisterUtterances(ctx context.Context, in *Registe
 	return out, nil
 }
 
+func (c *analyticsAPIClient) ModerationStatistics(ctx context.Context, in *ModerationStatisticsRequest, opts ...grpc.CallOption) (*ModerationStatisticsResponse, error) {
+	out := new(ModerationStatisticsResponse)
+	err := c.cc.Invoke(ctx, AnalyticsAPI_ModerationStatistics_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *analyticsAPIClient) UserStatistics(ctx context.Context, in *UserStatisticsRequest, opts ...grpc.CallOption) (*UserStatisticsResponse, error) {
+	out := new(UserStatisticsResponse)
+	err := c.cc.Invoke(ctx, AnalyticsAPI_UserStatistics_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AnalyticsAPIServer is the server API for AnalyticsAPI service.
 // All implementations must embed UnimplementedAnalyticsAPIServer
 // for forward compatibility
@@ -95,6 +119,10 @@ type AnalyticsAPIServer interface {
 	RegisterUtterance(context.Context, *RegisterUtteranceRequest) (*RegisterUtteranceResponse, error)
 	// Register multiple utterances in a single request.
 	RegisterUtterances(context.Context, *RegisterUtterancesRequest) (*RegisterUtterancesResponse, error)
+	// Get moderation event statistics for a project.
+	ModerationStatistics(context.Context, *ModerationStatisticsRequest) (*ModerationStatisticsResponse, error)
+	// Get statistics about user behaviour.
+	UserStatistics(context.Context, *UserStatisticsRequest) (*UserStatisticsResponse, error)
 	mustEmbedUnimplementedAnalyticsAPIServer()
 }
 
@@ -113,6 +141,12 @@ func (UnimplementedAnalyticsAPIServer) RegisterUtterance(context.Context, *Regis
 }
 func (UnimplementedAnalyticsAPIServer) RegisterUtterances(context.Context, *RegisterUtterancesRequest) (*RegisterUtterancesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterUtterances not implemented")
+}
+func (UnimplementedAnalyticsAPIServer) ModerationStatistics(context.Context, *ModerationStatisticsRequest) (*ModerationStatisticsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ModerationStatistics not implemented")
+}
+func (UnimplementedAnalyticsAPIServer) UserStatistics(context.Context, *UserStatisticsRequest) (*UserStatisticsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserStatistics not implemented")
 }
 func (UnimplementedAnalyticsAPIServer) mustEmbedUnimplementedAnalyticsAPIServer() {}
 
@@ -199,6 +233,42 @@ func _AnalyticsAPI_RegisterUtterances_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AnalyticsAPI_ModerationStatistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ModerationStatisticsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AnalyticsAPIServer).ModerationStatistics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AnalyticsAPI_ModerationStatistics_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnalyticsAPIServer).ModerationStatistics(ctx, req.(*ModerationStatisticsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AnalyticsAPI_UserStatistics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserStatisticsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AnalyticsAPIServer).UserStatistics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AnalyticsAPI_UserStatistics_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AnalyticsAPIServer).UserStatistics(ctx, req.(*UserStatisticsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AnalyticsAPI_ServiceDesc is the grpc.ServiceDesc for AnalyticsAPI service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -221,6 +291,14 @@ var AnalyticsAPI_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RegisterUtterances",
 			Handler:    _AnalyticsAPI_RegisterUtterances_Handler,
+		},
+		{
+			MethodName: "ModerationStatistics",
+			Handler:    _AnalyticsAPI_ModerationStatistics_Handler,
+		},
+		{
+			MethodName: "UserStatistics",
+			Handler:    _AnalyticsAPI_UserStatistics_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
