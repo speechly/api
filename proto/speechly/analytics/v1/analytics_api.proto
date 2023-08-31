@@ -25,6 +25,11 @@ service AnalyticsAPI {
     rpc RegisterUtterance(RegisterUtteranceRequest) returns (RegisterUtteranceResponse);
     // Register multiple utterances in a single request.
     rpc RegisterUtterances(RegisterUtterancesRequest) returns (RegisterUtterancesResponse);
+
+    // Get moderation event statistics for a project.
+    rpc ModerationStatistics(ModerationStatisticsRequest) returns (ModerationStatisticsResponse);
+    // Get statistics about user behaviour.
+    rpc UserStatistics(UserStatisticsRequest) returns (UserStatisticsResponse);
 }
 
 // Includes keys for the UtteranceStatistics method.
@@ -66,7 +71,8 @@ message UtteranceStatisticsRequest {
     string project_id = 7;
 }
 
-// Contains a list of statistics entries for utterances, based on the requested scope.
+// Contains a list of statistics entries for utterances, based on the requested
+// scope.
 message UtteranceStatisticsResponse {
     // Start of this statistics period.
     // YYYY-mm-DD formatted string.
@@ -135,13 +141,53 @@ message RegisterUtteranceRequest {
     ProcessingInfo processing_info = 13;
 }
 
-message RegisterUtteranceResponse {
-}
+// Default empty response.
+message RegisterUtteranceResponse {}
 
 // Register multiple utterances in the same request.
-message RegisterUtterancesRequest {
-    repeated RegisterUtteranceRequest requests = 1;
+message RegisterUtterancesRequest { repeated RegisterUtteranceRequest requests = 1; }
+
+message RegisterUtterancesResponse {}
+
+// Request time series statistics about moderation events.
+message ModerationStatisticsRequest {
+    // the project to return statistics for.
+    // Required when there are multiple projects to choose from.
+    string project_id = 1;
+    // Limit statistics to a single app_id.
+    // Default is none, returning statistics for the project in scope.
+    string app_id = 2;
+    // Start of requested statistics period.
+    // Default is 15 days ago.
+    // Must be YYYY-mm-DD formatted string if given.
+    string start_date = 3;
+    // End of requested statistics period.
+    // Default is 1 day ago, resulting in two full weeks.
+    // Must be YYYY-mm-DD formatted string if given.
+    string end_date = 4;
+    // Aggregation of the data.
+    // Default is DAILY
+    Aggregation aggregation = 5;
 }
 
-message RegisterUtterancesResponse {
+// Contains the time series data for moderation events.
+message ModerationStatisticsResponse {
+    string project_id = 1;
+    string app_id = 2;
+    // Start of this statistics period.
+    // YYYY-mm-DD formatted string.
+    string start_date = 3;
+    // End of this statistics period.
+    // YYYY-mm-DD formatted string.
+    string end_date = 4;
+    // Time period length.
+    Aggregation aggregation = 5;
+    // Aggregated results.
+    repeated ModerationStatisticsPeriod items = 6;
 }
+
+// Request for getting user statistics.
+message UserStatisticsRequest {}
+
+// Contains the user statistics requested.
+message UserStatisticsResponse {}
