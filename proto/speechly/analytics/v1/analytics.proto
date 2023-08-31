@@ -82,13 +82,15 @@ message ModerationStatisticsPeriod {
     // period start time
     string start_time = 1;
     // if grouping by users, the user id, or "OTHER"
-    string user_id = 5;
+    string user_id = 2;
     // total amount of moderation events for this period.
-    int32 count = 2;
+    int32 count = 3;
     // total amount of flagged events.
-    int32 flagged = 3;
+    int32 flagged = 4;
+    // total amount of not flagged (OK) events for this period.
+    int32 not_flagged = 5;
     // amount of moderation decisions made.
-    int32 decisions = 4;
+    int32 decisions = 6;
 }
 
 // A single time series entry for user statistics.
