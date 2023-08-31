@@ -1122,10 +1122,11 @@ class ModerationStatisticsPeriod final :
 
   enum : int {
     kStartTimeFieldNumber = 1,
-    kUserIdFieldNumber = 5,
-    kCountFieldNumber = 2,
-    kFlaggedFieldNumber = 3,
-    kDecisionsFieldNumber = 4,
+    kUserIdFieldNumber = 2,
+    kCountFieldNumber = 3,
+    kFlaggedFieldNumber = 4,
+    kNotFlaggedFieldNumber = 5,
+    kDecisionsFieldNumber = 6,
   };
   // string start_time = 1;
   void clear_start_time() ;
@@ -1143,7 +1144,7 @@ class ModerationStatisticsPeriod final :
   std::string* _internal_mutable_start_time();
 
   public:
-  // string user_id = 5;
+  // string user_id = 2;
   void clear_user_id() ;
   const std::string& user_id() const;
   template <typename Arg_ = const std::string&, typename... Args_>
@@ -1159,7 +1160,7 @@ class ModerationStatisticsPeriod final :
   std::string* _internal_mutable_user_id();
 
   public:
-  // int32 count = 2;
+  // int32 count = 3;
   void clear_count() ;
   ::int32_t count() const;
   void set_count(::int32_t value);
@@ -1169,7 +1170,7 @@ class ModerationStatisticsPeriod final :
   void _internal_set_count(::int32_t value);
 
   public:
-  // int32 flagged = 3;
+  // int32 flagged = 4;
   void clear_flagged() ;
   ::int32_t flagged() const;
   void set_flagged(::int32_t value);
@@ -1179,7 +1180,17 @@ class ModerationStatisticsPeriod final :
   void _internal_set_flagged(::int32_t value);
 
   public:
-  // int32 decisions = 4;
+  // int32 not_flagged = 5;
+  void clear_not_flagged() ;
+  ::int32_t not_flagged() const;
+  void set_not_flagged(::int32_t value);
+
+  private:
+  ::int32_t _internal_not_flagged() const;
+  void _internal_set_not_flagged(::int32_t value);
+
+  public:
+  // int32 decisions = 6;
   void clear_decisions() ;
   ::int32_t decisions() const;
   void set_decisions(::int32_t value);
@@ -1194,7 +1205,7 @@ class ModerationStatisticsPeriod final :
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 5, 0, 74, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<3, 6, 0, 74, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -1203,6 +1214,7 @@ class ModerationStatisticsPeriod final :
     ::google::protobuf::internal::ArenaStringPtr user_id_;
     ::int32_t count_;
     ::int32_t flagged_;
+    ::int32_t not_flagged_;
     ::int32_t decisions_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER;
@@ -2104,7 +2116,7 @@ inline void ModerationStatisticsPeriod::set_allocated_start_time(std::string* va
   // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsPeriod.start_time)
 }
 
-// string user_id = 5;
+// string user_id = 2;
 inline void ModerationStatisticsPeriod::clear_user_id() {
   _impl_.user_id_.ClearToEmpty();
 }
@@ -2155,7 +2167,7 @@ inline void ModerationStatisticsPeriod::set_allocated_user_id(std::string* value
   // @@protoc_insertion_point(field_set_allocated:speechly.analytics.v1.ModerationStatisticsPeriod.user_id)
 }
 
-// int32 count = 2;
+// int32 count = 3;
 inline void ModerationStatisticsPeriod::clear_count() {
   _impl_.count_ = 0;
 }
@@ -2177,7 +2189,7 @@ inline void ModerationStatisticsPeriod::_internal_set_count(::int32_t value) {
   _impl_.count_ = value;
 }
 
-// int32 flagged = 3;
+// int32 flagged = 4;
 inline void ModerationStatisticsPeriod::clear_flagged() {
   _impl_.flagged_ = 0;
 }
@@ -2199,7 +2211,29 @@ inline void ModerationStatisticsPeriod::_internal_set_flagged(::int32_t value) {
   _impl_.flagged_ = value;
 }
 
-// int32 decisions = 4;
+// int32 not_flagged = 5;
+inline void ModerationStatisticsPeriod::clear_not_flagged() {
+  _impl_.not_flagged_ = 0;
+}
+inline ::int32_t ModerationStatisticsPeriod::not_flagged() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsPeriod.not_flagged)
+  return _internal_not_flagged();
+}
+inline void ModerationStatisticsPeriod::set_not_flagged(::int32_t value) {
+  _internal_set_not_flagged(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsPeriod.not_flagged)
+}
+inline ::int32_t ModerationStatisticsPeriod::_internal_not_flagged() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.not_flagged_;
+}
+inline void ModerationStatisticsPeriod::_internal_set_not_flagged(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.not_flagged_ = value;
+}
+
+// int32 decisions = 6;
 inline void ModerationStatisticsPeriod::clear_decisions() {
   _impl_.decisions_ = 0;
 }

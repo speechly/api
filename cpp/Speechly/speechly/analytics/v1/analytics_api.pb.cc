@@ -260,6 +260,9 @@ PROTOBUF_CONSTEXPR ModerationStatisticsResponse::ModerationStatisticsResponse(::
           ::_pbi::ConstantInitialized{},
       },
       /*decltype(_impl_.aggregation_)*/ 0,
+      /*decltype(_impl_.total_events_)*/ 0,
+      /*decltype(_impl_.total_flagged_)*/ 0,
+      /*decltype(_impl_.total_not_flagged_)*/ 0,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
 struct ModerationStatisticsResponseDefaultTypeInternal {
@@ -439,6 +442,9 @@ const ::uint32_t TableStruct_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.end_date_),
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.aggregation_),
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.items_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.total_events_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.total_flagged_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsResponse, _impl_.total_not_flagged_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UserStatisticsRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -469,8 +475,8 @@ static const ::_pbi::MigrationSchema
         {99, -1, -1, sizeof(::speechly::analytics::v1::RegisterUtterancesResponse)},
         {107, -1, -1, sizeof(::speechly::analytics::v1::ModerationStatisticsRequest)},
         {120, -1, -1, sizeof(::speechly::analytics::v1::ModerationStatisticsResponse)},
-        {134, -1, -1, sizeof(::speechly::analytics::v1::UserStatisticsRequest)},
-        {142, -1, -1, sizeof(::speechly::analytics::v1::UserStatisticsResponse)},
+        {137, -1, -1, sizeof(::speechly::analytics::v1::UserStatisticsRequest)},
+        {145, -1, -1, sizeof(::speechly::analytics::v1::UserStatisticsResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -532,35 +538,37 @@ const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi
     "id\030\001 \001(\t\022\016\n\006app_id\030\002 \001(\t\022\022\n\nstart_date\030\003"
     " \001(\t\022\020\n\010end_date\030\004 \001(\t\0227\n\013aggregation\030\005 "
     "\001(\0162\".speechly.analytics.v1.Aggregation\""
-    "\343\001\n\034ModerationStatisticsResponse\022\022\n\nproj"
+    "\253\002\n\034ModerationStatisticsResponse\022\022\n\nproj"
     "ect_id\030\001 \001(\t\022\016\n\006app_id\030\002 \001(\t\022\022\n\nstart_da"
     "te\030\003 \001(\t\022\020\n\010end_date\030\004 \001(\t\0227\n\013aggregatio"
     "n\030\005 \001(\0162\".speechly.analytics.v1.Aggregat"
     "ion\022@\n\005items\030\006 \003(\01321.speechly.analytics."
-    "v1.ModerationStatisticsPeriod\"\027\n\025UserSta"
-    "tisticsRequest\"\030\n\026UserStatisticsResponse"
-    "2\322\005\n\014AnalyticsAPI\022|\n\023UtteranceStatistics"
-    "\0221.speechly.analytics.v1.UtteranceStatis"
-    "ticsRequest\0322.speechly.analytics.v1.Utte"
-    "ranceStatisticsResponse\022a\n\nUtterances\022(."
-    "speechly.analytics.v1.UtterancesRequest\032"
-    ").speechly.analytics.v1.UtterancesRespon"
-    "se\022v\n\021RegisterUtterance\022/.speechly.analy"
-    "tics.v1.RegisterUtteranceRequest\0320.speec"
-    "hly.analytics.v1.RegisterUtteranceRespon"
-    "se\022y\n\022RegisterUtterances\0220.speechly.anal"
-    "ytics.v1.RegisterUtterancesRequest\0321.spe"
-    "echly.analytics.v1.RegisterUtterancesRes"
-    "ponse\022\177\n\024ModerationStatistics\0222.speechly"
-    ".analytics.v1.ModerationStatisticsReques"
-    "t\0323.speechly.analytics.v1.ModerationStat"
-    "isticsResponse\022m\n\016UserStatistics\022,.speec"
-    "hly.analytics.v1.UserStatisticsRequest\032-"
-    ".speechly.analytics.v1.UserStatisticsRes"
-    "ponseB\211\001\n\031com.speechly.analytics.v1B\021Ana"
-    "lyticsApiProtoP\001Z!speechly/analytics/v1;"
-    "analyticsv1\242\002\003SAX\252\002\025Speechly.Analytics.V"
-    "1\312\002\025Speechly\\Analytics\\V1b\006proto3"
+    "v1.ModerationStatisticsPeriod\022\024\n\014total_e"
+    "vents\030\007 \001(\005\022\025\n\rtotal_flagged\030\010 \001(\005\022\031\n\021to"
+    "tal_not_flagged\030\t \001(\005\"\027\n\025UserStatisticsR"
+    "equest\"\030\n\026UserStatisticsResponse2\322\005\n\014Ana"
+    "lyticsAPI\022|\n\023UtteranceStatistics\0221.speec"
+    "hly.analytics.v1.UtteranceStatisticsRequ"
+    "est\0322.speechly.analytics.v1.UtteranceSta"
+    "tisticsResponse\022a\n\nUtterances\022(.speechly"
+    ".analytics.v1.UtterancesRequest\032).speech"
+    "ly.analytics.v1.UtterancesResponse\022v\n\021Re"
+    "gisterUtterance\022/.speechly.analytics.v1."
+    "RegisterUtteranceRequest\0320.speechly.anal"
+    "ytics.v1.RegisterUtteranceResponse\022y\n\022Re"
+    "gisterUtterances\0220.speechly.analytics.v1"
+    ".RegisterUtterancesRequest\0321.speechly.an"
+    "alytics.v1.RegisterUtterancesResponse\022\177\n"
+    "\024ModerationStatistics\0222.speechly.analyti"
+    "cs.v1.ModerationStatisticsRequest\0323.spee"
+    "chly.analytics.v1.ModerationStatisticsRe"
+    "sponse\022m\n\016UserStatistics\022,.speechly.anal"
+    "ytics.v1.UserStatisticsRequest\032-.speechl"
+    "y.analytics.v1.UserStatisticsResponseB\211\001"
+    "\n\031com.speechly.analytics.v1B\021AnalyticsAp"
+    "iProtoP\001Z!speechly/analytics/v1;analytic"
+    "sv1\242\002\003SAX\252\002\025Speechly.Analytics.V1\312\002\025Spee"
+    "chly\\Analytics\\V1b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_deps[2] =
     {
@@ -571,7 +579,7 @@ static ::absl::once_flag descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_
 const ::_pbi::DescriptorTable descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto = {
     false,
     false,
-    2913,
+    2985,
     descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto,
     "speechly/analytics/v1/analytics_api.proto",
     &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_5fapi_2eproto_once,
@@ -3096,6 +3104,9 @@ ModerationStatisticsResponse::ModerationStatisticsResponse(const ModerationStati
       decltype(_impl_.start_date_){},
       decltype(_impl_.end_date_){},
       decltype(_impl_.aggregation_){},
+      decltype(_impl_.total_events_){},
+      decltype(_impl_.total_flagged_){},
+      decltype(_impl_.total_not_flagged_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
@@ -3128,7 +3139,9 @@ ModerationStatisticsResponse::ModerationStatisticsResponse(const ModerationStati
   if (!from._internal_end_date().empty()) {
     _this->_impl_.end_date_.Set(from._internal_end_date(), _this->GetArenaForAllocation());
   }
-  _this->_impl_.aggregation_ = from._impl_.aggregation_;
+  ::memcpy(&_impl_.aggregation_, &from._impl_.aggregation_,
+    static_cast<::size_t>(reinterpret_cast<char*>(&_impl_.total_not_flagged_) -
+    reinterpret_cast<char*>(&_impl_.aggregation_)) + sizeof(_impl_.total_not_flagged_));
 
   // @@protoc_insertion_point(copy_constructor:speechly.analytics.v1.ModerationStatisticsResponse)
 }
@@ -3141,6 +3154,9 @@ inline void ModerationStatisticsResponse::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.start_date_){},
       decltype(_impl_.end_date_){},
       decltype(_impl_.aggregation_){0},
+      decltype(_impl_.total_events_){0},
+      decltype(_impl_.total_flagged_){0},
+      decltype(_impl_.total_not_flagged_){0},
       /*decltype(_impl_._cached_size_)*/ {},
   };
   _impl_.project_id_.InitDefault();
@@ -3188,7 +3204,9 @@ PROTOBUF_NOINLINE void ModerationStatisticsResponse::Clear() {
   _impl_.app_id_.ClearToEmpty();
   _impl_.start_date_.ClearToEmpty();
   _impl_.end_date_.ClearToEmpty();
-  _impl_.aggregation_ = 0;
+  ::memset(&_impl_.aggregation_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.total_not_flagged_) -
+      reinterpret_cast<char*>(&_impl_.aggregation_)) + sizeof(_impl_.total_not_flagged_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -3200,15 +3218,15 @@ const char* ModerationStatisticsResponse::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 6, 1, 93, 2> ModerationStatisticsResponse::_table_ = {
+const ::_pbi::TcParseTable<4, 9, 1, 101, 2> ModerationStatisticsResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    6, 56,  // max_field_number, fast_idx_mask
+    9, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967232,  // skipmap
+    4294966784,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    6,  // num_field_entries
+    9,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     &_ModerationStatisticsResponse_default_instance_._instance,
@@ -3233,6 +3251,20 @@ const ::_pbi::TcParseTable<3, 6, 1, 93, 2> ModerationStatisticsResponse::_table_
     // repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
     {::_pbi::TcParser::FastMtR1,
      {50, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.items_)}},
+    // int32 total_events = 7;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsResponse, _impl_.total_events_), 63>(),
+     {56, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.total_events_)}},
+    // int32 total_flagged = 8;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsResponse, _impl_.total_flagged_), 63>(),
+     {64, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.total_flagged_)}},
+    // int32 total_not_flagged = 9;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsResponse, _impl_.total_not_flagged_), 63>(),
+     {72, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.total_not_flagged_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -3255,10 +3287,19 @@ const ::_pbi::TcParseTable<3, 6, 1, 93, 2> ModerationStatisticsResponse::_table_
     // repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
     {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.items_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // int32 total_events = 7;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.total_events_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 total_flagged = 8;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.total_flagged_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 total_not_flagged = 9;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.total_not_flagged_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
   }}, {{
     {::_pbi::TcParser::GetTable<::speechly::analytics::v1::ModerationStatisticsPeriod>()},
   }}, {{
-    "\62\12\6\12\10\0\0\0"
+    "\62\12\6\12\10\0\0\0\0\0\0\0\0\0\0\0"
     "speechly.analytics.v1.ModerationStatisticsResponse"
     "project_id"
     "app_id"
@@ -3321,6 +3362,27 @@ const ::_pbi::TcParseTable<3, 6, 1, 93, 2> ModerationStatisticsResponse::_table_
         InternalWriteMessage(6, repfield, repfield.GetCachedSize(), target, stream);
   }
 
+  // int32 total_events = 7;
+  if (this->_internal_total_events() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<7>(
+            stream, this->_internal_total_events(), target);
+  }
+
+  // int32 total_flagged = 8;
+  if (this->_internal_total_flagged() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<8>(
+            stream, this->_internal_total_flagged(), target);
+  }
+
+  // int32 total_not_flagged = 9;
+  if (this->_internal_total_not_flagged() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<9>(
+            stream, this->_internal_total_not_flagged(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target =
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -3374,6 +3436,24 @@ const ::_pbi::TcParseTable<3, 6, 1, 93, 2> ModerationStatisticsResponse::_table_
                   ::_pbi::WireFormatLite::EnumSize(this->_internal_aggregation());
   }
 
+  // int32 total_events = 7;
+  if (this->_internal_total_events() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_total_events());
+  }
+
+  // int32 total_flagged = 8;
+  if (this->_internal_total_flagged() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_total_flagged());
+  }
+
+  // int32 total_not_flagged = 9;
+  if (this->_internal_total_not_flagged() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_total_not_flagged());
+  }
+
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
@@ -3408,6 +3488,15 @@ void ModerationStatisticsResponse::MergeImpl(::google::protobuf::Message& to_msg
   if (from._internal_aggregation() != 0) {
     _this->_internal_set_aggregation(from._internal_aggregation());
   }
+  if (from._internal_total_events() != 0) {
+    _this->_internal_set_total_events(from._internal_total_events());
+  }
+  if (from._internal_total_flagged() != 0) {
+    _this->_internal_set_total_flagged(from._internal_total_flagged());
+  }
+  if (from._internal_total_not_flagged() != 0) {
+    _this->_internal_set_total_not_flagged(from._internal_total_not_flagged());
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -3436,7 +3525,12 @@ void ModerationStatisticsResponse::InternalSwap(ModerationStatisticsResponse* ot
                                        &other->_impl_.start_date_, rhs_arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.end_date_, lhs_arena,
                                        &other->_impl_.end_date_, rhs_arena);
-  swap(_impl_.aggregation_, other->_impl_.aggregation_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.total_not_flagged_)
+      + sizeof(ModerationStatisticsResponse::_impl_.total_not_flagged_)
+      - PROTOBUF_FIELD_OFFSET(ModerationStatisticsResponse, _impl_.aggregation_)>(
+          reinterpret_cast<char*>(&_impl_.aggregation_),
+          reinterpret_cast<char*>(&other->_impl_.aggregation_));
 }
 
 ::google::protobuf::Metadata ModerationStatisticsResponse::GetMetadata() const {

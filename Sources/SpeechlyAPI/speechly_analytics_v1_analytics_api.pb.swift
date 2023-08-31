@@ -428,6 +428,15 @@ public struct Speechly_Analytics_V1_ModerationStatisticsResponse {
   /// Aggregated results.
   public var items: [Speechly_Analytics_V1_ModerationStatisticsPeriod] = []
 
+  /// Total number of events in this response.
+  public var totalEvents: Int32 = 0
+
+  /// Total number of flagged events in this response.
+  public var totalFlagged: Int32 = 0
+
+  /// Total number of non-flagged (OK) events in this response.
+  public var totalNotFlagged: Int32 = 0
+
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
@@ -992,6 +1001,9 @@ extension Speechly_Analytics_V1_ModerationStatisticsResponse: SwiftProtobuf.Mess
     4: .standard(proto: "end_date"),
     5: .same(proto: "aggregation"),
     6: .same(proto: "items"),
+    7: .standard(proto: "total_events"),
+    8: .standard(proto: "total_flagged"),
+    9: .standard(proto: "total_not_flagged"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -1006,6 +1018,9 @@ extension Speechly_Analytics_V1_ModerationStatisticsResponse: SwiftProtobuf.Mess
       case 4: try { try decoder.decodeSingularStringField(value: &self.endDate) }()
       case 5: try { try decoder.decodeSingularEnumField(value: &self.aggregation) }()
       case 6: try { try decoder.decodeRepeatedMessageField(value: &self.items) }()
+      case 7: try { try decoder.decodeSingularInt32Field(value: &self.totalEvents) }()
+      case 8: try { try decoder.decodeSingularInt32Field(value: &self.totalFlagged) }()
+      case 9: try { try decoder.decodeSingularInt32Field(value: &self.totalNotFlagged) }()
       default: break
       }
     }
@@ -1030,6 +1045,15 @@ extension Speechly_Analytics_V1_ModerationStatisticsResponse: SwiftProtobuf.Mess
     if !self.items.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.items, fieldNumber: 6)
     }
+    if self.totalEvents != 0 {
+      try visitor.visitSingularInt32Field(value: self.totalEvents, fieldNumber: 7)
+    }
+    if self.totalFlagged != 0 {
+      try visitor.visitSingularInt32Field(value: self.totalFlagged, fieldNumber: 8)
+    }
+    if self.totalNotFlagged != 0 {
+      try visitor.visitSingularInt32Field(value: self.totalNotFlagged, fieldNumber: 9)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -1040,6 +1064,9 @@ extension Speechly_Analytics_V1_ModerationStatisticsResponse: SwiftProtobuf.Mess
     if lhs.endDate != rhs.endDate {return false}
     if lhs.aggregation != rhs.aggregation {return false}
     if lhs.items != rhs.items {return false}
+    if lhs.totalEvents != rhs.totalEvents {return false}
+    if lhs.totalFlagged != rhs.totalFlagged {return false}
+    if lhs.totalNotFlagged != rhs.totalNotFlagged {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

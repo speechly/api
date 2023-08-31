@@ -245,6 +245,9 @@ public struct Speechly_Analytics_V1_ModerationStatisticsPeriod {
   /// total amount of flagged events.
   public var flagged: Int32 = 0
 
+  /// total amount of not flagged (OK) events for this period.
+  public var notFlagged: Int32 = 0
+
   /// amount of moderation decisions made.
   public var decisions: Int32 = 0
 
@@ -508,10 +511,11 @@ extension Speechly_Analytics_V1_ModerationStatisticsPeriod: SwiftProtobuf.Messag
   public static let protoMessageName: String = _protobuf_package + ".ModerationStatisticsPeriod"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "start_time"),
-    5: .standard(proto: "user_id"),
-    2: .same(proto: "count"),
-    3: .same(proto: "flagged"),
-    4: .same(proto: "decisions"),
+    2: .standard(proto: "user_id"),
+    3: .same(proto: "count"),
+    4: .same(proto: "flagged"),
+    5: .standard(proto: "not_flagged"),
+    6: .same(proto: "decisions"),
   ]
 
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -521,10 +525,11 @@ extension Speechly_Analytics_V1_ModerationStatisticsPeriod: SwiftProtobuf.Messag
       // enabled. https://github.com/apple/swift-protobuf/issues/1034
       switch fieldNumber {
       case 1: try { try decoder.decodeSingularStringField(value: &self.startTime) }()
-      case 2: try { try decoder.decodeSingularInt32Field(value: &self.count) }()
-      case 3: try { try decoder.decodeSingularInt32Field(value: &self.flagged) }()
-      case 4: try { try decoder.decodeSingularInt32Field(value: &self.decisions) }()
-      case 5: try { try decoder.decodeSingularStringField(value: &self.userID) }()
+      case 2: try { try decoder.decodeSingularStringField(value: &self.userID) }()
+      case 3: try { try decoder.decodeSingularInt32Field(value: &self.count) }()
+      case 4: try { try decoder.decodeSingularInt32Field(value: &self.flagged) }()
+      case 5: try { try decoder.decodeSingularInt32Field(value: &self.notFlagged) }()
+      case 6: try { try decoder.decodeSingularInt32Field(value: &self.decisions) }()
       default: break
       }
     }
@@ -534,17 +539,20 @@ extension Speechly_Analytics_V1_ModerationStatisticsPeriod: SwiftProtobuf.Messag
     if !self.startTime.isEmpty {
       try visitor.visitSingularStringField(value: self.startTime, fieldNumber: 1)
     }
+    if !self.userID.isEmpty {
+      try visitor.visitSingularStringField(value: self.userID, fieldNumber: 2)
+    }
     if self.count != 0 {
-      try visitor.visitSingularInt32Field(value: self.count, fieldNumber: 2)
+      try visitor.visitSingularInt32Field(value: self.count, fieldNumber: 3)
     }
     if self.flagged != 0 {
-      try visitor.visitSingularInt32Field(value: self.flagged, fieldNumber: 3)
+      try visitor.visitSingularInt32Field(value: self.flagged, fieldNumber: 4)
+    }
+    if self.notFlagged != 0 {
+      try visitor.visitSingularInt32Field(value: self.notFlagged, fieldNumber: 5)
     }
     if self.decisions != 0 {
-      try visitor.visitSingularInt32Field(value: self.decisions, fieldNumber: 4)
-    }
-    if !self.userID.isEmpty {
-      try visitor.visitSingularStringField(value: self.userID, fieldNumber: 5)
+      try visitor.visitSingularInt32Field(value: self.decisions, fieldNumber: 6)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -554,6 +562,7 @@ extension Speechly_Analytics_V1_ModerationStatisticsPeriod: SwiftProtobuf.Messag
     if lhs.userID != rhs.userID {return false}
     if lhs.count != rhs.count {return false}
     if lhs.flagged != rhs.flagged {return false}
+    if lhs.notFlagged != rhs.notFlagged {return false}
     if lhs.decisions != rhs.decisions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true

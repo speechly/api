@@ -139,6 +139,7 @@ PROTOBUF_CONSTEXPR ModerationStatisticsPeriod::ModerationStatisticsPeriod(::_pbi
       },
       /*decltype(_impl_.count_)*/ 0,
       /*decltype(_impl_.flagged_)*/ 0,
+      /*decltype(_impl_.not_flagged_)*/ 0,
       /*decltype(_impl_.decisions_)*/ 0,
       /*decltype(_impl_._cached_size_)*/ {},
     } {}
@@ -242,6 +243,7 @@ const ::uint32_t TableStruct_speechly_2fanalytics_2fv1_2fanalytics_2eproto::offs
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsPeriod, _impl_.user_id_),
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsPeriod, _impl_.count_),
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsPeriod, _impl_.flagged_),
+    PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsPeriod, _impl_.not_flagged_),
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::ModerationStatisticsPeriod, _impl_.decisions_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::speechly::analytics::v1::UserStatisticsPeriod, _internal_metadata_),
@@ -264,7 +266,7 @@ static const ::_pbi::MigrationSchema
         {26, -1, -1, sizeof(::speechly::analytics::v1::DecoderInfo)},
         {37, -1, -1, sizeof(::speechly::analytics::v1::ProcessingInfo)},
         {47, -1, -1, sizeof(::speechly::analytics::v1::ModerationStatisticsPeriod)},
-        {60, -1, -1, sizeof(::speechly::analytics::v1::UserStatisticsPeriod)},
+        {61, -1, -1, sizeof(::speechly::analytics::v1::UserStatisticsPeriod)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -288,33 +290,34 @@ const char descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2epro
     "!\n\031total_seconds_transcribed\030\003 \001(\005\"c\n\016Pr"
     "ocessingInfo\022\?\n\020processing_types\030\001 \003(\0162%"
     ".speechly.analytics.v1.ProcessingType\022\020\n"
-    "\010model_id\030\002 \001(\t\"t\n\032ModerationStatisticsP"
-    "eriod\022\022\n\nstart_time\030\001 \001(\t\022\017\n\007user_id\030\005 \001"
-    "(\t\022\r\n\005count\030\002 \001(\005\022\017\n\007flagged\030\003 \001(\005\022\021\n\tde"
-    "cisions\030\004 \001(\005\"l\n\024UserStatisticsPeriod\022\022\n"
-    "\nstart_time\030\001 \001(\t\022\024\n\014active_users\030\002 \001(\005\022"
-    "\023\n\013toxic_users\030\003 \001(\005\022\025\n\rexposed_users\030\004 "
-    "\001(\005*n\n\013Aggregation\022\027\n\023AGGREGATION_INVALI"
-    "D\020\000\022\027\n\023AGGREGATION_MONTHLY\020\001\022\025\n\021AGGREGAT"
-    "ION_DAILY\020\002\022\026\n\022AGGREGATION_HOURLY\020\003*\307\002\n\016"
-    "ProcessingType\022\033\n\027PROCESSING_TYPE_INVALI"
-    "D\020\000\022!\n\035PROCESSING_TYPE_TRANSCRIPTION\020\001\022\027"
-    "\n\023PROCESSING_TYPE_NLU\020\002\022&\n\"PROCESSING_TY"
-    "PE_LANGUAGE_DETECTION\020\003\022\027\n\023PROCESSING_TY"
-    "PE_VAD\020\004\022\037\n\033PROCESSING_TYPE_TRANSLATION\020"
-    "\005\022)\n%PROCESSING_TYPE_AUDIO_EVENT_DETECTI"
-    "ON\020\006\022+\n\'PROCESSING_TYPE_TONE_OF_VOICE_LA"
-    "BELLING\020\007\022\"\n\036PROCESSING_TYPE_SHALLOW_FUS"
-    "ION\020\010B\206\001\n\031com.speechly.analytics.v1B\016Ana"
-    "lyticsProtoP\001Z!speechly/analytics/v1;ana"
-    "lyticsv1\242\002\003SAX\252\002\025Speechly.Analytics.V1\312\002"
-    "\025Speechly\\Analytics\\V1b\006proto3"
+    "\010model_id\030\002 \001(\t\"\211\001\n\032ModerationStatistics"
+    "Period\022\022\n\nstart_time\030\001 \001(\t\022\017\n\007user_id\030\002 "
+    "\001(\t\022\r\n\005count\030\003 \001(\005\022\017\n\007flagged\030\004 \001(\005\022\023\n\013n"
+    "ot_flagged\030\005 \001(\005\022\021\n\tdecisions\030\006 \001(\005\"l\n\024U"
+    "serStatisticsPeriod\022\022\n\nstart_time\030\001 \001(\t\022"
+    "\024\n\014active_users\030\002 \001(\005\022\023\n\013toxic_users\030\003 \001"
+    "(\005\022\025\n\rexposed_users\030\004 \001(\005*n\n\013Aggregation"
+    "\022\027\n\023AGGREGATION_INVALID\020\000\022\027\n\023AGGREGATION"
+    "_MONTHLY\020\001\022\025\n\021AGGREGATION_DAILY\020\002\022\026\n\022AGG"
+    "REGATION_HOURLY\020\003*\307\002\n\016ProcessingType\022\033\n\027"
+    "PROCESSING_TYPE_INVALID\020\000\022!\n\035PROCESSING_"
+    "TYPE_TRANSCRIPTION\020\001\022\027\n\023PROCESSING_TYPE_"
+    "NLU\020\002\022&\n\"PROCESSING_TYPE_LANGUAGE_DETECT"
+    "ION\020\003\022\027\n\023PROCESSING_TYPE_VAD\020\004\022\037\n\033PROCES"
+    "SING_TYPE_TRANSLATION\020\005\022)\n%PROCESSING_TY"
+    "PE_AUDIO_EVENT_DETECTION\020\006\022+\n\'PROCESSING"
+    "_TYPE_TONE_OF_VOICE_LABELLING\020\007\022\"\n\036PROCE"
+    "SSING_TYPE_SHALLOW_FUSION\020\010B\206\001\n\031com.spee"
+    "chly.analytics.v1B\016AnalyticsProtoP\001Z!spe"
+    "echly/analytics/v1;analyticsv1\242\002\003SAX\252\002\025S"
+    "peechly.Analytics.V1\312\002\025Speechly\\Analytic"
+    "s\\V1b\006proto3"
 };
 static ::absl::once_flag descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto = {
     false,
     false,
-    1310,
+    1332,
     descriptor_table_protodef_speechly_2fanalytics_2fv1_2fanalytics_2eproto,
     "speechly/analytics/v1/analytics.proto",
     &descriptor_table_speechly_2fanalytics_2fv1_2fanalytics_2eproto_once,
@@ -1559,6 +1562,7 @@ ModerationStatisticsPeriod::ModerationStatisticsPeriod(const ModerationStatistic
       decltype(_impl_.user_id_){},
       decltype(_impl_.count_){},
       decltype(_impl_.flagged_){},
+      decltype(_impl_.not_flagged_){},
       decltype(_impl_.decisions_){},
       /*decltype(_impl_._cached_size_)*/ {},
   };
@@ -1591,6 +1595,7 @@ inline void ModerationStatisticsPeriod::SharedCtor(::_pb::Arena* arena) {
       decltype(_impl_.user_id_){},
       decltype(_impl_.count_){0},
       decltype(_impl_.flagged_){0},
+      decltype(_impl_.not_flagged_){0},
       decltype(_impl_.decisions_){0},
       /*decltype(_impl_._cached_size_)*/ {},
   };
@@ -1639,15 +1644,15 @@ const char* ModerationStatisticsPeriod::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 0, 74, 2> ModerationStatisticsPeriod::_table_ = {
+const ::_pbi::TcParseTable<3, 6, 0, 74, 2> ModerationStatisticsPeriod::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967232,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
+    6,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_ModerationStatisticsPeriod_default_instance_._instance,
@@ -1657,19 +1662,21 @@ const ::_pbi::TcParseTable<3, 5, 0, 74, 2> ModerationStatisticsPeriod::_table_ =
     // string start_time = 1;
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.start_time_)}},
-    // int32 count = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsPeriod, _impl_.count_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.count_)}},
-    // int32 flagged = 3;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsPeriod, _impl_.flagged_), 63>(),
-     {24, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.flagged_)}},
-    // int32 decisions = 4;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsPeriod, _impl_.decisions_), 63>(),
-     {32, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.decisions_)}},
-    // string user_id = 5;
+    // string user_id = 2;
     {::_pbi::TcParser::FastUS1,
-     {42, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.user_id_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.user_id_)}},
+    // int32 count = 3;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsPeriod, _impl_.count_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.count_)}},
+    // int32 flagged = 4;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsPeriod, _impl_.flagged_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.flagged_)}},
+    // int32 not_flagged = 5;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsPeriod, _impl_.not_flagged_), 63>(),
+     {40, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.not_flagged_)}},
+    // int32 decisions = 6;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ModerationStatisticsPeriod, _impl_.decisions_), 63>(),
+     {48, 63, 0, PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.decisions_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -1677,22 +1684,25 @@ const ::_pbi::TcParseTable<3, 5, 0, 74, 2> ModerationStatisticsPeriod::_table_ =
     // string start_time = 1;
     {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.start_time_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // int32 count = 2;
-    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.count_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 flagged = 3;
-    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.flagged_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // int32 decisions = 4;
-    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.decisions_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // string user_id = 5;
+    // string user_id = 2;
     {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.user_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 count = 3;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.count_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 flagged = 4;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.flagged_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 not_flagged = 5;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.not_flagged_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // int32 decisions = 6;
+    {PROTOBUF_FIELD_OFFSET(ModerationStatisticsPeriod, _impl_.decisions_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\60\12\0\0\0\7\0\0"
+    "\60\12\7\0\0\0\0\0"
     "speechly.analytics.v1.ModerationStatisticsPeriod"
     "start_time"
     "user_id"
@@ -1714,33 +1724,40 @@ const ::_pbi::TcParseTable<3, 5, 0, 74, 2> ModerationStatisticsPeriod::_table_ =
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
-  // int32 count = 2;
-  if (this->_internal_count() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_count(), target);
-  }
-
-  // int32 flagged = 3;
-  if (this->_internal_flagged() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<3>(
-            stream, this->_internal_flagged(), target);
-  }
-
-  // int32 decisions = 4;
-  if (this->_internal_decisions() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<4>(
-            stream, this->_internal_decisions(), target);
-  }
-
-  // string user_id = 5;
+  // string user_id = 2;
   if (!this->_internal_user_id().empty()) {
     const std::string& _s = this->_internal_user_id();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
         _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "speechly.analytics.v1.ModerationStatisticsPeriod.user_id");
-    target = stream->WriteStringMaybeAliased(5, _s, target);
+    target = stream->WriteStringMaybeAliased(2, _s, target);
+  }
+
+  // int32 count = 3;
+  if (this->_internal_count() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<3>(
+            stream, this->_internal_count(), target);
+  }
+
+  // int32 flagged = 4;
+  if (this->_internal_flagged() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<4>(
+            stream, this->_internal_flagged(), target);
+  }
+
+  // int32 not_flagged = 5;
+  if (this->_internal_not_flagged() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<5>(
+            stream, this->_internal_not_flagged(), target);
+  }
+
+  // int32 decisions = 6;
+  if (this->_internal_decisions() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<6>(
+            stream, this->_internal_decisions(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1766,25 +1783,31 @@ const ::_pbi::TcParseTable<3, 5, 0, 74, 2> ModerationStatisticsPeriod::_table_ =
                                     this->_internal_start_time());
   }
 
-  // string user_id = 5;
+  // string user_id = 2;
   if (!this->_internal_user_id().empty()) {
     total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                     this->_internal_user_id());
   }
 
-  // int32 count = 2;
+  // int32 count = 3;
   if (this->_internal_count() != 0) {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_count());
   }
 
-  // int32 flagged = 3;
+  // int32 flagged = 4;
   if (this->_internal_flagged() != 0) {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_flagged());
   }
 
-  // int32 decisions = 4;
+  // int32 not_flagged = 5;
+  if (this->_internal_not_flagged() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_not_flagged());
+  }
+
+  // int32 decisions = 6;
   if (this->_internal_decisions() != 0) {
     total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
         this->_internal_decisions());
@@ -1819,6 +1842,9 @@ void ModerationStatisticsPeriod::MergeImpl(::google::protobuf::Message& to_msg, 
   }
   if (from._internal_flagged() != 0) {
     _this->_internal_set_flagged(from._internal_flagged());
+  }
+  if (from._internal_not_flagged() != 0) {
+    _this->_internal_set_not_flagged(from._internal_not_flagged());
   }
   if (from._internal_decisions() != 0) {
     _this->_internal_set_decisions(from._internal_decisions());

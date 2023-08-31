@@ -2196,6 +2196,9 @@ class ModerationStatisticsResponse final :
     kStartDateFieldNumber = 3,
     kEndDateFieldNumber = 4,
     kAggregationFieldNumber = 5,
+    kTotalEventsFieldNumber = 7,
+    kTotalFlaggedFieldNumber = 8,
+    kTotalNotFlaggedFieldNumber = 9,
   };
   // repeated .speechly.analytics.v1.ModerationStatisticsPeriod items = 6;
   int items_size() const;
@@ -2289,12 +2292,42 @@ class ModerationStatisticsResponse final :
   void _internal_set_aggregation(::speechly::analytics::v1::Aggregation value);
 
   public:
+  // int32 total_events = 7;
+  void clear_total_events() ;
+  ::int32_t total_events() const;
+  void set_total_events(::int32_t value);
+
+  private:
+  ::int32_t _internal_total_events() const;
+  void _internal_set_total_events(::int32_t value);
+
+  public:
+  // int32 total_flagged = 8;
+  void clear_total_flagged() ;
+  ::int32_t total_flagged() const;
+  void set_total_flagged(::int32_t value);
+
+  private:
+  ::int32_t _internal_total_flagged() const;
+  void _internal_set_total_flagged(::int32_t value);
+
+  public:
+  // int32 total_not_flagged = 9;
+  void clear_total_not_flagged() ;
+  ::int32_t total_not_flagged() const;
+  void set_total_not_flagged(::int32_t value);
+
+  private:
+  ::int32_t _internal_total_not_flagged() const;
+  void _internal_set_total_not_flagged(::int32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:speechly.analytics.v1.ModerationStatisticsResponse)
  private:
   class _Internal;
 
   friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<3, 6, 1, 93, 2> _table_;
+  static const ::google::protobuf::internal::TcParseTable<4, 9, 1, 101, 2> _table_;
   template <typename T> friend class ::google::protobuf::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
@@ -2305,6 +2338,9 @@ class ModerationStatisticsResponse final :
     ::google::protobuf::internal::ArenaStringPtr start_date_;
     ::google::protobuf::internal::ArenaStringPtr end_date_;
     int aggregation_;
+    ::int32_t total_events_;
+    ::int32_t total_flagged_;
+    ::int32_t total_not_flagged_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER;
   };
@@ -4490,6 +4526,72 @@ inline ::google::protobuf::RepeatedPtrField<::speechly::analytics::v1::Moderatio
 ModerationStatisticsResponse::_internal_mutable_items() {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
   return &_impl_.items_;
+}
+
+// int32 total_events = 7;
+inline void ModerationStatisticsResponse::clear_total_events() {
+  _impl_.total_events_ = 0;
+}
+inline ::int32_t ModerationStatisticsResponse::total_events() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.total_events)
+  return _internal_total_events();
+}
+inline void ModerationStatisticsResponse::set_total_events(::int32_t value) {
+  _internal_set_total_events(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsResponse.total_events)
+}
+inline ::int32_t ModerationStatisticsResponse::_internal_total_events() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.total_events_;
+}
+inline void ModerationStatisticsResponse::_internal_set_total_events(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.total_events_ = value;
+}
+
+// int32 total_flagged = 8;
+inline void ModerationStatisticsResponse::clear_total_flagged() {
+  _impl_.total_flagged_ = 0;
+}
+inline ::int32_t ModerationStatisticsResponse::total_flagged() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.total_flagged)
+  return _internal_total_flagged();
+}
+inline void ModerationStatisticsResponse::set_total_flagged(::int32_t value) {
+  _internal_set_total_flagged(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsResponse.total_flagged)
+}
+inline ::int32_t ModerationStatisticsResponse::_internal_total_flagged() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.total_flagged_;
+}
+inline void ModerationStatisticsResponse::_internal_set_total_flagged(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.total_flagged_ = value;
+}
+
+// int32 total_not_flagged = 9;
+inline void ModerationStatisticsResponse::clear_total_not_flagged() {
+  _impl_.total_not_flagged_ = 0;
+}
+inline ::int32_t ModerationStatisticsResponse::total_not_flagged() const {
+  // @@protoc_insertion_point(field_get:speechly.analytics.v1.ModerationStatisticsResponse.total_not_flagged)
+  return _internal_total_not_flagged();
+}
+inline void ModerationStatisticsResponse::set_total_not_flagged(::int32_t value) {
+  _internal_set_total_not_flagged(value);
+  // @@protoc_insertion_point(field_set:speechly.analytics.v1.ModerationStatisticsResponse.total_not_flagged)
+}
+inline ::int32_t ModerationStatisticsResponse::_internal_total_not_flagged() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.total_not_flagged_;
+}
+inline void ModerationStatisticsResponse::_internal_set_total_not_flagged(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.total_not_flagged_ = value;
 }
 
 // -------------------------------------------------------------------
