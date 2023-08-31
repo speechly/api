@@ -89,6 +89,8 @@ message ModerationStatisticsPeriod {
     int32 flagged = 3;
     // amount of moderation decisions made.
     int32 decisions = 4;
+    // total amount of not flagged (OK) events for this period.
+    int32 not_flagged = 5;
 }
 
 // A single time series entry for user statistics.

@@ -184,6 +184,12 @@ message ModerationStatisticsResponse {
     Aggregation aggregation = 5;
     // Aggregated results.
     repeated ModerationStatisticsPeriod items = 6;
+    // Total number of events in this response.
+    int32 total_events = 7;
+    // Total number of flagged events in this response.
+    int32 total_flagged = 8;
+    // Total number of non-flagged (OK) events in this response.
+    int32 total_not_flagged = 9;
 }
 
 // Request for getting user statistics.
